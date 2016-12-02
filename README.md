@@ -1,5 +1,7 @@
-# ssp-hub-base
-Base image for IdP Hub based on SimpleSAMLphp
+# ssp-base
+Base image for simpleSAMLphp
+
+Docker image: [silintl/ssp-base](https://hub.docker.com/r/silintl/ssp-base/)
 
 # Prerequisite software
 [Docker](https://www.docker.com/products/overview) and [docker-compose](https://docs.docker.com/compose/install)
@@ -14,27 +16,7 @@ must be installed.
 1. `cp local.env.dist local.env` within project root and make adjustments as needed.
 2. Add your github token to the `COMPOSER_AUTH` variable in the `local.env` file.
 3. `make` or `docker-compose up -d` within the project root.
-4. Add the following aliases to your hosts file:
-  ```
-  ssp-hub.local
-  ssp-hub-sp.local
-  ssp-hub-sp2.local
-  ssp-hub-idp.local
-  ssp-hub-idp2.local
-  ```  
-  > For Vagrant users, these aliases **must** be attached to `192.168.35.10`.
-
-Upon successful build, the following should be available:
-
-  * [Hub](http://ssp-hub.local)
-    * Click the *Authentication tab*
-    * Click on *Test configured authentication sources*
-  * [First SP](http://ssp-hub-sp.local:8080)
-  * [Second SP](http://ssp-hub-sp2.local:8081)
-  * [First IdP](http://ssp-hub-idp.local:8085)
-    * username and password are both `a`
-  * [Second IdP](http://ssp-hub-idp2.local:8086)
-    * username and password are both `b`
+4. Visit http://localhost to see SSP running
 
 ## Setup PhpStorm for remote debugging with Docker
 
