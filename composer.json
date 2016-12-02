@@ -1,0 +1,24 @@
+{
+  "name": "silinternational/ssp-base",
+  "description": "Base image for SimpleSAMLphp",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Phillip Shipley",
+      "email": "phillip.shipley@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.4",
+    "roave/security-advisories": "dev-master",
+    "simplesamlphp/simplesamlphp": "1.14.8",
+    "simplesamlphp/composer-module-installer": "^1.1.5",
+    "silinternational/php-env": "^0.2.0",
+    "silinternational/ssp-utilities": "dev-develop"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.6.1"
+  }
+}
