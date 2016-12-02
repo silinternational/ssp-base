@@ -5,7 +5,6 @@ include __DIR__ . '/../vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
 use Sil\SspUtils\Metadata;
-use Sil\PhpEnv\Env;
 
 class MetadataTest extends TestCase
 {
