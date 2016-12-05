@@ -513,21 +513,6 @@ $config = [
             'type'          => 'saml20-idp-SSO',
         ],
 
-        // prefix the 'member' (urn:oid:2.5.4.31) attribute elements with idp.idp_name.
-        48 => [
-            'class' => 'ssphub:TagGroup',
-        ],
-
-        /*
-         * Copy oid attribute keys to friendly names ...
-         * Remember to have the saml20-sp-remote metadata ask for attributes with their
-         * oid name, if the SP expects that.
-         */
-        49 => [
-            'class' => 'ssphub:AttributeMap',
-            'oid2name',
-        ],
-
         // If no attributes are requested in the SP metadata, then these will be sent through
         50 => [
             'class' => 'core:AttributeLimit',
