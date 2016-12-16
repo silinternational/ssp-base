@@ -1,4 +1,4 @@
-# ssp-base
+# ssp-base 
 Base image for simpleSAMLphp
 
 Docker image: [silintl/ssp-base](https://hub.docker.com/r/silintl/ssp-base/)
