@@ -2,14 +2,14 @@ FROM silintl/php7:latest
 
 MAINTAINER Phillip Shipley <phillip.shipley@gmail.com>
 
-ENV REFRESHED_AT 2016-12-02
+ENV REFRESHED_AT 2016-12-16
 
 # Create required directories
 RUN mkdir -p /data
 
 COPY dockerbuild/vhost.conf /etc/apache2/sites-enabled/
 COPY dockerbuild/run.sh /data/run.sh
-RUN chmod a+x /data/run.sh
+COPY dockerbuild/run-tests.sh /data/run-tests.sh
 
 # Copy in syslog config
 RUN rm -f /etc/rsyslog.d/*
@@ -34,8 +34,6 @@ COPY dockerbuild/ssp-overrides/saml20-idp-remote.php $SSP_PATH/metadata/saml20-i
 COPY dockerbuild/ssp-overrides/saml20-sp-remote.php $SSP_PATH/metadata/saml20-sp-remote.php
 COPY dockerbuild/ssp-overrides/config.php $SSP_PATH/config/config.php
 COPY tests /data/tests
-COPY run_tests.sh /data/run_tests.sh
-RUN chmod a+x /data/run_tests.sh
 
 EXPOSE 80
 ENTRYPOINT ["/usr/local/bin/s3-expand"]
