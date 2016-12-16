@@ -50,6 +50,23 @@ class MetadataTest extends TestCase
         }
     }
 
+
+    public function testIDPRemoteMetadataArraysHaveGoodIDPCode()
+    {
+        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+        $idpCode = 'IDPCode';
+
+        foreach($idpEntries as $entityId => $entry) {
+            $this->assertTrue(isset($entry[$idpCode]), 'Metadata entry does not include an ' . $idpCode .
+                                                  ' element as expected. IDP: ' . $entityId);
+            $this->assertTrue(is_string($entry[$idpCode]), 'Metadata entry has an IDPCode element that is not ' .
+                                                     'a string. IDP: ' . $entityId);
+            $this->assertRegExp("/^[A-Za-z0-9_-]+$/", $entry[$idpCode], 'Metadata entry has an ' .
+                                $idpCode .' element that has something other than letters, ' .
+                                'numbers, hyphens and underscores. IDP: ' . $entityId);
+        }
+    }
+
     public function testMetadataNoDuplicateEntities()
     {
         $entities = [];
