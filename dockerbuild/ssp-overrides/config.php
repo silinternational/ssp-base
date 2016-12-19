@@ -819,6 +819,6 @@ $config = [
 if ($ENABLE_HUB_AUTHPROCS) {
     // prefix the 'member' (urn:oid:2.5.4.31) attribute elements with idp.idp_name.
     $config['authproc.idp'][48] = [
-        'class' => 'siltemp:TagGroup',
+        'class' => 'sildisco:TagGroup',
     ];
 }
