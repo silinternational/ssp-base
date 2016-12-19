@@ -5,6 +5,7 @@ include __DIR__ . '/../vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
 use Sil\SspUtils\Metadata;
+use Sil\SspUtils\DiscoUtils;
 
 class MetadataTest extends TestCase
 {
@@ -92,6 +93,20 @@ class MetadataTest extends TestCase
                 );
                 $entities[] = $entityId;
             }
+        }
+    }
+
+    public function testMetadataNoSpsWithoutAnIdp()
+    {
+        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+        foreach($spEntries as $spEntityId => $spEntry) {
+            $results = DiscoUtils::getIdpsForSp(
+                $spEntityId,
+                $this->metadataPath
+            );
+
+            $this->assertFalse(empty($results),
+                'SP, ' . $spEntityId . ', has no IdP it is allowed to use.');
         }
     }
 
