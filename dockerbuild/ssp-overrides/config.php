@@ -32,6 +32,7 @@ $IDPDISCO_LAYOUT = Env::get('IDPDISCO_LAYOUT', 'links'); // Options: [links,drop
 $MEMCACHE_STORE_EXPIRES = (int)(Env::get('MEMCACHE_STORE_EXPIRES', (36 * 60 * 60))); // 36 hours.
 $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
 $GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
+$ENABLE_HUB_AUTHPROCS = Env::get('ENABLE_HUB_AUTHPROCS', false);
 
 $config = [
 
@@ -385,7 +386,9 @@ $config = [
      * Languages available, RTL languages, and what language is default
      */
     'language.available' => array(
-        'en', 'es', 'fr', 'pt',
+        'en', 'no', 'nn', 'se', 'da', 'de', 'sv', 'fi', 'es', 'fr', 'it', 'nl', 'lb', 'cs',
+        'sl', 'lt', 'hr', 'hu', 'pl', 'pt', 'pt-br', 'tr', 'ja', 'zh', 'zh-tw', 'ru', 'et',
+        'he', 'id', 'sr', 'lv', 'ro', 'eu'
     ),
     'language.rtl' => array('ar', 'dv', 'fa', 'ur', 'he'),
     'language.default' => 'en',
@@ -513,11 +516,23 @@ $config = [
             'type'          => 'saml20-idp-SSO',
         ],
 
+        // 48 =>  *** WARNING: For Hubs this entry is added at the end of this file
+
+        /*
+         * Copy oid attribute keys to friendly names ...
+         * Remember to have the saml20-sp-remote metadata ask for attributes with their
+         * oid name, if the SP expects that.
+         */
+        49 => [
+            'class' => 'sildisco:AttributeMap',
+            'oid2name',
+        ],
+
         // If no attributes are requested in the SP metadata, then these will be sent through
         50 => [
             'class' => 'core:AttributeLimit',
             'default' => TRUE,
-            'eduPersonPrincipalName', 'sn', 'givenName', 'mail',
+            'eduPersonPrincipalName', ' eduPersonTargetID', 'sn', 'givenName', 'mail',
         ],
         
         // Use the uid value to populate the nameid entry       
@@ -800,3 +815,10 @@ $config = [
     'trusted.url.domains' => null,
 
 ];
+
+if ($ENABLE_HUB_AUTHPROCS) {
+    // prefix the 'member' (urn:oid:2.5.4.31) attribute elements with idp.idp_name.
+    $config['authproc.idp'][48] = [
+        'class' => 'siltemp:TagGroup',
+    ];
+}
