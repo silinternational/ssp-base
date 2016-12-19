@@ -16,6 +16,127 @@ services:
       - "80:80"
     env_file:
       - ./local.env
+
+  hub:
+    build: .
+    volumes:
+      # Utilize custom certs
+      - ./development/hub/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
+
+      # Utilize custom configs
+      - ./development/hub/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+
+      # Utilize custom metadata
+      - ./development/hub/metadata/idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/idp-remote.php
+      - ./development/hub/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
+      - ./development/hub/metadata/saml20-sp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-hosted.php
+      - ./development/hub/metadata/sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/sp-remote.php
+
+      # Configure the debugger
+      - ./development/hub/run-debug.sh:/data/run-debug.sh
+    command: /data/run-debug.sh
+    ports:
+      - "80:80"
+    environment:
+      ADMIN_EMAIL: "john_doe@there.com"
+      ADMIN_PASS: "1234qwer"
+      SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
+      SECURE_COOKIE: "false"
+      ADMIN_PROTECT_INDEX_PAGE: "false"
+      SHOW_SAML_ERRORS: "true"
+      THEME_USE: "material:material"
+
+  idp1:
+    build: .
+    volumes:
+      # Utilize custom certs
+      - ./development/idp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
+
+      # Utilize custom configs
+      - ./development/idp-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+      - ./development/idp-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
+
+      # Utilize custom metadata
+      - ./development/idp-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
+      - ./development/idp-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
+    command: /data/run.sh
+    ports:
+      - "8085:80"
+    environment:
+      ADMIN_EMAIL: "john_doe@there.com"
+      ADMIN_PASS: "a"
+      SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
+
+  idp2:
+    build: .
+    volumes:
+      # Utilize custom certs
+      - ./development/idp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
+
+      # Utilize custom configs
+      - ./development/idp2-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+      - ./development/idp2-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
+
+      # Utilize custom metadata
+      - ./development/idp2-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
+      - ./development/idp2-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
+    command: /data/run.sh
+    ports:
+      - "8086:80"
+    environment:
+      ADMIN_EMAIL: "john_doe@there.com"
+      ADMIN_PASS: "b"
+      SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
+
+  sp1:
+    build: .
+    volumes:
+      # Utilize custom certs
+      - ./development/sp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
+
+      # Utilize custom configs
+      - ./development/sp-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
+      - ./development/sp-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+
+      # Utilize custom metadata
+      - ./development/sp-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
+    ports:
+      - "8081:80"
+    environment:
+      ADMIN_EMAIL: "john_doe@there.com"
+      ADMIN_PASS: "sp1"
+      SECRET_SALT: "h57fjemb&dn^nsJFGNjweJz1"
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
+      SAML20_IDP_ENABLE: "false"
+      ADMIN_PROTECT_INDEX_PAGE: "false"
+
+  sp2:
+    build: .
+    volumes:
+      # Utilize custom certs
+      - ./development/sp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
+
+      # Utilize custom configs
+      - ./development/sp2-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
+      - ./development/sp2-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+
+      # Utilize custom metadata
+      - ./development/sp2-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
+    ports:
+      - "8082:80"
+    environment:
+      ADMIN_EMAIL: "john_doe@there.com"
+      ADMIN_PASS: "sp2"
+      SECRET_SALT: "h57fjemb&dn^nsJFGNjweJz2"
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
+      SAML20_IDP_ENABLE: "false"
+      ADMIN_PROTECT_INDEX_PAGE: "false"
     
 networks:
   default:

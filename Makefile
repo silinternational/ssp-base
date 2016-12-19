@@ -1,7 +1,10 @@
-start: web
+start: ssp
 
-web:
-	docker-compose up -d
+ssp: clean
+	docker-compose up -d ssp
+
+hub: clean
+	docker-compose up -d hub sp1 sp2 idp1 idp2
 
 clean:
 	docker-compose kill
