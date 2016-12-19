@@ -35,6 +35,8 @@ COPY dockerbuild/ssp-overrides/saml20-sp-remote.php $SSP_PATH/metadata/saml20-sp
 COPY dockerbuild/ssp-overrides/config.php $SSP_PATH/config/config.php
 COPY tests /data/tests
 
+RUN chmod a+x /data/run.sh /data/run-tests.sh
+
 EXPOSE 80
 ENTRYPOINT ["/usr/local/bin/s3-expand"]
 CMD ["/data/run.sh"]
