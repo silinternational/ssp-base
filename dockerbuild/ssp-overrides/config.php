@@ -508,25 +508,32 @@ $config = [
         30 => 'core:LanguageAdaptor',
 
         /* Add a realm attribute from edupersonprincipalname
-        40 => 'core:AttributeRealm',
+        32 => 'core:AttributeRealm',
          */
-        45 => [
+        35 => [
             'class'         => 'core:StatisticsWithAttribute',
             'attributename' => 'realm',
             'type'          => 'saml20-idp-SSO',
         ],
 
-        // 48 =>  *** WARNING: For Hubs this entry is added at the end of this file
+        /*
+         * Copy friendly names attribute keys to oids ...
+         */
+        40 => [
+            'class' => 'sildisco:AttributeMap',
+            'name2oid',
+        ],
 
         /*
-         * Copy oid attribute keys to friendly names ...
-         * Remember to have the saml20-sp-remote metadata ask for attributes with their
-         * oid name, if the SP expects that.
+         * Copy oid attribute keys to friendly names
          */
-        49 => [
+        41 => [
             'class' => 'sildisco:AttributeMap',
             'oid2name',
         ],
+
+        // 48 =>  *** WARNING: For Hubs this entry is added at the end of this file
+
 
         // If no attributes are requested in the SP metadata, then these will be sent through
         50 => [
