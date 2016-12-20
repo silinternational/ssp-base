@@ -6,6 +6,7 @@ include __DIR__ . '/../vendor/autoload.php';
 use PHPUnit\Framework\TestCase;
 use Sil\SspUtils\Metadata;
 use Sil\SspUtils\DiscoUtils;
+use Sil\SspUtils\Utils;
 
 class MetadataTest extends TestCase
 {
@@ -52,7 +53,7 @@ class MetadataTest extends TestCase
     }
 
 
-    public function testIDPRemoteMetadataArraysHaveGoodIDPCode()
+    public function testIDPRemoteMetadataIDPCode()
     {
         $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
         $idpCode = 'IDPCode';
@@ -99,15 +100,83 @@ class MetadataTest extends TestCase
     public function testMetadataNoSpsWithoutAnIdp()
     {
         $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+
+        $badSps = [];
         foreach($spEntries as $spEntityId => $spEntry) {
             $results = DiscoUtils::getIdpsForSp(
                 $spEntityId,
                 $this->metadataPath
             );
 
-            $this->assertFalse(empty($results),
-                'SP, ' . $spEntityId . ', has no IdP it is allowed to use.');
+            if (empty($results)) {
+                $badSps[] = $spEntityId;
+            }
         }
+
+        $this->assertTrue(empty($badSps),
+            "At least one SP does not have an IdP it is allowed to use ... " .
+            var_export($badSps, True));
+    }
+
+    public function testMetadataBadIdpName()
+    {
+        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+
+        $badNames = [];
+
+        foreach($idpEntries as $idpEntityId => $idpEntry) {
+            if (empty($idpEntry['name']['en'])) {
+                $badNames[] = $idpEntityId;
+            }
+        }
+
+        $this->assertTrue(empty($badNames),
+            "The following Idp's do not have a 'name' entry as an array with an 'en' entry ... " .
+            var_export($badNames, True));
+    }
+
+    public function testMetadataMissingLogoURL()
+    {
+        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+
+        $badLogos = [];
+
+        foreach($idpEntries as $idpEntityId => $idpEntry) {
+            if (empty($idpEntry['logoURL'])) {
+                $badLogos[] = $idpEntityId;
+            }
+        }
+
+        $this->assertTrue(empty($badLogos),
+            "The following Idp's do not have a 'logoURL' entry ... " .
+            var_export($badLogos, True));
+    }
+
+    public function testMetadataSPWithBadIDPList()
+    {
+        $idpListKey = Utils::IDP_LIST_KEY;
+        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+
+        $badSps = [];
+
+        foreach ($spEntries as $spEntityId => $spEntry) {
+            $nextBad = [];
+            if ( ! empty($spEntry[$idpListKey])) {
+                foreach ($spEntry[$idpListKey] as $nextIdp) {
+                    if ( empty($idpEntries[$nextIdp])) {
+                        $nextBad[] = $nextIdp;
+                    }
+                }
+                if ( ! empty($nextBad)) {
+                    $badSps[$spEntityId] = $nextBad;
+                }
+            }
+        }
+
+        $this->assertTrue(empty($badSps),
+            'At least one SP has an IDPList with a bad IDP entity id ... ' . var_export($badSps, True));
+
     }
 
     public function getSpMetadataFiles()
