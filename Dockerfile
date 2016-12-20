@@ -33,6 +33,7 @@ COPY dockerbuild/ssp-overrides/index.php $SSP_PATH/www/index.php
 COPY dockerbuild/ssp-overrides/saml20-idp-remote.php $SSP_PATH/metadata/saml20-idp-remote.php
 COPY dockerbuild/ssp-overrides/saml20-sp-remote.php $SSP_PATH/metadata/saml20-sp-remote.php
 COPY dockerbuild/ssp-overrides/config.php $SSP_PATH/config/config.php
+COPY dockerbuild/ssp-overrides/id.php $SSP_PATH/www/id.php
 COPY tests /data/tests
 
 RUN chmod a+x /data/run.sh /data/run-tests.sh
