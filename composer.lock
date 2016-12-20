@@ -265,12 +265,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "d88c6b6a4111e5bfcb9b7df9fb1dc6f7f0888353"
+                "reference": "a801bd79caa16d06d70d945121978eca7ed1a9b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/d88c6b6a4111e5bfcb9b7df9fb1dc6f7f0888353",
-                "reference": "d88c6b6a4111e5bfcb9b7df9fb1dc6f7f0888353",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/a801bd79caa16d06d70d945121978eca7ed1a9b4",
+                "reference": "a801bd79caa16d06d70d945121978eca7ed1a9b4",
                 "shasum": ""
             },
             "require": {
@@ -291,7 +291,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2016-12-17 22:31:36"
+            "time": "2016-12-20 15:05:28"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -299,12 +299,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-sildisco.git",
-                "reference": "0270941ad38df4fe381ee7754c6175cf3ad3a126"
+                "reference": "57fb8ceab5b6ad23bbc0c8ce7ff026137fc4c31c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/0270941ad38df4fe381ee7754c6175cf3ad3a126",
-                "reference": "0270941ad38df4fe381ee7754c6175cf3ad3a126",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/57fb8ceab5b6ad23bbc0c8ce7ff026137fc4c31c",
+                "reference": "57fb8ceab5b6ad23bbc0c8ce7ff026137fc4c31c",
                 "shasum": ""
             },
             "require": {
@@ -330,7 +330,7 @@
                 }
             ],
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
-            "time": "2016-12-16 21:06:22"
+            "time": "2016-12-20 15:18:56"
         },
         {
             "name": "silinternational/ssp-utilities",
@@ -338,12 +338,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/ssp-utilities.git",
-                "reference": "273e448048f998e77106262514589a2b3d790f11"
+                "reference": "741e95e7b258874d6646357fb314f49c0ea7f36f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/ssp-utilities/zipball/273e448048f998e77106262514589a2b3d790f11",
-                "reference": "273e448048f998e77106262514589a2b3d790f11",
+                "url": "https://api.github.com/repos/silinternational/ssp-utilities/zipball/741e95e7b258874d6646357fb314f49c0ea7f36f",
+                "reference": "741e95e7b258874d6646357fb314f49c0ea7f36f",
                 "shasum": ""
             },
             "require": {
@@ -372,7 +372,7 @@
                 }
             ],
             "description": "SimpleSAMLphp related utility classes",
-            "time": "2016-12-16 14:39:05"
+            "time": "2016-12-20 15:08:50"
         },
         {
             "name": "simplesamlphp/composer-module-installer",
