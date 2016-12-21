@@ -733,12 +733,12 @@ $config = [
                 'port' => $MEMCACHE_HOST1_PORT,
             ],
         ],
-        [
-            [
-                'hostname' => $MEMCACHE_HOST2,
-                'port' => $MEMCACHE_HOST2_PORT,
-            ],
-        ],
+//        [
+//            [
+//                'hostname' => $MEMCACHE_HOST2,
+//                'port' => $MEMCACHE_HOST2_PORT,
+//            ],
+//        ],
     ],
 
 
