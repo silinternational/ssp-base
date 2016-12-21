@@ -21,20 +21,17 @@ $ADMIN_PROTECT_INDEX_PAGE = Env::get('ADMIN_PROTECT_INDEX_PAGE', true);
 $SHOW_SAML_ERRORS = Env::get('SHOW_SAML_ERRORS', false);
 $TIMEZONE = Env::get('TIMEZONE', 'GMT');
 $LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'syslog');
-$SESSION_DURATION = (int)(Env::get('SESSION_DURATION', 540));
-$SESSION_DATASTORE_TIMEOUT = (int)(Env::get('SESSION_DATASTORE_TIMEOUT', (4 * 60 * 60))); // 4 hours
-$SESSION_STATE_TIMEOUT = (int)(Env::get('SESSION_STATE_TIMEOUT', (60 * 60))); // 1 hour
-$SESSION_COOKIE_LIFETIME = (int)(Env::get('SESSION_COOKIE_LIFETIME', 0));
-$SESSION_REMEMBERME_LIFETIME = (int)(Env::get('SESSION_REMEMBERME_LIFETIME', (14 * 86400))); // 14 days
-$SECURE_COOKIE = Env::get('SECURE_COOKIE', true);
 $THEME_USE = Env::get('THEME_USE', 'material:material');
 $IDPDISCO_LAYOUT = Env::get('IDPDISCO_LAYOUT', 'links'); // Options: [links,dropdown]
+
+$SECURE_COOKIE = Env::get('SECURE_COOKIE', true);
+$SESSION_DURATION = (int)(Env::get('SESSION_DURATION', (60 * 60 * 10))); // 10 hours.
 $SESSION_STORE_TYPE = Env::get('SESSION_STORE_TYPE', 'phpsession');
 $MEMCACHE_HOST1 = Env::get('MEMCACHE_HOST1', null);
 $MEMCACHE_HOST2 = Env::get('MEMCACHE_HOST2', null);
 $MEMCACHE_HOST1_PORT = Env::get('MEMCACHE_HOST1_PORT', 11211);
 $MEMCACHE_HOST2_PORT = Env::get('MEMCACHE_HOST2_PORT', 11211);
-$MEMCACHE_STORE_EXPIRES = (int)(Env::get('MEMCACHE_STORE_EXPIRES', (60 * 60 * 10))); // 10 hours.
+
 $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
 $GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
 $ENABLE_HUB_AUTHPROCS = Env::get('ENABLE_HUB_AUTHPROCS', false);
@@ -280,12 +277,12 @@ $config = [
      * login and logout requests, thid option will control the maximum time these operations can take.
      * The default is 4 hours (4*60*60) seconds, which should be more than enough for these operations.
      */
-    'session.datastore.timeout' => $SESSION_DATASTORE_TIMEOUT,
+    'session.datastore.timeout' => (4 * 60 * 60), // 4 hours
 
     /*
      * Sets the duration, in seconds, auth state should be stored.
      */
-    'session.state.timeout' => $SESSION_STATE_TIMEOUT,
+    'session.state.timeout' => (60 * 60), // 1 hour
 
     /*
      * Option to override the default settings for the session cookie name
@@ -300,7 +297,7 @@ $config = [
      * Example:
      *  'session.cookie.lifetime' => 30*60,
      */
-    'session.cookie.lifetime' => $SESSION_COOKIE_LIFETIME,
+    'session.cookie.lifetime' => 0,
 
     /*
      * Limit the path of the cookies.
@@ -377,7 +374,7 @@ $config = [
      */
     'session.rememberme.enable' => false,
     'session.rememberme.checked' => false,
-    'session.rememberme.lifetime' => $SESSION_REMEMBERME_LIFETIME,
+    'session.rememberme.lifetime' => (14 * 86400), // 14 days
 
     /**
      * Custom function for session checking called on session init and loading.
@@ -757,7 +754,7 @@ $config = [
      * Note: The oldest data will always be deleted if the memcache server
      * runs out of storage space.
      */
-    'memcache_store.expires' => $MEMCACHE_STORE_EXPIRES,
+    'memcache_store.expires' => $SESSION_DURATION + 3600, // Session duration plus an hour for clock skew
 
 
     /*
