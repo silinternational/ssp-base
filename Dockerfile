@@ -4,6 +4,10 @@ MAINTAINER Phillip Shipley <phillip.shipley@gmail.com>
 
 ENV REFRESHED_AT 2016-12-16
 
+RUN apt-get update -y && \
+    apt-get install -y php-memcache && \
+    apt-get clean
+
 # Create required directories
 RUN mkdir -p /data
 

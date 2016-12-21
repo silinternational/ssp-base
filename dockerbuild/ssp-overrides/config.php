@@ -29,7 +29,10 @@ $SESSION_REMEMBERME_LIFETIME = (int)(Env::get('SESSION_REMEMBERME_LIFETIME', (14
 $SECURE_COOKIE = Env::get('SECURE_COOKIE', true);
 $THEME_USE = Env::get('THEME_USE', 'material:material');
 $IDPDISCO_LAYOUT = Env::get('IDPDISCO_LAYOUT', 'links'); // Options: [links,dropdown]
-$MEMCACHE_STORE_EXPIRES = (int)(Env::get('MEMCACHE_STORE_EXPIRES', (36 * 60 * 60))); // 36 hours.
+$SESSION_STORE_TYPE = Env::get('SESSION_STORE_TYPE', 'phpsession');
+$MEMCACHE_HOST = Env::get('MEMCACHE_HOST', null);
+$MEMCACHE_PORT = Env::get('MEMCACHE_PORT', 11211);
+$MEMCACHE_STORE_EXPIRES = (int)(Env::get('MEMCACHE_STORE_EXPIRES', (60 * 60 * 10))); // 10 hours.
 $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
 $GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
 $ENABLE_HUB_AUTHPROCS = Env::get('ENABLE_HUB_AUTHPROCS', false);
@@ -662,33 +665,13 @@ $config = [
      *
      * - 'phpsession': Limited datastore, which uses the PHP session.
      * - 'memcache': Key-value datastore, based on memcache.
-     * - 'sql': SQL datastore, using PDO.
      *
      * The default datastore is 'phpsession'.
      *
      * (This option replaces the old 'session.handler'-option.)
      */
-    'store.type'                    => 'phpsession',
+    'store.type'                    => $SESSION_STORE_TYPE,
 
-
-    /*
-     * The DSN the sql datastore should connect to.
-     *
-     * See http://www.php.net/manual/en/pdo.drivers.php for the various
-     * syntaxes.
-     */
-    'store.sql.dsn'                 => 'sqlite:/path/to/sqlitedatabase.sq3',
-
-    /*
-     * The username and password to use when connecting to the database.
-     */
-    'store.sql.username' => null,
-    'store.sql.password' => null,
-
-    /*
-     * The prefix we should use on our tables.
-     */
-    'store.sql.prefix' => 'simpleSAMLphp',
 
 
     /*
@@ -744,7 +727,10 @@ $config = [
      */
     'memcache_store.servers' => [
         [
-            ['hostname' => 'localhost'],
+            [
+                'hostname' => $MEMCACHE_HOST,
+                'port' => $MEMCACHE_PORT,
+            ],
         ],
     ],
 
@@ -764,7 +750,7 @@ $config = [
      * Note: The oldest data will always be deleted if the memcache server
      * runs out of storage space.
      */
-    'memcache_store.expires' => 36 * (60 * 60), // 36 hours.
+    'memcache_store.expires' => $MEMCACHE_STORE_EXPIRES,
 
 
     /*
