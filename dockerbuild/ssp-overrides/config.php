@@ -30,8 +30,10 @@ $SECURE_COOKIE = Env::get('SECURE_COOKIE', true);
 $THEME_USE = Env::get('THEME_USE', 'material:material');
 $IDPDISCO_LAYOUT = Env::get('IDPDISCO_LAYOUT', 'links'); // Options: [links,dropdown]
 $SESSION_STORE_TYPE = Env::get('SESSION_STORE_TYPE', 'phpsession');
-$MEMCACHE_HOST = Env::get('MEMCACHE_HOST', null);
-$MEMCACHE_PORT = Env::get('MEMCACHE_PORT', 11211);
+$MEMCACHE_HOST1 = Env::get('MEMCACHE_HOST1', null);
+$MEMCACHE_HOST2 = Env::get('MEMCACHE_HOST2', null);
+$MEMCACHE_HOST1_PORT = Env::get('MEMCACHE_HOST1_PORT', 11211);
+$MEMCACHE_HOST2_PORT = Env::get('MEMCACHE_HOST2_PORT', 11211);
 $MEMCACHE_STORE_EXPIRES = (int)(Env::get('MEMCACHE_STORE_EXPIRES', (60 * 60 * 10))); // 10 hours.
 $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
 $GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
@@ -439,7 +441,6 @@ $config = [
      *     "secondattribute": {
      *         "en": "English name",
      *         "no": "Norwegian name"
-     *     }
      * }
      *
      * Note that all attribute names in the dictionary must in lowercase.
@@ -728,8 +729,12 @@ $config = [
     'memcache_store.servers' => [
         [
             [
-                'hostname' => $MEMCACHE_HOST,
-                'port' => $MEMCACHE_PORT,
+                'hostname' => $MEMCACHE_HOST1,
+                'port' => $MEMCACHE_HOST1_PORT,
+            ],
+            [
+                'hostname' => $MEMCACHE_HOST2,
+                'port' => $MEMCACHE_HOST2_PORT,
             ],
         ],
     ],
