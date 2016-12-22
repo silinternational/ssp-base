@@ -540,7 +540,12 @@ $config = [
         50 => [
             'class' => 'core:AttributeLimit',
             'default' => TRUE,
-            'eduPersonPrincipalName', ' eduPersonTargetID', 'sn', 'givenName', 'mail',
+            'eduPersonPrincipalName',
+            'eduPersonTargetID',
+            'sn',
+            'givenName',
+            'mail',
+            'employeeNumber',
         ],
         
         // Use the uid value to populate the nameid entry       
