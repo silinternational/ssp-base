@@ -60,12 +60,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "7f0d17c75373fa03b7425e7d8bb141a814d814ab"
+                "reference": "ccd522f40878bcfbc9bd7cb45f0772098d2963f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/7f0d17c75373fa03b7425e7d8bb141a814d814ab",
-                "reference": "7f0d17c75373fa03b7425e7d8bb141a814d814ab",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/ccd522f40878bcfbc9bd7cb45f0772098d2963f5",
+                "reference": "ccd522f40878bcfbc9bd7cb45f0772098d2963f5",
                 "shasum": ""
             },
             "conflict": {
@@ -156,13 +156,13 @@
                 "zendframework/zend-http": ">=2,<2.0.99|>=2.1,<2.1.99|>=2.3,<2.3.8|>=2.4,<2.4.1",
                 "zendframework/zend-json": ">=2.1,<2.1.6|>=2.2,<2.2.6",
                 "zendframework/zend-ldap": ">=2,<2.0.99|>=2.1,<2.1.99|>=2.2,<2.2.8|>=2.3,<2.3.3",
-                "zendframework/zend-mail": ">=2,<2.0.99|>=2.1,<2.1.99|>=2.3,<2.3.8|>=2.4,<2.4.1",
+                "zendframework/zend-mail": ">=2,<2.4.11|>=2.5,<2.7.2",
                 "zendframework/zend-navigation": ">=2,<2.2.7|>=2.3,<2.3.1",
                 "zendframework/zend-session": ">=2,<2.0.99|>=2.1,<2.1.99|>=2.2,<2.2.9|>=2.3,<2.3.4",
                 "zendframework/zend-validator": ">=2.3,<2.3.6",
                 "zendframework/zend-view": ">=2,<2.2.7|>=2.3,<2.3.1",
                 "zendframework/zend-xmlrpc": ">=2.1,<2.1.6|>=2.2,<2.2.6",
-                "zendframework/zendframework": ">=2,<2.4.9|>=2.5,<2.5.1",
+                "zendframework/zendframework": ">=2,<2.4.11|>=2.5,<2.5.1",
                 "zendframework/zendframework1": "<1.12.20",
                 "zendframework/zendopenid": ">=2,<2.0.2",
                 "zendframework/zendxml": ">=1,<1.0.1",
@@ -183,7 +183,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2016-12-19 13:03:54"
+            "time": "2016-12-21 14:15:22"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -299,12 +299,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-sildisco.git",
-                "reference": "57fb8ceab5b6ad23bbc0c8ce7ff026137fc4c31c"
+                "reference": "07d7462c6ec3c2be02cb5be1adc3934c1431fb44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/57fb8ceab5b6ad23bbc0c8ce7ff026137fc4c31c",
-                "reference": "57fb8ceab5b6ad23bbc0c8ce7ff026137fc4c31c",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/07d7462c6ec3c2be02cb5be1adc3934c1431fb44",
+                "reference": "07d7462c6ec3c2be02cb5be1adc3934c1431fb44",
                 "shasum": ""
             },
             "require": {
@@ -330,7 +330,7 @@
                 }
             ],
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
-            "time": "2016-12-20 15:18:56"
+            "time": "2016-12-22 13:54:00"
         },
         {
             "name": "silinternational/ssp-utilities",
@@ -876,16 +876,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "4.0.3",
+            "version": "4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "903fd6318d0a90b4770a009ff73e4a4e9c437929"
+                "reference": "c14196e64a78570034afd0b7a9f3757ba71c2a0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/903fd6318d0a90b4770a009ff73e4a4e9c437929",
-                "reference": "903fd6318d0a90b4770a009ff73e4a4e9c437929",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c14196e64a78570034afd0b7a9f3757ba71c2a0a",
+                "reference": "c14196e64a78570034afd0b7a9f3757ba71c2a0a",
                 "shasum": ""
             },
             "require": {
@@ -935,7 +935,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-11-28 16:00:31"
+            "time": "2016-12-20 15:22:42"
         },
         {
             "name": "phpunit/php-file-iterator",
