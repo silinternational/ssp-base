@@ -45,6 +45,7 @@ services:
       ADMIN_PROTECT_INDEX_PAGE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_USE: "material:material"
+      ENABLE_HUB_AUTHPROCS: "true"
 
   idp1:
     build: .
