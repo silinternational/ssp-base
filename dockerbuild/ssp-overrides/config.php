@@ -36,13 +36,6 @@ $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
 $GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
 $ENABLE_HUB_AUTHPROCS = Env::get('ENABLE_HUB_AUTHPROCS', false);
 
-/*
- * If BASE_URL_PATH starts with HTTPS, set $_SERVER['HTTPS'] to true for SSP url checks
- */
-if (substr($BASE_URL_PATH, 0, 5) === 'https'){
-    $_SERVER['HTTPS'] = true;
-}
-
 $config = [
 
     /*
