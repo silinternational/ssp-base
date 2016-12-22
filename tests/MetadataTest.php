@@ -179,6 +179,80 @@ class MetadataTest extends TestCase
 
     }
 
+    public function testMetadataCerts()
+    {
+        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+
+        $badSps = [];
+
+        foreach ($spEntries as $spEntityId => $spEntry) {
+            if (empty($spEntry['certData']) && empty($spEntry['certFingerprint'])) {
+                $badSps[] = $spEntityId;
+            }
+        }
+
+        $this->assertTrue(empty($badSps),
+            'At least one SP has neither a certData or certFingerprint entry ... ' .
+            var_export($badSps, True));
+
+    }
+
+    public function testMetadataSignResponse()
+    {
+        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+
+        $badSps = [];
+
+        foreach ($spEntries as $spEntityId => $spEntry) {
+            if (isset($spEntry['saml20.sign.response']) &&
+                $spEntry['saml20.sign.response'] === False) {
+                $badSps[] = $spEntityId;
+            }
+        }
+
+        $this->assertTrue(empty($badSps),
+            'At least one SP has saml20.sign.response set to false ... ' .
+            var_export($badSps, True));
+    }
+
+    public function testMetadataSignAssertion()
+    {
+        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+
+        $badSps = [];
+
+        foreach ($spEntries as $spEntityId => $spEntry) {
+            if (isset($spEntry['saml20.sign.assertion']) &&
+                $spEntry['saml20.sign.assertion'] === False) {
+                $badSps[] = $spEntityId;
+            }
+        }
+
+        $this->assertTrue(empty($badSps),
+            'At least one SP has saml20.sign.assertion set to false ... ' .
+            var_export($badSps, True));
+
+    }
+
+    public function testMetadataEncryption()
+    {
+        $this->markTestSkipped('Wait until we require encryption.');
+        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+
+        $badSps = [];
+
+        foreach ($spEntries as $spEntityId => $spEntry) {
+            if (empty($spEntry['assertion.encryption'])) {
+                $badSps[] = $spEntityId;
+            }
+        }
+
+        $this->assertTrue(empty($badSps),
+            'At least one SP does not have assertion.encryption set to True ... ' .
+            var_export($badSps, True));
+
+    }
+
     public function getSpMetadataFiles()
     {
         return $this->getFileList('sp');
