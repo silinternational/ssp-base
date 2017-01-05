@@ -16,9 +16,10 @@
     "silinternational/simplesamlphp-module-material": "dev-develop",
     "silinternational/simplesamlphp-module-sildisco": "dev-develop",
     "silinternational/ssp-utilities": "dev-develop",
-    "silinternational/ssp-deps": "^0.2"
+    "silinternational/ssp-deps": "^0.3.1"
   },
   "require-dev": {
+    "behat/behat": "^3.2",
     "phpunit/phpunit": "^5.6.1"
   }
 }
