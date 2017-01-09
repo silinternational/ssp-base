@@ -995,7 +995,7 @@
                 }
             ],
             "description": "SimpleSAMLphp related utility classes",
-            "time": "2016-12-20 15:08:50"
+            "time": "2016-12-20T15:08:50+00:00"
         },
         {
             "name": "simplesamlphp/composer-module-installer",
