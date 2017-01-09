@@ -821,16 +821,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "0.3.0",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "804ddca7c6a3c51555fc7c7fe27e98e240821edd"
+                "reference": "d9b10374ee0b26b149bf3ee501f7a80934342026"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/804ddca7c6a3c51555fc7c7fe27e98e240821edd",
-                "reference": "804ddca7c6a3c51555fc7c7fe27e98e240821edd",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/d9b10374ee0b26b149bf3ee501f7a80934342026",
+                "reference": "d9b10374ee0b26b149bf3ee501f7a80934342026",
                 "shasum": ""
             },
             "require": {
@@ -855,7 +855,10 @@
             "autoload": {
                 "psr-4": {
                     "Sil\\SilAuth\\": "src/"
-                }
+                },
+                "files": [
+                    "vendor/yiisoft/yii2/Yii.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -868,7 +871,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing custom business logic and password migration from LDAP to DB",
-            "time": "2017-01-03T21:20:31+00:00"
+            "time": "2017-01-06T17:07:36+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -911,16 +914,16 @@
         },
         {
             "name": "silinternational/ssp-deps",
-            "version": "0.3.2",
+            "version": "0.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/ssp-deps.git",
-                "reference": "461662d5ca7f51f7c182c8cc82ce6968fab4faf3"
+                "reference": "49b521c42423a092b8fd0714af22e7a6747372a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/ssp-deps/zipball/461662d5ca7f51f7c182c8cc82ce6968fab4faf3",
-                "reference": "461662d5ca7f51f7c182c8cc82ce6968fab4faf3",
+                "url": "https://api.github.com/repos/silinternational/ssp-deps/zipball/49b521c42423a092b8fd0714af22e7a6747372a0",
+                "reference": "49b521c42423a092b8fd0714af22e7a6747372a0",
                 "shasum": ""
             },
             "require": {
@@ -928,7 +931,7 @@
                 "roave/security-advisories": "dev-master",
                 "silinternational/php-env": "0.2.0",
                 "silinternational/simplesamlphp-module-material": "dev-develop",
-                "silinternational/simplesamlphp-module-silauth": "0.3.0",
+                "silinternational/simplesamlphp-module-silauth": "0.3.1",
                 "silinternational/simplesamlphp-module-sildisco": "dev-develop",
                 "silinternational/ssp-utilities": "dev-develop",
                 "simplesamlphp/composer-module-installer": "1.1.5",
@@ -950,7 +953,7 @@
                 }
             ],
             "description": "Shared dependencies for simpleSAMLphp (aka. SSP) repos",
-            "time": "2017-01-05T13:54:19+00:00"
+            "time": "2017-01-09T14:27:00+00:00"
         },
         {
             "name": "silinternational/ssp-utilities",
@@ -992,7 +995,7 @@
                 }
             ],
             "description": "SimpleSAMLphp related utility classes",
-            "time": "2016-12-20T15:08:50+00:00"
+            "time": "2016-12-20 15:08:50"
         },
         {
             "name": "simplesamlphp/composer-module-installer",
