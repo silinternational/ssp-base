@@ -15,9 +15,19 @@ services:
       # TEMP
       - ./composer.json:/data/composer.json
       - ./composer.lock:/data/composer.lock
+      - ./vendor:/data/vendor
     command: ["/data/run-debug.sh"]
     ports:
       - "80:80"
+    env_file:
+      - ./local.env
+
+  composer:
+    build: .
+    volumes:
+      - ./composer.json:/data/composer.json
+      - ./composer.lock:/data/composer.lock
+      - ./vendor:/data/vendor
     env_file:
       - ./local.env
 
