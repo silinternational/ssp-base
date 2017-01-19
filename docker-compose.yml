@@ -11,11 +11,6 @@ services:
       
       # Configure the debugger
       - ./development/ssp/run-debug.sh:/data/run-debug.sh
-      
-      # TEMP
-      - ./composer.json:/data/composer.json
-      - ./composer.lock:/data/composer.lock
-      - ./vendor:/data/vendor
     command: ["/data/run-debug.sh"]
     ports:
       - "80:80"
