@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "084f4cd042d1294440a75ce40c12ec92",
+    "hash": "8177e6bd292f6d4a874155c17a98aa8a",
+    "content-hash": "f08edc6a666a7d487c69f0a0013d3b91",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -56,7 +57,7 @@
                 "ldap",
                 "windows"
             ],
-            "time": "2016-10-22T05:28:15+00:00"
+            "time": "2016-10-22 05:28:15"
         },
         {
             "name": "cebe/markdown",
@@ -116,7 +117,7 @@
                 "markdown",
                 "markdown-extra"
             ],
-            "time": "2016-09-14T20:40:20+00:00"
+            "time": "2016-09-14 20:40:20"
         },
         {
             "name": "doctrine/inflector",
@@ -183,24 +184,27 @@
                 "singularize",
                 "string"
             ],
-            "time": "2015-11-06T14:35:42+00:00"
+            "time": "2015-11-06 14:35:42"
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.8.0",
+            "version": "v4.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2"
+                "reference": "a1c09b09e398687deeb8e309a6305def4b43439b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2",
-                "reference": "d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/a1c09b09e398687deeb8e309a6305def4b43439b",
+                "reference": "a1c09b09e398687deeb8e309a6305def4b43439b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2"
+            },
+            "require-dev": {
+                "simpletest/simpletest": "^1.1"
             },
             "type": "library",
             "autoload": {
@@ -227,7 +231,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2016-07-16T12:58:58+00:00"
+            "time": "2017-01-13 12:31:37"
         },
         {
             "name": "fillup/fake-bower-assets",
@@ -264,7 +268,52 @@
                 }
             ],
             "description": "Use Composer \"replace\" to fake out installing bower-asset dependencies that aren't really needed",
-            "time": "2016-07-27T13:10:36+00:00"
+            "time": "2016-07-27 13:10:36"
+        },
+        {
+            "name": "google/recaptcha",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/google/recaptcha.git",
+                "reference": "2b7e00566afca82a38a1d3adb8e42c118006296e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/google/recaptcha/zipball/2b7e00566afca82a38a1d3adb8e42c118006296e",
+                "reference": "2b7e00566afca82a38a1d3adb8e42c118006296e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.5.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ReCaptcha\\": "src/ReCaptcha"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Client library for reCAPTCHA, a free service that protect websites from spam and abuse.",
+            "homepage": "http://www.google.com/recaptcha/",
+            "keywords": [
+                "Abuse",
+                "captcha",
+                "recaptcha",
+                "spam"
+            ],
+            "time": "2015-09-02 17:23:59"
         },
         {
             "name": "illuminate/contracts",
@@ -306,7 +355,7 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2016-09-26T20:36:27+00:00"
+            "time": "2016-09-26 20:36:27"
         },
         {
             "name": "illuminate/support",
@@ -363,7 +412,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2016-11-03T15:25:28+00:00"
+            "time": "2016-11-03 15:25:28"
         },
         {
             "name": "paragonie/random_compat",
@@ -411,7 +460,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-11-07T23:38:38+00:00"
+            "time": "2016-11-07 23:38:38"
         },
         {
             "name": "phpspec/php-diff",
@@ -449,7 +498,7 @@
                 }
             ],
             "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
-            "time": "2016-04-07T12:29:16+00:00"
+            "time": "2016-04-07 12:29:16"
         },
         {
             "name": "psr/log",
@@ -496,7 +545,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10T12:19:37+00:00"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "ramsey/uuid",
@@ -578,7 +627,7 @@
                 "identifier",
                 "uuid"
             ],
-            "time": "2016-11-22T19:21:44+00:00"
+            "time": "2016-11-22 19:21:44"
         },
         {
             "name": "roave/security-advisories",
@@ -709,7 +758,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2017-01-18T01:18:40+00:00"
+            "time": "2017-01-18 01:18:40"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -750,7 +799,7 @@
                 "xml",
                 "xmldsig"
             ],
-            "time": "2016-09-08T13:31:44+00:00"
+            "time": "2016-09-08 13:31:44"
         },
         {
             "name": "silinternational/php-env",
@@ -783,7 +832,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2016-04-27T14:41:44+00:00"
+            "time": "2016-04-27 14:41:44"
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
@@ -821,25 +870,29 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "0.3.2",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "52ea4f4bb0c1435c5bbd9672cb2e720fd746048d"
+                "reference": "7ee0c89330a3d6f1e8d0d71820b086f7eff0b734"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/52ea4f4bb0c1435c5bbd9672cb2e720fd746048d",
-                "reference": "52ea4f4bb0c1435c5bbd9672cb2e720fd746048d",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/7ee0c89330a3d6f1e8d0d71820b086f7eff0b734",
+                "reference": "7ee0c89330a3d6f1e8d0d71820b086f7eff0b734",
                 "shasum": ""
             },
             "require": {
                 "adldap2/adldap2": "^6.1",
                 "fillup/fake-bower-assets": "^2.0",
+                "google/recaptcha": "^1.1",
                 "php": ">=5.6",
                 "ramsey/uuid": "^3.5",
                 "roave/security-advisories": "dev-master",
                 "silinternational/php-env": "^0.2.0",
+                "silinternational/simplesamlphp-module-material": "dev-develop",
+                "silinternational/simplesamlphp-module-sildisco": "dev-develop",
+                "silinternational/ssp-deps": "dev-develop",
                 "silinternational/ssp-utilities": "dev-develop",
                 "simplesamlphp/simplesamlphp": "^1.14.10",
                 "yiisoft/yii2": "^2.0",
@@ -847,9 +900,7 @@
             },
             "require-dev": {
                 "behat/behat": "^3.2",
-                "phpunit/phpunit": "^5.6.1",
-                "silinternational/simplesamlphp-module-material": "dev-develop",
-                "simplesamlphp/composer-module-installer": "^1.1.5"
+                "phpunit/phpunit": "^5.6.1"
             },
             "type": "simplesamlphp-module",
             "autoload": {
@@ -868,7 +919,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing custom business logic and password migration from LDAP to DB",
-            "time": "2017-01-09T16:15:06+00:00"
+            "time": "2017-01-18 21:32:01"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -911,16 +962,16 @@
         },
         {
             "name": "silinternational/ssp-deps",
-            "version": "0.3.4",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/ssp-deps.git",
-                "reference": "36bfe135ce5588bba773efc6ee25eba2c080ecf7"
+                "reference": "fb874ab94f5af2a2376aa0fab53da3c690c4c052"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/ssp-deps/zipball/36bfe135ce5588bba773efc6ee25eba2c080ecf7",
-                "reference": "36bfe135ce5588bba773efc6ee25eba2c080ecf7",
+                "url": "https://api.github.com/repos/silinternational/ssp-deps/zipball/fb874ab94f5af2a2376aa0fab53da3c690c4c052",
+                "reference": "fb874ab94f5af2a2376aa0fab53da3c690c4c052",
                 "shasum": ""
             },
             "require": {
@@ -928,7 +979,7 @@
                 "roave/security-advisories": "dev-master",
                 "silinternational/php-env": "0.2.0",
                 "silinternational/simplesamlphp-module-material": "dev-develop",
-                "silinternational/simplesamlphp-module-silauth": "0.3.2",
+                "silinternational/simplesamlphp-module-silauth": "dev-develop",
                 "silinternational/simplesamlphp-module-sildisco": "dev-develop",
                 "silinternational/ssp-utilities": "dev-develop",
                 "simplesamlphp/composer-module-installer": "1.1.5",
@@ -950,7 +1001,7 @@
                 }
             ],
             "description": "Shared dependencies for simpleSAMLphp (aka. SSP) repos",
-            "time": "2017-01-09T16:21:22+00:00"
+            "time": "2017-01-18 21:15:37"
         },
         {
             "name": "silinternational/ssp-utilities",
@@ -1022,7 +1073,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "A Composer plugin that allows installing SimpleSAMLphp modules through Composer.",
-            "time": "2016-06-30T11:33:43+00:00"
+            "time": "2016-06-30 11:33:43"
         },
         {
             "name": "simplesamlphp/saml2",
@@ -1071,7 +1122,7 @@
                 }
             ],
             "description": "SAML2 PHP library from SimpleSAMLphp",
-            "time": "2016-12-02T12:45:13+00:00"
+            "time": "2016-12-02 12:45:13"
         },
         {
             "name": "simplesamlphp/simplesamlphp",
@@ -1141,7 +1192,7 @@
                 "sp",
                 "ws-federation"
             ],
-            "time": "2016-12-12T15:13:53+00:00"
+            "time": "2016-12-12 15:13:53"
         },
         {
             "name": "whitehat101/apr1-md5",
@@ -1185,7 +1236,7 @@
                 "MD5",
                 "apr1"
             ],
-            "time": "2015-02-11T11:06:42+00:00"
+            "time": "2015-02-11 11:06:42"
         },
         {
             "name": "yiisoft/yii2",
@@ -1279,7 +1330,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2016-10-20T12:02:50+00:00"
+            "time": "2016-10-20 12:02:50"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -1329,7 +1380,7 @@
                 "extension installer",
                 "yii2"
             ],
-            "time": "2016-12-20T13:26:02+00:00"
+            "time": "2016-12-20 13:26:02"
         },
         {
             "name": "yiisoft/yii2-gii",
@@ -1382,7 +1433,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2016-03-18T14:09:46+00:00"
+            "time": "2016-03-18 14:09:46"
         }
     ],
     "packages-dev": [
@@ -1438,7 +1489,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2015-06-14T21:17:01+00:00"
+            "time": "2015-06-14 21:17:01"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1480,7 +1531,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2016-10-31T17:19:45+00:00"
+            "time": "2016-10-31 17:19:45"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -1534,7 +1585,7 @@
                 "reflection",
                 "static analysis"
             ],
-            "time": "2015-12-27T11:43:31+00:00"
+            "time": "2015-12-27 11:43:31"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -1579,7 +1630,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2016-09-30T07:12:33+00:00"
+            "time": "2016-09-30 07:12:33"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -1626,7 +1677,7 @@
                     "email": "me@mikevanriel.com"
                 }
             ],
-            "time": "2016-11-25T06:54:22+00:00"
+            "time": "2016-11-25 06:54:22"
         },
         {
             "name": "phpspec/prophecy",
@@ -1689,7 +1740,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2016-11-21T14:58:47+00:00"
+            "time": "2016-11-21 14:58:47"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1752,7 +1803,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-12-20T15:22:42+00:00"
+            "time": "2016-12-20 15:22:42"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1799,7 +1850,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2016-10-03T07:40:28+00:00"
+            "time": "2016-10-03 07:40:28"
         },
         {
             "name": "phpunit/php-text-template",
@@ -1840,7 +1891,7 @@
             "keywords": [
                 "template"
             ],
-            "time": "2015-06-21T13:50:34+00:00"
+            "time": "2015-06-21 13:50:34"
         },
         {
             "name": "phpunit/php-timer",
@@ -1884,7 +1935,7 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2016-05-12T18:03:57+00:00"
+            "time": "2016-05-12 18:03:57"
         },
         {
             "name": "phpunit/php-token-stream",
@@ -1933,7 +1984,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2016-11-15T14:06:22+00:00"
+            "time": "2016-11-15 14:06:22"
         },
         {
             "name": "phpunit/phpunit",
@@ -2015,7 +2066,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-12-28T07:18:51+00:00"
+            "time": "2016-12-28 07:18:51"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2074,7 +2125,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2016-12-08T20:27:08+00:00"
+            "time": "2016-12-08 20:27:08"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -2119,7 +2170,7 @@
             ],
             "description": "Looks up which function or method a line of code belongs to",
             "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
-            "time": "2016-02-13T06:45:14+00:00"
+            "time": "2016-02-13 06:45:14"
         },
         {
             "name": "sebastian/comparator",
@@ -2183,7 +2234,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2016-11-19T09:18:40+00:00"
+            "time": "2016-11-19 09:18:40"
         },
         {
             "name": "sebastian/diff",
@@ -2235,7 +2286,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2015-12-08T07:14:41+00:00"
+            "time": "2015-12-08 07:14:41"
         },
         {
             "name": "sebastian/environment",
@@ -2285,7 +2336,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2016-11-26T07:53:53+00:00"
+            "time": "2016-11-26 07:53:53"
         },
         {
             "name": "sebastian/exporter",
@@ -2352,7 +2403,7 @@
                 "export",
                 "exporter"
             ],
-            "time": "2016-11-19T08:54:04+00:00"
+            "time": "2016-11-19 08:54:04"
         },
         {
             "name": "sebastian/global-state",
@@ -2403,7 +2454,7 @@
             "keywords": [
                 "global state"
             ],
-            "time": "2015-10-12T03:26:01+00:00"
+            "time": "2015-10-12 03:26:01"
         },
         {
             "name": "sebastian/object-enumerator",
@@ -2449,7 +2500,7 @@
             ],
             "description": "Traverses array structures and object graphs to enumerate all referenced objects",
             "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
-            "time": "2016-11-19T07:35:10+00:00"
+            "time": "2016-11-19 07:35:10"
         },
         {
             "name": "sebastian/recursion-context",
@@ -2502,7 +2553,7 @@
             ],
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-            "time": "2016-11-19T07:33:16+00:00"
+            "time": "2016-11-19 07:33:16"
         },
         {
             "name": "sebastian/resource-operations",
@@ -2544,7 +2595,7 @@
             ],
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
-            "time": "2015-07-28T20:34:47+00:00"
+            "time": "2015-07-28 20:34:47"
         },
         {
             "name": "sebastian/version",
@@ -2587,7 +2638,7 @@
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
-            "time": "2016-10-03T07:35:21+00:00"
+            "time": "2016-10-03 07:35:21"
         },
         {
             "name": "symfony/yaml",
@@ -2642,7 +2693,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-03T13:51:32+00:00"
+            "time": "2017-01-03 13:51:32"
         },
         {
             "name": "webmozart/assert",
@@ -2692,7 +2743,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2016-11-23T20:04:58+00:00"
+            "time": "2016-11-23 20:04:58"
         }
     ],
     "aliases": [],
@@ -2700,8 +2751,10 @@
     "stability-flags": {
         "roave/security-advisories": 20,
         "silinternational/simplesamlphp-module-material": 20,
+        "silinternational/simplesamlphp-module-silauth": 20,
         "silinternational/simplesamlphp-module-sildisco": 20,
-        "silinternational/ssp-utilities": 20
+        "silinternational/ssp-utilities": 20,
+        "silinternational/ssp-deps": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
