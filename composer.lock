@@ -873,12 +873,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "100f112632480ef8c5d9422b292ecc2352255da6"
+                "reference": "3bace02877436307ed455f40460db392c3bbc2b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/100f112632480ef8c5d9422b292ecc2352255da6",
-                "reference": "100f112632480ef8c5d9422b292ecc2352255da6",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/3bace02877436307ed455f40460db392c3bbc2b1",
+                "reference": "3bace02877436307ed455f40460db392c3bbc2b1",
                 "shasum": ""
             },
             "require": {
@@ -919,7 +919,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing custom business logic and password migration from LDAP to DB",
-            "time": "2017-01-25 18:46:56"
+            "time": "2017-01-25 18:58:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
