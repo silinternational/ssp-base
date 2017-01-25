@@ -316,16 +316,16 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.3.23",
+            "version": "v5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "ce5d73c6015b2054d32f3f8530767847b358ae4e"
+                "reference": "4ec919d294aca396d172e644b243b49885cd2cc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/ce5d73c6015b2054d32f3f8530767847b358ae4e",
-                "reference": "ce5d73c6015b2054d32f3f8530767847b358ae4e",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/4ec919d294aca396d172e644b243b49885cd2cc7",
+                "reference": "4ec919d294aca396d172e644b243b49885cd2cc7",
                 "shasum": ""
             },
             "require": {
@@ -334,7 +334,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.3-dev"
+                    "dev-master": "5.4-dev"
                 }
             },
             "autoload": {
@@ -354,26 +354,26 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2016-09-26T20:36:27+00:00"
+            "time": "2017-01-18T20:23:54+00:00"
         },
         {
             "name": "illuminate/support",
-            "version": "v5.3.23",
+            "version": "v5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "050d0ed3e1c0e1d129d73b2eaa14044e46a66f77"
+                "reference": "7abd69eb3f83004664ab40f8e9c6914935c30752"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/050d0ed3e1c0e1d129d73b2eaa14044e46a66f77",
-                "reference": "050d0ed3e1c0e1d129d73b2eaa14044e46a66f77",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/7abd69eb3f83004664ab40f8e9c6914935c30752",
+                "reference": "7abd69eb3f83004664ab40f8e9c6914935c30752",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "~1.0",
                 "ext-mbstring": "*",
-                "illuminate/contracts": "5.3.*",
+                "illuminate/contracts": "5.4.*",
                 "paragonie/random_compat": "~1.4|~2.0",
                 "php": ">=5.6.4"
             },
@@ -382,13 +382,13 @@
             },
             "suggest": {
                 "illuminate/filesystem": "Required to use the composer class (5.2.*).",
-                "symfony/process": "Required to use the composer class (3.1.*).",
-                "symfony/var-dumper": "Required to use the dd function (3.1.*)."
+                "symfony/process": "Required to use the composer class (~3.2).",
+                "symfony/var-dumper": "Required to use the dd function (~3.2)."
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.3-dev"
+                    "dev-master": "5.4-dev"
                 }
             },
             "autoload": {
@@ -411,7 +411,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2016-11-03T15:25:28+00:00"
+            "time": "2017-01-24T13:12:44+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -634,12 +634,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "1991086b35313dd4e3c5b351f4b22760deea0910"
+                "reference": "3db4b0df21d1f527304650e717c66af48981f1c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/1991086b35313dd4e3c5b351f4b22760deea0910",
-                "reference": "1991086b35313dd4e3c5b351f4b22760deea0910",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/3db4b0df21d1f527304650e717c66af48981f1c4",
+                "reference": "3db4b0df21d1f527304650e717c66af48981f1c4",
                 "shasum": ""
             },
             "conflict": {
@@ -683,7 +683,7 @@
                 "phpmailer/phpmailer": ">=5,<5.2.22",
                 "pusher/pusher-php-server": "<2.2.1",
                 "sabre/dav": ">=1.6,<1.6.99|>=1.7,<1.7.11|>=1.8,<1.8.9",
-                "shopware/shopware": "<4.3.7|>=5,<5.1.5",
+                "shopware/shopware": "<4.4|>=5,<5.2.15",
                 "silverstripe/cms": ">=3.1,<3.1.11|>=3,<=3.0.11",
                 "silverstripe/forum": "<=0.6.1|>=0.7,<=0.7.3",
                 "silverstripe/framework": ">=3,<3.3",
@@ -757,7 +757,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2017-01-19T15:04:18+00:00"
+            "time": "2017-01-24T18:32:04+00:00"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -839,12 +839,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "ba4c227981ee58b20c933dace236bd924a20478d"
+                "reference": "b65c73784d76d70c9df112772bf94853538ae399"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/ba4c227981ee58b20c933dace236bd924a20478d",
-                "reference": "ba4c227981ee58b20c933dace236bd924a20478d",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/b65c73784d76d70c9df112772bf94853538ae399",
+                "reference": "b65c73784d76d70c9df112772bf94853538ae399",
                 "shasum": ""
             },
             "require": {
@@ -865,7 +865,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2017-01-24 14:27:28"
+            "time": "2017-01-25 14:29:26"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
@@ -873,12 +873,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "a547544247ac325112f97feac6face60980f62eb"
+                "reference": "100f112632480ef8c5d9422b292ecc2352255da6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/a547544247ac325112f97feac6face60980f62eb",
-                "reference": "a547544247ac325112f97feac6face60980f62eb",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/100f112632480ef8c5d9422b292ecc2352255da6",
+                "reference": "100f112632480ef8c5d9422b292ecc2352255da6",
                 "shasum": ""
             },
             "require": {
@@ -886,6 +886,7 @@
                 "fillup/fake-bower-assets": "^2.0",
                 "google/recaptcha": "^1.1",
                 "php": ">=5.6",
+                "psr/log": "^1.0",
                 "ramsey/uuid": "^3.5",
                 "roave/security-advisories": "dev-master",
                 "silinternational/php-env": "^0.2.0",
@@ -918,7 +919,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing custom business logic and password migration from LDAP to DB",
-            "time": "2017-01-20 17:16:48"
+            "time": "2017-01-25 18:46:56"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
