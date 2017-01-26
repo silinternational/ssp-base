@@ -873,12 +873,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "3bace02877436307ed455f40460db392c3bbc2b1"
+                "reference": "d44ab615f9d298df73b681ae961f96181c1a85bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/3bace02877436307ed455f40460db392c3bbc2b1",
-                "reference": "3bace02877436307ed455f40460db392c3bbc2b1",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/d44ab615f9d298df73b681ae961f96181c1a85bd",
+                "reference": "d44ab615f9d298df73b681ae961f96181c1a85bd",
                 "shasum": ""
             },
             "require": {
@@ -919,7 +919,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing custom business logic and password migration from LDAP to DB",
-            "time": "2017-01-25 18:58:00"
+            "time": "2017-01-26 20:56:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -927,12 +927,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-sildisco.git",
-                "reference": "07d7462c6ec3c2be02cb5be1adc3934c1431fb44"
+                "reference": "627dea6c53dc82950e9ed3f3332430e7e5c1399a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/07d7462c6ec3c2be02cb5be1adc3934c1431fb44",
-                "reference": "07d7462c6ec3c2be02cb5be1adc3934c1431fb44",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/627dea6c53dc82950e9ed3f3332430e7e5c1399a",
+                "reference": "627dea6c53dc82950e9ed3f3332430e7e5c1399a",
                 "shasum": ""
             },
             "require": {
@@ -958,7 +958,7 @@
                 }
             ],
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
-            "time": "2016-12-22 13:54:00"
+            "time": "2017-01-26 21:01:50"
         },
         {
             "name": "silinternational/ssp-deps",
