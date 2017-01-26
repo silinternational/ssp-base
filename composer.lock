@@ -839,12 +839,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "b65c73784d76d70c9df112772bf94853538ae399"
+                "reference": "fb3bc083eda3708b19878840fde46a3fc696eb3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/b65c73784d76d70c9df112772bf94853538ae399",
-                "reference": "b65c73784d76d70c9df112772bf94853538ae399",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/fb3bc083eda3708b19878840fde46a3fc696eb3f",
+                "reference": "fb3bc083eda3708b19878840fde46a3fc696eb3f",
                 "shasum": ""
             },
             "require": {
@@ -865,7 +865,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2017-01-25 14:29:26"
+            "time": "2017-01-26 15:24:43"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
@@ -966,12 +966,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/ssp-deps.git",
-                "reference": "fb874ab94f5af2a2376aa0fab53da3c690c4c052"
+                "reference": "32fa4e41260d4133f2a18b62129be8573fa01ac9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/ssp-deps/zipball/fb874ab94f5af2a2376aa0fab53da3c690c4c052",
-                "reference": "fb874ab94f5af2a2376aa0fab53da3c690c4c052",
+                "url": "https://api.github.com/repos/silinternational/ssp-deps/zipball/32fa4e41260d4133f2a18b62129be8573fa01ac9",
+                "reference": "32fa4e41260d4133f2a18b62129be8573fa01ac9",
                 "shasum": ""
             },
             "require": {
@@ -1001,7 +1001,7 @@
                 }
             ],
             "description": "Shared dependencies for simpleSAMLphp (aka. SSP) repos",
-            "time": "2017-01-18 21:15:37"
+            "time": "2017-01-25 19:54:11"
         },
         {
             "name": "silinternational/ssp-utilities",
@@ -1988,16 +1988,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.6",
+            "version": "5.7.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "caf8141b89691498d91aaac6c82e9cd5f685ae86"
+                "reference": "bee7755d964f8e56d6ecb79046480fd0320b686d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/caf8141b89691498d91aaac6c82e9cd5f685ae86",
-                "reference": "caf8141b89691498d91aaac6c82e9cd5f685ae86",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/bee7755d964f8e56d6ecb79046480fd0320b686d",
+                "reference": "bee7755d964f8e56d6ecb79046480fd0320b686d",
                 "shasum": ""
             },
             "require": {
@@ -2066,7 +2066,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-01-22T08:39:59+00:00"
+            "time": "2017-01-26T15:28:51+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
