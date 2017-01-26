@@ -14,11 +14,11 @@ $metadata['ssp-hub.local'] = [
 	'host' => 'ssp-hub.local',
 
 	// X.509 key and certificate. Relative to the cert directory.
-	'privatekey' => 'ssp-hub.pem',
-	'certificate' => 'ssp-hub.crt',
+	'privatekey' => 'saml.pem',
+	'certificate' => 'saml.crt',
 
     // User the SSOService.php file provided by the sildisco module
-    'SingleSignOnService' => '/module.php/sildisco/idp/SSOService.php',
+    'SingleSignOnService' => 'http://ssp-hub.local/saml2/idp/SSOService.php',
 
 	/*
 	 * Authentication source to use. Must be one that is configured in
