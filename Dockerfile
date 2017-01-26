@@ -12,6 +12,7 @@ RUN apt-get update -y && \
 RUN mkdir -p /data
 
 COPY dockerbuild/vhost.conf /etc/apache2/sites-enabled/
+COPY dockerbuild/setup-logentries.sh /data/setup-logentries.sh
 COPY dockerbuild/run.sh /data/run.sh
 COPY dockerbuild/run-tests.sh /data/run-tests.sh
 
@@ -41,7 +42,7 @@ COPY dockerbuild/ssp-overrides/config.php $SSP_PATH/config/config.php
 COPY dockerbuild/ssp-overrides/id.php $SSP_PATH/www/id.php
 COPY tests /data/tests
 
-RUN chmod a+x /data/run.sh /data/run-tests.sh
+RUN chmod a+x /data/setup-logentries.sh /data/run.sh /data/run-tests.sh
 
 EXPOSE 80
 ENTRYPOINT ["/usr/local/bin/s3-expand"]
