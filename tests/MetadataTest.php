@@ -179,6 +179,25 @@ class MetadataTest extends TestCase
 
     }
 
+    public function testMetadataSPWithNoIDPList()
+    {
+        $idpListKey = Utils::IDP_LIST_KEY;
+        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+
+        $badSps = [];
+
+        foreach ($spEntries as $spEntityId => $spEntry) {
+            if ( ! isset($spEntry[$idpListKey])) {
+                $badSps[] = $spEntityId;
+            }
+        }
+
+        $this->assertTrue(empty($badSps),
+            'At least one SP is missing an IDPList entry (required) ... ' . 
+            var_export($badSps, True));
+    }
+
     public function testMetadataCerts()
     {
         $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
