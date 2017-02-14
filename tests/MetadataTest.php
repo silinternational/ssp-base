@@ -10,6 +10,9 @@ use Sil\SspUtils\Utils;
 
 class MetadataTest extends TestCase
 {
+    // SP Metadata entry to request that certain tests be skipped
+    const SkipTestsKey = "SkipTests";    
+    
     public $metadataPath = __DIR__ . '/../vendor/simplesamlphp/simplesamlphp/metadata';
 
     public function testLintTestMetadataFiles()
@@ -218,12 +221,18 @@ class MetadataTest extends TestCase
 
     public function testMetadataSignResponse()
     {
-        $this->markTestSkipped('Disabled for testing/verification');
+       // $this->markTestSkipped('Disabled for testing/verification');
         $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
 
         $badSps = [];
+        $skippedSps = [];
 
         foreach ($spEntries as $spEntityId => $spEntry) {
+            if ( ! empty($spEntry[self::SkipTestsKey])) {
+                $skippedSps[] = $spEntityId;
+                continue;
+            }
+
             if (isset($spEntry['saml20.sign.response']) &&
                 $spEntry['saml20.sign.response'] === False) {
                 $badSps[] = $spEntityId;
@@ -233,16 +242,27 @@ class MetadataTest extends TestCase
         $this->assertTrue(empty($badSps),
             'At least one SP has saml20.sign.response set to false ... ' .
             var_export($badSps, True));
+
+        if ($skippedSps) {
+           $this->markTestSkipped('At least one SP had the ' . self::SkipTestsKey .
+               ' metadata entry set ... ' . var_export($skippedSps, True));
+        }
     }
 
     public function testMetadataSignAssertion()
     {
-        $this->markTestSkipped('Disabled for testing/verification');
+       // $this->markTestSkipped('Disabled for testing/verification');
         $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
 
         $badSps = [];
+        $skippedSps = [];
 
         foreach ($spEntries as $spEntityId => $spEntry) {
+            if ( ! empty($spEntry[self::SkipTestsKey])) {
+                $skippedSps[] = $spEntityId;
+                continue;
+            }
+
             if (isset($spEntry['saml20.sign.assertion']) &&
                 $spEntry['saml20.sign.assertion'] === False) {
                 $badSps[] = $spEntityId;
@@ -253,16 +273,26 @@ class MetadataTest extends TestCase
             'At least one SP has saml20.sign.assertion set to false ... ' .
             var_export($badSps, True));
 
+        if ($skippedSps) {
+           $this->markTestSkipped('At least one SP had the ' . self::SkipTestsKey .
+               ' metadata entry set ... ' . var_export($skippedSps, True));
+        }
     }
 
     public function testMetadataEncryption()
     {
-        $this->markTestSkipped('Wait until we require encryption.');
+        // $this->markTestSkipped('Wait until we require encryption.');
         $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
 
         $badSps = [];
-
+        $skippedSps = [];
+        
         foreach ($spEntries as $spEntityId => $spEntry) {
+            if ( ! empty($spEntry[self::SkipTestsKey])) {
+                $skippedSps[] = $spEntityId;
+                continue;
+            }
+
             if (empty($spEntry['assertion.encryption'])) {
                 $badSps[] = $spEntityId;
             }
@@ -272,6 +302,10 @@ class MetadataTest extends TestCase
             'At least one SP does not have assertion.encryption set to True ... ' .
             var_export($badSps, True));
 
+        if ($skippedSps) {
+           $this->markTestSkipped('At least one SP had the ' . self::SkipTestsKey .
+               ' metadata entry set ... ' . var_export($skippedSps, True));
+        }
     }
 
     public function getSpMetadataFiles()
