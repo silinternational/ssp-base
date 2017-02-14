@@ -30,4 +30,5 @@ $metadata['ssp-hub.local'] = [
                   'class' =>'sildisco:TrackIdps',
               ]
     ],
+    'attributes.NameFormat' => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri',
 ];
