@@ -313,16 +313,16 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.4.9",
+            "version": "v5.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "4ec919d294aca396d172e644b243b49885cd2cc7"
+                "reference": "dd256891c80fd94a58ab83d7989d6da2f50e30ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/4ec919d294aca396d172e644b243b49885cd2cc7",
-                "reference": "4ec919d294aca396d172e644b243b49885cd2cc7",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/dd256891c80fd94a58ab83d7989d6da2f50e30ea",
+                "reference": "dd256891c80fd94a58ab83d7989d6da2f50e30ea",
                 "shasum": ""
             },
             "require": {
@@ -351,20 +351,20 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2017-01-18T20:23:54+00:00"
+            "time": "2017-02-21T14:21:59+00:00"
         },
         {
             "name": "illuminate/support",
-            "version": "v5.4.9",
+            "version": "v5.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "5544aaf67b7e57559d58c01a9030c82ca01872a6"
+                "reference": "904f63003fd67ede2ec3be018b322d1c29415465"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/5544aaf67b7e57559d58c01a9030c82ca01872a6",
-                "reference": "5544aaf67b7e57559d58c01a9030c82ca01872a6",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/904f63003fd67ede2ec3be018b322d1c29415465",
+                "reference": "904f63003fd67ede2ec3be018b322d1c29415465",
                 "shasum": ""
             },
             "require": {
@@ -408,7 +408,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2017-02-02T13:32:18+00:00"
+            "time": "2017-02-15T19:29:24+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -913,16 +913,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "b5d8c81746bf584c84253860dc791f5d23ad2d9a"
+                "reference": "5e8348ea5997398003538aae1345e35cc708c3d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/b5d8c81746bf584c84253860dc791f5d23ad2d9a",
-                "reference": "b5d8c81746bf584c84253860dc791f5d23ad2d9a",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/5e8348ea5997398003538aae1345e35cc708c3d7",
+                "reference": "5e8348ea5997398003538aae1345e35cc708c3d7",
                 "shasum": ""
             },
             "require": {
@@ -943,7 +943,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2017-02-21T20:53:53+00:00"
+            "time": "2017-02-22T19:52:15+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
