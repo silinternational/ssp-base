@@ -16,7 +16,7 @@ return [
         'name' => [
           'en' => 'IDP 1',
         ],
-        'IDPCode' => 'IDP-1',
+        'IDPNamespace' => 'IDP-1',
 
         'description'          => 'Local IDP for testing SSP Hub',
 
@@ -36,7 +36,7 @@ return [
         'name' => [
           'en' => 'IDP 2',
         ],
-        'IDPCode' => 'IDP-2',
+        'IDPNamespace' => 'IDP-2',
 
         'description'          => 'Local IDP2 for testing SSP Hub',
 
