@@ -27,7 +27,9 @@ $config = [
         // The URL to the discovery service.
         // Can be NULL/unset, in which case a builtin discovery service will be used.
         'discoURL' => null,
-    ],
 
+        // Tell the Hub which format to use for the NameID
+        'NameIDPolicy' => "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+    ],
 
 ];

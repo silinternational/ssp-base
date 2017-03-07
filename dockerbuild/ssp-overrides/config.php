@@ -555,11 +555,11 @@ $config = [
         ],
         
         // Use the uid value to populate the nameid entry       
-        60 => [
-            'class' => 'saml:AttributeNameID',
-            'attribute' => 'uid',
-            'Format' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
-        ],
+        // 60 => [
+            // 'class' => 'saml:AttributeNameID',
+            // 'attribute' => 'uid',
+            // 'Format' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent',
+        // ],
 
         /*
          * Search attribute "distinguishedName" for pattern and replaces if found
