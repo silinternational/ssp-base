@@ -42,6 +42,7 @@ COPY dockerbuild/ssp-overrides/config.php $SSP_PATH/config/config.php
 COPY dockerbuild/ssp-overrides/id.php $SSP_PATH/www/id.php
 COPY tests /data/tests
 
+RUN cp $SSP_PATH/modules/sildisco/sspoverrides/www_saml2_idp/SSOService.php $SSP_PATH/www/saml2/idp/
 RUN chmod a+x /data/setup-logentries.sh /data/run.sh /data/run-tests.sh
 
 EXPOSE 80
