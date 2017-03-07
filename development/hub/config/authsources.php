@@ -13,6 +13,9 @@ $config = [
         // The URL to the discovery service.
         // Can be NULL/unset, in which case a builtin discovery service will be used.
         'discoURL'  => 'http://ssp-hub.local/module.php/sildisco/disco.php',
+
+        // Allow Proxying up to 2 times. Avoids idp forcing re-authentication unnecessarily
+        'ProxyCount' => 2,
     ],
 
     // This is a authentication source which handles admin authentication.
