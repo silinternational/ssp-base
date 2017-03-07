@@ -519,13 +519,14 @@ $config = [
            'class' => 'core:AttributeAdd',
            'eduPersonPrincipalName' => 'TEST_ADMIN',
            'urn:oid:0.9.2342.19200300.100.1.3' => 'test_admin@idp1.org',
+           'uid' => '112266',
         ],
         
         // Use the uid value to populate the nameid entry       
         60 => [
             'class' => 'saml:AttributeNameID',
             'attribute' => 'uid',
-            'Format' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+            'Format' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent',
         ],
 
         /*
