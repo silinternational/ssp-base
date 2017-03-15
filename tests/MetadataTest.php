@@ -59,7 +59,7 @@ class MetadataTest extends TestCase
     public function testIDPRemoteMetadataIDPCode()
     {
         $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
-        $idpCode = 'IDPCode';
+        $idpCode = 'IDPNamespace';
 
         foreach($idpEntries as $entityId => $entry) {
             $this->assertTrue(isset($entry[$idpCode]), 'Metadata entry does not include an ' . $idpCode .
