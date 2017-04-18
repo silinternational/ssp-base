@@ -187,20 +187,23 @@
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.8.0",
+            "version": "v4.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2"
+                "reference": "6d50e5282afdfdfc3e0ff6d192aff56c5629b3d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2",
-                "reference": "d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/6d50e5282afdfdfc3e0ff6d192aff56c5629b3d4",
+                "reference": "6d50e5282afdfdfc3e0ff6d192aff56c5629b3d4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2"
+            },
+            "require-dev": {
+                "simpletest/simpletest": "^1.1"
             },
             "type": "library",
             "autoload": {
@@ -227,7 +230,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2016-07-16T12:58:58+00:00"
+            "time": "2017-03-13T06:30:53+00:00"
         },
         {
             "name": "fillup/fake-bower-assets",
@@ -268,23 +271,23 @@
         },
         {
             "name": "google/recaptcha",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/recaptcha.git",
-                "reference": "2b7e00566afca82a38a1d3adb8e42c118006296e"
+                "reference": "5a56d15ca10a7b75158178752b2ad8f755eb4f78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/recaptcha/zipball/2b7e00566afca82a38a1d3adb8e42c118006296e",
-                "reference": "2b7e00566afca82a38a1d3adb8e42c118006296e",
+                "url": "https://api.github.com/repos/google/recaptcha/zipball/5a56d15ca10a7b75158178752b2ad8f755eb4f78",
+                "reference": "5a56d15ca10a7b75158178752b2ad8f755eb4f78",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.2"
+                "php": ">=5.5"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.5.*"
+                "phpunit/phpunit": "^4.8"
             },
             "type": "library",
             "extra": {
@@ -309,7 +312,7 @@
                 "recaptcha",
                 "spam"
             ],
-            "time": "2015-09-02T17:23:59+00:00"
+            "time": "2017-03-09T18:44:34+00:00"
         },
         {
             "name": "guzzlehttp/command",
@@ -539,16 +542,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "0d6c7ca039329247e4f0f8f8f6506810e8248855"
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/0d6c7ca039329247e4f0f8f8f6506810e8248855",
-                "reference": "0d6c7ca039329247e4f0f8f8f6506810e8248855",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
                 "shasum": ""
             },
             "require": {
@@ -600,20 +603,20 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-02-27T10:51:17+00:00"
+            "time": "2017-03-20T17:10:46+00:00"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.4.13",
+            "version": "v5.4.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "dd256891c80fd94a58ab83d7989d6da2f50e30ea"
+                "reference": "ab2825726bee46a67c8cc66789852189dbef74a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/dd256891c80fd94a58ab83d7989d6da2f50e30ea",
-                "reference": "dd256891c80fd94a58ab83d7989d6da2f50e30ea",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/ab2825726bee46a67c8cc66789852189dbef74a9",
+                "reference": "ab2825726bee46a67c8cc66789852189dbef74a9",
                 "shasum": ""
             },
             "require": {
@@ -642,20 +645,20 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2017-02-21T14:21:59+00:00"
+            "time": "2017-03-29T13:17:47+00:00"
         },
         {
             "name": "illuminate/support",
-            "version": "v5.4.13",
+            "version": "v5.4.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "904f63003fd67ede2ec3be018b322d1c29415465"
+                "reference": "c7e7c9daf5044e76b46085b8351f8235a3e979c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/904f63003fd67ede2ec3be018b322d1c29415465",
-                "reference": "904f63003fd67ede2ec3be018b322d1c29415465",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/c7e7c9daf5044e76b46085b8351f8235a3e979c6",
+                "reference": "c7e7c9daf5044e76b46085b8351f8235a3e979c6",
                 "shasum": ""
             },
             "require": {
@@ -699,20 +702,20 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2017-02-15T19:29:24+00:00"
+            "time": "2017-03-28T12:49:45+00:00"
         },
         {
             "name": "monolog/monolog",
-            "version": "1.22.0",
+            "version": "1.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "bad29cb8d18ab0315e6c477751418a82c850d558"
+                "reference": "1e044bc4b34e91743943479f1be7a1d5eb93add0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/bad29cb8d18ab0315e6c477751418a82c850d558",
-                "reference": "bad29cb8d18ab0315e6c477751418a82c850d558",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1e044bc4b34e91743943479f1be7a1d5eb93add0",
+                "reference": "1e044bc4b34e91743943479f1be7a1d5eb93add0",
                 "shasum": ""
             },
             "require": {
@@ -777,20 +780,20 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2016-11-26T00:15:39+00:00"
+            "time": "2017-03-13T07:08:03+00:00"
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.9",
+            "version": "v2.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "6968531206671f94377b01dc7888d5d1b858a01b"
+                "reference": "634bae8e911eefa89c1abfbf1b66da679ac8f54d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/6968531206671f94377b01dc7888d5d1b858a01b",
-                "reference": "6968531206671f94377b01dc7888d5d1b858a01b",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/634bae8e911eefa89c1abfbf1b66da679ac8f54d",
+                "reference": "634bae8e911eefa89c1abfbf1b66da679ac8f54d",
                 "shasum": ""
             },
             "require": {
@@ -825,7 +828,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2017-03-03T20:43:42+00:00"
+            "time": "2017-03-13T16:27:32+00:00"
         },
         {
             "name": "phpspec/php-diff",
@@ -964,30 +967,30 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "3.5.2",
+            "version": "3.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "5677cfe02397dd6b58c861870dfaa5d9007d3954"
+                "reference": "4ae32dd9ab8860a4bbd750ad269cba7f06f7934e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/5677cfe02397dd6b58c861870dfaa5d9007d3954",
-                "reference": "5677cfe02397dd6b58c861870dfaa5d9007d3954",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/4ae32dd9ab8860a4bbd750ad269cba7f06f7934e",
+                "reference": "4ae32dd9ab8860a4bbd750ad269cba7f06f7934e",
                 "shasum": ""
             },
             "require": {
                 "paragonie/random_compat": "^1.0|^2.0",
-                "php": ">=5.4"
+                "php": "^5.4 || ^7.0"
             },
             "replace": {
                 "rhumsaa/uuid": "self.version"
             },
             "require-dev": {
                 "apigen/apigen": "^4.1",
-                "codeception/aspect-mock": "1.0.0",
+                "codeception/aspect-mock": "^1.0 | ^2.0",
                 "doctrine/annotations": "~1.2.0",
-                "goaop/framework": "1.0.0-alpha.2",
+                "goaop/framework": "1.0.0-alpha.2 | ^1.0 | ^2.1",
                 "ircmaxell/random-lib": "^1.1",
                 "jakub-onderka/php-parallel-lint": "^0.9.0",
                 "mockery/mockery": "^0.9.4",
@@ -1042,7 +1045,7 @@
                 "identifier",
                 "uuid"
             ],
-            "time": "2016-11-22T19:21:44+00:00"
+            "time": "2017-03-26T20:37:53+00:00"
         },
         {
             "name": "roave/security-advisories",
@@ -1050,12 +1053,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "73603e2e613ddc14e2e11ec6da4e837bf0a2149a"
+                "reference": "1196fb8f4bf78e53204838bbdda6f10547541f12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/73603e2e613ddc14e2e11ec6da4e837bf0a2149a",
-                "reference": "73603e2e613ddc14e2e11ec6da4e837bf0a2149a",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/1196fb8f4bf78e53204838bbdda6f10547541f12",
+                "reference": "1196fb8f4bf78e53204838bbdda6f10547541f12",
                 "shasum": ""
             },
             "conflict": {
@@ -1080,8 +1083,8 @@
                 "doctrine/mongodb-odm-bundle": ">=2,<3.0.1",
                 "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1",
                 "dompdf/dompdf": ">=0.6,<0.6.2",
-                "drupal/core": ">=8,<8.2.3",
-                "drupal/drupal": ">=8,<8.2.3",
+                "drupal/core": ">=8,<8.2.7",
+                "drupal/drupal": ">=8,<8.2.7",
                 "firebase/php-jwt": "<2",
                 "friendsofsymfony/rest-bundle": ">=1.2,<1.2.2",
                 "friendsofsymfony/user-bundle": ">=1.2,<1.3.5",
@@ -1108,7 +1111,7 @@
                 "silverstripe/framework": ">=3,<3.3",
                 "silverstripe/userforms": "<3",
                 "simplesamlphp/saml2": "<1.8.1|>=1.9,<1.9.1|>=1.10,<1.10.3|>=2,<2.3.3",
-                "simplesamlphp/simplesamlphp": "<1.14.11",
+                "simplesamlphp/simplesamlphp": "<1.14.12",
                 "simplesamlphp/simplesamlphp-module-infocard": "<1.0.1",
                 "socalnick/scn-social-auth": "<1.15.2",
                 "squizlabs/php_codesniffer": ">=1,<2.8.1",
@@ -1177,7 +1180,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2017-03-02T15:23:30+00:00"
+            "time": "2017-03-31T06:31:44+00:00"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -1222,16 +1225,16 @@
         },
         {
             "name": "silinternational/idp-id-broker-php-client",
-            "version": "0.2.0",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/idp-id-broker-php-client.git",
-                "reference": "47fa0c1e7c9875b454261904c3f893b8ad32c8f0"
+                "reference": "7d843866da0cbbb0c9116207e2ee7d8ea0a7cd1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/47fa0c1e7c9875b454261904c3f893b8ad32c8f0",
-                "reference": "47fa0c1e7c9875b454261904c3f893b8ad32c8f0",
+                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/7d843866da0cbbb0c9116207e2ee7d8ea0a7cd1e",
+                "reference": "7d843866da0cbbb0c9116207e2ee7d8ea0a7cd1e",
                 "shasum": ""
             },
             "require": {
@@ -1271,7 +1274,7 @@
                 "idp",
                 "php client"
             ],
-            "time": "2017-03-02T19:57:18+00:00"
+            "time": "2017-03-14T20:12:21+00:00"
         },
         {
             "name": "silinternational/php-env",
@@ -1402,12 +1405,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-sildisco.git",
-                "reference": "86e88f376990d03acee4a9aadce54e453a5b19aa"
+                "reference": "634639f478153a0a567b4c5df01e344db2926525"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/86e88f376990d03acee4a9aadce54e453a5b19aa",
-                "reference": "86e88f376990d03acee4a9aadce54e453a5b19aa",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/634639f478153a0a567b4c5df01e344db2926525",
+                "reference": "634639f478153a0a567b4c5df01e344db2926525",
                 "shasum": ""
             },
             "require": {
@@ -1433,7 +1436,7 @@
                 }
             ],
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
-            "time": "2017-02-24 13:16:04"
+            "time": "2017-04-17 15:31:30"
         },
         {
             "name": "silinternational/ssp-deps",
@@ -1441,12 +1444,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/ssp-deps.git",
-                "reference": "c381a8870b22c5f1b5083253d5202941a43b811c"
+                "reference": "ffeee8ccdc8d891977653542c122d977d3d4a6fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/ssp-deps/zipball/c381a8870b22c5f1b5083253d5202941a43b811c",
-                "reference": "c381a8870b22c5f1b5083253d5202941a43b811c",
+                "url": "https://api.github.com/repos/silinternational/ssp-deps/zipball/ffeee8ccdc8d891977653542c122d977d3d4a6fc",
+                "reference": "ffeee8ccdc8d891977653542c122d977d3d4a6fc",
                 "shasum": ""
             },
             "require": {
@@ -1458,7 +1461,7 @@
                 "silinternational/simplesamlphp-module-sildisco": "dev-develop",
                 "silinternational/ssp-utilities": "dev-develop",
                 "simplesamlphp/composer-module-installer": "1.1.5",
-                "simplesamlphp/simplesamlphp": "1.14.11"
+                "simplesamlphp/simplesamlphp": "1.14.12"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -1476,7 +1479,7 @@
                 }
             ],
             "description": "Shared dependencies for simpleSAMLphp (aka. SSP) repos",
-            "time": "2017-03-03 15:37:35"
+            "time": "2017-04-18 17:29:06"
         },
         {
             "name": "silinternational/ssp-utilities",
@@ -1518,7 +1521,7 @@
                 }
             ],
             "description": "SimpleSAMLphp related utility classes",
-            "time": "2016-12-20 15:08:50"
+            "time": "2016-12-20T15:08:50+00:00"
         },
         {
             "name": "simplesamlphp/composer-module-installer",
@@ -1601,16 +1604,16 @@
         },
         {
             "name": "simplesamlphp/simplesamlphp",
-            "version": "v1.14.11",
+            "version": "v1.14.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp.git",
-                "reference": "b96dcc500caae73954d4f01189e0209afc6086be"
+                "reference": "353a77be570b29f42812a44245947b4fb030a5da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp/zipball/b96dcc500caae73954d4f01189e0209afc6086be",
-                "reference": "b96dcc500caae73954d4f01189e0209afc6086be",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp/zipball/353a77be570b29f42812a44245947b4fb030a5da",
+                "reference": "353a77be570b29f42812a44245947b4fb030a5da",
                 "shasum": ""
             },
             "require": {
@@ -1667,7 +1670,7 @@
                 "sp",
                 "ws-federation"
             ],
-            "time": "2016-12-12T15:13:53+00:00"
+            "time": "2017-03-30T12:11:17+00:00"
         },
         {
             "name": "whitehat101/apr1-md5",
@@ -1974,16 +1977,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe"
+                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/5a5a9fc8025a08d8919be87d6884d5a92520cefe",
-                "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/8e6e04167378abf1ddb4d3522d8755c5fd90d102",
+                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102",
                 "shasum": ""
             },
             "require": {
@@ -2012,7 +2015,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2017-01-26T22:05:40+00:00"
+            "time": "2017-04-12T18:52:22+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -2225,16 +2228,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "4.0.7",
+            "version": "4.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "09e2277d14ea467e5a984010f501343ef29ffc69"
+                "reference": "ef7b2f56815df854e66ceaee8ebe9393ae36a40d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/09e2277d14ea467e5a984010f501343ef29ffc69",
-                "reference": "09e2277d14ea467e5a984010f501343ef29ffc69",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/ef7b2f56815df854e66ceaee8ebe9393ae36a40d",
+                "reference": "ef7b2f56815df854e66ceaee8ebe9393ae36a40d",
                 "shasum": ""
             },
             "require": {
@@ -2284,7 +2287,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-03-01T09:12:17+00:00"
+            "time": "2017-04-02T07:44:40+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2474,16 +2477,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.15",
+            "version": "5.7.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "b99112aecc01f62acf3d81a3f59646700a1849e5"
+                "reference": "69c4f49ff376af2692bad9cebd883d17ebaa98a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b99112aecc01f62acf3d81a3f59646700a1849e5",
-                "reference": "b99112aecc01f62acf3d81a3f59646700a1849e5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/69c4f49ff376af2692bad9cebd883d17ebaa98a1",
+                "reference": "69c4f49ff376af2692bad9cebd883d17ebaa98a1",
                 "shasum": ""
             },
             "require": {
@@ -2552,7 +2555,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-03-02T15:22:43+00:00"
+            "time": "2017-04-03T02:22:27+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -3128,16 +3131,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.2.4",
+            "version": "v3.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "9724c684646fcb5387d579b4bfaa63ee0b0c64c8"
+                "reference": "62b4cdb99d52cb1ff253c465eb1532a80cebb621"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/9724c684646fcb5387d579b4bfaa63ee0b0c64c8",
-                "reference": "9724c684646fcb5387d579b4bfaa63ee0b0c64c8",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/62b4cdb99d52cb1ff253c465eb1532a80cebb621",
+                "reference": "62b4cdb99d52cb1ff253c465eb1532a80cebb621",
                 "shasum": ""
             },
             "require": {
@@ -3179,7 +3182,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-16T22:46:52+00:00"
+            "time": "2017-03-20T09:45:15+00:00"
         },
         {
             "name": "webmozart/assert",
