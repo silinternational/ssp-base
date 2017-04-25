@@ -54,16 +54,13 @@ services:
       ADMIN_PROTECT_INDEX_PAGE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_USE: "material:material"
-      ENABLE_HUB_AUTHPROCS: "true"
+      HUB_MODE: "true"
 
   idp1:
     build: .
     volumes:
       # Utilize custom certs
-      - ./development/idp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert     
-      
-      # Revert to standard SSOService.php instead of using sildisco'saml20-idp-hosted
-      - ./development/idp-local/www_saml2_idp_SSOService.php:/data/vendor/simplesamlphp/simplesamlphp/www/saml2/idp/SSOService.php
+      - ./development/idp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert 
 
       # Utilize custom configs
       - ./development/idp-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
@@ -87,9 +84,6 @@ services:
     volumes:
       # Utilize custom certs
       - ./development/idp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert  
-      
-      # Revert to standard SSOService.php instead of using sildisco'saml20-idp-hosted
-      - ./development/idp2-local/www_saml2_idp_SSOService.php:/data/vendor/simplesamlphp/simplesamlphp/www/saml2/idp/SSOService.php
 
       # Utilize custom configs
       - ./development/idp2-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
