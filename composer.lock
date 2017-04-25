@@ -1436,7 +1436,7 @@
                 }
             ],
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
-            "time": "2017-04-25T14:55:00+00:00"
+            "time": "2017-04-25 14:55:00"
         },
         {
             "name": "silinternational/ssp-deps",
@@ -1479,7 +1479,7 @@
                 }
             ],
             "description": "Shared dependencies for simpleSAMLphp (aka. SSP) repos",
-            "time": "2017-04-18T17:29:06+00:00"
+            "time": "2017-04-18 17:29:06"
         },
         {
             "name": "silinternational/ssp-utilities",
@@ -1521,7 +1521,7 @@
                 }
             ],
             "description": "SimpleSAMLphp related utility classes",
-            "time": "2016-12-20T15:08:50+00:00"
+            "time": "2016-12-20 15:08:50"
         },
         {
             "name": "simplesamlphp/composer-module-installer",
