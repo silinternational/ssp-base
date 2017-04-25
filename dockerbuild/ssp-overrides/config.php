@@ -34,9 +34,14 @@ $MEMCACHE_HOST2_PORT = Env::get('MEMCACHE_HOST2_PORT', 11211);
 
 $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
 $GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
-$ENABLE_HUB_AUTHPROCS = Env::get('ENABLE_HUB_AUTHPROCS', false);
+$HUB_MODE = Env::get('HUB_MODE', false);
 
 $config = [
+
+    /*
+     * Whether this instance should act as a hub/proxy/bridge using sildisco
+     */
+     'hubmode' => $HUB_MODE,
 
     /*
      * Setup the following parameters to match the directory of your installation.
@@ -824,7 +829,7 @@ $config = [
 
 ];
 
-if ($ENABLE_HUB_AUTHPROCS) {
+if ($HUB_MODE) {
     // prefix the 'member' (urn:oid:2.5.4.31) attribute elements with idp.idp_name.
     $config['authproc.idp'][48] = 'sildisco:TagGroup';
     $config['authproc.idp'][49] = 'sildisco:AddIdp2NameId';
