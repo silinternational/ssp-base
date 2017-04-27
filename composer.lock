@@ -1405,12 +1405,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-sildisco.git",
-                "reference": "530802a4591e85a93ac8593187cbebf001929c48"
+                "reference": "144b471d37f1159db7077587ada76a43deaefd1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/530802a4591e85a93ac8593187cbebf001929c48",
-                "reference": "530802a4591e85a93ac8593187cbebf001929c48",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/144b471d37f1159db7077587ada76a43deaefd1d",
+                "reference": "144b471d37f1159db7077587ada76a43deaefd1d",
                 "shasum": ""
             },
             "require": {
@@ -1436,7 +1436,7 @@
                 }
             ],
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
-            "time": "2017-04-25 14:55:00"
+            "time": "2017-04-27 14:33:51"
         },
         {
             "name": "silinternational/ssp-deps",
