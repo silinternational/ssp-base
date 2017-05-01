@@ -201,6 +201,25 @@ class MetadataTest extends TestCase
             var_export($badSps, True));
     }
 
+    public function testMetadataWithBadEnabled()
+    {
+        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+        $enabledKey = 'enabled';
+        $badEnabled = [];
+
+        foreach($idpEntries as $idpEntityId => $idpEntry) {
+            if ( ! isset($idpEntry[$enabledKey]) || 
+                 ! is_bool($idpEntry[$enabledKey])) {
+                $badEnabled[] = $idpEntityId;
+            } 
+        }
+        
+        $this->assertTrue(empty($badEnabled),
+            "The following Idp's do not have a boolean '" . $enabledKey . "' entry ... " .
+            var_export($badEnabled, True));
+    }
+
+
     public function testMetadataCerts()
     {
         $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
