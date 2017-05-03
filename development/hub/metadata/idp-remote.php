@@ -17,6 +17,7 @@ return [
           'en' => 'IDP 1',
         ],
         'IDPNamespace' => 'IDP-1',
+        'enabled' => true,
 
         'description'          => 'Local IDP for testing SSP Hub',
 
@@ -37,6 +38,8 @@ return [
           'en' => 'IDP 2',
         ],
         'IDPNamespace' => 'IDP-2',
+        'enabled' => false,
+        'betaEnabled' => true,
 
         'description'          => 'Local IDP2 for testing SSP Hub',
 
