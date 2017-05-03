@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3babe36b28387009a7e8127295af02ef",
+    "content-hash": "81287455d19ef318f60b80c3bea88601",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -1053,12 +1053,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "1196fb8f4bf78e53204838bbdda6f10547541f12"
+                "reference": "c5b0dbe69ca5bf8280b5486f5574e3de8c22f778"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/1196fb8f4bf78e53204838bbdda6f10547541f12",
-                "reference": "1196fb8f4bf78e53204838bbdda6f10547541f12",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/c5b0dbe69ca5bf8280b5486f5574e3de8c22f778",
+                "reference": "c5b0dbe69ca5bf8280b5486f5574e3de8c22f778",
                 "shasum": ""
             },
             "conflict": {
@@ -1083,8 +1083,8 @@
                 "doctrine/mongodb-odm-bundle": ">=2,<3.0.1",
                 "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1",
                 "dompdf/dompdf": ">=0.6,<0.6.2",
-                "drupal/core": ">=8,<8.2.7",
-                "drupal/drupal": ">=8,<8.2.7",
+                "drupal/core": ">=8,<8.2.8|>=8.3,<8.3.1",
+                "drupal/drupal": ">=8,<8.2.8|>=8.3,<8.3.1",
                 "firebase/php-jwt": "<2",
                 "friendsofsymfony/rest-bundle": ">=1.2,<1.2.2",
                 "friendsofsymfony/user-bundle": ">=1.2,<1.3.5",
@@ -1180,7 +1180,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2017-03-31T06:31:44+00:00"
+            "time": "2017-04-28T18:49:18+00:00"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -1311,16 +1311,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "7ffec5627c9cb0b49f0c386b90caf14e6730f5cd"
+                "reference": "032c20690e6e2dfed57a9801dedb05149e005c2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/7ffec5627c9cb0b49f0c386b90caf14e6730f5cd",
-                "reference": "7ffec5627c9cb0b49f0c386b90caf14e6730f5cd",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/032c20690e6e2dfed57a9801dedb05149e005c2c",
+                "reference": "032c20690e6e2dfed57a9801dedb05149e005c2c",
                 "shasum": ""
             },
             "require": {
@@ -1341,20 +1341,20 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2017-03-07T18:44:20+00:00"
+            "time": "2017-05-02T14:51:20+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "2.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "31b4f21ca2e5d4facc8615e1e0299aac5dceec1e"
+                "reference": "b3bdb6e2238ecc711e526cd95fe0b9a99e41921a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/31b4f21ca2e5d4facc8615e1e0299aac5dceec1e",
-                "reference": "31b4f21ca2e5d4facc8615e1e0299aac5dceec1e",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/b3bdb6e2238ecc711e526cd95fe0b9a99e41921a",
+                "reference": "b3bdb6e2238ecc711e526cd95fe0b9a99e41921a",
                 "shasum": ""
             },
             "require": {
@@ -1369,7 +1369,7 @@
                 "silinternational/idp-id-broker-php-client": "^0.2",
                 "silinternational/php-env": "^0.2.0",
                 "silinternational/simplesamlphp-module-sildisco": "dev-develop",
-                "silinternational/ssp-deps": "dev-develop",
+                "silinternational/ssp-deps": "^1.0",
                 "silinternational/ssp-utilities": "dev-develop",
                 "simplesamlphp/simplesamlphp": "^1.14.10",
                 "yiisoft/yii2": "^2.0",
@@ -1397,7 +1397,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2017-03-03T14:33:24+00:00"
+            "time": "2017-05-03T17:21:25+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -1405,12 +1405,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-sildisco.git",
-                "reference": "144b471d37f1159db7077587ada76a43deaefd1d"
+                "reference": "a8895e4ad0fc8c8d86cbca70c3227e1181ada14a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/144b471d37f1159db7077587ada76a43deaefd1d",
-                "reference": "144b471d37f1159db7077587ada76a43deaefd1d",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/a8895e4ad0fc8c8d86cbca70c3227e1181ada14a",
+                "reference": "a8895e4ad0fc8c8d86cbca70c3227e1181ada14a",
                 "shasum": ""
             },
             "require": {
@@ -1436,27 +1436,27 @@
                 }
             ],
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
-            "time": "2017-04-27 14:33:51"
+            "time": "2017-05-02 20:18:18"
         },
         {
             "name": "silinternational/ssp-deps",
-            "version": "dev-develop",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/ssp-deps.git",
-                "reference": "ffeee8ccdc8d891977653542c122d977d3d4a6fc"
+                "reference": "929ff2fac2d09cbd8e210d9340387a0997149e41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/ssp-deps/zipball/ffeee8ccdc8d891977653542c122d977d3d4a6fc",
-                "reference": "ffeee8ccdc8d891977653542c122d977d3d4a6fc",
+                "url": "https://api.github.com/repos/silinternational/ssp-deps/zipball/929ff2fac2d09cbd8e210d9340387a0997149e41",
+                "reference": "929ff2fac2d09cbd8e210d9340387a0997149e41",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4",
                 "roave/security-advisories": "dev-master",
                 "silinternational/php-env": "0.2.0",
-                "silinternational/simplesamlphp-module-material": "^1.0",
+                "silinternational/simplesamlphp-module-material": "^2.0",
                 "silinternational/simplesamlphp-module-silauth": "^2.0",
                 "silinternational/simplesamlphp-module-sildisco": "dev-develop",
                 "silinternational/ssp-utilities": "dev-develop",
@@ -1479,7 +1479,7 @@
                 }
             ],
             "description": "Shared dependencies for simpleSAMLphp (aka. SSP) repos",
-            "time": "2017-04-18 17:29:06"
+            "time": "2017-05-03T17:05:11+00:00"
         },
         {
             "name": "silinternational/ssp-utilities",
@@ -3131,16 +3131,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.2.7",
+            "version": "v3.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "62b4cdb99d52cb1ff253c465eb1532a80cebb621"
+                "reference": "acec26fcf7f3031e094e910b94b002fa53d4e4d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/62b4cdb99d52cb1ff253c465eb1532a80cebb621",
-                "reference": "62b4cdb99d52cb1ff253c465eb1532a80cebb621",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/acec26fcf7f3031e094e910b94b002fa53d4e4d6",
+                "reference": "acec26fcf7f3031e094e910b94b002fa53d4e4d6",
                 "shasum": ""
             },
             "require": {
@@ -3182,7 +3182,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-03-20T09:45:15+00:00"
+            "time": "2017-05-01T14:55:58+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -3240,8 +3240,7 @@
     "stability-flags": {
         "roave/security-advisories": 20,
         "silinternational/simplesamlphp-module-sildisco": 20,
-        "silinternational/ssp-utilities": 20,
-        "silinternational/ssp-deps": 20
+        "silinternational/ssp-utilities": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
