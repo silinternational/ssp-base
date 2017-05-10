@@ -3,3 +3,4 @@ vendor/
 local.env
 .vagrant
 composer.phar
+/nbproject/
