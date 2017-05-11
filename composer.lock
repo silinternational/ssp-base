@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "041c22f9dae2cb6cc283d1412a727f7e",
+    "content-hash": "cf2df0d80b420f79577c7be7c18c2e21",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -1225,16 +1225,16 @@
         },
         {
             "name": "silinternational/idp-id-broker-php-client",
-            "version": "0.4.2",
+            "version": "0.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/idp-id-broker-php-client.git",
-                "reference": "29cacf189bd12d42c6077e05aa68ed35b7b5d35d"
+                "reference": "077e2cab8c1aa1e413263334c1a2f791a47fbd1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/29cacf189bd12d42c6077e05aa68ed35b7b5d35d",
-                "reference": "29cacf189bd12d42c6077e05aa68ed35b7b5d35d",
+                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/077e2cab8c1aa1e413263334c1a2f791a47fbd1e",
+                "reference": "077e2cab8c1aa1e413263334c1a2f791a47fbd1e",
                 "shasum": ""
             },
             "require": {
@@ -1275,7 +1275,7 @@
                 "idp",
                 "php client"
             ],
-            "time": "2017-04-27T20:51:18+00:00"
+            "time": "2017-05-11T19:53:18+00:00"
         },
         {
             "name": "silinternational/php-env",
@@ -1346,16 +1346,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "dev-feature/return-saml-attributes",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "8ea5592dde41acf7ec48680b6963d541ffa37cd4"
+                "reference": "896587a6c2312f3a57ae94ade264e84e40423ee3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/8ea5592dde41acf7ec48680b6963d541ffa37cd4",
-                "reference": "8ea5592dde41acf7ec48680b6963d541ffa37cd4",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/896587a6c2312f3a57ae94ade264e84e40423ee3",
+                "reference": "896587a6c2312f3a57ae94ade264e84e40423ee3",
                 "shasum": ""
             },
             "require": {
@@ -1395,7 +1395,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2017-05-10 18:44:49"
+            "time": "2017-05-11T20:21:25+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -3236,7 +3236,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "roave/security-advisories": 20,
-        "silinternational/simplesamlphp-module-silauth": 20,
         "silinternational/simplesamlphp-module-sildisco": 20,
         "silinternational/ssp-utilities": 20,
         "silinternational/ssp-deps": 20
