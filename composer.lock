@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf2df0d80b420f79577c7be7c18c2e21",
+    "content-hash": "31d0a25117679ceb04fa69344bc9c8c1",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -1438,16 +1438,16 @@
         },
         {
             "name": "silinternational/ssp-deps",
-            "version": "dev-feature/silauth-saml-attrs",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/ssp-deps.git",
-                "reference": "582344267c271dff49ecd717e35531378d47646d"
+                "reference": "229bab726ffb7fe634521e13054d8bab053c3372"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/ssp-deps/zipball/582344267c271dff49ecd717e35531378d47646d",
-                "reference": "582344267c271dff49ecd717e35531378d47646d",
+                "url": "https://api.github.com/repos/silinternational/ssp-deps/zipball/229bab726ffb7fe634521e13054d8bab053c3372",
+                "reference": "229bab726ffb7fe634521e13054d8bab053c3372",
                 "shasum": ""
             },
             "require": {
@@ -1476,7 +1476,7 @@
                 }
             ],
             "description": "Shared dependencies for simpleSAMLphp (aka. SSP) repos",
-            "time": "2017-05-11 17:13:42"
+            "time": "2017-05-11 20:31:47"
         },
         {
             "name": "silinternational/ssp-utilities",
