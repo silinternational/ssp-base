@@ -103,6 +103,12 @@ class MetadataTest extends TestCase
 
     public function testMetadataNoSpsWithoutAnIdp()
     {
+        $hubMode = Env::get('HUB_MODE', true);
+        if ( ! $hubMode) {
+            $this->markTestSkipped('Skipping test because HUB_MODE = false');
+            return;
+        }
+        
         $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
 
         $badSps = [];
