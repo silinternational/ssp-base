@@ -4,6 +4,7 @@ namespace Sil\IdPHubTests;
 include __DIR__ . '/../vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
+use Sil\PhpEnv\Env;
 use Sil\SspUtils\Metadata;
 use Sil\SspUtils\DiscoUtils;
 use Sil\SspUtils\Utils;
@@ -184,6 +185,11 @@ class MetadataTest extends TestCase
 
     public function testMetadataSPWithNoIDPList()
     {
+        $hubMode = Env::get('HUB_MODE', true);
+        if ( ! $hubMode) {
+            $this->markTestSkipped('Skipping test because HUB_MODE = false');
+            return;
+        }
         $idpListKey = Utils::IDP_LIST_KEY;
         $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
         $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
