@@ -431,16 +431,16 @@
         },
         {
             "name": "guzzlehttp/guzzle-services",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle-services.git",
-                "reference": "05cb2c64a78c5a093b6203e1025b4d944422c2c9"
+                "reference": "87ef73aafed90458242ad53b78eec4bd51608ebf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle-services/zipball/05cb2c64a78c5a093b6203e1025b4d944422c2c9",
-                "reference": "05cb2c64a78c5a093b6203e1025b4d944422c2c9",
+                "url": "https://api.github.com/repos/guzzle/guzzle-services/zipball/87ef73aafed90458242ad53b78eec4bd51608ebf",
+                "reference": "87ef73aafed90458242ad53b78eec4bd51608ebf",
                 "shasum": ""
             },
             "require": {
@@ -487,7 +487,7 @@
                 }
             ],
             "description": "Provides an implementation of the Guzzle Command library that uses Guzzle service descriptions to describe web services, serialize requests, and parse responses into easy to use model structures.",
-            "time": "2017-01-31T19:10:14+00:00"
+            "time": "2017-05-15T09:08:44+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1053,17 +1053,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "c5b0dbe69ca5bf8280b5486f5574e3de8c22f778"
+                "reference": "ccffea64be8575eaa7ad09cd16dfeedfa4711607"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/c5b0dbe69ca5bf8280b5486f5574e3de8c22f778",
-                "reference": "c5b0dbe69ca5bf8280b5486f5574e3de8c22f778",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/ccffea64be8575eaa7ad09cd16dfeedfa4711607",
+                "reference": "ccffea64be8575eaa7ad09cd16dfeedfa4711607",
                 "shasum": ""
             },
             "conflict": {
                 "adodb/adodb-php": "<5.20.6",
-                "amphp/artax": ">=2,<2.0.4|>0.7.1,<1.0.4",
+                "amphp/artax": ">=2,<2.0.6|<1.0.6",
                 "aws/aws-sdk-php": ">=3,<3.2.1",
                 "bugsnag/bugsnag-laravel": ">=2,<2.0.2",
                 "cakephp/cakephp": ">=3,<3.0.15|>=2,<2.4.99|>=2.5,<2.5.99|>=2.6,<2.6.12|>=1.3,<1.3.18|>=2.7,<2.7.6|>=3.1,<3.1.4",
@@ -1180,7 +1180,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2017-04-28T18:49:18+00:00"
+            "time": "2017-05-13T14:02:28+00:00"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -1225,16 +1225,16 @@
         },
         {
             "name": "silinternational/idp-id-broker-php-client",
-            "version": "0.4.3",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/idp-id-broker-php-client.git",
-                "reference": "077e2cab8c1aa1e413263334c1a2f791a47fbd1e"
+                "reference": "b73f20df124e7c9bd1dbdd99cde757e65a9239f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/077e2cab8c1aa1e413263334c1a2f791a47fbd1e",
-                "reference": "077e2cab8c1aa1e413263334c1a2f791a47fbd1e",
+                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/b73f20df124e7c9bd1dbdd99cde757e65a9239f3",
+                "reference": "b73f20df124e7c9bd1dbdd99cde757e65a9239f3",
                 "shasum": ""
             },
             "require": {
@@ -1275,7 +1275,7 @@
                 "idp",
                 "php client"
             ],
-            "time": "2017-05-11T19:53:18+00:00"
+            "time": "2017-05-15T16:07:28+00:00"
         },
         {
             "name": "silinternational/php-env",
@@ -1346,16 +1346,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "896587a6c2312f3a57ae94ade264e84e40423ee3"
+                "reference": "24b0a0931904930b127eebe5bddd6f75d294fbc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/896587a6c2312f3a57ae94ade264e84e40423ee3",
-                "reference": "896587a6c2312f3a57ae94ade264e84e40423ee3",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/24b0a0931904930b127eebe5bddd6f75d294fbc9",
+                "reference": "24b0a0931904930b127eebe5bddd6f75d294fbc9",
                 "shasum": ""
             },
             "require": {
@@ -1367,7 +1367,7 @@
                 "psr/log": "^1.0",
                 "ramsey/uuid": "^3.5",
                 "roave/security-advisories": "dev-master",
-                "silinternational/idp-id-broker-php-client": "^0.4.2",
+                "silinternational/idp-id-broker-php-client": "^1.0 || ^0.4.2",
                 "silinternational/php-env": "^1.0",
                 "simplesamlphp/simplesamlphp": "^1.14.12",
                 "yiisoft/yii2": "^2.0",
@@ -1395,7 +1395,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2017-05-11T20:21:25+00:00"
+            "time": "2017-05-15T19:25:58+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
