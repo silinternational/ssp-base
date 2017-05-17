@@ -14,6 +14,7 @@ RUN mkdir -p /data
 COPY dockerbuild/vhost.conf /etc/apache2/sites-enabled/
 COPY dockerbuild/setup-logentries.sh /data/setup-logentries.sh
 COPY dockerbuild/run.sh /data/run.sh
+COPY dockerbuild/run-idp.sh /data/run-idp.sh
 COPY dockerbuild/run-tests.sh /data/run-tests.sh
 
 # Copy in syslog config
