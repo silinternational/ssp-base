@@ -3,7 +3,7 @@
 $config = [
 
     'hub-discovery' => [
-        'saml:SP',
+        'sildisco:SP',
 
         // The entity ID of this SP.
         // Can be NULL/unset, in which case an entity ID is generated based on the metadata URL.
@@ -25,3 +25,4 @@ $config = [
     ],
 
 ];
+
