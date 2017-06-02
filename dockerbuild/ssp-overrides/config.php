@@ -545,12 +545,14 @@ $config = [
         50 => [
             'class' => 'core:AttributeLimit',
             'default' => TRUE,
+            'cn',
             'eduPersonPrincipalName',
             'eduPersonTargetID',
             'sn',
             'givenName',
             'mail',
             'employeeNumber',
+            'urn:oid:2.5.4.3', // cn
             'urn:oid:1.3.6.1.4.1.5923.1.1.1.6', // eduPersonPrincipalName
             'urn:oid:1.3.6.1.4.1.5923.1.1.1.10', // eduPersonTargetID
             'urn:oid:2.5.4.4', // sn
