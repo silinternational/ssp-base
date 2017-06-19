@@ -12,7 +12,9 @@ use Sil\SspUtils\Utils;
 class MetadataTest extends TestCase
 {
     // SP Metadata entry to request that certain tests be skipped
-    const SkipTestsKey = "SkipTests";    
+    const SkipTestsKey = "SkipTests";
+
+    const IdpCode = 'IDPNamespace';
     
     public $metadataPath = __DIR__ . '/../vendor/simplesamlphp/simplesamlphp/metadata';
 
@@ -56,20 +58,33 @@ class MetadataTest extends TestCase
         }
     }
 
-
     public function testIDPRemoteMetadataIDPCode()
     {
         $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
-        $idpCode = 'IDPNamespace';
 
         foreach($idpEntries as $entityId => $entry) {
-            $this->assertTrue(isset($entry[$idpCode]), 'Metadata entry does not include an ' . $idpCode .
-                                                  ' element as expected. IDP: ' . $entityId);
-            $this->assertTrue(is_string($entry[$idpCode]), 'Metadata entry has an IDPCode element that is not ' .
-                                                     'a string. IDP: ' . $entityId);
-            $this->assertRegExp("/^[A-Za-z0-9_-]+$/", $entry[$idpCode], 'Metadata entry has an ' .
-                                $idpCode .' element that has something other than letters, ' .
-                                'numbers, hyphens and underscores. IDP: ' . $entityId);
+            $this->assertTrue(isset($entry[self::IdpCode]), 'Metadata entry does not ' .
+                'include an ' . self::IdpCode . ' element as expected. IDP: ' . $entityId);
+
+            $nextCode = $entry[self::IdpCode];
+            $this->assertTrue(is_string($nextCode), 'Metadata entry has an ' . self::IdpCode .
+                self::IdpCode . 'element that is not a string. IDP: ' . $entityId);
+            $this->assertRegExp("/^[A-Za-z0-9_-]+$/", $nextCode, 'Metadata entry has an ' .
+                self::IdpCode .' element that has something other than letters, ' .
+                'numbers, hyphens and underscores. IDP: ' . $entityId);
+        }
+    }
+
+    public function testIDPRemoteMetadataNoDuplicateIDPCode()
+    {
+        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+        $codes = [];
+
+        foreach($idpEntries as $entityId => $entry) {
+            $nextCode = $entry[self::IdpCode];
+            $this->assertFalse(in_array($nextCode, $codes),
+                "Metadata has a duplicate " . self::IdpCode . " entry: " . $nextCode);
+            $codes[] = $nextCode;
         }
     }
 
