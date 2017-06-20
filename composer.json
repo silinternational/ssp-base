@@ -13,13 +13,12 @@
   "require": {
     "php": ">=5.4",
     "roave/security-advisories": "dev-master",
-    "simplesamlphp/simplesamlphp": "1.14.12",
+    "simplesamlphp/simplesamlphp": "1.14.14",
     "simplesamlphp/composer-module-installer": "1.1.5",
     "silinternational/simplesamlphp-module-silauth": "^2.3",
     "silinternational/ssp-utilities": "dev-develop",
     "silinternational/simplesamlphp-module-material": "^2.0",
     "silinternational/simplesamlphp-module-sildisco": "dev-develop",
-    "silinternational/ssp-utilities": "dev-develop",
     "silinternational/php-env": "^2.0"
   },
   "require-dev": {
