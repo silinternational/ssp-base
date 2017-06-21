@@ -12,10 +12,10 @@ use Sil\PhpEnv\EnvVarNotFoundException;
 
 try {
     // Required to be defined in environment variables
-    $ADMIN_EMAIL = Env::get('ADMIN_EMAIL');
-    $ADMIN_PASS = Env::get('ADMIN_PASS');
-    $SECRET_SALT = Env::get('SECRET_SALT');
-    $IDP_NAME = Env::get('IDP_NAME');
+    $ADMIN_EMAIL = Env::requireEnv('ADMIN_EMAIL');
+    $ADMIN_PASS = Env::requireEnv('ADMIN_PASS');
+    $SECRET_SALT = Env::requireEnv('SECRET_SALT');
+    $IDP_NAME = Env::requireEnv('IDP_NAME');
 } catch (EnvVarNotFoundException $e) {
 
     // Log to syslog (Logentries).
