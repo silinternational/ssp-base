@@ -13,7 +13,7 @@
   "require": {
     "php": ">=5.4",
     "roave/security-advisories": "dev-master",
-    "silinternational/simplesamlphp-module-silauth": "^2.2",
+    "silinternational/simplesamlphp-module-silauth": "^2.3",
     "silinternational/simplesamlphp-module-sildisco": "dev-develop",
     "silinternational/ssp-utilities": "dev-develop",
     "silinternational/ssp-deps": "dev-develop"
