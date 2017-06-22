@@ -4,15 +4,37 @@
  *
  */
 use Sil\PhpEnv\Env;
+use Sil\PhpEnv\EnvVarNotFoundException;
 
 /*
  * Get config settings from ENV vars or set defaults
  */
 
-// Required to be defined in environment
-$ADMIN_EMAIL = Env::get('ADMIN_EMAIL');
-$ADMIN_PASS = Env::get('ADMIN_PASS');
-$SECRET_SALT = Env::get('SECRET_SALT');
+try {
+    // Required to be defined in environment variables
+    $ADMIN_EMAIL = Env::requireEnv('ADMIN_EMAIL');
+    $ADMIN_PASS = Env::requireEnv('ADMIN_PASS');
+    $SECRET_SALT = Env::requireEnv('SECRET_SALT');
+    $IDP_NAME = Env::requireEnv('IDP_NAME');
+} catch (EnvVarNotFoundException $e) {
+
+    // Log to syslog (Logentries).
+    openlog('id-broker', LOG_NDELAY | LOG_PERROR, LOG_USER);
+    syslog(LOG_CRIT, $e->getMessage());
+    closelog();
+
+    // Return error response code/message to HTTP request.
+    header('Content-Type: application/json');
+    http_response_code(500);
+    $responseContent = json_encode([
+        'name' => 'Internal Server Error',
+        'message' => $e->getMessage(),
+        'status' => 500,
+    ], JSON_PRETTY_PRINT);
+    exit($responseContent);
+}
+
+
 
 // Defaults provided if not defined in environment
 $BASE_URL_PATH = Env::get('BASE_URL_PATH', '/');
@@ -42,6 +64,11 @@ $config = [
      * Whether this instance should act as a hub/proxy/bridge using sildisco
      */
      'hubmode' => $HUB_MODE,
+
+     /*
+      * Name of this IdP to display to the user
+      */
+     'idp_name' => $IDP_NAME,
 
     /*
      * Setup the following parameters to match the directory of your installation.
