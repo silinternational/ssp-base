@@ -57,6 +57,7 @@ $MEMCACHE_HOST2_PORT = Env::get('MEMCACHE_HOST2_PORT', 11211);
 $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
 $GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
 $HUB_MODE = Env::get('HUB_MODE', false);
+$ANALYTICS_ID = Env::get('ANALYTICS_ID', null);
 
 $config = [
 
@@ -69,6 +70,11 @@ $config = [
       * Name of this IdP to display to the user
       */
      'idp_name' => $IDP_NAME,
+
+     /*
+      * The tracking Id for Google Analytics or some other similar service
+      */
+     'analytics.trackingId' => $ANALYTICS_ID,
 
     /*
      * Setup the following parameters to match the directory of your installation.

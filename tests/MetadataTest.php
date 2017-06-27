@@ -75,6 +75,63 @@ class MetadataTest extends TestCase
         }
     }
 
+    public function testIDPRemoteMetadataBadSPList()
+    {
+        $hubMode = Env::get('HUB_MODE', true);
+        if ( ! $hubMode) {
+            $this->markTestSkipped('Skipping test because HUB_MODE = false');
+            return;
+        }
+
+        $badIdps = [];
+
+        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+        $spListKey = Utils::SP_LIST_KEY;
+
+        foreach($idpEntries as $entityId => $entry) {
+            if (isset($entry[$spListKey]) && ! is_array($entry[$spListKey])) {
+                $badIdps[] = $entityId;
+            }
+        }
+
+        $this->assertTrue(empty($badIdps),
+            "At least one IdP has an " .
+            $spListKey . " entry that is not an array ... " . PHP_EOL .
+            var_export($badIdps, True));
+    }
+
+    public function testIDPRemoteMetadataBadSPListEntry()
+    {
+        $hubMode = Env::get('HUB_MODE', true);
+        if ( ! $hubMode) {
+            $this->markTestSkipped('Skipping test because HUB_MODE = false');
+            return;
+        }
+
+        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+
+        $badSps = [];
+
+        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+        $spListKey = Utils::SP_LIST_KEY;
+
+        foreach($idpEntries as $entityId => $entry) {
+            if (isset($entry[$spListKey]) && is_array($entry[$spListKey])) {
+                foreach($entry[$spListKey] as $nextSp) {
+                    if ( ! isset($spEntries[$nextSp])) {
+                        $badSps[] = $nextSp;
+                    }
+                }
+            }
+        }
+
+        $this->assertTrue(empty($badSps),
+            "At least one non-existent SP is listed in an IdP's " .
+            $spListKey . " entry ... " . PHP_EOL .
+            var_export($badSps, True));
+    }
+
+
     public function testIDPRemoteMetadataNoDuplicateIDPCode()
     {
         $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
