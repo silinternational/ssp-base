@@ -1442,16 +1442,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-sildisco.git",
-                "reference": "2fddb5273760d358b009c7e7556f3e4423bb48a5"
+                "reference": "f4c14a16132fa7f37734b4d8bc28171153cc96ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/2fddb5273760d358b009c7e7556f3e4423bb48a5",
-                "reference": "2fddb5273760d358b009c7e7556f3e4423bb48a5",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/f4c14a16132fa7f37734b4d8bc28171153cc96ca",
+                "reference": "f4c14a16132fa7f37734b4d8bc28171153cc96ca",
                 "shasum": ""
             },
             "require": {
@@ -1477,7 +1477,7 @@
                 }
             ],
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
-            "time": "2017-06-27T17:59:00+00:00"
+            "time": "2017-07-05T13:18:52+00:00"
         },
         {
             "name": "silinternational/ssp-utilities",
@@ -3130,16 +3130,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.3.2",
+            "version": "v3.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "9752a30000a8ca9f4b34b5227d15d0101b96b063"
+                "reference": "1f93a8d19b8241617f5074a123e282575b821df8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/9752a30000a8ca9f4b34b5227d15d0101b96b063",
-                "reference": "9752a30000a8ca9f4b34b5227d15d0101b96b063",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/1f93a8d19b8241617f5074a123e282575b821df8",
+                "reference": "1f93a8d19b8241617f5074a123e282575b821df8",
                 "shasum": ""
             },
             "require": {
@@ -3181,7 +3181,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-02T22:05:06+00:00"
+            "time": "2017-06-15T12:58:50+00:00"
         },
         {
             "name": "webmozart/assert",
