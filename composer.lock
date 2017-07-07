@@ -1388,16 +1388,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "2.3.1",
+            "version": "2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "0bb1e3504a29f498c5bd028c546016333f6b9142"
+                "reference": "2415a35e63e56f8e06fddb7b913114395d361e58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/0bb1e3504a29f498c5bd028c546016333f6b9142",
-                "reference": "0bb1e3504a29f498c5bd028c546016333f6b9142",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/2415a35e63e56f8e06fddb7b913114395d361e58",
+                "reference": "2415a35e63e56f8e06fddb7b913114395d361e58",
                 "shasum": ""
             },
             "require": {
@@ -1438,7 +1438,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2017-06-20T19:50:57+00:00"
+            "time": "2017-07-06T19:45:45+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -1481,16 +1481,16 @@
         },
         {
             "name": "silinternational/ssp-utilities",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/ssp-utilities.git",
-                "reference": "d95ca4fee9d7e78f91632ca12a66ec6ffc831775"
+                "reference": "4569a1b715ef660734b07c7ebd5c6fe8dc228be6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/ssp-utilities/zipball/d95ca4fee9d7e78f91632ca12a66ec6ffc831775",
-                "reference": "d95ca4fee9d7e78f91632ca12a66ec6ffc831775",
+                "url": "https://api.github.com/repos/silinternational/ssp-utilities/zipball/4569a1b715ef660734b07c7ebd5c6fe8dc228be6",
+                "reference": "4569a1b715ef660734b07c7ebd5c6fe8dc228be6",
                 "shasum": ""
             },
             "require": {
@@ -1519,7 +1519,7 @@
                 }
             ],
             "description": "SimpleSAMLphp related utility classes",
-            "time": "2017-06-23T18:16:59+00:00"
+            "time": "2017-07-06T20:55:35+00:00"
         },
         {
             "name": "simplesamlphp/composer-module-installer",
