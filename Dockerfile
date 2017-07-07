@@ -16,6 +16,7 @@ COPY dockerbuild/setup-logentries.sh /data/setup-logentries.sh
 COPY dockerbuild/run.sh /data/run.sh
 COPY dockerbuild/run-idp.sh /data/run-idp.sh
 COPY dockerbuild/run-tests.sh /data/run-tests.sh
+COPY dockerbuild/run-spidplinks.php /data/run-spidplinks.php
 
 # Copy in syslog config
 RUN rm -f /etc/rsyslog.d/*
