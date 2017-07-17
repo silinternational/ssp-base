@@ -42,6 +42,7 @@ COPY dockerbuild/ssp-overrides/saml20-idp-remote.php $SSP_PATH/metadata/saml20-i
 COPY dockerbuild/ssp-overrides/saml20-sp-remote.php $SSP_PATH/metadata/saml20-sp-remote.php
 COPY dockerbuild/ssp-overrides/config.php $SSP_PATH/config/config.php
 COPY dockerbuild/ssp-overrides/id.php $SSP_PATH/www/id.php
+COPY dockerbuild/ssp-overrides/announcement.php $SSP_PATH/announcement/announcement.php
 COPY tests /data/tests
 
 RUN cp $SSP_PATH/modules/sildisco/sspoverrides/www_saml2_idp/SSOService.php $SSP_PATH/www/saml2/idp/

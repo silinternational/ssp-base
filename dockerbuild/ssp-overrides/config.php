@@ -5,6 +5,7 @@
  */
 use Sil\PhpEnv\Env;
 use Sil\PhpEnv\EnvVarNotFoundException;
+use Sil\SspUtils\AnnouncementUtils;
 
 /*
  * Get config settings from ENV vars or set defaults
@@ -75,6 +76,13 @@ $config = [
       * The tracking Id for Google Analytics or some other similar service
       */
      'analytics.trackingId' => $ANALYTICS_ID,
+
+    /*
+     * Get a string of html to show as an announcement on the discovery page
+     * and/or login page.  By default, this will be fetched from
+     *   .../vendor/simplesamlphp/simplesamlphp/announcement/announcement.php
+     */
+    'announcement' => AnnouncementUtils::getAnnouncement(),
 
     /*
      * Setup the following parameters to match the directory of your installation.
