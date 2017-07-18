@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f308842af82893489f5fef03468c184d",
+    "content-hash": "b5c0f811310cef1d4f910c37ea68b3d2",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -1482,16 +1482,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "2.3.3",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "55de190407302b4d16075a8bae04f19a62bfc7fb"
+                "reference": "d175ca02524489db7d8304496906c0fd3f0a0b90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/55de190407302b4d16075a8bae04f19a62bfc7fb",
-                "reference": "55de190407302b4d16075a8bae04f19a62bfc7fb",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/d175ca02524489db7d8304496906c0fd3f0a0b90",
+                "reference": "d175ca02524489db7d8304496906c0fd3f0a0b90",
                 "shasum": ""
             },
             "require": {
@@ -1506,6 +1506,7 @@
                 "roave/security-advisories": "dev-master",
                 "silinternational/idp-id-broker-php-client": "^1.0 || ^0.4.2",
                 "silinternational/php-env": "^2.0",
+                "silinternational/psr3-adapters": "^1.1",
                 "simplesamlphp/simplesamlphp": "^1.14.12",
                 "yiisoft/yii2": "^2.0",
                 "yiisoft/yii2-gii": "^2.0"
@@ -1532,7 +1533,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2017-07-17T16:00:23+00:00"
+            "time": "2017-07-18T19:57:17+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
