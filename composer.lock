@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b5c0f811310cef1d4f910c37ea68b3d2",
+    "content-hash": "8ec085620d67f1c97927f7decb44d3cd",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -1448,16 +1448,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "2.3.1",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "d6ca58a67d6b67f3ddcbbd49a1ec9cf67d73423f"
+                "reference": "0e6746b1d4225ba60e86239827b062ef1da47450"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/d6ca58a67d6b67f3ddcbbd49a1ec9cf67d73423f",
-                "reference": "d6ca58a67d6b67f3ddcbbd49a1ec9cf67d73423f",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/0e6746b1d4225ba60e86239827b062ef1da47450",
+                "reference": "0e6746b1d4225ba60e86239827b062ef1da47450",
                 "shasum": ""
             },
             "require": {
@@ -1478,7 +1478,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2017-07-18T18:10:41+00:00"
+            "time": "2017-07-19T19:49:07+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
