@@ -50,6 +50,7 @@ services:
       ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: "1234qwer"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
+      IDP_NAME: "Hub"
       SECURE_COOKIE: "false"
       ADMIN_PROTECT_INDEX_PAGE: "false"
       SHOW_SAML_ERRORS: "true"
@@ -76,6 +77,7 @@ services:
       ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: "a"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
+      IDP_NAME: "IDP 1"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
 
@@ -99,6 +101,7 @@ services:
       ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: "b"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
+      IDP_NAME: "IDP 2"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
 

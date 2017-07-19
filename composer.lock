@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "437d50398fe630cea0f97bcab93a375e",
+    "content-hash": "8ec085620d67f1c97927f7decb44d3cd",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -60,16 +60,16 @@
         },
         {
             "name": "cebe/markdown",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cebe/markdown.git",
-                "reference": "c30eb5e01fe021cc5bba2f9ee0eeef96d4931166"
+                "reference": "25b28bae8a6f185b5030673af77b32e1163d5c6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cebe/markdown/zipball/c30eb5e01fe021cc5bba2f9ee0eeef96d4931166",
-                "reference": "c30eb5e01fe021cc5bba2f9ee0eeef96d4931166",
+                "url": "https://api.github.com/repos/cebe/markdown/zipball/25b28bae8a6f185b5030673af77b32e1163d5c6e",
+                "reference": "25b28bae8a6f185b5030673af77b32e1163d5c6e",
                 "shasum": ""
             },
             "require": {
@@ -116,7 +116,7 @@
                 "markdown",
                 "markdown-extra"
             ],
-            "time": "2016-09-14T20:40:20+00:00"
+            "time": "2017-07-16T21:13:23+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -369,16 +369,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.2.3",
+            "version": "6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "8d6c6cc55186db87b7dc5009827429ba4e9dc006"
+                "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/8d6c6cc55186db87b7dc5009827429ba4e9dc006",
-                "reference": "8d6c6cc55186db87b7dc5009827429ba4e9dc006",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/f4db5a78a5ea468d4831de7f0bf9d9415e348699",
+                "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699",
                 "shasum": ""
             },
             "require": {
@@ -388,8 +388,11 @@
             },
             "require-dev": {
                 "ext-curl": "*",
-                "phpunit/phpunit": "^4.0",
+                "phpunit/phpunit": "^4.0 || ^5.0",
                 "psr/log": "^1.0"
+            },
+            "suggest": {
+                "psr/log": "Required for using the Log middleware"
             },
             "type": "library",
             "extra": {
@@ -427,7 +430,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2017-02-28T22:50:30+00:00"
+            "time": "2017-06-22T18:50:49+00:00"
         },
         {
             "name": "guzzlehttp/guzzle-services",
@@ -1090,12 +1093,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "7cd88c8d4e4e6b483633bb13c35bcec95fd6cd4c"
+                "reference": "fa53c38b02d1ec883f4ea2b2c05492da0c7611cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/7cd88c8d4e4e6b483633bb13c35bcec95fd6cd4c",
-                "reference": "7cd88c8d4e4e6b483633bb13c35bcec95fd6cd4c",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/fa53c38b02d1ec883f4ea2b2c05492da0c7611cf",
+                "reference": "fa53c38b02d1ec883f4ea2b2c05492da0c7611cf",
                 "shasum": ""
             },
             "conflict": {
@@ -1109,7 +1112,8 @@
                 "codeigniter/framework": "<=3.0.6",
                 "composer/composer": "<=1.0.0-alpha11",
                 "contao-components/mediaelement": ">=2.14.2,<2.21.1",
-                "contao/core": ">=2.11,<3.5.15",
+                "contao/core": ">=2,<3.5.28",
+                "contao/core-bundle": ">=4,<4.4.1",
                 "doctrine/annotations": ">=1,<1.2.7",
                 "doctrine/cache": ">=1,<1.3.2|>=1.4,<1.4.2",
                 "doctrine/common": ">=2,<2.4.3|>=2.5,<2.5.1",
@@ -1120,8 +1124,8 @@
                 "doctrine/mongodb-odm-bundle": ">=2,<3.0.1",
                 "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1",
                 "dompdf/dompdf": ">=0.6,<0.6.2",
-                "drupal/core": ">=8,<8.2.8|>=8.3,<8.3.1",
-                "drupal/drupal": ">=8,<8.2.8|>=8.3,<8.3.1",
+                "drupal/core": ">=8,<8.3.4",
+                "drupal/drupal": ">=8,<8.3.4",
                 "firebase/php-jwt": "<2",
                 "friendsofsymfony/rest-bundle": ">=1.2,<1.2.2",
                 "friendsofsymfony/user-bundle": ">=1.2,<1.3.5",
@@ -1160,11 +1164,11 @@
                 "symfony/http-foundation": ">=2,<2.3.27|>=2.4,<2.5.11|>=2.6,<2.6.6",
                 "symfony/http-kernel": ">=2,<2.3.29|>=2.4,<2.5.12|>=2.6,<2.6.8",
                 "symfony/routing": ">=2,<2.0.19",
-                "symfony/security": ">=2.3,<2.3.37|>=2.4,<2.6.13|>=2.7,<2.7.9|>=2,<2.0.25|>=2.1,<2.1.13|>=2.2,<2.2.9",
-                "symfony/security-core": ">=2.8,<2.8.6|>=3,<3.0.6|>=2.4,<2.6.13|>=2.7,<2.7.9",
+                "symfony/security": ">=2.7.30,<2.7.32|>=2.8.23,<2.8.25|>=3.2.10,<3.2.12|>=3.3.3,<3.3.5|>=2.3,<2.3.37|>=2.4,<2.6.13|>=2.7,<2.7.9|>=2,<2.0.25|>=2.1,<2.1.13|>=2.2,<2.2.9",
+                "symfony/security-core": ">=2.7.30,<2.7.32|>=2.8.23,<2.8.25|>=3.2.10,<3.2.12|>=3.3.3,<3.3.5|>=2.8,<2.8.6|>=3,<3.0.6|>=2.4,<2.6.13|>=2.7,<2.7.9",
                 "symfony/security-http": ">=2.4,<2.7.13|>=2.3,<2.3.41|>=2.8,<2.8.6|>=3,<3.0.6",
                 "symfony/serializer": ">=2,<2.0.11",
-                "symfony/symfony": ">=2,<2.3.41|>=2.4,<2.7.13|>=2.8,<2.8.6|>=3,<3.0.6",
+                "symfony/symfony": ">=2,<2.3.41|>=2.4,<2.7.13|>=2.7.30,<2.7.32|>=2.8.23,<2.8.25|>=3.2.10,<3.2.12|>=3.3.3,<3.3.5|>=2.8,<2.8.6|>=3,<3.0.6",
                 "symfony/translation": ">=2,<2.0.17",
                 "symfony/validator": ">=2,<2.0.24|>=2.1,<2.1.12|>=2.2,<2.2.5|>=2.3,<2.3.3",
                 "symfony/web-profiler-bundle": ">=2,<2.3.19|>=2.4,<2.4.9|>=2.5,<2.5.4",
@@ -1218,7 +1222,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2017-06-07T12:12:03+00:00"
+            "time": "2017-07-18T08:09:10+00:00"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -1317,16 +1321,16 @@
         },
         {
             "name": "silinternational/php-env",
-            "version": "1.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/php-env.git",
-                "reference": "030821eebac6ff1379a1b0eb6cc4ca18bf3804e0"
+                "reference": "92ec561324d498f94cd7fe282e595c45c1c7579b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/php-env/zipball/030821eebac6ff1379a1b0eb6cc4ca18bf3804e0",
-                "reference": "030821eebac6ff1379a1b0eb6cc4ca18bf3804e0",
+                "url": "https://api.github.com/repos/silinternational/php-env/zipball/92ec561324d498f94cd7fe282e595c45c1c7579b",
+                "reference": "92ec561324d498f94cd7fe282e595c45c1c7579b",
                 "shasum": ""
             },
             "require": {
@@ -1346,20 +1350,114 @@
             "license": [
                 "MIT"
             ],
-            "time": "2017-05-10T16:00:51+00:00"
+            "description": "Simple PHP library for getting (or requiring) environment variables, designed to handle true, false, and null more intelligently. If desired, an environment variable's value can be split into an array automatically.",
+            "time": "2017-05-30T20:24:09+00:00"
         },
         {
-            "name": "silinternational/simplesamlphp-module-material",
-            "version": "2.0.0",
+            "name": "silinternational/psr3-adapters",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "032c20690e6e2dfed57a9801dedb05149e005c2c"
+                "url": "https://github.com/silinternational/psr3-adapters.git",
+                "reference": "bbaef684f34f94f64dcf018698028b786f67caaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/032c20690e6e2dfed57a9801dedb05149e005c2c",
-                "reference": "032c20690e6e2dfed57a9801dedb05149e005c2c",
+                "url": "https://api.github.com/repos/silinternational/psr3-adapters/zipball/bbaef684f34f94f64dcf018698028b786f67caaa",
+                "reference": "bbaef684f34f94f64dcf018698028b786f67caaa",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "psr/log": "^1.0",
+                "roave/security-advisories": "dev-master"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.6.1"
+            },
+            "suggest": {
+                "monolog/monolog": "^1.22",
+                "simplesamlphp/simplesamlphp": "^1.14.12",
+                "yiisoft/yii2": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sil\\Psr3Adapters\\": "src/",
+                    "Sil\\Psr3Adapters\\tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matt Henderson",
+                    "email": "matt_henderson@sil.org"
+                }
+            ],
+            "description": "Various PSR3-compatible logging adapters.",
+            "time": "2017-05-09T19:14:19+00:00"
+        },
+        {
+            "name": "silinternational/simplesamlphp-module-expirychecker",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silinternational/simplesamlphp-module-expirychecker.git",
+                "reference": "591ca42efbb87103dd16f29325a75344fb1c23a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/591ca42efbb87103dd16f29325a75344fb1c23a8",
+                "reference": "591ca42efbb87103dd16f29325a75344fb1c23a8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0",
+                "roave/security-advisories": "dev-master",
+                "silinternational/psr3-adapters": "^1.1",
+                "simplesamlphp/simplesamlphp": "^1.14.12"
+            },
+            "require-dev": {
+                "behat/behat": "^3.3",
+                "behat/mink": "^1.7",
+                "behat/mink-goutte-driver": "^1.2",
+                "phpunit/phpunit": "^6.2"
+            },
+            "type": "simplesamlphp-module",
+            "autoload": {
+                "psr-4": {
+                    "Sil\\SspExpiryChecker\\": "src/",
+                    "Sil\\SspExpiryChecker\\Behat\\": "features/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Matt Henderson",
+                    "email": "matt_henderson@sil.org"
+                }
+            ],
+            "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired.",
+            "time": "2017-07-14T12:56:51+00:00"
+        },
+        {
+            "name": "silinternational/simplesamlphp-module-material",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
+                "reference": "0e6746b1d4225ba60e86239827b062ef1da47450"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/0e6746b1d4225ba60e86239827b062ef1da47450",
+                "reference": "0e6746b1d4225ba60e86239827b062ef1da47450",
                 "shasum": ""
             },
             "require": {
@@ -1380,20 +1478,20 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2017-05-02T14:51:20+00:00"
+            "time": "2017-07-19T19:49:07+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "2.3.0",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "56ca718c7c4df2b322fe32fc0c9c2d095395e36e"
+                "reference": "d175ca02524489db7d8304496906c0fd3f0a0b90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/56ca718c7c4df2b322fe32fc0c9c2d095395e36e",
-                "reference": "56ca718c7c4df2b322fe32fc0c9c2d095395e36e",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/d175ca02524489db7d8304496906c0fd3f0a0b90",
+                "reference": "d175ca02524489db7d8304496906c0fd3f0a0b90",
                 "shasum": ""
             },
             "require": {
@@ -1407,7 +1505,8 @@
                 "rlanvin/php-ip": "^1.0",
                 "roave/security-advisories": "dev-master",
                 "silinternational/idp-id-broker-php-client": "^1.0 || ^0.4.2",
-                "silinternational/php-env": "^1.0",
+                "silinternational/php-env": "^2.0",
+                "silinternational/psr3-adapters": "^1.1",
                 "simplesamlphp/simplesamlphp": "^1.14.12",
                 "yiisoft/yii2": "^2.0",
                 "yiisoft/yii2-gii": "^2.0"
@@ -1434,27 +1533,27 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2017-06-20T13:17:58+00:00"
+            "time": "2017-07-18T19:57:17+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "dev-develop",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-sildisco.git",
-                "reference": "7097152fe619215b0c7a3834d51d595dbc47d2c6"
+                "reference": "f4c14a16132fa7f37734b4d8bc28171153cc96ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/7097152fe619215b0c7a3834d51d595dbc47d2c6",
-                "reference": "7097152fe619215b0c7a3834d51d595dbc47d2c6",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/f4c14a16132fa7f37734b4d8bc28171153cc96ca",
+                "reference": "f4c14a16132fa7f37734b4d8bc28171153cc96ca",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4",
                 "roave/security-advisories": "dev-master",
                 "silinternational/php-env": "^1.0||^2.0",
-                "silinternational/ssp-utilities": "dev-develop",
+                "silinternational/ssp-utilities": "^1.0",
                 "simplesamlphp/composer-module-installer": "^1.1.5",
                 "simplesamlphp/simplesamlphp": "^1.14.12"
             },
@@ -1473,62 +1572,20 @@
                 }
             ],
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
-            "time": "2017-06-20 19:15:05"
-        },
-        {
-            "name": "silinternational/ssp-deps",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silinternational/ssp-deps.git",
-                "reference": "229bab726ffb7fe634521e13054d8bab053c3372"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/ssp-deps/zipball/229bab726ffb7fe634521e13054d8bab053c3372",
-                "reference": "229bab726ffb7fe634521e13054d8bab053c3372",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4",
-                "roave/security-advisories": "dev-master",
-                "silinternational/php-env": "^1.0",
-                "silinternational/simplesamlphp-module-material": "^2.0",
-                "silinternational/simplesamlphp-module-sildisco": "dev-develop",
-                "silinternational/ssp-utilities": "dev-develop",
-                "simplesamlphp/composer-module-installer": "1.1.5",
-                "simplesamlphp/simplesamlphp": "1.14.12"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Phillip Shipley",
-                    "email": "phillip.shipley@gmail.com"
-                },
-                {
-                    "name": "Matt Henderson",
-                    "email": "matt_henderson@sil.org"
-                }
-            ],
-            "description": "Shared dependencies for simpleSAMLphp (aka. SSP) repos",
-            "time": "2017-05-11 20:31:47"
+            "time": "2017-07-05T13:18:52+00:00"
         },
         {
             "name": "silinternational/ssp-utilities",
-            "version": "dev-develop",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/ssp-utilities.git",
-                "reference": "741e95e7b258874d6646357fb314f49c0ea7f36f"
+                "reference": "4569a1b715ef660734b07c7ebd5c6fe8dc228be6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/ssp-utilities/zipball/741e95e7b258874d6646357fb314f49c0ea7f36f",
-                "reference": "741e95e7b258874d6646357fb314f49c0ea7f36f",
+                "url": "https://api.github.com/repos/silinternational/ssp-utilities/zipball/4569a1b715ef660734b07c7ebd5c6fe8dc228be6",
+                "reference": "4569a1b715ef660734b07c7ebd5c6fe8dc228be6",
                 "shasum": ""
             },
             "require": {
@@ -1557,7 +1614,7 @@
                 }
             ],
             "description": "SimpleSAMLphp related utility classes",
-            "time": "2016-12-20 15:08:50"
+            "time": "2017-07-06T20:55:35+00:00"
         },
         {
             "name": "simplesamlphp/composer-module-installer",
@@ -1640,16 +1697,16 @@
         },
         {
             "name": "simplesamlphp/simplesamlphp",
-            "version": "v1.14.12",
+            "version": "v1.14.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp.git",
-                "reference": "353a77be570b29f42812a44245947b4fb030a5da"
+                "reference": "0329e7fd0e9f356211a002f5b7c79da4543b5efe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp/zipball/353a77be570b29f42812a44245947b4fb030a5da",
-                "reference": "353a77be570b29f42812a44245947b4fb030a5da",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp/zipball/0329e7fd0e9f356211a002f5b7c79da4543b5efe",
+                "reference": "0329e7fd0e9f356211a002f5b7c79da4543b5efe",
                 "shasum": ""
             },
             "require": {
@@ -1657,6 +1714,7 @@
                 "ext-dom": "*",
                 "ext-hash": "*",
                 "ext-json": "*",
+                "ext-mbstring": "*",
                 "ext-openssl": "*",
                 "ext-pcre": "*",
                 "ext-spl": "*",
@@ -1706,7 +1764,7 @@
                 "sp",
                 "ws-federation"
             ],
-            "time": "2017-03-30T12:11:17+00:00"
+            "time": "2017-05-05T10:52:35+00:00"
         },
         {
             "name": "whitehat101/apr1-md5",
@@ -2109,22 +2167,22 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "3.1.1",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "8331b5efe816ae05461b7ca1e721c01b46bafb3e"
+                "reference": "46f7e8bb075036c92695b15a1ddb6971c751e585"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/8331b5efe816ae05461b7ca1e721c01b46bafb3e",
-                "reference": "8331b5efe816ae05461b7ca1e721c01b46bafb3e",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/46f7e8bb075036c92695b15a1ddb6971c751e585",
+                "reference": "46f7e8bb075036c92695b15a1ddb6971c751e585",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.5",
                 "phpdocumentor/reflection-common": "^1.0@dev",
-                "phpdocumentor/type-resolver": "^0.2.0",
+                "phpdocumentor/type-resolver": "^0.4.0",
                 "webmozart/assert": "^1.0"
             },
             "require-dev": {
@@ -2150,24 +2208,24 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2016-09-30T07:12:33+00:00"
+            "time": "2017-07-15T11:38:20+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "0.2.1",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "e224fb2ea2fba6d3ad6fdaef91cd09a172155ccb"
+                "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/e224fb2ea2fba6d3ad6fdaef91cd09a172155ccb",
-                "reference": "e224fb2ea2fba6d3ad6fdaef91cd09a172155ccb",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/9c977708995954784726e25d0cd1dddf4e65b0f7",
+                "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5",
+                "php": "^5.5 || ^7.0",
                 "phpdocumentor/reflection-common": "^1.0"
             },
             "require-dev": {
@@ -2197,7 +2255,7 @@
                     "email": "me@mikevanriel.com"
                 }
             ],
-            "time": "2016-11-25T06:54:22+00:00"
+            "time": "2017-07-14T14:27:02+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -2513,16 +2571,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.20",
+            "version": "5.7.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3cb94a5f8c07a03c8b7527ed7468a2926203f58b"
+                "reference": "3b91adfb64264ddec5a2dee9851f354aa66327db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3cb94a5f8c07a03c8b7527ed7468a2926203f58b",
-                "reference": "3cb94a5f8c07a03c8b7527ed7468a2926203f58b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3b91adfb64264ddec5a2dee9851f354aa66327db",
+                "reference": "3b91adfb64264ddec5a2dee9851f354aa66327db",
                 "shasum": ""
             },
             "require": {
@@ -2591,20 +2649,20 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-05-22T07:42:55+00:00"
+            "time": "2017-06-21T08:11:54+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "3.4.3",
+            "version": "3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "3ab72b65b39b491e0c011e2e09bb2206c2aa8e24"
+                "reference": "a23b761686d50a560cc56233b9ecf49597cc9118"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/3ab72b65b39b491e0c011e2e09bb2206c2aa8e24",
-                "reference": "3ab72b65b39b491e0c011e2e09bb2206c2aa8e24",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/a23b761686d50a560cc56233b9ecf49597cc9118",
+                "reference": "a23b761686d50a560cc56233b9ecf49597cc9118",
                 "shasum": ""
             },
             "require": {
@@ -2650,7 +2708,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2016-12-08T20:27:08+00:00"
+            "time": "2017-06-30T09:13:00+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -3167,16 +3225,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.3.2",
+            "version": "v3.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "9752a30000a8ca9f4b34b5227d15d0101b96b063"
+                "reference": "1f93a8d19b8241617f5074a123e282575b821df8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/9752a30000a8ca9f4b34b5227d15d0101b96b063",
-                "reference": "9752a30000a8ca9f4b34b5227d15d0101b96b063",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/1f93a8d19b8241617f5074a123e282575b821df8",
+                "reference": "1f93a8d19b8241617f5074a123e282575b821df8",
                 "shasum": ""
             },
             "require": {
@@ -3218,7 +3276,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-02T22:05:06+00:00"
+            "time": "2017-06-15T12:58:50+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -3274,10 +3332,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "roave/security-advisories": 20,
-        "silinternational/simplesamlphp-module-sildisco": 20,
-        "silinternational/ssp-utilities": 20,
-        "silinternational/ssp-deps": 20
+        "roave/security-advisories": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
