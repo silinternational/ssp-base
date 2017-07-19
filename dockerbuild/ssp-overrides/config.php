@@ -59,6 +59,8 @@ $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
 $GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
 $HUB_MODE = Env::get('HUB_MODE', false);
 $ANALYTICS_ID = Env::get('ANALYTICS_ID', null);
+$PASSWORD_CHANGE_URL = Env::get('PASSWORD_CHANGE_URL');
+$PASSWORD_FORGOT_URL = Env::get('PASSWORD_FORGOT_URL');
 
 $config = [
 
@@ -83,6 +85,9 @@ $config = [
      *   .../vendor/simplesamlphp/simplesamlphp/announcement/announcement.php
      */
     'announcement' => AnnouncementUtils::getAnnouncement(),
+    
+    'passwordChangeUrl' => $PASSWORD_CHANGE_URL,
+    'passwordForgotUrl' => $PASSWORD_FORGOT_URL,    
 
     /*
      * Setup the following parameters to match the directory of your installation.
