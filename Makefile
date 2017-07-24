@@ -11,4 +11,4 @@ clean:
 	docker-compose rm -f
 
 composer:
-	docker-compose run --rm composer bash -c "composer self-update && composer update --no-scripts --ignore-platform-reqs"
+	docker-compose run --rm composer bash -c "composer self-update && composer update --no-scripts"
