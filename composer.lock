@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8ec085620d67f1c97927f7decb44d3cd",
+    "content-hash": "ea028b7c0fc8fc95253936e54f362fda",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -1402,16 +1402,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-expirychecker",
-            "version": "1.0.1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-expirychecker.git",
-                "reference": "4fe0aebe7272a8fbd9e192cd93b83ecbe989e83d"
+                "reference": "d67ad4adff36d601f4440d83d3c4948210c896d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/4fe0aebe7272a8fbd9e192cd93b83ecbe989e83d",
-                "reference": "4fe0aebe7272a8fbd9e192cd93b83ecbe989e83d",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/d67ad4adff36d601f4440d83d3c4948210c896d2",
+                "reference": "d67ad4adff36d601f4440d83d3c4948210c896d2",
                 "shasum": ""
             },
             "require": {
@@ -1444,7 +1444,7 @@
                 }
             ],
             "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired.",
-            "time": "2017-07-24T14:18:02+00:00"
+            "time": "2017-07-24T17:48:49+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
