@@ -17,6 +17,7 @@ try {
     $ADMIN_PASS = Env::requireEnv('ADMIN_PASS');
     $SECRET_SALT = Env::requireEnv('SECRET_SALT');
     $IDP_NAME = Env::requireEnv('IDP_NAME');
+    $IDP_DISPLAY_NAME = Env::get('IDP_DISPLAY_NAME', $IDP_NAME);
 } catch (EnvVarNotFoundException $e) {
 
     // Log to syslog (Logentries).
@@ -70,9 +71,14 @@ $config = [
      'hubmode' => $HUB_MODE,
 
      /*
-      * Name of this IdP to display to the user
+      * Name of this IdP
       */
      'idp_name' => $IDP_NAME,
+
+     /*
+      * Name of this IdP to display to the user
+      */
+     'idp_display_name' => $IDP_DISPLAY_NAME,
 
      /*
       * The tracking Id for Google Analytics or some other similar service
