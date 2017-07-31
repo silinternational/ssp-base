@@ -18,7 +18,7 @@
     "silinternational/simplesamlphp-module-expirychecker": "^2.0",
     "silinternational/simplesamlphp-module-silauth": "^2.3.4",
     "silinternational/ssp-utilities": "^1.0",
-    "silinternational/simplesamlphp-module-material": "^3.0",
+    "silinternational/simplesamlphp-module-material": "^3.1",
     "silinternational/simplesamlphp-module-sildisco": "^1.0",
     "silinternational/php-env": "^2.0"
   },

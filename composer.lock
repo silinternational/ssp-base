@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea028b7c0fc8fc95253936e54f362fda",
+    "content-hash": "4f15537f24de8d03f5c5b0459598594d",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -1093,12 +1093,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "fa53c38b02d1ec883f4ea2b2c05492da0c7611cf"
+                "reference": "626c97bd5b45a08db902a0fb0b13f58f3785b439"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/fa53c38b02d1ec883f4ea2b2c05492da0c7611cf",
-                "reference": "fa53c38b02d1ec883f4ea2b2c05492da0c7611cf",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/626c97bd5b45a08db902a0fb0b13f58f3785b439",
+                "reference": "626c97bd5b45a08db902a0fb0b13f58f3785b439",
                 "shasum": ""
             },
             "conflict": {
@@ -1144,7 +1144,7 @@
                 "onelogin/php-saml": "<2.10.4",
                 "oro/crm": ">=1.7,<1.7.4",
                 "oro/platform": ">=1.7,<1.7.4",
-                "phpmailer/phpmailer": ">=5,<5.2.22",
+                "phpmailer/phpmailer": ">=5,<5.2.24",
                 "pusher/pusher-php-server": "<2.2.1",
                 "sabre/dav": ">=1.6,<1.6.99|>=1.7,<1.7.11|>=1.8,<1.8.9",
                 "shopware/shopware": "<4.4|>=5,<5.2.16",
@@ -1222,7 +1222,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2017-07-18T08:09:10+00:00"
+            "time": "2017-07-28T07:54:11+00:00"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -1448,16 +1448,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "3.0.0",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "0e6746b1d4225ba60e86239827b062ef1da47450"
+                "reference": "723d7fa2442b4ba879fea27138b71fddbdfca6f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/0e6746b1d4225ba60e86239827b062ef1da47450",
-                "reference": "0e6746b1d4225ba60e86239827b062ef1da47450",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/723d7fa2442b4ba879fea27138b71fddbdfca6f0",
+                "reference": "723d7fa2442b4ba879fea27138b71fddbdfca6f0",
                 "shasum": ""
             },
             "require": {
@@ -1478,7 +1478,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2017-07-19T19:49:07+00:00"
+            "time": "2017-07-31T15:33:52+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
