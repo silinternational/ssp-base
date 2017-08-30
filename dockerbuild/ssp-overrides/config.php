@@ -4,15 +4,39 @@
  *
  */
 use Sil\PhpEnv\Env;
+use Sil\PhpEnv\EnvVarNotFoundException;
+use Sil\SspUtils\AnnouncementUtils;
 
 /*
  * Get config settings from ENV vars or set defaults
  */
 
-// Required to be defined in environment
-$ADMIN_EMAIL = Env::get('ADMIN_EMAIL');
-$ADMIN_PASS = Env::get('ADMIN_PASS');
-$SECRET_SALT = Env::get('SECRET_SALT');
+try {
+    // Required to be defined in environment variables
+    $ADMIN_EMAIL = Env::requireEnv('ADMIN_EMAIL');
+    $ADMIN_PASS = Env::requireEnv('ADMIN_PASS');
+    $SECRET_SALT = Env::requireEnv('SECRET_SALT');
+    $IDP_NAME = Env::requireEnv('IDP_NAME');
+    $IDP_DISPLAY_NAME = Env::get('IDP_DISPLAY_NAME', $IDP_NAME);
+} catch (EnvVarNotFoundException $e) {
+
+    // Log to syslog (Logentries).
+    openlog('id-broker', LOG_NDELAY | LOG_PERROR, LOG_USER);
+    syslog(LOG_CRIT, $e->getMessage());
+    closelog();
+
+    // Return error response code/message to HTTP request.
+    header('Content-Type: application/json');
+    http_response_code(500);
+    $responseContent = json_encode([
+        'name' => 'Internal Server Error',
+        'message' => $e->getMessage(),
+        'status' => 500,
+    ], JSON_PRETTY_PRINT);
+    exit($responseContent);
+}
+
+
 
 // Defaults provided if not defined in environment
 $BASE_URL_PATH = Env::get('BASE_URL_PATH', '/');
@@ -35,6 +59,9 @@ $MEMCACHE_HOST2_PORT = Env::get('MEMCACHE_HOST2_PORT', 11211);
 $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
 $GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
 $HUB_MODE = Env::get('HUB_MODE', false);
+$ANALYTICS_ID = Env::get('ANALYTICS_ID', null);
+$PASSWORD_CHANGE_URL = Env::get('PASSWORD_CHANGE_URL');
+$PASSWORD_FORGOT_URL = Env::get('PASSWORD_FORGOT_URL');
 
 $config = [
 
@@ -42,6 +69,31 @@ $config = [
      * Whether this instance should act as a hub/proxy/bridge using sildisco
      */
      'hubmode' => $HUB_MODE,
+
+     /*
+      * Name of this IdP
+      */
+     'idp_name' => $IDP_NAME,
+
+     /*
+      * Name of this IdP to display to the user
+      */
+     'idp_display_name' => $IDP_DISPLAY_NAME,
+
+     /*
+      * The tracking Id for Google Analytics or some other similar service
+      */
+     'analytics.trackingId' => $ANALYTICS_ID,
+
+    /*
+     * Get a string of html to show as an announcement on the discovery page
+     * and/or login page.  By default, this will be fetched from
+     *   .../vendor/simplesamlphp/simplesamlphp/announcement/announcement.php
+     */
+    'announcement' => AnnouncementUtils::getAnnouncement(),
+    
+    'passwordChangeUrl' => $PASSWORD_CHANGE_URL,
+    'passwordForgotUrl' => $PASSWORD_FORGOT_URL,    
 
     /*
      * Setup the following parameters to match the directory of your installation.
