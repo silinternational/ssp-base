@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "770d1a87d2bf5f5fd1cbdde170f1f35f",
+    "content-hash": "f6dbb492e048b72eb534bb1413c50ef8",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -1419,21 +1419,22 @@
         },
         {
             "name": "silinternational/idp-id-broker-php-client",
-            "version": "1.1.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/idp-id-broker-php-client.git",
-                "reference": "e64469f89c82fe8a578c360373b3ecf43a5276bc"
+                "reference": "14ade9a302386847f7ff55e61324a3fa12b4c649"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/e64469f89c82fe8a578c360373b3ecf43a5276bc",
-                "reference": "e64469f89c82fe8a578c360373b3ecf43a5276bc",
+                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/14ade9a302386847f7ff55e61324a3fa12b4c649",
+                "reference": "14ade9a302386847f7ff55e61324a3fa12b4c649",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle-services": "^1.1",
                 "php": ">=7.0",
+                "rlanvin/php-ip": "^1.0",
                 "roave/security-advisories": "dev-master"
             },
             "require-dev": {
@@ -1469,7 +1470,7 @@
                 "idp",
                 "php client"
             ],
-            "time": "2017-06-16T14:35:39+00:00"
+            "time": "2017-08-18T13:57:35+00:00"
         },
         {
             "name": "silinternational/php-env",
@@ -1600,16 +1601,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "723d7fa2442b4ba879fea27138b71fddbdfca6f0"
+                "reference": "a031b1c33681ff170de96491d4f30fd8eb3a52f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/723d7fa2442b4ba879fea27138b71fddbdfca6f0",
-                "reference": "723d7fa2442b4ba879fea27138b71fddbdfca6f0",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/a031b1c33681ff170de96491d4f30fd8eb3a52f5",
+                "reference": "a031b1c33681ff170de96491d4f30fd8eb3a52f5",
                 "shasum": ""
             },
             "require": {
@@ -1630,20 +1631,20 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2017-07-31T15:33:52+00:00"
+            "time": "2017-08-30T18:20:11+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "2.4.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "d175ca02524489db7d8304496906c0fd3f0a0b90"
+                "reference": "ab43529d70121cfe50d3edf7d456a4c7119c9249"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/d175ca02524489db7d8304496906c0fd3f0a0b90",
-                "reference": "d175ca02524489db7d8304496906c0fd3f0a0b90",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/ab43529d70121cfe50d3edf7d456a4c7119c9249",
+                "reference": "ab43529d70121cfe50d3edf7d456a4c7119c9249",
                 "shasum": ""
             },
             "require": {
@@ -1656,7 +1657,7 @@
                 "ramsey/uuid": "^3.5",
                 "rlanvin/php-ip": "^1.0",
                 "roave/security-advisories": "dev-master",
-                "silinternational/idp-id-broker-php-client": "^1.0 || ^0.4.2",
+                "silinternational/idp-id-broker-php-client": "^2.0",
                 "silinternational/php-env": "^2.0",
                 "silinternational/psr3-adapters": "^1.1",
                 "simplesamlphp/simplesamlphp": "^1.14.12",
@@ -1685,7 +1686,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2017-07-18T19:57:17+00:00"
+            "time": "2017-08-30T15:42:18+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
