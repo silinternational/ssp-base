@@ -1555,16 +1555,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-expirychecker",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-expirychecker.git",
-                "reference": "d67ad4adff36d601f4440d83d3c4948210c896d2"
+                "reference": "80eda27759ba4300900fca813e83ee05394f301a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/d67ad4adff36d601f4440d83d3c4948210c896d2",
-                "reference": "d67ad4adff36d601f4440d83d3c4948210c896d2",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/80eda27759ba4300900fca813e83ee05394f301a",
+                "reference": "80eda27759ba4300900fca813e83ee05394f301a",
                 "shasum": ""
             },
             "require": {
@@ -1597,7 +1597,7 @@
                 }
             ],
             "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired.",
-            "time": "2017-07-24T17:48:49+00:00"
+            "time": "2017-08-30T19:54:43+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
