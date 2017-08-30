@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "47e64fd07c6dadd86c71976bc9a85613",
+    "content-hash": "770d1a87d2bf5f5fd1cbdde170f1f35f",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -1770,20 +1770,21 @@
         },
         {
             "name": "simplesamlphp/composer-module-installer",
-            "version": "v1.1.5",
+            "version": "v1.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/composer-module-installer.git",
-                "reference": "3c89dfcbf89c055c6327424fbfa15e71eb48be9e"
+                "reference": "b70414a2112fe49e97a7eddd747657bd8bc38ef0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/composer-module-installer/zipball/3c89dfcbf89c055c6327424fbfa15e71eb48be9e",
-                "reference": "3c89dfcbf89c055c6327424fbfa15e71eb48be9e",
+                "url": "https://api.github.com/repos/simplesamlphp/composer-module-installer/zipball/b70414a2112fe49e97a7eddd747657bd8bc38ef0",
+                "reference": "b70414a2112fe49e97a7eddd747657bd8bc38ef0",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0"
+                "composer-plugin-api": "^1.0",
+                "simplesamlphp/simplesamlphp": "*"
             },
             "type": "composer-plugin",
             "extra": {
@@ -1796,7 +1797,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "A Composer plugin that allows installing SimpleSAMLphp modules through Composer.",
-            "time": "2016-06-30T11:33:43+00:00"
+            "time": "2017-04-24T07:12:50+00:00"
         },
         {
             "name": "simplesamlphp/saml2",
