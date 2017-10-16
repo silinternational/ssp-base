@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "645ed154192d9b94c916f40d521b1f50",
+    "content-hash": "8b611714923511777e719f255d048f93",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -610,16 +610,16 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.5.2",
+            "version": "v5.5.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "e935ac3bcfa32a9d8b9a082e5085f233fa9cf918"
+                "reference": "d9e269284eba43bd2e9e8d1f1ba12362b00ec096"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/e935ac3bcfa32a9d8b9a082e5085f233fa9cf918",
-                "reference": "e935ac3bcfa32a9d8b9a082e5085f233fa9cf918",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/d9e269284eba43bd2e9e8d1f1ba12362b00ec096",
+                "reference": "d9e269284eba43bd2e9e8d1f1ba12362b00ec096",
                 "shasum": ""
             },
             "require": {
@@ -650,20 +650,20 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2017-08-27T09:20:20+00:00"
+            "time": "2017-09-19T13:09:37+00:00"
         },
         {
             "name": "illuminate/support",
-            "version": "v5.5.2",
+            "version": "v5.5.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "6a1c08c4e89429a0333ad86c489088ceeadbcced"
+                "reference": "0e5db373f0046151af5842c55fa87150267f9649"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/6a1c08c4e89429a0333ad86c489088ceeadbcced",
-                "reference": "6a1c08c4e89429a0333ad86c489088ceeadbcced",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/0e5db373f0046151af5842c55fa87150267f9649",
+                "reference": "0e5db373f0046151af5842c55fa87150267f9649",
                 "shasum": ""
             },
             "require": {
@@ -707,7 +707,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2017-09-04T14:00:07+00:00"
+            "time": "2017-10-13T20:25:55+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1635,17 +1635,65 @@
             "time": "2017-08-30T18:20:11+00:00"
         },
         {
-            "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "3.0.0",
+            "name": "silinternational/simplesamlphp-module-mfa",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
-                "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "ab43529d70121cfe50d3edf7d456a4c7119c9249"
+                "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
+                "reference": "f6709dca8300219a7146685ddc1b4040139ada07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/ab43529d70121cfe50d3edf7d456a4c7119c9249",
-                "reference": "ab43529d70121cfe50d3edf7d456a4c7119c9249",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/f6709dca8300219a7146685ddc1b4040139ada07",
+                "reference": "f6709dca8300219a7146685ddc1b4040139ada07",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0",
+                "roave/security-advisories": "dev-master",
+                "silinternational/idp-id-broker-php-client": "^2.1.0",
+                "silinternational/php-env": "^2.1",
+                "silinternational/psr3-adapters": "^1.1",
+                "simplesamlphp/simplesamlphp": "^1.14.16"
+            },
+            "require-dev": {
+                "behat/behat": "^3.3",
+                "behat/mink": "^1.7",
+                "behat/mink-goutte-driver": "^1.2",
+                "phpunit/phpunit": "^6.2"
+            },
+            "type": "simplesamlphp-module",
+            "autoload": {
+                "psr-4": {
+                    "Sil\\SspMfa\\": "src/",
+                    "Sil\\SspMfa\\Behat\\": "features/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Matt Henderson",
+                    "email": "matt_henderson@sil.org"
+                }
+            ],
+            "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
+            "time": "2017-10-06T20:04:52+00:00"
+        },
+        {
+            "name": "silinternational/simplesamlphp-module-silauth",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
+                "reference": "86ba1ff9b8bbfcc6585c971404136bc7805526d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/86ba1ff9b8bbfcc6585c971404136bc7805526d6",
+                "reference": "86ba1ff9b8bbfcc6585c971404136bc7805526d6",
                 "shasum": ""
             },
             "require": {
@@ -1687,7 +1735,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2017-08-30T15:42:18+00:00"
+            "time": "2017-08-28T20:36:17+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -2850,16 +2898,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.22",
+            "version": "5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "10df877596c9906d4110b5b905313829043f2ada"
+                "reference": "78532d5269d984660080d8e0f4c99c5c2ea65ffe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/10df877596c9906d4110b5b905313829043f2ada",
-                "reference": "10df877596c9906d4110b5b905313829043f2ada",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/78532d5269d984660080d8e0f4c99c5c2ea65ffe",
+                "reference": "78532d5269d984660080d8e0f4c99c5c2ea65ffe",
                 "shasum": ""
             },
             "require": {
@@ -2928,7 +2976,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-09-24T07:23:38+00:00"
+            "time": "2017-10-15T06:13:55+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -3611,7 +3659,9 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "roave/security-advisories": 20
+        "roave/security-advisories": 20,
+        "silinternational/simplesamlphp-module-silauth": 20,
+        "silinternational/simplesamlphp-module-mfa": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
