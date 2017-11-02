@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f41f65378848105623346185c8e69299",
+    "content-hash": "8b611714923511777e719f255d048f93",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -1637,16 +1637,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "0.1.0",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "35e0da0a89102ab9ae2cd0e9a73a51e33a4e738a"
+                "reference": "230247e72405ae8807ba95a8285b53939abfe980"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/35e0da0a89102ab9ae2cd0e9a73a51e33a4e738a",
-                "reference": "35e0da0a89102ab9ae2cd0e9a73a51e33a4e738a",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/230247e72405ae8807ba95a8285b53939abfe980",
+                "reference": "230247e72405ae8807ba95a8285b53939abfe980",
                 "shasum": ""
             },
             "require": {
@@ -1681,7 +1681,7 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "time": "2017-11-01T18:47:48+00:00"
+            "time": "2017-11-02T13:34:12+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
@@ -3664,7 +3664,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "roave/security-advisories": 20,
-        "silinternational/simplesamlphp-module-silauth": 20
+        "silinternational/simplesamlphp-module-silauth": 20,
+        "silinternational/simplesamlphp-module-mfa": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
