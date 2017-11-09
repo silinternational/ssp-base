@@ -1480,16 +1480,16 @@
         },
         {
             "name": "silinternational/idp-id-broker-php-client",
-            "version": "2.1.2",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/idp-id-broker-php-client.git",
-                "reference": "1ea2a8ac5f4fce7879bb0be62a77d853e614ed6e"
+                "reference": "c17f03490f9ed31b812bce5b3b5c09f39ac963d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/1ea2a8ac5f4fce7879bb0be62a77d853e614ed6e",
-                "reference": "1ea2a8ac5f4fce7879bb0be62a77d853e614ed6e",
+                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/c17f03490f9ed31b812bce5b3b5c09f39ac963d7",
+                "reference": "c17f03490f9ed31b812bce5b3b5c09f39ac963d7",
                 "shasum": ""
             },
             "require": {
@@ -1531,7 +1531,7 @@
                 "idp",
                 "php client"
             ],
-            "time": "2017-10-23T20:23:06+00:00"
+            "time": "2017-11-09T16:01:26+00:00"
         },
         {
             "name": "silinternational/php-env",
@@ -1666,12 +1666,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "4e94f897dab71541e2af183374f6902cb74a07af"
+                "reference": "2e569a1a24472fa15748a5a6077c86792e9530ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/4e94f897dab71541e2af183374f6902cb74a07af",
-                "reference": "4e94f897dab71541e2af183374f6902cb74a07af",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/2e569a1a24472fa15748a5a6077c86792e9530ea",
+                "reference": "2e569a1a24472fa15748a5a6077c86792e9530ea",
                 "shasum": ""
             },
             "require": {
@@ -1692,7 +1692,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2017-11-07T21:42:45+00:00"
+            "time": "2017-11-08T16:47:10+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
