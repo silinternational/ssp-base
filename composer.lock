@@ -1666,12 +1666,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "2e569a1a24472fa15748a5a6077c86792e9530ea"
+                "reference": "cb6ceaf906662bff3673e7ec0c562e676c4b6e94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/2e569a1a24472fa15748a5a6077c86792e9530ea",
-                "reference": "2e569a1a24472fa15748a5a6077c86792e9530ea",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/cb6ceaf906662bff3673e7ec0c562e676c4b6e94",
+                "reference": "cb6ceaf906662bff3673e7ec0c562e676c4b6e94",
                 "shasum": ""
             },
             "require": {
@@ -1692,7 +1692,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2017-11-08T16:47:10+00:00"
+            "time": "2017-11-09T19:10:20+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
@@ -1700,18 +1700,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "a1ce7ef1b37975a0b0ae215c5d657828539e6d53"
+                "reference": "0221cea99f1fa3a9a1e14d53345613e05a0da415"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/a1ce7ef1b37975a0b0ae215c5d657828539e6d53",
-                "reference": "a1ce7ef1b37975a0b0ae215c5d657828539e6d53",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/0221cea99f1fa3a9a1e14d53345613e05a0da415",
+                "reference": "0221cea99f1fa3a9a1e14d53345613e05a0da415",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0",
                 "roave/security-advisories": "dev-master",
-                "silinternational/idp-id-broker-php-client": "^2.1.1",
+                "silinternational/idp-id-broker-php-client": "^2.2",
                 "silinternational/php-env": "^2.1",
                 "silinternational/psr3-adapters": "^1.1",
                 "simplesamlphp/simplesamlphp": "^1.14.16"
@@ -1740,7 +1740,7 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "time": "2017-11-06T16:18:22+00:00"
+            "time": "2017-11-09T19:07:26+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
