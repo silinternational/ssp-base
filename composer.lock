@@ -1705,12 +1705,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "42bd391396fcbc5ae34e046843b5498bdb835339"
+                "reference": "10acd33158abc0ecd22b905ac7b3b45798e6ecf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/42bd391396fcbc5ae34e046843b5498bdb835339",
-                "reference": "42bd391396fcbc5ae34e046843b5498bdb835339",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/10acd33158abc0ecd22b905ac7b3b45798e6ecf9",
+                "reference": "10acd33158abc0ecd22b905ac7b3b45798e6ecf9",
                 "shasum": ""
             },
             "require": {
@@ -1745,7 +1745,7 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "time": "2017-11-17T15:18:29+00:00"
+            "time": "2017-11-20T17:01:46+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
