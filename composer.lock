@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac34d3704298cb53e592d08adab7a198",
+    "content-hash": "ba6d7fa70d3f8288431b41bb339defb0",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -1671,12 +1671,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "c7811e847b05d17d645bcf11e3b21b9ad2b135ea"
+                "reference": "4a5e8f19d68a76a908eeda12c23631cf3bdb0115"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/c7811e847b05d17d645bcf11e3b21b9ad2b135ea",
-                "reference": "c7811e847b05d17d645bcf11e3b21b9ad2b135ea",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/4a5e8f19d68a76a908eeda12c23631cf3bdb0115",
+                "reference": "4a5e8f19d68a76a908eeda12c23631cf3bdb0115",
                 "shasum": ""
             },
             "require": {
@@ -1697,7 +1697,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2017-11-09T20:02:23+00:00"
+            "time": "2017-11-17T16:27:33+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
@@ -1965,16 +1965,16 @@
         },
         {
             "name": "simplesamlphp/simplesamlphp",
-            "version": "v1.14.16",
+            "version": "v1.14.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp.git",
-                "reference": "9ebbbbc7fa334d55526c2a5e230d9941002cdcb8"
+                "reference": "92de42cb0a25ccbf46f78a0e2f3257272afb8ba2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp/zipball/9ebbbbc7fa334d55526c2a5e230d9941002cdcb8",
-                "reference": "9ebbbbc7fa334d55526c2a5e230d9941002cdcb8",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp/zipball/92de42cb0a25ccbf46f78a0e2f3257272afb8ba2",
+                "reference": "92de42cb0a25ccbf46f78a0e2f3257272afb8ba2",
                 "shasum": ""
             },
             "require": {
@@ -2032,7 +2032,7 @@
                 "sp",
                 "ws-federation"
             ],
-            "time": "2017-09-04T12:11:47+00:00"
+            "time": "2017-10-25T09:58:32+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
