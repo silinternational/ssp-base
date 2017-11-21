@@ -60,16 +60,16 @@
         },
         {
             "name": "bower-asset/inputmask",
-            "version": "3.3.10",
+            "version": "3.3.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RobinHerbots/Inputmask.git",
-                "reference": "14873e5775964275d13621cbe2b52e4448af3707"
+                "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/14873e5775964275d13621cbe2b52e4448af3707",
-                "reference": "14873e5775964275d13621cbe2b52e4448af3707",
+                "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/5e670ad62f50c738388d4dcec78d2888505ad77b",
+                "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b",
                 "shasum": ""
             },
             "require": {
@@ -1671,12 +1671,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "4a5e8f19d68a76a908eeda12c23631cf3bdb0115"
+                "reference": "f99a753090f6998474d1a7aab1c307c88f35e4f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/4a5e8f19d68a76a908eeda12c23631cf3bdb0115",
-                "reference": "4a5e8f19d68a76a908eeda12c23631cf3bdb0115",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/f99a753090f6998474d1a7aab1c307c88f35e4f9",
+                "reference": "f99a753090f6998474d1a7aab1c307c88f35e4f9",
                 "shasum": ""
             },
             "require": {
@@ -1697,7 +1697,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2017-11-17T16:27:33+00:00"
+            "time": "2017-11-21T17:51:10+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
