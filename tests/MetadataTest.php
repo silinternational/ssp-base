@@ -311,6 +311,11 @@ class MetadataTest extends TestCase
         $badSps = [];
 
         foreach ($spEntries as $spEntityId => $spEntry) {
+
+            if ( ! empty($spEntry[self::SkipTestsKey])) {
+                continue;
+            }
+
             if (empty($spEntry['certData']) && empty($spEntry['certFingerprint'])) {
                 $badSps[] = $spEntityId;
             }
