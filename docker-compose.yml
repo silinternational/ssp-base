@@ -55,6 +55,7 @@ services:
       ADMIN_PROTECT_INDEX_PAGE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_USE: "material:material"
+      THEME_COLOR_SCHEME: "orange-light_blue"
       HUB_MODE: "true"
 
   idp1:

@@ -38,6 +38,8 @@ RUN composer install --prefer-dist --no-interaction --no-dev --optimize-autoload
 ENV SSP_PATH /data/vendor/simplesamlphp/simplesamlphp
 RUN mv $SSP_PATH/www/index.php $SSP_PATH/www/ssp-index.php
 COPY dockerbuild/ssp-overrides/index.php $SSP_PATH/www/index.php
+RUN mv $SSP_PATH/www/saml2/idp/SingleLogoutService.php $SSP_PATH/www/saml2/idp/ssp-SingleLogoutService.php
+COPY dockerbuild/ssp-overrides/SingleLogoutService.php $SSP_PATH/www/saml2/idp/SingleLogoutService.php
 COPY dockerbuild/ssp-overrides/saml20-idp-remote.php $SSP_PATH/metadata/saml20-idp-remote.php
 COPY dockerbuild/ssp-overrides/saml20-sp-remote.php $SSP_PATH/metadata/saml20-sp-remote.php
 COPY dockerbuild/ssp-overrides/config.php $SSP_PATH/config/config.php
