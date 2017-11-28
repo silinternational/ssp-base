@@ -47,7 +47,7 @@ $TIMEZONE = Env::get('TIMEZONE', 'GMT');
 $LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'syslog');
 $THEME_USE = Env::get('THEME_USE', 'material:material');
 
-// Options: ['indigo-purple'|'blue_grey-teal'|'red-teal'|'orange-light_blue']
+// Options: https://github.com/silinternational/simplesamlphp-module-material/blob/develop/README.md#branding
 $THEME_COLOR_SCHEME = Env::get('THEME_COLOR_SCHEME', null); 
 
 $IDPDISCO_LAYOUT = Env::get('IDPDISCO_LAYOUT', 'links'); // Options: [links,dropdown]
@@ -514,7 +514,7 @@ $config = [
     
     /*
      * If using the material theme, which color scheme to use
-     * Options: ['indigo-purple'|'blue_grey-teal'|'red-teal'|'orange-light_blue']
+     * Options: https://github.com/silinternational/simplesamlphp-module-material/blob/develop/README.md#branding
      */
     'theme.color-scheme' => $THEME_COLOR_SCHEME,
 
