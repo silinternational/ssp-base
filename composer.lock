@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "322ba48165339a84611b256d8cc8414f",
+    "content-hash": "aeb2282c80a012dd92b3c853beb3181c",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -1668,16 +1668,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "dev-develop",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "1743d9d81c406c7b6213459dbb3c086654ca8261"
+                "reference": "a142c5c35a7a113180c020f8384ad246d1c2f330"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/1743d9d81c406c7b6213459dbb3c086654ca8261",
-                "reference": "1743d9d81c406c7b6213459dbb3c086654ca8261",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/a142c5c35a7a113180c020f8384ad246d1c2f330",
+                "reference": "a142c5c35a7a113180c020f8384ad246d1c2f330",
                 "shasum": ""
             },
             "require": {
@@ -1698,7 +1698,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2017-12-08T02:03:22+00:00"
+            "time": "2017-12-08T16:41:57+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
@@ -3740,8 +3740,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "roave/security-advisories": 20,
-        "silinternational/simplesamlphp-module-material": 20
+        "roave/security-advisories": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
