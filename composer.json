@@ -16,10 +16,10 @@
     "simplesamlphp/simplesamlphp": "~1.14.17",
     "simplesamlphp/composer-module-installer": "1.1.6",
     "silinternational/simplesamlphp-module-expirychecker": "^2.0",
-    "silinternational/simplesamlphp-module-silauth": "^4.0.0",
+    "silinternational/simplesamlphp-module-silauth": "^4.0.1",
     "silinternational/simplesamlphp-module-mfa": "^1.0.0",
     "silinternational/ssp-utilities": "^1.0",
-    "silinternational/simplesamlphp-module-material": "dev-develop",
+    "silinternational/simplesamlphp-module-material": "^4.0.3",
     "silinternational/simplesamlphp-module-sildisco": "^1.0",
     "silinternational/php-env": "^2.1.1"
   },

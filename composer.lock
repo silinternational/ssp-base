@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "322ba48165339a84611b256d8cc8414f",
+    "content-hash": "1497f02c34806c4f02c6b28347e1089f",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -115,8 +115,7 @@
                 "jquery",
                 "mask",
                 "plugins"
-            ],
-            "time": "2017-11-21T11:46:23+00:00"
+            ]
         },
         {
             "name": "cebe/markdown",
@@ -1668,16 +1667,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "dev-develop",
+            "version": "4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "a6e9ecc8962bee4c178f04be8efe164ede1d9553"
+                "reference": "d98caf17677c90cfa4a4bd92205269c1bfbe89d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/a6e9ecc8962bee4c178f04be8efe164ede1d9553",
-                "reference": "a6e9ecc8962bee4c178f04be8efe164ede1d9553",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/d98caf17677c90cfa4a4bd92205269c1bfbe89d1",
+                "reference": "d98caf17677c90cfa4a4bd92205269c1bfbe89d1",
                 "shasum": ""
             },
             "require": {
@@ -1698,7 +1697,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2017-12-11T17:01:17+00:00"
+            "time": "2017-12-11T21:38:15+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
@@ -1750,16 +1749,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "4.0.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "29797f795c506da95775f61444cb95b413cb3b3e"
+                "reference": "1aa53752e59a152fe4602552b47a1a0170f458b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/29797f795c506da95775f61444cb95b413cb3b3e",
-                "reference": "29797f795c506da95775f61444cb95b413cb3b3e",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/1aa53752e59a152fe4602552b47a1a0170f458b1",
+                "reference": "1aa53752e59a152fe4602552b47a1a0170f458b1",
                 "shasum": ""
             },
             "require": {
@@ -1775,8 +1774,8 @@
                 "silinternational/idp-id-broker-php-client": "^2.0",
                 "silinternational/php-env": "^2.0",
                 "silinternational/psr3-adapters": "^1.1",
-                "simplesamlphp/simplesamlphp": "^1.14.12",
-                "yiisoft/yii2": "^2.0",
+                "simplesamlphp/simplesamlphp": "~1.14.17",
+                "yiisoft/yii2": "~2.0.12",
                 "yiisoft/yii2-gii": "^2.0"
             },
             "require-dev": {
@@ -1801,7 +1800,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2017-11-09T19:38:19+00:00"
+            "time": "2017-12-11T21:35:12+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -3740,8 +3739,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "roave/security-advisories": 20,
-        "silinternational/simplesamlphp-module-material": 20
+        "roave/security-advisories": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
