@@ -1673,12 +1673,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "e69644c82f90c85d32e7a3ee0ddaecac00f5cb4f"
+                "reference": "347475ca7ac3d559de4e974cce854ad2555f3fc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/e69644c82f90c85d32e7a3ee0ddaecac00f5cb4f",
-                "reference": "e69644c82f90c85d32e7a3ee0ddaecac00f5cb4f",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/347475ca7ac3d559de4e974cce854ad2555f3fc4",
+                "reference": "347475ca7ac3d559de4e974cce854ad2555f3fc4",
                 "shasum": ""
             },
             "require": {
@@ -1699,7 +1699,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2018-01-04T14:57:37+00:00"
+            "time": "2018-01-04T20:18:57+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
