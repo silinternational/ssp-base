@@ -1669,16 +1669,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "4.0.4",
+            "version": "4.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "e69644c82f90c85d32e7a3ee0ddaecac00f5cb4f"
+                "reference": "faecb2ea99e88484d0aa48aec94e3216df7c3c25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/e69644c82f90c85d32e7a3ee0ddaecac00f5cb4f",
-                "reference": "e69644c82f90c85d32e7a3ee0ddaecac00f5cb4f",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/faecb2ea99e88484d0aa48aec94e3216df7c3c25",
+                "reference": "faecb2ea99e88484d0aa48aec94e3216df7c3c25",
                 "shasum": ""
             },
             "require": {
@@ -1699,7 +1699,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2018-01-04T14:57:37+00:00"
+            "time": "2018-01-05T13:41:17+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
@@ -2097,16 +2097,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v3.4.2",
+            "version": "v3.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "4c5d5582baf2829751a5207659329c1f52eedeb6"
+                "reference": "17b5962d252b2d6d1d37a2485ebb7ddc5b2bef0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/4c5d5582baf2829751a5207659329c1f52eedeb6",
-                "reference": "4c5d5582baf2829751a5207659329c1f52eedeb6",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/17b5962d252b2d6d1d37a2485ebb7ddc5b2bef0a",
+                "reference": "17b5962d252b2d6d1d37a2485ebb7ddc5b2bef0a",
                 "shasum": ""
             },
             "require": {
@@ -2161,7 +2161,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-12-12T08:27:14+00:00"
+            "time": "2018-01-03T07:37:34+00:00"
         },
         {
             "name": "whitehat101/apr1-md5",
@@ -3631,16 +3631,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.2",
+            "version": "v3.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "afe0cd38486505c9703707707d91450cfc1bd536"
+                "reference": "25c192f25721a74084272671f658797d9e0e0146"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/afe0cd38486505c9703707707d91450cfc1bd536",
-                "reference": "afe0cd38486505c9703707707d91450cfc1bd536",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/25c192f25721a74084272671f658797d9e0e0146",
+                "reference": "25c192f25721a74084272671f658797d9e0e0146",
                 "shasum": ""
             },
             "require": {
@@ -3685,7 +3685,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-12-11T20:38:23+00:00"
+            "time": "2018-01-03T07:37:34+00:00"
         },
         {
             "name": "webmozart/assert",
