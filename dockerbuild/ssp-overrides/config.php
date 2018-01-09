@@ -335,15 +335,15 @@ $config = [
 
     /*
      * Sets the duration, in seconds, data should be stored in the datastore. As the datastore is used for
-     * login and logout requests, thid option will control the maximum time these operations can take.
+     * login and logout requests, this option will control the maximum time these operations can take.
      * The default is 4 hours (4*60*60) seconds, which should be more than enough for these operations.
      */
-    'session.datastore.timeout' => (4 * 60 * 60), // 4 hours
+    'session.datastore.timeout' => $SESSION_DURATION,
 
     /*
      * Sets the duration, in seconds, auth state should be stored.
      */
-    'session.state.timeout' => (60 * 60), // 1 hour
+    'session.state.timeout' => $SESSION_DURATION,
 
     /*
      * Option to override the default settings for the session cookie name
