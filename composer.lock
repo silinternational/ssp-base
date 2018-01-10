@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1497f02c34806c4f02c6b28347e1089f",
+    "content-hash": "0d0a5b3d1160b4f6de224f6163c670a4",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -1305,12 +1305,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "21b3900483e9bc1536a298bc3eb3d647ab56d8a1"
+                "reference": "fe89fd2178cabef137b9a76fa91d64925474b956"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/21b3900483e9bc1536a298bc3eb3d647ab56d8a1",
-                "reference": "21b3900483e9bc1536a298bc3eb3d647ab56d8a1",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/fe89fd2178cabef137b9a76fa91d64925474b956",
+                "reference": "fe89fd2178cabef137b9a76fa91d64925474b956",
                 "shasum": ""
             },
             "conflict": {
@@ -1393,7 +1393,7 @@
                 "symfony/web-profiler-bundle": ">=2,<2.3.19|>=2.4,<2.4.9|>=2.5,<2.5.4",
                 "symfony/yaml": ">=2,<2.0.22|>=2.1,<2.1.7",
                 "thelia/backoffice-default-template": ">=2.1,<2.1.2",
-                "thelia/thelia": ">=2.1,<2.1.2|>=2.1.0-beta1,<2.1.3",
+                "thelia/thelia": ">=2.1.0-beta1,<2.1.3|>=2.1,<2.1.2",
                 "twig/twig": "<1.20",
                 "typo3/cms": ">=6.2,<6.2.30|>=7,<7.6.22|>=8,<8.7.5",
                 "typo3/flow": ">=1,<1.0.4|>=1.1,<1.1.1|>=2,<2.0.1|>=2.3,<2.3.16|>=3,<3.0.10|>=3.1,<3.1.7|>=3.2,<3.2.7|>=3.3,<3.3.5",
@@ -1442,7 +1442,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2018-01-03T11:17:07+00:00"
+            "time": "2018-01-07T00:56:33+00:00"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -1703,16 +1703,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "1a2d88dd861c2feafd05edc81d6ff4946a186b3d"
+                "reference": "713ca0d672b218bb95b251fce97654cfb8a88216"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/1a2d88dd861c2feafd05edc81d6ff4946a186b3d",
-                "reference": "1a2d88dd861c2feafd05edc81d6ff4946a186b3d",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/713ca0d672b218bb95b251fce97654cfb8a88216",
+                "reference": "713ca0d672b218bb95b251fce97654cfb8a88216",
                 "shasum": ""
             },
             "require": {
@@ -1721,7 +1721,7 @@
                 "silinternational/idp-id-broker-php-client": "^2.2",
                 "silinternational/php-env": "^2.1",
                 "silinternational/psr3-adapters": "^1.1",
-                "simplesamlphp/simplesamlphp": "^1.14.16"
+                "simplesamlphp/simplesamlphp": "~1.14.16"
             },
             "require-dev": {
                 "behat/behat": "^3.3",
@@ -1747,7 +1747,7 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "time": "2017-11-27T22:04:46+00:00"
+            "time": "2018-01-10T17:00:28+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
