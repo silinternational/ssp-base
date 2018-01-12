@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d0a5b3d1160b4f6de224f6163c670a4",
+    "content-hash": "ea31a9a064e1eb9082451b6d13f997a0",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -1669,21 +1669,22 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "4.0.5",
+            "version": "5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "faecb2ea99e88484d0aa48aec94e3216df7c3c25"
+                "reference": "820646278e19c305930dcbcd92c7567f3e2c1957"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/faecb2ea99e88484d0aa48aec94e3216df7c3c25",
-                "reference": "faecb2ea99e88484d0aa48aec94e3216df7c3c25",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/820646278e19c305930dcbcd92c7567f3e2c1957",
+                "reference": "820646278e19c305930dcbcd92c7567f3e2c1957",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4",
                 "roave/security-advisories": "dev-master",
+                "silinternational/ssp-utilities": "^1.0",
                 "simplesamlphp/composer-module-installer": "^1.1.5",
                 "simplesamlphp/simplesamlphp": "^1.14.10"
             },
@@ -1699,7 +1700,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2018-01-05T13:41:17+00:00"
+            "time": "2018-01-12T18:24:24+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
