@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea31a9a064e1eb9082451b6d13f997a0",
+    "content-hash": "49cc73172f701330daec2b6dc8364e8a",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -115,8 +115,7 @@
                 "jquery",
                 "mask",
                 "plugins"
-            ],
-            "time": "2017-11-21T11:46:23+00:00"
+            ]
         },
         {
             "name": "cebe/markdown",
@@ -1704,16 +1703,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "1.1.0",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "713ca0d672b218bb95b251fce97654cfb8a88216"
+                "reference": "1a2d88dd861c2feafd05edc81d6ff4946a186b3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/713ca0d672b218bb95b251fce97654cfb8a88216",
-                "reference": "713ca0d672b218bb95b251fce97654cfb8a88216",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/1a2d88dd861c2feafd05edc81d6ff4946a186b3d",
+                "reference": "1a2d88dd861c2feafd05edc81d6ff4946a186b3d",
                 "shasum": ""
             },
             "require": {
@@ -1722,7 +1721,7 @@
                 "silinternational/idp-id-broker-php-client": "^2.2",
                 "silinternational/php-env": "^2.1",
                 "silinternational/psr3-adapters": "^1.1",
-                "simplesamlphp/simplesamlphp": "~1.14.16"
+                "simplesamlphp/simplesamlphp": "^1.14.16"
             },
             "require-dev": {
                 "behat/behat": "^3.3",
@@ -1748,7 +1747,7 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "time": "2018-01-10T17:00:28+00:00"
+            "time": "2017-11-27T22:04:46+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
