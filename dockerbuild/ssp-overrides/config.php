@@ -5,7 +5,6 @@
  */
 use Sil\PhpEnv\Env;
 use Sil\PhpEnv\EnvVarNotFoundException;
-use Sil\SspUtils\AnnouncementUtils;
 
 /*
  * Get config settings from ENV vars or set defaults
@@ -89,13 +88,6 @@ $config = [
       */
      'analytics.trackingId' => $ANALYTICS_ID,
 
-    /*
-     * Get a string of html to show as an announcement on the discovery page
-     * and/or login page.  By default, this will be fetched from
-     *   .../vendor/simplesamlphp/simplesamlphp/announcement/announcement.php
-     */
-    'announcement' => AnnouncementUtils::getAnnouncement(),
-    
     'passwordChangeUrl' => $PASSWORD_CHANGE_URL,
     'passwordForgotUrl' => $PASSWORD_FORGOT_URL,    
 
