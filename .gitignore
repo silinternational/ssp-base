@@ -4,3 +4,4 @@ local.env
 .vagrant
 composer.phar
 /nbproject/
+local.*.env
