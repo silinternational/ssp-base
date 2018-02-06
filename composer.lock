@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8724262f2351a8ad7079178aeabfd341",
+    "content-hash": "4c4f4a076750df45ac06cbf3303cda2b",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -1970,16 +1970,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-sildisco.git",
-                "reference": "609716a33711e8e5200774cf51e6290315574478"
+                "reference": "f713eb88add309849a9e9fdd97779f1c17eb0670"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/609716a33711e8e5200774cf51e6290315574478",
-                "reference": "609716a33711e8e5200774cf51e6290315574478",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/f713eb88add309849a9e9fdd97779f1c17eb0670",
+                "reference": "f713eb88add309849a9e9fdd97779f1c17eb0670",
                 "shasum": ""
             },
             "require": {
@@ -2005,7 +2005,7 @@
                 }
             ],
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
-            "time": "2017-08-30T19:44:29+00:00"
+            "time": "2018-02-06T19:31:24+00:00"
         },
         {
             "name": "silinternational/ssp-utilities",
