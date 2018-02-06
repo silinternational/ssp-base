@@ -580,16 +580,18 @@ $config = [
          * Copy friendly names attribute keys to oids ...
          */
         40 => [
-            'class' => 'sildisco:AttributeMap',
+            'class' => 'core:AttributeMap',
             'name2oid',
+            '%duplicate',
         ],
 
         /*
          * Copy oid attribute keys to friendly names
          */
         41 => [
-            'class' => 'sildisco:AttributeMap',
+            'class' => 'core:AttributeMap',
             'oid2name',
+            '%duplicate',
         ],
 
         // 48 =>  *** WARNING: For Hubs this entry is added at the end of this file
