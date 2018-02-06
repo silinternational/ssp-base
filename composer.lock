@@ -791,7 +791,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.5.33",
+            "version": "v5.5.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -835,16 +835,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v5.5.33",
+            "version": "v5.5.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "f6eb4fc687a1956cb44007604cd31dc50858eca9"
+                "reference": "139eb279bc18a1229c6c49a618d122c613edb2c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/f6eb4fc687a1956cb44007604cd31dc50858eca9",
-                "reference": "f6eb4fc687a1956cb44007604cd31dc50858eca9",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/139eb279bc18a1229c6c49a618d122c613edb2c7",
+                "reference": "139eb279bc18a1229c6c49a618d122c613edb2c7",
                 "shasum": ""
             },
             "require": {
@@ -888,7 +888,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2018-01-19T13:47:08+00:00"
+            "time": "2018-02-04T20:29:16+00:00"
         },
         {
             "name": "jaimeperez/twig-configurable-i18n",
@@ -1468,12 +1468,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "a5ff7ff05264c8796ffb1b7b6fdde43a9c6b0776"
+                "reference": "3df94834c80037130b533703df4672785b6ea112"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/a5ff7ff05264c8796ffb1b7b6fdde43a9c6b0776",
-                "reference": "a5ff7ff05264c8796ffb1b7b6fdde43a9c6b0776",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/3df94834c80037130b533703df4672785b6ea112",
+                "reference": "3df94834c80037130b533703df4672785b6ea112",
                 "shasum": ""
             },
             "conflict": {
@@ -1557,7 +1557,7 @@
                 "symfony/web-profiler-bundle": ">=2,<2.3.19|>=2.4,<2.4.9|>=2.5,<2.5.4",
                 "symfony/yaml": ">=2,<2.0.22|>=2.1,<2.1.7",
                 "thelia/backoffice-default-template": ">=2.1,<2.1.2",
-                "thelia/thelia": ">=2.1,<2.1.2|>=2.1.0-beta1,<2.1.3",
+                "thelia/thelia": ">=2.1.0-beta1,<2.1.3|>=2.1,<2.1.2",
                 "twig/twig": "<1.20",
                 "typo3/cms": ">=6.2,<6.2.30|>=7,<7.6.22|>=8,<8.7.5",
                 "typo3/flow": ">=1,<1.0.4|>=1.1,<1.1.1|>=2,<2.0.1|>=2.3,<2.3.16|>=3,<3.0.10|>=3.1,<3.1.7|>=3.2,<3.2.7|>=3.3,<3.3.5",
@@ -1606,7 +1606,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2018-01-31T19:36:12+00:00"
+            "time": "2018-02-04T22:09:50+00:00"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -1786,22 +1786,22 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-expirychecker",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-expirychecker.git",
-                "reference": "80eda27759ba4300900fca813e83ee05394f301a"
+                "reference": "8259127f6773734f9d24eb11b1cdcfa0b59c6093"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/80eda27759ba4300900fca813e83ee05394f301a",
-                "reference": "80eda27759ba4300900fca813e83ee05394f301a",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/8259127f6773734f9d24eb11b1cdcfa0b59c6093",
+                "reference": "8259127f6773734f9d24eb11b1cdcfa0b59c6093",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0",
                 "roave/security-advisories": "dev-master",
-                "silinternational/psr3-adapters": "^1.1",
+                "silinternational/psr3-adapters": "^1.1 || ^2.0",
                 "simplesamlphp/simplesamlphp": "^1.14.12"
             },
             "require-dev": {
@@ -1828,7 +1828,7 @@
                 }
             ],
             "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired.",
-            "time": "2017-08-30T19:54:43+00:00"
+            "time": "2018-02-06T15:52:55+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
@@ -1867,16 +1867,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "c1a126eb5fca199ac225a36b9939f2849868b1b6"
+                "reference": "6bb316fc26164a5581620bc8a3c8f2b01fda551e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/c1a126eb5fca199ac225a36b9939f2849868b1b6",
-                "reference": "c1a126eb5fca199ac225a36b9939f2849868b1b6",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/6bb316fc26164a5581620bc8a3c8f2b01fda551e",
+                "reference": "6bb316fc26164a5581620bc8a3c8f2b01fda551e",
                 "shasum": ""
             },
             "require": {
@@ -1911,7 +1911,7 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "time": "2018-02-01T19:44:54+00:00"
+            "time": "2018-02-06T15:54:49+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
