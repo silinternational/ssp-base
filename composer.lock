@@ -1786,16 +1786,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-expirychecker",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-expirychecker.git",
-                "reference": "8259127f6773734f9d24eb11b1cdcfa0b59c6093"
+                "reference": "0e0acdb99f93f0fbb822293fa8ae7ce541366ff8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/8259127f6773734f9d24eb11b1cdcfa0b59c6093",
-                "reference": "8259127f6773734f9d24eb11b1cdcfa0b59c6093",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/0e0acdb99f93f0fbb822293fa8ae7ce541366ff8",
+                "reference": "0e0acdb99f93f0fbb822293fa8ae7ce541366ff8",
                 "shasum": ""
             },
             "require": {
@@ -1828,7 +1828,7 @@
                 }
             ],
             "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired.",
-            "time": "2018-02-06T15:52:55+00:00"
+            "time": "2018-02-06T21:50:54+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
@@ -1867,16 +1867,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "6bb316fc26164a5581620bc8a3c8f2b01fda551e"
+                "reference": "ee166006de0946d4277aca4b568096eb2b7ea58a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/6bb316fc26164a5581620bc8a3c8f2b01fda551e",
-                "reference": "6bb316fc26164a5581620bc8a3c8f2b01fda551e",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/ee166006de0946d4277aca4b568096eb2b7ea58a",
+                "reference": "ee166006de0946d4277aca4b568096eb2b7ea58a",
                 "shasum": ""
             },
             "require": {
@@ -1911,20 +1911,20 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "time": "2018-02-06T15:54:49+00:00"
+            "time": "2018-02-07T16:29:31+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "4.0.2",
+            "version": "4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "8e7383bf9afb381491debb0ee8abb11366696f73"
+                "reference": "387604d0bf9ccf26bfdfb34efc44a544d797baed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/8e7383bf9afb381491debb0ee8abb11366696f73",
-                "reference": "8e7383bf9afb381491debb0ee8abb11366696f73",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/387604d0bf9ccf26bfdfb34efc44a544d797baed",
+                "reference": "387604d0bf9ccf26bfdfb34efc44a544d797baed",
                 "shasum": ""
             },
             "require": {
@@ -1966,7 +1966,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2018-02-01T18:33:50+00:00"
+            "time": "2018-02-07T16:11:50+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
