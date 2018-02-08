@@ -1786,16 +1786,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-expirychecker",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-expirychecker.git",
-                "reference": "0e0acdb99f93f0fbb822293fa8ae7ce541366ff8"
+                "reference": "f7d900b031b87a3af60983fd391afa3f7606f1ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/0e0acdb99f93f0fbb822293fa8ae7ce541366ff8",
-                "reference": "0e0acdb99f93f0fbb822293fa8ae7ce541366ff8",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/f7d900b031b87a3af60983fd391afa3f7606f1ba",
+                "reference": "f7d900b031b87a3af60983fd391afa3f7606f1ba",
                 "shasum": ""
             },
             "require": {
@@ -1828,7 +1828,7 @@
                 }
             ],
             "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired.",
-            "time": "2018-02-06T21:50:54+00:00"
+            "time": "2018-02-08T18:28:51+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
@@ -1970,16 +1970,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-sildisco.git",
-                "reference": "b59646d126f7d9d8cbcbabbccadc798ee0f3619b"
+                "reference": "b8e99cce8b5a194def6f71a6966e4d2a0f13450e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/b59646d126f7d9d8cbcbabbccadc798ee0f3619b",
-                "reference": "b59646d126f7d9d8cbcbabbccadc798ee0f3619b",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/b8e99cce8b5a194def6f71a6966e4d2a0f13450e",
+                "reference": "b8e99cce8b5a194def6f71a6966e4d2a0f13450e",
                 "shasum": ""
             },
             "require": {
@@ -2005,7 +2005,7 @@
                 }
             ],
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
-            "time": "2018-02-07T22:01:34+00:00"
+            "time": "2018-02-08T15:59:36+00:00"
         },
         {
             "name": "silinternational/ssp-utilities",
