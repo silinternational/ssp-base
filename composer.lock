@@ -1832,16 +1832,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "5.2.1",
+            "version": "5.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "24e4f038a88172c0e25476003f1cfc25f3ce37ed"
+                "reference": "ed6f98f5f7d0340418afbc8ff59a68e52a74c737"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/24e4f038a88172c0e25476003f1cfc25f3ce37ed",
-                "reference": "24e4f038a88172c0e25476003f1cfc25f3ce37ed",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/ed6f98f5f7d0340418afbc8ff59a68e52a74c737",
+                "reference": "ed6f98f5f7d0340418afbc8ff59a68e52a74c737",
                 "shasum": ""
             },
             "require": {
@@ -1849,7 +1849,7 @@
                 "roave/security-advisories": "dev-master",
                 "silinternational/ssp-utilities": "^1.0",
                 "simplesamlphp/composer-module-installer": "^1.1.5",
-                "simplesamlphp/simplesamlphp": "^1.14.10"
+                "simplesamlphp/simplesamlphp": "^1.15.2"
             },
             "type": "simplesamlphp-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -1863,7 +1863,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2018-02-01T19:51:42+00:00"
+            "time": "2018-02-07T22:00:57+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
@@ -1970,16 +1970,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-sildisco.git",
-                "reference": "f713eb88add309849a9e9fdd97779f1c17eb0670"
+                "reference": "b59646d126f7d9d8cbcbabbccadc798ee0f3619b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/f713eb88add309849a9e9fdd97779f1c17eb0670",
-                "reference": "f713eb88add309849a9e9fdd97779f1c17eb0670",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/b59646d126f7d9d8cbcbabbccadc798ee0f3619b",
+                "reference": "b59646d126f7d9d8cbcbabbccadc798ee0f3619b",
                 "shasum": ""
             },
             "require": {
@@ -2005,7 +2005,7 @@
                 }
             ],
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
-            "time": "2018-02-06T19:31:24+00:00"
+            "time": "2018-02-07T22:01:34+00:00"
         },
         {
             "name": "silinternational/ssp-utilities",
