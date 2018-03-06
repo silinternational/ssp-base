@@ -11,5 +11,4 @@ clean:
 	docker-compose rm -f
 
 composer:
-	docker-compose run --rm composer bash -c "composer self-update && composer update --no-scripts"
-	docker-compose run --rm composer bash -c "composer show --format=json" > installed-packages.txt
+	docker-compose run --rm composer bash -c "composer self-update && composer update --no-scripts && composer show --format=json > installed-packages.json"
