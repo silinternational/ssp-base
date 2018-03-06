@@ -77,12 +77,12 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.5.35",
+            "version": "v5.5.36",
             "description": "The Illuminate Contracts package."
         },
         {
             "name": "illuminate/support",
-            "version": "v5.5.35",
+            "version": "v5.5.36",
             "description": "The Illuminate Support package."
         },
         {
@@ -102,7 +102,7 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.22.1",
+            "version": "1.23.0",
             "description": "A simple API extension for DateTime."
         },
         {
@@ -187,7 +187,7 @@
         },
         {
             "name": "psr/simple-cache",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "description": "Common interfaces for simple caching"
         },
         {
@@ -202,7 +202,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master f3e52bf",
+            "version": "dev-master efecacb",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -282,12 +282,12 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "5.2.2",
+            "version": "6.0.0",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "2.0.6",
+            "version": "2.1.0",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.)."
         },
         {
@@ -312,13 +312,18 @@
         },
         {
             "name": "simplesamlphp/saml2",
-            "version": "v3.1.3",
+            "version": "v3.1.4",
             "description": "SAML2 PHP library from SimpleSAMLphp"
         },
         {
             "name": "simplesamlphp/simplesamlphp",
-            "version": "v1.15.3",
+            "version": "v1.15.4",
             "description": "A PHP implementation of a SAML 2.0 service provider and identity provider, also compatible with Shibboleth 1.3 and 2.0."
+        },
+        {
+            "name": "sinergi/browser-detector",
+            "version": "6.1.2",
+            "description": "Detecting the user's browser, operating system and language."
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -327,12 +332,12 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v3.4.4",
+            "version": "v3.4.6",
             "description": "Symfony Translation Component"
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.4",
+            "version": "v3.4.6",
             "description": "Symfony Yaml Component"
         },
         {
@@ -342,7 +347,7 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.35.0",
+            "version": "v1.35.2",
             "description": "Twig, the flexible, fast, and secure template language for PHP"
         },
         {
