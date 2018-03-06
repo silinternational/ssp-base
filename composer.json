@@ -13,7 +13,7 @@
   "require": {
     "php": ">=5.4",
     "roave/security-advisories": "dev-master",
-    "simplesamlphp/simplesamlphp": "~1.15.4",
+    "simplesamlphp/simplesamlphp": "~1.15.2",
     "simplesamlphp/composer-module-installer": "1.1.6",
     "silinternational/simplesamlphp-module-expirychecker": "^2.0",
     "silinternational/simplesamlphp-module-silauth": "^4.0.2",
