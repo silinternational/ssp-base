@@ -23,6 +23,7 @@ services:
       - ./composer.json:/data/composer.json
       - ./composer.lock:/data/composer.lock
       - ./installed-packages.json:/data/installed-packages.json
+      - ./development/update-composer-deps.sh:/data/update-composer-deps.sh
       - ./vendor:/data/vendor
     env_file:
       - ./local.env
