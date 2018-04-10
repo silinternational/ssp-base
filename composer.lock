@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a37a948ff96fb0e9b2853c891c41b19c",
+    "content-hash": "725401628f924988437ca15dcdaf19ab",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -1930,16 +1930,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "4.0.6",
+            "version": "4.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "877dc62d60dc8d879109fef47d6ef22d1eed66ec"
+                "reference": "b5c06c251075dd3b7448f8e4a032b2029bb42b9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/877dc62d60dc8d879109fef47d6ef22d1eed66ec",
-                "reference": "877dc62d60dc8d879109fef47d6ef22d1eed66ec",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/b5c06c251075dd3b7448f8e4a032b2029bb42b9e",
+                "reference": "b5c06c251075dd3b7448f8e4a032b2029bb42b9e",
                 "shasum": ""
             },
             "require": {
@@ -1981,7 +1981,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2018-02-08T19:52:04+00:00"
+            "time": "2018-04-10T19:46:25+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
