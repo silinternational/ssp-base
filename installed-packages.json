@@ -57,7 +57,7 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.3.0",
+            "version": "6.3.2",
             "description": "Guzzle is a PHP HTTP client library"
         },
         {
@@ -77,12 +77,12 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.5.36",
+            "version": "v5.5.40",
             "description": "The Illuminate Contracts package."
         },
         {
             "name": "illuminate/support",
-            "version": "v5.5.36",
+            "version": "v5.5.40",
             "description": "The Illuminate Support package."
         },
         {
@@ -102,12 +102,12 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.23.0",
+            "version": "1.25.0",
             "description": "A simple API extension for DateTime."
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.11",
+            "version": "v2.0.12",
             "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7"
         },
         {
@@ -202,7 +202,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master efecacb",
+            "version": "dev-master c83f6aa",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -292,7 +292,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "4.0.6",
+            "version": "4.0.7",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
@@ -332,12 +332,12 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v3.4.6",
+            "version": "v3.4.8",
             "description": "Symfony Translation Component"
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.6",
+            "version": "v3.4.8",
             "description": "Symfony Yaml Component"
         },
         {
@@ -347,7 +347,7 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.35.2",
+            "version": "v1.35.3",
             "description": "Twig, the flexible, fast, and secure template language for PHP"
         },
         {
@@ -362,12 +362,12 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.14.1",
+            "version": "2.0.15.1",
             "description": "Yii PHP Framework Version 2"
         },
         {
             "name": "yiisoft/yii2-composer",
-            "version": "2.0.5",
+            "version": "2.0.6",
             "description": "The composer plugin for Yii extension installer"
         },
         {
