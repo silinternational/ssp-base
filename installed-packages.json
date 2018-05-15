@@ -6,11 +6,6 @@
             "description": "A PHP LDAP Package for Active Directory Manipulation."
         },
         {
-            "name": "bower-asset/inputmask",
-            "version": "3.3.11",
-            "description": "Inputmask is a javascript library which creates an input mask.  Inputmask can run against vanilla javascript, jQuery and jqlite."
-        },
-        {
             "name": "cebe/markdown",
             "version": "1.1.2",
             "description": "A super fast, highly extensible markdown parser for PHP"
@@ -32,7 +27,7 @@
         },
         {
             "name": "fillup/fake-bower-assets",
-            "version": "2.0.9",
+            "version": "2.0.13",
             "description": "Use Composer \"replace\" to fake out installing bower-asset dependencies that aren't really needed"
         },
         {
@@ -202,7 +197,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master d3268ea",
+            "version": "dev-master 6fe7125",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -292,7 +287,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "4.0.8",
+            "version": "4.1.0",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
