@@ -6,11 +6,6 @@
             "description": "A PHP LDAP Package for Active Directory Manipulation."
         },
         {
-            "name": "bower-asset/inputmask",
-            "version": "3.3.11",
-            "description": "Inputmask is a javascript library which creates an input mask.  Inputmask can run against vanilla javascript, jQuery and jqlite."
-        },
-        {
             "name": "cebe/markdown",
             "version": "1.1.2",
             "description": "A super fast, highly extensible markdown parser for PHP"
@@ -32,7 +27,7 @@
         },
         {
             "name": "fillup/fake-bower-assets",
-            "version": "2.0.9",
+            "version": "2.0.13",
             "description": "Use Composer \"replace\" to fake out installing bower-asset dependencies that aren't really needed"
         },
         {
@@ -57,7 +52,7 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.3.0",
+            "version": "6.3.3",
             "description": "Guzzle is a PHP HTTP client library"
         },
         {
@@ -77,12 +72,12 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.5.36",
+            "version": "v5.5.40",
             "description": "The Illuminate Contracts package."
         },
         {
             "name": "illuminate/support",
-            "version": "v5.5.36",
+            "version": "v5.5.40",
             "description": "The Illuminate Support package."
         },
         {
@@ -102,12 +97,12 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.23.0",
+            "version": "1.27.0",
             "description": "A simple API extension for DateTime."
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.11",
+            "version": "v2.0.12",
             "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7"
         },
         {
@@ -132,7 +127,7 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.7.5",
+            "version": "1.7.6",
             "description": "Highly opinionated mocking framework for PHP 5.3+"
         },
         {
@@ -202,7 +197,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master efecacb",
+            "version": "dev-master 6fe7125",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -292,7 +287,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "4.0.6",
+            "version": "4.1.0",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
@@ -312,7 +307,7 @@
         },
         {
             "name": "simplesamlphp/saml2",
-            "version": "v3.1.4",
+            "version": "v3.1.5",
             "description": "SAML2 PHP library from SimpleSAMLphp"
         },
         {
@@ -327,17 +322,17 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.7.0",
+            "version": "v1.8.0",
             "description": "Symfony polyfill for the Mbstring extension"
         },
         {
             "name": "symfony/translation",
-            "version": "v3.4.6",
+            "version": "v3.4.9",
             "description": "Symfony Translation Component"
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.6",
+            "version": "v3.4.9",
             "description": "Symfony Yaml Component"
         },
         {
@@ -347,7 +342,7 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.35.2",
+            "version": "v1.35.3",
             "description": "Twig, the flexible, fast, and secure template language for PHP"
         },
         {
@@ -362,17 +357,17 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.14.1",
+            "version": "2.0.15.1",
             "description": "Yii PHP Framework Version 2"
         },
         {
             "name": "yiisoft/yii2-composer",
-            "version": "2.0.5",
+            "version": "2.0.6",
             "description": "The composer plugin for Yii extension installer"
         },
         {
             "name": "yiisoft/yii2-gii",
-            "version": "2.0.6",
+            "version": "2.0.7",
             "description": "The Gii extension for the Yii framework"
         }
     ]
