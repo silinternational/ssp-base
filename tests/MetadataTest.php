@@ -15,6 +15,8 @@ class MetadataTest extends TestCase
     const SkipTestsKey = "SkipTests";
 
     const IdpCode = 'IDPNamespace';
+
+    const SPNameKey = 'name';
     
     public $metadataPath = __DIR__ . '/../vendor/simplesamlphp/simplesamlphp/metadata';
 
@@ -269,7 +271,6 @@ class MetadataTest extends TestCase
             return;
         }
         $idpListKey = Utils::IDP_LIST_KEY;
-        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
         $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
 
         $badSps = [];
@@ -282,6 +283,29 @@ class MetadataTest extends TestCase
 
         $this->assertTrue(empty($badSps),
             'At least one SP has an empty IDPList entry (required) ... ' . 
+            var_export($badSps, True));
+    }
+
+    public function testMetadataSPWithNoName()
+    {
+        $hubMode = Env::get('HUB_MODE', true);
+        if ( ! $hubMode) {
+            $this->markTestSkipped('Skipping test because HUB_MODE = false');
+            return;
+        }
+
+        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+
+        $badSps = [];
+
+        foreach ($spEntries as $spEntityId => $spEntry) {
+            if (empty($spEntry[self::SPNameKey])) {
+                $badSps[] = $spEntityId;
+            }
+        }
+
+        $this->assertTrue(empty($badSps),
+            'At least one SP has an empty "' . self::SPNameKey . '" entry (required) ... ' .
             var_export($badSps, True));
     }
 
