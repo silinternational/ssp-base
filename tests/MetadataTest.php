@@ -271,7 +271,6 @@ class MetadataTest extends TestCase
             return;
         }
         $idpListKey = Utils::IDP_LIST_KEY;
-        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
         $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
 
         $badSps = [];
