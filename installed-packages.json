@@ -277,7 +277,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "6.0.0",
+            "version": "6.1.0",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp"
         },
         {

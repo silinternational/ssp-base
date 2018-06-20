@@ -13,6 +13,7 @@ return [
         'IDPList' => ['http://ssp-hub-idp.local:8085',
                       'http://ssp-hub-idp2.local:8086'
                      ],
+        'name' => "SP Local",
         'AssertionConsumerService' => 'http://ssp-hub-sp.local:8081/module.php/saml/sp/saml2-acs.php/ssp-hub',
         'SingleLogoutService' => 'http://ssp-hub-sp.local:8081/module.php/saml/sp/saml2-logout.php/ssp-hub',
         'SkipTests' => True,
