@@ -97,12 +97,12 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.27.0",
+            "version": "1.30.0",
             "description": "A simple API extension for DateTime."
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.12",
+            "version": "v2.0.15",
             "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7"
         },
         {
@@ -197,7 +197,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master 6fe7125",
+            "version": "dev-master 0e4ea9f",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -277,7 +277,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "6.0.0",
+            "version": "6.1.0",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp"
         },
         {
@@ -292,7 +292,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "2.0.3",
+            "version": "2.1.0",
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic"
         },
         {
@@ -307,7 +307,7 @@
         },
         {
             "name": "simplesamlphp/saml2",
-            "version": "v3.1.5",
+            "version": "v3.1.6",
             "description": "SAML2 PHP library from SimpleSAMLphp"
         },
         {
@@ -321,18 +321,23 @@
             "description": "Detecting the user's browser, operating system and language."
         },
         {
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.8.0",
+            "description": "Symfony polyfill for ctype functions"
+        },
+        {
             "name": "symfony/polyfill-mbstring",
             "version": "v1.8.0",
             "description": "Symfony polyfill for the Mbstring extension"
         },
         {
             "name": "symfony/translation",
-            "version": "v3.4.9",
+            "version": "v3.4.11",
             "description": "Symfony Translation Component"
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.9",
+            "version": "v3.4.11",
             "description": "Symfony Yaml Component"
         },
         {
