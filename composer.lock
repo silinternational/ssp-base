@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "96b2797a961b0c7807c23880a3057710",
+    "content-hash": "a4647d9b925b3a615749fb23dbd366bf",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -60,16 +60,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.67.17",
+            "version": "3.67.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "b937c2193a4f509de5cd5836fa2a37904fc8e465"
+                "reference": "8575c7470c301fd7f2ed25e78bf23198db68c1cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/b937c2193a4f509de5cd5836fa2a37904fc8e465",
-                "reference": "b937c2193a4f509de5cd5836fa2a37904fc8e465",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8575c7470c301fd7f2ed25e78bf23198db68c1cf",
+                "reference": "8575c7470c301fd7f2ed25e78bf23198db68c1cf",
                 "shasum": ""
             },
             "require": {
@@ -136,7 +136,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-09-21T20:29:41+00:00"
+            "time": "2018-09-25T20:15:23+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -2068,16 +2068,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "2.1.4",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-sildisco.git",
-                "reference": "c0e62880b5c4752315c6675d9205691173ad1091"
+                "reference": "9456a510c3573929d59efefcbf828342da191d0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/c0e62880b5c4752315c6675d9205691173ad1091",
-                "reference": "c0e62880b5c4752315c6675d9205691173ad1091",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/9456a510c3573929d59efefcbf828342da191d0d",
+                "reference": "9456a510c3573929d59efefcbf828342da191d0d",
                 "shasum": ""
             },
             "require": {
@@ -2104,7 +2104,7 @@
                 }
             ],
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
-            "time": "2018-09-24T17:42:15+00:00"
+            "time": "2018-09-26T18:30:32+00:00"
         },
         {
             "name": "silinternational/ssp-utilities",
