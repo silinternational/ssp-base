@@ -7,7 +7,7 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.67.19",
+            "version": "3.67.20",
             "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project"
         },
         {
@@ -212,7 +212,7 @@
         },
         {
             "name": "robrichards/xmlseclibs",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "description": "A PHP library for XML Security"
         },
         {
@@ -302,7 +302,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic"
         },
         {
