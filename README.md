@@ -52,3 +52,5 @@ must be installed.
  
 13. Hit `Apply` and `OK`
 14. Click on `Run` and then `Debug 'Debug on Docker'`
+
+##### Use of sildisco's LogUser module is optional and triggered via an authproc.
