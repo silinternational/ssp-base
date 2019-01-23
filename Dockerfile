@@ -52,5 +52,4 @@ RUN chmod a+x /data/setup-logentries.sh /data/run.sh /data/run-tests.sh
 
 EXPOSE 80
 ENTRYPOINT ["/usr/local/bin/s3-expand"]
-#CMD ["/data/run.sh"]
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+CMD ["/data/run.sh"]
