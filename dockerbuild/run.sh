@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -x
 
 # establish a signal handler to catch the SIGTERM from a 'docker stop'
 # reference: https://medium.com/@gchudnov/trapping-signals-in-docker-containers-7a57fdda7d86
