@@ -2053,12 +2053,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "0b7dd926453e5148b3d73f577c40e6e6ca9e91b1"
+                "reference": "6652d20b88f02bc17d8f07edf07e5170bae602b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/0b7dd926453e5148b3d73f577c40e6e6ca9e91b1",
-                "reference": "0b7dd926453e5148b3d73f577c40e6e6ca9e91b1",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/6652d20b88f02bc17d8f07edf07e5170bae602b7",
+                "reference": "6652d20b88f02bc17d8f07edf07e5170bae602b7",
                 "shasum": ""
             },
             "require": {
@@ -2094,7 +2094,7 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "time": "2019-01-23T20:02:40+00:00"
+            "time": "2019-01-30T23:04:43+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
@@ -2102,7 +2102,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-profilereview",
-                "reference": "17a49ad2fa62ee00ece1c2bab6c0cd6c04ab5494"
+                "reference": "c55933e4c2fd321fd444b15c0b5f383d2a77253d"
             },
             "require": {
                 "php": ">=7.0",
@@ -2135,7 +2135,7 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.).",
-            "time": "2019-01-24T17:04:29+00:00"
+            "time": "2019-01-30T23:04:06+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",

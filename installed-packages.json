@@ -297,12 +297,12 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "dev-develop 0b7dd92",
+            "version": "dev-develop 6652d20",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.)."
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "dev-develop 17a49ad",
+            "version": "dev-develop c55933e",
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.)."
         },
         {
