@@ -7,7 +7,7 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.86.2",
+            "version": "3.87.2",
             "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project"
         },
         {
@@ -212,7 +212,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master d155bac",
+            "version": "dev-master db87670",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -297,17 +297,17 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "dev-develop 514bdc2",
+            "version": "dev-develop 0b7dd92",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.)."
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "dev-develop f1fd80a",
+            "version": "dev-develop 17a49ad",
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.)."
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "dev-develop 318bbeb",
+            "version": "dev-develop 85aeb1a",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
@@ -352,7 +352,7 @@
         },
         {
             "name": "symfony/translation",
-            "version": "3.4.x-dev 0562050",
+            "version": "3.4.x-dev 81cfcd6",
             "description": "Symfony Translation Component"
         },
         {
@@ -382,7 +382,7 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "dev-master 6b304c9",
+            "version": "dev-master 2af7a98",
             "description": "Yii PHP Framework Version 2"
         },
         {
