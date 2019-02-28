@@ -7,7 +7,7 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.87.2",
+            "version": "3.87.20",
             "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project"
         },
         {
@@ -47,7 +47,7 @@
         },
         {
             "name": "google/recaptcha",
-            "version": "dev-master a61b968",
+            "version": "dev-master 9c17232",
             "description": "Client library for reCAPTCHA, a free service that protects websites from spam and abuse."
         },
         {
@@ -57,7 +57,7 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "dev-master 0241120",
+            "version": "dev-master fa74540",
             "description": "Guzzle is a PHP HTTP client library"
         },
         {
@@ -72,17 +72,17 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "dev-master ae7949e",
+            "version": "dev-master 31ea59d",
             "description": "PSR-7 message implementation that also provides common utility methods"
         },
         {
             "name": "illuminate/contracts",
-            "version": "5.5.x-dev b2a62b4",
+            "version": "5.5.x-dev 80c09a2",
             "description": "The Illuminate Contracts package."
         },
         {
             "name": "illuminate/support",
-            "version": "5.5.x-dev 56f5d53",
+            "version": "5.5.x-dev a09e05f",
             "description": "The Illuminate Support package."
         },
         {
@@ -212,7 +212,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master db87670",
+            "version": "dev-master 4e04718",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -222,7 +222,7 @@
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
-            "version": "dev-master 22f5f5f",
+            "version": "dev-master 383c44e",
             "description": "Looks up which function or method a line of code belongs to"
         },
         {
@@ -272,7 +272,7 @@
         },
         {
             "name": "silinternational/idp-id-broker-php-client",
-            "version": "dev-develop 2d7beb9",
+            "version": "dev-develop 78fd20a",
             "description": "PHP client to interact with our IdP ID Broker's API: https://github.com/silinternational/idp-id-broker"
         },
         {
@@ -342,32 +342,32 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.10.0",
+            "version": "dev-master 82ebae0",
             "description": "Symfony polyfill for ctype functions"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.10.0",
+            "version": "dev-master fe5e94c",
             "description": "Symfony polyfill for the Mbstring extension"
         },
         {
             "name": "symfony/translation",
-            "version": "3.4.x-dev 81cfcd6",
+            "version": "3.4.x-dev 3e29662",
             "description": "Symfony Translation Component"
         },
         {
             "name": "symfony/yaml",
-            "version": "3.4.x-dev ba11776",
+            "version": "3.4.x-dev bc4bd12",
             "description": "Symfony Yaml Component"
         },
         {
             "name": "twig/extensions",
-            "version": "dev-master 57873c8",
+            "version": "dev-master 9aefd75",
             "description": "Common additional features for Twig that do not directly belong in core"
         },
         {
             "name": "twig/twig",
-            "version": "1.x-dev 3d82216",
+            "version": "1.x-dev ea371be",
             "description": "Twig, the flexible, fast, and secure template language for PHP"
         },
         {
@@ -382,17 +382,17 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "dev-master 2af7a98",
+            "version": "dev-master a50a31b",
             "description": "Yii PHP Framework Version 2"
         },
         {
             "name": "yiisoft/yii2-composer",
-            "version": "dev-master f4cb50d",
+            "version": "dev-master 2caf2e7",
             "description": "The composer plugin for Yii extension installer"
         },
         {
             "name": "yiisoft/yii2-gii",
-            "version": "dev-master b7becd5",
+            "version": "dev-master 7139eb8",
             "description": "The Gii extension for the Yii framework"
         }
     ]
