@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a0ea4259d16e832e5efc63350123693",
+    "content-hash": "f3f5fc02096007107321217a87e29364",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -60,16 +60,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.87.20",
+            "version": "3.87.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "6d313ff80b1b6084adc088e000dac1eefadd4f83"
+                "reference": "266641679eea15075ea13c088f9737460351f7ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/6d313ff80b1b6084adc088e000dac1eefadd4f83",
-                "reference": "6d313ff80b1b6084adc088e000dac1eefadd4f83",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/266641679eea15075ea13c088f9737460351f7ab",
+                "reference": "266641679eea15075ea13c088f9737460351f7ab",
                 "shasum": ""
             },
             "require": {
@@ -138,7 +138,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-02-27T19:20:03+00:00"
+            "time": "2019-02-28T20:02:04+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -321,6 +321,12 @@
                 "type": "git",
                 "url": "https://github.com/fillup/fake-bower-assets.git",
                 "reference": "05ca2ac45757cee3906d6056c9623585c1eea68b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fillup/fake-bower-assets/zipball/05ca2ac45757cee3906d6056c9623585c1eea68b",
+                "reference": "05ca2ac45757cee3906d6056c9623585c1eea68b",
+                "shasum": ""
             },
             "replace": {
                 "bower-asset/bootstrap": "3.3.6",
@@ -1832,16 +1838,16 @@
         },
         {
             "name": "silinternational/idp-id-broker-php-client",
-            "version": "dev-develop",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/idp-id-broker-php-client.git",
-                "reference": "78fd20aaf185458832b1484e352aa8f745660edb"
+                "reference": "798bdadc99d8fdb157fc75e66a76069e40dfff6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/78fd20aaf185458832b1484e352aa8f745660edb",
-                "reference": "78fd20aaf185458832b1484e352aa8f745660edb",
+                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/798bdadc99d8fdb157fc75e66a76069e40dfff6f",
+                "reference": "798bdadc99d8fdb157fc75e66a76069e40dfff6f",
                 "shasum": ""
             },
             "require": {
@@ -1883,7 +1889,7 @@
                 "idp",
                 "php client"
             ],
-            "time": "2019-02-25T15:30:44+00:00"
+            "time": "2019-02-18T07:52:47+00:00"
         },
         {
             "name": "silinternational/php-env",
@@ -2053,18 +2059,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "6652d20b88f02bc17d8f07edf07e5170bae602b7"
+                "reference": "172d77ca17a8a95711fbcf753f09ed0b7da609a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/6652d20b88f02bc17d8f07edf07e5170bae602b7",
-                "reference": "6652d20b88f02bc17d8f07edf07e5170bae602b7",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/172d77ca17a8a95711fbcf753f09ed0b7da609a7",
+                "reference": "172d77ca17a8a95711fbcf753f09ed0b7da609a7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0",
                 "roave/security-advisories": "dev-master",
-                "silinternational/idp-id-broker-php-client": "dev-develop",
+                "silinternational/idp-id-broker-php-client": "^2.6",
                 "silinternational/php-env": "^2.1",
                 "silinternational/psr3-adapters": "^1.1 || ^2.0",
                 "simplesamlphp/simplesamlphp": "~1.16.1",
@@ -2094,15 +2100,21 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "time": "2019-01-30T23:04:43+00:00"
+            "time": "2019-02-28T20:41:42+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
             "version": "dev-develop",
             "source": {
                 "type": "git",
-                "url": "https://github.com/silinternational/simplesamlphp-module-profilereview",
+                "url": "https://github.com/silinternational/simplesamlphp-module-profilereview.git",
                 "reference": "c55933e4c2fd321fd444b15c0b5f383d2a77253d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/c55933e4c2fd321fd444b15c0b5f383d2a77253d",
+                "reference": "c55933e4c2fd321fd444b15c0b5f383d2a77253d",
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.0",
@@ -2125,6 +2137,7 @@
                     "Sil\\SspProfileReview\\Behat\\": "features/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-2.1-or-later"
             ],
@@ -2143,12 +2156,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "85aeb1ab224440e7b9cd05b0b678c89dcaf33f86"
+                "reference": "f3aa98d95caa74b98c902669741e60fdd7b0f88a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/85aeb1ab224440e7b9cd05b0b678c89dcaf33f86",
-                "reference": "85aeb1ab224440e7b9cd05b0b678c89dcaf33f86",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/f3aa98d95caa74b98c902669741e60fdd7b0f88a",
+                "reference": "f3aa98d95caa74b98c902669741e60fdd7b0f88a",
                 "shasum": ""
             },
             "require": {
@@ -2161,7 +2174,7 @@
                 "ramsey/uuid": "^3.5",
                 "rlanvin/php-ip": "^1.0",
                 "roave/security-advisories": "dev-master",
-                "silinternational/idp-id-broker-php-client": "dev-develop",
+                "silinternational/idp-id-broker-php-client": "^2.6",
                 "silinternational/php-env": "^2.0",
                 "silinternational/psr3-adapters": "^1.1 || ^2.0",
                 "simplesamlphp/simplesamlphp": "^1.14.17",
@@ -2190,7 +2203,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2019-01-22T18:43:23+00:00"
+            "time": "2019-02-28T20:41:03+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -3747,6 +3760,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2017-06-30T09:13:00+00:00"
         },
         {
