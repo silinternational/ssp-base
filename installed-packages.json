@@ -2,27 +2,27 @@
     "installed": [
         {
             "name": "adldap2/adldap2",
-            "version": "v6.1.x-dev 13b5297",
+            "version": "v6.1.10",
             "description": "A PHP LDAP Package for Active Directory Manipulation."
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.87.21",
+            "version": "3.89.1",
             "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project"
         },
         {
             "name": "cebe/markdown",
-            "version": "dev-master eeb1bf6",
+            "version": "1.2.1",
             "description": "A super fast, highly extensible markdown parser for PHP"
         },
         {
             "name": "doctrine/inflector",
-            "version": "1.2.x-dev e11d84c",
+            "version": "v1.2.0",
             "description": "Common String Manipulations with regard to casing and singular/plural rules."
         },
         {
             "name": "doctrine/instantiator",
-            "version": "1.0.x-dev 83b5716",
+            "version": "1.0.5",
             "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors"
         },
         {
@@ -37,7 +37,7 @@
         },
         {
             "name": "gettext/gettext",
-            "version": "3.x-dev cd3be64",
+            "version": "v3.6.1",
             "description": "PHP gettext manager"
         },
         {
@@ -47,7 +47,7 @@
         },
         {
             "name": "google/recaptcha",
-            "version": "dev-master 9c17232",
+            "version": "1.2.1",
             "description": "Client library for reCAPTCHA, a free service that protects websites from spam and abuse."
         },
         {
@@ -57,7 +57,7 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "dev-master fa74540",
+            "version": "6.3.3",
             "description": "Guzzle is a PHP HTTP client library"
         },
         {
@@ -67,22 +67,22 @@
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "dev-master 926eaa3",
+            "version": "v1.3.1",
             "description": "Guzzle promises library"
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "dev-master 31ea59d",
+            "version": "1.5.2",
             "description": "PSR-7 message implementation that also provides common utility methods"
         },
         {
             "name": "illuminate/contracts",
-            "version": "5.5.x-dev 80c09a2",
+            "version": "v5.5.44",
             "description": "The Illuminate Contracts package."
         },
         {
             "name": "illuminate/support",
-            "version": "5.5.x-dev a09e05f",
+            "version": "v5.5.44",
             "description": "The Illuminate Support package."
         },
         {
@@ -92,7 +92,7 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.x-dev 4d5b7e6",
+            "version": "1.24.0",
             "description": "Sends your logs to files, sockets, inboxes, databases and various web services"
         },
         {
@@ -137,17 +137,17 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "dev-master 7e27218",
+            "version": "1.8.0",
             "description": "Highly opinionated mocking framework for PHP 5.3+"
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "4.0.x-dev ef7b2f5",
+            "version": "4.0.8",
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information."
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "1.4.x-dev 730b01b",
+            "version": "1.4.5",
             "description": "FilterIterator implementation that filters files based on a list of suffixes."
         },
         {
@@ -157,12 +157,12 @@
         },
         {
             "name": "phpunit/php-timer",
-            "version": "1.0.x-dev 9513098",
+            "version": "1.0.9",
             "description": "Utility class for timing"
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "2.0.x-dev 13eb9ab",
+            "version": "2.0.2",
             "description": "Wrapper around PHP's tokenizer extension."
         },
         {
@@ -172,37 +172,37 @@
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "3.4.x-dev a23b761",
+            "version": "3.4.4",
             "description": "Mock Object library for PHPUnit"
         },
         {
             "name": "psr/container",
-            "version": "dev-master 014d250",
+            "version": "1.0.0",
             "description": "Common Container Interface (PHP FIG PSR-11)"
         },
         {
             "name": "psr/http-message",
-            "version": "dev-master f6561bf",
+            "version": "1.0.1",
             "description": "Common interface for HTTP messages"
         },
         {
             "name": "psr/log",
-            "version": "dev-master c4421fc",
+            "version": "1.1.0",
             "description": "Common interface for logging libraries"
         },
         {
             "name": "psr/simple-cache",
-            "version": "dev-master 408d5ea",
+            "version": "1.0.1",
             "description": "Common interfaces for simple caching"
         },
         {
             "name": "ralouphie/getallheaders",
-            "version": "3.0.2",
+            "version": "2.0.5",
             "description": "A polyfill for getallheaders."
         },
         {
             "name": "ramsey/uuid",
-            "version": "3.x-dev 4c467ce",
+            "version": "3.8.0",
             "description": "Formerly rhumsaa/uuid. A PHP 5.4+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID)."
         },
         {
@@ -222,42 +222,42 @@
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
-            "version": "dev-master 383c44e",
+            "version": "1.0.1",
             "description": "Looks up which function or method a line of code belongs to"
         },
         {
             "name": "sebastian/comparator",
-            "version": "1.2.x-dev 18a5d97",
+            "version": "1.2.4",
             "description": "Provides the functionality to compare PHP values for equality"
         },
         {
             "name": "sebastian/diff",
-            "version": "1.4.x-dev 7f066a2",
+            "version": "1.4.3",
             "description": "Diff implementation"
         },
         {
             "name": "sebastian/environment",
-            "version": "2.0.x-dev 5795ffe",
+            "version": "2.0.0",
             "description": "Provides functionality to handle HHVM/PHP environments"
         },
         {
             "name": "sebastian/exporter",
-            "version": "2.0.x-dev 5e8e306",
+            "version": "2.0.0",
             "description": "Provides the functionality to export PHP variables for visualization"
         },
         {
             "name": "sebastian/global-state",
-            "version": "1.1.x-dev cea85a8",
+            "version": "1.1.1",
             "description": "Snapshotting of global state"
         },
         {
             "name": "sebastian/object-enumerator",
-            "version": "2.0.x-dev c956fe7",
+            "version": "2.0.1",
             "description": "Traverses array structures and object graphs to enumerate all referenced objects"
         },
         {
             "name": "sebastian/recursion-context",
-            "version": "2.0.x-dev 7e4d7c5",
+            "version": "2.0.0",
             "description": "Provides functionality to recursively process PHP variables"
         },
         {
@@ -297,7 +297,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "dev-develop 172d77c",
+            "version": "dev-develop 31f3b4a",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.)."
         },
         {
@@ -342,32 +342,32 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "dev-master 82ebae0",
+            "version": "v1.10.0",
             "description": "Symfony polyfill for ctype functions"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "dev-master fe5e94c",
+            "version": "v1.10.0",
             "description": "Symfony polyfill for the Mbstring extension"
         },
         {
             "name": "symfony/translation",
-            "version": "3.4.x-dev 3e29662",
+            "version": "v3.4.23",
             "description": "Symfony Translation Component"
         },
         {
             "name": "symfony/yaml",
-            "version": "3.4.x-dev bc4bd12",
+            "version": "v3.4.23",
             "description": "Symfony Yaml Component"
         },
         {
             "name": "twig/extensions",
-            "version": "dev-master 9aefd75",
+            "version": "v1.5.4",
             "description": "Common additional features for Twig that do not directly belong in core"
         },
         {
             "name": "twig/twig",
-            "version": "1.x-dev ea371be",
+            "version": "v1.37.1",
             "description": "Twig, the flexible, fast, and secure template language for PHP"
         },
         {
@@ -382,17 +382,17 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "dev-master a50a31b",
+            "version": "2.0.16.1",
             "description": "Yii PHP Framework Version 2"
         },
         {
             "name": "yiisoft/yii2-composer",
-            "version": "dev-master 2caf2e7",
+            "version": "2.0.7",
             "description": "The composer plugin for Yii extension installer"
         },
         {
             "name": "yiisoft/yii2-gii",
-            "version": "dev-master 7139eb8",
+            "version": "2.0.8",
             "description": "The Gii extension for the Yii framework"
         }
     ]
