@@ -60,16 +60,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.90.1",
+            "version": "3.90.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "3262a84de9428766646223963c944b2be2cd09c0"
+                "reference": "b912d351a44ce0c66c7c69ae937deb3756c61039"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3262a84de9428766646223963c944b2be2cd09c0",
-                "reference": "3262a84de9428766646223963c944b2be2cd09c0",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/b912d351a44ce0c66c7c69ae937deb3756c61039",
+                "reference": "b912d351a44ce0c66c7c69ae937deb3756c61039",
                 "shasum": ""
             },
             "require": {
@@ -138,7 +138,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-03-12T18:11:23+00:00"
+            "time": "2019-03-13T18:07:53+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -2053,12 +2053,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "b0da1c804bd556782092c8d18c5cb0c0cbfc3f35"
+                "reference": "7050f480f7065c536567cb3865be17cc1b15fcb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/b0da1c804bd556782092c8d18c5cb0c0cbfc3f35",
-                "reference": "b0da1c804bd556782092c8d18c5cb0c0cbfc3f35",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/7050f480f7065c536567cb3865be17cc1b15fcb5",
+                "reference": "7050f480f7065c536567cb3865be17cc1b15fcb5",
                 "shasum": ""
             },
             "require": {
@@ -2094,7 +2094,7 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "time": "2019-03-12T21:05:50+00:00"
+            "time": "2019-03-13T20:31:37+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
