@@ -7,7 +7,7 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.90.2",
+            "version": "3.90.3",
             "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project"
         },
         {
@@ -272,7 +272,7 @@
         },
         {
             "name": "silinternational/idp-id-broker-php-client",
-            "version": "2.6.0",
+            "version": "3.0.0",
             "description": "PHP client to interact with our IdP ID Broker's API: https://github.com/silinternational/idp-id-broker"
         },
         {
@@ -297,7 +297,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "dev-develop 7050f48",
+            "version": "dev-develop d53d1d7",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.)."
         },
         {
@@ -307,7 +307,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "dev-develop f3aa98d",
+            "version": "dev-develop 5e201be",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
