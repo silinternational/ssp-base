@@ -292,7 +292,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "6.1.0",
+            "version": "dev-develop 740cd36",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp"
         },
         {
@@ -307,7 +307,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "dev-develop 5e201be",
+            "version": "dev-develop 16630e4",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
