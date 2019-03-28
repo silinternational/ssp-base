@@ -60,16 +60,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.90.3",
+            "version": "3.90.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "12ba8071bcc3d79cbfbf8cca77f59f146816b17a"
+                "reference": "a628927d3a350fbda308eadea88d9d4845aa1c44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/12ba8071bcc3d79cbfbf8cca77f59f146816b17a",
-                "reference": "12ba8071bcc3d79cbfbf8cca77f59f146816b17a",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a628927d3a350fbda308eadea88d9d4845aa1c44",
+                "reference": "a628927d3a350fbda308eadea88d9d4845aa1c44",
                 "shasum": ""
             },
             "require": {
@@ -138,7 +138,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-03-14T18:32:41+00:00"
+            "time": "2019-03-28T18:10:49+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -1594,12 +1594,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "3521da8036ce31b11490433aaae47f9601774191"
+                "reference": "018ec51b676a4d1efc971950d1d9619570b71676"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/3521da8036ce31b11490433aaae47f9601774191",
-                "reference": "3521da8036ce31b11490433aaae47f9601774191",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/018ec51b676a4d1efc971950d1d9619570b71676",
+                "reference": "018ec51b676a4d1efc971950d1d9619570b71676",
                 "shasum": ""
             },
             "conflict": {
@@ -1634,8 +1634,8 @@
                 "doctrine/mongodb-odm-bundle": ">=2,<3.0.1",
                 "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1",
                 "dompdf/dompdf": ">=0.6,<0.6.2",
-                "drupal/core": ">=7,<7.62|>=8,<8.5.11|>=8.6,<8.6.10",
-                "drupal/drupal": ">=7,<7.62|>=8,<8.5.11|>=8.6,<8.6.10",
+                "drupal/core": ">=7,<7.64|>=8,<8.5.13|>=8.6,<8.6.12",
+                "drupal/drupal": ">=7,<7.64|>=8,<8.5.13|>=8.6,<8.6.12",
                 "erusev/parsedown": "<1.7",
                 "ezsystems/ezpublish-kernel": ">=5.3,<5.3.12.1|>=5.4,<5.4.13.1|>=6,<6.7.9.1|>=6.8,<6.13.5.1|>=7,<7.2.4.1|>=7.3,<7.3.2.1",
                 "ezsystems/ezpublish-legacy": ">=5.3,<5.3.12.6|>=5.4,<5.4.12.3|>=2011,<2017.12.4.3|>=2018.6,<2018.6.1.4|>=2018.9,<2018.9.1.3",
@@ -1663,7 +1663,7 @@
                 "la-haute-societe/tcpdf": "<6.2.22",
                 "laravel/framework": ">=4,<4.0.99|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.42|>=5.6,<5.6.30",
                 "laravel/socialite": ">=1,<1.0.99|>=2,<2.0.10",
-                "league/commonmark": ">=0.15.6,<0.18.1",
+                "league/commonmark": "<0.18.3",
                 "magento/magento1ce": "<1.9.4",
                 "magento/magento1ee": ">=1.9,<1.14.4",
                 "magento/product-community-edition": ">=2,<2.2.7",
@@ -1732,7 +1732,7 @@
                 "symfony/yaml": ">=2,<2.0.22|>=2.1,<2.1.7",
                 "tecnickcom/tcpdf": "<6.2.22",
                 "thelia/backoffice-default-template": ">=2.1,<2.1.2",
-                "thelia/thelia": ">=2.1.0-beta1,<2.1.3|>=2.1,<2.1.2",
+                "thelia/thelia": ">=2.1,<2.1.2|>=2.1.0-beta1,<2.1.3",
                 "theonedemon/phpwhois": "<=4.2.5",
                 "titon/framework": ">=0,<9.9.99",
                 "truckersmp/phpwhois": "<=4.3.1",
@@ -1790,7 +1790,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2019-03-12T13:04:55+00:00"
+            "time": "2019-03-22T05:18:50+00:00"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -2053,12 +2053,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "d53d1d726f25a9ee5cb35f505e08fbb0fe4a01ef"
+                "reference": "7e800ae2c3aaacb33576771fb9eeaf1dfa1d7a46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/d53d1d726f25a9ee5cb35f505e08fbb0fe4a01ef",
-                "reference": "d53d1d726f25a9ee5cb35f505e08fbb0fe4a01ef",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/7e800ae2c3aaacb33576771fb9eeaf1dfa1d7a46",
+                "reference": "7e800ae2c3aaacb33576771fb9eeaf1dfa1d7a46",
                 "shasum": ""
             },
             "require": {
@@ -2094,7 +2094,7 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "time": "2019-03-14T18:37:56+00:00"
+            "time": "2019-03-18T17:05:36+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
@@ -2102,12 +2102,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-profilereview.git",
-                "reference": "417091c3a28b3392a6e6060ce8524c5837c16912"
+                "reference": "565e92312e65a582dd684c1ef5806646a7fc6649"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/417091c3a28b3392a6e6060ce8524c5837c16912",
-                "reference": "417091c3a28b3392a6e6060ce8524c5837c16912",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/565e92312e65a582dd684c1ef5806646a7fc6649",
+                "reference": "565e92312e65a582dd684c1ef5806646a7fc6649",
                 "shasum": ""
             },
             "require": {
@@ -2142,7 +2142,7 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.).",
-            "time": "2019-03-11T13:29:29+00:00"
+            "time": "2019-03-28T19:57:23+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
@@ -2150,12 +2150,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "16630e438018d910879399daa4793c2e6f41982b"
+                "reference": "ec9c37b64095e8ee6486dd2d270c89fb4d2c3003"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/16630e438018d910879399daa4793c2e6f41982b",
-                "reference": "16630e438018d910879399daa4793c2e6f41982b",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/ec9c37b64095e8ee6486dd2d270c89fb4d2c3003",
+                "reference": "ec9c37b64095e8ee6486dd2d270c89fb4d2c3003",
                 "shasum": ""
             },
             "require": {
@@ -2197,7 +2197,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2019-03-14T19:10:42+00:00"
+            "time": "2019-03-28T20:03:40+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -2496,16 +2496,16 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19"
+                "reference": "82ebae02209c21113908c229e9883c419720738a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e3d826245268269cd66f8326bd8bc066687b4a19",
-                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/82ebae02209c21113908c229e9883c419720738a",
+                "reference": "82ebae02209c21113908c229e9883c419720738a",
                 "shasum": ""
             },
             "require": {
@@ -2517,7 +2517,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.9-dev"
+                    "dev-master": "1.11-dev"
                 }
             },
             "autoload": {
@@ -2550,20 +2550,20 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2018-08-06T14:22:27+00:00"
+            "time": "2019-02-06T07:57:58+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
+                "reference": "fe5e94c604826c35a32fa832f35bd036b6799609"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
-                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fe5e94c604826c35a32fa832f35bd036b6799609",
+                "reference": "fe5e94c604826c35a32fa832f35bd036b6799609",
                 "shasum": ""
             },
             "require": {
@@ -2575,7 +2575,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.9-dev"
+                    "dev-master": "1.11-dev"
                 }
             },
             "autoload": {
@@ -2609,7 +2609,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-09-21T13:07:52+00:00"
+            "time": "2019-02-06T07:57:58+00:00"
         },
         {
             "name": "symfony/translation",
@@ -2736,16 +2736,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.38.2",
+            "version": "v1.38.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "874adbd9222f928f6998732b25b01b41dff15b0c"
+                "reference": "7732e9e7017d751313811bd118de61302e9c8b35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/874adbd9222f928f6998732b25b01b41dff15b0c",
-                "reference": "874adbd9222f928f6998732b25b01b41dff15b0c",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/7732e9e7017d751313811bd118de61302e9c8b35",
+                "reference": "7732e9e7017d751313811bd118de61302e9c8b35",
                 "shasum": ""
             },
             "require": {
@@ -2798,7 +2798,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-03-12T18:45:24+00:00"
+            "time": "2019-03-23T14:27:19+00:00"
         },
         {
             "name": "whitehat101/apr1-md5",
@@ -2846,16 +2846,16 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.16.1",
+            "version": "2.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "089198cced57c4b8c9545ddc56001a1bd114b2dd"
+                "reference": "b56159228c3b4990e38cf41ddd69af27ab015bea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/089198cced57c4b8c9545ddc56001a1bd114b2dd",
-                "reference": "089198cced57c4b8c9545ddc56001a1bd114b2dd",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/b56159228c3b4990e38cf41ddd69af27ab015bea",
+                "reference": "b56159228c3b4990e38cf41ddd69af27ab015bea",
                 "shasum": ""
             },
             "require": {
@@ -2942,7 +2942,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2019-02-28T07:03:06+00:00"
+            "time": "2019-03-22T21:26:26+00:00"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -3000,23 +3000,25 @@
         },
         {
             "name": "yiisoft/yii2-gii",
-            "version": "2.0.8",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-gii.git",
-                "reference": "c02adc552bcf3a0ef6f3694a9dcbf209f4885ab1"
+                "reference": "d1c18f0dcbd72ab285acd320c56b1aa2554e06fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/c02adc552bcf3a0ef6f3694a9dcbf209f4885ab1",
-                "reference": "c02adc552bcf3a0ef6f3694a9dcbf209f4885ab1",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/d1c18f0dcbd72ab285acd320c56b1aa2554e06fa",
+                "reference": "d1c18f0dcbd72ab285acd320c56b1aa2554e06fa",
                 "shasum": ""
             },
             "require": {
-                "bower-asset/typeahead.js": "0.10.* | ~0.11.0",
-                "phpspec/php-diff": ">=1.0.2",
-                "yiisoft/yii2": "~2.0.14",
-                "yiisoft/yii2-bootstrap": "~2.0.0"
+                "phpspec/php-diff": "^1.1.0",
+                "yiisoft/yii2": "~2.0.14"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "<7",
+                "yiisoft/yii2-coding-standards": "~2.0"
             },
             "type": "yii2-extension",
             "extra": {
@@ -3045,7 +3047,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2018-12-08T10:07:49+00:00"
+            "time": "2019-03-17T19:23:15+00:00"
         }
     ],
     "packages-dev": [

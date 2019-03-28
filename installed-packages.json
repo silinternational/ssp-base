@@ -7,7 +7,7 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.90.3",
+            "version": "3.90.12",
             "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project"
         },
         {
@@ -212,7 +212,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master 3521da8",
+            "version": "dev-master 018ec51",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -297,17 +297,17 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "dev-develop d53d1d7",
+            "version": "dev-develop 7e800ae",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.)."
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "dev-develop 417091c",
+            "version": "dev-develop 565e923",
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.)."
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "dev-develop 16630e4",
+            "version": "dev-develop ec9c37b",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
@@ -342,12 +342,12 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "description": "Symfony polyfill for ctype functions"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "description": "Symfony polyfill for the Mbstring extension"
         },
         {
@@ -367,7 +367,7 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.38.2",
+            "version": "v1.38.4",
             "description": "Twig, the flexible, fast, and secure template language for PHP"
         },
         {
@@ -382,7 +382,7 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.16.1",
+            "version": "2.0.17",
             "description": "Yii PHP Framework Version 2"
         },
         {
@@ -392,7 +392,7 @@
         },
         {
             "name": "yiisoft/yii2-gii",
-            "version": "2.0.8",
+            "version": "2.1.0",
             "description": "The Gii extension for the Yii framework"
         }
     ]
