@@ -212,7 +212,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master 018ec51",
+            "version": "dev-master 0698207",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -302,7 +302,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "dev-develop 7be4e77",
+            "version": "dev-develop 1a0068f",
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.)."
         },
         {
