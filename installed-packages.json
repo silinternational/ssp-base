@@ -302,7 +302,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "dev-develop 1a0068f",
+            "version": "dev-develop fa46384",
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.)."
         },
         {
