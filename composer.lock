@@ -60,16 +60,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.90.12",
+            "version": "3.90.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "a628927d3a350fbda308eadea88d9d4845aa1c44"
+                "reference": "69d688e81420d623270aa8f5103ac20032685675"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a628927d3a350fbda308eadea88d9d4845aa1c44",
-                "reference": "a628927d3a350fbda308eadea88d9d4845aa1c44",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/69d688e81420d623270aa8f5103ac20032685675",
+                "reference": "69d688e81420d623270aa8f5103ac20032685675",
                 "shasum": ""
             },
             "require": {
@@ -138,7 +138,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-03-28T18:10:49+00:00"
+            "time": "2019-03-29T18:42:16+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -2103,12 +2103,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-profilereview.git",
-                "reference": "fa46384e92b0b96f1010ebdad735ce8da1e1fa83"
+                "reference": "d7c0b37a88a5a786dd349f503729e1c8e216f44e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/fa46384e92b0b96f1010ebdad735ce8da1e1fa83",
-                "reference": "fa46384e92b0b96f1010ebdad735ce8da1e1fa83",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/d7c0b37a88a5a786dd349f503729e1c8e216f44e",
+                "reference": "d7c0b37a88a5a786dd349f503729e1c8e216f44e",
                 "shasum": ""
             },
             "require": {
@@ -2144,7 +2144,7 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.).",
-            "time": "2019-03-29T17:53:11+00:00"
+            "time": "2019-04-01T16:49:15+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
