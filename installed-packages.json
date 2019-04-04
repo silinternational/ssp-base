@@ -7,7 +7,7 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.90.13",
+            "version": "3.91.2",
             "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project"
         },
         {
@@ -292,17 +292,17 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "dev-develop 740cd36",
+            "version": "dev-develop 42acc4a",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "dev-develop 7e800ae",
+            "version": "dev-develop 007a361",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.)."
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "dev-develop d7c0b37",
+            "version": "dev-develop da246e2",
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.)."
         },
         {
@@ -352,12 +352,12 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v3.4.23",
+            "version": "v3.4.24",
             "description": "Symfony Translation Component"
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.23",
+            "version": "v3.4.24",
             "description": "Symfony Yaml Component"
         },
         {

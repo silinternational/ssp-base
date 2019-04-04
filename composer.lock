@@ -60,16 +60,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.90.13",
+            "version": "3.91.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "69d688e81420d623270aa8f5103ac20032685675"
+                "reference": "c23d22700ae6453a5c7dc7a10e613fd90d6bd322"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/69d688e81420d623270aa8f5103ac20032685675",
-                "reference": "69d688e81420d623270aa8f5103ac20032685675",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c23d22700ae6453a5c7dc7a10e613fd90d6bd322",
+                "reference": "c23d22700ae6453a5c7dc7a10e613fd90d6bd322",
                 "shasum": ""
             },
             "require": {
@@ -138,7 +138,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-03-29T18:42:16+00:00"
+            "time": "2019-04-03T18:34:51+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -2019,12 +2019,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "740cd366fb73776511a17644c0c0218ba67fdf31"
+                "reference": "42acc4a6d62285a18052c7d77385a7bb67bb9a1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/740cd366fb73776511a17644c0c0218ba67fdf31",
-                "reference": "740cd366fb73776511a17644c0c0218ba67fdf31",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/42acc4a6d62285a18052c7d77385a7bb67bb9a1b",
+                "reference": "42acc4a6d62285a18052c7d77385a7bb67bb9a1b",
                 "shasum": ""
             },
             "require": {
@@ -2046,7 +2046,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2019-03-14T15:08:37+00:00"
+            "time": "2019-04-04T15:16:22+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
@@ -2054,12 +2054,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "7e800ae2c3aaacb33576771fb9eeaf1dfa1d7a46"
+                "reference": "007a3613996dc8cdffd5b1babb3e531efc228ec8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/7e800ae2c3aaacb33576771fb9eeaf1dfa1d7a46",
-                "reference": "7e800ae2c3aaacb33576771fb9eeaf1dfa1d7a46",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/007a3613996dc8cdffd5b1babb3e531efc228ec8",
+                "reference": "007a3613996dc8cdffd5b1babb3e531efc228ec8",
                 "shasum": ""
             },
             "require": {
@@ -2095,7 +2095,7 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "time": "2019-03-18T17:05:36+00:00"
+            "time": "2019-04-04T15:35:43+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
@@ -2103,12 +2103,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-profilereview.git",
-                "reference": "d7c0b37a88a5a786dd349f503729e1c8e216f44e"
+                "reference": "da246e2fd795724431083e4459a19bdeb576a197"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/d7c0b37a88a5a786dd349f503729e1c8e216f44e",
-                "reference": "d7c0b37a88a5a786dd349f503729e1c8e216f44e",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/da246e2fd795724431083e4459a19bdeb576a197",
+                "reference": "da246e2fd795724431083e4459a19bdeb576a197",
                 "shasum": ""
             },
             "require": {
@@ -2144,7 +2144,7 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.).",
-            "time": "2019-04-01T16:49:15+00:00"
+            "time": "2019-04-04T16:05:02+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
@@ -2615,16 +2615,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v3.4.23",
+            "version": "v3.4.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "3e2966209567ffed8825905b53fc8548446130aa"
+                "reference": "629ac01240f6ebc253a621e19b84e329fe19a987"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/3e2966209567ffed8825905b53fc8548446130aa",
-                "reference": "3e2966209567ffed8825905b53fc8548446130aa",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/629ac01240f6ebc253a621e19b84e329fe19a987",
+                "reference": "629ac01240f6ebc253a621e19b84e329fe19a987",
                 "shasum": ""
             },
             "require": {
@@ -2679,7 +2679,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2019-02-23T15:06:07+00:00"
+            "time": "2019-03-25T07:48:46+00:00"
         },
         {
             "name": "twig/extensions",
@@ -4273,16 +4273,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.23",
+            "version": "v3.4.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "57f1ce82c997f5a8701b89ef970e36bb657fd09c"
+                "reference": "212a27b731e5bfb735679d1ffaac82bd6a1dc996"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/57f1ce82c997f5a8701b89ef970e36bb657fd09c",
-                "reference": "57f1ce82c997f5a8701b89ef970e36bb657fd09c",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/212a27b731e5bfb735679d1ffaac82bd6a1dc996",
+                "reference": "212a27b731e5bfb735679d1ffaac82bd6a1dc996",
                 "shasum": ""
             },
             "require": {
@@ -4328,7 +4328,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2019-02-23T15:06:07+00:00"
+            "time": "2019-03-25T07:48:46+00:00"
         },
         {
             "name": "webmozart/assert",
