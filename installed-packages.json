@@ -7,7 +7,7 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.91.2",
+            "version": "3.91.3",
             "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project"
         },
         {
@@ -302,7 +302,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "dev-develop da246e2",
+            "version": "dev-develop 06fe506",
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.)."
         },
         {
