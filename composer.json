@@ -13,13 +13,14 @@
   "require": {
     "php": ">=5.4",
     "roave/security-advisories": "dev-master",
-    "simplesamlphp/simplesamlphp": "~1.15.4",
+    "simplesamlphp/simplesamlphp": "~1.16.1",
     "simplesamlphp/composer-module-installer": "1.1.6",
     "silinternational/simplesamlphp-module-expirychecker": "^2.0",
-    "silinternational/simplesamlphp-module-silauth": "^4.1.0",
-    "silinternational/simplesamlphp-module-mfa": "^2.1.0",
+    "silinternational/simplesamlphp-module-silauth": "dev-develop",
+    "silinternational/simplesamlphp-module-mfa": "dev-develop",
+    "silinternational/simplesamlphp-module-profilereview": "dev-develop",
     "silinternational/ssp-utilities": "^1.0",
-    "silinternational/simplesamlphp-module-material": "^6.1.0",
+    "silinternational/simplesamlphp-module-material": "dev-develop",
     "silinternational/simplesamlphp-module-sildisco": "^2.2.2",
     "silinternational/php-env": "^2.1.1"
   },
@@ -27,6 +28,8 @@
     "phpunit/phpunit": "^5.6.1"
   },
   "autoload": {
-    "files": ["vendor/yiisoft/yii2/Yii.php"]
+    "files": [
+      "vendor/yiisoft/yii2/Yii.php"
+    ]
   }
 }
