@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "09574ef35c6afe3015b10b7c24103e0f",
+    "content-hash": "9398bb6c000637e742f26e9e5b3481ce",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -60,16 +60,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.91.3",
+            "version": "3.91.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "89b07f24f4fab3ea00b1579037ff417ba61b17c9"
+                "reference": "41b67dce3c86da61137b47054d9d52c6ef57b5ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/89b07f24f4fab3ea00b1579037ff417ba61b17c9",
-                "reference": "89b07f24f4fab3ea00b1579037ff417ba61b17c9",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/41b67dce3c86da61137b47054d9d52c6ef57b5ec",
+                "reference": "41b67dce3c86da61137b47054d9d52c6ef57b5ec",
                 "shasum": ""
             },
             "require": {
@@ -138,7 +138,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-04-04T18:38:33+00:00"
+            "time": "2019-04-05T18:10:20+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -1594,12 +1594,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "0698207bf8a9bed212fdde2d8c7cdc77085660c4"
+                "reference": "a0112223428a14391f094c5fa7301677d49bccf2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/0698207bf8a9bed212fdde2d8c7cdc77085660c4",
-                "reference": "0698207bf8a9bed212fdde2d8c7cdc77085660c4",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/a0112223428a14391f094c5fa7301677d49bccf2",
+                "reference": "a0112223428a14391f094c5fa7301677d49bccf2",
                 "shasum": ""
             },
             "conflict": {
@@ -1619,8 +1619,8 @@
                 "codeigniter/framework": "<=3.0.6",
                 "composer/composer": "<=1.0.0-alpha11",
                 "contao-components/mediaelement": ">=2.14.2,<2.21.1",
-                "contao/core": ">=2,<3.5.35",
-                "contao/core-bundle": ">=4,<4.4.18|>=4.5,<4.5.8",
+                "contao/core": ">=2,<3.5.39",
+                "contao/core-bundle": ">=4,<4.4.37|>=4.5,<4.7.3",
                 "contao/listing-bundle": ">=4,<4.4.8",
                 "contao/newsletter-bundle": ">=4,<4.1",
                 "david-garcia/phpwhois": "<=4.3.1",
@@ -1636,7 +1636,7 @@
                 "dompdf/dompdf": ">=0.6,<0.6.2",
                 "drupal/core": ">=7,<7.64|>=8,<8.5.13|>=8.6,<8.6.12",
                 "drupal/drupal": ">=7,<7.64|>=8,<8.5.13|>=8.6,<8.6.12",
-                "erusev/parsedown": "<1.7",
+                "erusev/parsedown": "<1.7.2",
                 "ezsystems/ezpublish-kernel": ">=5.3,<5.3.12.1|>=5.4,<5.4.13.1|>=6,<6.7.9.1|>=6.8,<6.13.5.1|>=7,<7.2.4.1|>=7.3,<7.3.2.1",
                 "ezsystems/ezpublish-legacy": ">=5.3,<5.3.12.6|>=5.4,<5.4.12.3|>=2011,<2017.12.4.3|>=2018.6,<2018.6.1.4|>=2018.9,<2018.9.1.3",
                 "ezsystems/repository-forms": ">=2.3,<2.3.2.1",
@@ -1791,7 +1791,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2019-03-28T22:30:08+00:00"
+            "time": "2019-04-09T13:39:27+00:00"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -1833,16 +1833,16 @@
         },
         {
             "name": "silinternational/idp-id-broker-php-client",
-            "version": "3.0.0",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/idp-id-broker-php-client.git",
-                "reference": "e21bfe80f58b0e30c488f4ce7e201b3330ea48d8"
+                "reference": "60b58316687e821fec02c7991f288226cbbc2432"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/e21bfe80f58b0e30c488f4ce7e201b3330ea48d8",
-                "reference": "e21bfe80f58b0e30c488f4ce7e201b3330ea48d8",
+                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/60b58316687e821fec02c7991f288226cbbc2432",
+                "reference": "60b58316687e821fec02c7991f288226cbbc2432",
                 "shasum": ""
             },
             "require": {
@@ -1884,7 +1884,7 @@
                 "idp",
                 "php client"
             ],
-            "time": "2019-03-14T18:21:27+00:00"
+            "time": "2019-04-10T13:47:54+00:00"
         },
         {
             "name": "silinternational/php-env",
@@ -2015,16 +2015,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "dev-develop",
+            "version": "7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "42acc4a6d62285a18052c7d77385a7bb67bb9a1b"
+                "reference": "3d4e09fb2c6b705c9c8f29c2e426ed89eb2226b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/42acc4a6d62285a18052c7d77385a7bb67bb9a1b",
-                "reference": "42acc4a6d62285a18052c7d77385a7bb67bb9a1b",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/3d4e09fb2c6b705c9c8f29c2e426ed89eb2226b1",
+                "reference": "3d4e09fb2c6b705c9c8f29c2e426ed89eb2226b1",
                 "shasum": ""
             },
             "require": {
@@ -2046,20 +2046,20 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2019-04-04T15:16:22+00:00"
+            "time": "2019-04-10T14:08:59+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "dev-develop",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "007a3613996dc8cdffd5b1babb3e531efc228ec8"
+                "reference": "f5fc170c0a878a8132c88cf7a790157cfc89a665"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/007a3613996dc8cdffd5b1babb3e531efc228ec8",
-                "reference": "007a3613996dc8cdffd5b1babb3e531efc228ec8",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/f5fc170c0a878a8132c88cf7a790157cfc89a665",
+                "reference": "f5fc170c0a878a8132c88cf7a790157cfc89a665",
                 "shasum": ""
             },
             "require": {
@@ -2095,20 +2095,20 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "time": "2019-04-04T15:35:43+00:00"
+            "time": "2019-04-09T21:11:01+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "dev-develop",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-profilereview.git",
-                "reference": "06fe506c8e0ffdce0dc491740cfa694c2b804d91"
+                "reference": "46b9aff2246c183c120d11051f855ba285a7127f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/06fe506c8e0ffdce0dc491740cfa694c2b804d91",
-                "reference": "06fe506c8e0ffdce0dc491740cfa694c2b804d91",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/46b9aff2246c183c120d11051f855ba285a7127f",
+                "reference": "46b9aff2246c183c120d11051f855ba285a7127f",
                 "shasum": ""
             },
             "require": {
@@ -2144,20 +2144,20 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.).",
-            "time": "2019-04-05T15:14:21+00:00"
+            "time": "2019-04-09T21:01:39+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "dev-develop",
+            "version": "5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "ec9c37b64095e8ee6486dd2d270c89fb4d2c3003"
+                "reference": "7763ce1c838a7745d8af52d19918aa0174c6ef20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/ec9c37b64095e8ee6486dd2d270c89fb4d2c3003",
-                "reference": "ec9c37b64095e8ee6486dd2d270c89fb4d2c3003",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/7763ce1c838a7745d8af52d19918aa0174c6ef20",
+                "reference": "7763ce1c838a7745d8af52d19918aa0174c6ef20",
                 "shasum": ""
             },
             "require": {
@@ -2199,7 +2199,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2019-03-28T20:03:40+00:00"
+            "time": "2019-04-10T13:58:18+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -4385,11 +4385,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "roave/security-advisories": 20,
-        "silinternational/simplesamlphp-module-silauth": 20,
-        "silinternational/simplesamlphp-module-mfa": 20,
-        "silinternational/simplesamlphp-module-profilereview": 20,
-        "silinternational/simplesamlphp-module-material": 20
+        "roave/security-advisories": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

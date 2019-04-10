@@ -7,7 +7,7 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.91.3",
+            "version": "3.91.4",
             "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project"
         },
         {
@@ -212,7 +212,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master 0698207",
+            "version": "dev-master a011222",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -272,7 +272,7 @@
         },
         {
             "name": "silinternational/idp-id-broker-php-client",
-            "version": "3.0.0",
+            "version": "3.1.0",
             "description": "PHP client to interact with our IdP ID Broker's API: https://github.com/silinternational/idp-id-broker"
         },
         {
@@ -292,22 +292,22 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "dev-develop 42acc4a",
+            "version": "7.0.0",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "dev-develop 007a361",
+            "version": "3.0.0",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.)."
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "dev-develop 06fe506",
+            "version": "1.0.0",
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.)."
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "dev-develop ec9c37b",
+            "version": "5.0.0",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
