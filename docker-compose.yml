@@ -25,8 +25,11 @@ services:
       - ./installed-packages.json:/data/installed-packages.json
       - ./development/update-composer-deps.sh:/data/update-composer-deps.sh
       - ./vendor:/data/vendor
+      - ${COMPOSER_CACHE_DIR}:/composer
     env_file:
       - ./local.env
+    environment:
+      - COMPOSER_CACHE_DIR=/composer
 
   hub:
     build: .

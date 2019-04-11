@@ -32,7 +32,7 @@ WORKDIR /data
 COPY composer.json /data/
 COPY composer.lock /data/
 RUN composer self-update --no-interaction
-RUN composer install --prefer-dist --no-interaction --no-dev --optimize-autoloader --no-scripts
+RUN composer install --prefer-dist --no-interaction --no-dev --optimize-autoloader --no-scripts --no-progress
 
 # Copy in SSP override files
 ENV SSP_PATH /data/vendor/simplesamlphp/simplesamlphp
