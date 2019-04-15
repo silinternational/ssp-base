@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e61bc163f3463b3906887d1a2e6d32f",
+    "content-hash": "48a390350404b047e69c355e72d51341",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -2099,16 +2099,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-profilereview.git",
-                "reference": "46b9aff2246c183c120d11051f855ba285a7127f"
+                "reference": "6d8fe13bdeef7abb8a09767c91519dc80d82694c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/46b9aff2246c183c120d11051f855ba285a7127f",
-                "reference": "46b9aff2246c183c120d11051f855ba285a7127f",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/6d8fe13bdeef7abb8a09767c91519dc80d82694c",
+                "reference": "6d8fe13bdeef7abb8a09767c91519dc80d82694c",
                 "shasum": ""
             },
             "require": {
@@ -2144,7 +2144,7 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.).",
-            "time": "2019-04-09T21:01:39+00:00"
+            "time": "2019-04-15T15:02:54+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
@@ -3755,6 +3755,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2017-06-30T09:13:00+00:00"
         },
         {
