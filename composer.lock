@@ -2099,16 +2099,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-profilereview.git",
-                "reference": "6d8fe13bdeef7abb8a09767c91519dc80d82694c"
+                "reference": "216ec7c0c106a036047bc546efe093764ac28a1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/6d8fe13bdeef7abb8a09767c91519dc80d82694c",
-                "reference": "6d8fe13bdeef7abb8a09767c91519dc80d82694c",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/216ec7c0c106a036047bc546efe093764ac28a1b",
+                "reference": "216ec7c0c106a036047bc546efe093764ac28a1b",
                 "shasum": ""
             },
             "require": {
@@ -2144,7 +2144,7 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.).",
-            "time": "2019-04-15T15:02:54+00:00"
+            "time": "2019-04-15T20:25:50+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
