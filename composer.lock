@@ -60,16 +60,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.91.4",
+            "version": "3.91.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "41b67dce3c86da61137b47054d9d52c6ef57b5ec"
+                "reference": "9185a0e00f833ca407ab85451dc523b9dd78fbab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/41b67dce3c86da61137b47054d9d52c6ef57b5ec",
-                "reference": "41b67dce3c86da61137b47054d9d52c6ef57b5ec",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9185a0e00f833ca407ab85451dc523b9dd78fbab",
+                "reference": "9185a0e00f833ca407ab85451dc523b9dd78fbab",
                 "shasum": ""
             },
             "require": {
@@ -138,7 +138,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-04-05T18:10:20+00:00"
+            "time": "2019-04-17T18:08:24+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -2015,16 +2015,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "7.1.0",
+            "version": "7.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "f741640e8e40d25ddaef48aad0a8d5b2fb3a3556"
+                "reference": "e2689af0655f1939ac91bee54de1edbf6df90765"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/f741640e8e40d25ddaef48aad0a8d5b2fb3a3556",
-                "reference": "f741640e8e40d25ddaef48aad0a8d5b2fb3a3556",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/e2689af0655f1939ac91bee54de1edbf6df90765",
+                "reference": "e2689af0655f1939ac91bee54de1edbf6df90765",
                 "shasum": ""
             },
             "require": {
@@ -2046,7 +2046,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2019-04-15T13:47:48+00:00"
+            "time": "2019-04-17T18:39:06+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
@@ -2099,16 +2099,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-profilereview.git",
-                "reference": "216ec7c0c106a036047bc546efe093764ac28a1b"
+                "reference": "c00ea4413d04dc12e3f937e1d587fe51e318ad7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/216ec7c0c106a036047bc546efe093764ac28a1b",
-                "reference": "216ec7c0c106a036047bc546efe093764ac28a1b",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/c00ea4413d04dc12e3f937e1d587fe51e318ad7e",
+                "reference": "c00ea4413d04dc12e3f937e1d587fe51e318ad7e",
                 "shasum": ""
             },
             "require": {
@@ -2144,20 +2144,20 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.).",
-            "time": "2019-04-15T20:25:50+00:00"
+            "time": "2019-04-17T20:05:21+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "5.0.0",
+            "version": "5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "7763ce1c838a7745d8af52d19918aa0174c6ef20"
+                "reference": "5fc794089407727f6e62cde7eb32664e1526bc8b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/7763ce1c838a7745d8af52d19918aa0174c6ef20",
-                "reference": "7763ce1c838a7745d8af52d19918aa0174c6ef20",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/5fc794089407727f6e62cde7eb32664e1526bc8b",
+                "reference": "5fc794089407727f6e62cde7eb32664e1526bc8b",
                 "shasum": ""
             },
             "require": {
@@ -2199,7 +2199,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2019-04-10T13:58:18+00:00"
+            "time": "2019-04-17T20:06:10+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -2615,16 +2615,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v3.4.24",
+            "version": "v3.4.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "629ac01240f6ebc253a621e19b84e329fe19a987"
+                "reference": "aae26f143da71adc8707eb489f1dc86aef7d376b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/629ac01240f6ebc253a621e19b84e329fe19a987",
-                "reference": "629ac01240f6ebc253a621e19b84e329fe19a987",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/aae26f143da71adc8707eb489f1dc86aef7d376b",
+                "reference": "aae26f143da71adc8707eb489f1dc86aef7d376b",
                 "shasum": ""
             },
             "require": {
@@ -2641,7 +2641,9 @@
                 "symfony/config": "~2.8|~3.0|~4.0",
                 "symfony/dependency-injection": "~3.4|~4.0",
                 "symfony/finder": "~2.8|~3.0|~4.0",
+                "symfony/http-kernel": "~3.4|~4.0",
                 "symfony/intl": "^2.8.18|^3.2.5|~4.0",
+                "symfony/var-dumper": "~3.4|~4.0",
                 "symfony/yaml": "~3.4|~4.0"
             },
             "suggest": {
@@ -2679,7 +2681,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2019-03-25T07:48:46+00:00"
+            "time": "2019-04-10T16:00:48+00:00"
         },
         {
             "name": "twig/extensions",
@@ -2738,16 +2740,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.38.4",
+            "version": "v1.39.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "7732e9e7017d751313811bd118de61302e9c8b35"
+                "reference": "23e7b6f0cfa1d7ba3de69f30d8e05cf957412fec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/7732e9e7017d751313811bd118de61302e9c8b35",
-                "reference": "7732e9e7017d751313811bd118de61302e9c8b35",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/23e7b6f0cfa1d7ba3de69f30d8e05cf957412fec",
+                "reference": "23e7b6f0cfa1d7ba3de69f30d8e05cf957412fec",
                 "shasum": ""
             },
             "require": {
@@ -2762,7 +2764,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.38-dev"
+                    "dev-master": "1.39-dev"
                 }
             },
             "autoload": {
@@ -2800,7 +2802,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-03-23T14:27:19+00:00"
+            "time": "2019-04-16T17:12:57+00:00"
         },
         {
             "name": "whitehat101/apr1-md5",
@@ -4273,7 +4275,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.24",
+            "version": "v3.4.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
