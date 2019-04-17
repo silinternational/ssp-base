@@ -20,7 +20,7 @@
     "silinternational/simplesamlphp-module-mfa": "^3.0.0",
     "silinternational/simplesamlphp-module-profilereview": "^1.1.0",
     "silinternational/ssp-utilities": "^1.0",
-    "silinternational/simplesamlphp-module-material": "^7.2.0",
+    "silinternational/simplesamlphp-module-material": "^7.2.1",
     "silinternational/simplesamlphp-module-sildisco": "^2.2.2",
     "silinternational/php-env": "^2.1.1"
   },
