@@ -65,6 +65,7 @@ $HUB_MODE = Env::get('HUB_MODE', false);
 $ANALYTICS_ID = Env::get('ANALYTICS_ID', null);
 $PASSWORD_CHANGE_URL = Env::get('PASSWORD_CHANGE_URL');
 $PASSWORD_FORGOT_URL = Env::get('PASSWORD_FORGOT_URL');
+$HELP_CENTER_URL = Env::get('HELP_CENTER_URL');
 
 $config = [
 
@@ -90,6 +91,7 @@ $config = [
 
     'passwordChangeUrl' => $PASSWORD_CHANGE_URL,
     'passwordForgotUrl' => $PASSWORD_FORGOT_URL,
+    'helpCenterUrl' => $HELP_CENTER_URL,
 
     /*
      * Setup the following parameters to match the directory of your installation.
