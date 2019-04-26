@@ -7,7 +7,7 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.91.6",
+            "version": "3.92.4",
             "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project"
         },
         {
@@ -212,7 +212,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master ff41a9a",
+            "version": "dev-master 1b329f4",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -292,7 +292,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "7.2.1",
+            "version": "7.3.0",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp"
         },
         {
@@ -312,7 +312,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "2.2.2",
+            "version": "2.3.0",
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic"
         },
         {
@@ -382,7 +382,7 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.17",
+            "version": "2.0.18",
             "description": "Yii PHP Framework Version 2"
         },
         {
