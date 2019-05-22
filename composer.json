@@ -10,18 +10,40 @@
     }
   ],
   "minimum-stability": "stable",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:silinternational/simplesamlphp-module-expirychecker"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:silinternational/simplesamlphp-module-silauth"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:silinternational/simplesamlphp-module-mfa"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:silinternational/simplesamlphp-module-profilereview"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:silinternational/simplesamlphp-module-sildisco"
+    }
+  ],
   "require": {
     "php": ">=5.4",
     "roave/security-advisories": "dev-master",
-    "simplesamlphp/simplesamlphp": "^1.16",
+    "simplesamlphp/simplesamlphp": "~1.17.1",
     "simplesamlphp/composer-module-installer": "1.1.6",
-    "silinternational/simplesamlphp-module-expirychecker": "^2.0",
-    "silinternational/simplesamlphp-module-silauth": "^5.1.0",
-    "silinternational/simplesamlphp-module-mfa": "3.0.1",
-    "silinternational/simplesamlphp-module-profilereview": "^1.1.0",
+    "silinternational/simplesamlphp-module-expirychecker": "dev-develop",
+    "silinternational/simplesamlphp-module-silauth": "dev-develop",
+    "silinternational/simplesamlphp-module-mfa": "dev-develop",
+    "silinternational/simplesamlphp-module-profilereview": "dev-develop",
     "silinternational/ssp-utilities": "^1.0",
     "silinternational/simplesamlphp-module-material": "7.3.0",
-    "silinternational/simplesamlphp-module-sildisco": "2.3.0",
+    "silinternational/simplesamlphp-module-sildisco": "dev-develop",
     "silinternational/php-env": "^2.1.1"
   },
   "require-dev": {
