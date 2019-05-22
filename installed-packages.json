@@ -7,7 +7,7 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.93.8",
+            "version": "3.94.1",
             "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project"
         },
         {
@@ -212,7 +212,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master c91d748",
+            "version": "dev-master 89f6e0f",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -287,7 +287,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-expirychecker",
-            "version": "dev-feature/update-to-ssp-1-17 4aaf4a9",
+            "version": "dev-develop d3803ad",
             "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired."
         },
         {
@@ -297,22 +297,22 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "dev-feature/update-to-ssp-1-17 7503d4c",
+            "version": "dev-develop bfc93fe",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.)."
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "dev-feature/update-to-ssp-1-17 defdbcc",
+            "version": "dev-develop 8eae992",
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.)."
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "dev-feature/update-to-ssp-1-17 1cf5dde",
+            "version": "dev-develop 8ab78ac",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "dev-feature/update-to-ssp-1-17 0808aa9",
+            "version": "dev-develop db621b2",
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic"
         },
         {
@@ -327,7 +327,7 @@
         },
         {
             "name": "simplesamlphp/saml2",
-            "version": "v3.3.11",
+            "version": "v3.4.1",
             "description": "SAML2 PHP library from SimpleSAMLphp"
         },
         {
@@ -412,7 +412,7 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.9.0",
+            "version": "v2.10.0",
             "description": "Twig, the flexible, fast, and secure template language for PHP"
         },
         {
@@ -427,7 +427,7 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.18",
+            "version": "2.0.19",
             "description": "Yii PHP Framework Version 2"
         },
         {
