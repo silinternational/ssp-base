@@ -60,16 +60,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.94.1",
+            "version": "3.94.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "759a565285324d2248b6ee783de541ce65bddd46"
+                "reference": "402a7e30c4ad979ca264079cd224984840ce6b37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/759a565285324d2248b6ee783de541ce65bddd46",
-                "reference": "759a565285324d2248b6ee783de541ce65bddd46",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/402a7e30c4ad979ca264079cd224984840ce6b37",
+                "reference": "402a7e30c4ad979ca264079cd224984840ce6b37",
                 "shasum": ""
             },
             "require": {
@@ -139,7 +139,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-05-21T18:29:47+00:00"
+            "time": "2019-05-23T18:07:25+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -1597,12 +1597,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "89f6e0f30ef66bfb06008d6d6ae6e7cc66a2e0f5"
+                "reference": "4c0ba8a35f1f12dd9236452e9fae4346b0bf2a56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/89f6e0f30ef66bfb06008d6d6ae6e7cc66a2e0f5",
-                "reference": "89f6e0f30ef66bfb06008d6d6ae6e7cc66a2e0f5",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/4c0ba8a35f1f12dd9236452e9fae4346b0bf2a56",
+                "reference": "4c0ba8a35f1f12dd9236452e9fae4346b0bf2a56",
                 "shasum": ""
             },
             "conflict": {
@@ -1800,7 +1800,7 @@
                 }
             ],
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "time": "2019-05-22T09:34:58+00:00"
+            "time": "2019-05-23T20:42:12+00:00"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -1982,12 +1982,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-expirychecker.git",
-                "reference": "d3803ad5f440efbd67266fae41c41b749366c978"
+                "reference": "26b4851b75dbf66a11f1f0c9161b5d975dc1c26e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/d3803ad5f440efbd67266fae41c41b749366c978",
-                "reference": "d3803ad5f440efbd67266fae41c41b749366c978",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/26b4851b75dbf66a11f1f0c9161b5d975dc1c26e",
+                "reference": "26b4851b75dbf66a11f1f0c9161b5d975dc1c26e",
                 "shasum": ""
             },
             "require": {
@@ -2024,7 +2024,7 @@
                 "source": "https://github.com/silinternational/simplesamlphp-module-expirychecker/tree/develop",
                 "issues": "https://github.com/silinternational/simplesamlphp-module-expirychecker/issues"
             },
-            "time": "2019-05-22T16:27:50+00:00"
+            "time": "2019-05-22T16:48:10+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
@@ -2067,12 +2067,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "bfc93fedd46eb86f64b7292b8e86b8a8d1eb220c"
+                "reference": "c6923ae5b8261275b2ff0cd6b5f366ea257cec86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/bfc93fedd46eb86f64b7292b8e86b8a8d1eb220c",
-                "reference": "bfc93fedd46eb86f64b7292b8e86b8a8d1eb220c",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/c6923ae5b8261275b2ff0cd6b5f366ea257cec86",
+                "reference": "c6923ae5b8261275b2ff0cd6b5f366ea257cec86",
                 "shasum": ""
             },
             "require": {
@@ -2112,7 +2112,7 @@
                 "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/develop",
                 "issues": "https://github.com/silinternational/simplesamlphp-module-mfa/issues"
             },
-            "time": "2019-05-22T16:29:01+00:00"
+            "time": "2019-05-23T19:49:59+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
@@ -2120,12 +2120,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-profilereview.git",
-                "reference": "8eae992693acbde7c122430f57a13033742609f5"
+                "reference": "bbd110cde298eaf20b94f872e0c2cd580d33f6e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/8eae992693acbde7c122430f57a13033742609f5",
-                "reference": "8eae992693acbde7c122430f57a13033742609f5",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/bbd110cde298eaf20b94f872e0c2cd580d33f6e6",
+                "reference": "bbd110cde298eaf20b94f872e0c2cd580d33f6e6",
                 "shasum": ""
             },
             "require": {
@@ -2164,7 +2164,7 @@
                 "source": "https://github.com/silinternational/simplesamlphp-module-profilereview/tree/develop",
                 "issues": "https://github.com/silinternational/simplesamlphp-module-profilereview/issues"
             },
-            "time": "2019-05-22T16:28:50+00:00"
+            "time": "2019-05-23T15:18:54+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
@@ -2172,12 +2172,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "8ab78ac19e619e166956cd02e6f689c4a32fd62c"
+                "reference": "119a13aab8a8da5a5974cbb28945927087875f87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/8ab78ac19e619e166956cd02e6f689c4a32fd62c",
-                "reference": "8ab78ac19e619e166956cd02e6f689c4a32fd62c",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/119a13aab8a8da5a5974cbb28945927087875f87",
+                "reference": "119a13aab8a8da5a5974cbb28945927087875f87",
                 "shasum": ""
             },
             "require": {
@@ -2223,7 +2223,7 @@
                 "source": "https://github.com/silinternational/simplesamlphp-module-silauth/tree/develop",
                 "issues": "https://github.com/silinternational/simplesamlphp-module-silauth/issues"
             },
-            "time": "2019-05-22T16:28:39+00:00"
+            "time": "2019-05-23T15:19:42+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -2231,12 +2231,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-sildisco.git",
-                "reference": "db621b2505f722211ff6005d20eb5caf6778bb03"
+                "reference": "2797dfe64517c9242743ac1fb24284cb3a9f9801"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/db621b2505f722211ff6005d20eb5caf6778bb03",
-                "reference": "db621b2505f722211ff6005d20eb5caf6778bb03",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/2797dfe64517c9242743ac1fb24284cb3a9f9801",
+                "reference": "2797dfe64517c9242743ac1fb24284cb3a9f9801",
                 "shasum": ""
             },
             "require": {
@@ -2266,7 +2266,7 @@
                 "source": "https://github.com/silinternational/simplesamlphp-module-sildisco/tree/develop",
                 "issues": "https://github.com/silinternational/simplesamlphp-module-sildisco/issues"
             },
-            "time": "2019-05-22T16:27:25+00:00"
+            "time": "2019-05-23T20:55:35+00:00"
         },
         {
             "name": "silinternational/ssp-utilities",

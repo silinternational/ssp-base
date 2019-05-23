@@ -7,7 +7,7 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.94.1",
+            "version": "3.94.3",
             "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project"
         },
         {
@@ -212,7 +212,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master 89f6e0f",
+            "version": "dev-master 4c0ba8a",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -287,7 +287,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-expirychecker",
-            "version": "dev-develop d3803ad",
+            "version": "dev-develop 26b4851",
             "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired."
         },
         {
@@ -297,22 +297,22 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "dev-develop bfc93fe",
+            "version": "dev-develop c6923ae",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.)."
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "dev-develop 8eae992",
+            "version": "dev-develop bbd110c",
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.)."
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "dev-develop 8ab78ac",
+            "version": "dev-develop 119a13a",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "dev-develop db621b2",
+            "version": "dev-develop 2797dfe",
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic"
         },
         {
