@@ -287,7 +287,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-expirychecker",
-            "version": "dev-develop 26b4851",
+            "version": "3.0.0",
             "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired."
         },
         {
@@ -297,22 +297,22 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "dev-develop c6923ae",
+            "version": "4.0.0",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.)."
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "dev-develop bbd110c",
+            "version": "2.0.0",
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.)."
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "dev-develop 119a13a",
+            "version": "6.0.0",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "dev-develop 2797dfe",
+            "version": "3.0.0",
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic"
         },
         {
