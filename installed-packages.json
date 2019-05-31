@@ -7,7 +7,7 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.97.0",
+            "version": "3.98.0",
             "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project"
         },
         {
@@ -92,7 +92,7 @@
         },
         {
             "name": "kylekatarnls/update-helper",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "description": "Update helper"
         },
         {
@@ -112,7 +112,7 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.38.0",
+            "version": "1.38.2",
             "description": "A simple API extension for DateTime."
         },
         {
@@ -297,7 +297,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "7.3.1",
+            "version": "7.3.2",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp"
         },
         {
@@ -417,7 +417,7 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.10.0",
+            "version": "v2.11.0",
             "description": "Twig, the flexible, fast, and secure template language for PHP"
         },
         {
