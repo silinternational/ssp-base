@@ -7,7 +7,7 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.97.0",
+            "version": "3.100.7",
             "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project"
         },
         {
@@ -92,7 +92,7 @@
         },
         {
             "name": "kylekatarnls/update-helper",
-            "version": "1.0.0",
+            "version": "1.1.1",
             "description": "Update helper"
         },
         {
@@ -112,7 +112,7 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.38.0",
+            "version": "1.38.4",
             "description": "A simple API extension for DateTime."
         },
         {
@@ -142,7 +142,7 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "description": "Highly opinionated mocking framework for PHP 5.3+"
         },
         {
@@ -217,7 +217,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master 4c0ba8a",
+            "version": "dev-master baeb6f5",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -312,7 +312,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "6.0.0",
+            "version": "6.1.0",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
@@ -417,7 +417,7 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.10.0",
+            "version": "v2.11.3",
             "description": "Twig, the flexible, fast, and secure template language for PHP"
         },
         {
@@ -432,7 +432,7 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.19",
+            "version": "2.0.21",
             "description": "Yii PHP Framework Version 2"
         },
         {
