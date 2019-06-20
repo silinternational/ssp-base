@@ -2076,16 +2076,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "7.3.1",
+            "version": "7.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "f55c75ded0148b21adda147d19b49828867f13bf"
+                "reference": "ce7d13429f789a22eb545f5313b803c1f90ebcd2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/f55c75ded0148b21adda147d19b49828867f13bf",
-                "reference": "f55c75ded0148b21adda147d19b49828867f13bf",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/ce7d13429f789a22eb545f5313b803c1f90ebcd2",
+                "reference": "ce7d13429f789a22eb545f5313b803c1f90ebcd2",
                 "shasum": ""
             },
             "require": {
@@ -2107,7 +2107,7 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2019-05-30T14:59:56+00:00"
+            "time": "2019-05-31T18:39:01+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
@@ -3068,7 +3068,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
