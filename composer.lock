@@ -2278,12 +2278,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "072d0bbadd4518a93dcdacd082a92390ee6c7350"
+                "reference": "a7e0e87e731f6f2790716076125fbeb6f8dd30ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/072d0bbadd4518a93dcdacd082a92390ee6c7350",
-                "reference": "072d0bbadd4518a93dcdacd082a92390ee6c7350",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/a7e0e87e731f6f2790716076125fbeb6f8dd30ec",
+                "reference": "a7e0e87e731f6f2790716076125fbeb6f8dd30ec",
                 "shasum": ""
             },
             "require": {
@@ -2327,7 +2327,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2019-07-22T20:42:28+00:00"
+            "time": "2019-07-22T22:02:37+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
