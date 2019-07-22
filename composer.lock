@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf36b9622c8e5c3f943921a5bc747c10",
+    "content-hash": "75895e88150faf060052a5455b857b70",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -2274,16 +2274,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "6.1.0",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "5f13597ebeb59a10424dfc6f3eef3b776f028233"
+                "reference": "072d0bbadd4518a93dcdacd082a92390ee6c7350"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/5f13597ebeb59a10424dfc6f3eef3b776f028233",
-                "reference": "5f13597ebeb59a10424dfc6f3eef3b776f028233",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/072d0bbadd4518a93dcdacd082a92390ee6c7350",
+                "reference": "072d0bbadd4518a93dcdacd082a92390ee6c7350",
                 "shasum": ""
             },
             "require": {
@@ -2300,6 +2300,7 @@
                 "silinternational/idp-id-broker-php-client": "^3.0",
                 "silinternational/php-env": "^2.0",
                 "silinternational/psr3-adapters": "^1.1 || ^2.0",
+                "silinternational/yii2-json-log-targets": "1.0.0",
                 "simplesamlphp/simplesamlphp": "~1.17.1",
                 "yiisoft/yii2": "~2.0.12",
                 "yiisoft/yii2-gii": "^2.0"
@@ -2326,7 +2327,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2019-06-20T14:41:14+00:00"
+            "time": "2019-07-22T20:42:28+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -5161,7 +5162,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "roave/security-advisories": 20
+        "roave/security-advisories": 20,
+        "silinternational/simplesamlphp-module-silauth": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
