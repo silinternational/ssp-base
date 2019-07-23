@@ -317,7 +317,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "dev-develop a7e0e87",
+            "version": "6.1.1",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {

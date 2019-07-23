@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "75895e88150faf060052a5455b857b70",
+    "content-hash": "9c1718ed0fb045f4de73936e62be93d9",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -2274,16 +2274,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "dev-develop",
+            "version": "6.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "a7e0e87e731f6f2790716076125fbeb6f8dd30ec"
+                "reference": "3226f095155574221b6d40b8ebfaa77f70beec4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/a7e0e87e731f6f2790716076125fbeb6f8dd30ec",
-                "reference": "a7e0e87e731f6f2790716076125fbeb6f8dd30ec",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/3226f095155574221b6d40b8ebfaa77f70beec4f",
+                "reference": "3226f095155574221b6d40b8ebfaa77f70beec4f",
                 "shasum": ""
             },
             "require": {
@@ -2327,7 +2327,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2019-07-22T22:02:37+00:00"
+            "time": "2019-07-23T14:50:19+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -5162,8 +5162,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "roave/security-advisories": 20,
-        "silinternational/simplesamlphp-module-silauth": 20
+        "roave/security-advisories": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
