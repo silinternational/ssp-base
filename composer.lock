@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c1718ed0fb045f4de73936e62be93d9",
+    "content-hash": "f03cf529ac51a1895df0af0bf3dfbf21",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -2274,16 +2274,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "6.1.1",
+            "version": "6.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "3226f095155574221b6d40b8ebfaa77f70beec4f"
+                "reference": "28cc5e9cd0e3652cc3b5c0e20865d900ef217223"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/3226f095155574221b6d40b8ebfaa77f70beec4f",
-                "reference": "3226f095155574221b6d40b8ebfaa77f70beec4f",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/28cc5e9cd0e3652cc3b5c0e20865d900ef217223",
+                "reference": "28cc5e9cd0e3652cc3b5c0e20865d900ef217223",
                 "shasum": ""
             },
             "require": {
@@ -2327,7 +2327,7 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2019-07-23T14:50:19+00:00"
+            "time": "2019-07-23T17:33:40+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
