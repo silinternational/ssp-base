@@ -7,7 +7,7 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.107.5",
+            "version": "3.110.5",
             "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project"
         },
         {
@@ -47,7 +47,7 @@
         },
         {
             "name": "google/recaptcha",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "description": "Client library for reCAPTCHA, a free service that protects websites from spam and abuse."
         },
         {
@@ -92,7 +92,7 @@
         },
         {
             "name": "kylekatarnls/update-helper",
-            "version": "1.1.1",
+            "version": "1.2.0",
             "description": "Update helper"
         },
         {
@@ -302,7 +302,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "7.3.2",
+            "version": "7.3.3",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp"
         },
         {
@@ -357,67 +357,67 @@
         },
         {
             "name": "symfony/config",
-            "version": "v3.4.29",
+            "version": "v3.4.31",
             "description": "Symfony Config Component"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.4.29",
+            "version": "v3.4.31",
             "description": "Symfony Debug Component"
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v3.4.29",
+            "version": "v3.4.31",
             "description": "Symfony DependencyInjection Component"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.4.29",
+            "version": "v3.4.31",
             "description": "Symfony EventDispatcher Component"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.4.29",
+            "version": "v3.4.31",
             "description": "Symfony Filesystem Component"
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v3.4.29",
+            "version": "v3.4.31",
             "description": "Symfony HttpFoundation Component"
         },
         {
             "name": "symfony/http-kernel",
-            "version": "v3.4.29",
+            "version": "v3.4.31",
             "description": "Symfony HttpKernel Component"
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.11.0",
+            "version": "v1.12.0",
             "description": "Symfony polyfill for ctype functions"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.11.0",
+            "version": "v1.12.0",
             "description": "Symfony polyfill for the Mbstring extension"
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "v1.11.0",
+            "version": "v1.12.0",
             "description": "Symfony polyfill backporting some PHP 7.0+ features to lower PHP versions"
         },
         {
             "name": "symfony/routing",
-            "version": "v3.4.29",
+            "version": "v3.4.31",
             "description": "Symfony Routing Component"
         },
         {
             "name": "symfony/translation",
-            "version": "v3.4.29",
+            "version": "v3.4.31",
             "description": "Symfony Translation Component"
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.4.29",
+            "version": "v3.4.31",
             "description": "Symfony Yaml Component"
         },
         {
@@ -432,7 +432,7 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "description": "Assertions to validate method input/output with nice error messages."
         },
         {
@@ -442,7 +442,7 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.23",
+            "version": "2.0.25",
             "description": "Yii PHP Framework Version 2"
         },
         {
@@ -452,7 +452,7 @@
         },
         {
             "name": "yiisoft/yii2-gii",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "description": "The Gii extension for the Yii framework"
         }
     ]
