@@ -11,6 +11,9 @@ trap 'kill ${!}; term_handler' SIGTERM
 cd /data
 ./setup-logentries.sh
 
+# Send info about this image's PHP and O/S version to our logs.
+php -v | head -n 1 | logger -p 1 -t run.warning
+
 apache2ctl start
 
 # endless loop with a wait is needed for the trap to work
