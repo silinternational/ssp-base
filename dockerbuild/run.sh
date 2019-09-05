@@ -11,7 +11,8 @@ trap 'kill ${!}; term_handler' SIGTERM
 cd /data
 ./setup-logentries.sh
 
-# Send info about this image's PHP and O/S version to our logs.
+# Send info about this image's O/S and PHP version to our logs.
+cat /etc/*release | grep PRETTY | logger -p 1 -t run.warning
 php -v | head -n 1 | logger -p 1 -t run.warning
 
 apache2ctl start
