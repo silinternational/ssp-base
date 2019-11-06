@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1c6514e7d656d0d4d80695a3feb73be",
+    "content-hash": "f96022ae7594b9519f703d474eb3a130",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -60,16 +60,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.112.35",
+            "version": "3.113.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "b51e5e1c352956858ba98930e3ae356c52cf16fb"
+                "reference": "09998bf4d47195d5c4afa0ffd30e28921ce75f92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/b51e5e1c352956858ba98930e3ae356c52cf16fb",
-                "reference": "b51e5e1c352956858ba98930e3ae356c52cf16fb",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/09998bf4d47195d5c4afa0ffd30e28921ce75f92",
+                "reference": "09998bf4d47195d5c4afa0ffd30e28921ce75f92",
                 "shasum": ""
             },
             "require": {
@@ -139,7 +139,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-11-04T19:18:24+00:00"
+            "time": "2019-11-05T19:13:36+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -1832,16 +1832,16 @@
         },
         {
             "name": "robrichards/xmlseclibs",
-            "version": "3.0.3",
+            "version": "3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/robrichards/xmlseclibs.git",
-                "reference": "406c68ac9124db033d079284b719958b829cb830"
+                "reference": "0a53d3c3aa87564910cae4ed01416441d3ae0db5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robrichards/xmlseclibs/zipball/406c68ac9124db033d079284b719958b829cb830",
-                "reference": "406c68ac9124db033d079284b719958b829cb830",
+                "url": "https://api.github.com/repos/robrichards/xmlseclibs/zipball/0a53d3c3aa87564910cae4ed01416441d3ae0db5",
+                "reference": "0a53d3c3aa87564910cae4ed01416441d3ae0db5",
                 "shasum": ""
             },
             "require": {
@@ -1866,7 +1866,7 @@
                 "xml",
                 "xmldsig"
             ],
-            "time": "2018-11-15T11:59:02+00:00"
+            "time": "2019-11-05T11:44:22+00:00"
         },
         {
             "name": "silinternational/email-service-php-client",
@@ -2060,16 +2060,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-expirychecker",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-expirychecker.git",
-                "reference": "3257bbddfabba77b8b13d289a84a8b61c0f1b9db"
+                "reference": "482652f4c06be0a50fdc3f7f3985065a768f0b9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/3257bbddfabba77b8b13d289a84a8b61c0f1b9db",
-                "reference": "3257bbddfabba77b8b13d289a84a8b61c0f1b9db",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/482652f4c06be0a50fdc3f7f3985065a768f0b9b",
+                "reference": "482652f4c06be0a50fdc3f7f3985065a768f0b9b",
                 "shasum": ""
             },
             "require": {
@@ -2077,7 +2077,7 @@
                 "php": ">=7.2",
                 "roave/security-advisories": "dev-master",
                 "silinternational/psr3-adapters": "^1.1 || ^2.0",
-                "simplesamlphp/simplesamlphp": "~1.17.6"
+                "simplesamlphp/simplesamlphp": "~1.17.7"
             },
             "require-dev": {
                 "behat/behat": "^3.3",
@@ -2103,20 +2103,20 @@
                 }
             ],
             "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired.",
-            "time": "2019-11-05T15:12:13+00:00"
+            "time": "2019-11-06T13:53:39+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "7.3.4",
+            "version": "7.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "f73726f2ce9949c5639cdb97750191664d5a5dab"
+                "reference": "56b7df04a88ad13ccbb8e2d1ed6799addae29c24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/f73726f2ce9949c5639cdb97750191664d5a5dab",
-                "reference": "f73726f2ce9949c5639cdb97750191664d5a5dab",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/56b7df04a88ad13ccbb8e2d1ed6799addae29c24",
+                "reference": "56b7df04a88ad13ccbb8e2d1ed6799addae29c24",
                 "shasum": ""
             },
             "require": {
@@ -2124,7 +2124,7 @@
                 "roave/security-advisories": "dev-master",
                 "silinternational/ssp-utilities": "^1.0",
                 "simplesamlphp/composer-module-installer": "^1.1.5",
-                "simplesamlphp/simplesamlphp": "~1.17.6"
+                "simplesamlphp/simplesamlphp": "~1.17.7"
             },
             "type": "simplesamlphp-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -2138,20 +2138,20 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2019-11-05T18:49:21+00:00"
+            "time": "2019-11-06T14:00:31+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "4.0.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "905ae54565eef8e192629aa7783505c83a0b4093"
+                "reference": "df3d4d8f04bcdf0a378cb9b6a060f3fb43cf8b21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/905ae54565eef8e192629aa7783505c83a0b4093",
-                "reference": "905ae54565eef8e192629aa7783505c83a0b4093",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/df3d4d8f04bcdf0a378cb9b6a060f3fb43cf8b21",
+                "reference": "df3d4d8f04bcdf0a378cb9b6a060f3fb43cf8b21",
                 "shasum": ""
             },
             "require": {
@@ -2161,7 +2161,7 @@
                 "silinternational/idp-id-broker-php-client": "^3.0",
                 "silinternational/php-env": "^2.1",
                 "silinternational/psr3-adapters": "^1.1 || ^2.0",
-                "simplesamlphp/simplesamlphp": "~1.17.6",
+                "simplesamlphp/simplesamlphp": "~1.17.7",
                 "sinergi/browser-detector": "^6.1"
             },
             "require-dev": {
@@ -2188,20 +2188,20 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "time": "2019-11-05T15:20:09+00:00"
+            "time": "2019-11-06T13:33:37+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-profilereview.git",
-                "reference": "8a0f2703d2856d8d2f66640c07a3cd3986287ab1"
+                "reference": "5159a389329efb71834e6785b563f2560f123f44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/8a0f2703d2856d8d2f66640c07a3cd3986287ab1",
-                "reference": "8a0f2703d2856d8d2f66640c07a3cd3986287ab1",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/5159a389329efb71834e6785b563f2560f123f44",
+                "reference": "5159a389329efb71834e6785b563f2560f123f44",
                 "shasum": ""
             },
             "require": {
@@ -2210,7 +2210,7 @@
                 "roave/security-advisories": "dev-master",
                 "silinternational/php-env": "^2.1",
                 "silinternational/psr3-adapters": "^1.1 || ^2.0",
-                "simplesamlphp/simplesamlphp": "~1.17.6",
+                "simplesamlphp/simplesamlphp": "~1.17.7",
                 "sinergi/browser-detector": "^6.1"
             },
             "require-dev": {
@@ -2237,20 +2237,20 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.).",
-            "time": "2019-11-05T14:17:26+00:00"
+            "time": "2019-11-06T14:29:38+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "6.1.3",
+            "version": "6.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "3d40ee23f6246cb01da90402bf41dd5a2182cb06"
+                "reference": "07b8401c194b3d508d2007459d399aa540a4954c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/3d40ee23f6246cb01da90402bf41dd5a2182cb06",
-                "reference": "3d40ee23f6246cb01da90402bf41dd5a2182cb06",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/07b8401c194b3d508d2007459d399aa540a4954c",
+                "reference": "07b8401c194b3d508d2007459d399aa540a4954c",
                 "shasum": ""
             },
             "require": {
@@ -2268,7 +2268,7 @@
                 "silinternational/php-env": "^2.0",
                 "silinternational/psr3-adapters": "^1.1 || ^2.0",
                 "silinternational/yii2-json-log-targets": "1.0.0",
-                "simplesamlphp/simplesamlphp": "~1.17.6",
+                "simplesamlphp/simplesamlphp": "~1.17.7",
                 "yiisoft/yii2": "~2.0.12",
                 "yiisoft/yii2-gii": "^2.0"
             },
@@ -2294,20 +2294,20 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2019-11-05T18:41:55+00:00"
+            "time": "2019-11-06T13:31:51+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-sildisco.git",
-                "reference": "913902db7b770893498a32f9156fb80e8af0264e"
+                "reference": "d60453d0c7ef003e7c4dc958b77a6afb8f7b5035"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/913902db7b770893498a32f9156fb80e8af0264e",
-                "reference": "913902db7b770893498a32f9156fb80e8af0264e",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/d60453d0c7ef003e7c4dc958b77a6afb8f7b5035",
+                "reference": "d60453d0c7ef003e7c4dc958b77a6afb8f7b5035",
                 "shasum": ""
             },
             "require": {
@@ -2317,7 +2317,7 @@
                 "silinternational/php-env": "^1.0||^2.0",
                 "silinternational/ssp-utilities": "^1.0",
                 "simplesamlphp/composer-module-installer": "^1.1.5",
-                "simplesamlphp/simplesamlphp": "~1.17.6"
+                "simplesamlphp/simplesamlphp": "~1.17.7"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5.6.1"
@@ -2334,26 +2334,26 @@
                 }
             ],
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
-            "time": "2019-11-05T18:55:31+00:00"
+            "time": "2019-11-06T13:54:44+00:00"
         },
         {
             "name": "silinternational/ssp-utilities",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/ssp-utilities.git",
-                "reference": "a718e717e0608291eb8df1566f87630d7ddffcd6"
+                "reference": "29038be63a5a253d6bcca6bae8d4ac018d105597"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/ssp-utilities/zipball/a718e717e0608291eb8df1566f87630d7ddffcd6",
-                "reference": "a718e717e0608291eb8df1566f87630d7ddffcd6",
+                "url": "https://api.github.com/repos/silinternational/ssp-utilities/zipball/29038be63a5a253d6bcca6bae8d4ac018d105597",
+                "reference": "29038be63a5a253d6bcca6bae8d4ac018d105597",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4",
                 "roave/security-advisories": "dev-master",
-                "simplesamlphp/simplesamlphp": "~1.17.6"
+                "simplesamlphp/simplesamlphp": "~1.17.7"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5.6.1",
@@ -2376,7 +2376,7 @@
                 }
             ],
             "description": "SimpleSAMLphp related utility classes",
-            "time": "2019-11-05T14:19:12+00:00"
+            "time": "2019-11-06T13:56:33+00:00"
         },
         {
             "name": "silinternational/yii2-json-log-targets",
@@ -2457,16 +2457,16 @@
         },
         {
             "name": "simplesamlphp/saml2",
-            "version": "v3.4.1",
+            "version": "v3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/saml2.git",
-                "reference": "4faed2faa324f96e5082146933fc189c0a970074"
+                "reference": "3806d276edb066c60aa3d748ffd0681d92ffbda7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/4faed2faa324f96e5082146933fc189c0a970074",
-                "reference": "4faed2faa324f96e5082146933fc189c0a970074",
+                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/3806d276edb066c60aa3d748ffd0681d92ffbda7",
+                "reference": "3806d276edb066c60aa3d748ffd0681d92ffbda7",
                 "shasum": ""
             },
             "require": {
@@ -2475,15 +2475,16 @@
                 "ext-zlib": "*",
                 "php": ">=5.4",
                 "psr/log": "~1.0",
-                "robrichards/xmlseclibs": "^3.0",
+                "robrichards/xmlseclibs": "^3.0.4",
                 "webmozart/assert": "^1.4"
             },
             "require-dev": {
                 "mockery/mockery": "~0.9",
                 "phpmd/phpmd": "~2.6",
-                "phpunit/phpunit": "~4",
+                "phpunit/phpunit": "~5.7",
                 "sebastian/phpcpd": "~2.0",
                 "sensiolabs/security-checker": "~4.1",
+                "simplesamlphp/simplesamlphp-test-framework": "0.0.11",
                 "squizlabs/php_codesniffer": "~3.2"
             },
             "type": "library",
@@ -2511,20 +2512,20 @@
                 }
             ],
             "description": "SAML2 PHP library from SimpleSAMLphp",
-            "time": "2019-05-17T20:20:42+00:00"
+            "time": "2019-11-06T10:00:32+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp",
-            "version": "v1.17.6",
+            "version": "v1.17.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/simplesamlphp.git",
-                "reference": "381bb09e98267c406386df747378564fef499a94"
+                "reference": "67735a91063284d5ba6ee1f64c79d72ee1b8e599"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp/zipball/381bb09e98267c406386df747378564fef499a94",
-                "reference": "381bb09e98267c406386df747378564fef499a94",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp/zipball/67735a91063284d5ba6ee1f64c79d72ee1b8e599",
+                "reference": "67735a91063284d5ba6ee1f64c79d72ee1b8e599",
                 "shasum": ""
             },
             "require": {
@@ -2540,7 +2541,7 @@
                 "gettext/gettext": "^4.6",
                 "jaimeperez/twig-configurable-i18n": "^2.0",
                 "php": ">=5.5",
-                "robrichards/xmlseclibs": "^3.0",
+                "robrichards/xmlseclibs": "^3.0.4",
                 "simplesamlphp/saml2": "^3.3",
                 "symfony/config": "^3.4 || ^4.0",
                 "symfony/dependency-injection": "^3.4 || ^4.0",
@@ -2603,7 +2604,7 @@
                 "sp",
                 "ws-federation"
             ],
-            "time": "2019-08-29T11:54:43+00:00"
+            "time": "2019-11-06T13:20:12+00:00"
         },
         {
             "name": "sinergi/browser-detector",
