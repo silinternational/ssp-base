@@ -13,7 +13,7 @@
   "require": {
     "php": ">=7.2",
     "ext-gmp": "*",
-    "ext-memcache": "*",
+    "ext-memcached": "*",
     "roave/security-advisories": "dev-master",
     "simplesamlphp/simplesamlphp": "~1.18.6",
     "simplesamlphp/composer-module-installer": "1.1.6",

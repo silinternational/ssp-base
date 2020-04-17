@@ -5,7 +5,7 @@ MAINTAINER Phillip Shipley <phillip.shipley@gmail.com>
 ENV REFRESHED_AT 2020-04-16
 
 RUN apt-get update -y && \
-    apt-get install -y php-memcache php-gmp && \
+    apt-get install -y php-memcached php-gmp && \
     apt-get clean
 
 # Create required directories
