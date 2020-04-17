@@ -19,11 +19,6 @@ try {
     $IDP_NAME = Env::requireEnv('IDP_NAME');
 } catch (EnvVarNotFoundException $e) {
 
-    // Log to syslog (Logentries).
-    openlog('id-broker', LOG_NDELAY | LOG_PERROR, LOG_USER);
-    syslog(LOG_CRIT, $e->getMessage());
-    closelog();
-
     // Return error response code/message to HTTP request.
     header('Content-Type: application/json');
     http_response_code(500);
@@ -31,7 +26,8 @@ try {
         'name' => 'Internal Server Error',
         'message' => $e->getMessage(),
         'status' => 500,
-    ], JSON_PRETTY_PRINT);
+    ]);
+    fwrite(fopen('php://stderr', 'w'), $responseContent . PHP_EOL);
     exit($responseContent);
 }
 
@@ -41,7 +37,7 @@ $ADMIN_NAME = Env::get('ADMIN_NAME', 'SAML Admin');
 $ADMIN_PROTECT_INDEX_PAGE = Env::get('ADMIN_PROTECT_INDEX_PAGE', true);
 $SHOW_SAML_ERRORS = Env::get('SHOW_SAML_ERRORS', false);
 $TIMEZONE = Env::get('TIMEZONE', 'GMT');
-$LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'syslog');
+$LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'stderr');
 $SESSION_DURATION = (int)(Env::get('SESSION_DURATION', 540));
 $SESSION_DATASTORE_TIMEOUT = (int)(Env::get('SESSION_DATASTORE_TIMEOUT', (4 * 60 * 60))); // 4 hours
 $SESSION_STATE_TIMEOUT = (int)(Env::get('SESSION_STATE_TIMEOUT', (60 * 60))); // 1 hour

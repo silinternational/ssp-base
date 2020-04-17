@@ -19,11 +19,6 @@ try {
     $IDP_DISPLAY_NAME = Env::get('IDP_DISPLAY_NAME', $IDP_NAME);
 } catch (EnvVarNotFoundException $e) {
 
-    // Log to syslog (Logentries).
-    openlog('id-broker', LOG_NDELAY | LOG_PERROR, LOG_USER);
-    syslog(LOG_CRIT, $e->getMessage());
-    closelog();
-
     // Return error response code/message to HTTP request.
     header('Content-Type: application/json');
     http_response_code(500);
@@ -31,10 +26,10 @@ try {
         'name' => 'Internal Server Error',
         'message' => $e->getMessage(),
         'status' => 500,
-    ], JSON_PRETTY_PRINT);
+    ]);
+    fwrite(fopen('php://stderr', 'w'), $responseContent . PHP_EOL);
     exit($responseContent);
 }
-
 
 
 // Defaults provided if not defined in environment
@@ -43,7 +38,7 @@ $ADMIN_NAME = Env::get('ADMIN_NAME', 'SAML Admin');
 $ADMIN_PROTECT_INDEX_PAGE = Env::get('ADMIN_PROTECT_INDEX_PAGE', true);
 $SHOW_SAML_ERRORS = Env::get('SHOW_SAML_ERRORS', false);
 $TIMEZONE = Env::get('TIMEZONE', 'GMT');
-$LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'syslog');
+$LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'stderr');
 $THEME_USE = Env::get('THEME_USE', 'material:material');
 
 // Options: https://github.com/silinternational/simplesamlphp-module-material/blob/develop/README.md#branding
