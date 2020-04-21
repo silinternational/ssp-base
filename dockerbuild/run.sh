@@ -9,13 +9,12 @@ term_handler() {
 trap 'kill ${!}; term_handler' SIGTERM
 
 cd /data
-./setup-logentries.sh
 
 # Send info about this image's O/S and PHP version to our logs.
-cat /etc/*release | grep PRETTY | logger -p 1 -t run.warning
-php -v | head -n 1 | logger -p 1 -t run.warning
+cat /etc/*release | grep PRETTY
+php -v | head -n 1
 
-apache2ctl start
+apache2ctl -k start -D FOREGROUND
 
 # endless loop with a wait is needed for the trap to work
 while true
