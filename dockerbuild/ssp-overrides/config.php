@@ -1315,7 +1315,6 @@ $config = [
     'metadata.sign.privatekey' => 'saml.pem',
     'metadata.sign.privatekey_pass' => null,
     'metadata.sign.certificate' => 'saml.crt',
-    'metadata.sign.algorithm' => null,
 
 
     /****************************
