@@ -21,7 +21,7 @@
     "silinternational/simplesamlphp-module-silauth": "~6.1.4 || dev-develop",
     "silinternational/simplesamlphp-module-mfa": "~4.0.2 || dev-develop",
     "silinternational/simplesamlphp-module-profilereview": "~2.0.2 || dev-develop",
-    "silinternational/ssp-utilities": "^1.0.3 || dev-develop",
+    "silinternational/ssp-utilities": "^1.0.3",
     "silinternational/simplesamlphp-module-material": "~7.3.6 || dev-develop",
     "silinternational/simplesamlphp-module-sildisco": "~3.0.2 || dev-develop",
     "silinternational/php-env": "^2.1.1",
