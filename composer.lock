@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8ede45376cb53268f3930bf5917c03f2",
+    "content-hash": "de487597e390682bc7d44fbd1e3616c0",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -60,16 +60,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.135.1",
+            "version": "3.135.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "59587a4f3fc88b36ce7f2e1a102bfcd7a816b27c"
+                "reference": "1810725052836683d0cfd2907d515173058e710e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/59587a4f3fc88b36ce7f2e1a102bfcd7a816b27c",
-                "reference": "59587a4f3fc88b36ce7f2e1a102bfcd7a816b27c",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1810725052836683d0cfd2907d515173058e710e",
+                "reference": "1810725052836683d0cfd2907d515173058e710e",
                 "shasum": ""
             },
             "require": {
@@ -140,7 +140,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-04-21T18:14:29+00:00"
+            "time": "2020-04-22T18:11:15+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -2255,24 +2255,26 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "dev-develop",
+            "version": "7.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "f20a538c702d239f4412bc4c782e14507c3c50a1"
+                "reference": "204d8924fb4d58aa67ddc0e9b0a8099427c27475"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/f20a538c702d239f4412bc4c782e14507c3c50a1",
-                "reference": "f20a538c702d239f4412bc4c782e14507c3c50a1",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/204d8924fb4d58aa67ddc0e9b0a8099427c27475",
+                "reference": "204d8924fb4d58aa67ddc0e9b0a8099427c27475",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0",
-                "roave/security-advisories": "dev-master",
-                "silinternational/ssp-utilities": "^1.0 || dev-develop",
+                "silinternational/ssp-utilities": "^1.0",
                 "simplesamlphp/composer-module-installer": "^1.1.5",
                 "simplesamlphp/simplesamlphp": "~1.17.7 || ~1.18.5"
+            },
+            "require-dev": {
+                "roave/security-advisories": "dev-master"
             },
             "type": "simplesamlphp-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -2286,20 +2288,20 @@
                 }
             ],
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "time": "2020-04-16T22:35:39+00:00"
+            "time": "2020-04-22T20:28:18+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "dev-develop",
+            "version": "4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "eee3bb31516a705d1521a248dd768e972d0364e4"
+                "reference": "51907330e88bc3853cc83a200b1408ef4fc4af0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/eee3bb31516a705d1521a248dd768e972d0364e4",
-                "reference": "eee3bb31516a705d1521a248dd768e972d0364e4",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/51907330e88bc3853cc83a200b1408ef4fc4af0b",
+                "reference": "51907330e88bc3853cc83a200b1408ef4fc4af0b",
                 "shasum": ""
             },
             "require": {
@@ -2336,26 +2338,25 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "time": "2020-04-16T21:58:45+00:00"
+            "time": "2020-04-22T20:28:41+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "dev-develop",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-profilereview.git",
-                "reference": "94fab5b06caba0cfd0a7c4666c3c26b91e768e58"
+                "reference": "97262f7c35d3e687679c6e520c139455f313d69f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/94fab5b06caba0cfd0a7c4666c3c26b91e768e58",
-                "reference": "94fab5b06caba0cfd0a7c4666c3c26b91e768e58",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/97262f7c35d3e687679c6e520c139455f313d69f",
+                "reference": "97262f7c35d3e687679c6e520c139455f313d69f",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "php": ">=7.2",
-                "roave/security-advisories": "dev-master",
                 "silinternational/php-env": "^2.1",
                 "silinternational/psr3-adapters": "^1.1 || ^2.0",
                 "simplesamlphp/simplesamlphp": "~1.17.7 || ~1.18.5",
@@ -2365,7 +2366,8 @@
                 "behat/behat": "^3.3",
                 "behat/mink": "^1.7",
                 "behat/mink-goutte-driver": "^1.2",
-                "phpunit/phpunit": "^8.4"
+                "phpunit/phpunit": "^8.4",
+                "roave/security-advisories": "dev-master"
             },
             "type": "simplesamlphp-module",
             "autoload": {
@@ -2385,20 +2387,20 @@
                 }
             ],
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.).",
-            "time": "2020-04-16T22:02:51+00:00"
+            "time": "2020-04-22T20:28:32+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "dev-develop",
+            "version": "6.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "75597b80eeac9ea4dfca41c0d6afd46a247b681c"
+                "reference": "9f42f36b8c4d0b83dc3600f562b2f8526eb1902b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/75597b80eeac9ea4dfca41c0d6afd46a247b681c",
-                "reference": "75597b80eeac9ea4dfca41c0d6afd46a247b681c",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/9f42f36b8c4d0b83dc3600f562b2f8526eb1902b",
+                "reference": "9f42f36b8c4d0b83dc3600f562b2f8526eb1902b",
                 "shasum": ""
             },
             "require": {
@@ -2411,7 +2413,6 @@
                 "psr/log": "^1.0",
                 "ramsey/uuid": "^3.5",
                 "rlanvin/php-ip": "^1.0",
-                "roave/security-advisories": "dev-master",
                 "silinternational/idp-id-broker-php-client": "^3.0",
                 "silinternational/php-env": "^2.0",
                 "silinternational/psr3-adapters": "^1.1 || ^2.0",
@@ -2422,7 +2423,8 @@
             },
             "require-dev": {
                 "behat/behat": "^3.2",
-                "phpunit/phpunit": "^5.6.1"
+                "phpunit/phpunit": "^5.6.1",
+                "roave/security-advisories": "dev-master"
             },
             "type": "simplesamlphp-module",
             "autoload": {
@@ -2442,34 +2444,34 @@
                 }
             ],
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "time": "2020-04-16T21:59:32+00:00"
+            "time": "2020-04-22T20:29:00+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "dev-develop",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-sildisco.git",
-                "reference": "e25552a3f2da994d9ffa6be3e956b20e81caf86a"
+                "reference": "a7e9103e6896f6b5117135e35aa541b0800047e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/e25552a3f2da994d9ffa6be3e956b20e81caf86a",
-                "reference": "e25552a3f2da994d9ffa6be3e956b20e81caf86a",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-sildisco/zipball/a7e9103e6896f6b5117135e35aa541b0800047e0",
+                "reference": "a7e9103e6896f6b5117135e35aa541b0800047e0",
                 "shasum": ""
             },
             "require": {
                 "aws/aws-sdk-php": "^3.0",
                 "ext-dom": "*",
                 "php": ">=7.0",
-                "roave/security-advisories": "dev-master",
                 "silinternational/php-env": "^1.0||^2.0",
                 "silinternational/ssp-utilities": "^1.0",
                 "simplesamlphp/composer-module-installer": "^1.1.5",
-                "simplesamlphp/simplesamlphp": "~1.17.7 || ~1.18.6"
+                "simplesamlphp/simplesamlphp": "~1.18.6"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.6.1"
+                "phpunit/phpunit": "^5.6.1",
+                "roave/security-advisories": "dev-master"
             },
             "type": "simplesamlphp-module",
             "notification-url": "https://packagist.org/downloads/",
@@ -2483,7 +2485,7 @@
                 }
             ],
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
-            "time": "2020-04-22T16:29:34+00:00"
+            "time": "2020-04-22T20:27:55+00:00"
         },
         {
             "name": "silinternational/ssp-utilities",
@@ -7294,12 +7296,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "roave/security-advisories": 20,
-        "silinternational/simplesamlphp-module-silauth": 20,
-        "silinternational/simplesamlphp-module-mfa": 20,
-        "silinternational/simplesamlphp-module-profilereview": 20,
-        "silinternational/simplesamlphp-module-material": 20,
-        "silinternational/simplesamlphp-module-sildisco": 20
+        "roave/security-advisories": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

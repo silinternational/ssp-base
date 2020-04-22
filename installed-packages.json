@@ -22,27 +22,27 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "dev-develop f20a538",
+            "version": "7.3.7",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "dev-develop eee3bb3",
+            "version": "4.0.3",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.)."
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "dev-develop 94fab5b",
+            "version": "2.0.3",
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.)."
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "dev-develop 75597b8",
+            "version": "6.1.5",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "dev-develop e25552a",
+            "version": "3.1.0",
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic"
         },
         {
