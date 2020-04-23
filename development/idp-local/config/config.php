@@ -7,6 +7,14 @@ use Sil\PhpEnv\Env;
 use Sil\PhpEnv\EnvVarNotFoundException;
 use Sil\SspUtils\AnnouncementUtils;
 
+$logLevels = [
+    'ERR'     => SimpleSAML\Logger::ERR,     //	No statistics, only errors
+    'WARNING' => SimpleSAML\Logger::WARNING, //	No statistics, only warnings/errors
+    'NOTICE'  => SimpleSAML\Logger::NOTICE,  //	Statistics and errors
+    'INFO'    => SimpleSAML\Logger::INFO,    //	Verbose logs
+    'DEBUG'   => SimpleSAML\Logger::DEBUG,   //	Full debug logs - not recommended for production
+];
+
 /*
  * Get config settings from ENV vars or set defaults
  */
@@ -19,11 +27,6 @@ try {
     $IDP_NAME = Env::requireEnv('IDP_NAME');
 } catch (EnvVarNotFoundException $e) {
 
-    // Log to syslog (Logentries).
-    openlog('id-broker', LOG_NDELAY | LOG_PERROR, LOG_USER);
-    syslog(LOG_CRIT, $e->getMessage());
-    closelog();
-
     // Return error response code/message to HTTP request.
     header('Content-Type: application/json');
     http_response_code(500);
@@ -31,7 +34,8 @@ try {
         'name' => 'Internal Server Error',
         'message' => $e->getMessage(),
         'status' => 500,
-    ], JSON_PRETTY_PRINT);
+    ]);
+    fwrite(fopen('php://stderr', 'w'), $responseContent . PHP_EOL);
     exit($responseContent);
 }
 
@@ -41,7 +45,9 @@ $ADMIN_NAME = Env::get('ADMIN_NAME', 'SAML Admin');
 $ADMIN_PROTECT_INDEX_PAGE = Env::get('ADMIN_PROTECT_INDEX_PAGE', true);
 $SHOW_SAML_ERRORS = Env::get('SHOW_SAML_ERRORS', false);
 $TIMEZONE = Env::get('TIMEZONE', 'GMT');
-$LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'syslog');
+$ENABLE_DEBUG = Env::get('ENABLE_DEBUG', false);
+$LOGGING_LEVEL = Env::get('LOGGING_LEVEL', 'NOTICE');
+$LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'stderr');
 $SESSION_DURATION = (int)(Env::get('SESSION_DURATION', 540));
 $SESSION_DATASTORE_TIMEOUT = (int)(Env::get('SESSION_DATASTORE_TIMEOUT', (4 * 60 * 60))); // 4 hours
 $SESSION_STATE_TIMEOUT = (int)(Env::get('SESSION_STATE_TIMEOUT', (60 * 60))); // 1 hour
@@ -98,15 +104,42 @@ $config = [
 
 
     /*
-     * If you enable this option, simpleSAMLphp will log all sent and received messages
-     * to the log file.
+     * The 'debug' option allows you to control how SimpleSAMLphp behaves in certain
+     * situations where further action may be taken
      *
-     * This option also enables logging of the messages that are encrypted and decrypted.
+     * It can be left unset, in which case, debugging is switched off for all actions.
+     * If set, it MUST be an array containing the actions that you want to enable, or
+     * alternatively a hashed array where the keys are the actions and their
+     * corresponding values are booleans enabling or disabling each particular action.
      *
-     * Note: The messages are logged with the DEBUG log level, so you also need to set
-     * the 'logging.level' option to LOG_DEBUG.
+     * SimpleSAMLphp provides some pre-defined actions, though modules could add new
+     * actions here. Refer to the documentation of every module to learn if they
+     * allow you to set any more debugging actions.
+     *
+     * The pre-defined actions are:
+     *
+     * - 'saml': this action controls the logging of SAML messages exchanged with other
+     * entities. When enabled ('saml' is present in this option, or set to true), all
+     * SAML messages will be logged, including plaintext versions of encrypted
+     * messages.
+     *
+     * - 'backtraces': this action controls the logging of error backtraces. If you
+     * want to log backtraces so that you can debug any possible errors happening in
+     * SimpleSAMLphp, enable this action (add it to the array or set it to true).
+     *
+     * - 'validatexml': this action allows you to validate SAML documents against all
+     * the relevant XML schemas. SAML 1.1 messages or SAML metadata parsed with
+     * the XML to SimpleSAMLphp metadata converter or the metaedit module will
+     * validate the SAML documents if this option is enabled.
+     *
+     * If you want to disable debugging completely, unset this option or set it to an
+     * empty array.
      */
-    'debug' => false,
+    'debug' => [
+        'saml' => $ENABLE_DEBUG,
+        'backtraces' => true,
+        'validatexml' => $ENABLE_DEBUG,
+    ],
 
     /*
      * When showerrors is enabled, all error messages and stack traces will be output
@@ -181,10 +214,10 @@ $config = [
      *
      * Choose logging handler.
      *
-     * Options: [syslog,file,errorlog]
+     * Options: [syslog,file,errorlog,stderr]
      *
      */
-    'logging.level' => SimpleSAML\Logger::NOTICE,
+    'logging.level' => $logLevels[$LOGGING_LEVEL],
     'logging.handler' => $LOGGING_HANDLER,
 
     /*

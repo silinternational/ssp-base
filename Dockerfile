@@ -2,25 +2,23 @@ FROM silintl/php7:7.2
 
 MAINTAINER Phillip Shipley <phillip.shipley@gmail.com>
 
-ENV REFRESHED_AT 2019-09-04
+ENV REFRESHED_AT 2020-04-16
 
 RUN apt-get update -y && \
-    apt-get install -y php-memcache php-gmp && \
+    apt-get install -y php-memcached php-gmp && \
     apt-get clean
 
 # Create required directories
 RUN mkdir -p /data
 
 COPY dockerbuild/vhost.conf /etc/apache2/sites-enabled/
-COPY dockerbuild/setup-logentries.sh /data/setup-logentries.sh
 COPY dockerbuild/run.sh /data/run.sh
 COPY dockerbuild/run-idp.sh /data/run-idp.sh
 COPY dockerbuild/run-tests.sh /data/run-tests.sh
 COPY dockerbuild/run-spidplinks.php /data/run-spidplinks.php
 
-# Copy in syslog config
-RUN rm -f /etc/rsyslog.d/*
-COPY dockerbuild/rsyslog.conf /etc/rsyslog.conf
+# ErrorLog inside a VirtualHost block is ineffective for unknown reasons
+RUN sed -i -E 's@ErrorLog .*@ErrorLog /proc/1/fd/2@i' /etc/apache2/apache2.conf
 
 # get s3-expand
 RUN curl https://raw.githubusercontent.com/silinternational/s3-expand/1.5/s3-expand -o /usr/local/bin/s3-expand \
@@ -48,7 +46,7 @@ COPY dockerbuild/ssp-overrides/announcement.php $SSP_PATH/announcement/announcem
 COPY tests /data/tests
 
 RUN cp $SSP_PATH/modules/sildisco/sspoverrides/www_saml2_idp/SSOService.php $SSP_PATH/www/saml2/idp/
-RUN chmod a+x /data/setup-logentries.sh /data/run.sh /data/run-tests.sh
+RUN chmod a+x /data/run.sh /data/run-tests.sh
 
 EXPOSE 80
 ENTRYPOINT ["/usr/local/bin/s3-expand"]

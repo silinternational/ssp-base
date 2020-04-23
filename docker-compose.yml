@@ -51,8 +51,6 @@ services:
     command: /data/run-debug.sh
     ports:
       - "80:80"
-    env_file:
-      - ./local.hub.env
     environment:
       ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: "1234qwer"
