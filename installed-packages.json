@@ -7,7 +7,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master 640c8c2",
+            "version": "dev-master 239e50a",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -37,7 +37,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "6.1.5",
+            "version": "6.1.7",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
@@ -51,18 +51,13 @@
             "description": "SimpleSAMLphp related utility classes"
         },
         {
-            "name": "silinternational/yii2-json-log-targets",
-            "version": "1.0.0",
-            "description": "A collection of Yii2 log targets that format the log message as a JSON string."
-        },
-        {
             "name": "simplesamlphp/composer-module-installer",
             "version": "v1.1.6",
             "description": "A Composer plugin that allows installing SimpleSAMLphp modules through Composer."
         },
         {
             "name": "simplesamlphp/simplesamlphp",
-            "version": "v1.18.6",
+            "version": "v1.18.7",
             "description": "A PHP implementation of a SAML 2.0 service provider and identity provider, also compatible with Shibboleth 1.3 and 2.0."
         }
     ]
