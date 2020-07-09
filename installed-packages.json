@@ -7,7 +7,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master 5a342e2",
+            "version": "dev-master 239e50a",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -37,7 +37,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "6.1.5",
+            "version": "6.1.7",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
