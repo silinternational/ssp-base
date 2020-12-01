@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b64649d4914502dfec4df8ec254242ef",
+    "content-hash": "c9aeb646acee06c2fa6bd2002b835283",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -2506,16 +2506,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "4.0.3",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "51907330e88bc3853cc83a200b1408ef4fc4af0b"
+                "reference": "698ee232b5519f30e0186f278fca6fd343b934bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/51907330e88bc3853cc83a200b1408ef4fc4af0b",
-                "reference": "51907330e88bc3853cc83a200b1408ef4fc4af0b",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/698ee232b5519f30e0186f278fca6fd343b934bf",
+                "reference": "698ee232b5519f30e0186f278fca6fd343b934bf",
                 "shasum": ""
             },
             "require": {
@@ -2554,9 +2554,9 @@
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
             "support": {
                 "issues": "https://github.com/silinternational/simplesamlphp-module-mfa/issues",
-                "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/4.0.3"
+                "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/4.1.0"
             },
-            "time": "2020-04-22T20:28:41+00:00"
+            "time": "2020-12-01T18:41:36+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
