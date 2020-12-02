@@ -2,12 +2,12 @@
     "installed": [
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.27",
+            "version": "7.5.20",
             "description": "The PHP Unit Testing framework."
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master 6aaf24c",
+            "version": "dev-master 676668e",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
