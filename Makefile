@@ -12,3 +12,6 @@ clean:
 
 composer:
 	docker-compose run --rm composer bash -c "./update-composer-deps.sh"
+
+test:
+	docker-compose run --rm ssp bash -c "HUB_MODE=true /data/run-tests.sh"
