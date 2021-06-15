@@ -2,7 +2,7 @@ FROM silintl/php7:7.4
 
 MAINTAINER Phillip Shipley <phillip.shipley@gmail.com>
 
-ENV REFRESHED_AT 2020-04-16
+ENV REFRESHED_AT 2020-06-14
 
 RUN apt-get update -y && \
     apt-get install -y php-memcached php-gmp && \
