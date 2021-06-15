@@ -1,6 +1,6 @@
 FROM silintl/php7:7.4
 
-MAINTAINER Phillip Shipley <phillip.shipley@gmail.com>
+LABEL maintainer "Phillip Shipley <phillip.shipley@gmail.com>"
 
 ENV REFRESHED_AT 2020-06-14
 
