@@ -4,9 +4,12 @@ MAINTAINER Phillip Shipley <phillip.shipley@gmail.com>
 
 ENV REFRESHED_AT 2020-06-14
 
-RUN apt-get update -y && \
-    apt-get install -y php-memcached php-gmp && \
-    apt-get clean
+RUN apt-get update -y \
+    && apt-get install -y \
+        php-gmp \
+        php-memcached \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*    
 
 # Create required directories
 RUN mkdir -p /data
