@@ -2,7 +2,7 @@ FROM silintl/php7:7.4
 
 LABEL maintainer "Phillip Shipley <phillip.shipley@gmail.com>"
 
-ENV REFRESHED_AT 2020-06-14
+ENV REFRESHED_AT 2021-06-14
 
 RUN apt-get update -y \
     && apt-get install -y \
