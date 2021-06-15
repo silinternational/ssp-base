@@ -7,7 +7,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master 9d9641b",
+            "version": "dev-master dec8e13",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -22,7 +22,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "7.4.0",
+            "version": "7.4.1",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp"
         },
         {
@@ -47,7 +47,7 @@
         },
         {
             "name": "silinternational/ssp-utilities",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "description": "SimpleSAMLphp related utility classes"
         },
         {
