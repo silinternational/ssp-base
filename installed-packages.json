@@ -7,7 +7,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master dec8e13",
+            "version": "dev-master 1a08d0c",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -17,7 +17,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-expirychecker",
-            "version": "3.0.3",
+            "version": "3.0.4",
             "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired."
         },
         {
@@ -37,17 +37,17 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "6.1.7",
+            "version": "6.1.8",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic"
         },
         {
             "name": "silinternational/ssp-utilities",
-            "version": "1.0.5",
+            "version": "1.0.6",
             "description": "SimpleSAMLphp related utility classes"
         },
         {
