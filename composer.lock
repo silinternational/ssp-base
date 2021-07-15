@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "513aeab6ae9014c4db8ac641f815377e",
+    "content-hash": "50f8a261cdcf24190ba2584ffa5a297d",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2392,16 +2392,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "7.4.1",
+            "version": "7.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "ef7e0a2db20a6bb0a19c64dd15244d2e56ab291c"
+                "reference": "eb4eced0a8f1e3abeac39f3be5d0b25af63fb182"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/ef7e0a2db20a6bb0a19c64dd15244d2e56ab291c",
-                "reference": "ef7e0a2db20a6bb0a19c64dd15244d2e56ab291c",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/eb4eced0a8f1e3abeac39f3be5d0b25af63fb182",
+                "reference": "eb4eced0a8f1e3abeac39f3be5d0b25af63fb182",
                 "shasum": ""
             },
             "require": {
@@ -2427,9 +2427,9 @@
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
             "support": {
                 "issues": "https://github.com/silinternational/simplesamlphp-module-material/issues",
-                "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/7.4.1"
+                "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/7.4.2"
             },
-            "time": "2021-05-26T15:15:53+00:00"
+            "time": "2021-07-15T21:47:39+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
