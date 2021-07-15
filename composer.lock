@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b422dbb939575667c91675c623aec90",
+    "content-hash": "513aeab6ae9014c4db8ac641f815377e",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.185.12",
+            "version": "3.185.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "65299008b7a04245bf63cd71fca8e6d4ab3728bc"
+                "reference": "9faaa7f7fafe569049bbb615767d8e3fa83d9fb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/65299008b7a04245bf63cd71fca8e6d4ab3728bc",
-                "reference": "65299008b7a04245bf63cd71fca8e6d4ab3728bc",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9faaa7f7fafe569049bbb615767d8e3fa83d9fb7",
+                "reference": "9faaa7f7fafe569049bbb615767d8e3fa83d9fb7",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.185.12"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.185.14"
             },
-            "time": "2021-07-13T19:37:41+00:00"
+            "time": "2021-07-15T18:15:50+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -2433,16 +2433,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "4.1.0",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "698ee232b5519f30e0186f278fca6fd343b934bf"
+                "reference": "d69fc130d4790a1bf78be20d4a4e4856a31fde7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/698ee232b5519f30e0186f278fca6fd343b934bf",
-                "reference": "698ee232b5519f30e0186f278fca6fd343b934bf",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/d69fc130d4790a1bf78be20d4a4e4856a31fde7e",
+                "reference": "d69fc130d4790a1bf78be20d4a4e4856a31fde7e",
                 "shasum": ""
             },
             "require": {
@@ -2481,9 +2481,9 @@
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
             "support": {
                 "issues": "https://github.com/silinternational/simplesamlphp-module-mfa/issues",
-                "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/4.1.0"
+                "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/4.1.1"
             },
-            "time": "2020-12-01T18:41:36+00:00"
+            "time": "2021-07-15T20:46:59+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
