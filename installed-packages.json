@@ -1,6 +1,11 @@
 {
     "installed": [
         {
+            "name": "behat/behat",
+            "version": "v3.8.1",
+            "description": "Scenario-oriented BDD framework for PHP"
+        },
+        {
             "name": "phpunit/phpunit",
             "version": "7.5.20",
             "description": "The PHP Unit Testing framework."
