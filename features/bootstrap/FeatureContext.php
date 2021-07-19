@@ -8,7 +8,7 @@ use Webmozart\Assert\Assert;
 
 class FeatureContext implements Context
 {
-    private const HUB_URL = 'http://hub/module.php/core/authenticate.php?as=hub-discovery';
+    private const HUB_DISCO_URL = 'http://hub/module.php/core/authenticate.php?as=hub-discovery';
     
     /** @var Client */
     private $client;
@@ -22,11 +22,11 @@ class FeatureContext implements Context
     }
 
     /**
-     * @When I go to the Hub
+     * @When I go to the Hub's discovery page
      */
-    public function iGoToTheHub()
+    public function iGoToTheHubsDiscoveryPage()
     {
-        $this->response = $this->client->get(self::HUB_URL);
+        $this->response = $this->client->get(self::HUB_DISCO_URL);
     }
 
     /**
