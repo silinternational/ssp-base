@@ -6,6 +6,11 @@
             "description": "Scenario-oriented BDD framework for PHP"
         },
         {
+            "name": "guzzlehttp/guzzle",
+            "version": "7.3.0",
+            "description": "Guzzle is a PHP HTTP client library"
+        },
+        {
             "name": "phpunit/phpunit",
             "version": "7.5.20",
             "description": "The PHP Unit Testing framework."
