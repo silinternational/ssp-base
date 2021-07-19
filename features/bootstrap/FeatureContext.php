@@ -3,11 +3,17 @@
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use GuzzleHttp\Client;
+use Psr\Http\Message\ResponseInterface;
 
 class FeatureContext implements Context
 {
+    private const HUB_URL = 'http://hub/module.php/core/authenticate.php?as=hub-discovery';
+    
     /** @var Client */
     private $client;
+    
+    /** @var ResponseInterface */
+    private $response;
     
     public function __construct()
     {
@@ -19,7 +25,7 @@ class FeatureContext implements Context
      */
     public function iGoToTheHub()
     {
-        throw new PendingException();
+        $this->response = $this->client->get(self::HUB_URL);
     }
 
     /**
