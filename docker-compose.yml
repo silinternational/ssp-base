@@ -19,6 +19,8 @@ services:
 
   test:
     build: .
+    depends_on:
+      - hub
     environment:
       - COMPOSER_CACHE_DIR=/composer
     volumes:
