@@ -4,6 +4,7 @@ use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;
+use Webmozart\Assert\Assert;
 
 class FeatureContext implements Context
 {
@@ -33,6 +34,11 @@ class FeatureContext implements Context
      */
     public function iShouldSeeOurMaterialTheme()
     {
-        throw new PendingException();
+        $responseContent = $this->response->getBody()->getContents();
+        Assert::contains(
+            $responseContent,
+            '<base href="http://hub/module.php/material/">',
+            'Failed to find the expected evidence of our material theme'
+        );
     }
 }
