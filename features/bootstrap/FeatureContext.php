@@ -1,22 +1,32 @@
 <?php
 
+use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
+use GuzzleHttp\Client;
 
-/**
- * Defines application features from the specific context.
- */
 class FeatureContext implements Context
 {
-    /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context instance.
-     * You can also pass arbitrary arguments to the
-     * context constructor through behat.yml.
-     */
+    /** @var Client */
+    private $client;
+    
     public function __construct()
     {
+        $this->client = new Client();
+    }
+
+    /**
+     * @When I go to the Hub
+     */
+    public function iGoToTheHub()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then I should see our material theme
+     */
+    public function iShouldSeeOurMaterialTheme()
+    {
+        throw new PendingException();
     }
 }
