@@ -2,23 +2,27 @@
 
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
-use GuzzleHttp\Client;
-use Psr\Http\Message\ResponseInterface;
+use Behat\Mink\Driver\GoutteDriver;
+use Behat\Mink\Element\DocumentElement;
+use Behat\Mink\Session;
 use Webmozart\Assert\Assert;
 
 class FeatureContext implements Context
 {
     private const HUB_DISCO_URL = 'http://hub/module.php/core/authenticate.php?as=hub-discovery';
     
-    /** @var Client */
-    private $client;
+    /** @var DocumentElement|null */
+    private $page;
     
-    /** @var ResponseInterface */
-    private $response;
+    /** @var Session */
+    private $session;
     
     public function __construct()
     {
-        $this->client = new Client();
+        $driver = new GoutteDriver();
+        $this->session = new Session($driver);
+        // See http://mink.behat.org/en/latest/guides/session.html for docs.
+        $this->session->start();
     }
 
     /**
@@ -26,7 +30,13 @@ class FeatureContext implements Context
      */
     public function iGoToTheHubsDiscoveryPage()
     {
-        $this->response = $this->client->get(self::HUB_DISCO_URL);
+        $this->goToPage(self::HUB_DISCO_URL);
+    }
+    
+    private function goToPage(string $url)
+    {
+        $this->session->visit($url);
+        $this->page = $this->session->getPage();
     }
 
     /**
@@ -34,10 +44,9 @@ class FeatureContext implements Context
      */
     public function iShouldSeeOurMaterialTheme()
     {
-        $responseContent = $this->response->getBody()->getContents();
-        Assert::contains(
-            $responseContent,
-            '<base href="http://hub/module.php/material/">',
+        $hasMaterialDesignElement = $this->page->has('css', '.mdl-layout');
+        Assert::true(
+            $hasMaterialDesignElement,
             'Failed to find the expected evidence of our material theme'
         );
     }
