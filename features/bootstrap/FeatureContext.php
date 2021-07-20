@@ -9,7 +9,7 @@ use Webmozart\Assert\Assert;
 
 class FeatureContext implements Context
 {
-    private const HUB_DISCO_URL = 'http://hub/module.php/core/authenticate.php?as=hub-discovery';
+    private const HUB_DISCO_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=hub-discovery';
     
     /** @var DocumentElement|null */
     private $page;

@@ -20,7 +20,7 @@ services:
   test:
     build: .
     depends_on:
-      - hub
+      - ssp-hub.local
     environment:
       - COMPOSER_CACHE_DIR=/composer
     volumes:
@@ -47,7 +47,7 @@ services:
     environment:
       - COMPOSER_CACHE_DIR=/composer
 
-  hub:
+  ssp-hub.local:
     build: .
     volumes:
       # Utilize custom certs
