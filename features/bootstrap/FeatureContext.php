@@ -96,13 +96,16 @@ class FeatureContext implements Context
     }
 
     /**
-     * @Then I should see an error page
+     * @Then I should see a(n) :title page
      */
-    public function iShouldSeeAnErrorPage()
+    public function iShouldSeeAPage($title)
     {
-        $titleElement = $this->page->find('css', '.mdl-layout-title');
-        Assert::notNull($titleElement, 'Could not find the title text element');
-        $titleText = $titleElement->getText();
-        Assert::same($titleText, 'Error', 'This does not seem to be an error page');
+        $titleElement = $this->page->find('css', 'head > title');
+        Assert::notNull($titleElement, "Could not find the page's title");
+        Assert::same(
+            $titleElement->getText(),
+            $title,
+            "This does not seem to be a(n) $title page"
+        );
     }
 }

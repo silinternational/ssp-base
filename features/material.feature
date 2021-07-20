@@ -6,7 +6,7 @@ Feature: Material theme
   
   Scenario: Error page
     When I go to the Hub but specify an invalid authentication source
-    Then I should see an error page
+    Then I should see an "Error" page
       And I should see our material theme
 
   Scenario: Logout page
@@ -16,4 +16,5 @@ Feature: Material theme
       And I click on "admin"
       And I log in as a hub administrator
       And I click on "Logout"
-    Then I should see our material theme
+    Then I should see a "Logged out" page
+      And I should see our material theme
