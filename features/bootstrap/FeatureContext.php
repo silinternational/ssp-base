@@ -9,6 +9,7 @@ use Webmozart\Assert\Assert;
 
 class FeatureContext implements Context
 {
+    private const HUB_BAD_AUTH_SOURCE_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=wrong';
     private const HUB_DISCO_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=hub-discovery';
     
     /** @var DocumentElement|null */
@@ -49,5 +50,24 @@ class FeatureContext implements Context
             $hasMaterialDesignElement,
             'Failed to find the expected evidence of our material theme'
         );
+    }
+
+    /**
+     * @When I go to the Hub but specify an invalid authentication source
+     */
+    public function iGoToTheHubButSpecifyAnInvalidAuthenticationSource()
+    {
+        $this->goToPage(self::HUB_BAD_AUTH_SOURCE_URL);
+    }
+
+    /**
+     * @Then I should see an error page
+     */
+    public function iShouldSeeAnErrorPage()
+    {
+        $titleElement = $this->page->find('css', '.mdl-layout-title');
+        Assert::notNull($titleElement, 'Could not find the title text element');
+        $titleText = $titleElement->getText();
+        Assert::same($titleText, 'Error', 'This does not seem to be an error page');
     }
 }

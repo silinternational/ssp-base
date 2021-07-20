@@ -5,9 +5,6 @@ Feature: Material theme
     Then I should see our material theme
   
   Scenario: Error page
-    When I go to the Hub's home page
-      And I click the "Federation" tab
-      And I click a "Show metadata" link
-      And I log in as a hub administrator
-    Then I should see an error message
+    When I go to the Hub but specify an invalid authentication source
+    Then I should see an error page
       And I should see our material theme
