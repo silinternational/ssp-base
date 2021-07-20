@@ -11,6 +11,7 @@ class FeatureContext implements Context
 {
     private const HUB_BAD_AUTH_SOURCE_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=wrong';
     private const HUB_DISCO_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=hub-discovery';
+    private const HUB_HOME_URL = 'http://ssp-hub.local';
     
     /** @var DocumentElement|null */
     private $page;
@@ -50,6 +51,40 @@ class FeatureContext implements Context
             $hasMaterialDesignElement,
             'Failed to find the expected evidence of our material theme'
         );
+    }
+
+    /**
+     * @When I go to the Hub's home page
+     */
+    public function iGoToTheHubsHomePage()
+    {
+        $this->goToPage(self::HUB_HOME_URL);
+    }
+
+    /**
+     * @When I click on :linkText
+     */
+    public function iClickOn($linkText)
+    {
+        $this->page->clickLink($linkText);
+    }
+
+    /**
+     * @When I log in as a hub administrator
+     */
+    public function iLogInAsAHubAdministrator()
+    {
+        $usernameField = $this->page->findField('username');
+        Assert::notNull($usernameField, 'Could not find the username field');
+        $usernameField->setValue('admin');
+        
+        $passwordField = $this->page->findField('password');
+        Assert::notNull($passwordField, 'Could not find the password field');
+        $passwordField->setValue('abc123');
+        
+        $loginButton = $this->page->findButton('Login');
+        Assert::notNull($loginButton, 'Could not find the login button');
+        $loginButton->click();
     }
 
     /**

@@ -69,7 +69,7 @@ services:
       - "80:80"
     environment:
       ADMIN_EMAIL: "john_doe@there.com"
-      ADMIN_PASS: "1234qwer"
+      ADMIN_PASS: "abc123"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "Hub"
       SECURE_COOKIE: "false"
