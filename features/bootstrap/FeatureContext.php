@@ -103,10 +103,29 @@ class FeatureContext implements Context
         $page = $this->session->getPage();
         $titleElement = $page->find('css', 'head > title');
         Assert::notNull($titleElement, "Could not find the page's title");
-        Assert::same(
-            $titleElement->getText(),
-            $title,
-            "This does not seem to be a(n) $title page"
+        if ($titleElement->getText() !== $title) {
+            throw new Exception(sprintf(
+                "This does not seem to be a(n) %s page:\n%s",
+                $title,
+                $page->getHtml()
+            ));
+        }
+    }
+
+    /**
+     * @When I click on the :idpName tile
+     */
+    public function iClickOnTheTile($idpName)
+    {
+        $page = $this->session->getPage();
+        $idpTileTitle = sprintf('Login with your %s identity account', $idpName);
+        $idpTile = $page->find(
+            'css',
+            sprintf('div[title="%s"]', $idpTileTitle)
         );
+        Assert::notNull($idpTile, 'Failed to find ' . $idpName . ' tile');
+        $button = $idpTile->find('css', 'button');
+        Assert::notNull($button, 'Failed to find button for ' . $idpName);
+        $button->click();
     }
 }

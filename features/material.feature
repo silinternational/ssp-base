@@ -18,3 +18,9 @@ Feature: Material theme
       And I click on "Logout"
     Then I should see a "Logged out" page
       And I should see our material theme
+
+  Scenario: Login page
+    When I go to the Hub's discovery page
+      And I click on the "IDP 1" tile
+    Then I should see a "Login" page
+      And I should see our material theme
