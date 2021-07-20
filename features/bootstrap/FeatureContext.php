@@ -13,9 +13,6 @@ class FeatureContext implements Context
     private const HUB_DISCO_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=hub-discovery';
     private const HUB_HOME_URL = 'http://ssp-hub.local';
     
-    /** @var DocumentElement|null */
-    private $page;
-    
     /** @var Session */
     private $session;
     
@@ -38,7 +35,6 @@ class FeatureContext implements Context
     private function goToPage(string $url)
     {
         $this->session->visit($url);
-        $this->page = $this->session->getPage();
     }
 
     /**
@@ -46,7 +42,8 @@ class FeatureContext implements Context
      */
     public function iShouldSeeOurMaterialTheme()
     {
-        $hasMaterialDesignElement = $this->page->has('css', '.mdl-layout');
+        $page = $this->session->getPage();
+        $hasMaterialDesignElement = $page->has('css', '.mdl-layout');
         Assert::true(
             $hasMaterialDesignElement,
             'Failed to find the expected evidence of our material theme'
@@ -66,7 +63,8 @@ class FeatureContext implements Context
      */
     public function iClickOn($linkText)
     {
-        $this->page->clickLink($linkText);
+        $page = $this->session->getPage();
+        $page->clickLink($linkText);
     }
 
     /**
@@ -74,15 +72,17 @@ class FeatureContext implements Context
      */
     public function iLogInAsAHubAdministrator()
     {
-        $usernameField = $this->page->findField('username');
+        $page = $this->session->getPage();
+        
+        $usernameField = $page->findField('username');
         Assert::notNull($usernameField, 'Could not find the username field');
         $usernameField->setValue('admin');
         
-        $passwordField = $this->page->findField('password');
+        $passwordField = $page->findField('password');
         Assert::notNull($passwordField, 'Could not find the password field');
         $passwordField->setValue('abc123');
         
-        $loginButton = $this->page->findButton('Login');
+        $loginButton = $page->findButton('Login');
         Assert::notNull($loginButton, 'Could not find the login button');
         $loginButton->click();
     }
@@ -100,7 +100,8 @@ class FeatureContext implements Context
      */
     public function iShouldSeeAPage($title)
     {
-        $titleElement = $this->page->find('css', 'head > title');
+        $page = $this->session->getPage();
+        $titleElement = $page->find('css', 'head > title');
         Assert::notNull($titleElement, "Could not find the page's title");
         Assert::same(
             $titleElement->getText(),
