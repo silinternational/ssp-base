@@ -1,10 +1,8 @@
 <?php
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
-use Behat\Mink\Driver\GoutteDriver;
-use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Session;
+use DMore\ChromeDriver\ChromeDriver;
 use Webmozart\Assert\Assert;
 
 class FeatureContext implements Context
@@ -18,7 +16,7 @@ class FeatureContext implements Context
     
     public function __construct()
     {
-        $driver = new GoutteDriver();
+        $driver = new ChromeDriver('http://test-browser:9222', null, 'http://ssp-hub.local');
         $this->session = new Session($driver);
         // See http://mink.behat.org/en/latest/guides/session.html for docs.
         $this->session->start();

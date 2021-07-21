@@ -21,10 +21,10 @@ services:
     build: .
     depends_on:
       - ssp-hub.local
+      - test-browser
     environment:
       - COMPOSER_CACHE_DIR=/composer
     volumes:
-      - ./behat.yml:/data/behat.yml
       - ./composer.json:/data/composer.json
       - ./composer.lock:/data/composer.lock
       - ${COMPOSER_CACHE_DIR}:/composer
@@ -32,6 +32,13 @@ services:
       - ./features:/data/features
       - ./tests:/data/tests
     command: ["/data/run-tests.sh"]
+
+  test-browser:
+    image: justinribeiro/chrome-headless:stable
+    ports:
+      - "9222:9222"
+    cap_add:
+      - SYS_ADMIN
 
   composer:
     build: .
