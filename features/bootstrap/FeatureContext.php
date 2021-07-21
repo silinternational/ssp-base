@@ -22,6 +22,11 @@ class FeatureContext implements Context
         $this->session->start();
     }
 
+    public function __destruct()
+    {
+        $this->session->reset();
+    }
+
     /**
      * @When I go to the Hub's discovery page
      */
