@@ -110,15 +110,24 @@ class FeatureContext extends MinkContext
     public function iClickOnTheTile($idpName)
     {
         $page = $this->session->getPage();
-        $idpTileTitle = sprintf('Login with your %s identity account', $idpName);
-        $idpTile = $page->find(
-            'css',
-            sprintf('div[title="%s"]', $idpTileTitle)
-        );
-        Assert::notNull($idpTile, 'Failed to find ' . $idpName . ' tile');
-        $button = $idpTile->find('css', 'button');
-        Assert::notNull($button, 'Failed to find button for ' . $idpName);
-        $button->click();
+        try {
+            $idpTileTitle = sprintf('Login with your %s identity account', $idpName);
+            $idpTile = $page->find(
+                'css',
+                sprintf('div[title="%s"]', $idpTileTitle)
+            );
+            Assert::notNull($idpTile, 'Failed to find ' . $idpName . ' tile');
+            $button = $idpTile->find('css', 'button');
+            Assert::notNull($button, 'Failed to find button for ' . $idpName);
+            $button->press();
+        } catch (Throwable $t) {
+            $this->printCurrentUrl();
+            echo sprintf(
+                "\n--------------\n%s",
+                $page->getOuterHtml()
+            );
+            throw $t;
+        }
     }
 
     /**
