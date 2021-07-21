@@ -1,11 +1,12 @@
 <?php
 
-use Behat\Behat\Context\Context;
+use Behat\Mink\Mink;
 use Behat\Mink\Session;
+use Behat\MinkExtension\Context\MinkContext;
 use DMore\ChromeDriver\ChromeDriver;
 use Webmozart\Assert\Assert;
 
-class FeatureContext implements Context
+class FeatureContext extends MinkContext
 {
     private const HUB_BAD_AUTH_SOURCE_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=wrong';
     private const HUB_DISCO_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=hub-discovery';
@@ -18,6 +19,9 @@ class FeatureContext implements Context
     {
         $driver = new ChromeDriver('http://test-browser:9222', null, 'http://ssp-hub.local');
         $this->session = new Session($driver);
+        $mink = new Mink(['default' => $this->session]);
+        $mink->setDefaultSessionName('default');
+        $this->setMink($mink);
         // See http://mink.behat.org/en/latest/guides/session.html for docs.
         $this->session->start();
     }
@@ -32,14 +36,9 @@ class FeatureContext implements Context
      */
     public function iGoToTheHubsDiscoveryPage()
     {
-        $this->goToPage(self::HUB_DISCO_URL);
+        $this->visit(self::HUB_DISCO_URL);
     }
     
-    private function goToPage(string $url)
-    {
-        $this->session->visit($url);
-    }
-
     /**
      * @Then I should see our material theme
      */
@@ -58,7 +57,7 @@ class FeatureContext implements Context
      */
     public function iGoToTheHubsHomePage()
     {
-        $this->goToPage(self::HUB_HOME_URL);
+        $this->visit(self::HUB_HOME_URL);
     }
 
     /**
@@ -66,8 +65,7 @@ class FeatureContext implements Context
      */
     public function iClickOn($linkText)
     {
-        $page = $this->session->getPage();
-        $page->clickLink($linkText);
+        $this->clickLink($linkText);
     }
 
     /**
@@ -75,19 +73,9 @@ class FeatureContext implements Context
      */
     public function iLogInAsAHubAdministrator()
     {
-        $page = $this->session->getPage();
-        
-        $usernameField = $page->findField('username');
-        Assert::notNull($usernameField, 'Could not find the username field');
-        $usernameField->setValue('admin');
-        
-        $passwordField = $page->findField('password');
-        Assert::notNull($passwordField, 'Could not find the password field');
-        $passwordField->setValue('abc123');
-        
-        $loginButton = $page->findButton('Login');
-        Assert::notNull($loginButton, 'Could not find the login button');
-        $loginButton->click();
+        $this->fillField('username', 'admin');
+        $this->fillField('password', 'abc123');
+        $this->pressButton('Login');
     }
 
     /**
@@ -95,7 +83,7 @@ class FeatureContext implements Context
      */
     public function iGoToTheHubButSpecifyAnInvalidAuthenticationSource()
     {
-        $this->goToPage(self::HUB_BAD_AUTH_SOURCE_URL);
+        $this->visit(self::HUB_BAD_AUTH_SOURCE_URL);
     }
 
     /**
