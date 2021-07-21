@@ -20,7 +20,7 @@ Feature: Material theme
       And I should see our material theme
 
   Scenario: Login page
-    When I go to the Hub's discovery page
+    When I go to the SP1 login page
       And I click on the "IDP 1" tile
     Then I should see a "Login" page
       And I should see our material theme

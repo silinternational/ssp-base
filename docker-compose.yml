@@ -21,6 +21,7 @@ services:
     build: .
     depends_on:
       - ssp-hub.local
+      - ssp-hub-sp.local
       - test-browser
     environment:
       - COMPOSER_CACHE_DIR=/composer
@@ -134,7 +135,7 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
 
-  sp1:
+  ssp-hub-sp.local:
     build: .
     volumes:
       # Utilize custom certs

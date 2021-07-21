@@ -11,6 +11,7 @@ class FeatureContext extends MinkContext
     private const HUB_BAD_AUTH_SOURCE_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=wrong';
     private const HUB_DISCO_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=hub-discovery';
     private const HUB_HOME_URL = 'http://ssp-hub.local';
+    private const SP1_LOGIN_PAGE = 'http://ssp-hub-sp.local/module.php/core/authenticate.php?as=hub-discovery';
     
     /** @var Session */
     private $session;
@@ -118,5 +119,13 @@ class FeatureContext extends MinkContext
         $button = $idpTile->find('css', 'button');
         Assert::notNull($button, 'Failed to find button for ' . $idpName);
         $button->click();
+    }
+
+    /**
+     * @When I go to the SP1 login page
+     */
+    public function iGoToTheSp1LoginPage()
+    {
+        $this->visit(self::SP1_LOGIN_PAGE);
     }
 }
