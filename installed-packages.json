@@ -16,11 +16,6 @@
             "description": "Mink driver for controlling chrome without selenium"
         },
         {
-            "name": "guzzlehttp/guzzle",
-            "version": "6.5.5",
-            "description": "Guzzle is a PHP HTTP client library"
-        },
-        {
             "name": "phpunit/phpunit",
             "version": "7.5.20",
             "description": "The PHP Unit Testing framework."
