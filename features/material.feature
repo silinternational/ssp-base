@@ -1,6 +1,6 @@
 Feature: Material theme
   
-  Scenario: Hub page
+  Scenario: Hub (disco) page
     When I go to the Hub's discovery page
     Then I should see our material theme
   
@@ -24,3 +24,7 @@ Feature: Material theme
       And I click on the "IDP 1" tile
     Then I should see a "Login with your IDP 1 identity" page
       And I should see our material theme
+
+  Scenario: Forgot password link
+    
+  Scenario: Help and profile links
