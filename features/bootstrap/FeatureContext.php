@@ -11,7 +11,7 @@ class FeatureContext extends MinkContext
     private const HUB_BAD_AUTH_SOURCE_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=wrong';
     private const HUB_DISCO_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=hub-discovery';
     private const HUB_HOME_URL = 'http://ssp-hub.local';
-    private const SP1_LOGIN_PAGE = 'http://ssp-hub-sp.local/module.php/core/authenticate.php?as=hub-discovery';
+    private const SP1_LOGIN_PAGE = 'http://ssp-hub-sp.local/module.php/core/authenticate.php?as=ssp-hub';
     
     /** @var Session */
     private $session;
