@@ -8,9 +8,9 @@ export COMPOSER_ALLOW_SUPERUSER=1; composer install
 
 ./vendor/bin/phpunit -v tests/
 
-whenavail "ssp-hub.local"     80   10 echo Hub ready
-whenavail "ssp-hub-idp.local" 8085 10 echo IDP 1 ready
-whenavail "ssp-hub-sp.local"  80   10 echo SP 1 ready
+whenavail "ssp-hub.local"     80 10 echo Hub ready
+whenavail "ssp-hub-idp.local" 80 10 echo IDP 1 ready
+whenavail "ssp-hub-sp.local"  80 10 echo SP 1 ready
 
 ./vendor/bin/behat \
     --append-snippets \
