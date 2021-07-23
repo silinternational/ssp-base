@@ -17,6 +17,30 @@ services:
     env_file:
       - ./local.env
 
+  test:
+    build: .
+    depends_on:
+      - ssp-hub.local
+      - ssp-hub-sp.local
+      - test-browser
+    environment:
+      - COMPOSER_CACHE_DIR=/composer
+    volumes:
+      - ./composer.json:/data/composer.json
+      - ./composer.lock:/data/composer.lock
+      - ${COMPOSER_CACHE_DIR}:/composer
+      - ./dockerbuild/run-tests.sh:/data/run-tests.sh
+      - ./features:/data/features
+      - ./tests:/data/tests
+    command: ["/data/run-tests.sh"]
+
+  test-browser:
+    image: justinribeiro/chrome-headless:stable
+    ports:
+      - "9222:9222"
+    cap_add:
+      - SYS_ADMIN
+
   composer:
     build: .
     volumes:
@@ -31,7 +55,7 @@ services:
     environment:
       - COMPOSER_CACHE_DIR=/composer
 
-  hub:
+  ssp-hub.local:
     build: .
     volumes:
       # Utilize custom certs
@@ -53,7 +77,7 @@ services:
       - "80:80"
     environment:
       ADMIN_EMAIL: "john_doe@there.com"
-      ADMIN_PASS: "1234qwer"
+      ADMIN_PASS: "abc123"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "Hub"
       SECURE_COOKIE: "false"
@@ -111,7 +135,7 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
 
-  sp1:
+  ssp-hub-sp.local:
     build: .
     volumes:
       # Utilize custom certs
