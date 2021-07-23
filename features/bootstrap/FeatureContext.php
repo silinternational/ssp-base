@@ -109,13 +109,16 @@ class FeatureContext extends MinkContext
         $page = $this->session->getPage();
         $titleElement = $page->find('css', 'head > title');
         Assert::notNull($titleElement, "Could not find the page's title");
-        if ($titleElement->getText() !== $title) {
-            throw new Exception(sprintf(
-                "This does not seem to be a(n) %s page:\n%s",
-                $title,
-                $page->getHtml()
-            ));
-        }
+        Assert::same(
+            $titleElement->getText(),
+            $title,
+            "This does not seem to be a '$title' page"
+        );
+    }
+    
+    private function stringContainsString($haystack, $needle): bool
+    {
+        return strpos($haystack, $needle) !== false;
     }
 
     /**

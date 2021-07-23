@@ -111,6 +111,7 @@ services:
       IDP_NAME: "IDP 1"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
+      THEME_USE: "material:material"
 
   idp2:
     build: .
