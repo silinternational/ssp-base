@@ -16,5 +16,5 @@ whenavail "ssp-hub-sp.local"  80 10 echo SP 1 ready
     --append-snippets \
     --snippets-for=FeatureContext \
     --no-interaction \
-    --stop-on-failure \
-    --strict
+    --stop-on-failure #\
+    #--strict
