@@ -21,6 +21,7 @@ services:
     build: .
     depends_on:
       - ssp-hub.local
+      - ssp-hub-idp.local
       - ssp-hub-sp.local
       - test-browser
     environment:
@@ -87,7 +88,7 @@ services:
       THEME_COLOR_SCHEME: "orange-light_blue"
       HUB_MODE: "true"
 
-  idp1:
+  ssp-hub-idp.local:
     build: .
     volumes:
       # Utilize custom certs
