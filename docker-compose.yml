@@ -101,9 +101,12 @@ services:
       # Utilize custom metadata
       - ./development/idp-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
       - ./development/idp-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
+      
+      # Use custom port in vhost, so port is same for host and other containers
+      - ./development/idp-local/vhost.conf:/etc/apache2/sites-enabled/vhost.conf
     command: /data/run.sh
     ports:
-      - "8085:80"
+      - "8085:8085"
     environment:
       ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: "a"
