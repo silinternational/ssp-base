@@ -32,6 +32,20 @@ class FeatureContext extends MinkContext
         $this->session->reset();
     }
 
+    /** @AfterStep */
+    public function afterStep(Behat\Behat\Hook\Scope\AfterStepScope $scope)
+    {
+        if (! $scope->getTestResult()->isPassed()) {
+            $this->showPageDetails();
+        }
+    }
+    
+    private function showPageDetails()
+    {
+        echo '[' . $this->session->getStatusCode() . '] ';
+        $this->printLastResponse();
+    }
+
     /**
      * @When I go to the Hub's discovery page
      */
@@ -110,24 +124,15 @@ class FeatureContext extends MinkContext
     public function iClickOnTheTile($idpName)
     {
         $page = $this->session->getPage();
-        try {
-            $idpTileTitle = sprintf('Login with your %s identity account', $idpName);
-            $idpTile = $page->find(
-                'css',
-                sprintf('div[title="%s"]', $idpTileTitle)
-            );
-            Assert::notNull($idpTile, 'Failed to find ' . $idpName . ' tile');
-            $button = $idpTile->find('css', 'button');
-            Assert::notNull($button, 'Failed to find button for ' . $idpName);
-            $button->press();
-        } catch (Throwable $t) {
-            $this->printCurrentUrl();
-            echo sprintf(
-                "\n--------------\n%s",
-                $page->getOuterHtml()
-            );
-            throw $t;
-        }
+        $idpTileTitle = sprintf('Login with your %s identity account', $idpName);
+        $idpTile = $page->find(
+            'css',
+            sprintf('div[title="%s"]', $idpTileTitle)
+        );
+        Assert::notNull($idpTile, 'Failed to find ' . $idpName . ' tile');
+        $button = $idpTile->find('css', 'button');
+        Assert::notNull($button, 'Failed to find button for ' . $idpName);
+        $button->press();
     }
 
     /**
