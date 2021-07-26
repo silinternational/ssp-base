@@ -17,8 +17,11 @@ RUN mkdir -p /data
 COPY dockerbuild/vhost.conf /etc/apache2/sites-enabled/
 COPY dockerbuild/run.sh /data/run.sh
 COPY dockerbuild/run-idp.sh /data/run-idp.sh
-COPY dockerbuild/run-tests.sh /data/run-tests.sh
 COPY dockerbuild/run-spidplinks.php /data/run-spidplinks.php
+
+# Note the name change: repos extending this one should only run the metadata
+# tests, so those are the only tests we make available to them.
+COPY dockerbuild/run-metadata-tests.sh /data/run-tests.sh
 
 # ErrorLog inside a VirtualHost block is ineffective for unknown reasons
 RUN sed -i -E 's@ErrorLog .*@ErrorLog /proc/1/fd/2@i' /etc/apache2/apache2.conf
