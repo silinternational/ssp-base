@@ -11,7 +11,7 @@ class FeatureContext extends MinkContext
     private const HUB_BAD_AUTH_SOURCE_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=wrong';
     private const HUB_DISCO_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=hub-discovery';
     private const HUB_HOME_URL = 'http://ssp-hub.local';
-    private const SP1_LOGIN_PAGE = 'http://ssp-hub-sp.local/module.php/core/authenticate.php?as=hub-discovery';
+    private const SP1_LOGIN_PAGE = 'http://ssp-hub-sp.local/module.php/core/authenticate.php?as=ssp-hub';
     
     /** @var Session */
     private $session;
@@ -30,6 +30,20 @@ class FeatureContext extends MinkContext
     public function __destruct()
     {
         $this->session->reset();
+    }
+
+    /** @AfterStep */
+    public function afterStep(Behat\Behat\Hook\Scope\AfterStepScope $scope)
+    {
+        if (! $scope->getTestResult()->isPassed()) {
+            $this->showPageDetails();
+        }
+    }
+    
+    private function showPageDetails()
+    {
+        echo '[' . $this->session->getStatusCode() . '] ';
+        $this->printLastResponse();
     }
 
     /**
@@ -95,13 +109,16 @@ class FeatureContext extends MinkContext
         $page = $this->session->getPage();
         $titleElement = $page->find('css', 'head > title');
         Assert::notNull($titleElement, "Could not find the page's title");
-        if ($titleElement->getText() !== $title) {
-            throw new Exception(sprintf(
-                "This does not seem to be a(n) %s page:\n%s",
-                $title,
-                $page->getHtml()
-            ));
-        }
+        Assert::same(
+            $titleElement->getText(),
+            $title,
+            "This does not seem to be a '$title' page"
+        );
+    }
+    
+    private function stringContainsString($haystack, $needle): bool
+    {
+        return strpos($haystack, $needle) !== false;
     }
 
     /**
@@ -110,24 +127,15 @@ class FeatureContext extends MinkContext
     public function iClickOnTheTile($idpName)
     {
         $page = $this->session->getPage();
-        try {
-            $idpTileTitle = sprintf('Login with your %s identity account', $idpName);
-            $idpTile = $page->find(
-                'css',
-                sprintf('div[title="%s"]', $idpTileTitle)
-            );
-            Assert::notNull($idpTile, 'Failed to find ' . $idpName . ' tile');
-            $button = $idpTile->find('css', 'button');
-            Assert::notNull($button, 'Failed to find button for ' . $idpName);
-            $button->press();
-        } catch (Throwable $t) {
-            $this->printCurrentUrl();
-            echo sprintf(
-                "\n--------------\n%s",
-                $page->getOuterHtml()
-            );
-            throw $t;
-        }
+        $idpTileTitle = sprintf('Login with your %s identity account', $idpName);
+        $idpTile = $page->find(
+            'css',
+            sprintf('div[title="%s"]', $idpTileTitle)
+        );
+        Assert::notNull($idpTile, 'Failed to find ' . $idpName . ' tile');
+        $button = $idpTile->find('css', 'button');
+        Assert::notNull($button, 'Failed to find button for ' . $idpName);
+        $button->press();
     }
 
     /**

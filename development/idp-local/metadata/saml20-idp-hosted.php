@@ -23,3 +23,6 @@ $metadata['http://ssp-hub-idp.local:8085'] = [
 	 */
 	'auth' => 'admin',
 ];
+
+// Duplicate configuration for port 80.
+$metadata['http://ssp-hub-idp.local'] = $metadata['http://ssp-hub-idp.local:8085'];
