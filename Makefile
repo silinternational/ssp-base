@@ -14,4 +14,5 @@ composer:
 	docker-compose run --rm composer bash -c "./update-composer-deps.sh"
 
 test:
+	docker-compose run --rm ssp-hub.local ./run-metadata-tests.sh
 	docker-compose run --rm test
