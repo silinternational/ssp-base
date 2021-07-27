@@ -31,5 +31,23 @@ $config = [
         // Tell the Hub which format to use for the NameID
         'NameIDPolicy' => "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
     ],
+    'ssp-hub-custom-port' => [
+        'saml:SP',
+
+        // The entity ID of this SP.
+        // Can be NULL/unset, in which case an entity ID is generated based on the metadata URL.
+        'entityID' => 'http://ssp-hub-sp.local:8081',
+
+        // The entity ID of the IdP this should SP should contact.
+        // Can be NULL/unset, in which case the user will be shown a list of available IdPs.
+        'idp' => 'ssp-hub.local',
+
+        // The URL to the discovery service.
+        // Can be NULL/unset, in which case a builtin discovery service will be used.
+        'discoURL' => null,
+
+        // Tell the Hub which format to use for the NameID
+        'NameIDPolicy' => "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+    ],
 
 ];
