@@ -89,8 +89,3 @@ ssp-hub-sp.local:
     SHOW_SAML_ERRORS: "true"
     SAML20_IDP_ENABLE: "false"
     ADMIN_PROTECT_INDEX_PAGE: "false"
-
-tracker:
-  image: silintl/app-deployment-tracker-ga:latest
-  environment:
-    TRACKING_ID: UA-56269387-10

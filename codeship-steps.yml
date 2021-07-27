@@ -19,8 +19,3 @@
   tag: master
   registry: https://index.docker.io/v1/
   encrypted_dockercfg_path: dockercfg.encrypted
-
-- name: track_deployment
-  service: tracker
-  tag: ^(main|master|develop)
-  command: "true"
