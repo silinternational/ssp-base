@@ -75,6 +75,9 @@ services:
 
       # Configure the debugger
       - ./development/hub/run-debug.sh:/data/run-debug.sh
+
+      # Enable checking our test metadata
+      - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
     command: /data/run-debug.sh
     ports:
       - "80:80"
