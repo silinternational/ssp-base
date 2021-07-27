@@ -16,7 +16,7 @@ return [
         'name' => [
           'en' => 'IDP 1',
         ],
-        'IDPNamespace' => 'IDP-1',
+        'IDPNamespace' => 'IDP-1-custom-port',
         'enabled' => true,
 
         'description'          => 'Local IDP for testing SSP Hub (custom port)',
@@ -51,7 +51,7 @@ return [
         'name' => [
           'en' => 'IDP 2',
         ],
-        'IDPNamespace' => 'IDP-2',
+        'IDPNamespace' => 'IDP-2-custom-port',
         'enabled' => false,
         'betaEnabled' => true,
 
