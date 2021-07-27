@@ -75,6 +75,9 @@ services:
 
       # Configure the debugger
       - ./development/hub/run-debug.sh:/data/run-debug.sh
+
+      # Enable checking our test metadata
+      - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
     command: /data/run-debug.sh
     ports:
       - "80:80"
@@ -103,6 +106,9 @@ services:
       # Utilize custom metadata
       - ./development/idp-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
       - ./development/idp-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
+
+      # Enable checking our test metadata
+      - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
     command: /data/run.sh
     ports:
       - "8085:80"
@@ -151,6 +157,9 @@ services:
 
       # Utilize custom metadata
       - ./development/sp-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
+
+      # Enable checking our test metadata
+      - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
     ports:
       - "8081:80"
     environment:
