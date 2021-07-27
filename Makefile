@@ -15,4 +15,6 @@ composer:
 
 test:
 	docker-compose run --rm ssp-hub.local ./run-metadata-tests.sh
+	docker-compose run --rm ssp-hub-idp.local ./run-metadata-tests.sh
+	docker-compose run --rm ssp-hub-sp.local ./run-metadata-tests.sh
 	docker-compose run --rm test
