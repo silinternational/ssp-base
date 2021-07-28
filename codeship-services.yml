@@ -59,7 +59,10 @@ ssp-hub-idp.local:
     # Utilize custom metadata
     - ./development/idp-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
     - ./development/idp-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
-  command: /data/run.sh
+
+    # Misc. files needed
+    - ./development/enable-exampleauth-module.sh:/data/enable-exampleauth-module.sh
+  command: 'bash -c "/data/enable-exampleauth-module.sh && /data/run.sh"'
   environment:
     ADMIN_EMAIL: "john_doe@there.com"
     ADMIN_PASS: "a"
