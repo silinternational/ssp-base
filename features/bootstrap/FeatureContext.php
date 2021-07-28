@@ -115,11 +115,6 @@ class FeatureContext extends MinkContext
             "This does not seem to be a '$title' page"
         );
     }
-    
-    private function stringContainsString($haystack, $needle): bool
-    {
-        return strpos($haystack, $needle) !== false;
-    }
 
     /**
      * @When I click on the :idpName tile
