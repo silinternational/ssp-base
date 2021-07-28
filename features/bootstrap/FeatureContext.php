@@ -157,9 +157,14 @@ class FeatureContext extends MinkContext
     public function iShouldSeeAPageIndicatingThatISuccessfullyLoggedIn()
     {
         $this->assertResponseStatus(200);
+        $this->assertPageBodyContainsText('Your attributes');
+    }
+    
+    private function assertPageBodyContainsText(string $expectedText)
+    {
         $page = $this->session->getPage();
         $body = $page->find('css', 'body');
-        Assert::contains($body->getText(), 'Your attributes');
+        Assert::contains($body->getText(), $expectedText);
     }
 
     /**
@@ -177,8 +182,6 @@ class FeatureContext extends MinkContext
      */
     public function iShouldSeeAPageWarningMeThatMyPasswordIsAboutToExpire()
     {
-        $page = $this->session->getPage();
-        $body = $page->find('css', 'body');
-        Assert::contains($body->getText(), 'Password expiring soon');
+        $this->assertPageBodyContainsText('Password expiring soon');
     }
 }
