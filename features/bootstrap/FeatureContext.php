@@ -185,4 +185,20 @@ class FeatureContext extends MinkContext
     {
         $this->assertPageBodyContainsText('Password expiring soon');
     }
+
+    /**
+     * @When I log in as a user who's password has expired
+     */
+    public function iLogInAsAUserWhosPasswordHasExpired()
+    {
+        $this->logInAs('already_past', 'a');
+    }
+
+    /**
+     * @Then I should see a page telling me that my password has expired
+     */
+    public function iShouldSeeAPageTellingMeThatMyPasswordHasExpired()
+    {
+        $this->assertPageBodyContainsText('Your password has expired');
+    }
 }

@@ -13,3 +13,7 @@ Feature: Expiry Checker module
     Then I should see a page warning me that my password is about to expire
     
   Scenario: Password has expired
+    Given I go to the SP1 login page
+      And I click on the "IDP 1" tile
+    When I log in as a user who's password has expired
+    Then I should see a page telling me that my password has expired
