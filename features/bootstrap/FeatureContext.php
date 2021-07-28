@@ -83,8 +83,13 @@ class FeatureContext extends MinkContext
      */
     public function iLogInAsAHubAdministrator()
     {
-        $this->fillField('username', 'admin');
-        $this->fillField('password', 'abc123');
+        $this->logInAs('admin', 'abc123');
+    }
+
+    private function logInAs(string $username, string $password)
+    {
+        $this->fillField('username', $username);
+        $this->fillField('password', $password);
         $this->pressButton('Login');
     }
 
@@ -146,9 +151,7 @@ class FeatureContext extends MinkContext
      */
     public function iLogInAsAUserWhosPasswordIsNotAboutToExpire()
     {
-        $this->fillField('username', 'distant_future');
-        $this->fillField('password', 'a');
-        $this->pressButton('Login');
+        $this->logInAs('distant_future', 'a');
     }
 
     /**
@@ -172,9 +175,7 @@ class FeatureContext extends MinkContext
      */
     public function iLogInAsAUserWhosPasswordIsAboutToExpire()
     {
-        $this->fillField('username', 'near_future');
-        $this->fillField('password', 'a');
-        $this->pressButton('Login');
+        $this->logInAs('near_future', 'a');
     }
 
     /**
