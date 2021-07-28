@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-cd /data
-export COMPOSER_ALLOW_SUPERUSER=1; composer install
+set -e
+set -x
 
-# If that failed, exit.
-rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
-
-./vendor/bin/phpunit -v tests/
+/data/run-metadata-tests.sh
+/data/run-integration-tests.sh

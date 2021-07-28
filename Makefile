@@ -14,4 +14,10 @@ composer:
 	docker-compose run --rm composer bash -c "./update-composer-deps.sh"
 
 test:
-	docker-compose run --rm ssp bash -c "HUB_MODE=true /data/run-tests.sh"
+	docker-compose run --rm ssp-hub.local ./run-metadata-tests.sh
+	docker-compose run --rm ssp-hub-idp.local ./run-metadata-tests.sh
+	docker-compose run --rm ssp-hub-sp.local ./run-metadata-tests.sh
+	docker-compose run --rm test
+
+test-integration:
+	docker-compose run --rm test ./run-integration-tests.sh

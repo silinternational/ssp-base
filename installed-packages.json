@@ -1,13 +1,28 @@
 {
     "installed": [
         {
+            "name": "behat/behat",
+            "version": "v3.8.1",
+            "description": "Scenario-oriented BDD framework for PHP"
+        },
+        {
+            "name": "behat/mink-extension",
+            "version": "2.3.1",
+            "description": "Mink extension for Behat"
+        },
+        {
+            "name": "dmore/chrome-mink-driver",
+            "version": "2.8.0",
+            "description": "Mink driver for controlling chrome without selenium"
+        },
+        {
             "name": "phpunit/phpunit",
             "version": "7.5.20",
             "description": "The PHP Unit Testing framework."
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master fc5e5d7",
+            "version": "dev-master 52a1261",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -22,7 +37,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "7.4.2",
+            "version": "7.4.3",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp"
         },
         {

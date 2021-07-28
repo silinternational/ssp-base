@@ -17,6 +17,33 @@ services:
     env_file:
       - ./local.env
 
+  test:
+    build: .
+    depends_on:
+      - ssp-hub.local
+      - ssp-hub-idp.local
+      - ssp-hub-sp.local
+      - test-browser
+    environment:
+      - COMPOSER_CACHE_DIR=/composer
+    volumes:
+      - ./composer.json:/data/composer.json
+      - ./composer.lock:/data/composer.lock
+      - ${COMPOSER_CACHE_DIR}:/composer
+      - ./dockerbuild/run-integration-tests.sh:/data/run-integration-tests.sh
+      - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
+      - ./dockerbuild/run-tests.sh:/data/run-tests.sh
+      - ./features:/data/features
+      - ./tests:/data/tests
+    command: ["/data/run-tests.sh"]
+
+  test-browser:
+    image: justinribeiro/chrome-headless:stable
+    ports:
+      - "9222:9222"
+    cap_add:
+      - SYS_ADMIN
+
   composer:
     build: .
     volumes:
@@ -31,7 +58,7 @@ services:
     environment:
       - COMPOSER_CACHE_DIR=/composer
 
-  hub:
+  ssp-hub.local:
     build: .
     volumes:
       # Utilize custom certs
@@ -48,12 +75,15 @@ services:
 
       # Configure the debugger
       - ./development/hub/run-debug.sh:/data/run-debug.sh
+
+      # Enable checking our test metadata
+      - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
     command: /data/run-debug.sh
     ports:
       - "80:80"
     environment:
       ADMIN_EMAIL: "john_doe@there.com"
-      ADMIN_PASS: "1234qwer"
+      ADMIN_PASS: "abc123"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "Hub"
       SECURE_COOKIE: "false"
@@ -63,7 +93,7 @@ services:
       THEME_COLOR_SCHEME: "orange-light_blue"
       HUB_MODE: "true"
 
-  idp1:
+  ssp-hub-idp.local:
     build: .
     volumes:
       # Utilize custom certs
@@ -76,7 +106,13 @@ services:
       # Utilize custom metadata
       - ./development/idp-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
       - ./development/idp-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
-    command: /data/run.sh
+
+      # Misc. files needed
+      - ./development/enable-exampleauth-module.sh:/data/enable-exampleauth-module.sh
+
+      # Enable checking our test metadata
+      - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
+    command: 'bash -c "/data/enable-exampleauth-module.sh && /data/run.sh"'
     ports:
       - "8085:80"
     environment:
@@ -86,6 +122,7 @@ services:
       IDP_NAME: "IDP 1"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
+      THEME_USE: "material:material"
 
   idp2:
     build: .
@@ -111,7 +148,7 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
 
-  sp1:
+  ssp-hub-sp.local:
     build: .
     volumes:
       # Utilize custom certs
@@ -123,6 +160,9 @@ services:
 
       # Utilize custom metadata
       - ./development/sp-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
+
+      # Enable checking our test metadata
+      - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
     ports:
       - "8081:80"
     environment:
