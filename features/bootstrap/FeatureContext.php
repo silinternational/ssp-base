@@ -83,8 +83,13 @@ class FeatureContext extends MinkContext
      */
     public function iLogInAsAHubAdministrator()
     {
-        $this->fillField('username', 'admin');
-        $this->fillField('password', 'abc123');
+        $this->logInAs('admin', 'abc123');
+    }
+
+    private function logInAs(string $username, string $password)
+    {
+        $this->fillField('username', $username);
+        $this->fillField('password', $password);
         $this->pressButton('Login');
     }
 
@@ -146,9 +151,7 @@ class FeatureContext extends MinkContext
      */
     public function iLogInAsAUserWhosPasswordIsNotAboutToExpire()
     {
-        $this->fillField('username', 'distant_future');
-        $this->fillField('password', 'a');
-        $this->pressButton('Login');
+        $this->logInAs('distant_future', 'a');
     }
 
     /**
@@ -157,8 +160,45 @@ class FeatureContext extends MinkContext
     public function iShouldSeeAPageIndicatingThatISuccessfullyLoggedIn()
     {
         $this->assertResponseStatus(200);
+        $this->assertPageBodyContainsText('Your attributes');
+    }
+    
+    private function assertPageBodyContainsText(string $expectedText)
+    {
         $page = $this->session->getPage();
         $body = $page->find('css', 'body');
-        Assert::contains($body->getText(), 'Your attributes');
+        Assert::contains($body->getText(), $expectedText);
+    }
+
+    /**
+     * @When I log in as a user who's password is about to expire
+     */
+    public function iLogInAsAUserWhosPasswordIsAboutToExpire()
+    {
+        $this->logInAs('near_future', 'a');
+    }
+
+    /**
+     * @Then I should see a page warning me that my password is about to expire
+     */
+    public function iShouldSeeAPageWarningMeThatMyPasswordIsAboutToExpire()
+    {
+        $this->assertPageBodyContainsText('Password expiring soon');
+    }
+
+    /**
+     * @When I log in as a user who's password has expired
+     */
+    public function iLogInAsAUserWhosPasswordHasExpired()
+    {
+        $this->logInAs('already_past', 'a');
+    }
+
+    /**
+     * @Then I should see a page telling me that my password has expired
+     */
+    public function iShouldSeeAPageTellingMeThatMyPasswordHasExpired()
+    {
+        $this->assertPageBodyContainsText('Your password has expired');
     }
 }

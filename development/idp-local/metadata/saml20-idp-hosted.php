@@ -5,6 +5,8 @@
  * See: https://simplesamlphp.org/docs/stable/simplesamlphp-reference-idp-hosted
  */
 
+use Sil\Psr3Adapters\Psr3StdOutLogger;
+
 $metadata['http://ssp-hub-idp.local:8085'] = [
 	/*
 	 * The hostname of the server (VHOST) that will use this SAML entity.
@@ -24,6 +26,18 @@ $metadata['http://ssp-hub-idp.local:8085'] = [
 	 * 'config/authsources.php'.
 	 */
     'auth' => 'example-userpass',
+
+    'authproc' => [
+        10 => [
+            'class' => 'expirychecker:ExpiryDate',
+            'accountNameAttr' => 'cn',
+            'expiryDateAttr' => 'schacExpiryDate',
+            'passwordChangeUrl' => 'http://www.example.com/change-password',
+            'warnDaysBefore' => 14,
+            'dateFormat' => 'Y-m-d',
+            'loggerClass' => Psr3StdOutLogger::class,
+        ],
+    ],
 ];
 
 // Duplicate configuration for port 80.
