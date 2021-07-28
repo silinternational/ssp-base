@@ -1,6 +1,5 @@
 <?php
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Mink\Mink;
 use Behat\Mink\Session;
 use Behat\MinkExtension\Context\MinkContext;
@@ -178,6 +177,8 @@ class FeatureContext extends MinkContext
      */
     public function iShouldSeeAPageWarningMeThatMyPasswordIsAboutToExpire()
     {
-        throw new PendingException();
+        $page = $this->session->getPage();
+        $body = $page->find('css', 'body');
+        Assert::contains($body->getText(), 'your password will expire soon');
     }
 }
