@@ -1,5 +1,6 @@
 <?php
 
+use Behat\Behat\Hook\Scope\AfterStepScope;
 use Behat\Mink\Mink;
 use Behat\Mink\Session;
 use Behat\MinkExtension\Context\MinkContext;
@@ -28,7 +29,7 @@ class FeatureContext extends MinkContext
     }
 
     /** @AfterStep */
-    public function afterStep(Behat\Behat\Hook\Scope\AfterStepScope $scope)
+    public function afterStep(AfterStepScope $scope)
     {
         if (! $scope->getTestResult()->isPassed()) {
             $this->showPageDetails();
