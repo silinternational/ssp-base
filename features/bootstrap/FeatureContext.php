@@ -27,11 +27,6 @@ class FeatureContext extends MinkContext
         $this->session->start();
     }
 
-    public function __destruct()
-    {
-        $this->session->reset();
-    }
-
     /** @AfterStep */
     public function afterStep(Behat\Behat\Hook\Scope\AfterStepScope $scope)
     {
@@ -144,5 +139,26 @@ class FeatureContext extends MinkContext
     public function iGoToTheSp1LoginPage()
     {
         $this->visit(self::SP1_LOGIN_PAGE);
+    }
+
+    /**
+     * @When I log in as a user who's password is NOT about to expire
+     */
+    public function iLogInAsAUserWhosPasswordIsNotAboutToExpire()
+    {
+        $this->fillField('username', 'distant_future');
+        $this->fillField('password', 'a');
+        $this->pressButton('Login');
+    }
+
+    /**
+     * @Then I should see a page indicating that I successfully logged in
+     */
+    public function iShouldSeeAPageIndicatingThatISuccessfullyLoggedIn()
+    {
+        $this->assertResponseStatus(200);
+        $page = $this->session->getPage();
+        $pageText = $page->getText();
+        Assert::contains($pageText, 'Your attributes');
     }
 }

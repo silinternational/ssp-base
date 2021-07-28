@@ -16,12 +16,14 @@ $metadata['http://ssp-hub-idp.local:8085'] = [
 	// X.509 key and certificate. Relative to the cert directory.
 	'privatekey' => 'ssp-hub-idp.pem',
 	'certificate' => 'ssp-hub-idp.crt',
+    
+    'logoURL' => 'https://dummyimage.com/125x125/0f4fbd/ffffff.png&text=IDP+1+8085',
 
 	/*
 	 * Authentication source to use. Must be one that is configured in
 	 * 'config/authsources.php'.
 	 */
-	'auth' => 'admin',
+    'auth' => 'example-userpass',
 ];
 
 // Duplicate configuration for port 80.
