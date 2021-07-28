@@ -179,6 +179,6 @@ class FeatureContext extends MinkContext
     {
         $page = $this->session->getPage();
         $body = $page->find('css', 'body');
-        Assert::contains($body->getText(), 'your password will expire soon');
+        Assert::contains($body->getText(), 'Password expiring soon');
     }
 }
