@@ -1,5 +1,6 @@
 <?php
 
+use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Mink\Mink;
 use Behat\Mink\Session;
 use Behat\MinkExtension\Context\MinkContext;
@@ -160,5 +161,23 @@ class FeatureContext extends MinkContext
         $page = $this->session->getPage();
         $body = $page->find('css', 'body');
         Assert::contains($body->getText(), 'Your attributes');
+    }
+
+    /**
+     * @When I log in as a user who's password is about to expire
+     */
+    public function iLogInAsAUserWhosPasswordIsAboutToExpire()
+    {
+        $this->fillField('username', 'near_future');
+        $this->fillField('password', 'a');
+        $this->pressButton('Login');
+    }
+
+    /**
+     * @Then I should see a page warning me that my password is about to expire
+     */
+    public function iShouldSeeAPageWarningMeThatMyPasswordIsAboutToExpire()
+    {
+        throw new PendingException();
     }
 }
