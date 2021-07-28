@@ -15,7 +15,6 @@ $config = [
         'exampleauth:UserPass',
         'distant_future:a' => [
             'eduPersonPrincipalName' => ['DISTANT_FUTURE@ssp-hub-idp.local'],
-            'eduPersonTargetID' => ['11111111-1111-1111-1111-111111111111'],
             'sn' => ['Future'],
             'givenName' => ['Distant'],
             'mail' => ['distant_future@example.com'],
@@ -27,7 +26,6 @@ $config = [
         ],
         'near_future:a' => [
             'eduPersonPrincipalName' => ['NEAR_FUTURE@ssp-hub-idp.local'],
-            'eduPersonTargetID' => ['22222222-2222-2222-2222-222222222222'],
             'sn' => ['Future'],
             'givenName' => ['Near'],
             'mail' => ['near_future@example.com'],
@@ -39,7 +37,6 @@ $config = [
         ],
         'already_past:a' => [
             'eduPersonPrincipalName' => ['ALREADY_PAST@ssp-hub-idp.local'],
-            'eduPersonTargetID' => ['33333333-3333-3333-3333-333333333333'],
             'sn' => ['Past'],
             'givenName' => ['Already'],
             'mail' => ['already_past@example.com'],
