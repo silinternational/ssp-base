@@ -158,7 +158,7 @@ class FeatureContext extends MinkContext
     {
         $this->assertResponseStatus(200);
         $page = $this->session->getPage();
-        $pageText = $page->getText();
-        Assert::contains($pageText, 'Your attributes');
+        $body = $page->find('css', 'body');
+        Assert::contains($body->getText(), 'Your attributes');
     }
 }
