@@ -18,3 +18,6 @@ test:
 	docker-compose run --rm ssp-hub-idp.local ./run-metadata-tests.sh
 	docker-compose run --rm ssp-hub-sp.local ./run-metadata-tests.sh
 	docker-compose run --rm test
+
+test-integration:
+	docker-compose run --rm test ./run-integration-tests.sh
