@@ -27,11 +27,6 @@ class FeatureContext extends MinkContext
         $this->session->start();
     }
 
-    public function __destruct()
-    {
-        $this->session->reset();
-    }
-
     /** @AfterStep */
     public function afterStep(Behat\Behat\Hook\Scope\AfterStepScope $scope)
     {
