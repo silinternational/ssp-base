@@ -1,6 +1,21 @@
+# Run the integration tests before running metadata tests on the various
+# containers so that integration tests interact with those containers when they
+# only have production dependencies installed, not dev. dependencies.
 - name: test
   service: app
   command: /data/run-tests.sh
+
+- name: check-hub-metadata-for-tests
+  service: ssp-hub.local
+  command: /data/run-metadata-tests.sh
+
+- name: check-idp-metadata-for-tests
+  service: ssp-hub-idp.local
+  command: /data/run-metadata-tests.sh
+
+- name: check-sp-metadata-for-tests
+  service: ssp-hub-sp.local
+  command: /data/run-metadata-tests.sh
 
 - name: push
   service: app

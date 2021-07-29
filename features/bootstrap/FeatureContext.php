@@ -1,5 +1,6 @@
 <?php
 
+use Behat\Behat\Hook\Scope\AfterStepScope;
 use Behat\Mink\Mink;
 use Behat\Mink\Session;
 use Behat\MinkExtension\Context\MinkContext;
@@ -28,7 +29,7 @@ class FeatureContext extends MinkContext
     }
 
     /** @AfterStep */
-    public function afterStep(Behat\Behat\Hook\Scope\AfterStepScope $scope)
+    public function afterStep(AfterStepScope $scope)
     {
         if (! $scope->getTestResult()->isPassed()) {
             $this->showPageDetails();
@@ -114,11 +115,6 @@ class FeatureContext extends MinkContext
             $title,
             "This does not seem to be a '$title' page"
         );
-    }
-    
-    private function stringContainsString($haystack, $needle): bool
-    {
-        return strpos($haystack, $needle) !== false;
     }
 
     /**
