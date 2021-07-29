@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c700624badfd52e3a5b5a2e16a47c57",
+    "content-hash": "39fb43e35423b12d1a6aec54c6eb5ec1",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.186.1",
+            "version": "3.186.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "50f1ec9c1afa9c09512e1b0f8e03fcec9ea5e731"
+                "reference": "ce90f6e5c322f2ce600d818b7949dbfcbf192359"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/50f1ec9c1afa9c09512e1b0f8e03fcec9ea5e731",
-                "reference": "50f1ec9c1afa9c09512e1b0f8e03fcec9ea5e731",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ce90f6e5c322f2ce600d818b7949dbfcbf192359",
+                "reference": "ce90f6e5c322f2ce600d818b7949dbfcbf192359",
                 "shasum": ""
             },
             "require": {
@@ -92,9 +92,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.186.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.186.2"
             },
-            "time": "2021-07-28T18:14:43+00:00"
+            "time": "2021-07-29T18:14:25+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -2344,16 +2344,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-expirychecker",
-            "version": "3.0.4",
+            "version": "3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-expirychecker.git",
-                "reference": "359a2d7e2899ce6dcbc793757a32e62080f11e20"
+                "reference": "6642629413fe75c190a03cccef2537c9da60c514"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/359a2d7e2899ce6dcbc793757a32e62080f11e20",
-                "reference": "359a2d7e2899ce6dcbc793757a32e62080f11e20",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/6642629413fe75c190a03cccef2537c9da60c514",
+                "reference": "6642629413fe75c190a03cccef2537c9da60c514",
                 "shasum": ""
             },
             "require": {
@@ -2389,9 +2389,9 @@
             "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired.",
             "support": {
                 "issues": "https://github.com/silinternational/simplesamlphp-module-expirychecker/issues",
-                "source": "https://github.com/silinternational/simplesamlphp-module-expirychecker/tree/3.0.4"
+                "source": "https://github.com/silinternational/simplesamlphp-module-expirychecker/tree/3.0.5"
             },
-            "time": "2021-06-16T19:28:03+00:00"
+            "time": "2021-07-29T20:05:39+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-material",

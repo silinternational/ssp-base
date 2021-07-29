@@ -32,7 +32,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-expirychecker",
-            "version": "3.0.4",
+            "version": "3.0.5",
             "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired."
         },
         {
