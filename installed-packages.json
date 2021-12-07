@@ -42,7 +42,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "4.1.1",
+            "version": "dev-feature/webauthn af12197",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.)."
         },
         {

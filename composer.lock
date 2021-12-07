@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c5faf5a78742e27d29d410c1eb1cde18",
+    "content-hash": "00781c5660200920dfa0ba31187928af",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2754,16 +2754,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "4.1.1",
+            "version": "dev-feature/webauthn",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "d69fc130d4790a1bf78be20d4a4e4856a31fde7e"
+                "reference": "af12197a0a3667ab5c4341ec1caa523552ab8c42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/d69fc130d4790a1bf78be20d4a4e4856a31fde7e",
-                "reference": "d69fc130d4790a1bf78be20d4a4e4856a31fde7e",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/af12197a0a3667ab5c4341ec1caa523552ab8c42",
+                "reference": "af12197a0a3667ab5c4341ec1caa523552ab8c42",
                 "shasum": ""
             },
             "require": {
@@ -2802,9 +2802,9 @@
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
             "support": {
                 "issues": "https://github.com/silinternational/simplesamlphp-module-mfa/issues",
-                "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/4.1.1"
+                "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/feature/webauthn"
             },
-            "time": "2021-07-15T20:46:59+00:00"
+            "time": "2021-12-07T15:14:16+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
@@ -9598,6 +9598,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "silinternational/simplesamlphp-module-mfa": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
