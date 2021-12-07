@@ -2,7 +2,7 @@
     "installed": [
         {
             "name": "behat/behat",
-            "version": "v3.8.1",
+            "version": "v3.10.0",
             "description": "Scenario-oriented BDD framework for PHP"
         },
         {
@@ -22,7 +22,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master 52a1261",
+            "version": "dev-master e26f8fe",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -47,7 +47,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.)."
         },
         {
