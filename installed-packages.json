@@ -22,7 +22,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master e26f8fe",
+            "version": "dev-master 48f6289",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -42,7 +42,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "dev-feature/webauthn af12197",
+            "version": "dev-feature/webauthn 9a1ecf8",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.)."
         },
         {
