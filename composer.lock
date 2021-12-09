@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "00781c5660200920dfa0ba31187928af",
+    "content-hash": "790ad073a56030267bf23678b01f066d",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.208.2",
+            "version": "3.208.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "ad35b407046b8eb3856b78795371f1fde46769f4"
+                "reference": "c9ccf6705fe41e53f23dac7e0573e3f79d70bcde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ad35b407046b8eb3856b78795371f1fde46769f4",
-                "reference": "ad35b407046b8eb3856b78795371f1fde46769f4",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c9ccf6705fe41e53f23dac7e0573e3f79d70bcde",
+                "reference": "c9ccf6705fe41e53f23dac7e0573e3f79d70bcde",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.208.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.208.3"
             },
-            "time": "2021-12-06T19:15:55+00:00"
+            "time": "2021-12-08T19:30:07+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -2047,12 +2047,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "48f62899325ede08503d5532d9e1c98d7983df55"
+                "reference": "661f78bd557b2acb20e6da7745de77b1ddc69e59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/48f62899325ede08503d5532d9e1c98d7983df55",
-                "reference": "48f62899325ede08503d5532d9e1c98d7983df55",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/661f78bd557b2acb20e6da7745de77b1ddc69e59",
+                "reference": "661f78bd557b2acb20e6da7745de77b1ddc69e59",
                 "shasum": ""
             },
             "conflict": {
@@ -2192,7 +2192,7 @@
                 "kreait/firebase-php": ">=3.2,<3.8.1",
                 "la-haute-societe/tcpdf": "<6.2.22",
                 "laminas/laminas-http": "<2.14.2",
-                "laravel/framework": "<6.20.26|>=7,<7.30.5|>=8,<8.40",
+                "laravel/framework": "<6.20.42|>=7,<7.30.6|>=8,<8.75",
                 "laravel/socialite": ">=1,<1.0.99|>=2,<2.0.10",
                 "lavalite/cms": "<=5.8",
                 "lcobucci/jwt": ">=3.4,<3.4.6|>=4,<4.0.4|>=4.1,<4.1.5",
@@ -2466,7 +2466,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-07T22:15:12+00:00"
+            "time": "2021-12-08T20:16:08+00:00"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -2714,19 +2714,20 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "7.4.3",
+            "version": "dev-feature/webauthn",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "cb3cc27c926773f81e957265152a9f837058f576"
+                "reference": "95476b17dae95b43c6d1c6a89e2a6ee009fefa46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/cb3cc27c926773f81e957265152a9f837058f576",
-                "reference": "cb3cc27c926773f81e957265152a9f837058f576",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/95476b17dae95b43c6d1c6a89e2a6ee009fefa46",
+                "reference": "95476b17dae95b43c6d1c6a89e2a6ee009fefa46",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
                 "php": ">=7.0",
                 "silinternational/ssp-utilities": "^1.0",
                 "simplesamlphp/composer-module-installer": "^1.1.5",
@@ -2749,9 +2750,9 @@
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
             "support": {
                 "issues": "https://github.com/silinternational/simplesamlphp-module-material/issues",
-                "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/7.4.3"
+                "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/feature/webauthn"
             },
-            "time": "2021-07-26T21:51:19+00:00"
+            "time": "2021-12-09T15:49:35+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
@@ -6599,16 +6600,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v5.4.0",
+            "version": "v5.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "89ab66eaef230c9cd1992de2e9a1b26652b127b9"
+                "reference": "2366ac8d8abe0c077844613c1a4f0c0a9f522dcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/89ab66eaef230c9cd1992de2e9a1b26652b127b9",
-                "reference": "89ab66eaef230c9cd1992de2e9a1b26652b127b9",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/2366ac8d8abe0c077844613c1a4f0c0a9f522dcc",
+                "reference": "2366ac8d8abe0c077844613c1a4f0c0a9f522dcc",
                 "shasum": ""
             },
             "require": {
@@ -6668,7 +6669,7 @@
                 "dump"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-dumper/tree/v5.4.0"
+                "source": "https://github.com/symfony/var-dumper/tree/v5.4.1"
             },
             "funding": [
                 {
@@ -6684,7 +6685,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-29T15:30:56+00:00"
+            "time": "2021-12-01T15:04:08+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -9600,6 +9601,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "silinternational/simplesamlphp-module-mfa": 20,
+        "silinternational/simplesamlphp-module-material": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,

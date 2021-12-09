@@ -21,7 +21,7 @@
     "silinternational/simplesamlphp-module-mfa": "dev-feature/webauthn",
     "silinternational/simplesamlphp-module-profilereview": "~2.0.3",
     "silinternational/ssp-utilities": "^1.0.7",
-    "silinternational/simplesamlphp-module-material": "~7.4.2",
+    "silinternational/simplesamlphp-module-material": "dev-feature/webauthn",
     "silinternational/simplesamlphp-module-sildisco": "~3.1.0",
     "silinternational/php-env": "^2.1.1"
   },
