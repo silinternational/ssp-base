@@ -19,6 +19,7 @@
     "silinternational/simplesamlphp-module-expirychecker": "~3.0.5",
     "silinternational/simplesamlphp-module-silauth": "~6.1.9",
     "silinternational/simplesamlphp-module-mfa": "dev-feature/webauthn",
+    "silinternational/idp-id-broker-php-client": "dev-feature/webauthn",
     "silinternational/simplesamlphp-module-profilereview": "~2.0.3",
     "silinternational/ssp-utilities": "^1.0.7",
     "silinternational/simplesamlphp-module-material": "dev-feature/webauthn",

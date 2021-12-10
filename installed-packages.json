@@ -22,8 +22,13 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master 661f78b",
+            "version": "dev-master aaf5d29",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
+        },
+        {
+            "name": "silinternational/idp-id-broker-php-client",
+            "version": "3.2.0",
+            "description": "PHP client to interact with our IdP ID Broker's API: https://github.com/silinternational/idp-id-broker"
         },
         {
             "name": "silinternational/php-env",
