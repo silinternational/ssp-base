@@ -27,7 +27,7 @@
         },
         {
             "name": "silinternational/idp-id-broker-php-client",
-            "version": "3.2.0",
+            "version": "dev-feature/webauthn 7efe5a6",
             "description": "PHP client to interact with our IdP ID Broker's API: https://github.com/silinternational/idp-id-broker"
         },
         {
@@ -47,7 +47,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "dev-feature/webauthn 9a1ecf8",
+            "version": "dev-feature/webauthn 3973f03",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.)."
         },
         {
@@ -57,7 +57,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "6.1.9",
+            "version": "dev-feature/webauthn cc949c2",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
         },
         {
