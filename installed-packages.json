@@ -42,7 +42,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "dev-feature/webauthn 95476b1",
+            "version": "dev-feature/webauthn 5b8a5b0",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp"
         },
         {
