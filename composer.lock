@@ -2762,12 +2762,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "3baa1edc0bdd44868cffafe7ee690134dfec191b"
+                "reference": "975870e491ee2f8ca2b5186f31280e8f81c51a13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/3baa1edc0bdd44868cffafe7ee690134dfec191b",
-                "reference": "3baa1edc0bdd44868cffafe7ee690134dfec191b",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/975870e491ee2f8ca2b5186f31280e8f81c51a13",
+                "reference": "975870e491ee2f8ca2b5186f31280e8f81c51a13",
                 "shasum": ""
             },
             "require": {
@@ -2808,7 +2808,7 @@
                 "issues": "https://github.com/silinternational/simplesamlphp-module-mfa/issues",
                 "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/feature/webauthn"
             },
-            "time": "2021-12-13T18:11:26+00:00"
+            "time": "2021-12-13T20:16:24+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
