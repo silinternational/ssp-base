@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fdd6ed4e6a3f798dbd8caa5b7890be00",
+    "content-hash": "0539fcfaf64f39d90a6c548c84b7aa6c",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2047,12 +2047,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "aaf5d29aa54f39be4945b0ceeb1f3d9fdb7af8ee"
+                "reference": "92e217f7d613827eb7545586b3aafc616e878022"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/aaf5d29aa54f39be4945b0ceeb1f3d9fdb7af8ee",
-                "reference": "aaf5d29aa54f39be4945b0ceeb1f3d9fdb7af8ee",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/92e217f7d613827eb7545586b3aafc616e878022",
+                "reference": "92e217f7d613827eb7545586b3aafc616e878022",
                 "shasum": ""
             },
             "conflict": {
@@ -2176,11 +2176,12 @@
                 "illuminate/cookie": ">=4,<=4.0.11|>=4.1,<=4.1.99999|>=4.2,<=4.2.99999|>=5,<=5.0.99999|>=5.1,<=5.1.99999|>=5.2,<=5.2.99999|>=5.3,<=5.3.99999|>=5.4,<=5.4.99999|>=5.5,<=5.5.49|>=5.6,<=5.6.99999|>=5.7,<=5.7.99999|>=5.8,<=5.8.99999|>=6,<6.18.31|>=7,<7.22.4",
                 "illuminate/database": "<6.20.26|>=7,<7.30.5|>=8,<8.40",
                 "illuminate/encryption": ">=4,<=4.0.11|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.40|>=5.6,<5.6.15",
-                "illuminate/view": ">=7,<7.1.2",
+                "illuminate/view": "<6.20.42|>=7,<7.30.6|>=8,<8.75",
                 "impresscms/impresscms": "<=1.4.2",
                 "in2code/femanager": "<5.5.1|>=6,<6.3.1",
                 "intelliants/subrion": "<=4.2.1",
                 "ivankristianto/phpwhois": "<=4.3",
+                "jackalope/jackalope-doctrine-dbal": "<1.7.4",
                 "james-heinrich/getid3": "<1.9.21",
                 "joomla/archive": "<1.1.10",
                 "joomla/session": "<1.3.1",
@@ -2468,7 +2469,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-10T21:12:50+00:00"
+            "time": "2021-12-14T21:11:48+00:00"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -2514,16 +2515,16 @@
         },
         {
             "name": "silinternational/idp-id-broker-php-client",
-            "version": "dev-feature/webauthn",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/idp-id-broker-php-client.git",
-                "reference": "7efe5a69116c4e4a6ec423939401478c12022685"
+                "reference": "8080ab07a521d34b37bc3f51f4282b1a38c0bfd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/7efe5a69116c4e4a6ec423939401478c12022685",
-                "reference": "7efe5a69116c4e4a6ec423939401478c12022685",
+                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/8080ab07a521d34b37bc3f51f4282b1a38c0bfd7",
+                "reference": "8080ab07a521d34b37bc3f51f4282b1a38c0bfd7",
                 "shasum": ""
             },
             "require": {
@@ -2567,9 +2568,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silinternational/idp-id-broker-php-client/issues",
-                "source": "https://github.com/silinternational/idp-id-broker-php-client/tree/feature/webauthn"
+                "source": "https://github.com/silinternational/idp-id-broker-php-client/tree/4.0.0"
             },
-            "time": "2021-12-10T21:06:26+00:00"
+            "time": "2021-12-14T21:18:39+00:00"
         },
         {
             "name": "silinternational/php-env",
@@ -2716,16 +2717,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "dev-feature/webauthn",
+            "version": "7.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "5b8a5b014f3f4221d7105710e1989b5f7bb2106e"
+                "reference": "8aeca3731600238e4feeb53a1c9d8ba18fe7ab1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/5b8a5b014f3f4221d7105710e1989b5f7bb2106e",
-                "reference": "5b8a5b014f3f4221d7105710e1989b5f7bb2106e",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/8aeca3731600238e4feeb53a1c9d8ba18fe7ab1d",
+                "reference": "8aeca3731600238e4feeb53a1c9d8ba18fe7ab1d",
                 "shasum": ""
             },
             "require": {
@@ -2752,28 +2753,28 @@
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
             "support": {
                 "issues": "https://github.com/silinternational/simplesamlphp-module-material/issues",
-                "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/feature/webauthn"
+                "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/7.5.0"
             },
-            "time": "2021-12-13T22:06:32+00:00"
+            "time": "2021-12-14T22:30:45+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "dev-feature/webauthn",
+            "version": "5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "975870e491ee2f8ca2b5186f31280e8f81c51a13"
+                "reference": "28a0a0627b8c6d8b0946f825a2fb91feef36d1c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/975870e491ee2f8ca2b5186f31280e8f81c51a13",
-                "reference": "975870e491ee2f8ca2b5186f31280e8f81c51a13",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/28a0a0627b8c6d8b0946f825a2fb91feef36d1c4",
+                "reference": "28a0a0627b8c6d8b0946f825a2fb91feef36d1c4",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "php": ">=7.2",
-                "silinternational/idp-id-broker-php-client": "dev-feature/webauthn",
+                "silinternational/idp-id-broker-php-client": "^4.0.0",
                 "silinternational/php-env": "^2.1",
                 "silinternational/psr3-adapters": "^1.1 || ^2.0",
                 "simplesamlphp/simplesamlphp": "~1.17.7 || ~1.18.5",
@@ -2806,9 +2807,9 @@
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
             "support": {
                 "issues": "https://github.com/silinternational/simplesamlphp-module-mfa/issues",
-                "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/feature/webauthn"
+                "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/5.0.0"
             },
-            "time": "2021-12-13T20:16:24+00:00"
+            "time": "2021-12-14T22:28:43+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
@@ -2865,16 +2866,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "dev-feature/webauthn",
+            "version": "7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "cc949c20c8c5d3c6c17a600dee0884fd2745bd67"
+                "reference": "c50335a7ef510eac8078facd924a244a07e7fc20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/cc949c20c8c5d3c6c17a600dee0884fd2745bd67",
-                "reference": "cc949c20c8c5d3c6c17a600dee0884fd2745bd67",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/c50335a7ef510eac8078facd924a244a07e7fc20",
+                "reference": "c50335a7ef510eac8078facd924a244a07e7fc20",
                 "shasum": ""
             },
             "require": {
@@ -2887,7 +2888,7 @@
                 "psr/log": "^1.0",
                 "ramsey/uuid": "^3.5",
                 "rlanvin/php-ip": "^1.0",
-                "silinternational/idp-id-broker-php-client": "dev-feature/webauthn",
+                "silinternational/idp-id-broker-php-client": "^4.0.0",
                 "silinternational/php-env": "^2.0",
                 "silinternational/psr3-adapters": "^2.3",
                 "silinternational/yii2-json-log-targets": "^2.0",
@@ -2921,9 +2922,9 @@
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
             "support": {
                 "issues": "https://github.com/silinternational/simplesamlphp-module-silauth/issues",
-                "source": "https://github.com/silinternational/simplesamlphp-module-silauth/tree/feature/webauthn"
+                "source": "https://github.com/silinternational/simplesamlphp-module-silauth/tree/7.0.0"
             },
-            "time": "2021-12-13T15:27:15+00:00"
+            "time": "2021-12-14T22:11:12+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -9602,10 +9603,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "silinternational/simplesamlphp-module-silauth": 20,
-        "silinternational/simplesamlphp-module-mfa": 20,
-        "silinternational/idp-id-broker-php-client": 20,
-        "silinternational/simplesamlphp-module-material": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
