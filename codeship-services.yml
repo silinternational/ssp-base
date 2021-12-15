@@ -33,6 +33,9 @@ ssp-hub.local:
     - ./development/hub/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
     - ./development/hub/metadata/saml20-sp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-hosted.php
     - ./development/hub/metadata/sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/sp-remote.php
+
+    # Enable checking our test metadata
+    - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
   command: /data/run.sh
   environment:
     ADMIN_EMAIL: "john_doe@there.com"
@@ -62,6 +65,9 @@ ssp-hub-idp.local:
 
     # Misc. files needed
     - ./development/enable-exampleauth-module.sh:/data/enable-exampleauth-module.sh
+
+    # Enable checking our test metadata
+    - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
   command: 'bash -c "/data/enable-exampleauth-module.sh && /data/run.sh"'
   environment:
     ADMIN_EMAIL: "john_doe@there.com"
@@ -84,6 +90,9 @@ ssp-hub-sp.local:
 
     # Utilize custom metadata
     - ./development/sp-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
+
+    # Enable checking our test metadata
+    - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
   environment:
     ADMIN_EMAIL: "john_doe@there.com"
     ADMIN_PASS: "sp1"
