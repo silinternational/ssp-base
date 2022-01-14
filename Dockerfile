@@ -18,6 +18,7 @@ COPY dockerbuild/vhost.conf /etc/apache2/sites-enabled/
 COPY dockerbuild/run.sh /data/run.sh
 COPY dockerbuild/run-idp.sh /data/run-idp.sh
 COPY dockerbuild/run-spidplinks.php /data/run-spidplinks.php
+COPY dockerbuild/apply-dictionaries-overrides.php /data/
 
 # Note the name change: repos extending this one should only run the metadata
 # tests, so those are the only tests we make available to them.
