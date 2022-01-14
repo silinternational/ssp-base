@@ -1,7 +1,7 @@
 Feature: Applying dictionary overrides
   
   Scenario: Successfully merging dictionary files
-    Given an original "mfa.definition.json" file containing
+    Given a "/tmp/test/mfa.definition.json" file containing
         """
         {
           "title": {
@@ -12,7 +12,7 @@ Feature: Applying dictionary overrides
           }
         }
         """
-      And an override "mfa.definition.json" file containing
+      And a "/tmp/test/overrides/mfa.definition.json" file containing
         """
         {
           "webauthn_header": {
@@ -20,8 +20,8 @@ Feature: Applying dictionary overrides
           }
         }
         """
-    When I apply the dictionary overrides
-    Then the original "mfa.definition.json" file will end up containing
+    When I go to the "/tmp/test/overrides" folder and apply the dictionary overrides
+    Then the "/tmp/test/mfa.definition.json" file should contain
         """
         {
           "title": {
