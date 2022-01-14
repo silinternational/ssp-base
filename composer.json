@@ -37,5 +37,11 @@
     "files": [
       "vendor/yiisoft/yii2/Yii.php"
     ]
+  },
+  "config": {
+    "allow-plugins": {
+      "simplesamlphp/composer-module-installer": true,
+      "yiisoft/yii2-composer": true
+    }
   }
 }

@@ -22,7 +22,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master 92e217f",
+            "version": "dev-master 3665408",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
