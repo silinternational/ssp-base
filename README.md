@@ -53,6 +53,27 @@ must be installed.
 13. Hit `Apply` and `OK`
 14. Click on `Run` and then `Debug 'Debug on Docker'`
 
+## Overriding translations / dictionaries
+
+If you use this Docker image but want to change some of the translations, you
+can do so by providing identically-named dictionary files into an "overrides"
+subfolder with just the desired changes, then running the
+"apply-dictionaries-overrides.php" script.
+
+Example Dockerfile (overriding text in the MFA module's material theme):
+```dockerfile
+FROM silintl/ssp-base:7.1.0
+
+# ... do your other custom Docker stuff...
+
+# Copy your translation changes into an "overrides" subfolder:
+COPY ./dictionaries/* /data/vendor/simplesamlphp/simplesamlphp/modules/material/dictionaries/overrides/
+
+# Merge those changes into the existing translation files:
+RUN cd /data/vendor/simplesamlphp/simplesamlphp/modules/material/dictionaries/overrides/ \
+ && php /data/apply-dictionaries-overrides.php
+```
+
 ## Misc. Notes
 
 * Use of sildisco's LogUser module is optional and triggered via an authproc.
