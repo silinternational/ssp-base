@@ -228,7 +228,11 @@ class FeatureContext extends MinkContext
         Assert::notFalse($previousWorkingDirectory, 'Failed to get current working directory.');
         $cdResult = chdir($path);
         Assert::notFalse($cdResult, 'Failed to cd into ' . $path);
-        require('/data/apply-dictionaries-overrides.php'); // Path within Docker image. See Dockerfile.
+        try {
+            require('/data/apply-dictionaries-overrides.php'); // Path within Docker image. See Dockerfile.
+        } finally {
+            chdir($previousWorkingDirectory);
+        }
     }
 
     /**
