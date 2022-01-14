@@ -1,14 +1,14 @@
 Feature: Applying dictionary overrides
   
-  Scenario: Successfully merging dictionary files
+  Scenario: Successfully merging a dictionary file
     Given a "/tmp/test/mfa.definition.json" file containing
         """
         {
           "title": {
-            "en": "2-Step Verification",
+            "en": "2-Step Verification"
           },
           "webauthn_header": {
-            "en": "Security key",
+            "en": "Security key"
           }
         }
         """
@@ -16,7 +16,7 @@ Feature: Applying dictionary overrides
         """
         {
           "webauthn_header": {
-            "en": "Security key or fingerprint",
+            "en": "Security key or fingerprint"
           }
         }
         """
@@ -25,10 +25,10 @@ Feature: Applying dictionary overrides
         """
         {
           "title": {
-            "en": "2-Step Verification",
+            "en": "2-Step Verification"
           },
           "webauthn_header": {
-            "en": "Security key or fingerprint",
+            "en": "Security key or fingerprint"
           }
         }
         """
