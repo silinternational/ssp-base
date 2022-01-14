@@ -1,5 +1,7 @@
 <?php
 
+use Behat\Behat\Tester\Result\StepResult;
+use Behat\Gherkin\Node\PyStringNode;
 use Behat\Behat\Hook\Scope\AfterStepScope;
 use Behat\Mink\Mink;
 use Behat\Mink\Session;
@@ -196,5 +198,49 @@ class FeatureContext extends MinkContext
     public function iShouldSeeAPageTellingMeThatMyPasswordHasExpired()
     {
         $this->assertPageBodyContainsText('Your password has expired');
+    }
+    
+    private static function ensureFolderExistsForTestFile($filePath)
+    {
+        $folder = dirname($filePath);
+        if (!file_exists($folder)) {
+            $result = mkdir($folder, 0777, true);
+            Assert::notFalse($result, 'Failed to create test folder: ' . $folder);
+        }
+    }
+
+    /**
+     * @Given a :filePath file containing
+     */
+    public function aFileContaining($filePath, PyStringNode $json)
+    {
+        self::ensureFolderExistsForTestFile($filePath);
+        $result = file_put_contents($filePath, $json);
+        Assert::notFalse($result, 'Failed to write test file at ' . $filePath);
+    }
+
+    /**
+     * @When I go to the :path folder and apply the dictionary overrides
+     */
+    public function iGoToTheFolderAndApplyTheDictionaryOverrides($path)
+    {
+        $previousWorkingDirectory = getcwd();
+        Assert::notFalse($previousWorkingDirectory, 'Failed to get current working directory.');
+        $cdResult = chdir($path);
+        Assert::notFalse($cdResult, 'Failed to cd into ' . $path);
+        require('/data/apply-dictionaries-overrides.php'); // Path within Docker image. See Dockerfile.
+    }
+
+    /**
+     * @Then the :filePath file should contain
+     */
+    public function theFileShouldContain($filePath, PyStringNode $expectedJson)
+    {
+        $actualJson = file_get_contents($filePath);
+        Assert::notFalse($actualJson, 'Failed to read in ' . $filePath);
+        Assert::eq(
+            json_decode($actualJson, true),
+            json_decode($expectedJson, true)
+        );
     }
 }
