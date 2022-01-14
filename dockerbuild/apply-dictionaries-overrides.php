@@ -1,7 +1,8 @@
 <?php
 
-if (basename(__DIR__) !== 'overrides') {
+if (basename(getcwd()) !== 'overrides') {
     echo "Only run this in an 'overrides' folder, where the originals are in the parent folder.\n";
+    echo "Current directory: " . getcwd() . "\n";
     exit (1);
 }
 
