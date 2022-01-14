@@ -1,15 +1,16 @@
 <?php
 
 if (basename(getcwd()) !== 'overrides') {
-    echo "Only run this in an 'overrides' folder, where the originals are in the parent folder.\n";
-    echo "Current directory: " . getcwd() . "\n";
-    exit (1);
+    throw new Exception(sprintf(
+        "Only run this in an 'overrides' folder, where the originals are in the parent folder.\n"
+        . "Current directory: %s\n",
+        getcwd()
+    ));
 }
 
 function assertSuccess($result, $valueIndicatingFailure, $messageIfFailed) {
     if ($result === $valueIndicatingFailure) {
-        echo $messageIfFailed . PHP_EOL;
-        exit(2);
+        throw new Exception($messageIfFailed);
     }
 }
 
