@@ -31,7 +31,7 @@ class FeatureContext extends MinkContext
     /** @AfterStep */
     public function afterStep(AfterStepScope $scope)
     {
-        if (! $scope->getTestResult()->isPassed()) {
+        if (! $scope->getTestResult()->getResultCode() === StepResult::FAILED) {
             $this->showPageDetails();
         }
     }
