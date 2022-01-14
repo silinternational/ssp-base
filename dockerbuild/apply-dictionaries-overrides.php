@@ -31,7 +31,11 @@ foreach (glob('*.json') as $fileName) {
     assertSuccess($changesJson, false, 'Failed to read in the file with changes.');
 
     $originalData = json_decode($originalJson, true);
-    assertSuccess($originalData, null, 'Failed to decode the original JSON.');
+    assertSuccess(
+        $originalData,
+        null,
+        'Failed to decode the original JSON: ' . $originalJson
+    );
     $changesData = json_decode($changesJson, true);
     assertSuccess($changesData, null, 'Failed to decode the changes JSON.');
 
@@ -47,5 +51,5 @@ foreach (glob('*.json') as $fileName) {
         'Failed to overwrite the original file with the combined JSON.'
     );
 
-    echo sprintf("Merged '%s'\n", $fileName);
+    echo sprintf("Merged '%s'.\n", $fileName);
 }
