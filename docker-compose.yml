@@ -33,6 +33,7 @@ services:
       - ./dockerbuild/run-integration-tests.sh:/data/run-integration-tests.sh
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
       - ./dockerbuild/run-tests.sh:/data/run-tests.sh
+      - ./dockerbuild/apply-dictionaries-overrides.php:/data/apply-dictionaries-overrides.php
       - ./features:/data/features
       - ./tests:/data/tests
     command: ["/data/run-tests.sh"]

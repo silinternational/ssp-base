@@ -3,7 +3,7 @@ Base image for simpleSAMLphp
 
 Docker image: [silintl/ssp-base](https://hub.docker.com/r/silintl/ssp-base/)
 
-# Prerequisite software
+## Prerequisite software
 [Docker](https://www.docker.com/products/overview) and [docker-compose](https://docs.docker.com/compose/install)
 must be installed.
 
@@ -11,14 +11,14 @@ must be installed.
 
 [Vagrant](https://www.vagrantup.com) for Windows users.
 
-# Local testing
+## Local testing
 
 1. `cp local.env.dist local.env` within project root and make adjustments as needed.
 2. Add your github token to the `COMPOSER_AUTH` variable in the `local.env` file.
 3. `make` or `docker-compose up -d` within the project root.
 4. Visit http://localhost to see SSP running
 
-## Setup PhpStorm for remote debugging with Docker
+### Setup PhpStorm for remote debugging with Docker
 
 1. Make sure you're running PhpStorm 2016.3 or later
 2. Setup Docker server by going to `Preferences` (or `Settings` on Windows) -> `Build, Execution, Deployment`
@@ -53,4 +53,27 @@ must be installed.
 13. Hit `Apply` and `OK`
 14. Click on `Run` and then `Debug 'Debug on Docker'`
 
-##### Use of sildisco's LogUser module is optional and triggered via an authproc.
+## Overriding translations / dictionaries
+
+If you use this Docker image but want to change some of the translations, you
+can do so by providing identically-named dictionary files into an "overrides"
+subfolder with just the desired changes, then running the
+"apply-dictionaries-overrides.php" script.
+
+Example Dockerfile (overriding text in the MFA module's material theme):
+```dockerfile
+FROM silintl/ssp-base:7.1.0
+
+# ... do your other custom Docker stuff...
+
+# Copy your translation changes into an "overrides" subfolder:
+COPY ./dictionaries/* /data/vendor/simplesamlphp/simplesamlphp/modules/material/dictionaries/overrides/
+
+# Merge those changes into the existing translation files:
+RUN cd /data/vendor/simplesamlphp/simplesamlphp/modules/material/dictionaries/overrides/ \
+ && php /data/apply-dictionaries-overrides.php
+```
+
+## Misc. Notes
+
+* Use of sildisco's LogUser module is optional and triggered via an authproc.
