@@ -34,6 +34,7 @@ $config = [
         // Specify what private key to use (such as for decrypting assertions).
         'privatekey' => 'ssp-hub-sp1.pem',
     ],
+
     'ssp-hub-custom-port' => [
         'saml:SP',
 
@@ -55,5 +56,4 @@ $config = [
         // Specify what private key to use (such as for decrypting assertions).
         'privatekey' => 'ssp-hub-sp1.pem',
     ],
-
 ];
