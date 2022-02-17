@@ -4,7 +4,7 @@ ssp: clean
 	docker-compose up -d ssp
 
 hub: clean
-	docker-compose up -d hub sp1 sp2 idp1 idp2
+	docker-compose up -d ssp-hub.local ssp-hub-sp.local sp2 ssp-hub-idp.local idp2
 
 clean:
 	docker-compose kill
