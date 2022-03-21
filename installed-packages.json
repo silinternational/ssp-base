@@ -22,7 +22,7 @@
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master 3665408",
+            "version": "dev-master 681ac6d",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
         },
         {
@@ -32,12 +32,12 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-expirychecker",
-            "version": "3.0.5",
+            "version": "3.0.6",
             "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired."
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "7.5.0",
+            "version": "7.5.1",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp"
         },
         {
@@ -57,7 +57,7 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "3.1.1",
+            "version": "3.1.2",
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic"
         },
         {
@@ -72,7 +72,7 @@
         },
         {
             "name": "simplesamlphp/simplesamlphp",
-            "version": "v1.18.8",
+            "version": "v1.18.9",
             "description": "A PHP implementation of a SAML 2.0 service provider and identity provider, also compatible with Shibboleth 1.3 and 2.0."
         }
     ]
