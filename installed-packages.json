@@ -2,78 +2,123 @@
     "installed": [
         {
             "name": "behat/behat",
+            "homepage": "http://behat.org/",
+            "source": "https://github.com/Behat/Behat/tree/v3.10.0",
             "version": "v3.10.0",
-            "description": "Scenario-oriented BDD framework for PHP"
+            "description": "Scenario-oriented BDD framework for PHP",
+            "abandoned": false
         },
         {
             "name": "behat/mink-extension",
+            "homepage": "http://extensions.behat.org/mink",
+            "source": "https://github.com/Behat/MinkExtension/tree/master",
             "version": "2.3.1",
-            "description": "Mink extension for Behat"
+            "description": "Mink extension for Behat",
+            "abandoned": false
         },
         {
             "name": "dmore/chrome-mink-driver",
+            "homepage": null,
+            "source": "https://gitlab.com/DMore/chrome-mink-driver.git",
             "version": "2.8.0",
-            "description": "Mink driver for controlling chrome without selenium"
+            "description": "Mink driver for controlling chrome without selenium",
+            "abandoned": false
         },
         {
             "name": "phpunit/phpunit",
+            "homepage": "https://phpunit.de/",
+            "source": "https://github.com/sebastianbergmann/phpunit/tree/7.5.20",
             "version": "7.5.20",
-            "description": "The PHP Unit Testing framework."
+            "description": "The PHP Unit Testing framework.",
+            "abandoned": false
         },
         {
             "name": "roave/security-advisories",
-            "version": "dev-master 3665408",
-            "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it"
+            "homepage": null,
+            "source": "https://github.com/Roave/SecurityAdvisories/tree/latest",
+            "version": "dev-master 44e64dc",
+            "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
+            "abandoned": false
         },
         {
             "name": "silinternational/php-env",
+            "homepage": null,
+            "source": "https://github.com/silinternational/php-env.git",
             "version": "2.1.1",
-            "description": "Simple PHP library for getting (or requiring) environment variables, designed to handle true, false, and null more intelligently. If desired, an environment variable's value can be split into an array automatically."
+            "description": "Simple PHP library for getting (or requiring) environment variables, designed to handle true, false, and null more intelligently. If desired, an environment variable's value can be split into an array automatically.",
+            "abandoned": false
         },
         {
             "name": "silinternational/simplesamlphp-module-expirychecker",
-            "version": "3.0.5",
-            "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired."
+            "homepage": null,
+            "source": "https://github.com/silinternational/simplesamlphp-module-expirychecker/tree/3.0.6",
+            "version": "3.0.6",
+            "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired.",
+            "abandoned": false
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "7.5.0",
-            "description": "Material Design theme for IdP Hub based on SimpleSAMLphp"
+            "homepage": null,
+            "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/7.5.1",
+            "version": "7.5.1",
+            "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
+            "abandoned": false
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
+            "homepage": null,
+            "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/5.0.0",
             "version": "5.0.0",
-            "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.)."
+            "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
+            "abandoned": false
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
+            "homepage": null,
+            "source": "https://github.com/silinternational/simplesamlphp-module-profilereview/tree/2.0.4",
             "version": "2.0.4",
-            "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.)."
+            "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.).",
+            "abandoned": false
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "7.0.0",
-            "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend"
+            "homepage": null,
+            "source": "https://github.com/silinternational/simplesamlphp-module-silauth/tree/7.0.1",
+            "version": "7.0.1",
+            "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
+            "abandoned": false
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
-            "version": "3.1.1",
-            "description": "IdP Discovery module for simpleSAMLphp with extra business logic"
+            "homepage": null,
+            "source": "https://github.com/silinternational/simplesamlphp-module-sildisco/tree/3.1.2",
+            "version": "3.1.2",
+            "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
+            "abandoned": false
         },
         {
             "name": "silinternational/ssp-utilities",
+            "homepage": null,
+            "source": "https://github.com/silinternational/ssp-utilities/tree/1.0.7",
             "version": "1.0.7",
-            "description": "SimpleSAMLphp related utility classes"
+            "description": "SimpleSAMLphp related utility classes",
+            "abandoned": false
         },
         {
             "name": "simplesamlphp/composer-module-installer",
+            "homepage": null,
+            "source": "https://github.com/simplesamlphp/composer-module-installer/tree/v1.1.8",
             "version": "v1.1.8",
-            "description": "A Composer plugin that allows installing SimpleSAMLphp modules through Composer."
+            "description": "A Composer plugin that allows installing SimpleSAMLphp modules through Composer.",
+            "abandoned": false
         },
         {
             "name": "simplesamlphp/simplesamlphp",
-            "version": "v1.18.8",
-            "description": "A PHP implementation of a SAML 2.0 service provider and identity provider, also compatible with Shibboleth 1.3 and 2.0."
+            "homepage": "http://simplesamlphp.org",
+            "source": "https://github.com/simplesamlphp/simplesamlphp",
+            "version": "v1.18.9",
+            "description": "A PHP implementation of a SAML 2.0 service provider and identity provider, also compatible with Shibboleth 1.3 and 2.0.",
+            "abandoned": false
         }
     ]
 }
