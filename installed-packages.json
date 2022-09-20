@@ -50,7 +50,7 @@
             "direct-dependency": true,
             "homepage": null,
             "source": "https://github.com/Roave/SecurityAdvisories/tree/latest",
-            "version": "dev-master bd4a45f",
+            "version": "dev-master 264a508",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
             "abandoned": false
         },
@@ -58,8 +58,8 @@
             "name": "silinternational/php-env",
             "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/php-env.git",
-            "version": "2.1.1",
+            "source": "https://github.com/silinternational/php-env/tree/3.1.0",
+            "version": "3.1.0",
             "description": "Simple PHP library for getting (or requiring) environment variables, designed to handle true, false, and null more intelligently. If desired, an environment variable's value can be split into an array automatically.",
             "abandoned": false
         },
@@ -77,7 +77,7 @@
             "direct-dependency": true,
             "homepage": null,
             "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/feature/PHP8",
-            "version": "dev-feature/PHP8 e14c8ff",
+            "version": "dev-feature/PHP8 8a7a978",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
             "abandoned": false
         },
@@ -86,7 +86,7 @@
             "direct-dependency": true,
             "homepage": null,
             "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/feature/PHP8",
-            "version": "dev-feature/PHP8 e2ad65c",
+            "version": "dev-feature/PHP8 83636f0",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
             "abandoned": false
         },
@@ -95,7 +95,7 @@
             "direct-dependency": true,
             "homepage": null,
             "source": "https://github.com/silinternational/simplesamlphp-module-profilereview/tree/feature/PHP8",
-            "version": "dev-feature/PHP8 6b7efb7",
+            "version": "dev-feature/PHP8 e7c3df0",
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.).",
             "abandoned": false
         },
@@ -104,7 +104,7 @@
             "direct-dependency": true,
             "homepage": null,
             "source": "https://github.com/silinternational/simplesamlphp-module-silauth/tree/feature/PHP8",
-            "version": "dev-feature/PHP8 14526e1",
+            "version": "dev-feature/PHP8 1c1e641",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
             "abandoned": false
         },
@@ -113,7 +113,7 @@
             "direct-dependency": true,
             "homepage": null,
             "source": "https://github.com/silinternational/simplesamlphp-module-sildisco/tree/feature/PHP8",
-            "version": "dev-feature/PHP8 a22ddeb",
+            "version": "dev-feature/PHP8 dcf95fc",
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
             "abandoned": false
         },
@@ -121,8 +121,8 @@
             "name": "silinternational/ssp-utilities",
             "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/ssp-utilities/tree/1.0.7",
-            "version": "1.0.7",
+            "source": "https://github.com/silinternational/ssp-utilities/tree/1.1.0",
+            "version": "1.1.0",
             "description": "SimpleSAMLphp related utility classes",
             "abandoned": false
         },
