@@ -1,6 +1,6 @@
-FROM silintl/php7:7.4
+FROM silintl/php8:8.1
 
-LABEL maintainer "Phillip Shipley <phillip.shipley@gmail.com>"
+LABEL maintainer="Steve Bagwell <steve_bagwell@sil.org>"
 
 ENV REFRESHED_AT 2021-06-14
 
