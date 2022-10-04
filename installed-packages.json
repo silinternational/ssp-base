@@ -2,14 +2,16 @@
     "installed": [
         {
             "name": "behat/behat",
+            "direct-dependency": true,
             "homepage": "http://behat.org/",
-            "source": "https://github.com/Behat/Behat/tree/v3.10.0",
-            "version": "v3.10.0",
+            "source": "https://github.com/Behat/Behat/tree/v3.11.0",
+            "version": "v3.11.0",
             "description": "Scenario-oriented BDD framework for PHP",
             "abandoned": false
         },
         {
             "name": "behat/mink-extension",
+            "direct-dependency": true,
             "homepage": "http://extensions.behat.org/mink",
             "source": "https://github.com/Behat/MinkExtension/tree/master",
             "version": "2.3.1",
@@ -18,94 +20,115 @@
         },
         {
             "name": "dmore/chrome-mink-driver",
-            "homepage": null,
-            "source": "https://gitlab.com/DMore/chrome-mink-driver.git",
-            "version": "2.8.0",
+            "direct-dependency": true,
+            "homepage": "https://gitlab.com/behat-chrome/chrome-mink-driver",
+            "source": "https://gitlab.com/behat-chrome/chrome-mink-driver/-/tree/2.8.1",
+            "version": "2.8.1",
             "description": "Mink driver for controlling chrome without selenium",
             "abandoned": false
         },
         {
+            "name": "gettext/gettext",
+            "direct-dependency": true,
+            "homepage": "https://github.com/oscarotero/Gettext",
+            "source": "https://github.com/php-gettext/Gettext/tree/4.x",
+            "version": "4.x-dev 3f7bc5e",
+            "description": "PHP gettext manager",
+            "abandoned": false
+        },
+        {
             "name": "phpunit/phpunit",
+            "direct-dependency": true,
             "homepage": "https://phpunit.de/",
-            "source": "https://github.com/sebastianbergmann/phpunit/tree/7.5.20",
-            "version": "7.5.20",
+            "source": "https://github.com/sebastianbergmann/phpunit/tree/8.5.30",
+            "version": "8.5.30",
             "description": "The PHP Unit Testing framework.",
             "abandoned": false
         },
         {
             "name": "roave/security-advisories",
+            "direct-dependency": true,
             "homepage": null,
             "source": "https://github.com/Roave/SecurityAdvisories/tree/latest",
-            "version": "dev-master 44e64dc",
+            "version": "dev-master 3876a8d",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
             "abandoned": false
         },
         {
             "name": "silinternational/php-env",
+            "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/php-env.git",
-            "version": "2.1.1",
+            "source": "https://github.com/silinternational/php-env/tree/3.1.0",
+            "version": "3.1.0",
             "description": "Simple PHP library for getting (or requiring) environment variables, designed to handle true, false, and null more intelligently. If desired, an environment variable's value can be split into an array automatically.",
             "abandoned": false
         },
         {
             "name": "silinternational/simplesamlphp-module-expirychecker",
+            "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-expirychecker/tree/3.0.6",
-            "version": "3.0.6",
+            "source": "https://github.com/silinternational/simplesamlphp-module-expirychecker/tree/3.1.0",
+            "version": "3.1.0",
             "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired.",
             "abandoned": false
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
+            "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/7.5.1",
-            "version": "7.5.1",
+            "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/7.6.0",
+            "version": "7.6.0",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
             "abandoned": false
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
+            "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/5.0.0",
-            "version": "5.0.0",
+            "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/5.1.0",
+            "version": "5.1.0",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
             "abandoned": false
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
+            "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-profilereview/tree/2.0.4",
-            "version": "2.0.4",
+            "source": "https://github.com/silinternational/simplesamlphp-module-profilereview/tree/2.1.0",
+            "version": "2.1.0",
             "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.).",
             "abandoned": false
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
+            "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-silauth/tree/7.0.1",
-            "version": "7.0.1",
+            "source": "https://github.com/silinternational/simplesamlphp-module-silauth/tree/7.1.0",
+            "version": "7.1.0",
             "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
             "abandoned": false
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
+            "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-sildisco/tree/3.1.2",
-            "version": "3.1.2",
+            "source": "https://github.com/silinternational/simplesamlphp-module-sildisco/tree/3.3.1",
+            "version": "3.3.1",
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
             "abandoned": false
         },
         {
             "name": "silinternational/ssp-utilities",
+            "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/ssp-utilities/tree/1.0.7",
-            "version": "1.0.7",
+            "source": "https://github.com/silinternational/ssp-utilities/tree/1.1.0",
+            "version": "1.1.0",
             "description": "SimpleSAMLphp related utility classes",
             "abandoned": false
         },
         {
             "name": "simplesamlphp/composer-module-installer",
+            "direct-dependency": true,
             "homepage": null,
             "source": "https://github.com/simplesamlphp/composer-module-installer/tree/v1.1.8",
             "version": "v1.1.8",
@@ -114,9 +137,10 @@
         },
         {
             "name": "simplesamlphp/simplesamlphp",
+            "direct-dependency": true,
             "homepage": "http://simplesamlphp.org",
             "source": "https://github.com/simplesamlphp/simplesamlphp",
-            "version": "v1.18.9",
+            "version": "v1.19.6",
             "description": "A PHP implementation of a SAML 2.0 service provider and identity provider, also compatible with Shibboleth 1.3 and 2.0.",
             "abandoned": false
         }
