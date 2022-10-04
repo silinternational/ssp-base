@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This is a temporary fix (bug workaround) until ssp 1.20 is in use
+# This is a temporary fix (bug workaround) until ssp 2.0 is in use
 sed -i 's_\(\\SimpleSAML\\Error\\Assertion::installHandler()\)_// \1 _' /data/vendor/simplesamlphp/simplesamlphp/www/_include.php
 
 # establish a signal handler to catch the SIGTERM from a 'docker stop'
