@@ -17,6 +17,7 @@ return [
           'en' => 'IDP 1',
         ],
         'IDPNamespace' => 'IDP-1-custom-port',
+        'logoCaption' => 'IDP-1:8085 staff',
         'enabled' => true,
         'logoURL' => 'https://dummyimage.com/125x125/0f4fbd/ffffff.png&text=IDP+1+8085',
 
@@ -33,6 +34,7 @@ return [
           'en' => 'IDP 1',
         ],
         'IDPNamespace' => 'IDP-1',
+        'logoCaption' => 'IDP-1 staff',
         'enabled' => true,
         'logoURL' => 'https://dummyimage.com/125x125/0f4fbd/ffffff.png&text=IDP+1',
 
@@ -54,6 +56,7 @@ return [
           'en' => 'IDP 2',
         ],
         'IDPNamespace' => 'IDP-2-custom-port',
+        'logoCaption' => 'IDP-2:8086 staff',
         'enabled' => false,
         'betaEnabled' => true,
         'logoURL' => 'https://dummyimage.com/125x125/0f4fbd/ffffff.png&text=IDP+2+8086',
@@ -71,6 +74,7 @@ return [
           'en' => 'IDP 2',
         ],
         'IDPNamespace' => 'IDP-2',
+        'logoCaption' => 'IDP-2 staff',
         'enabled' => false,
         'betaEnabled' => true,
         'logoURL' => 'https://dummyimage.com/125x125/0f4fbd/ffffff.png&text=IDP+2',
