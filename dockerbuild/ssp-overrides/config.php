@@ -70,6 +70,7 @@ $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
 $GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
 $HUB_MODE = Env::get('HUB_MODE', false);
 $ANALYTICS_ID = Env::get('ANALYTICS_ID', null);
+$ANALYTICS_ID_GA4 = Env::get('$ANALYTICS_ID_GA4', null);
 $PASSWORD_CHANGE_URL = Env::get('PASSWORD_CHANGE_URL');
 $PASSWORD_FORGOT_URL = Env::get('PASSWORD_FORGOT_URL');
 $HELP_CENTER_URL = Env::get('HELP_CENTER_URL');
@@ -95,6 +96,11 @@ $config = [
       * The tracking Id for Google Analytics or some other similar service
       */
      'analytics.trackingId' => $ANALYTICS_ID,
+
+    /*
+     * The tracking Id for Google Analytics4
+     */
+    'analytics.trackingIdGA4' => $ANALYTICS_ID_GA4,
 
     'passwordChangeUrl' => $PASSWORD_CHANGE_URL,
     'passwordForgotUrl' => $PASSWORD_FORGOT_URL,
