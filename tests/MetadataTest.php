@@ -16,6 +16,10 @@ class MetadataTest extends TestCase
 
     const IdpCode = 'IDPNamespace';
 
+    // Required for IdP's when in Hub mode. The logo caption is the
+    // text that goes under an IdP's logo on the discovery page.
+    const LogoCaptionKey = 'logoCaption';
+
     const SPNameKey = 'name';
     
     public $metadataPath = __DIR__ . '/../vendor/simplesamlphp/simplesamlphp/metadata';
@@ -101,6 +105,33 @@ class MetadataTest extends TestCase
             $spListKey . " entry that is not an array ... " . PHP_EOL .
             var_export($badIdps, True));
     }
+
+
+
+    public function testIDPRemoteMetadataMissingLogoCaption()
+    {
+        $hubMode = Env::get('HUB_MODE', true);
+        if ( ! $hubMode) {
+            $this->markTestSkipped('Skipping test because HUB_MODE = false');
+            return;
+        }
+
+        $badIdps = [];
+
+        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+
+        foreach($idpEntries as $entityId => $entry) {
+            if (!isset($entry[self::LogoCaptionKey])) {
+                $badIdps[] = $entityId;
+            }
+        }
+
+        $this->assertTrue(empty($badIdps),
+            "At least one IdP is missing a " .
+            self::LogoCaptionKey . " entry ... " . PHP_EOL .
+            var_export($badIdps, True));
+    }
+
 
     public function testIDPRemoteMetadataBadSPListEntry()
     {

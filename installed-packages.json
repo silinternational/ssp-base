@@ -32,7 +32,7 @@
             "direct-dependency": true,
             "homepage": "https://github.com/oscarotero/Gettext",
             "source": "https://github.com/php-gettext/Gettext/tree/4.x",
-            "version": "4.x-dev 3f7bc5e",
+            "version": "4.x-dev cbf1101",
             "description": "PHP gettext manager",
             "abandoned": false
         },
@@ -50,7 +50,7 @@
             "direct-dependency": true,
             "homepage": null,
             "source": "https://github.com/Roave/SecurityAdvisories/tree/latest",
-            "version": "dev-master 45470fe",
+            "version": "dev-master da95b1a",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
             "abandoned": false
         },
@@ -76,8 +76,8 @@
             "name": "silinternational/simplesamlphp-module-material",
             "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/7.6.1",
-            "version": "7.6.1",
+            "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/7.6.2",
+            "version": "7.6.2",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
             "abandoned": false
         },
