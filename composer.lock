@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f55c055b32db44fff8b3dcc20b401ce9",
+    "content-hash": "39e4153277edd7927b042a6aa966770c",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.247.0",
+            "version": "3.248.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "2cd51e75e753dfe1f1677bb0a2e13a9ce70cba26"
+                "reference": "69a49ff367447d9753c068326b4ac0d437a230dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2cd51e75e753dfe1f1677bb0a2e13a9ce70cba26",
-                "reference": "2cd51e75e753dfe1f1677bb0a2e13a9ce70cba26",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/69a49ff367447d9753c068326b4ac0d437a230dd",
+                "reference": "69a49ff367447d9753c068326b4ac0d437a230dd",
                 "shasum": ""
             },
             "require": {
@@ -146,9 +146,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.247.0"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.248.0"
             },
-            "time": "2022-11-21T21:31:13+00:00"
+            "time": "2022-11-28T02:55:22+00:00"
         },
         {
             "name": "cebe/markdown",
@@ -2114,12 +2114,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "da95b1ad6506ec4dd087e04627f74f16cdb78c43"
+                "reference": "6f53c627e2f44ac1bd2fbaf2a068e682f40968b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/da95b1ad6506ec4dd087e04627f74f16cdb78c43",
-                "reference": "da95b1ad6506ec4dd087e04627f74f16cdb78c43",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/6f53c627e2f44ac1bd2fbaf2a068e682f40968b5",
+                "reference": "6f53c627e2f44ac1bd2fbaf2a068e682f40968b5",
                 "shasum": ""
             },
             "conflict": {
@@ -2298,6 +2298,7 @@
                 "ivankristianto/phpwhois": "<=4.3",
                 "jackalope/jackalope-doctrine-dbal": "<1.7.4",
                 "james-heinrich/getid3": "<1.9.21",
+                "jasig/phpcas": "<1.3.3",
                 "joomla/archive": "<1.1.12|>=2,<2.0.1",
                 "joomla/filesystem": "<1.6.2|>=2,<2.0.1",
                 "joomla/filter": "<1.4.4|>=2,<2.0.1",
@@ -2350,7 +2351,7 @@
                 "modx/revolution": "<= 2.8.3-pl|<2.8",
                 "mojo42/jirafeau": "<4.4",
                 "monolog/monolog": ">=1.8,<1.12",
-                "moodle/moodle": "<4.0.1",
+                "moodle/moodle": "<4.0.5",
                 "mustache/mustache": ">=2,<2.14.1",
                 "namshi/jose": "<2.2",
                 "neoan3-apps/template": "<1.1.1",
@@ -2407,6 +2408,7 @@
                 "phpunit/phpunit": ">=4.8.19,<4.8.28|>=5,<5.6.3",
                 "phpwhois/phpwhois": "<=4.2.5",
                 "phpxmlrpc/extras": "<0.6.1",
+                "phpxmlrpc/phpxmlrpc": "<4.9",
                 "pimcore/data-hub": "<1.2.4",
                 "pimcore/pimcore": "<10.5.9",
                 "pocketmine/bedrock-protocol": "<8.0.2",
@@ -2645,7 +2647,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-22T00:16:41+00:00"
+            "time": "2022-11-28T12:05:40+00:00"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -2892,16 +2894,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-material",
-            "version": "7.6.2",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-material.git",
-                "reference": "1655dba849f814f9375539fad50ad98db0886642"
+                "reference": "94d54f19157d836ed9282db56ded06cd74e59394"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/1655dba849f814f9375539fad50ad98db0886642",
-                "reference": "1655dba849f814f9375539fad50ad98db0886642",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-material/zipball/94d54f19157d836ed9282db56ded06cd74e59394",
+                "reference": "94d54f19157d836ed9282db56ded06cd74e59394",
                 "shasum": ""
             },
             "require": {
@@ -2914,6 +2916,7 @@
             "require-dev": {
                 "roave/security-advisories": "dev-master"
             },
+            "default-branch": true,
             "type": "simplesamlphp-module",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -2928,9 +2931,9 @@
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
             "support": {
                 "issues": "https://github.com/silinternational/simplesamlphp-module-material/issues",
-                "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/7.6.2"
+                "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/develop"
             },
-            "time": "2022-11-22T00:03:35+00:00"
+            "time": "2022-11-28T13:27:43+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
@@ -3345,16 +3348,16 @@
         },
         {
             "name": "simplesamlphp/saml2",
-            "version": "v4.6.3",
+            "version": "v4.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/saml2.git",
-                "reference": "bfc9c79dd6b728a41d1de988f545f6e64728a51d"
+                "reference": "35e4cac48ef97d454d25a92eb24c85cadf96de9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/bfc9c79dd6b728a41d1de988f545f6e64728a51d",
-                "reference": "bfc9c79dd6b728a41d1de988f545f6e64728a51d",
+                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/35e4cac48ef97d454d25a92eb24c85cadf96de9d",
+                "reference": "35e4cac48ef97d454d25a92eb24c85cadf96de9d",
                 "shasum": ""
             },
             "require": {
@@ -3397,9 +3400,9 @@
             "description": "SAML2 PHP library from SimpleSAMLphp",
             "support": {
                 "issues": "https://github.com/simplesamlphp/saml2/issues",
-                "source": "https://github.com/simplesamlphp/saml2/tree/v4.6.3"
+                "source": "https://github.com/simplesamlphp/saml2/tree/v4.6.5"
             },
-            "time": "2022-06-13T14:04:10+00:00"
+            "time": "2022-11-23T12:50:43+00:00"
         },
         {
             "name": "simplesamlphp/simplesamlphp",
@@ -4986,16 +4989,16 @@
         },
         {
             "name": "simplesamlphp/twig-configurable-i18n",
-            "version": "v2.3.4",
+            "version": "v2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simplesamlphp/twig-configurable-i18n.git",
-                "reference": "e2bffc7eed3112a0b3870ef5b4da0fd74c7c4b8a"
+                "reference": "f9ad5093eb9c1ade4a4620398f75f6534c55dee5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplesamlphp/twig-configurable-i18n/zipball/e2bffc7eed3112a0b3870ef5b4da0fd74c7c4b8a",
-                "reference": "e2bffc7eed3112a0b3870ef5b4da0fd74c7c4b8a",
+                "url": "https://api.github.com/repos/simplesamlphp/twig-configurable-i18n/zipball/f9ad5093eb9c1ade4a4620398f75f6534c55dee5",
+                "reference": "f9ad5093eb9c1ade4a4620398f75f6534c55dee5",
                 "shasum": ""
             },
             "require": {
@@ -5007,7 +5010,7 @@
                 "sensiolabs/security-checker": "~6.0.3",
                 "simplesamlphp/simplesamlphp-test-framework": "~0.1.2",
                 "squizlabs/php_codesniffer": "^3.5",
-                "twig/twig": "^2.13"
+                "twig/twig": "^2.14"
             },
             "type": "project",
             "autoload": {
@@ -5038,7 +5041,7 @@
                 "issues": "https://github.com/simplesamlphp/twig-configurable-i18n/issues",
                 "source": "https://github.com/simplesamlphp/twig-configurable-i18n"
             },
-            "time": "2020-08-27T12:51:10+00:00"
+            "time": "2022-11-28T10:00:55+00:00"
         },
         {
             "name": "sinergi/browser-detector",
@@ -10022,6 +10025,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "silinternational/simplesamlphp-module-material": 20,
         "gettext/gettext": 20,
         "roave/security-advisories": 20
     },
