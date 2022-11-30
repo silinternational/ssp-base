@@ -4,8 +4,8 @@
             "name": "behat/behat",
             "direct-dependency": true,
             "homepage": "http://behat.org/",
-            "source": "https://github.com/Behat/Behat/tree/v3.11.0",
-            "version": "v3.11.0",
+            "source": "https://github.com/Behat/Behat/tree/v3.12.0",
+            "version": "v3.12.0",
             "description": "Scenario-oriented BDD framework for PHP",
             "abandoned": false
         },
@@ -50,7 +50,7 @@
             "direct-dependency": true,
             "homepage": null,
             "source": "https://github.com/Roave/SecurityAdvisories/tree/latest",
-            "version": "dev-master da95b1a",
+            "version": "dev-master 8597757",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
             "abandoned": false
         },
@@ -76,8 +76,8 @@
             "name": "silinternational/simplesamlphp-module-material",
             "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/7.6.2",
-            "version": "7.6.2",
+            "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/8.0.0",
+            "version": "8.0.0",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
             "abandoned": false
         },
