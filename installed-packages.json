@@ -22,8 +22,8 @@
             "name": "dmore/chrome-mink-driver",
             "direct-dependency": true,
             "homepage": "https://gitlab.com/behat-chrome/chrome-mink-driver",
-            "source": "https://gitlab.com/behat-chrome/chrome-mink-driver/-/tree/2.8.1",
-            "version": "2.8.1",
+            "source": "git@gitlab.com:behat-chrome/chrome-mink-driver.git",
+            "version": "2.9.1",
             "description": "Mink driver for controlling chrome without selenium",
             "abandoned": false
         },
@@ -32,7 +32,7 @@
             "direct-dependency": true,
             "homepage": "https://github.com/oscarotero/Gettext",
             "source": "https://github.com/php-gettext/Gettext/tree/4.x",
-            "version": "4.x-dev cbf1101",
+            "version": "4.x-dev ed5535a",
             "description": "PHP gettext manager",
             "abandoned": false
         },
@@ -50,7 +50,7 @@
             "direct-dependency": true,
             "homepage": null,
             "source": "https://github.com/Roave/SecurityAdvisories/tree/latest",
-            "version": "dev-master 8597757",
+            "version": "dev-master 7868bed",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
             "abandoned": false
         },
@@ -67,8 +67,8 @@
             "name": "silinternational/simplesamlphp-module-expirychecker",
             "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-expirychecker/tree/3.1.0",
-            "version": "3.1.0",
+            "source": "https://github.com/silinternational/simplesamlphp-module-expirychecker/tree/3.1.1",
+            "version": "3.1.1",
             "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired.",
             "abandoned": false
         },
@@ -76,8 +76,8 @@
             "name": "silinternational/simplesamlphp-module-material",
             "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/8.0.0",
-            "version": "8.0.0",
+            "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/8.0.1",
+            "version": "8.0.1",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
             "abandoned": false
         },
@@ -85,8 +85,8 @@
             "name": "silinternational/simplesamlphp-module-mfa",
             "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/5.1.0",
-            "version": "5.1.0",
+            "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/5.1.1",
+            "version": "5.1.1",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
             "abandoned": false
         },
@@ -140,7 +140,7 @@
             "direct-dependency": true,
             "homepage": "http://simplesamlphp.org",
             "source": "https://github.com/simplesamlphp/simplesamlphp",
-            "version": "v1.19.6",
+            "version": "v1.19.7",
             "description": "A PHP implementation of a SAML 2.0 service provider and identity provider, also compatible with Shibboleth 1.3 and 2.0.",
             "abandoned": false
         }
