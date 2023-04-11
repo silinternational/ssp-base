@@ -23,7 +23,7 @@
             "direct-dependency": true,
             "homepage": "https://gitlab.com/behat-chrome/chrome-mink-driver",
             "source": "git@gitlab.com:behat-chrome/chrome-mink-driver.git",
-            "version": "2.9.1",
+            "version": "2.9.2",
             "description": "Mink driver for controlling chrome without selenium",
             "abandoned": false
         },
@@ -40,8 +40,8 @@
             "name": "phpunit/phpunit",
             "direct-dependency": true,
             "homepage": "https://phpunit.de/",
-            "source": "https://github.com/sebastianbergmann/phpunit/tree/8.5.32",
-            "version": "8.5.32",
+            "source": "https://github.com/sebastianbergmann/phpunit/tree/8.5.33",
+            "version": "8.5.33",
             "description": "The PHP Unit Testing framework.",
             "abandoned": false
         },
@@ -50,7 +50,7 @@
             "direct-dependency": true,
             "homepage": null,
             "source": "https://github.com/Roave/SecurityAdvisories/tree/latest",
-            "version": "dev-master 4c896e1",
+            "version": "dev-master 892a245",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
             "abandoned": false
         },
@@ -85,8 +85,8 @@
             "name": "silinternational/simplesamlphp-module-mfa",
             "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/5.1.2",
-            "version": "5.1.2",
+            "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/5.2.0",
+            "version": "5.2.0",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
             "abandoned": false
         },
@@ -140,7 +140,7 @@
             "direct-dependency": true,
             "homepage": "http://simplesamlphp.org",
             "source": "https://github.com/simplesamlphp/simplesamlphp",
-            "version": "v1.19.7",
+            "version": "1.19.8",
             "description": "A PHP implementation of a SAML 2.0 service provider and identity provider, also compatible with Shibboleth 1.3 and 2.0.",
             "abandoned": false
         }
