@@ -4,8 +4,8 @@ app:
     dockerfile_path: ./Dockerfile
   depends_on:
     - ssp-hub.local
-    - ssp-hub-idp.local
-    - ssp-hub-sp.local
+    - ssp-idp1.local
+    - ssp-sp1.local
     - test-browser
   volumes:
     - ./dockerbuild/run-integration-tests.sh:/data/run-integration-tests.sh
@@ -49,7 +49,7 @@ ssp-hub.local:
     THEME_COLOR_SCHEME: "orange-light_blue"
     HUB_MODE: "true"
 
-ssp-hub-idp.local:
+ssp-idp1.local:
   build: .
   volumes:
     # Utilize custom certs
@@ -78,7 +78,7 @@ ssp-hub-idp.local:
     SHOW_SAML_ERRORS: "true"
     THEME_USE: "material:material"
 
-ssp-hub-sp.local:
+ssp-sp1.local:
   build: .
   volumes:
     # Utilize custom certs
