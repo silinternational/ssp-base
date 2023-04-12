@@ -5,7 +5,7 @@
  * See: https://simplesamlphp.org/docs/stable/simplesamlphp-reference-idp-hosted
  */
 
-$metadata['http://ssp-hub-idp2.local:8086'] = [
+$metadata['http://ssp-idp2.local:8086'] = [
 	/*
 	 * The hostname of the server (VHOST) that will use this SAML entity.
 	 *

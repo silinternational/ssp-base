@@ -10,11 +10,11 @@
   command: /data/run-metadata-tests.sh
 
 - name: check-idp-metadata-for-tests
-  service: ssp-hub-idp.local
+  service: ssp-idp1.local
   command: /data/run-metadata-tests.sh
 
 - name: check-sp-metadata-for-tests
-  service: ssp-hub-sp.local
+  service: ssp-sp1.local
   command: /data/run-metadata-tests.sh
 
 - name: push
