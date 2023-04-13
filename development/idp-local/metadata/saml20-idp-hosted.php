@@ -7,7 +7,7 @@
 
 use Sil\Psr3Adapters\Psr3StdOutLogger;
 
-$metadata['http://ssp-hub-idp.local:8085'] = [
+$metadata['http://ssp-idp1.local:8085'] = [
 	/*
 	 * The hostname of the server (VHOST) that will use this SAML entity.
 	 *
@@ -41,4 +41,4 @@ $metadata['http://ssp-hub-idp.local:8085'] = [
 ];
 
 // Duplicate configuration for port 80.
-$metadata['http://ssp-hub-idp.local'] = $metadata['http://ssp-hub-idp.local:8085'];
+$metadata['http://ssp-idp1.local'] = $metadata['http://ssp-idp1.local:8085'];

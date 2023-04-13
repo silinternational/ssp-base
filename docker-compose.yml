@@ -21,8 +21,8 @@ services:
     build: .
     depends_on:
       - ssp-hub.local
-      - ssp-hub-idp.local
-      - ssp-hub-sp.local
+      - ssp-idp1.local
+      - ssp-sp1.local
       - test-browser
     environment:
       - COMPOSER_CACHE_DIR=/composer
@@ -94,7 +94,7 @@ services:
       THEME_COLOR_SCHEME: "orange-light_blue"
       HUB_MODE: "true"
 
-  ssp-hub-idp.local:
+  ssp-idp1.local:
     build: .
     volumes:
       # Utilize custom certs
@@ -149,7 +149,7 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
 
-  ssp-hub-sp.local:
+  ssp-sp1.local:
     build: .
     volumes:
       # Utilize custom certs

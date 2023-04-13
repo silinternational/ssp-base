@@ -4,7 +4,7 @@ ssp: clean
 	docker-compose up -d ssp
 
 hub: clean
-	docker-compose up -d ssp-hub.local ssp-hub-sp.local sp2 ssp-hub-idp.local idp2
+	docker-compose up -d ssp-hub.local ssp-sp1.local sp2 ssp-idp1.local idp2
 
 clean:
 	docker-compose kill
@@ -15,8 +15,8 @@ composer:
 
 test:
 	docker-compose run --rm ssp-hub.local ./run-metadata-tests.sh
-	docker-compose run --rm ssp-hub-idp.local ./run-metadata-tests.sh
-	docker-compose run --rm ssp-hub-sp.local ./run-metadata-tests.sh
+	docker-compose run --rm ssp-idp1.local ./run-metadata-tests.sh
+	docker-compose run --rm ssp-sp1.local ./run-metadata-tests.sh
 	docker-compose run --rm test
 
 test-integration:
