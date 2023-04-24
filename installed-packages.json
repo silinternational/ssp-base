@@ -50,7 +50,7 @@
             "direct-dependency": true,
             "homepage": null,
             "source": "https://github.com/Roave/SecurityAdvisories/tree/latest",
-            "version": "dev-master 685cc17",
+            "version": "dev-master d49d4da",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
             "abandoned": false
         },
@@ -76,8 +76,8 @@
             "name": "silinternational/simplesamlphp-module-material",
             "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/8.0.2",
-            "version": "8.0.2",
+            "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/8.0.3",
+            "version": "8.0.3",
             "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
             "abandoned": false
         },
