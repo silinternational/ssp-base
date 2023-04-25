@@ -50,7 +50,7 @@
             "direct-dependency": true,
             "homepage": null,
             "source": "https://github.com/Roave/SecurityAdvisories/tree/latest",
-            "version": "dev-master d49d4da",
+            "version": "dev-master d2832e4",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
             "abandoned": false
         },
@@ -112,8 +112,8 @@
             "name": "silinternational/simplesamlphp-module-sildisco",
             "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-sildisco/tree/3.3.1",
-            "version": "3.3.1",
+            "source": "https://github.com/silinternational/simplesamlphp-module-sildisco/tree/4.0.0",
+            "version": "4.0.0",
             "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
             "abandoned": false
         },
