@@ -50,7 +50,7 @@
             "direct-dependency": true,
             "homepage": null,
             "source": "https://github.com/Roave/SecurityAdvisories/tree/latest",
-            "version": "dev-master d2832e4",
+            "version": "dev-master d1af114",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
             "abandoned": false
         },
