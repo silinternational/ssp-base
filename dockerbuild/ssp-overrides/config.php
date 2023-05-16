@@ -65,6 +65,10 @@ $MEMCACHE_HOST1 = Env::get('MEMCACHE_HOST1', null);
 $MEMCACHE_HOST2 = Env::get('MEMCACHE_HOST2', null);
 $MEMCACHE_HOST1_PORT = Env::get('MEMCACHE_HOST1_PORT', 11211);
 $MEMCACHE_HOST2_PORT = Env::get('MEMCACHE_HOST2_PORT', 11211);
+$MYSQL_HOST = Env::get('MYSQL_HOST', '');
+$MYSQL_DATABASE = Env::get('MYSQL_DATABASE', '');
+$MYSQL_USER = Env::get('MYSQL_USER', '');
+$MYSQL_PASSWORD = Env::get('MYSQL_PASSWORD', '');
 
 $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
 $GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
@@ -225,7 +229,7 @@ $config = [
      * LC_CTYPE=C tr -c -d '0123456789abcdefghijklmnopqrstuvwxyz' </dev/urandom | dd bs=32 count=1 2>/dev/null;echo
      */
     'secretsalt' => $SECRET_SALT,
-    
+
     /*
      * This password must be kept secret, and modified from the default value 123.
      * This password will give access to the installation page of SimpleSAMLphp with
@@ -1132,7 +1136,7 @@ $config = [
             'urn:oid:0.9.2342.19200300.100.1.3', // mail
             'urn:oid:2.16.840.1.113730.3.1.3', // employeeNumber
         ],
-        
+
         // Use the uid value to populate the nameid entry
         // 60 => [
             // 'class' => 'saml:AttributeNameID',
@@ -1331,7 +1335,7 @@ $config = [
      *
      * The default datastore is 'phpsession'.
      */
-    'store.type'                    => $SESSION_STORE_TYPE,
+    'store.type'         => $SESSION_STORE_TYPE,
 
     /*
      * The DSN the sql datastore should connect to.
@@ -1339,13 +1343,13 @@ $config = [
      * See http://www.php.net/manual/en/pdo.drivers.php for the various
      * syntaxes.
      */
-    //'store.sql.dsn'                 => 'sqlite:/path/to/sqlitedatabase.sq3',
+    'store.sql.dsn'      => sprintf('mysql:host=%s;dbname=%s', $MYSQL_HOST, $MYSQL_DATABASE),
 
     /*
      * The username and password to use when connecting to the database.
      */
-    //'store.sql.username' => null,
-    //'store.sql.password' => null,
+    'store.sql.username' => $MYSQL_USER,
+    'store.sql.password' => $MYSQL_PASSWORD,
 
     /*
      * The prefix we should use on our tables.
