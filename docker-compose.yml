@@ -17,6 +17,16 @@ services:
     env_file:
       - ./local.env
 
+  db:
+    image: mariadb:10
+    ports:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: r00tp@ss!
+      MYSQL_DATABASE: silauth
+      MYSQL_USER: silauth
+      MYSQL_PASSWORD: silauth
+
   test:
     build: .
     depends_on:
@@ -94,8 +104,10 @@ services:
       THEME_COLOR_SCHEME: "orange-light_blue"
       HUB_MODE: "true"
 
-  ssp-idp1.local:
+  ssp-idp1.local:  # using a database session store type ("sql")
     build: .
+    depends_on:
+      - db
     volumes:
       # Utilize custom certs
       - ./development/idp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert 
@@ -124,6 +136,11 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_USE: "material:material"
+      SESSION_STORE_TYPE: "sql"
+      MYSQL_HOST: "db"
+      MYSQL_DATABASE: "silauth"
+      MYSQL_USER: "silauth"
+      MYSQL_PASSWORD: "silauth"
 
   idp2:
     build: .
