@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0363fb784e3cf7eba20bbf94411cf9a5",
+    "content-hash": "2d54ebb62e45386c151d4cd4709a047e",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2110,17 +2110,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "7d728f50cf52ce838ac1c1504190823b4dc06b4d"
+                "reference": "f928c4960ce91bfd266db27fa15679341cd3525d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/7d728f50cf52ce838ac1c1504190823b4dc06b4d",
-                "reference": "7d728f50cf52ce838ac1c1504190823b4dc06b4d",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/f928c4960ce91bfd266db27fa15679341cd3525d",
+                "reference": "f928c4960ce91bfd266db27fa15679341cd3525d",
                 "shasum": ""
             },
             "conflict": {
                 "3f/pygmentize": "<1.2",
-                "admidio/admidio": "<4.1.9",
+                "admidio/admidio": "<4.2.8",
                 "adodb/adodb-php": "<=5.20.20|>=5.21,<=5.21.3",
                 "aheinze/cockpit": "<=2.2.1",
                 "akaunting/akaunting": "<2.1.13",
@@ -2191,7 +2191,7 @@
                 "contao/core-bundle": "<4.9.40|>=4.10,<4.11.7|>=4.13,<4.13.21|>=5.1,<5.1.4|= 4.10.0",
                 "contao/listing-bundle": ">=4,<4.4.8",
                 "contao/managed-edition": "<=1.5",
-                "craftcms/cms": ">= 4.0.0-RC1, < 4.4.12|>= 4.0.0-RC1, <= 4.4.5|>= 4.0.0-RC1, <= 4.4.6|<=3.8.5|>=4,<4.4.6|>= 4.0.0-RC1, < 4.4.6|>= 4.0.0-RC1, < 4.3.7|>= 4.0.0-RC1, < 4.2.1",
+                "craftcms/cms": "<4.4.6|>= 4.0.0-RC1, < 4.4.12|>= 4.0.0-RC1, <= 4.4.5|>= 4.0.0-RC1, <= 4.4.6|>= 4.0.0-RC1, < 4.4.6|>= 4.0.0-RC1, < 4.3.7|>= 4.0.0-RC1, < 4.2.1",
                 "croogo/croogo": "<3.0.7",
                 "cuyz/valinor": "<0.12",
                 "czproject/git-php": "<4.0.3",
@@ -2527,7 +2527,7 @@
                 "ssddanbrown/bookstack": "<22.2.3",
                 "statamic/cms": "<3.2.39|>=3.3,<3.3.2",
                 "stormpath/sdk": ">=0,<9.9.99",
-                "studio-42/elfinder": "<2.1.59",
+                "studio-42/elfinder": "<2.1.62",
                 "subrion/cms": "<=4.2.1",
                 "sukohi/surpass": "<1",
                 "sulu/sulu": "= 2.4.0-RC1|<1.6.44|>=2,<2.2.18|>=2.3,<2.3.8",
@@ -2710,7 +2710,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-12T19:03:43+00:00"
+            "time": "2023-06-14T17:04:17+00:00"
         },
         {
             "name": "robrichards/xmlseclibs",
@@ -2999,16 +2999,16 @@
         },
         {
             "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "5.2.0",
+            "version": "5.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "27b216c923d64e2bb388055bdd1ed3115e150207"
+                "reference": "2179f28e5e72e1f14e27d10025cdac5e44b45398"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/27b216c923d64e2bb388055bdd1ed3115e150207",
-                "reference": "27b216c923d64e2bb388055bdd1ed3115e150207",
+                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/2179f28e5e72e1f14e27d10025cdac5e44b45398",
+                "reference": "2179f28e5e72e1f14e27d10025cdac5e44b45398",
                 "shasum": ""
             },
             "require": {
@@ -3047,9 +3047,9 @@
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
             "support": {
                 "issues": "https://github.com/silinternational/simplesamlphp-module-mfa/issues",
-                "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/5.2.0"
+                "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/5.2.1"
             },
-            "time": "2023-04-10T19:23:14+00:00"
+            "time": "2023-06-15T13:38:51+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-profilereview",
