@@ -50,7 +50,7 @@
             "direct-dependency": true,
             "homepage": null,
             "source": "https://github.com/Roave/SecurityAdvisories/tree/latest",
-            "version": "dev-master 7d728f5",
+            "version": "dev-master f928c49",
             "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
             "abandoned": false
         },
@@ -85,8 +85,8 @@
             "name": "silinternational/simplesamlphp-module-mfa",
             "direct-dependency": true,
             "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/5.2.0",
-            "version": "5.2.0",
+            "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/5.2.1",
+            "version": "5.2.1",
             "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
             "abandoned": false
         },
