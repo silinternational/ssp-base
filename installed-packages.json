@@ -1,6 +1,6 @@
 {
   "name": "aws/aws-crt-php",
-  "version": "v1.2.1"
+  "version": "v1.2.2"
 }
 {
   "name": "aws/aws-sdk-php",
@@ -124,7 +124,7 @@
 }
 {
   "name": "roave/security-advisories",
-  "version": "dev-master f928c49"
+  "version": "dev-master 69dafab"
 }
 {
   "name": "robrichards/xmlseclibs",
@@ -132,7 +132,7 @@
 }
 {
   "name": "silinternational/idp-id-broker-php-client",
-  "version": "4.3.0"
+  "version": "4.3.1"
 }
 {
   "name": "silinternational/php-env",
@@ -160,7 +160,7 @@
 }
 {
   "name": "silinternational/simplesamlphp-module-silauth",
-  "version": "7.1.0"
+  "version": "7.1.1"
 }
 {
   "name": "silinternational/simplesamlphp-module-sildisco",
@@ -312,7 +312,7 @@
 }
 {
   "name": "symfony/cache",
-  "version": "v5.4.23"
+  "version": "v5.4.25"
 }
 {
   "name": "symfony/cache-contracts",
@@ -352,11 +352,11 @@
 }
 {
   "name": "symfony/filesystem",
-  "version": "v5.4.23"
+  "version": "v5.4.25"
 }
 {
   "name": "symfony/finder",
-  "version": "v5.4.21"
+  "version": "v5.4.27"
 }
 {
   "name": "symfony/framework-bundle",
@@ -368,7 +368,7 @@
 }
 {
   "name": "symfony/http-foundation",
-  "version": "v5.4.24"
+  "version": "v5.4.26"
 }
 {
   "name": "symfony/http-kernel",
@@ -408,11 +408,11 @@
 }
 {
   "name": "symfony/var-dumper",
-  "version": "v5.4.24"
+  "version": "v5.4.26"
 }
 {
   "name": "symfony/var-exporter",
-  "version": "v5.4.21"
+  "version": "v5.4.26"
 }
 {
   "name": "symfony/yaml",
