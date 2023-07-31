@@ -1,148 +1,448 @@
 {
-    "installed": [
-        {
-            "name": "behat/behat",
-            "direct-dependency": true,
-            "homepage": "http://behat.org/",
-            "source": "https://github.com/Behat/Behat/tree/v3.13.0",
-            "version": "v3.13.0",
-            "description": "Scenario-oriented BDD framework for PHP",
-            "abandoned": false
-        },
-        {
-            "name": "behat/mink-extension",
-            "direct-dependency": true,
-            "homepage": "http://extensions.behat.org/mink",
-            "source": "https://github.com/Behat/MinkExtension/tree/master",
-            "version": "2.3.1",
-            "description": "Mink extension for Behat",
-            "abandoned": false
-        },
-        {
-            "name": "dmore/chrome-mink-driver",
-            "direct-dependency": true,
-            "homepage": "https://gitlab.com/behat-chrome/chrome-mink-driver",
-            "source": "git@gitlab.com:behat-chrome/chrome-mink-driver.git",
-            "version": "2.9.2",
-            "description": "Mink driver for controlling chrome without selenium",
-            "abandoned": false
-        },
-        {
-            "name": "gettext/gettext",
-            "direct-dependency": true,
-            "homepage": "https://github.com/oscarotero/Gettext",
-            "source": "https://github.com/php-gettext/Gettext/tree/4.x",
-            "version": "4.x-dev ed5535a",
-            "description": "PHP gettext manager",
-            "abandoned": false
-        },
-        {
-            "name": "phpunit/phpunit",
-            "direct-dependency": true,
-            "homepage": "https://phpunit.de/",
-            "source": "https://github.com/sebastianbergmann/phpunit/tree/8.5.33",
-            "version": "8.5.33",
-            "description": "The PHP Unit Testing framework.",
-            "abandoned": false
-        },
-        {
-            "name": "roave/security-advisories",
-            "direct-dependency": true,
-            "homepage": null,
-            "source": "https://github.com/Roave/SecurityAdvisories/tree/latest",
-            "version": "dev-master f928c49",
-            "description": "Prevents installation of composer packages with known security vulnerabilities: no API, simply require it",
-            "abandoned": false
-        },
-        {
-            "name": "silinternational/php-env",
-            "direct-dependency": true,
-            "homepage": null,
-            "source": "https://github.com/silinternational/php-env/tree/3.1.0",
-            "version": "3.1.0",
-            "description": "Simple PHP library for getting (or requiring) environment variables, designed to handle true, false, and null more intelligently. If desired, an environment variable's value can be split into an array automatically.",
-            "abandoned": false
-        },
-        {
-            "name": "silinternational/simplesamlphp-module-expirychecker",
-            "direct-dependency": true,
-            "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-expirychecker/tree/3.1.3",
-            "version": "3.1.3",
-            "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired.",
-            "abandoned": false
-        },
-        {
-            "name": "silinternational/simplesamlphp-module-material",
-            "direct-dependency": true,
-            "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/8.1.1",
-            "version": "8.1.1",
-            "description": "Material Design theme for IdP Hub based on SimpleSAMLphp",
-            "abandoned": false
-        },
-        {
-            "name": "silinternational/simplesamlphp-module-mfa",
-            "direct-dependency": true,
-            "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/5.2.1",
-            "version": "5.2.1",
-            "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "abandoned": false
-        },
-        {
-            "name": "silinternational/simplesamlphp-module-profilereview",
-            "direct-dependency": true,
-            "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-profilereview/tree/2.1.0",
-            "version": "2.1.0",
-            "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.).",
-            "abandoned": false
-        },
-        {
-            "name": "silinternational/simplesamlphp-module-silauth",
-            "direct-dependency": true,
-            "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-silauth/tree/7.1.0",
-            "version": "7.1.0",
-            "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "abandoned": false
-        },
-        {
-            "name": "silinternational/simplesamlphp-module-sildisco",
-            "direct-dependency": true,
-            "homepage": null,
-            "source": "https://github.com/silinternational/simplesamlphp-module-sildisco/tree/4.0.0",
-            "version": "4.0.0",
-            "description": "IdP Discovery module for simpleSAMLphp with extra business logic",
-            "abandoned": false
-        },
-        {
-            "name": "silinternational/ssp-utilities",
-            "direct-dependency": true,
-            "homepage": null,
-            "source": "https://github.com/silinternational/ssp-utilities/tree/1.1.0",
-            "version": "1.1.0",
-            "description": "SimpleSAMLphp related utility classes",
-            "abandoned": false
-        },
-        {
-            "name": "simplesamlphp/composer-module-installer",
-            "direct-dependency": true,
-            "homepage": null,
-            "source": "https://github.com/simplesamlphp/composer-module-installer/tree/v1.1.8",
-            "version": "v1.1.8",
-            "description": "A Composer plugin that allows installing SimpleSAMLphp modules through Composer.",
-            "abandoned": false
-        },
-        {
-            "name": "simplesamlphp/simplesamlphp",
-            "direct-dependency": true,
-            "homepage": "http://simplesamlphp.org",
-            "source": "https://github.com/simplesamlphp/simplesamlphp",
-            "version": "1.19.8",
-            "description": "A PHP implementation of a SAML 2.0 service provider and identity provider, also compatible with Shibboleth 1.3 and 2.0.",
-            "abandoned": false
-        }
-    ]
+  "name": "aws/aws-crt-php",
+  "version": "v1.2.1"
+}
+{
+  "name": "aws/aws-sdk-php",
+  "version": "3.269.0"
+}
+{
+  "name": "cebe/markdown",
+  "version": "1.2.1"
+}
+{
+  "name": "codemix/yii2-streamlog",
+  "version": "1.3.1"
+}
+{
+  "name": "ezyang/htmlpurifier",
+  "version": "v4.16.0"
+}
+{
+  "name": "fillup/fake-bower-assets",
+  "version": "2.0.13"
+}
+{
+  "name": "gettext/gettext",
+  "version": "4.x-dev ed5535a"
+}
+{
+  "name": "gettext/languages",
+  "version": "2.10.0"
+}
+{
+  "name": "google/recaptcha",
+  "version": "1.3.0"
+}
+{
+  "name": "guzzlehttp/command",
+  "version": "1.3.0"
+}
+{
+  "name": "guzzlehttp/guzzle",
+  "version": "7.7.0"
+}
+{
+  "name": "guzzlehttp/guzzle-services",
+  "version": "1.4.0"
+}
+{
+  "name": "guzzlehttp/promises",
+  "version": "1.5.3"
+}
+{
+  "name": "guzzlehttp/psr7",
+  "version": "2.5.0"
+}
+{
+  "name": "guzzlehttp/uri-template",
+  "version": "v1.0.1"
+}
+{
+  "name": "mlocati/ip-lib",
+  "version": "1.18.0"
+}
+{
+  "name": "monolog/monolog",
+  "version": "1.27.1"
+}
+{
+  "name": "mtdowling/jmespath.php",
+  "version": "2.6.1"
+}
+{
+  "name": "paragonie/random_compat",
+  "version": "v9.99.100"
+}
+{
+  "name": "phpfastcache/riak-client",
+  "version": "3.4.3"
+}
+{
+  "name": "phpmailer/phpmailer",
+  "version": "v6.8.0"
+}
+{
+  "name": "phpspec/php-diff",
+  "version": "v1.1.3"
+}
+{
+  "name": "psr/cache",
+  "version": "2.0.0"
+}
+{
+  "name": "psr/container",
+  "version": "1.1.2"
+}
+{
+  "name": "psr/http-client",
+  "version": "1.0.2"
+}
+{
+  "name": "psr/http-factory",
+  "version": "1.0.2"
+}
+{
+  "name": "psr/http-message",
+  "version": "2.0"
+}
+{
+  "name": "psr/log",
+  "version": "1.1.4"
+}
+{
+  "name": "ralouphie/getallheaders",
+  "version": "3.0.3"
+}
+{
+  "name": "ramsey/uuid",
+  "version": "3.9.7"
+}
+{
+  "name": "rlanvin/php-ip",
+  "version": "v1.0.1"
+}
+{
+  "name": "roave/security-advisories",
+  "version": "dev-master f928c49"
+}
+{
+  "name": "robrichards/xmlseclibs",
+  "version": "3.1.1"
+}
+{
+  "name": "silinternational/idp-id-broker-php-client",
+  "version": "4.3.0"
+}
+{
+  "name": "silinternational/php-env",
+  "version": "3.1.0"
+}
+{
+  "name": "silinternational/psr3-adapters",
+  "version": "3.1.0"
+}
+{
+  "name": "silinternational/simplesamlphp-module-expirychecker",
+  "version": "3.1.3"
+}
+{
+  "name": "silinternational/simplesamlphp-module-material",
+  "version": "8.1.1"
+}
+{
+  "name": "silinternational/simplesamlphp-module-mfa",
+  "version": "5.2.1"
+}
+{
+  "name": "silinternational/simplesamlphp-module-profilereview",
+  "version": "2.1.0"
+}
+{
+  "name": "silinternational/simplesamlphp-module-silauth",
+  "version": "7.1.0"
+}
+{
+  "name": "silinternational/simplesamlphp-module-sildisco",
+  "version": "4.0.0"
+}
+{
+  "name": "silinternational/ssp-utilities",
+  "version": "1.1.0"
+}
+{
+  "name": "silinternational/yii2-json-log-targets",
+  "version": "2.1.0"
+}
+{
+  "name": "simplesamlphp/assert",
+  "version": "v0.0.13"
+}
+{
+  "name": "simplesamlphp/composer-module-installer",
+  "version": "v1.1.8"
+}
+{
+  "name": "simplesamlphp/saml2",
+  "version": "v4.6.10"
+}
+{
+  "name": "simplesamlphp/simplesamlphp",
+  "version": "1.19.8"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-adfs",
+  "version": "v1.0.9"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-authcrypt",
+  "version": "v0.9.4"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-authfacebook",
+  "version": "v0.9.3"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-authorize",
+  "version": "v0.9.4"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-authtwitter",
+  "version": "v0.9.3"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-authwindowslive",
+  "version": "v0.9.1"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-authx509",
+  "version": "v0.9.9"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-authyubikey",
+  "version": "v0.9.3"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-cas",
+  "version": "v0.9.1"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-cdc",
+  "version": "v0.9.2"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-consent",
+  "version": "v0.9.8"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-consentadmin",
+  "version": "v0.9.2"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-discopower",
+  "version": "v0.10.1"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-exampleattributeserver",
+  "version": "v1.0.0"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-expirycheck",
+  "version": "v0.9.4"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-ldap",
+  "version": "v0.9.17"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-memcachemonitor",
+  "version": "v0.9.3"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-memcookie",
+  "version": "v1.2.2"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-metarefresh",
+  "version": "v0.10.0"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-negotiate",
+  "version": "v0.9.12"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-oauth",
+  "version": "v0.9.3"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-preprodwarning",
+  "version": "v0.9.3"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-radius",
+  "version": "v0.9.4"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-riak",
+  "version": "v0.9.1"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-sanitycheck",
+  "version": "v0.9.1"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-smartattributes",
+  "version": "v0.9.2"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-sqlauth",
+  "version": "v0.9.4"
+}
+{
+  "name": "simplesamlphp/simplesamlphp-module-statistics",
+  "version": "v0.9.6"
+}
+{
+  "name": "simplesamlphp/twig-configurable-i18n",
+  "version": "v2.3.5"
+}
+{
+  "name": "sinergi/browser-detector",
+  "version": "6.1.4"
+}
+{
+  "name": "symfony/cache",
+  "version": "v5.4.23"
+}
+{
+  "name": "symfony/cache-contracts",
+  "version": "v2.5.2"
+}
+{
+  "name": "symfony/config",
+  "version": "v4.4.44"
+}
+{
+  "name": "symfony/console",
+  "version": "v4.4.49"
+}
+{
+  "name": "symfony/debug",
+  "version": "v4.4.44"
+}
+{
+  "name": "symfony/dependency-injection",
+  "version": "v4.4.49"
+}
+{
+  "name": "symfony/deprecation-contracts",
+  "version": "v3.3.0"
+}
+{
+  "name": "symfony/error-handler",
+  "version": "v4.4.44"
+}
+{
+  "name": "symfony/event-dispatcher",
+  "version": "v4.4.44"
+}
+{
+  "name": "symfony/event-dispatcher-contracts",
+  "version": "v1.1.13"
+}
+{
+  "name": "symfony/filesystem",
+  "version": "v5.4.23"
+}
+{
+  "name": "symfony/finder",
+  "version": "v5.4.21"
+}
+{
+  "name": "symfony/framework-bundle",
+  "version": "v4.4.49"
+}
+{
+  "name": "symfony/http-client-contracts",
+  "version": "v2.5.2"
+}
+{
+  "name": "symfony/http-foundation",
+  "version": "v5.4.24"
+}
+{
+  "name": "symfony/http-kernel",
+  "version": "v4.4.50"
+}
+{
+  "name": "symfony/polyfill-ctype",
+  "version": "v1.27.0"
+}
+{
+  "name": "symfony/polyfill-mbstring",
+  "version": "v1.27.0"
+}
+{
+  "name": "symfony/polyfill-php72",
+  "version": "v1.27.0"
+}
+{
+  "name": "symfony/polyfill-php73",
+  "version": "v1.27.0"
+}
+{
+  "name": "symfony/polyfill-php80",
+  "version": "v1.27.0"
+}
+{
+  "name": "symfony/polyfill-php81",
+  "version": "v1.27.0"
+}
+{
+  "name": "symfony/routing",
+  "version": "v4.4.44"
+}
+{
+  "name": "symfony/service-contracts",
+  "version": "v2.5.2"
+}
+{
+  "name": "symfony/var-dumper",
+  "version": "v5.4.24"
+}
+{
+  "name": "symfony/var-exporter",
+  "version": "v5.4.21"
+}
+{
+  "name": "symfony/yaml",
+  "version": "v5.0.11"
+}
+{
+  "name": "twig/extensions",
+  "version": "v1.5.4"
+}
+{
+  "name": "twig/twig",
+  "version": "v2.15.5"
+}
+{
+  "name": "webmozart/assert",
+  "version": "1.11.0"
+}
+{
+  "name": "whitehat101/apr1-md5",
+  "version": "v1.0.0"
+}
+{
+  "name": "yiisoft/yii2",
+  "version": "2.0.48.1"
+}
+{
+  "name": "yiisoft/yii2-composer",
+  "version": "2.0.10"
+}
+{
+  "name": "yiisoft/yii2-gii",
+  "version": "2.2.6"
 }

@@ -11,4 +11,4 @@ composer update --no-scripts
 composer install --no-scripts --no-progress
 
 # Update our list of what packages are currently installed.
-composer show -D --format=json > installed-packages.json
+composer show --format=json --no-dev --no-ansi --locked | jq ".locked[] | { \"name\": .name, \"version\": .version }" > installed-packages.json
