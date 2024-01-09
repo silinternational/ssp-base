@@ -28,7 +28,7 @@ COPY dockerbuild/run-metadata-tests.sh /data/run-tests.sh
 RUN sed -i -E 's@ErrorLog .*@ErrorLog /proc/1/fd/2@i' /etc/apache2/apache2.conf
 
 # get s3-expand
-RUN curl https://raw.githubusercontent.com/silinternational/s3-expand/1.5/s3-expand -o /usr/local/bin/s3-expand \
+RUN curl https://raw.githubusercontent.com/silinternational/s3-expand/1.5/s3-expand -fo /usr/local/bin/s3-expand \
     && chmod a+x /usr/local/bin/s3-expand
 
 WORKDIR /data
