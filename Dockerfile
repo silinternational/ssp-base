@@ -28,7 +28,7 @@ COPY dockerbuild/run-metadata-tests.sh /data/run-tests.sh
 RUN sed -i -E 's@ErrorLog .*@ErrorLog /proc/1/fd/2@i' /etc/apache2/apache2.conf
 
 # get s3-expand
-RUN curl https://raw.githubusercontent.com/silinternational/s3-expand/1.5/s3-expand -o /usr/local/bin/s3-expand \
+RUN curl https://raw.githubusercontent.com/silinternational/s3-expand/1.5/s3-expand -fo /usr/local/bin/s3-expand \
     && chmod a+x /usr/local/bin/s3-expand
 
 WORKDIR /data
@@ -36,7 +36,11 @@ WORKDIR /data
 # Install/cleanup composer dependencies
 COPY composer.json /data/
 COPY composer.lock /data/
-RUN composer self-update --no-interaction
+# TODO/FIXME: Disabled the self-update due to a breaking change between composer 2.6.6 and 2.7.1 that affects the
+# loading of the simplesamlphp/simplesamlphp/modules folder. The Docker build fails on the sildisco/sspoverrides line.
+# It is not well understood what changed in composer, but since the overrides will need to be redesigned during
+# the SimpleSAMLphp 2.x upgrade, this issue is deferred until then.
+#RUN composer self-update --no-interaction
 RUN composer install --prefer-dist --no-interaction --no-dev --optimize-autoloader --no-scripts --no-progress
 
 # Copy in SSP override files
