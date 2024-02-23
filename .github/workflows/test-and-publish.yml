@@ -3,6 +3,9 @@ name: Test and Publish
 on:
   push:
 
+env:
+  IMAGE_NAME: ${{ vars.DOCKER_ORG }}/ssp-base
+
 jobs:
   tests:
     name: Tests
@@ -35,7 +38,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ vars.DOCKER_ORG }}/idp-id-broker
+          images: $IMAGE_NAME
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
