@@ -9,7 +9,7 @@ RUN apt-get update -y \
         php-gmp \
         php-memcached \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*    
+    && rm -rf /var/lib/apt/lists/*
 
 # Create required directories
 RUN mkdir -p /data
@@ -41,7 +41,7 @@ COPY composer.lock /data/
 # It is not well understood what changed in composer, but since the overrides will need to be redesigned during
 # the SimpleSAMLphp 2.x upgrade, this issue is deferred until then.
 #RUN composer self-update --no-interaction
-RUN composer install --prefer-dist --no-interaction --no-dev --optimize-autoloader --no-scripts --no-progress
+RUN COMPOSER_ALLOW_SUPERUSER=1 composer install --prefer-dist --no-interaction --no-dev --optimize-autoloader --no-scripts --no-progress
 
 # Copy in SSP override files
 ENV SSP_PATH /data/vendor/simplesamlphp/simplesamlphp
