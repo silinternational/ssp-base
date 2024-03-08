@@ -36,11 +36,7 @@ WORKDIR /data
 # Install/cleanup composer dependencies
 COPY composer.json /data/
 COPY composer.lock /data/
-# TODO/FIXME: Disabled the self-update due to a breaking change between composer 2.6.6 and 2.7.1 that affects the
-# loading of the simplesamlphp/simplesamlphp/modules folder. The Docker build fails on the sildisco/sspoverrides line.
-# It is not well understood what changed in composer, but since the overrides will need to be redesigned during
-# the SimpleSAMLphp 2.x upgrade, this issue is deferred until then.
-#RUN composer self-update --no-interaction
+RUN composer self-update --no-interaction
 RUN COMPOSER_ALLOW_SUPERUSER=1 composer install --prefer-dist --no-interaction --no-dev --optimize-autoloader --no-scripts --no-progress
 
 # Copy in SSP override files
