@@ -595,6 +595,12 @@ $config = [
     'module.enable' => [
         // Setting to TRUE enables.
         'authgoogle' => $GOOGLE_ENABLE,
+        'expirychecker' => true,
+        'material' => true,
+        'mfa' => true,
+        'profilereview' => true,
+        'silauth' => true,
+        'sildisco' => true,
     ],
 
 
