@@ -55,6 +55,9 @@ COPY tests /data/tests
 RUN cp $SSP_PATH/modules/sildisco/sspoverrides/www_saml2_idp/SSOService.php $SSP_PATH/www/saml2/idp/
 RUN chmod a+x /data/run.sh /data/run-tests.sh
 
+ADD https://github.com/silinternational/config-shim/releases/latest/download/config-shim.gz config-shim.gz
+RUN gzip -d config-shim.gz && chmod 755 config-shim && mv config-shim /usr/local/bin
+
 EXPOSE 80
 ENTRYPOINT ["/usr/local/bin/s3-expand"]
 CMD ["/data/run.sh"]

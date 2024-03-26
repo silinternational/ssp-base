@@ -17,7 +17,11 @@ cd /data
 cat /etc/*release | grep PRETTY
 php -v | head -n 1
 
-apache2ctl -k start -D FOREGROUND
+if [[ -z "${APP_ID}" ]]; then
+  apache2ctl -k start -D FOREGROUND
+else
+  config-shim --app $APP_ID --config $CONFIG_ID --env $ENV_ID apache2ctl -k start -D FOREGROUND
+fi
 
 # endless loop with a wait is needed for the trap to work
 while true
