@@ -3,12 +3,12 @@ services:
   ssp:
     build: .
     volumes:
-      # Utilize custom certs 
+      # Utilize custom certs
       - ./development/ssp/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
       - ./development/ssp/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
-      
+
       # Configure the debugger
       - ./development/ssp/run-debug.sh:/data/run-debug.sh
     command: ["/data/run-debug.sh"]
@@ -98,7 +98,6 @@ services:
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "Hub"
       SECURE_COOKIE: "false"
-      ADMIN_PROTECT_INDEX_PAGE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_USE: "material:material"
       THEME_COLOR_SCHEME: "orange-light_blue"
@@ -110,7 +109,7 @@ services:
       - db
     volumes:
       # Utilize custom certs
-      - ./development/idp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert 
+      - ./development/idp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
       - ./development/idp-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
@@ -146,7 +145,7 @@ services:
     build: .
     volumes:
       # Utilize custom certs
-      - ./development/idp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert  
+      - ./development/idp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
       - ./development/idp2-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
@@ -190,7 +189,6 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
-      ADMIN_PROTECT_INDEX_PAGE: "false"
 
   sp2:
     build: .
@@ -213,8 +211,7 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
-      ADMIN_PROTECT_INDEX_PAGE: "false"
-    
+
 networks:
   default:
     driver: bridge

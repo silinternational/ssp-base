@@ -25,7 +25,6 @@ $SECRET_SALT = Env::get('SECRET_SALT');
 // Defaults provided if not defined in environment
 $BASE_URL_PATH = Env::get('BASE_URL_PATH', '/');
 $ADMIN_NAME = Env::get('ADMIN_NAME', 'SAML Admin');
-$ADMIN_PROTECT_INDEX_PAGE = Env::get('ADMIN_PROTECT_INDEX_PAGE', true);
 $SHOW_SAML_ERRORS = Env::get('SHOW_SAML_ERRORS', false);
 $TIMEZONE = Env::get('TIMEZONE', 'GMT');
 $ENABLE_DEBUG = Env::get('ENABLE_DEBUG', false);
@@ -141,7 +140,7 @@ $config = [
      * You can also put a hash here; run "bin/pwgen.php" to generate one.
      */
     'auth.adminpassword' => $ADMIN_PASS,
-    'admin.protectindexpage' => $ADMIN_PROTECT_INDEX_PAGE,
+    'admin.protectindexpage' => true,
     'admin.protectmetadata' => true,
 
     /*

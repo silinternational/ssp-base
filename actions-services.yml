@@ -43,7 +43,6 @@ services:
       SECRET_SALT: "not-secret-h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "Hub"
       SECURE_COOKIE: "false"
-      ADMIN_PROTECT_INDEX_PAGE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_USE: "material:material"
       THEME_COLOR_SCHEME: "orange-light_blue"
@@ -100,4 +99,3 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
-      ADMIN_PROTECT_INDEX_PAGE: "false"
