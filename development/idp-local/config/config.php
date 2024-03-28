@@ -56,8 +56,6 @@ $THEME_USE = Env::get('THEME_USE', 'material:material');
 // Options: https://github.com/silinternational/simplesamlphp-module-material/blob/develop/README.md#branding
 $THEME_COLOR_SCHEME = Env::get('THEME_COLOR_SCHEME', null);
 
-$IDPDISCO_LAYOUT = Env::get('IDPDISCO_LAYOUT', 'links'); // Options: [links,dropdown]
-
 $SECURE_COOKIE = Env::get('SECURE_COOKIE', true);
 $SESSION_DURATION = (int)(Env::get('SESSION_DURATION', (60 * 60 * 10))); // 10 hours.
 $SESSION_STORE_TYPE = Env::get('SESSION_STORE_TYPE', 'phpsession');
@@ -1072,7 +1070,7 @@ $config = [
      *
      * Options: [links,dropdown]
      */
-    'idpdisco.layout' => $IDPDISCO_LAYOUT,
+    'idpdisco.layout' => 'links',
 
 
     /*************************************
