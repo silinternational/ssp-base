@@ -3,9 +3,6 @@ name: Test and Publish
 on:
   push:
 
-env:
-  IMAGE_NAME: ${{ vars.DOCKER_ORG }}/ssp-base
-
 jobs:
   tests:
     name: Tests
@@ -38,7 +35,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.IMAGE_NAME }}
+          images: ${{ vars.DOCKER_ORG }}/${{ github.event.repository.name }}
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
