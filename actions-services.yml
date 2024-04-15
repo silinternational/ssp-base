@@ -12,6 +12,7 @@ services:
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
       - ./dockerbuild/run-tests.sh:/data/run-tests.sh
       - ./features:/data/features
+      - ./behat.yml:/data/behat.yml
       - ./tests:/data/tests
 
   test-browser:
