@@ -14,10 +14,10 @@ class FeatureContext extends MinkContext
     private const HUB_BAD_AUTH_SOURCE_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=wrong';
     private const HUB_DISCO_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=hub-discovery';
     private const HUB_HOME_URL = 'http://ssp-hub.local';
-    private const SP1_LOGIN_PAGE = 'http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub';
+    protected const SP1_LOGIN_PAGE = 'http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub';
     
     /** @var Session */
-    private $session;
+    protected $session;
     
     public function __construct()
     {
@@ -161,7 +161,7 @@ class FeatureContext extends MinkContext
         $this->assertPageBodyContainsText('Your attributes');
     }
     
-    private function assertPageBodyContainsText(string $expectedText)
+    protected function assertPageBodyContainsText(string $expectedText)
     {
         $page = $this->session->getPage();
         $body = $page->find('css', 'body');
@@ -169,11 +169,11 @@ class FeatureContext extends MinkContext
     }
 
     /**
-     * @When I log in as a user who's password is about to expire
+     * @When I log in as a user whose password is about to expire
      */
     public function iLogInAsAUserWhosPasswordIsAboutToExpire()
     {
-        $this->logInAs('near_future', 'a');
+        $this->logInAs('near_future', 'b');
     }
 
     /**
@@ -185,11 +185,11 @@ class FeatureContext extends MinkContext
     }
 
     /**
-     * @When I log in as a user who's password has expired
+     * @When I log in as a user whose password has expired
      */
     public function iLogInAsAUserWhosPasswordHasExpired()
     {
-        $this->logInAs('already_past', 'a');
+        $this->logInAs('already_past', 'c');
     }
 
     /**

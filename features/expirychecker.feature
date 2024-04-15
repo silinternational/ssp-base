@@ -8,9 +8,38 @@ Feature: Expiry Checker module
     Then I should see a page indicating that I successfully logged in
     
   Scenario: Password is about to expire
-    When I log in as a user who's password is about to expire
+    When I log in as a user whose password is about to expire
     Then I should see a page warning me that my password is about to expire
     
   Scenario: Password has expired
-    When I log in as a user who's password has expired
+    When I log in as a user whose password has expired
     Then I should see a page telling me that my password has expired
+
+  Scenario: Password will expire in the distant future
+    Given I provide credentials that will expire in the distant future
+    When I login
+    Then I should end up at my intended destination
+
+  Scenario: Password will expire tomorrow
+    Given I provide credentials that will expire very soon
+    When I login
+    Then I should see a warning that my password will expire soon
+    And there should be a way to go change my password now
+    And there should be a way to continue without changing my password
+
+  Scenario: Password has expired
+    Given I provide credentials that have expired
+    When I login
+    Then I should see a message that my password has expired
+    And there should be a way to go change my password now
+    But there should NOT be a way to continue without changing my password
+
+  Scenario: Reject missing expiration date
+    Given I provide credentials that have no password expiration date
+    When I login
+    Then I should see an error message
+
+  Scenario: Reject invalid expiration date
+    Given I provide credentials that have an invalid password expiration date
+    When I login
+    Then I should see an error message

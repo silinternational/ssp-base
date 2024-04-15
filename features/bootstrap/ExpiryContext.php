@@ -1,8 +1,4 @@
 <?php
-namespace Sil\SspExpiryChecker\Behat\context;
-
-use Behat\Behat\Context\Context;
-use Behat\Mink\Driver\GoutteDriver;
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Session;
@@ -11,32 +7,19 @@ use PHPUnit\Framework\Assert;
 /**
  * Defines application features from the specific context.
  */
-class ExpiryContext implements Context
+class ExpiryContext extends FeatureContext
 {
     protected $username = null;
     protected $password = null;
-    
+
     /**
      * The browser session, used for interacting with the website.
      *
      * @var Session
      */
     protected $session;
-    
-    /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context instance.
-     * You can also pass arbitrary arguments to the
-     * context constructor through behat.yml.
-     */
-    public function __construct()
-    {
-        $driver = new GoutteDriver();
-        $this->session = new Session($driver);
-        $this->session->start();
-    }
-    
+
+
     /**
      * Assert that the given page has a form that contains the given text.
      *
@@ -58,7 +41,7 @@ class ExpiryContext implements Context
             $page->getHtml()
         ));
     }
-    
+
     /**
      * Assert that the given page does NOT have a form that contains the given
      * text.
@@ -80,7 +63,7 @@ class ExpiryContext implements Context
             }
         }
     }
-    
+
     /**
      * Get the login button from the given page.
      *
@@ -117,11 +100,9 @@ class ExpiryContext implements Context
      */
     public function iLogin()
     {
-        $this->session->visit('http://sp/module.php/core/authenticate.php?as=ssp-hub-idp');
-        $page = $this->session->getPage();
-        $page->fillField('username', $this->username);
-        $page->fillField('password', $this->password);
-        $this->submitLoginForm($page);
+        $this->fillField('username', $this->username);
+        $this->fillField('password', $this->password);
+        $this->pressButton('Login');
     }
 
     /**
@@ -129,8 +110,7 @@ class ExpiryContext implements Context
      */
     public function iShouldEndUpAtMyIntendedDestination()
     {
-        $page = $this->session->getPage();
-        Assert::assertContains('Your attributes', $page->getHtml());
+        $this->assertPageBodyContainsText('Your attributes');
     }
 
     /**
@@ -151,7 +131,7 @@ class ExpiryContext implements Context
         $page = $this->session->getPage();
         Assert::assertContains('will expire', $page->getHtml());
     }
-    
+
     /**
      * Submit the login form, including the secondary page's form (if
      * simpleSAMLphp shows another page because JavaScript isn't supported).
@@ -162,13 +142,13 @@ class ExpiryContext implements Context
     {
         $loginButton = $this->getLoginButton($page);
         $loginButton->click();
-        
+
         // SimpleSAMLphp 1.15 markup for secondary page:
         $postLoginSubmitButton = $page->findButton('postLoginSubmitButton');
         if ($postLoginSubmitButton instanceof NodeElement) {
             $postLoginSubmitButton->click();
         } else {
-            
+
             // SimpleSAMLphp 1.14 markup for secondary page:
             $body = $page->find('css', 'body');
             if ($body instanceof NodeElement) {

@@ -43,6 +43,7 @@ ENV SSP_PATH /data/vendor/simplesamlphp/simplesamlphp
 
 # Copy modules into simplesamlphp
 COPY modules/ $SSP_PATH/modules
+COPY behat.yml .
 
 # Copy in SSP override files
 RUN mv $SSP_PATH/www/index.php $SSP_PATH/www/ssp-index.php

@@ -49,6 +49,7 @@ services:
       - ./dockerbuild/run-tests.sh:/data/run-tests.sh
       - ./dockerbuild/apply-dictionaries-overrides.php:/data/apply-dictionaries-overrides.php
       - ./features:/data/features
+      - ./behat.yml:/data/behat.yml
       - ./tests:/data/tests
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
     command: ["/data/run-tests.sh"]
