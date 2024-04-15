@@ -4,12 +4,12 @@ namespace SimpleSAML\Module\expirychecker\Auth\Process;
 
 use Psr\Log\LoggerInterface;
 use Sil\Psr3Adapters\Psr3SamlLogger;
-use Sil\SspExpiryChecker\Validator;
 use SimpleSAML\Auth\ProcessingChain;
 use SimpleSAML\Auth\ProcessingFilter;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Module;
 use SimpleSAML\Module\expirychecker\Utilities;
+use SimpleSAML\Module\expirychecker\Validator;
 use SimpleSAML\Session;
 use SimpleSAML\Utils\HTTP;
 
@@ -45,9 +45,7 @@ class ExpiryDate extends ProcessingFilter
     public function __construct($config, $reserved)
     {
         parent::__construct($config, $reserved);
-        
-        $this->initComposerAutoloader();
-        
+
         assert('is_array($config)');
         
         $this->initLogger($config);
@@ -175,15 +173,7 @@ class ExpiryDate extends ProcessingFilter
         );
         $session->save();
     }
-    
-    protected function initComposerAutoloader()
-    {
-        $path = __DIR__ . '/../../../vendor/autoload.php';
-        if (file_exists($path)) {
-            require_once $path;
-        }
-    }
-    
+
     protected function initLogger($config)
     {
         $loggerClass = $config['loggerClass'] ?? Psr3SamlLogger::class;

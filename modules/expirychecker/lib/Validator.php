@@ -1,5 +1,6 @@
 <?php
-namespace Sil\SspExpiryChecker;
+
+namespace SimpleSAML\Module\expirychecker;
 
 use Exception;
 use InvalidArgumentException;
