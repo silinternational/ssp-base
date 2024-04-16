@@ -1,11 +1,11 @@
 <?php
 
-use Sil\SspProfileReview\LoggerFactory;
 use SimpleSAML\Auth\ProcessingChain;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Configuration;
 use SimpleSAML\Error\BadRequest;
 use SimpleSAML\Module\profilereview\Auth\Process\ProfileReview;
+use SimpleSAML\Module\profilereview\LoggerFactory;
 use SimpleSAML\XHTML\Template;
 
 $stateId = filter_input(INPUT_GET, 'StateId') ?? null;

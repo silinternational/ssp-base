@@ -1,7 +1,5 @@
 <?php
-namespace Sil\SspProfileReview;
-
-use InvalidArgumentException;
+namespace SimpleSAML\Module\profilereview;
 
 /**
  * Simple assertion class intended for use in production code, not merely tests.

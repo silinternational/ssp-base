@@ -1,10 +1,8 @@
 <?php
-namespace Sil\SspProfileReview;
+namespace SimpleSAML\Module\profilereview;
 
-use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
-use Psr\Log\Psr3SamlLogger;
-use Sil\SspProfileReview\Assert;
+use Sil\Psr3Adapters\Psr3SamlLogger;
 
 class LoggerFactory
 {

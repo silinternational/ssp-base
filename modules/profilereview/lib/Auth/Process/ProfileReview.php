@@ -4,10 +4,10 @@ namespace SimpleSAML\Module\profilereview\Auth\Process;
 
 use Psr\Log\LoggerInterface;
 use Sil\Psr3Adapters\Psr3SamlLogger;
-use Sil\SspProfileReview\LoggerFactory;
 use SimpleSAML\Auth\ProcessingFilter;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Module;
+use SimpleSAML\Module\profilereview\LoggerFactory;
 use SimpleSAML\Session;
 use SimpleSAML\Utils\HTTP;
 

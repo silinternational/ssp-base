@@ -1,11 +1,11 @@
 <?php
 
-use Sil\SspProfileReview\LoggerFactory;
 use SimpleSAML\Auth\ProcessingChain;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Configuration;
 use SimpleSAML\Error\BadRequest;
 use SimpleSAML\Module\profilereview\Auth\Process\ProfileReview;
+use SimpleSAML\Module\profilereview\LoggerFactory;
 use SimpleSAML\XHTML\Template;
 
 $stateId = filter_input(INPUT_GET, 'StateId') ?? null;
@@ -16,7 +16,7 @@ if (empty($stateId)) {
 $state = State::loadState($stateId, ProfileReview::STAGE_SENT_TO_NAG);
 $logger = LoggerFactory::getAccordingToState($state);
 
-/* Skip the splash page for awhile to avoid annoying them with constant warnings. */
+/* Skip the splash page for a while to avoid annoying them with constant warnings. */
 $oneDay = 24 * 60 * 60;
 ProfileReview::skipSplashPagesFor($oneDay, ProfileReview::REVIEW_PAGE);
 
