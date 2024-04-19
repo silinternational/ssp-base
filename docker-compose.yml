@@ -37,6 +37,7 @@ services:
     depends_on:
       - ssp-hub.local
       - ssp-idp1.local
+      - ssp-idp2.local
       - ssp-sp1.local
       - test-browser
     environment:
