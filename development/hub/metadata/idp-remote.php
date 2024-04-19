@@ -57,7 +57,7 @@ return [
         ],
         'IDPNamespace' => 'IDP-2-custom-port',
         'logoCaption' => 'IDP-2:8086 staff',
-        'enabled' => false,
+        'enabled' => true,
         'betaEnabled' => true,
         'logoURL' => 'https://dummyimage.com/125x125/0f4fbd/ffffff.png&text=IDP+2+8086',
 
@@ -75,7 +75,7 @@ return [
         ],
         'IDPNamespace' => 'IDP-2',
         'logoCaption' => 'IDP-2 staff',
-        'enabled' => false,
+        'enabled' => true,
         'betaEnabled' => true,
         'logoURL' => 'https://dummyimage.com/125x125/0f4fbd/ffffff.png&text=IDP+2',
 

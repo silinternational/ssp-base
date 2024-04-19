@@ -23,3 +23,7 @@ $metadata['http://ssp-idp2.local:8086'] = [
 	 */
 	'auth' => 'admin',
 ];
+
+// Copy configuration for port 80 and modify host.
+$metadata['http://ssp-idp2.local'] = $metadata['http://ssp-idp2.local:8086'];
+$metadata['http://ssp-idp2.local']['host'] = 'ssp-idp2.local';

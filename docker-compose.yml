@@ -157,14 +157,14 @@ services:
       PROFILE_URL_FOR_TESTS: "http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
-      THEME_USE: "material:material"
+      THEME_USE: "default"
       SESSION_STORE_TYPE: "sql"
       MYSQL_HOST: "db"
       MYSQL_DATABASE: "silauth"
       MYSQL_USER: "silauth"
       MYSQL_PASSWORD: "silauth"
 
-  idp2:
+  ssp-idp2.local:
     build: .
     volumes:
       # Utilize custom certs
@@ -191,6 +191,7 @@ services:
       IDP_NAME: "IDP 2"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
+      THEME_USE: "material:material"
 
   ssp-sp1.local:
     build: .

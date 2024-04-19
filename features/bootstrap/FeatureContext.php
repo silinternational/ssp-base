@@ -15,7 +15,8 @@ class FeatureContext extends MinkContext
     private const HUB_DISCO_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=hub-discovery';
     private const HUB_HOME_URL = 'http://ssp-hub.local';
     protected const SP1_LOGIN_PAGE = 'http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub';
-    
+    protected const SP2_LOGIN_PAGE = 'http://ssp-sp2.local/module.php/core/authenticate.php?as=ssp-hub';
+
     /** @var Session */
     protected $session;
     
@@ -137,11 +138,18 @@ class FeatureContext extends MinkContext
     }
 
     /**
-     * @When I go to the SP1 login page
+     * @When I go to the :sp login page
      */
-    public function iGoToTheSp1LoginPage()
+    public function iGoToTheSpLoginPage($sp)
     {
-        $this->visit(self::SP1_LOGIN_PAGE);
+        switch ($sp) {
+            case 'SP1':
+                $this->visit(self::SP1_LOGIN_PAGE);
+                break;
+            case 'SP2':
+                $this->visit(self::SP2_LOGIN_PAGE);
+                break;
+        }
     }
 
     protected function assertPageBodyContainsText(string $expectedText)
