@@ -1,4 +1,7 @@
 Feature: Prompt to review profile information
+  Background:
+    Given I go to the SP1 login page
+    And I click on the "IDP 1" tile
 
   Scenario: Don't ask for review
     Given I provide credentials that do not need review
@@ -22,6 +25,9 @@ Feature: Prompt to review profile information
     Given I provide credentials that are due for a <category> <nag type> reminder
     And I have logged in
     When I click the update profile button
+    # FIXME: It is currently required to login again, but it shouldn't be necessary.
+    And I click on the "IDP 1" tile
+    And I login
     Then I should end up at the update profile URL
 
     Examples:

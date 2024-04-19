@@ -73,6 +73,9 @@ $config = [
             'mail' => ['no_review@example.com'],
             'employeeNumber' => ['11111'],
             'cn' => ['NO_REVIEW'],
+            'schacExpiryDate' => [
+                gmdate('YmdHis\Z', strtotime('+6 months')),
+            ],
             'mfa' => [
                 'prompt' => 'yes',
                 'add' => 'no',
@@ -102,6 +105,9 @@ $config = [
             'mail' => ['mfa_add@example.com'],
             'employeeNumber' => ['22222'],
             'cn' => ['MFA_ADD'],
+            'schacExpiryDate' => [
+                gmdate('YmdHis\Z', strtotime('+6 months')),
+            ],
             'mfa' => [
                 'prompt' => 'no',
                 'add' => 'yes',
@@ -120,6 +126,9 @@ $config = [
             'mail' => ['method_add@example.com'],
             'employeeNumber' => ['44444'],
             'cn' => ['METHOD_ADD'],
+            'schacExpiryDate' => [
+                gmdate('YmdHis\Z', strtotime('+6 months')),
+            ],
             'mfa' => [
                 'prompt' => 'yes',
                 'add' => 'no',
@@ -149,6 +158,9 @@ $config = [
             'mail' => ['method_review@example.com'],
             'employeeNumber' => ['55555'],
             'cn' => ['METHOD_REVIEW'],
+            'schacExpiryDate' => [
+                gmdate('YmdHis\Z', strtotime('+6 months')),
+            ],
             'mfa' => [
                 'prompt' => 'yes',
                 'add' => 'no',

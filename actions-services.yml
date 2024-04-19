@@ -7,6 +7,8 @@ services:
       - ssp-idp1.local
       - ssp-sp1.local
       - test-browser
+    environment:
+      - PROFILE_URL_FOR_TESTS=http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub
     volumes:
       - ./dockerbuild/run-integration-tests.sh:/data/run-integration-tests.sh
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
@@ -67,6 +69,9 @@ services:
       # Misc. files needed
       - ./development/enable-exampleauth-module.sh:/data/enable-exampleauth-module.sh
 
+      # Customized SSP code -- TODO: make a better solution that doesn't require hacking SSP code
+      - ./development/idp-local/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/lib/Auth/Source/UserPass.php
+
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
     command: 'bash -c "/data/enable-exampleauth-module.sh && /data/run.sh"'
@@ -75,6 +80,8 @@ services:
       ADMIN_PASS: "a"
       SECRET_SALT: "not-secret-h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "IDP 1"
+      PROFILE_URL: "http://ssp-hub-sp1:8083/module.php/core/authenticate.php?as=ssp-hub-custom-port"
+      PROFILE_URL_FOR_TESTS: "http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_USE: "material:material"

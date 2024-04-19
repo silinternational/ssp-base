@@ -1,53 +1,20 @@
 <?php
-namespace Sil\SspProfileReview\Behat\context;
-
-use Behat\Behat\Context\Context;
-use Behat\Mink\Driver\GoutteDriver;
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ElementNotFoundException;
-use Behat\Mink\Session;
 use PHPUnit\Framework\Assert;
 use Sil\PhpEnv\Env;
 
 /**
  * Defines application features from the specific context.
  */
-class ProfileReviewContext implements Context
+class ProfileReviewContext extends FeatureContext
 {
     protected $nonPwManagerUrl = 'http://sp/module.php/core/authenticate.php?as=profilereview-idp-no-port';
     
     protected $username = null;
     protected $password = null;
-    
-    /**
-     * The browser session, used for interacting with the website.
-     *
-     * @var Session
-     */
-    protected $session;
-    
-    /**
-     * The driver for our browser-based testing.
-     *
-     * @var GoutteDriver
-     */
-    protected $driver;
-    
-    /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context instance.
-     * You can also pass arbitrary arguments to the
-     * context constructor through behat.yml.
-     */
-    public function __construct()
-    {
-        $this->driver = new GoutteDriver();
-        $this->session = new Session($this->driver);
-        $this->session->start();
-    }
-    
+
     /**
      * Assert that the given page has a form that contains the given text.
      *
@@ -96,7 +63,6 @@ class ProfileReviewContext implements Context
      */
     public function iLogin()
     {
-        $this->session->visit($this->nonPwManagerUrl);
         $page = $this->session->getPage();
         try {
             $page->fillField('username', $this->username);
@@ -216,11 +182,6 @@ class ProfileReviewContext implements Context
             }
         }
         return false;
-    }
-    
-    protected function clickLink($text)
-    {
-        $this->session->getPage()->clickLink($text);
     }
 
     /**

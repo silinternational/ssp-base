@@ -206,6 +206,7 @@ class ProfileReview extends ProcessingFilter
             'module' => 'profilereview',
             'event' => 'redirect to profile',
             'employeeId' => $state['employeeId'],
+            'profileUrl' => $profileUrl,
         ]));
 
         HTTP::redirectTrustedURL($profileUrl);

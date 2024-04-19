@@ -1,4 +1,8 @@
 <?php
+
+use Sil\PhpEnv\Env;
+use Sil\Psr3Adapters\Psr3SamlLogger;
+
 /**
  * SAML 2.0 IdP configuration for SimpleSAMLphp.
  *
@@ -28,7 +32,7 @@ $metadata['http://ssp-idp1.local:8085'] = [
     'auth' => 'example-userpass',
 
     'authproc' => [
-        10 => [
+        15 => [
             'class' => 'expirychecker:ExpiryDate',
             'accountNameAttr' => 'cn',
             'expiryDateAttr' => 'schacExpiryDate',
@@ -37,8 +41,17 @@ $metadata['http://ssp-idp1.local:8085'] = [
             'dateFormat' => 'Y-m-d',
             'loggerClass' => Psr3StdOutLogger::class,
         ],
+        30 => [
+            'class' => 'profilereview:ProfileReview',
+            'employeeIdAttr' => 'employeeNumber',
+            'mfaLearnMoreUrl' => Env::get('MFA_LEARN_MORE_URL'),
+            'profileUrl' => Env::get('PROFILE_URL'),
+            'loggerClass' => Psr3SamlLogger::class,
+        ],
     ],
 ];
 
-// Duplicate configuration for port 80.
+// Copy configuration for port 80 and modify host and profileUrl.
 $metadata['http://ssp-idp1.local'] = $metadata['http://ssp-idp1.local:8085'];
+$metadata['http://ssp-idp1.local']['host'] = 'ssp-idp1.local';
+$metadata['http://ssp-idp1.local']['authproc'][30]['profileUrl'] = Env::get('PROFILE_URL_FOR_TESTS');
