@@ -84,6 +84,35 @@ services:
       PROFILE_URL_FOR_TESTS: "http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
+      THEME_USE: "default"
+
+  ssp-idp2.local:
+    build: .
+    volumes:
+      # Utilize custom certs
+      - ./development/idp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert  
+
+      # Utilize custom configs
+      - ./development/idp2-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+      - ./development/idp2-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
+
+      # Utilize custom metadata
+      - ./development/idp2-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
+      - ./development/idp2-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
+
+      # Local modules
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+    command: /data/run.sh
+    ports:
+      - "8086:80"
+    environment:
+      ADMIN_EMAIL: "john_doe@there.com"
+      ADMIN_PASS: "b"
+      SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
+      IDP_NAME: "IDP 2"
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
       THEME_USE: "material:material"
 
   ssp-sp1.local:
