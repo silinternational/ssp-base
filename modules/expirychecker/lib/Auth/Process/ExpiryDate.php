@@ -1,6 +1,6 @@
 <?php
 
-namespace SimpleSAML\Module\ExpiryChecker\Auth\Process;
+namespace SimpleSAML\Module\expirychecker\Auth\Process;
 
 use Psr\Log\LoggerInterface;
 use Sil\Psr3Adapters\Psr3SamlLogger;
@@ -8,8 +8,8 @@ use SimpleSAML\Auth\ProcessingChain;
 use SimpleSAML\Auth\ProcessingFilter;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Module;
-use SimpleSAML\Module\ExpiryChecker\Utilities;
-use SimpleSAML\Module\ExpiryChecker\Validator;
+use SimpleSAML\Module\expirychecker\Utilities;
+use SimpleSAML\Module\expirychecker\Validator;
 use SimpleSAML\Session;
 use SimpleSAML\Utils\HTTP;
 
