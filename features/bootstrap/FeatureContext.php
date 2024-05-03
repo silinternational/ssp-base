@@ -14,10 +14,10 @@ class FeatureContext extends MinkContext
     private const HUB_BAD_AUTH_SOURCE_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=wrong';
     private const HUB_DISCO_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=hub-discovery';
     private const HUB_HOME_URL = 'http://ssp-hub.local';
-    private const SP1_LOGIN_PAGE = 'http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub';
+    protected const SP1_LOGIN_PAGE = 'http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub';
     
     /** @var Session */
-    private $session;
+    protected $session;
     
     public function __construct()
     {
@@ -144,62 +144,13 @@ class FeatureContext extends MinkContext
         $this->visit(self::SP1_LOGIN_PAGE);
     }
 
-    /**
-     * @When I log in as a user who's password is NOT about to expire
-     */
-    public function iLogInAsAUserWhosPasswordIsNotAboutToExpire()
-    {
-        $this->logInAs('distant_future', 'a');
-    }
-
-    /**
-     * @Then I should see a page indicating that I successfully logged in
-     */
-    public function iShouldSeeAPageIndicatingThatISuccessfullyLoggedIn()
-    {
-        $this->assertResponseStatus(200);
-        $this->assertPageBodyContainsText('Your attributes');
-    }
-    
-    private function assertPageBodyContainsText(string $expectedText)
+    protected function assertPageBodyContainsText(string $expectedText)
     {
         $page = $this->session->getPage();
         $body = $page->find('css', 'body');
         Assert::contains($body->getText(), $expectedText);
     }
 
-    /**
-     * @When I log in as a user who's password is about to expire
-     */
-    public function iLogInAsAUserWhosPasswordIsAboutToExpire()
-    {
-        $this->logInAs('near_future', 'a');
-    }
-
-    /**
-     * @Then I should see a page warning me that my password is about to expire
-     */
-    public function iShouldSeeAPageWarningMeThatMyPasswordIsAboutToExpire()
-    {
-        $this->assertPageBodyContainsText('Password expiring soon');
-    }
-
-    /**
-     * @When I log in as a user who's password has expired
-     */
-    public function iLogInAsAUserWhosPasswordHasExpired()
-    {
-        $this->logInAs('already_past', 'a');
-    }
-
-    /**
-     * @Then I should see a page telling me that my password has expired
-     */
-    public function iShouldSeeAPageTellingMeThatMyPasswordHasExpired()
-    {
-        $this->assertPageBodyContainsText('Your password has expired');
-    }
-    
     private static function ensureFolderExistsForTestFile($filePath)
     {
         $folder = dirname($filePath);

@@ -3,7 +3,7 @@ services:
   ssp:
     build: .
     volumes:
-      # Utilize custom certs 
+      # Utilize custom certs
       - ./development/ssp/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
@@ -11,6 +11,10 @@ services:
       
       # Configure the debugger
       - ./development/ssp/run-debug.sh:/data/run-debug.sh
+
+      # Local modules
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+
     command: ["/data/run-debug.sh"]
     ports:
       - "80:80"
@@ -45,7 +49,9 @@ services:
       - ./dockerbuild/run-tests.sh:/data/run-tests.sh
       - ./dockerbuild/apply-dictionaries-overrides.php:/data/apply-dictionaries-overrides.php
       - ./features:/data/features
+      - ./behat.yml:/data/behat.yml
       - ./tests:/data/tests
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
     command: ["/data/run-tests.sh"]
 
   test-browser:
@@ -89,6 +95,9 @@ services:
 
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
+
+      # Local modules
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
     command: /data/run-debug.sh
     ports:
       - "80:80"
@@ -125,6 +134,9 @@ services:
 
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
+
+      # Local modules
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
     command: 'bash -c "/data/enable-exampleauth-module.sh && /data/run.sh"'
     ports:
       - "8085:80"
@@ -155,6 +167,9 @@ services:
       # Utilize custom metadata
       - ./development/idp2-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
       - ./development/idp2-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
+
+      # Local modules
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
     command: /data/run.sh
     ports:
       - "8086:80"
@@ -181,6 +196,9 @@ services:
 
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
+
+      # Local modules
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
     ports:
       - "8081:80"
     environment:
@@ -204,6 +222,9 @@ services:
 
       # Utilize custom metadata
       - ./development/sp2-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
+
+      # Local modules
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
     ports:
       - "8082:80"
     environment:

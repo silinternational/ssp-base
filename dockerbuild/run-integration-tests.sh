@@ -11,8 +11,5 @@ whenavail "ssp-idp1.local" 80 10 echo IDP 1 ready
 whenavail "ssp-sp1.local"  80 10 echo SP 1 ready
 
 ./vendor/bin/behat \
-    --append-snippets \
-    --snippets-for=FeatureContext \
     --no-interaction \
-    --stop-on-failure #\
-    #--strict
+    --stop-on-failure

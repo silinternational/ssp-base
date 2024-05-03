@@ -1,0 +1,17 @@
+default:
+  suites:
+    dictionary_features:
+      paths:    [ '%paths.base%//features//dictionary-overrides.feature' ]
+      contexts: [ 'FeatureContext' ]
+    expiry_features:
+      paths:    [ '%paths.base%//features//expirychecker.feature' ]
+      contexts: [ 'ExpiryContext' ]
+    material_features:
+      paths:    [ '%paths.base%//features//material.feature' ]
+      contexts: [ 'FeatureContext' ]
+    mfa_features:
+      paths:    [ '%paths.base%//features//mfa.feature' ]
+      contexts: [ 'FeatureContext' ]
+    profilereview_features:
+      paths:    [ '%paths.base%//features//profilereview.feature' ]
+      contexts: [ 'FeatureContext' ]

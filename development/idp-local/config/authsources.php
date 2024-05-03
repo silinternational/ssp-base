@@ -24,7 +24,7 @@ $config = [
                 gmdate('YmdHis\Z', strtotime('+6 months')), // Distant future
             ],
         ],
-        'near_future:a' => [
+        'near_future:b' => [
             'eduPersonPrincipalName' => ['NEAR_FUTURE@ssp-idp1.local'],
             'sn' => ['Future'],
             'givenName' => ['Near'],
@@ -35,7 +35,7 @@ $config = [
                 gmdate('YmdHis\Z', strtotime('+1 day')), // Very soon
             ],
         ],
-        'already_past:a' => [
+        'already_past:c' => [
             'eduPersonPrincipalName' => ['ALREADY_PAST@ssp-idp1.local'],
             'sn' => ['Past'],
             'givenName' => ['Already'],
@@ -44,6 +44,25 @@ $config = [
             'cn' => ['ALREADY_PAST'],
             'schacExpiryDate' => [
                 gmdate('YmdHis\Z', strtotime('-1 day')), // In the past
+            ],
+        ],
+        'missing_exp:d' => [
+            'eduPersonPrincipalName' => ['MISSING_EXP@ssp-idp-1.local'],
+            'sn' => ['Expiration'],
+            'givenName' => ['Missing'],
+            'mail' => ['missing_exp@example.com'],
+            'employeeNumber' => ['44444'],
+            'cn' => ['MISSING_EXP'],
+        ],
+        'invalid_exp:e' => [
+            'eduPersonPrincipalName' => ['INVALID_EXP@ssp-idp-1.local'],
+            'sn' => ['Expiration'],
+            'givenName' => ['Invalid'],
+            'mail' => ['invalid_exp@example.com'],
+            'employeeNumber' => ['55555'],
+            'cn' => ['INVALID_EXP'],
+            'schacExpiryDate' => [
+                'invalid'
             ],
         ],
     ],

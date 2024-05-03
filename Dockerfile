@@ -39,8 +39,12 @@ COPY composer.lock /data/
 RUN composer self-update --no-interaction
 RUN COMPOSER_ALLOW_SUPERUSER=1 composer install --prefer-dist --no-interaction --no-dev --optimize-autoloader --no-scripts --no-progress
 
-# Copy in SSP override files
 ENV SSP_PATH /data/vendor/simplesamlphp/simplesamlphp
+
+# Copy modules into simplesamlphp
+COPY modules/ $SSP_PATH/modules
+
+# Copy in SSP override files
 RUN mv $SSP_PATH/www/index.php $SSP_PATH/www/ssp-index.php
 COPY dockerbuild/ssp-overrides/index.php $SSP_PATH/www/index.php
 RUN mv $SSP_PATH/www/saml2/idp/SingleLogoutService.php $SSP_PATH/www/saml2/idp/ssp-SingleLogoutService.php
