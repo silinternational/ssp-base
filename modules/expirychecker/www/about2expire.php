@@ -6,8 +6,8 @@ use SimpleSAML\Configuration;
 use SimpleSAML\Error\BadRequest;
 use SimpleSAML\Logger;
 use SimpleSAML\Module;
-use SimpleSAML\Module\expirychecker\Auth\Process\ExpiryDate;
-use SimpleSAML\Module\expirychecker\Utilities;
+use SimpleSAML\Module\ExpiryChecker\Auth\Process\ExpiryDate;
+use SimpleSAML\Module\ExpiryChecker\Utilities;
 use SimpleSAML\Utils\HTTP;
 use SimpleSAML\XHTML\Template;
 

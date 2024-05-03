@@ -1,6 +1,6 @@
 <?php
 
-namespace SimpleSAML\Module\expirychecker;
+namespace SimpleSAML\Module\ExpiryChecker;
 
 class Utilities {
 
