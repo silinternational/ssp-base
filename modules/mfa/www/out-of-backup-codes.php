@@ -1,6 +1,6 @@
 <?php
 
-use Sil\SspMfa\LoggerFactory;
+use SimpleSAML\Module\mfa\LoggerFactory;
 use SimpleSAML\Auth\ProcessingChain;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Configuration;

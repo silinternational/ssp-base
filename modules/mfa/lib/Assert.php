@@ -1,5 +1,5 @@
 <?php
-namespace Sil\SspMfa;
+namespace SimpleSAML\Module\mfa;
 
 use InvalidArgumentException;
 

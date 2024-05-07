@@ -7,8 +7,8 @@
  * - mfaId
  */
 
-use Sil\SspMfa\LoggerFactory;
-use Sil\SspMfa\LoginBrowser;
+use SimpleSAML\Module\mfa\LoggerFactory;
+use SimpleSAML\Module\mfa\LoginBrowser;
 use SimpleSAML\Auth\ProcessingChain;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Configuration;

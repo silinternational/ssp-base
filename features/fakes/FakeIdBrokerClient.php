@@ -1,5 +1,5 @@
 <?php
-namespace Sil\SspMfa\Behat\fakes;
+namespace SimpleSAML\Module\mfa\Behat\fakes;
 
 use InvalidArgumentException;
 use Sil\Idp\IdBroker\Client\ServiceException;

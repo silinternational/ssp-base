@@ -1,10 +1,10 @@
 <?php
-namespace Sil\SspMfa;
+namespace SimpleSAML\Module\mfa;
 
 use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use Psr\Log\Psr3SamlLogger;
-use Sil\SspMfa\Assert;
+use SimpleSAML\Module\mfa\Assert;
 
 class LoggerFactory
 {

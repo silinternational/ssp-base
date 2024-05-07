@@ -1,5 +1,5 @@
 <?php
-namespace Sil\SspMfa\Behat\context;
+namespace SimpleSAML\Module\mfa\Behat\context;
 
 use Behat\Behat\Context\Context;
 use Behat\Mink\Driver\GoutteDriver;
@@ -9,8 +9,8 @@ use Behat\Mink\Exception\ElementNotFoundException;
 use Behat\Mink\Session;
 use PHPUnit\Framework\Assert;
 use Sil\PhpEnv\Env;
-use Sil\SspMfa\Behat\fakes\FakeIdBrokerClient;
-use Sil\SspMfa\LoginBrowser;
+use SimpleSAML\Module\mfa\Behat\fakes\FakeIdBrokerClient;
+use SimpleSAML\Module\mfa\LoginBrowser;
 
 /**
  * Defines application features from the specific context.
