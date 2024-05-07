@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b7ba67875da2080d961345975daa92cf",
+    "content-hash": "f08b96212b20738531457507ce05ffe0",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2794,16 +2794,16 @@
         },
         {
             "name": "silinternational/idp-id-broker-php-client",
-            "version": "4.3.1",
+            "version": "4.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/idp-id-broker-php-client.git",
-                "reference": "c05d01c0ed0666056249bdabd97c0392c99e9790"
+                "reference": "425955b2699110d6ff9a5d7cf1a15751cc1b8ee9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/c05d01c0ed0666056249bdabd97c0392c99e9790",
-                "reference": "c05d01c0ed0666056249bdabd97c0392c99e9790",
+                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/425955b2699110d6ff9a5d7cf1a15751cc1b8ee9",
+                "reference": "425955b2699110d6ff9a5d7cf1a15751cc1b8ee9",
                 "shasum": ""
             },
             "require": {
@@ -2847,9 +2847,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silinternational/idp-id-broker-php-client/issues",
-                "source": "https://github.com/silinternational/idp-id-broker-php-client/tree/4.3.1"
+                "source": "https://github.com/silinternational/idp-id-broker-php-client/tree/4.3.2"
             },
-            "time": "2023-06-19T12:59:34+00:00"
+            "time": "2024-02-28T19:30:43+00:00"
         },
         {
             "name": "silinternational/php-env",

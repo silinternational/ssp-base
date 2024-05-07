@@ -22,7 +22,8 @@
     "silinternational/simplesamlphp-module-sildisco": "^4.0.0",
     "silinternational/php-env": "^3.1.0",
     "silinternational/psr3-adapters": "^3.1",
-    "gettext/gettext": "^4.8@dev"
+    "gettext/gettext": "^4.8@dev",
+    "silinternational/idp-id-broker-php-client": "^4.3"
   },
   "require-dev": {
     "behat/behat": "^3.8",
