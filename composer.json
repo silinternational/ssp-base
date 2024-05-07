@@ -23,7 +23,8 @@
     "silinternational/php-env": "^3.1.0",
     "silinternational/psr3-adapters": "^3.1",
     "gettext/gettext": "^4.8@dev",
-    "silinternational/idp-id-broker-php-client": "^4.3"
+    "silinternational/idp-id-broker-php-client": "^4.3",
+    "sinergi/browser-detector": "^6.1"
   },
   "require-dev": {
     "behat/behat": "^3.8",
