@@ -11,7 +11,7 @@ default:
       contexts: [ 'FeatureContext' ]
     mfa_features:
       paths:    [ '%paths.base%//features//mfa.feature' ]
-      contexts: [ 'FeatureContext' ]
+      contexts: [ 'MfaContext' ]
     profilereview_features:
       paths:    [ '%paths.base%//features//profilereview.feature' ]
       contexts: [ 'ProfileReviewContext' ]

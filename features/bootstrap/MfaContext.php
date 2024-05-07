@@ -1,12 +1,7 @@
 <?php
-namespace SimpleSAML\Module\mfa\Behat\context;
-
-use Behat\Behat\Context\Context;
-use Behat\Mink\Driver\GoutteDriver;
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ElementNotFoundException;
-use Behat\Mink\Session;
 use PHPUnit\Framework\Assert;
 use Sil\PhpEnv\Env;
 use SimpleSAML\Module\mfa\Behat\fakes\FakeIdBrokerClient;
@@ -15,7 +10,7 @@ use SimpleSAML\Module\mfa\LoginBrowser;
 /**
  * Defines application features from the specific context.
  */
-class MfaContext implements Context
+class MfaContext extends FeatureContext
 {
     protected $nonPwManagerUrl = 'http://mfasp/module.php/core/authenticate.php?as=mfa-idp-no-port';
     
@@ -24,35 +19,7 @@ class MfaContext implements Context
     
     const USER_AGENT_WITHOUT_WEBAUTHN_SUPPORT = 'Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko';
     const USER_AGENT_WITH_WEBAUTHN_SUPPORT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36';
-    
-    /**
-     * The browser session, used for interacting with the website.
-     *
-     * @var Session
-     */
-    protected $session;
-    
-    /**
-     * The driver for our browser-based testing.
-     *
-     * @var GoutteDriver
-     */
-    protected $driver;
-    
-    /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context instance.
-     * You can also pass arbitrary arguments to the
-     * context constructor through behat.yml.
-     */
-    public function __construct()
-    {
-        $this->driver = new GoutteDriver();
-        $this->session = new Session($this->driver);
-        $this->session->start();
-    }
-    
+
     /**
      * Assert that the given page has a form that contains the given text.
      *
