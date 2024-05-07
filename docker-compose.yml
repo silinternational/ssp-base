@@ -13,6 +13,7 @@ services:
       - ./development/ssp/run-debug.sh:/data/run-debug.sh
 
       # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
 
@@ -54,6 +55,7 @@ services:
       - ./features:/data/features
       - ./behat.yml:/data/behat.yml
       - ./tests:/data/tests
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     command: ["/data/run-tests.sh"]
@@ -101,6 +103,7 @@ services:
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
 
       # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     command: /data/run-debug.sh
@@ -144,6 +147,7 @@ services:
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
 
       # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     command: 'bash -c "/data/enable-exampleauth-module.sh && /data/run.sh"'
@@ -180,6 +184,7 @@ services:
       - ./development/idp2-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
 
       # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     command: /data/run.sh
@@ -211,6 +216,7 @@ services:
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
 
       # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     ports:
@@ -238,6 +244,7 @@ services:
       - ./development/sp2-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
 
       # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     ports:

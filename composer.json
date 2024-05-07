@@ -17,7 +17,6 @@
     "simplesamlphp/simplesamlphp": "^1.19.6",
     "simplesamlphp/composer-module-installer": "1.1.8",
     "silinternational/simplesamlphp-module-silauth": "^7.1.1",
-    "silinternational/simplesamlphp-module-mfa": "^5.2.1",
     "silinternational/ssp-utilities": "^1.1.0",
     "silinternational/simplesamlphp-module-material": "^8.1.1",
     "silinternational/simplesamlphp-module-sildisco": "^4.0.0",
