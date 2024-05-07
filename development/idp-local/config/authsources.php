@@ -65,7 +65,7 @@ $config = [
                 'invalid'
             ],
         ],
-        'no_review:a' => [
+        'no_review:e' => [
             'eduPersonPrincipalName' => ['NO_REVIEW@idp'],
             'eduPersonTargetID' => ['11111111-1111-1111-1111-111111111111'],
             'sn' => ['Review'],
@@ -97,7 +97,7 @@ $config = [
             ],
             'profile_review' => 'no'
         ],
-        'mfa_add:a' => [
+        'mfa_add:f' => [
             'eduPersonPrincipalName' => ['MFA_ADD@idp'],
             'eduPersonTargetID' => ['22222222-2222-2222-2222-222222222222'],
             'sn' => ['Add'],
@@ -118,7 +118,7 @@ $config = [
             ],
             'profile_review' => 'no'
         ],
-        'method_add:a' => [
+        'method_add:g' => [
             'eduPersonPrincipalName' => ['METHOD_ADD@methodidp'],
             'eduPersonTargetID' => ['44444444-4444-4444-4444-444444444444'],
             'sn' => ['Add'],
@@ -150,7 +150,7 @@ $config = [
             ],
             'profile_review' => 'no'
         ],
-        'profile_review:a' => [
+        'profile_review:h' => [
             'eduPersonPrincipalName' => ['METHOD_REVIEW@methodidp'],
             'eduPersonTargetID' => ['55555555-5555-5555-5555-555555555555'],
             'sn' => ['Review'],

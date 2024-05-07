@@ -151,7 +151,7 @@ class ProfileReviewContext extends FeatureContext
     {
         // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'no_review';
-        $this->password = 'a';
+        $this->password = 'e';
     }
 
     /**
@@ -161,7 +161,19 @@ class ProfileReviewContext extends FeatureContext
     {
         // See `development/idp-local/config/authsources.php` for options.
         $this->username = $category . '_' . $nagType;
-        $this->password = 'a';
+        switch ($this->username) {
+            case 'mfa_add':
+                $this->password = 'f';
+                break;
+
+            case 'method_add':
+                $this->password = 'g';
+                break;
+
+            case 'profile_review':
+                $this->password = 'h';
+                break;
+        }
     }
 
     /**
@@ -249,7 +261,7 @@ class ProfileReviewContext extends FeatureContext
     {
         // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'profile_review';
-        $this->password = 'a';
+        $this->password = 'h';
     }
 
     /**
