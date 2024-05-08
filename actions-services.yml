@@ -5,8 +5,11 @@ services:
     depends_on:
       - ssp-hub.local
       - ssp-idp1.local
+      - ssp-idp2.local
       - ssp-sp1.local
       - test-browser
+    environment:
+      - PROFILE_URL_FOR_TESTS=http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub
     volumes:
       - ./dockerbuild/run-integration-tests.sh:/data/run-integration-tests.sh
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
@@ -67,6 +70,9 @@ services:
       # Misc. files needed
       - ./development/enable-exampleauth-module.sh:/data/enable-exampleauth-module.sh
 
+      # Customized SSP code -- TODO: make a better solution that doesn't require hacking SSP code
+      - ./development/idp-local/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/lib/Auth/Source/UserPass.php
+
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
     command: 'bash -c "/data/enable-exampleauth-module.sh && /data/run.sh"'
@@ -75,6 +81,37 @@ services:
       ADMIN_PASS: "a"
       SECRET_SALT: "not-secret-h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "IDP 1"
+      PROFILE_URL: "http://ssp-hub-sp1:8083/module.php/core/authenticate.php?as=ssp-hub-custom-port"
+      PROFILE_URL_FOR_TESTS: "http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub"
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
+      THEME_USE: "default"
+
+  ssp-idp2.local:
+    build: .
+    volumes:
+      # Utilize custom certs
+      - ./development/idp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert  
+
+      # Utilize custom configs
+      - ./development/idp2-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+      - ./development/idp2-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
+
+      # Utilize custom metadata
+      - ./development/idp2-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
+      - ./development/idp2-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
+
+      # Local modules
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+    command: /data/run.sh
+    ports:
+      - "8086:80"
+    environment:
+      ADMIN_EMAIL: "john_doe@there.com"
+      ADMIN_PASS: "b"
+      SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
+      IDP_NAME: "IDP 2"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_USE: "material:material"

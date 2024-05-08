@@ -14,6 +14,7 @@ services:
 
       # Local modules
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
 
     command: ["/data/run-debug.sh"]
     ports:
@@ -36,10 +37,12 @@ services:
     depends_on:
       - ssp-hub.local
       - ssp-idp1.local
+      - ssp-idp2.local
       - ssp-sp1.local
       - test-browser
     environment:
       - COMPOSER_CACHE_DIR=/composer
+      - PROFILE_URL_FOR_TESTS=http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub
     volumes:
       - ./composer.json:/data/composer.json
       - ./composer.lock:/data/composer.lock
@@ -52,6 +55,7 @@ services:
       - ./behat.yml:/data/behat.yml
       - ./tests:/data/tests
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     command: ["/data/run-tests.sh"]
 
   test-browser:
@@ -98,6 +102,7 @@ services:
 
       # Local modules
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     command: /data/run-debug.sh
     ports:
       - "80:80"
@@ -132,11 +137,15 @@ services:
       # Misc. files needed
       - ./development/enable-exampleauth-module.sh:/data/enable-exampleauth-module.sh
 
+      # Customized SSP code -- TODO: make a better solution that doesn't require hacking SSP code
+      - ./development/idp-local/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/lib/Auth/Source/UserPass.php
+
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
 
       # Local modules
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     command: 'bash -c "/data/enable-exampleauth-module.sh && /data/run.sh"'
     ports:
       - "8085:80"
@@ -145,16 +154,18 @@ services:
       ADMIN_PASS: "a"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "IDP 1"
+      PROFILE_URL: "http://ssp-hub-sp1:8083/module.php/core/authenticate.php?as=ssp-hub-custom-port"
+      PROFILE_URL_FOR_TESTS: "http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
-      THEME_USE: "material:material"
+      THEME_USE: "default"
       SESSION_STORE_TYPE: "sql"
       MYSQL_HOST: "db"
       MYSQL_DATABASE: "silauth"
       MYSQL_USER: "silauth"
       MYSQL_PASSWORD: "silauth"
 
-  idp2:
+  ssp-idp2.local:
     build: .
     volumes:
       # Utilize custom certs
@@ -170,6 +181,7 @@ services:
 
       # Local modules
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     command: /data/run.sh
     ports:
       - "8086:80"
@@ -180,6 +192,7 @@ services:
       IDP_NAME: "IDP 2"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
+      THEME_USE: "material:material"
 
   ssp-sp1.local:
     build: .
@@ -199,6 +212,7 @@ services:
 
       # Local modules
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     ports:
       - "8081:80"
     environment:
@@ -225,6 +239,7 @@ services:
 
       # Local modules
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     ports:
       - "8082:80"
     environment:

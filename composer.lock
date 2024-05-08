@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa7c6c86f5fefed69d818d69b1a506c3",
+    "content-hash": "b4f4532a5a284c0b780aaa48860974ae",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -3037,59 +3037,6 @@
                 "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/5.2.1"
             },
             "time": "2023-06-15T13:38:51+00:00"
-        },
-        {
-            "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silinternational/simplesamlphp-module-profilereview.git",
-                "reference": "4c1df2eddcd50147aec198128446c6875c751616"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/4c1df2eddcd50147aec198128446c6875c751616",
-                "reference": "4c1df2eddcd50147aec198128446c6875c751616",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=7.2",
-                "silinternational/php-env": "^2.1 || ^3.0",
-                "silinternational/psr3-adapters": "^1.1 || ^2.0 || ^3.0",
-                "simplesamlphp/simplesamlphp": "~1.18.6 || ~1.19.0",
-                "sinergi/browser-detector": "^6.1"
-            },
-            "require-dev": {
-                "behat/behat": "^3.3",
-                "behat/mink": "^1.7",
-                "behat/mink-goutte-driver": "^1.2",
-                "phpunit/phpunit": "^8.4",
-                "roave/security-advisories": "dev-master"
-            },
-            "type": "simplesamlphp-module",
-            "autoload": {
-                "psr-4": {
-                    "Sil\\SspProfileReview\\": "src/",
-                    "Sil\\SspProfileReview\\Behat\\": "features/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-2.1-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Matt Henderson",
-                    "email": "matt_henderson@sil.org"
-                }
-            ],
-            "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.).",
-            "support": {
-                "issues": "https://github.com/silinternational/simplesamlphp-module-profilereview/issues",
-                "source": "https://github.com/silinternational/simplesamlphp-module-profilereview/tree/2.1.0"
-            },
-            "time": "2022-09-28T13:50:19+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-silauth",
