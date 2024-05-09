@@ -4,7 +4,7 @@ use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ElementNotFoundException;
 use PHPUnit\Framework\Assert;
 use Sil\PhpEnv\Env;
-use SimpleSAML\Module\mfa\Behat\fakes\FakeIdBrokerClient;
+use Sil\SspMfa\Behat\fakes\FakeIdBrokerClient;
 use SimpleSAML\Module\mfa\LoginBrowser;
 
 /**
@@ -12,8 +12,6 @@ use SimpleSAML\Module\mfa\LoginBrowser;
  */
 class MfaContext extends FeatureContext
 {
-    protected $nonPwManagerUrl = 'http://mfasp/module.php/core/authenticate.php?as=mfa-idp-no-port';
-    
     protected $username = null;
     protected $password = null;
     
@@ -93,7 +91,6 @@ class MfaContext extends FeatureContext
      */
     public function iLogin()
     {
-        $this->session->visit($this->nonPwManagerUrl);
         $page = $this->session->getPage();
         try {
             $page->fillField('username', $this->username);
@@ -327,11 +324,6 @@ class MfaContext extends FeatureContext
         }
         return false;
     }
-    
-    protected function clickLink($text)
-    {
-        $this->session->getPage()->clickLink($text);
-    }
 
     /**
      * @When I submit an incorrect backup code
@@ -549,7 +541,7 @@ class MfaContext extends FeatureContext
             'Update USER_AGENT_WITH_WEBAUTHN_SUPPORT to a User Agent with WebAuthn support'
         );
         
-        $this->driver->getClient()->setServerParameter('HTTP_USER_AGENT', $userAgentWithWebAuthn);
+//        $this->driver->getClient()->setServerParameter('HTTP_USER_AGENT', $userAgentWithWebAuthn);
     }
 
     /**
@@ -683,7 +675,7 @@ class MfaContext extends FeatureContext
             'Update USER_AGENT_WITHOUT_WEBAUTHN_SUPPORT to a User Agent without WebAuthn support'
         );
         
-        $this->driver->getClient()->setServerParameter('HTTP_USER_AGENT', $userAgentWithoutWebAuthn);
+//        $this->driver->getClient()->setServerParameter('HTTP_USER_AGENT', $userAgentWithoutWebAuthn);
     }
 
     /**

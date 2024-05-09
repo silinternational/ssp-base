@@ -582,7 +582,16 @@ class Mfa extends ProcessingFilter
             $state,
             $this->mfaSetupUrl
         );
-        
+
+        $this->logger->debug(json_encode([
+            'module' => 'mfa',
+            'event' => 'process',
+            'mfa' => $mfa,
+            'isHeadedToMfaSetupUrl' => $isHeadedToMfaSetupUrl,
+            'employeeId' => $employeeId,
+        ]));
+
+
         // Record to the state what logger class to use.
         $state['loggerClass'] = $this->loggerClass;
         
@@ -666,8 +675,16 @@ class Mfa extends ProcessingFilter
         
         $id = State::saveState($state, self::STAGE_SENT_TO_MFA_PROMPT);
         $url = Module::getModuleURL('mfa/prompt-for-mfa.php');
+        $userAgent = LoginBrowser::getUserAgent();
+        $webauthnSupport = LoginBrowser::supportsWebAuthn($userAgent);
 
-        $mfaOption = self::getMfaOptionToUse($mfaOptions, LoginBrowser::getUserAgent());
+        $this->logger->debug(json_encode([
+            'event' => 'check browser',
+            'user_agent' => $userAgent,
+            'webauthn_support' => $webauthnSupport,
+        ]));
+
+        $mfaOption = self::getMfaOptionToUse($mfaOptions, $userAgent);
         
         HTTP::redirectTrustedURL($url, [
             'mfaId' => $mfaOption['id'],

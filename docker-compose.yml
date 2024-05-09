@@ -44,6 +44,11 @@ services:
     environment:
       - COMPOSER_CACHE_DIR=/composer
       - PROFILE_URL_FOR_TESTS=http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub
+      - MFA_SETUP_URL_FOR_TESTS=http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub
+      - ADMIN_EMAIL=john_doe@there.com
+      - ADMIN_PASS=b
+      - SECRET_SALT=abc123
+      - IDP_NAME=x
     volumes:
       - ./composer.json:/data/composer.json
       - ./composer.lock:/data/composer.lock
@@ -146,6 +151,9 @@ services:
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
 
+      # Include the features folder (for the FakeIdBrokerClient class)
+      - ./features:/data/features
+
       # Local modules
       - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
@@ -158,6 +166,14 @@ services:
       ADMIN_PASS: "a"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "IDP 1"
+      IDP_DOMAIN_NAME: "mfaidp"
+      ID_BROKER_ACCESS_TOKEN: "dummy"
+      ID_BROKER_ASSERT_VALID_IP: "false"
+      ID_BROKER_BASE_URI: "dummy"
+      ID_BROKER_TRUSTED_IP_RANGES: "192.168.0.1/8"
+      MFA_SETUP_URL: "http://ssp-hub-sp1:8083/module.php/core/authenticate.php?as=ssp-hub-custom-port"
+      MFA_SETUP_URL_FOR_TESTS: "http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub"
+      REMEMBER_ME_SECRET: "12345"
       PROFILE_URL: "http://ssp-hub-sp1:8083/module.php/core/authenticate.php?as=ssp-hub-custom-port"
       PROFILE_URL_FOR_TESTS: "http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub"
       SECURE_COOKIE: "false"

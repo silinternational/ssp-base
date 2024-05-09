@@ -36,7 +36,10 @@
   "autoload": {
     "files": [
       "vendor/yiisoft/yii2/Yii.php"
-    ]
+    ],
+    "psr-4": {
+      "Sil\\SspMfa\\Behat\\": "features/"
+    }
   },
   "config": {
     "allow-plugins": {
