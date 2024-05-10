@@ -67,5 +67,5 @@ $metadata['http://ssp-idp1.local:8085'] = [
 // Copy configuration for port 80 and modify host and profileUrl.
 $metadata['http://ssp-idp1.local'] = $metadata['http://ssp-idp1.local:8085'];
 $metadata['http://ssp-idp1.local']['host'] = 'ssp-idp1.local';
-$metadata['http://ssp-idp1.local']['authproc'][10]['mfaSetupUrl'] = Env::get('MFA_SETUP_URL_FOR_TESTS');
+$metadata['http://ssp-idp1.local']['authproc'][10]['mfaSetupUrl'] = Env::get('PROFILE_URL_FOR_TESTS');
 $metadata['http://ssp-idp1.local']['authproc'][30]['profileUrl'] = Env::get('PROFILE_URL_FOR_TESTS');

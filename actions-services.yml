@@ -11,7 +11,6 @@ services:
       - test-browser
     environment:
       - PROFILE_URL_FOR_TESTS=http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
-      - MFA_SETUP_URL_FOR_TESTS=http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
       - ADMIN_EMAIL=john_doe@there.com
       - ADMIN_PASS=b
       - SECRET_SALT=abc123
@@ -96,7 +95,6 @@ services:
       ID_BROKER_BASE_URI: "dummy"
       ID_BROKER_TRUSTED_IP_RANGES: "192.168.0.1/8"
       MFA_SETUP_URL: "http://pwmanager.local:8083/module.php/core/authenticate.php?as=ssp-hub-custom-port"
-      MFA_SETUP_URL_FOR_TESTS: "http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub"
       REMEMBER_ME_SECRET: "12345"
       PROFILE_URL: "http://pwmanager:8083/module.php/core/authenticate.php?as=ssp-hub-custom-port"
       PROFILE_URL_FOR_TESTS: "http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub"
