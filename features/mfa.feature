@@ -212,22 +212,22 @@ Feature: Prompt for MFA credentials
     When I click the Request Assistance link
     Then there should be a way to request a manager code
 
-#  Scenario: Submit a code sent to my manager at an earlier time
-#    Given I provide credentials that have a manager code
-#      And I login
-#    When I submit the correct manager code
-## TODO: add a step here because using a manager code forces profile review
-#    Then I should end up at my intended destination
+  Scenario: Submit a code sent to my manager at an earlier time
+    Given I provide credentials that have a manager code
+      And I login
+    When I submit the correct manager code
+      And I click the remind-me-later button
+    Then I should end up at my intended destination
 
-#  Scenario: Submit a correct manager code
-#    Given I provide credentials that have backup codes
-#      And the user has a manager email
-#      And I login
-#      And I click the Request Assistance link
-#      And I click the Send a code link
-#    When I submit the correct manager code
-## TODO: add a step here because using a manager code forces profile review
-#    Then I should end up at my intended destination
+  Scenario: Submit a correct manager code
+    Given I provide credentials that have backup codes
+      And the user has a manager email
+      And I login
+      And I click the Request Assistance link
+      And I click the Send a code link
+    When I submit the correct manager code
+      And I click the remind-me-later button
+    Then I should end up at my intended destination
 
   Scenario: Submit an incorrect manager code
     Given I provide credentials that have backup codes
