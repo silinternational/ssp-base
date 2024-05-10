@@ -44,7 +44,7 @@ services:
       - test-browser
     environment:
       - COMPOSER_CACHE_DIR=/composer
-      - PROFILE_URL_FOR_TESTS=http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub
+      - PROFILE_URL_FOR_TESTS=http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
       - MFA_SETUP_URL_FOR_TESTS=http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
       - ADMIN_EMAIL=john_doe@there.com
       - ADMIN_PASS=b
@@ -175,8 +175,8 @@ services:
       MFA_SETUP_URL: "http://pwmanager.local:8083/module.php/core/authenticate.php?as=ssp-hub-custom-port"
       MFA_SETUP_URL_FOR_TESTS: "http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub"
       REMEMBER_ME_SECRET: "12345"
-      PROFILE_URL: "http://ssp-hub-sp1:8083/module.php/core/authenticate.php?as=ssp-hub-custom-port"
-      PROFILE_URL_FOR_TESTS: "http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub"
+      PROFILE_URL: "http://pwmanager:8083/module.php/core/authenticate.php?as=ssp-hub-custom-port"
+      PROFILE_URL_FOR_TESTS: "http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_USE: "default"
