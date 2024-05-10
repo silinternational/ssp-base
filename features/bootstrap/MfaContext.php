@@ -419,9 +419,9 @@ class MfaContext extends FeatureContext
      */
     public function iShouldNotBeAbleToGetToMyIntendedDestination()
     {
-        $this->session->visit($this->nonPwManagerUrl);
+        $this->session->visit(self::SP1_LOGIN_PAGE);
         Assert::assertStringStartsNotWith(
-            $this->nonPwManagerUrl,
+            self::SP1_LOGIN_PAGE,
             $this->session->getCurrentUrl(),
             'Failed to prevent me from getting to SPs other than the MFA setup URL'
         );
