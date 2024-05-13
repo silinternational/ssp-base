@@ -1,0 +1,50 @@
+{
+	"generic_try_later": {
+		"en": "Hmm... something went wrong. Please try again later.",
+		"es": "",
+		"fr": "",
+		"ko": ""
+	},
+	"username_required": {
+		"en": "Please provide a username.",
+		"es": "",
+		"fr": "",
+		"ko": ""
+	},
+	"password_required": {
+		"en": "Please provide a password.",
+		"es": "",
+		"fr": "",
+		"ko": ""
+	},
+	"invalid_login": {
+		"en": "There was a problem with that username or password (or that account is disabled). Please try again or contact your organization's help desk.",
+		"es": "",
+		"fr": "",
+		"ko": ""
+	},
+	"need_to_set_acct_password": {
+		"en": "You need to set your password to finish setting up your account. Please use the forgot password link below.",
+		"es": "",
+		"fr": "",
+		"ko": ""
+	},
+	"rate_limit_seconds": {
+		"en": "There have been too many failed logins for this account. Please wait about {number} seconds, then try again.",
+		"es": "",
+		"fr": "",
+		"ko": ""
+	},
+	"rate_limit_1_minute": {
+		"en": "There have been too many failed logins for this account. Please wait a minute, then try again.",
+		"es": "",
+		"fr": "",
+		"ko": ""
+	},
+	"rate_limit_minutes": {
+		"en": "There have been too many failed logins for this account. Please wait about {number} minutes, then try again.",
+		"es": "",
+		"fr": "",
+		"ko": ""
+	}
+}
