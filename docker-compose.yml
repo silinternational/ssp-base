@@ -196,6 +196,7 @@ services:
       MYSQL_DATABASE: "silauth"
       MYSQL_USER: "silauth"
       MYSQL_PASSWORD: "silauth"
+      BASE_URL_PATH: "http://ssp-idp1.local/"
 
   ssp-idp2.local:
     build: .

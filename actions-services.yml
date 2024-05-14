@@ -111,6 +111,7 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_USE: "default"
+      BASE_URL_PATH: "http://ssp-idp1.local/"
 
   ssp-idp2.local:
     build: .
