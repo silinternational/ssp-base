@@ -2,8 +2,8 @@
 
 use Sil\PhpEnv\Env;
 use Sil\Psr3Adapters\Psr3StdOutLogger;
-use Sil\SilAuth\config\ConfigManager;
-use Sil\SilAuth\system\System;
+use SimpleSAML\Module\silauth\Auth\Source\config\ConfigManager;
+use SimpleSAML\Module\silauth\Auth\Source\system\System;
 
 try {
     header('Content-Type: text/plain');

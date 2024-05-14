@@ -3,11 +3,11 @@
 namespace SimpleSAML\Module\silauth\Auth\Source;
 
 use Sil\Psr3Adapters\Psr3StdOutLogger;
-use Sil\SilAuth\auth\Authenticator;
-use Sil\SilAuth\auth\IdBroker;
-use Sil\SilAuth\captcha\Captcha;
-use Sil\SilAuth\config\ConfigManager;
-use Sil\SilAuth\http\Request;
+use SimpleSAML\Module\silauth\Auth\Source\auth\Authenticator;
+use SimpleSAML\Module\silauth\Auth\Source\auth\IdBroker;
+use SimpleSAML\Module\silauth\Auth\Source\captcha\Captcha;
+use SimpleSAML\Module\silauth\Auth\Source\config\ConfigManager;
+use SimpleSAML\Module\silauth\Auth\Source\http\Request;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Error\Error;
 use SimpleSAML\Module;

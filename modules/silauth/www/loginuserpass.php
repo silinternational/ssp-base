@@ -1,9 +1,9 @@
 <?php
 
 use Sil\Psr3Adapters\Psr3StdOutLogger;
-use Sil\SilAuth\auth\Authenticator;
-use Sil\SilAuth\csrf\CsrfProtector;
-use Sil\SilAuth\http\Request;
+use SimpleSAML\Module\silauth\Auth\Source\auth\Authenticator;
+use SimpleSAML\Module\silauth\Auth\Source\csrf\CsrfProtector;
+use SimpleSAML\Module\silauth\Auth\Source\http\Request;
 use SimpleSAML\Auth\Source;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Configuration;

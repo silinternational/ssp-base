@@ -1,7 +1,5 @@
 <?php
 
-namespace Sil\SilAuth\features\context;
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Webmozart\Assert\Assert;
