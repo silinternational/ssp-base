@@ -2,12 +2,11 @@
 
 namespace Sil\SilAuth\features\context;
 
-use Behat\Behat\Context\Context;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Webmozart\Assert\Assert;
 
-class StatusContext implements Context
+class StatusContext extends FeatureContext
 {
     private $responseCode = null;
     private $responseText = null;

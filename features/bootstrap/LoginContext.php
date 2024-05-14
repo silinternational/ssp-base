@@ -1,7 +1,6 @@
 <?php
 namespace Sil\SilAuth\features\context;
 
-use Behat\Behat\Context\Context;
 use Psr\Log\LoggerInterface;
 use Sil\PhpEnv\Env;
 use Sil\Psr3Adapters\Psr3EchoLogger;
@@ -25,7 +24,7 @@ use Webmozart\Assert\Assert;
 /**
  * Defines application features from the specific context.
  */
-class LoginContext implements Context
+class LoginContext extends FeatureContext
 {
     /** @var Authenticator|null */
     private $authenticator = null;
