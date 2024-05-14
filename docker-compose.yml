@@ -53,6 +53,10 @@ services:
       - pwmanager.local
       - test-browser
     environment:
+      - MYSQL_HOST=db
+      - MYSQL_DATABASE=silauth
+      - MYSQL_USER=silauth
+      - MYSQL_PASSWORD=silauth
       - COMPOSER_CACHE_DIR=/composer
       - PROFILE_URL_FOR_TESTS=http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
       - ADMIN_EMAIL=john_doe@there.com

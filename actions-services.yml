@@ -25,6 +25,10 @@ services:
       - ADMIN_PASS=b
       - SECRET_SALT=abc123
       - IDP_NAME=x
+      - MYSQL_HOST=db
+      - MYSQL_DATABASE=silauth
+      - MYSQL_USER=silauth
+      - MYSQL_PASSWORD=silauth
     volumes:
       - ./dockerbuild/run-integration-tests.sh:/data/run-integration-tests.sh
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
