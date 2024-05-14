@@ -93,7 +93,10 @@ services:
 
       # Include the features folder (for the FakeIdBrokerClient class)
       - ./features:/data/features
-    command: 'bash -c "/data/enable-exampleauth-module.sh && /data/run.sh"'
+    command: >
+      bash -c "whenavail db 3306 60 /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/lib/Auth/Source/yii migrate --interactive=0 &&
+      /data/enable-exampleauth-module.sh &&
+      /data/run.sh"
     environment:
       ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: "a"
