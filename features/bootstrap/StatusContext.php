@@ -16,7 +16,7 @@ class StatusContext extends FeatureContext
     public function iCheckTheStatusOfThisModule()
     {
         $client = new Client();
-        $response = $client->get('http://testweb/module.php/silauth/status.php');
+        $response = $client->get('http://ssp-idp1.local/module.php/silauth/status.php');
         $this->responseCode = $response->getStatusCode();
         $this->responseText = $response->getBody()->getContents();
     }
@@ -39,7 +39,7 @@ class StatusContext extends FeatureContext
             'cookies' => true,
             'http_errors' => false,
         ]);
-        $response = $client->get('http://testweb/module.php/core/authenticate.php?as=silauth');
+        $response = $client->get('http://ssp-idp1.local/module.php/core/authenticate.php?as=silauth');
         $this->responseCode = $response->getStatusCode();
     }
 
