@@ -46,7 +46,7 @@
       "vendor/yiisoft/yii2/Yii.php"
     ],
     "psr-4": {
-      "Sil\\SspMfa\\Behat\\": "features/"
+      "SilInternational\\SspBase\\Features\\": "features/"
     }
   },
   "config": {

@@ -10,7 +10,7 @@ use Sil\Psr3Adapters\Psr3SamlLogger;
  */
 
 use Sil\Psr3Adapters\Psr3StdOutLogger;
-use Sil\SspMfa\Behat\fakes\FakeIdBrokerClient;
+use SilInternational\SspBase\Features\fakes\FakeIdBrokerClient;
 
 $metadata['http://ssp-idp1.local:8085'] = [
 	/*
