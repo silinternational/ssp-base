@@ -141,6 +141,7 @@ Feature: Prompt for MFA credentials
       |           |   TOTP   |                | supports WebAuthn         |   TOTP           |
       |           |   TOTP   | , backup codes | supports WebAuthn         |   TOTP           |
       |           |          |   backup codes | supports WebAuthn         |      backup code |
+# The following cases are disabled due to lack of test support for changing web client user agent
 #      | WebAuthn  |          |                | does not support WebAuthn | WebAuthn         |
 #      | WebAuthn  | , TOTP   |                | does not support WebAuthn |   TOTP           |
 #      | WebAuthn  |          | , backup codes | does not support WebAuthn |      backup code |
@@ -163,6 +164,7 @@ Feature: Prompt for MFA credentials
       | TOTP        |  WebAuthn         |  supports WebAuthn          |  WebAuthn         |
       | TOTP        |  backup code      |  supports WebAuthn          |  backup code      |
       | backup code |  TOTP             |  supports WebAuthn          |  TOTP             |
+# The following case is disabled due to lack of test support for changing web client user agent
 #      | TOTP        |  WebAuthn         |  does not support WebAuthn  |  TOTP             |
 
   Scenario: Defaulting to the manager code despite having a used mfa
@@ -180,6 +182,7 @@ Feature: Prompt for MFA credentials
     Examples:
       | supports WebAuthn or not  | should or not |
       | supports WebAuthn         | should not    |
+# The following case is disabled due to lack of test support for changing web client user agent
 #      | does not support WebAuthn | should        |
 
   Scenario Outline: When to show the link to send a manager rescue code
