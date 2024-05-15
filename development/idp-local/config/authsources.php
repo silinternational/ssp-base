@@ -1,6 +1,6 @@
 <?php
 
-use Sil\SspMfa\Behat\fakes\FakeIdBrokerClient;
+use SilInternational\SspBase\Features\fakes\FakeIdBrokerClient;
 
 $config = [
 
