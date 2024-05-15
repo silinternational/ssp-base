@@ -216,7 +216,6 @@ Feature: Prompt for MFA credentials
     Given I provide credentials that have a manager code
       And I login
     When I submit the correct manager code
-      # because profile review is required after using a manager code:
       And I click the remind-me-later button
     Then I should end up at my intended destination
 
@@ -227,7 +226,6 @@ Feature: Prompt for MFA credentials
       And I click the Request Assistance link
       And I click the Send a code link
     When I submit the correct manager code
-      # because profile review is required after using a manager code:
       And I click the remind-me-later button
     Then I should end up at my intended destination
 
