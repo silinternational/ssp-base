@@ -246,3 +246,52 @@ https://stackoverflow.com/q/46566014/3813891
 This is adapted from the `silinternational/simplesamlphp-module-mfa`
 module, which itself is adapted from other modules. Thanks to all those who
 contributed to that work.
+
+### Profile Review SimpleSAMLphp Module
+
+A simpleSAMLphp module for prompting the user review their profile (such as
+2-step verification, email, etc.).
+
+This module is implemented as an Authentication Processing Filter,
+or AuthProc. That means it can be configured in the global config.php file or
+the SP remote or IdP hosted metadata.
+
+It is recommended to run the profilereview module at the IdP, after all
+other authentication modules.
+
+#### How to use the module
+
+You will need to set filter parameters in your config. We recommend adding
+them to the `'authproc'` array in your `metadata/saml20-idp-hosted.php` file.
+
+Example (for `metadata/saml20-idp-hosted.php`):
+
+    use Sil\PhpEnv\Env;
+    use Sil\Psr3Adapters\Psr3SamlLogger;
+    
+    // ...
+    
+    'authproc' => [
+        10 => [
+            // Required:
+            'class' => 'profilereview:ProfileReview',
+            'employeeIdAttr' => 'employeeNumber',
+            'profileUrl' => Env::get('PROFILE_URL'),
+            'mfaLearnMoreUrl' => Env::get('MFA_LEARN_MORE_URL'),
+
+            // Optional:
+            'loggerClass' => Psr3SamlLogger::class,
+        ],
+        
+        // ...
+    ],
+
+The `employeeIdAttr` parameter represents the SAML attribute name which has
+the user's Employee ID stored in it. In certain situations, this may be
+displayed to the user, as well as being used in log messages.
+
+The `loggerClass` parameter specifies the name of a PSR-3 compatible class that
+can be autoloaded, to use as the logger within ExpiryDate.
+
+The `profileUrl` parameter is for the URL of where to send the user if they
+want/need to update their profile.
