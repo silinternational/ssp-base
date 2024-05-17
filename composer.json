@@ -38,7 +38,7 @@
       "vendor/yiisoft/yii2/Yii.php"
     ],
     "psr-4": {
-      "SilInternational\\SspBase\\Features\\": "features/"
+      "Sil\\SspBase\\Features\\": "features/"
     }
   },
   "config": {

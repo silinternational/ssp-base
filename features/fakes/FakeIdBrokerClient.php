@@ -1,5 +1,5 @@
 <?php
-namespace SilInternational\SspBase\Features\fakes;
+namespace Sil\SspBase\Features\fakes;
 
 use InvalidArgumentException;
 use Sil\Idp\IdBroker\Client\ServiceException;

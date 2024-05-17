@@ -4,7 +4,7 @@ use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ElementNotFoundException;
 use PHPUnit\Framework\Assert;
 use Sil\PhpEnv\Env;
-use SilInternational\SspBase\Features\fakes\FakeIdBrokerClient;
+use Sil\SspBase\Features\fakes\FakeIdBrokerClient;
 use SimpleSAML\Module\mfa\LoginBrowser;
 
 /**
