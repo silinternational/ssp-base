@@ -224,7 +224,6 @@ services:
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
-    command: /data/run.sh
     ports:
       - "8086:80"
     environment:
@@ -235,6 +234,31 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_USE: "material:material"
+
+  idp3:
+    image: silintl/ssp-base:develop
+    volumes:
+      # Utilize custom certs
+      - ./development/idp3-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
+
+      # Utilize custom configs
+      - ./development/idp3-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+      - ./development/idp3-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
+
+      # Utilize custom metadata
+      - ./development/idp3-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
+      - ./development/idp3-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
+    ports:
+      - "8087:80"
+    env_file:
+      - local.env
+    environment:
+      ADMIN_EMAIL: "john_doe@there.com"
+      ADMIN_PASS: "c"
+      SECRET_SALT: "h57fjem34fh*nsJFGNjweJ"
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
+      IDP_NAME: "IdP3"
 
   ssp-sp1.local:
     build: .
@@ -297,6 +321,31 @@ services:
       SAML20_IDP_ENABLE: "false"
       ADMIN_PROTECT_INDEX_PAGE: "false"
 
+  sp3:
+    image: silintl/ssp-base:develop
+    volumes:
+      # Utilize custom certs
+      - ./development/sp3-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
+
+      # Utilize custom configs
+      - ./development/sp3-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
+      - ./development/sp3-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+
+      # Utilize custom metadata
+      - ./development/sp3-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
+    ports:
+      - "8083:80"
+    env_file:
+      - local.env
+    environment:
+      - ADMIN_EMAIL=john_doe@there.com
+      - ADMIN_PASS=sp3
+      - SECRET_SALT=h57fjemb&dn^nsJFGNjweJz3
+      - SECURE_COOKIE=false
+      - SHOW_SAML_ERRORS=true
+      - SAML20_IDP_ENABLE=false
+      - ADMIN_PROTECT_INDEX_PAGE=false
+
   pwmanager.local:
     image: silintl/ssp-base:develop
     volumes:
@@ -358,6 +407,28 @@ services:
       MYSQL_DATABASE: "broker"
       MYSQL_USER: "user"
       MYSQL_PASSWORD: "pass"
+
+  dynamo:
+    image: cnadiminti/dynamodb-local
+    command: "-sharedDb -inMemory"
+    hostname: dynamo
+    ports:
+      - "8000:8000"
+    environment:
+      reschedule: on-node-failure
+
+  init-dynamo:
+    image: garland/aws-cli-docker
+    command: "/init-dynamodb.sh"
+    volumes:
+      - ./development/init-dynamodb.sh:/init-dynamodb.sh
+    depends_on:
+      - dynamo
+    environment:
+      - AWS_ACCESS_KEY_ID=0
+      - AWS_SECRET_ACCESS_KEY=0
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_DYNAMODB_ENDPOINT=http://dynamo:8000
 
 networks:
   default:

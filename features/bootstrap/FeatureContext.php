@@ -16,6 +16,7 @@ class FeatureContext extends MinkContext
     private const HUB_HOME_URL = 'http://ssp-hub.local';
     protected const SP1_LOGIN_PAGE = 'http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub';
     protected const SP2_LOGIN_PAGE = 'http://ssp-sp2.local/module.php/core/authenticate.php?as=ssp-hub';
+    protected const SP3_LOGIN_PAGE = 'http://ssp-sp3.local/module.php/core/authenticate.php?as=ssp-hub';
 
     /** @var Session */
     protected $session;
@@ -90,7 +91,7 @@ class FeatureContext extends MinkContext
         $this->logInAs('admin', 'abc123');
     }
 
-    private function logInAs(string $username, string $password)
+    protected function logInAs(string $username, string $password)
     {
         $this->fillField('username', $username);
         $this->fillField('password', $password);
@@ -148,6 +149,9 @@ class FeatureContext extends MinkContext
                 break;
             case 'SP2':
                 $this->visit(self::SP2_LOGIN_PAGE);
+                break;
+            case 'SP3':
+                $this->visit(self::SP3_LOGIN_PAGE);
                 break;
         }
     }
