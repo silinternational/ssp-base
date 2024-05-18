@@ -16,6 +16,7 @@ services:
       - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
 
     command: ["/data/run-debug.sh"]
     ports:
@@ -33,6 +34,15 @@ services:
       MYSQL_USER: silauth
       MYSQL_PASSWORD: silauth
 
+  dbadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: silauth
+      PMA_PASSWORD: silauth
+
   test:
     build: .
     depends_on:
@@ -43,6 +53,10 @@ services:
       - pwmanager.local
       - test-browser
     environment:
+      - MYSQL_HOST=db
+      - MYSQL_DATABASE=silauth
+      - MYSQL_USER=silauth
+      - MYSQL_PASSWORD=silauth
       - COMPOSER_CACHE_DIR=/composer
       - PROFILE_URL_FOR_TESTS=http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
       - ADMIN_EMAIL=john_doe@there.com
@@ -63,6 +77,7 @@ services:
       - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
     command: ["/data/run-tests.sh"]
 
   test-browser:
@@ -111,6 +126,7 @@ services:
       - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
     command: /data/run-debug.sh
     ports:
       - "80:80"
@@ -158,7 +174,11 @@ services:
       - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
-    command: 'bash -c "/data/enable-exampleauth-module.sh && /data/run.sh"'
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+    command: >
+      bash -c "whenavail db 3306 60 /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/lib/Auth/Source/yii migrate --interactive=0 &&
+      /data/enable-exampleauth-module.sh &&
+      /data/run.sh"
     ports:
       - "8085:80"
     environment:
@@ -183,6 +203,7 @@ services:
       MYSQL_DATABASE: "silauth"
       MYSQL_USER: "silauth"
       MYSQL_PASSWORD: "silauth"
+      BASE_URL_PATH: "http://ssp-idp1.local/"
 
   ssp-idp2.local:
     build: .
@@ -202,6 +223,7 @@ services:
       - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
     command: /data/run.sh
     ports:
       - "8086:80"
@@ -234,6 +256,7 @@ services:
       - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
     ports:
       - "8081:80"
     environment:
@@ -262,6 +285,7 @@ services:
       - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
     ports:
       - "8082:80"
     environment:
@@ -296,6 +320,44 @@ services:
       - SAML20_IDP_ENABLE=false
       - ADMIN_PROTECT_INDEX_PAGE=false
       - THEME_USE=default
+
+  # the broker and brokerDb containers are used by the silauth module
+  broker:
+    image: silintl/idp-id-broker:develop
+    ports:
+      - "80"
+    depends_on:
+      - brokerDb
+    env_file:
+      - ./local.broker.env
+    environment:
+      IDP_NAME: "idp"
+      MYSQL_HOST: "brokerDb"
+      MYSQL_DATABASE: "broker"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "pass"
+      EMAIL_SERVICE_accessToken: "dummy"
+      EMAIL_SERVICE_assertValidIp: "false"
+      EMAIL_SERVICE_baseUrl: "dummy"
+      EMAILER_CLASS: Sil\SilIdBroker\Behat\Context\fakes\FakeEmailer
+      HELP_CENTER_URL: "https://example.org/help"
+      PASSWORD_FORGOT_URL: "https://example.org/forgot"
+      PASSWORD_PROFILE_URL: "https://example.org/profile"
+      SUPPORT_EMAIL: "support@example.org"
+      EMAIL_SIGNATURE: "one red pill, please"
+      API_ACCESS_KEYS: "test-cli-abc123"
+      APP_ENV: "dev"
+    command: ["bash", "-c", "whenavail brokerDb 3306 60 ./yii migrate --interactive=0 && ./run.sh"]
+
+  brokerDb:
+    image: mariadb:10
+    ports:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "r00tp@ss!"
+      MYSQL_DATABASE: "broker"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "pass"
 
 networks:
   default:

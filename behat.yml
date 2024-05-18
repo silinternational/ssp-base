@@ -6,6 +6,9 @@ default:
     expiry_features:
       paths:    [ '%paths.base%//features//expirychecker.feature' ]
       contexts: [ 'ExpiryContext' ]
+    login_features:
+      paths:    [ '%paths.base%//features//login.feature' ]
+      contexts: [ 'LoginContext' ]
     material_features:
       paths:    [ '%paths.base%//features//material.feature' ]
       contexts: [ 'FeatureContext' ]
@@ -15,3 +18,6 @@ default:
     profilereview_features:
       paths:    [ '%paths.base%//features//profilereview.feature' ]
       contexts: [ 'ProfileReviewContext' ]
+    status_features:
+      paths:    [ '%paths.base%//features//status.feature' ]
+      contexts: [ 'StatusContext' ]

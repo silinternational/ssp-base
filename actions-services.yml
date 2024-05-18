@@ -1,5 +1,15 @@
 version: '3'
 services:
+
+  # the db container is used by the silauth module
+  db:
+    image: mariadb:10
+    environment:
+      MYSQL_ROOT_PASSWORD: r00tp@ss!
+      MYSQL_DATABASE: silauth
+      MYSQL_USER: silauth
+      MYSQL_PASSWORD: silauth
+
   app:
     build: .
     depends_on:
@@ -10,6 +20,10 @@ services:
       - pwmanager.local
       - test-browser
     environment:
+      - MYSQL_HOST=db
+      - MYSQL_DATABASE=silauth
+      - MYSQL_USER=silauth
+      - MYSQL_PASSWORD=silauth
       - PROFILE_URL_FOR_TESTS=http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
       - ADMIN_EMAIL=john_doe@there.com
       - ADMIN_PASS=b
@@ -60,6 +74,8 @@ services:
 
   ssp-idp1.local:
     build: .
+    depends_on:
+      - db
     volumes:
       # Utilize custom certs
       - ./development/idp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
@@ -83,7 +99,10 @@ services:
 
       # Include the features folder (for the FakeIdBrokerClient class)
       - ./features:/data/features
-    command: 'bash -c "/data/enable-exampleauth-module.sh && /data/run.sh"'
+    command: >
+      bash -c "whenavail db 3306 60 /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/lib/Auth/Source/yii migrate --interactive=0 &&
+      /data/enable-exampleauth-module.sh &&
+      /data/run.sh"
     environment:
       ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: "a"
@@ -101,6 +120,11 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_USE: "default"
+      MYSQL_HOST: "db"
+      MYSQL_DATABASE: "silauth"
+      MYSQL_USER: "silauth"
+      MYSQL_PASSWORD: "silauth"
+      BASE_URL_PATH: "http://ssp-idp1.local/"
 
   ssp-idp2.local:
     build: .
@@ -176,3 +200,45 @@ services:
       - SAML20_IDP_ENABLE=false
       - ADMIN_PROTECT_INDEX_PAGE=false
       - THEME_USE=default
+
+  # the broker and brokerDb containers are used by the silauth module
+  broker:
+    image: silintl/idp-id-broker:latest
+    ports:
+      - "80"
+    depends_on:
+      - brokerDb
+    environment:
+      IDP_NAME: "idp"
+      MYSQL_HOST: "brokerDb"
+      MYSQL_DATABASE: "broker"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "pass"
+      EMAIL_SERVICE_accessToken: "dummy"
+      EMAIL_SERVICE_assertValidIp: "false"
+      EMAIL_SERVICE_baseUrl: "dummy"
+      EMAILER_CLASS: Sil\SilIdBroker\Behat\Context\fakes\FakeEmailer
+      HELP_CENTER_URL: "https://example.org/help"
+      PASSWORD_FORGOT_URL: "https://example.org/forgot"
+      PASSWORD_PROFILE_URL: "https://example.org/profile"
+      SUPPORT_EMAIL: "support@example.org"
+      EMAIL_SIGNATURE: "one red pill, please"
+      API_ACCESS_KEYS: "test-cli-abc123"
+      APP_ENV: "prod"
+      MFA_TOTP_apiBaseUrl: not_needed_here
+      MFA_TOTP_apiKey: not_needed_here
+      MFA_TOTP_apiSecret: not_needed_here
+      MFA_WEBAUTHN_apiBaseUrl: not_needed_here
+      MFA_WEBAUTHN_apiKey: not_needed_here
+      MFA_WEBAUTHN_apiSecret: not_needed_here
+    command: "bash -c 'whenavail brokerDb 3306 60 ./yii migrate --interactive=0 && ./run.sh'"
+
+  brokerDb:
+    image: mariadb:10
+    ports:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "r00tp@ss!"
+      MYSQL_DATABASE: "broker"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "pass"
