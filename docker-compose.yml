@@ -13,6 +13,7 @@ services:
       - ./development/ssp/run-debug.sh:/data/run-debug.sh
 
       # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
 
@@ -39,10 +40,15 @@ services:
       - ssp-idp1.local
       - ssp-idp2.local
       - ssp-sp1.local
+      - pwmanager.local
       - test-browser
     environment:
       - COMPOSER_CACHE_DIR=/composer
-      - PROFILE_URL_FOR_TESTS=http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub
+      - PROFILE_URL_FOR_TESTS=http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
+      - ADMIN_EMAIL=john_doe@there.com
+      - ADMIN_PASS=b
+      - SECRET_SALT=abc123
+      - IDP_NAME=x
     volumes:
       - ./composer.json:/data/composer.json
       - ./composer.lock:/data/composer.lock
@@ -54,6 +60,7 @@ services:
       - ./features:/data/features
       - ./behat.yml:/data/behat.yml
       - ./tests:/data/tests
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     command: ["/data/run-tests.sh"]
@@ -101,6 +108,7 @@ services:
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
 
       # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     command: /data/run-debug.sh
@@ -143,7 +151,11 @@ services:
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
 
+      # Include the features folder (for the FakeIdBrokerClient class)
+      - ./features:/data/features
+
       # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     command: 'bash -c "/data/enable-exampleauth-module.sh && /data/run.sh"'
@@ -154,8 +166,15 @@ services:
       ADMIN_PASS: "a"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "IDP 1"
-      PROFILE_URL: "http://ssp-hub-sp1:8083/module.php/core/authenticate.php?as=ssp-hub-custom-port"
-      PROFILE_URL_FOR_TESTS: "http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub"
+      IDP_DOMAIN_NAME: "mfaidp"
+      ID_BROKER_ACCESS_TOKEN: "dummy"
+      ID_BROKER_ASSERT_VALID_IP: "false"
+      ID_BROKER_BASE_URI: "dummy"
+      ID_BROKER_TRUSTED_IP_RANGES: "192.168.0.1/8"
+      MFA_SETUP_URL: "http://pwmanager.local:8083/module.php/core/authenticate.php?as=ssp-hub-custom-port"
+      REMEMBER_ME_SECRET: "12345"
+      PROFILE_URL: "http://pwmanager:8083/module.php/core/authenticate.php?as=ssp-hub-custom-port"
+      PROFILE_URL_FOR_TESTS: "http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_USE: "default"
@@ -180,6 +199,7 @@ services:
       - ./development/idp2-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
 
       # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     command: /data/run.sh
@@ -211,6 +231,7 @@ services:
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
 
       # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     ports:
@@ -238,6 +259,7 @@ services:
       - ./development/sp2-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
 
       # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
     ports:
@@ -250,7 +272,31 @@ services:
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
       ADMIN_PROTECT_INDEX_PAGE: "false"
-    
+
+  pwmanager.local:
+    image: silintl/ssp-base:develop
+    volumes:
+      # Utilize custom certs
+      - ./development/sp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
+
+      # Utilize custom configs
+      - ./development/sp-local/config/authsources-pwmanager.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+
+      # Utilize custom metadata
+      - ./development/sp-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
+    ports:
+      - "8083:80"
+    environment:
+      - ADMIN_EMAIL=john_doe@there.com
+      - ADMIN_PASS=sp1
+      - IDP_NAME=THIS VARIABLE IS REQUIRED BUT PROBABLY NOT USED
+      - SECRET_SALT=NOT-a-secret-k49fjfkw73hjf9t87wjiw
+      - SECURE_COOKIE=false
+      - SHOW_SAML_ERRORS=true
+      - SAML20_IDP_ENABLE=false
+      - ADMIN_PROTECT_INDEX_PAGE=false
+      - THEME_USE=default
+
 networks:
   default:
     driver: bridge
