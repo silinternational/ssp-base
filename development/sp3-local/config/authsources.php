@@ -1,19 +1,19 @@
 <?php
 
-$config = array(
+$config = [
 
     // This is a authentication source which handles admin authentication.
-    'admin' => array(
+    'admin' => [
         // The default is to use core:AdminPassword, but it can be replaced with
         // any authentication source.
 
         'core:AdminPassword',
-    ),
+    ],
 
 
     // An authentication source which can authenticate against both SAML 2.0
     // and Shibboleth 1.3 IdPs.
-    'ssp-hub' => array(
+    'ssp-hub' => [
         'saml:SP',
 
         // The entity ID of this SP.
@@ -27,9 +27,12 @@ $config = array(
         // The URL to the discovery service.
         // Can be NULL/unset, in which case a builtin discovery service will be used.
         'discoURL' => null,
-    ),
 
-    'hub4tests' => array(
+        // Specify what private key to use (such as for decrypting assertions).
+        'privatekey' => 'ssp-hub-sp3.pem',
+    ],
+
+    'ssp-hub-custom-port' => [
         'saml:SP',
 
         // The entity ID of this SP.
@@ -38,12 +41,13 @@ $config = array(
 
         // The entity ID of the IdP this should SP should contact.
         // Can be NULL/unset, in which case the user will be shown a list of available IdPs.
-        'idp' => 'hub4tests',
+        'idp' => 'ssp-hub.local',
 
         // The URL to the discovery service.
         // Can be NULL/unset, in which case a builtin discovery service will be used.
         'discoURL' => null,
-    ),
 
-
-);
+        // Specify what private key to use (such as for decrypting assertions).
+        'privatekey' => 'ssp-hub-sp3.pem',
+    ],
+];

@@ -49,7 +49,10 @@ services:
       - ssp-hub.local
       - ssp-idp1.local
       - ssp-idp2.local
+      - ssp-idp3.local
       - ssp-sp1.local
+      - ssp-sp2.local
+      - ssp-sp3.local
       - pwmanager.local
       - test-browser
     environment:
@@ -158,11 +161,8 @@ services:
       - ./development/idp-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
       - ./development/idp-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
 
-      # Misc. files needed
-      - ./development/enable-exampleauth-module.sh:/data/enable-exampleauth-module.sh
-
       # Customized SSP code -- TODO: make a better solution that doesn't require hacking SSP code
-      - ./development/idp-local/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/lib/Auth/Source/UserPass.php
+      - ./development/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/lib/Auth/Source/UserPass.php
 
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
@@ -177,7 +177,6 @@ services:
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
     command: >
       bash -c "whenavail db 3306 60 /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/lib/Auth/Source/yii migrate --interactive=0 &&
-      /data/enable-exampleauth-module.sh &&
       /data/run.sh"
     ports:
       - "8085:80"
@@ -219,6 +218,9 @@ services:
       - ./development/idp2-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
       - ./development/idp2-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
 
+      # Customized SSP code -- TODO: make a better solution that doesn't require hacking SSP code
+      - ./development/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/lib/Auth/Source/UserPass.php
+
       # Local modules
       - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
@@ -235,8 +237,8 @@ services:
       SHOW_SAML_ERRORS: "true"
       THEME_USE: "material:material"
 
-  idp3:
-    image: silintl/ssp-base:develop
+  ssp-idp3.local:
+    build: .
     volumes:
       # Utilize custom certs
       - ./development/idp3-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
@@ -248,6 +250,12 @@ services:
       # Utilize custom metadata
       - ./development/idp3-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
       - ./development/idp3-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
+
+      # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
     ports:
       - "8087:80"
     env_file:
@@ -292,7 +300,7 @@ services:
       SAML20_IDP_ENABLE: "false"
       ADMIN_PROTECT_INDEX_PAGE: "false"
 
-  sp2:
+  ssp-sp2.local:
     build: .
     volumes:
       # Utilize custom certs
@@ -321,8 +329,8 @@ services:
       SAML20_IDP_ENABLE: "false"
       ADMIN_PROTECT_INDEX_PAGE: "false"
 
-  sp3:
-    image: silintl/ssp-base:develop
+  ssp-sp3.local:
+    build: .
     volumes:
       # Utilize custom certs
       - ./development/sp3-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
@@ -334,7 +342,7 @@ services:
       # Utilize custom metadata
       - ./development/sp3-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
     ports:
-      - "8083:80"
+      - "8084:80"
     env_file:
       - local.env
     environment:

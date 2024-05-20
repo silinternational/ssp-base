@@ -1,7 +1,49 @@
 <?php
+use PHPUnit\Framework\Assert;
 
 class SilDiscoContext extends FeatureContext
 {
+    /**
+     * @When I log in using my :idp credentials
+     */
+    public function iLogInUsingMyIdpCredentials($idp)
+    {
+        switch ($idp) {
+            case 'IDP 1':
+                $this->username = 'sildisco_idp1';
+                $this->password = 'sildisco_password';
+                break;
+
+            case 'IDP 2':
+                $this->username = 'sildisco_idp2';
+                $this->password = 'sildisco_password';
+                break;
+
+            case 'IDP 3':
+                $this->username = 'admin';
+                $this->password = 'c';
+                break;
+
+            default:
+                throw new \Exception('credential name not recognized');
+        }
+        $this->iLogIn();
+    }
+
+    /**
+     * @Then I should see my attributes on :sp
+     */
+    public function iShouldSeeMyAttributesOnSp($sp)
+    {
+        $currentUrl = $this->session->getCurrentUrl();
+        Assert::assertStringStartsWith(
+            'http://ssp-' . strtolower($sp),
+            $currentUrl,
+            'Did NOT end up at ' . $sp
+        );
+        $this->assertPageContainsText('Your attributes');
+    }
+
     /**
      * @When I login using password :password
      */
@@ -16,8 +58,10 @@ class SilDiscoContext extends FeatureContext
     public function iHaveAuthenticatedWithIdp1($sp)
     {
         $this->iGoToTheSpLoginPage($sp);
-        $this->iClickOnTheTile('IdP 1');
-        $this->logInAs('admin', 'a');
+        $this->iClickOnTheTile('IDP 1');
+        $this->username = 'sildisco_idp1';
+        $this->password = 'sildisco_password';
+        $this->iLogIn();
     }
 
     /**
@@ -27,9 +71,11 @@ class SilDiscoContext extends FeatureContext
     {
         $this->iGoToTheSpLoginPage($sp);
         if ($sp != "SP2") { // SP2 only has IDP2 in its IDPList
-            $this->iClickOnTheTile('IdP 2');
+            $this->iClickOnTheTile('IDP 2');
         }
-        $this->logInAs('admin', 'b');
+        $this->username = 'sildisco_idp2';
+        $this->password = 'sildisco_password';
+        $this->iLogIn();
     }
 
     /**
@@ -38,7 +84,7 @@ class SilDiscoContext extends FeatureContext
     public function iLogOutOfIdp1()
     {
         $this->iGoToTheSpLoginPage('SP3');
-        $this->iClickOnTheTile('IdP 1');
+        $this->iClickOnTheTile('IDP 1');
         $this->clickLink('Logout');
         $this->assertPageContainsText('You have been logged out.');
     }
@@ -58,8 +104,17 @@ class SilDiscoContext extends FeatureContext
      */
     public function iShouldSeeTheMetadataInXmlFormat()
     {
-        $xml = $this->getSession()->getDriver()->getContent();
-        assert(str_contains($xml, 'entityID="hub4tests"'));
+        $contentType = $this->session->getResponseHeader('Content-Type');
+        Assert::assertEquals('application/xml', $contentType);
+
+        Assert::assertEquals(200, $this->session->getStatusCode());
+
+        $xml = file_get_contents($this->getSession()->getCurrentUrl());
+        Assert::assertStringContainsString(
+            'entityID="ssp-hub.local"',
+            $xml,
+            "page doesn't contain entityID"
+        );
     }
 
 }

@@ -27,6 +27,9 @@ $config = [
         // The URL to the discovery service.
         // Can be NULL/unset, in which case a builtin discovery service will be used.
         'discoURL' => null,
+
+        // Specify what private key to use (such as for decrypting assertions).
+        'privatekey' => 'ssp-hub-sp2.pem',
     ],
 
     'ssp-hub-custom-port' => [

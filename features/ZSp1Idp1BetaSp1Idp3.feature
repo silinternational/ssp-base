@@ -6,9 +6,8 @@ Scenario: Normally the IdP3 is disabled
   Then the "div" element should contain "IdP 3 coming soon"
 
 Scenario: After going to the "Beta Test" page, IdP3 is available for use
-  When I go to "http://hub4tests/module.php/sildisco/betatest.php"
+  When I go to "http://ssp-hub.local/module.php/sildisco/betatest.php"
    And I go to the "SP1" login page
-   And I click on the "IdP 3" tile
-   And I should see "Enter your username and password"
-   And I login using password "c"
+   And I click on the "IDP 3" tile
+   And I log in using my "IDP 3" credentials
   Then I should see "test_admin@idp3.org"

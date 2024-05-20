@@ -2,23 +2,21 @@ Feature: Ensure I can login to Sp2 through Idp2, get discovery page for Sp1, and
 
   Scenario: Login to SP2 through IDP2
     When I go to the SP2 login page
-     And I should see "Enter your username and password"
-     And I login using password "b"
-    Then I should see "test_admin@idp2.org"
+     And I log in using my "IDP 2" credentials
+    Then I should see my attributes on SP2
 
   Scenario: Get discovery page for SP1
     Given I have authenticated with IDP2 for SP2
     When I go to the SP1 login page
      And the url should match "sildisco/disco.php"
-     And I click on the "IdP 2" tile
-    Then I should see "test_admin@idp2.org"
+     And I click on the "IDP 2" tile
+    Then I should see my attributes on SP1
 
   Scenario: Must login to SP3 through IDP1
     Given I have authenticated with IDP2 for SP2
     When I go to the SP3 login page
      And the url should match "sildisco/disco.php"
-     And I click on the "IdP 1" tile
-     And I should see "Enter your username and password"
-     And I login using password "a"
-    Then I should see "test_admin@idp1.org"
+     And I click on the "IDP 1" tile
+     And I log in using my "IDP 1" credentials
+    Then I should see my attributes on SP3
 

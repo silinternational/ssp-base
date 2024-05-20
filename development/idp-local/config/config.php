@@ -599,6 +599,7 @@ $config = [
         'profilereview' => true,
         'silauth' => true,
         'sildisco' => true,
+        'exampleauth' => true,
     ],
 
 
