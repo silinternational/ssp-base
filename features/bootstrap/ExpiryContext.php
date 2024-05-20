@@ -9,9 +9,6 @@ use PHPUnit\Framework\Assert;
  */
 class ExpiryContext extends FeatureContext
 {
-    protected $username = null;
-    protected $password = null;
-
     /**
      * The browser session, used for interacting with the website.
      *
@@ -65,27 +62,6 @@ class ExpiryContext extends FeatureContext
     }
 
     /**
-     * Get the login button from the given page.
-     *
-     * @param DocumentElement $page The page.
-     * @return NodeElement
-     */
-    protected function getLoginButton($page)
-    {
-        $buttons = $page->findAll('css', 'button');
-        $loginButton = null;
-        foreach ($buttons as $button) {
-            $lcButtonText = strtolower($button->getText());
-            if (strpos($lcButtonText, 'login') !== false) {
-                $loginButton = $button;
-                break;
-            }
-        }
-        Assert::assertNotNull($loginButton, 'Failed to find the login button');
-        return $loginButton;
-    }
-
-    /**
      * @Given I provide credentials that will expire in the distant future
      */
     public function iProvideCredentialsThatWillExpireInTheDistantFuture()
@@ -93,24 +69,6 @@ class ExpiryContext extends FeatureContext
         // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'distant_future';
         $this->password = 'a';
-    }
-
-    /**
-     * @When I login
-     */
-    public function iLogin()
-    {
-        $this->fillField('username', $this->username);
-        $this->fillField('password', $this->password);
-        $this->pressButton('Login');
-    }
-
-    /**
-     * @Then I should end up at my intended destination
-     */
-    public function iShouldEndUpAtMyIntendedDestination()
-    {
-        $this->assertPageBodyContainsText('Your attributes');
     }
 
     /**
@@ -130,34 +88,6 @@ class ExpiryContext extends FeatureContext
     {
         $page = $this->session->getPage();
         Assert::assertContains('will expire', $page->getHtml());
-    }
-
-    /**
-     * Submit the login form, including the secondary page's form (if
-     * simpleSAMLphp shows another page because JavaScript isn't supported).
-     *
-     * @param DocumentElement $page The page.
-     */
-    protected function submitLoginForm($page)
-    {
-        $loginButton = $this->getLoginButton($page);
-        $loginButton->click();
-
-        // SimpleSAMLphp 1.15 markup for secondary page:
-        $postLoginSubmitButton = $page->findButton('postLoginSubmitButton');
-        if ($postLoginSubmitButton instanceof NodeElement) {
-            $postLoginSubmitButton->click();
-        } else {
-
-            // SimpleSAMLphp 1.14 markup for secondary page:
-            $body = $page->find('css', 'body');
-            if ($body instanceof NodeElement) {
-                $onload = $body->getAttribute('onload');
-                if ($onload === "document.getElementsByTagName('input')[0].click();") {
-                    $body->pressButton('Submit');
-                }
-            }
-        }
     }
 
     /**

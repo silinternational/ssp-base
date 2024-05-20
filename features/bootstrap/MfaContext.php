@@ -12,9 +12,6 @@ use SimpleSAML\Module\mfa\LoginBrowser;
  */
 class MfaContext extends FeatureContext
 {
-    protected $username = null;
-    protected $password = null;
-    
     const USER_AGENT_WITHOUT_WEBAUTHN_SUPPORT = 'Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko';
     const USER_AGENT_WITH_WEBAUTHN_SUPPORT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36';
 
@@ -51,28 +48,7 @@ class MfaContext extends FeatureContext
         $continueButton = $page->find('css', '[name=continue]');
         return $continueButton;
     }
-    
-    /**
-     * Get the login button from the given page.
-     *
-     * @param DocumentElement $page The page.
-     * @return NodeElement
-     */
-    protected function getLoginButton($page)
-    {
-        $buttons = $page->findAll('css', 'button');
-        $loginButton = null;
-        foreach ($buttons as $button) {
-            $lcButtonText = strtolower($button->getText());
-            if (strpos($lcButtonText, 'login') !== false) {
-                $loginButton = $button;
-                break;
-            }
-        }
-        Assert::assertNotNull($loginButton, 'Failed to find the login button');
-        return $loginButton;
-    }
-    
+
     /**
      * Get the button for submitting the MFA form.
      *
@@ -85,35 +61,7 @@ class MfaContext extends FeatureContext
         Assert::assertNotNull($submitMfaButton, 'Failed to find the submit-MFA button');
         return $submitMfaButton;
     }
-    
-    /**
-     * @When I login
-     */
-    public function iLogin()
-    {
-        $page = $this->session->getPage();
-        try {
-            $page->fillField('username', $this->username);
-            $page->fillField('password', $this->password);
-            $this->submitLoginForm($page);
-        } catch (ElementNotFoundException $e) {
-            Assert::fail(sprintf(
-                "Did not find that element in the page.\nError: %s\nPage content: %s",
-                $e->getMessage(),
-                $page->getContent()
-            ));
-        }
-    }
-    
-    /**
-     * @Then I should end up at my intended destination
-     */
-    public function iShouldEndUpAtMyIntendedDestination()
-    {
-        $page = $this->session->getPage();
-        Assert::assertContains('Your attributes', $page->getHtml());
-    }
-    
+
     /**
      * Submit the current form, including the secondary page's form (if
      * simpleSAMLphp shows another page because JavaScript isn't supported) by
@@ -133,21 +81,7 @@ class MfaContext extends FeatureContext
         $button->click();
         $this->submitSecondarySspFormIfPresent($page);
     }
-    
-    /**
-     * Submit the login form, including the secondary page's form (if
-     * simpleSAMLphp shows another page because JavaScript isn't supported).
-     *
-     * @param DocumentElement $page The page.
-     */
-    protected function submitLoginForm($page)
-    {
-        $loginButton = $this->getLoginButton($page);
-        $loginButton->click();
-        $this->submitSecondarySspFormIfPresent($page);
-    }
-    
-    
+
     /**
      * Submit the MFA form, including the secondary page's form (if
      * simpleSAMLphp shows another page because JavaScript isn't supported).
@@ -161,33 +95,7 @@ class MfaContext extends FeatureContext
         $this->submitSecondarySspFormIfPresent($page);
     }
     
-    
-    /**
-     * Submit the secondary page's form (if simpleSAMLphp shows another page
-     * because JavaScript isn't supported).
-     *
-     * @param DocumentElement $page The page.
-     */
-    protected function submitSecondarySspFormIfPresent($page)
-    {
-        // SimpleSAMLphp 1.15 markup for secondary page:
-        $postLoginSubmitButton = $page->findButton('postLoginSubmitButton');
-        if ($postLoginSubmitButton instanceof NodeElement) {
-            $postLoginSubmitButton->click();
-        } else {
-            
-            // SimpleSAMLphp 1.14 markup for secondary page:
-            $body = $page->find('css', 'body');
-            if ($body instanceof NodeElement) {
-                $onload = $body->getAttribute('onload');
-                if ($onload === "document.getElementsByTagName('input')[0].click();") {
-                    $body->pressButton('Submit');
-                }
-            }
-        }
-    }
-    
-    /**
+        /**
      * @Given I provide credentials that do not need MFA
      */
     public function iProvideCredentialsThatDoNotNeedMfa()
@@ -284,14 +192,6 @@ class MfaContext extends FeatureContext
     {
         $page = $this->session->getPage();
         Assert::assertContains('<h2>USB Security Key</h2>', $page->getHtml());
-    }
-
-    /**
-     * @Given I have logged in (again)
-     */
-    public function iHaveLoggedIn()
-    {
-        $this->iLogin();
     }
 
     protected function submitMfaValue($mfaValue)

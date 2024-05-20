@@ -37,14 +37,8 @@ class LoginContext extends FeatureContext
     /** @var IdBroker */
     private $idBroker;
     
-    /** @var string|null */
-    private $password = null;
-    
     /** @var Request */
     private $request;
-    
-    /** @var string|null */
-    private $username = null;
     
     /**
      * Initializes context.
