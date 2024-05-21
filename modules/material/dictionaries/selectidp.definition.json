@@ -1,0 +1,38 @@
+{
+	"title": {
+		"en": "Choose an identity account",
+		"es": "Elige una cuenta de identidad",
+		"fr": "Choisissez un compte d'identité",
+		"ko": "ID 계정 선택"
+	},
+	"header": {
+		"en": "Choose an identity account",
+		"es": "Elige una cuenta de identidad",
+		"fr": "Choisissez un compte d'identité",
+		"ko": "ID 계정 선택"
+	},
+	"header-for-sp": {
+		"en": "Choose an identity account to continue to {spName}",
+		"es": "Elija una cuenta de identidad para continuar en {spName}",
+		"fr": "Choisissez un compte d'identité pour continuer vers {spName}",
+		"ko": "{spName}을 계속 진행하려면 신원 계정을 선택하십시오."
+	},
+	"enabled": {
+		"en": "Login with your {idpName} identity account",
+		"es": "Inicie sesión con su cuenta de identidad {idpName}",
+		"fr": "Connectez-vous avec votre compte d'identité {idpName}",
+		"ko": "{idpName} 신원 계정으로 로그인하십시오."
+	},
+	"disabled": {
+		"en": "{idpName} coming soon",
+		"es": "{IdpName} próximamente",
+		"fr": "{IdpName} à venir",
+		"ko": "{idpName} 곧 제공됨"
+	},
+	"help": {
+		"en": "Help",
+		"es": "Ayuda",
+		"fr": "Aidez-moi",
+		"ko": "도움"
+	}
+}

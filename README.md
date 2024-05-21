@@ -172,6 +172,75 @@ This is adapted from the `ssp-iidp-expirycheck` and `expirycheck` modules.
 Thanks to Alex Mihičinac, Steve Moitozo, and Steve Bagwell for the initial work
 they did on those two modules.
 
+### Material Module
+
+Material Design theme for use with SimpleSAMLphp
+
+#### Installation
+
+```
+composer.phar require silinternational/simplesamlphp-module-material:dev-master
+```
+
+#### Configuration
+
+Update `/simplesamlphp/config/config.php`:
+
+```
+'theme.use' => 'material:material'
+```
+
+This project provides a convenience by loading this config with whatever is in the environment variable `THEME_USE`._
+
+##### Google reCAPTCHA
+
+If a site key has been provided in `$this->data['recaptcha.siteKey']`, the
+username/password page may require the user prove his/her humanity.
+
+##### Branding
+
+Update `/simplesamlphp/config/config.php`:
+
+```
+'theme.color-scheme' => ['indigo-purple'|'blue_grey-teal'|'red-teal'|'orange-light_blue'|'brown-orange'|'teal-blue']
+```
+
+The login page looks for `/simplesamlphp/www/logo.png` which is **NOT** provided by default.
+
+##### Analytics
+
+Update `/simplesamlphp/config/config.php`:
+
+```
+'analytics.trackingId' => 'UA-some-unique-id-for-your-site'
+```
+
+This project provides a convenience by loading this config with whatever is in the environment variable `ANALYTICS_ID`._
+
+##### Announcements
+
+Update `/simplesamlphp/announcement/announcement.php`:
+
+```
+ return 'Some <strong>important</strong> announcement';
+```
+
+By default, the announcement is whatever is returned by `/simplesamlphp/announcement/announcement.php`._
+
+If provided, an alert will be shown to the user filled with the content of that announcement. HTML is supported.
+
+#### Testing the Material theme
+
+[Manual tests](./docs/material_tests.md)
+
+#### i18n support
+
+Translations are categorized by page in definition files located in the `dictionaries` directory.
+
+Localization is affected by the configuration setting `language.available`. Only language codes found in this property will be utilized.  
+For example, if a translation is provided in Afrikaans for this module, the configuration must be adjusted to make 'af' an available
+language. If that's not done, the translation function will not utilize the translations even if provided.
+
 ### Multi-Factor Authentication (MFA) simpleSAMLphp Module
 A simpleSAMLphp module for prompting the user for MFA credentials (such as a
 TOTP code, etc.).
