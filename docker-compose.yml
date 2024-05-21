@@ -106,6 +106,13 @@ services:
 
   ssp-hub.local:
     build: .
+    depends_on:
+      - ssp-idp1.local
+      - ssp-idp2.local
+      - ssp-idp3.local
+      - ssp-sp1.local
+      - ssp-sp2.local
+      - ssp-sp3.local
     volumes:
       # Utilize custom certs
       - ./development/hub/cert:/data/vendor/simplesamlphp/simplesamlphp/cert

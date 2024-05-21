@@ -6,23 +6,23 @@
 
 ## Setup
 
-1.  Setup `localhost` (or `192.168.62.54`, if using Vagrant) aliases for `ssp-hub1.local`, `ssp-hub2.local`, `ssp-idp1.local`, `ssp-idp2.local`, `ssp-idp3.local`, `ssp-idp4.local`, `ssp-sp1.local` and `ssp-sp2.local`. This is typically done in `/etc/hosts`.  _Example line:  `0.0.0.0  ssp-hub1.local ssp-idp1.local ssp-idp2.local ssp-idp4.local ssp-hub2.local ssp-idp3.local ssp-sp1.local ssp-sp2.local`_
+1.  Setup `localhost` (or `192.168.62.54`, if using Vagrant) aliases for `ssp-hub.local`, `ssp-hub2.local`, `ssp-idp1.local`, `ssp-idp2.local`, `ssp-idp3.local`, `ssp-idp4.local`, `ssp-sp1.local` and `ssp-sp2.local`. This is typically done in `/etc/hosts`.  _Example line:  `0.0.0.0  ssp-hub.local ssp-idp1.local ssp-idp2.local ssp-idp4.local ssp-hub2.local ssp-idp3.local ssp-sp1.local ssp-sp2.local`_
 1.  Start test environment, i.e., `make` from the command line.
 
 ## Hub page
 
-1.  Goto [Hub 1](http://ssp-hub1.local/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [Hub 1](http://ssp-hub.local/module.php/core/authenticate.php?as=hub-discovery)
 
 ## Error page
 
-1.  Goto [Hub 1](http://ssp-hub1.local)
+1.  Goto [Hub 1](http://ssp-hub.local)
 1.  Click **Federation** tab
 1.  Click either **Show metadata** link
 1.  Login as hub administrator: `username=`**admin** `password=`**abc123**
 
 ## Logout page
 
-1.  Goto [Hub 1](http://ssp-hub1.local)
+1.  Goto [Hub 1](http://ssp-hub.local)
 1.  Click **Authentication** tab
 1.  Click **Test configured authentication sources**
 1.  Click **admin**
@@ -33,25 +33,25 @@
 
 ### Without theme in place
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp1** (first one)
 1.  login page should **NOT** have material design
 
 ### With theme in place
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp2** (second one)
 1.  login page **SHOULD** have material design
 
 ## Forgot password functionality
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp2** (second one)
 1.  Forgot password link should be visible
 
 ## Helpful links functionality
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp4** (third one)
 1.  Help link should be visible under login form
 1.  Profile link should be visible under login form
@@ -62,7 +62,7 @@
 
 _Note:  This nag only works once since choosing later will simply set the nag date into the future a little._
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp2** (second one)
 1.  Login as an "about to expire" user: `username=`**near_future** `password=`**a**
 1.  Click **Later**
@@ -70,7 +70,7 @@ _Note:  This nag only works once since choosing later will simply set the nag da
 
 ### Expired page
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp2** (second one)
 1.  Login as an "expired" user: `username=`**already_past** `password=`**a**
 
@@ -78,7 +78,7 @@ _Note:  This nag only works once since choosing later will simply set the nag da
 
 ### Nag about missing MFA setup
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp4** (third one)
 1.  Login as an "unprotected" user: `username=`**nag_for_mfa** `password=`**a**
 1.  The "learn more" link should be visible
@@ -89,7 +89,7 @@ _Note:  This nag only works once since choosing later will simply set the nag da
 
 ### Nag about missing password recovery methods
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp4** (third one)
 1.  Login as a user without any methods: `username=`**nag_for_method** `password=`**a**
 1.  Enter one of the following codes to verify (`94923279, 82743523, 77802769, 01970541, 37771076`)
@@ -100,13 +100,13 @@ _Note:  This nag only works once since choosing later will simply set the nag da
 
 ### Force MFA setup
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp4** (third one)
 1.  Login as an "unsafe" user: `username=`**must_set_up_mfa** `password=`**a**
 
 ### Backup code
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp4** (third one)
 1.  Login as a "backup code" user: `username=`**has_backupcode** `password=`**a**
 1.  Enter one of the following codes to verify (`94923279, 82743523, 77802769, 01970541, 37771076`)
@@ -116,7 +116,7 @@ _Note:  This nag only works once since choosing later will simply set the nag da
 
 ### TOTP code
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp4** (third one)
 1.  Login as a "totp" user: `username=`**has_totp** `password=`**a**
 1.  Set up an app using this secret, `JVRXKYTMPBEVKXLS`
@@ -125,7 +125,7 @@ _Note:  This nag only works once since choosing later will simply set the nag da
 
 ### Key (U2F)
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp4** (third one)
 1.  Login as a "u2f" user: `username=`**has_u2f** `password=`**a**
 1.  Insert key and press
@@ -133,7 +133,7 @@ _Note:  This nag only works once since choosing later will simply set the nag da
 
 ### Key (WebAuthn)
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp4** (third one)
 1.  Login as a "webauthn" user: `username=`**has_webauthn** `password=`**a**
 1.  Insert key and press
@@ -141,21 +141,21 @@ _Note:  This nag only works once since choosing later will simply set the nag da
 
 ### Multiple options
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp4** (third one)
 1.  Login as a "multiple option" user: `username=`**has_all** `password=`**a**
 1.  Click **MORE OPTIONS**
 
 ### Multiple options (legacy, with U2F)
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp4** (third one)
 1.  Login as a "multiple option" user: `username=`**has_all_legacy** `password=`**a**
 1.  Click **MORE OPTIONS**
 
 ### Manager rescue
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp4** (third one)
 1.  Login as a "multiple option" user: `username=`**has_all** `password=`**a**
 1.  Click **MORE OPTIONS**
@@ -166,18 +166,18 @@ _NOTE: At this time, the correct code is not known and can't be tested locally (
 
 ## Announcements functionality
 
-1.  Goto [SP 2](http://ssp-sp2.local:8083/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 2](http://ssp-sp2.local:8082/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  The announcement should be displayed on the hub
 1.  Click **idp3** (first one)
 1.  The announcement should be displayed at the login screen
 
 ## SP name functionality
 
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  The sp name should appear in the banner
 
 ## Profile review functionality
-1.  Goto [SP 1](http://ssp-sp1.local:8082/module.php/core/authenticate.php?as=hub-discovery)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp4** (third one)
 1.  Login as a "Review needed" user: `username=`**needs_review** `password=`**a**
 1.  Enter one of the following printable codes to verify (`94923279, 82743523, 77802769, 01970541, 37771076`)
