@@ -1,7 +1,6 @@
 The hub will need its certs, `config.php` and `authsources.php` files as a normal simplesamlphp installation. Examples of these can be found in the `./development/hub` folder. (Note the `discoURL` entry in the `authsources.php` file.)
 
 Other files it will need are as follows ...
-* `/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco/default-enable` needs to be created (just an empty file)
 * The files in the `./lib` folder will need to go into `/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco/lib`
 * The files in the `./www` folder will need to go into `/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco/www`
 * The `./sspoverrides/www_saml2_idp/SSOService.php` file will need overwrite the same out-of-the-box file in `/data/vendor/simplesamlphp/simplesamlphp/www/saml2/idp/`
