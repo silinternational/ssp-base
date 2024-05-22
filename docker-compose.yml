@@ -1,29 +1,4 @@
-version: "2"
 services:
-  ssp:
-    build: .
-    volumes:
-      # Utilize custom certs
-      - ./development/ssp/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
-
-      # Utilize custom configs
-      - ./development/ssp/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
-      
-      # Configure the debugger
-      - ./development/ssp/run-debug.sh:/data/run-debug.sh
-
-      # Local modules
-      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
-      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
-      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
-      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
-
-    command: ["/data/run-debug.sh"]
-    ports:
-      - "80:80"
-    env_file:
-      - ./local.env
-
   db:
     image: mariadb:10
     ports:
