@@ -52,11 +52,7 @@ services:
       - ./features:/data/features
       - ./behat.yml:/data/behat.yml
       - ./tests:/data/tests
-      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
-      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
-      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
-      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
-      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules:/data/vendor/simplesamlphp/simplesamlphp/modules
     command: ["/data/run-tests.sh"]
 
   test-browser:
@@ -109,11 +105,7 @@ services:
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
 
       # Local modules
-      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
-      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
-      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
-      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
-      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules:/data/vendor/simplesamlphp/simplesamlphp/modules
     command: /data/run-debug.sh
     ports:
       - "80:80"
@@ -155,11 +147,7 @@ services:
       - ./features:/data/features
 
       # Local modules
-      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
-      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
-      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
-      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
-      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules:/data/vendor/simplesamlphp/simplesamlphp/modules
     command: >
       bash -c "whenavail db 3306 60 /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/lib/Auth/Source/yii migrate --interactive=0 &&
       /data/run.sh"
@@ -207,11 +195,7 @@ services:
       - ./development/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/lib/Auth/Source/UserPass.php
 
       # Local modules
-      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
-      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
-      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
-      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
-      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules:/data/vendor/simplesamlphp/simplesamlphp/modules
     ports:
       - "8086:80"
     environment:
@@ -238,11 +222,7 @@ services:
       - ./development/idp3-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
 
       # Local modules
-      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
-      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
-      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
-      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
-      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules:/data/vendor/simplesamlphp/simplesamlphp/modules
     ports:
       - "8087:80"
     env_file:
@@ -272,11 +252,7 @@ services:
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
 
       # Local modules
-      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
-      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
-      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
-      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
-      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules:/data/vendor/simplesamlphp/simplesamlphp/modules
     ports:
       - "8081:80"
     environment:
@@ -302,11 +278,7 @@ services:
       - ./development/sp2-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
 
       # Local modules
-      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
-      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
-      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
-      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
-      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules:/data/vendor/simplesamlphp/simplesamlphp/modules
     ports:
       - "8082:80"
     environment:
