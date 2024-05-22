@@ -420,6 +420,14 @@ services:
       - AWS_DEFAULT_REGION=us-east-1
       - AWS_DYNAMODB_ENDPOINT=http://dynamo:8000
 
+  node:
+    image: node:lts-alpine
+    volumes:
+      - ./package.json:/data/package.json
+      - ./package-lock.json:/data/package-lock.json
+      - ./node_modules:/data/node_modules
+    working_dir: /data
+
 networks:
   default:
     driver: bridge

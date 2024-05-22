@@ -16,3 +16,15 @@ test:
 
 test-integration:
 	docker-compose run --rm test ./run-integration-tests.sh
+
+copyJsLib:
+	cp ./node_modules/@simplewebauthn/browser/dist/bundle/index.umd.min.js ./modules/material/www/simplewebauthn/browser.js
+	cp ./node_modules/@simplewebauthn/browser/LICENSE.md ./www/simplewebauthn/LICENSE.md
+
+deps:
+	docker-compose run --rm node npm install --ignore-scripts
+	make copyJsLib
+
+depsupdate:
+	docker-compose run --rm node npm update --ignore-scripts
+	make copyJsLib
