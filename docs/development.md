@@ -1,7 +1,8 @@
-Three SPs, a hub (a combined IdP and SP) and three IdPs get spun up by docker-compose.  In order for this to work, you will need to edit your hosts file to include entries for the following domains ...
+Four SPs, a hub (a combined IdP and SP) and three IdPs get spun up by docker-compose.  In order for this to work, you will need to edit your hosts file to include entries for the following domains ...
 * ssp-sp1.local   # to be used with port 8081
-* ssp-sp2.local  # to be used with port 8082
-* ssp-sp3.local  # to be used with port 8084
+* ssp-sp2.local   # to be used with port 8082
+* ssp-sp3.local   # to be used with port 8083
+* pwmanager.local # to be used with port 8084
 * ssp-hub.local
 * ssp-idp1.local  # to be used with port 8085
 * ssp-idp2.local  # to be used with port 8086
