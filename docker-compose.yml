@@ -56,6 +56,7 @@ services:
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
     command: ["/data/run-tests.sh"]
 
   test-browser:
@@ -112,6 +113,7 @@ services:
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
     command: /data/run-debug.sh
     ports:
       - "80:80"
@@ -157,6 +159,7 @@ services:
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
     command: >
       bash -c "whenavail db 3306 60 /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/lib/Auth/Source/yii migrate --interactive=0 &&
       /data/run.sh"
@@ -208,6 +211,7 @@ services:
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
     ports:
       - "8086:80"
     environment:
@@ -238,6 +242,7 @@ services:
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
     ports:
       - "8087:80"
     env_file:
@@ -271,6 +276,7 @@ services:
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
     ports:
       - "8081:80"
     environment:
@@ -300,6 +306,7 @@ services:
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
     ports:
       - "8082:80"
     environment:
