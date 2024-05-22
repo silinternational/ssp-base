@@ -2,9 +2,9 @@
 
 # Try to run database migrations
 cd /data/vendor/simplesamlphp/simplesamlphp/modules/silauth
-chmod a+x ./src/yii
+chmod a+x ./lib/Auth/Source/yii
 
-output=$(./src/yii migrate --interactive=0 2>&1)
+output=$(./lib/Auth/Source/yii migrate --interactive=0 2>&1)
 
 # If they failed, exit.
 rc=$?;
