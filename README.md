@@ -9,7 +9,7 @@ must be installed.
 
 [Make](https://www.gnu.org/software/make) is optional but simplifies the build process.
 
-[Vagrant](https://www.vagrantup.com) for Windows users.
+[PHP](https://www.php.net) and [Composer](https://getcomposer.org) are optional, but at a minimum you need COMPOSER_CACHE_DIR set to a local directory for storing the PHP dependency cache. This must be set in your local development environment, not in the Docker container environment. For example, in your `~/.bashrc`, include `export COMPOSER_CACHE_DIR="$HOME/.composer"` and create an empty directory at `~/.composer`.
 
 ## Configuration
 By default, configuration is read from environment variables. These are documented
@@ -34,9 +34,11 @@ will overwrite variables set in the execution environment.
 ## Local testing
 
 1. `cp local.env.dist local.env` within project root and make adjustments as needed.
-2. Add your github token to the `COMPOSER_AUTH` variable in the `local.env` file.
-3. `make` or `docker-compose up -d` within the project root.
-4. Visit http://localhost to see SSP running
+2. `cp local.broker.env.dist local.broker.env` within project root and make adjustments as needed.
+3. Add your github token to the `COMPOSER_AUTH` variable in the `local.env` file.
+4. Create `localhost` aliases for `ssp-hub.local`, `ssp-idp1.local`, `ssp-idp2.local`, `ssp-idp3.local`, `ssp-sp1.local`, `ssp-sp2.local`, and `ssp-sp3.local`. This is typically done in `/etc/hosts`.  _Example line:  `127.0.0.1  ssp-hub.local ssp-idp1.local ssp-idp2.local ssp-idp3.local ssp-sp1.local ssp-sp2.local ssp-sp3.local`_
+4. `make` or `docker-compose up -d` within the project root.
+5. Visit http://ssp-hub.local to see SimpleSAMLphp 
 
 ### Setup PhpStorm for remote debugging with Docker
 

@@ -1,13 +1,9 @@
 
 # Testing the Material Module theme
 
-[Make](https://www.gnu.org/software/make/), [Docker](https://www.docker.com/products/overview) and
-[Docker Compose](https://docs.docker.com/compose/install/) are required.
-
 ## Setup
 
-1.  Setup `localhost` (or `192.168.62.54`, if using Vagrant) aliases for `ssp-hub.local`, `ssp-hub2.local`, `ssp-idp1.local`, `ssp-idp2.local`, `ssp-idp3.local`, `ssp-idp4.local`, `ssp-sp1.local` and `ssp-sp2.local`. This is typically done in `/etc/hosts`.  _Example line:  `0.0.0.0  ssp-hub.local ssp-idp1.local ssp-idp2.local ssp-idp4.local ssp-hub2.local ssp-idp3.local ssp-sp1.local ssp-sp2.local`_
-1.  Start test environment, i.e., `make` from the command line.
+See [Local Testing](../README.md#local-testing) for instructions to set up your local development environment.
 
 ## Hub page
 
