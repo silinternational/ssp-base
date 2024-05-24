@@ -1,30 +1,4 @@
-version: "2"
 services:
-  ssp:
-    build: .
-    volumes:
-      # Utilize custom certs
-      - ./development/ssp/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
-
-      # Utilize custom configs
-      - ./development/ssp/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
-      
-      # Configure the debugger
-      - ./development/ssp/run-debug.sh:/data/run-debug.sh
-
-      # Local modules
-      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
-      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
-      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
-      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
-      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
-
-    command: ["/data/run-debug.sh"]
-    ports:
-      - "80:80"
-    env_file:
-      - ./local.env
-
   db:
     image: mariadb:10
     ports:
@@ -83,6 +57,7 @@ services:
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
       - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     command: ["/data/run-tests.sh"]
 
   test-browser:
@@ -108,6 +83,13 @@ services:
 
   ssp-hub.local:
     build: .
+    depends_on:
+      - ssp-idp1.local
+      - ssp-idp2.local
+      - ssp-idp3.local
+      - ssp-sp1.local
+      - ssp-sp2.local
+      - ssp-sp3.local
     volumes:
       # Utilize custom certs
       - ./development/hub/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
@@ -133,6 +115,7 @@ services:
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
       - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     command: /data/run-debug.sh
     ports:
       - "80:80"
@@ -179,6 +162,7 @@ services:
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
       - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     command: >
       bash -c "whenavail db 3306 60 /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/lib/Auth/Source/yii migrate --interactive=0 &&
       /data/run.sh"
@@ -231,6 +215,7 @@ services:
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
       - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     ports:
       - "8086:80"
     environment:
@@ -262,6 +247,7 @@ services:
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
       - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     ports:
       - "8087:80"
     env_file:
@@ -296,6 +282,7 @@ services:
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
       - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     ports:
       - "8081:80"
     environment:
@@ -326,6 +313,7 @@ services:
       - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
       - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     ports:
       - "8082:80"
     environment:
@@ -445,6 +433,14 @@ services:
       - AWS_SECRET_ACCESS_KEY=0
       - AWS_DEFAULT_REGION=us-east-1
       - AWS_DYNAMODB_ENDPOINT=http://dynamo:8000
+
+  node:
+    image: node:lts-alpine
+    volumes:
+      - ./package.json:/data/package.json
+      - ./package-lock.json:/data/package-lock.json
+      - ./node_modules:/data/node_modules
+    working_dir: /data
 
 networks:
   default:
