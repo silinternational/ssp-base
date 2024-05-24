@@ -9,7 +9,7 @@ must be installed.
 
 [Make](https://www.gnu.org/software/make) is optional but simplifies the build process.
 
-[PHP](https://www.php.net) and [Composer](https://getcomposer.org) are optional, but at a minimum you need COMPOSER_CACHE_DIR set to a local directory for storing the PHP dependency cache. This must be set in your local development environment, not in the Docker container environment. For example, in your `~/.bashrc`, include `export COMPOSER_CACHE_DIR="$HOME/.composer"` and create an empty directory at `~/.composer`.
+[PHP](https://www.php.net) and [Composer](https://getcomposer.org) are optional, but at a minimum you need COMPOSER_CACHE_DIR set to a local directory for storing the PHP dependency cache. This must be exported in your local development environment, not in the Docker container environment. For example, in your `~/.bashrc`, include `export COMPOSER_CACHE_DIR="$HOME/.composer"` and create an empty directory at `~/.composer`.
 
 ## Configuration
 By default, configuration is read from environment variables. These are documented
