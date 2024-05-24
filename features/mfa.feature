@@ -6,37 +6,37 @@ Feature: Prompt for MFA credentials
 
   Scenario: Don't prompt for MFA
     Given I provide credentials that do not need MFA
-    When I login
+    When I log in
     Then I should end up at my intended destination
 
   Scenario: Needs MFA, but no MFA options are available
     Given I provide credentials that need MFA but have no MFA options available
-    When I login
+    When I log in
     Then I should see a message that I have to set up MFA
       And there should be a way to go set up MFA now
       And there should NOT be a way to continue to my intended destination
 
   Scenario: Following the requirement to go set up MFA
     Given I provide credentials that need MFA but have no MFA options available
-      And I login
+      And I log in
     When I click the set-up-MFA button
     Then I should end up at the mfa-setup URL
       And I should NOT be able to get to my intended destination
 
   Scenario: Needs MFA, has backup code option available
     Given I provide credentials that need MFA and have backup codes available
-    When I login
+    When I log in
     Then I should see a prompt for a backup code
 
   Scenario: Needs MFA, has TOTP option available
     Given I provide credentials that need MFA and have TOTP available
-    When I login
+    When I log in
     Then I should see a prompt for a TOTP code
 
   Scenario: Needs MFA, has WebAuthn option available
     Given I provide credentials that need MFA and have WebAuthn available
       And the user's browser supports WebAuthn
-    When I login
+    When I log in
     Then I should see a prompt for a WebAuthn security key
 
   Scenario: Accepting a (non-rate-limited) correct MFA value
@@ -129,7 +129,7 @@ Feature: Prompt for MFA credentials
   Scenario Outline: Defaulting to another option when WebAuthn is not supported
     Given I provide credentials that have <WebAuthn?><TOTP?><backup codes?>
       And the user's browser <supports WebAuthn or not>
-    When I login
+    When I log in
     Then I should see a prompt for a <default MFA type>
 
     Examples:
@@ -155,7 +155,7 @@ Feature: Prompt for MFA credentials
     Given I provide credentials that have a used <MFA type>
       And and I have a more recently used <recent MFA type>
       And the user's browser <supports WebAuthn or not>
-    When I login
+    When I log in
     Then I should see a prompt for a <default MFA type>
 
     Examples:
@@ -170,13 +170,13 @@ Feature: Prompt for MFA credentials
   Scenario: Defaulting to the manager code despite having a used mfa
     Given I provide credentials that have a manager code, a WebAuthn and a more recently used TOTP
       And the user's browser supports WebAuthn
-    When I login
+    When I log in
     Then I should see a prompt for a manager rescue code
 
   Scenario Outline: When to show the WebAuthn-not-supported error message
     Given I provide credentials that have WebAuthn
       And the user's browser <supports WebAuthn or not>
-    When I login
+    When I log in
     Then I <should or not> see an error message about WebAuthn being unsupported
 
     Examples:
@@ -188,7 +188,7 @@ Feature: Prompt for MFA credentials
   Scenario Outline: When to show the link to send a manager rescue code
     Given I provide credentials that have <WebAuthn?><TOTP?><backup codes?>
     And the user <has or does not have> a manager email
-    When I login
+    When I log in
     Then I <should or should not> see a link to send a code to the user's manager
 
     Examples:
@@ -211,13 +211,13 @@ Feature: Prompt for MFA credentials
   Scenario: Ask for a code to be sent to my manager
     Given I provide credentials that have backup codes
       And the user has a manager email
-      And I login
+      And I log in
     When I click the Request Assistance link
     Then there should be a way to request a manager code
 
   Scenario: Submit a code sent to my manager at an earlier time
     Given I provide credentials that have a manager code
-      And I login
+      And I log in
     When I submit the correct manager code
       # because profile review is required after using a manager code:
       And I click the remind-me-later button
@@ -226,7 +226,7 @@ Feature: Prompt for MFA credentials
   Scenario: Submit a correct manager code
     Given I provide credentials that have backup codes
       And the user has a manager email
-      And I login
+      And I log in
       And I click the Request Assistance link
       And I click the Send a code link
     When I submit the correct manager code
@@ -237,7 +237,7 @@ Feature: Prompt for MFA credentials
   Scenario: Submit an incorrect manager code
     Given I provide credentials that have backup codes
       And the user has a manager email
-      And I login
+      And I log in
       And I click the Request Assistance link
       And I click the Send a code link
     When I submit an incorrect manager code
@@ -246,7 +246,7 @@ Feature: Prompt for MFA credentials
   Scenario: Ask for assistance, but change my mind
     Given I provide credentials that have backup codes
     And the user has a manager email
-    And I login
+    And I log in
     And I click the Request Assistance link
     When I click the Cancel button
     Then I should see a prompt for a backup code

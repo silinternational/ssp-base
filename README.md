@@ -375,3 +375,29 @@ load balancer) in the TRUSTED_IP_ADDRESSES environment variable (see
 #### Status Check
 To check the status of the website, you can access this URL:  
 `https://(your domain name)/module.php/silauth/status.php`
+
+### SilDisco module for SAML Discovery
+
+#### Configuration
+
+Ensure the DYNAMO_* environment variables are set as shown in the local.env.dist file.
+
+#### Overview
+
+[Module Overview](./docs/overview.md)
+
+#### The Hub
+
+[The Hub](./docs/the_hub.md)
+
+#### Authprocs
+
+[Editing Authprocs](./docs/editing_authprocs.md)
+
+#### Development
+
+[Development](./docs/development.md)
+
+#### Functional Testing
+
+[Functional Testing](./docs/functional_testing.md)

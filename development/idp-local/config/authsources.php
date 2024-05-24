@@ -1186,5 +1186,29 @@ $config = [
             ],
             'manager_email' => ['manager@example.com'],
         ],
+
+        // sildisco test user
+        'sildisco_idp1:sildisco_password' => [
+            'eduPersonPrincipalName' => ['sildisco@idp1'],
+            'eduPersonTargetID' => ['57de1930-c5d2-4f6f-9318-d85a939c45d8'],
+            'sn' => ['IDP1'],
+            'givenName' => ['SilDisco'],
+            'mail' => ['sildisco_idp1@example.com'],
+            'employeeNumber' => ['50001'],
+            'cn' => ['SILDISCO_IDP1'],
+            'schacExpiryDate' => [
+                gmdate('YmdHis\Z', strtotime('+6 months')),
+            ],
+            'mfa' => [
+                'prompt' => 'no',
+                'add' => 'no',
+                'options' => [],
+            ],
+            'method' => [
+                'add' => 'no',
+            ],
+            'profile_review' => 'no'
+        ],
+
     ],
 ];

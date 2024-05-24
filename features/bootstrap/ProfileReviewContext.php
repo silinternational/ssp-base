@@ -10,11 +10,6 @@ use Sil\PhpEnv\Env;
  */
 class ProfileReviewContext extends FeatureContext
 {
-    protected $nonPwManagerUrl = 'http://sp/module.php/core/authenticate.php?as=profilereview-idp-no-port';
-    
-    protected $username = null;
-    protected $password = null;
-
     /**
      * Assert that the given page has a form that contains the given text.
      *
@@ -38,55 +33,6 @@ class ProfileReviewContext extends FeatureContext
     }
 
     /**
-     * Get the login button from the given page.
-     *
-     * @param DocumentElement $page The page.
-     * @return NodeElement
-     */
-    protected function getLoginButton($page)
-    {
-        $buttons = $page->findAll('css', 'button');
-        $loginButton = null;
-        foreach ($buttons as $button) {
-            $lcButtonText = strtolower($button->getText());
-            if (strpos($lcButtonText, 'login') !== false) {
-                $loginButton = $button;
-                break;
-            }
-        }
-        Assert::assertNotNull($loginButton, 'Failed to find the login button');
-        return $loginButton;
-    }
-    
-    /**
-     * @When I login
-     */
-    public function iLogin()
-    {
-        $page = $this->session->getPage();
-        try {
-            $page->fillField('username', $this->username);
-            $page->fillField('password', $this->password);
-            $this->submitLoginForm($page);
-        } catch (ElementNotFoundException $e) {
-            Assert::fail(sprintf(
-                "Did not find that element in the page.\nError: %s\nPage content: %s",
-                $e->getMessage(),
-                $page->getContent()
-            ));
-        }
-    }
-    
-    /**
-     * @Then I should end up at my intended destination
-     */
-    public function iShouldEndUpAtMyIntendedDestination()
-    {
-        $page = $this->session->getPage();
-        Assert::assertContains('Your attributes', $page->getHtml());
-    }
-    
-    /**
      * Submit the current form, including the secondary page's form (if
      * simpleSAMLphp shows another page because JavaScript isn't supported) by
      * clicking the specified button.
@@ -105,45 +51,7 @@ class ProfileReviewContext extends FeatureContext
         $button->click();
         $this->submitSecondarySspFormIfPresent($page);
     }
-    
-    /**
-     * Submit the login form, including the secondary page's form (if
-     * simpleSAMLphp shows another page because JavaScript isn't supported).
-     *
-     * @param DocumentElement $page The page.
-     */
-    protected function submitLoginForm($page)
-    {
-        $loginButton = $this->getLoginButton($page);
-        $loginButton->click();
-        $this->submitSecondarySspFormIfPresent($page);
-    }
-    
-    /**
-     * Submit the secondary page's form (if simpleSAMLphp shows another page
-     * because JavaScript isn't supported).
-     *
-     * @param DocumentElement $page The page.
-     */
-    protected function submitSecondarySspFormIfPresent($page)
-    {
-        // SimpleSAMLphp 1.15 markup for secondary page:
-        $postLoginSubmitButton = $page->findButton('postLoginSubmitButton');
-        if ($postLoginSubmitButton instanceof NodeElement) {
-            $postLoginSubmitButton->click();
-        } else {
-            
-            // SimpleSAMLphp 1.14 markup for secondary page:
-            $body = $page->find('css', 'body');
-            if ($body instanceof NodeElement) {
-                $onload = $body->getAttribute('onload');
-                if ($onload === "document.getElementsByTagName('input')[0].click();") {
-                    $body->pressButton('Submit');
-                }
-            }
-        }
-    }
-    
+
     /**
      * @Given I provide credentials that do not need review
      */
@@ -176,13 +84,6 @@ class ProfileReviewContext extends FeatureContext
         }
     }
 
-    /**
-     * @Given I have logged in (again)
-     */
-    public function iHaveLoggedIn()
-    {
-        $this->iLogin();
-    }
 
     protected function pageContainsElementWithText($cssSelector, $text)
     {
