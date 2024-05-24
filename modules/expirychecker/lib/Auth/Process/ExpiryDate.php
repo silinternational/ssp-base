@@ -118,7 +118,7 @@ class ExpiryDate extends ProcessingFilter
      *     expire.
      * @return int The number of days remaining
      */
-    protected function getDaysLeftBeforeExpiry($expiryTimestamp)
+    protected function getDaysLeftBeforeExpiry($expiryTimestamp): int
     {
         $now = time();
         $end = $expiryTimestamp;
@@ -389,7 +389,7 @@ class ExpiryDate extends ProcessingFilter
         ]));
         
         $daysLeft = $this->getDaysLeftBeforeExpiry($expiryTimestamp);
-        $state['daysLeft'] = $daysLeft;
+        $state['daysLeft'] = (string)$daysLeft;
         
         if (isset($state['isPassive']) && $state['isPassive'] === true) {
             /* We have a passive request. Skip the warning. */
