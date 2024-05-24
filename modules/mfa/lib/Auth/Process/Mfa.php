@@ -761,7 +761,7 @@ class Mfa extends ProcessingFilter
         $numBackupCodesRemaining
     ) {
         $state['employeeId'] = $employeeId;
-        $state['numBackupCodesRemaining'] = $numBackupCodesRemaining;
+        $state['numBackupCodesRemaining'] = (string)$numBackupCodesRemaining;
         
         $stateId = State::saveState($state, self::STAGE_SENT_TO_LOW_ON_BACKUP_CODES_NAG);
         $url = Module::getModuleURL('mfa/low-on-backup-codes.php');
