@@ -72,6 +72,9 @@ $config = [
             'mail' => ['missing_exp@example.com'],
             'employeeNumber' => ['44444'],
             'cn' => ['MISSING_EXP'],
+            'mfa' => [
+                'prompt' => 'no',
+            ],
         ],
 
         // expirychecker test user whose password expiry is invalid

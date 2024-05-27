@@ -184,7 +184,7 @@ services:
       PROFILE_URL_FOR_TESTS: "http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
-      THEME_USE: "default"
+      THEME_USE: "material:material"
       SESSION_STORE_TYPE: "sql"
       MYSQL_HOST: "db"
       MYSQL_DATABASE: "silauth"
@@ -372,7 +372,7 @@ services:
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
       ADMIN_PROTECT_INDEX_PAGE: "false"
-      THEME_USE: material:material
+      THEME_USE: "material:material"
 
   # the broker and brokerDb containers are used by the silauth module
   broker:

@@ -86,7 +86,7 @@ class SilDiscoContext extends FeatureContext
         $this->iGoToTheSpLoginPage('SP3');
         $this->iClickOnTheTile('IDP 1');
         $this->clickLink('Logout');
-        $this->assertPageContainsText('You have been logged out.');
+        $this->assertPageContainsText('You have now been logged out.');
     }
 
     /**
@@ -96,7 +96,7 @@ class SilDiscoContext extends FeatureContext
     {
         $this->iGoToTheSpLoginPage('SP2');
         $this->clickLink('Logout');
-        $this->assertPageContainsText('You have been logged out.');
+        $this->assertPageContainsText('You have now been logged out.');
     }
 
     /**
