@@ -345,10 +345,10 @@ services:
       ADMIN_EMAIL: john_doe@there.com
       ADMIN_PASS: sp3
       SECRET_SALT: h57fjemb&dn^nsJFGNjweJz3
-      SECURE_COOKIE: false
-      SHOW_SAML_ERRORS: true
-      SAML20_IDP_ENABLE: false
-      ADMIN_PROTECT_INDEX_PAGE: false
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
+      SAML20_IDP_ENABLE: "false"
+      ADMIN_PROTECT_INDEX_PAGE: "false"
 
   pwmanager.local:
     image: silintl/ssp-base:develop
@@ -368,10 +368,10 @@ services:
       ADMIN_PASS: sp1
       IDP_NAME: THIS VARIABLE IS REQUIRED BUT PROBABLY NOT USED
       SECRET_SALT: NOT-a-secret-k49fjfkw73hjf9t87wjiw
-      SECURE_COOKIE: false
-      SHOW_SAML_ERRORS: true
-      SAML20_IDP_ENABLE: false
-      ADMIN_PROTECT_INDEX_PAGE: false
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
+      SAML20_IDP_ENABLE: "false"
+      ADMIN_PROTECT_INDEX_PAGE: "false"
       THEME_USE: material:material
 
   # the broker and brokerDb containers are used by the silauth module
