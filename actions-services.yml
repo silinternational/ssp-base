@@ -23,15 +23,15 @@ services:
       - pwmanager.local
       - test-browser
     environment:
-      - MYSQL_HOST=db
-      - MYSQL_DATABASE=silauth
-      - MYSQL_USER=silauth
-      - MYSQL_PASSWORD=silauth
-      - PROFILE_URL_FOR_TESTS=http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
-      - ADMIN_EMAIL=john_doe@there.com
-      - ADMIN_PASS=b
-      - SECRET_SALT=abc123
-      - IDP_NAME=x
+      MYSQL_HOST: db
+      MYSQL_DATABASE: silauth
+      MYSQL_USER: silauth
+      MYSQL_PASSWORD: silauth
+      PROFILE_URL_FOR_TESTS: http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
+      ADMIN_EMAIL: john_doe@there.com
+      ADMIN_PASS: b
+      SECRET_SALT: abc123
+      IDP_NAME: x
     volumes:
       - ./dockerbuild/run-integration-tests.sh:/data/run-integration-tests.sh
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
@@ -210,13 +210,13 @@ services:
       - ./development/sp2-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
 
     environment:
-      - ADMIN_EMAIL=john_doe@there.com
-      - ADMIN_PASS=sp2
-      - SECRET_SALT=h57fjemb&dn^nsJFGNjweJz2
-      - SECURE_COOKIE=false
-      - SHOW_SAML_ERRORS=true
-      - SAML20_IDP_ENABLE=false
-      - ADMIN_PROTECT_INDEX_PAGE=false
+      ADMIN_EMAIL: john_doe@there.com
+      ADMIN_PASS: sp2
+      SECRET_SALT: h57fjemb&dn^nsJFGNjweJz2
+      SECURE_COOKIE: false
+      SHOW_SAML_ERRORS: true
+      SAML20_IDP_ENABLE: false
+      ADMIN_PROTECT_INDEX_PAGE: false
 
   ssp-sp3.local:
     build: .
@@ -232,13 +232,13 @@ services:
       - ./development/sp3-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
 
     environment:
-      - ADMIN_EMAIL=john_doe@there.com
-      - ADMIN_PASS=sp3
-      - SECRET_SALT=h57fjemb&dn^nsJFGNjweJz3
-      - SECURE_COOKIE=false
-      - SHOW_SAML_ERRORS=true
-      - SAML20_IDP_ENABLE=false
-      - ADMIN_PROTECT_INDEX_PAGE=false
+      ADMIN_EMAIL: john_doe@there.com
+      ADMIN_PASS: sp3
+      SECRET_SALT: h57fjemb&dn^nsJFGNjweJz3
+      SECURE_COOKIE: false
+      SHOW_SAML_ERRORS: true
+      SAML20_IDP_ENABLE: false
+      ADMIN_PROTECT_INDEX_PAGE: false
 
 
   pwmanager.local:
@@ -253,15 +253,15 @@ services:
       # Utilize custom metadata
       - ./development/sp-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
     environment:
-      - ADMIN_EMAIL=john_doe@there.com
-      - ADMIN_PASS=sp1
-      - IDP_NAME=THIS VARIABLE IS REQUIRED BUT PROBABLY NOT USED
-      - SECRET_SALT=NOT-a-secret-k49fjfkw73hjf9t87wjiw
-      - SECURE_COOKIE=false
-      - SHOW_SAML_ERRORS=true
-      - SAML20_IDP_ENABLE=false
-      - ADMIN_PROTECT_INDEX_PAGE=false
-      - THEME_USE=default
+      ADMIN_EMAIL: john_doe@there.com
+      ADMIN_PASS: sp1
+      IDP_NAME: THIS VARIABLE IS REQUIRED BUT PROBABLY NOT USED
+      SECRET_SALT: NOT-a-secret-k49fjfkw73hjf9t87wjiw
+      SECURE_COOKIE: false
+      SHOW_SAML_ERRORS: true
+      SAML20_IDP_ENABLE: false
+      ADMIN_PROTECT_INDEX_PAGE: false
+      THEME_USE: default
 
   # the broker and brokerDb containers are used by the silauth module
   broker:
