@@ -1,15 +1,10 @@
 <?php
-
-use Sil\SspUtils\AnnouncementUtils;
-
-// TODO: remove this
-$announcementHtml = AnnouncementUtils::getAnnouncement();
-
-if (! empty($announcementHtml)) {
+if (! empty($this->data['announcement'])) {
 ?>
   <div class="mdl-typography--subhead mdl-typography--text-center alert margin" layout-children="column">
-      <?= $announcementHtml ?>
+      <?= $this->data['announcement'] ?>
   </div>
 <?php
 }
 ?>
+

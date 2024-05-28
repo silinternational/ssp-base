@@ -162,9 +162,9 @@ _NOTE: At this time, the correct code is not known and can't be tested locally (
 
 ## Announcements functionality
 
-1.  Goto [SP 2](http://ssp-sp2.local:8082/module.php/core/authenticate.php?as=ssp-hub-custom-port)
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  The announcement should be displayed on the hub
-1.  Click **idp3** (first one)
+1.  Click **idp1** (first one)
 1.  The announcement should be displayed at the login screen
 
 ## SP name functionality
