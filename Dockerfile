@@ -44,6 +44,11 @@ ENV SSP_PATH /data/vendor/simplesamlphp/simplesamlphp
 # Copy modules into simplesamlphp
 COPY modules/ $SSP_PATH/modules
 
+# Copy material theme templates to other modules, just in case the "default" theme is selected
+COPY modules/material/themes/material/expirychecker/* $SSP_PATH/modules/expirychecker/templates/
+COPY modules/material/themes/material/mfa/* $SSP_PATH/modules/mfa/templates/
+COPY modules/material/themes/material/profilereview/* $SSP_PATH/modules/profilereview/templates/
+
 # Copy in SSP override files
 RUN mv $SSP_PATH/www/index.php $SSP_PATH/www/ssp-index.php
 COPY dockerbuild/ssp-overrides/index.php $SSP_PATH/www/index.php
