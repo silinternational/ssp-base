@@ -27,7 +27,6 @@ $SESSION_STATE_TIMEOUT = (int)(Env::get('SESSION_STATE_TIMEOUT', (60 * 60))); //
 $SESSION_COOKIE_LIFETIME = (int)(Env::get('SESSION_COOKIE_LIFETIME', 0));
 $SESSION_REMEMBERME_LIFETIME = (int)(Env::get('SESSION_REMEMBERME_LIFETIME', (14 * 86400))); // 14 days
 $SECURE_COOKIE = Env::get('SECURE_COOKIE', true);
-$THEME_USE = Env::get('THEME_USE', 'material:material');
 $MEMCACHE_STORE_EXPIRES = (int)(Env::get('MEMCACHE_STORE_EXPIRES', (36 * 60 * 60))); // 36 hours.
 $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
 $GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
@@ -445,7 +444,7 @@ $config = [
     /*
      * Which theme directory should be used?
      */
-    'theme.use' => $THEME_USE,
+    'theme.use' => 'material:material',
 
 
     /*

@@ -51,7 +51,6 @@ $TIMEZONE = Env::get('TIMEZONE', 'GMT');
 $ENABLE_DEBUG = Env::get('ENABLE_DEBUG', false);
 $LOGGING_LEVEL = Env::get('LOGGING_LEVEL', 'NOTICE');
 $LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'stderr');
-$THEME_USE = Env::get('THEME_USE', 'material:material');
 
 // Options: https://github.com/silinternational/simplesamlphp-module-material/blob/develop/README.md#branding
 $THEME_COLOR_SCHEME = Env::get('THEME_COLOR_SCHEME', null);
@@ -964,7 +963,7 @@ $config = [
     /*
      * Which theme directory should be used?
      */
-    'theme.use' => $THEME_USE,
+    'theme.use' => 'material:material',
 
     /*
      * Set this option to the text you would like to appear at the header of each page. Set to false if you don't want
