@@ -31,16 +31,16 @@ services:
       - pwmanager.local
       - test-browser
     environment:
-      - MYSQL_HOST=db
-      - MYSQL_DATABASE=silauth
-      - MYSQL_USER=silauth
-      - MYSQL_PASSWORD=silauth
-      - COMPOSER_CACHE_DIR=/composer
-      - PROFILE_URL_FOR_TESTS=http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
-      - ADMIN_EMAIL=john_doe@there.com
-      - ADMIN_PASS=b
-      - SECRET_SALT=abc123
-      - IDP_NAME=x
+      MYSQL_HOST: db
+      MYSQL_DATABASE: silauth
+      MYSQL_USER: silauth
+      MYSQL_PASSWORD: silauth
+      COMPOSER_CACHE_DIR: /composer
+      PROFILE_URL_FOR_TESTS: http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
+      ADMIN_EMAIL: john_doe@there.com
+      ADMIN_PASS: b
+      SECRET_SALT: abc123
+      IDP_NAME: x
     volumes:
       - ./composer.json:/data/composer.json
       - ./composer.lock:/data/composer.lock
@@ -79,7 +79,7 @@ services:
     env_file:
       - ./local.env
     environment:
-      - COMPOSER_CACHE_DIR=/composer
+      COMPOSER_CACHE_DIR: /composer
 
   ssp-hub.local:
     build: .
@@ -342,13 +342,13 @@ services:
     env_file:
       - local.env
     environment:
-      - ADMIN_EMAIL=john_doe@there.com
-      - ADMIN_PASS=sp3
-      - SECRET_SALT=h57fjemb&dn^nsJFGNjweJz3
-      - SECURE_COOKIE=false
-      - SHOW_SAML_ERRORS=true
-      - SAML20_IDP_ENABLE=false
-      - ADMIN_PROTECT_INDEX_PAGE=false
+      ADMIN_EMAIL: john_doe@there.com
+      ADMIN_PASS: sp3
+      SECRET_SALT: h57fjemb&dn^nsJFGNjweJz3
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
+      SAML20_IDP_ENABLE: "false"
+      ADMIN_PROTECT_INDEX_PAGE: "false"
 
   pwmanager.local:
     image: silintl/ssp-base:develop
@@ -364,15 +364,15 @@ services:
     ports:
       - "8084:80"
     environment:
-      - ADMIN_EMAIL=john_doe@there.com
-      - ADMIN_PASS=sp1
-      - IDP_NAME=THIS VARIABLE IS REQUIRED BUT PROBABLY NOT USED
-      - SECRET_SALT=NOT-a-secret-k49fjfkw73hjf9t87wjiw
-      - SECURE_COOKIE=false
-      - SHOW_SAML_ERRORS=true
-      - SAML20_IDP_ENABLE=false
-      - ADMIN_PROTECT_INDEX_PAGE=false
-      - THEME_USE=default
+      ADMIN_EMAIL: john_doe@there.com
+      ADMIN_PASS: sp1
+      IDP_NAME: THIS VARIABLE IS REQUIRED BUT PROBABLY NOT USED
+      SECRET_SALT: NOT-a-secret-k49fjfkw73hjf9t87wjiw
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
+      SAML20_IDP_ENABLE: "false"
+      ADMIN_PROTECT_INDEX_PAGE: "false"
+      THEME_USE: material:material
 
   # the broker and brokerDb containers are used by the silauth module
   broker:
@@ -429,10 +429,10 @@ services:
     depends_on:
       - dynamo
     environment:
-      - AWS_ACCESS_KEY_ID=0
-      - AWS_SECRET_ACCESS_KEY=0
-      - AWS_DEFAULT_REGION=us-east-1
-      - AWS_DYNAMODB_ENDPOINT=http://dynamo:8000
+      AWS_ACCESS_KEY_ID: 0
+      AWS_SECRET_ACCESS_KEY: 0
+      AWS_DEFAULT_REGION: us-east-1
+      AWS_DYNAMODB_ENDPOINT: http://dynamo:8000
 
   node:
     image: node:lts-alpine
