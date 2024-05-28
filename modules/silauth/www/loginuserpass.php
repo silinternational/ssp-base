@@ -98,6 +98,8 @@ $t->data['announcement'] = AnnouncementUtils::getAnnouncement();
 $request = new Request();
 if (Authenticator::isCaptchaRequired($username, $request->getUntrustedIpAddresses())) {
     $t->data['recaptcha.siteKey'] = $recaptchaSiteKey;
+} else {
+    $t->data['recaptcha.siteKey'] = null;
 }
 
 if (isset($state['SPMetadata'])) {
