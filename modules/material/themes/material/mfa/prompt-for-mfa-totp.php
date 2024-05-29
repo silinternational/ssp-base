@@ -28,10 +28,11 @@
                     </h1>
                 </div>
 
-                <div class="mdl-card__title center" >
-                    <p class="mdl-card__subtitle-text">
-                        <?= $this->t('{material:mfa:totp_instructions}') ?>
-                    </p>
+                <div class="mdl-card__title center">
+                    <?php
+                    $idpName = htmlentities($this->configuration->getValue('idp_display_name', $this->configuration->getValue('idp_name', '—')));
+                    echo $this->t('{material:mfa:account}', ['{idpName}' => $idpName]);
+                    ?>
                 </div>
 
                 <div class="mdl-card__supporting-text" layout-children="column">
@@ -39,7 +40,7 @@
                         <label for="mfaSubmission" class="mdl-textfield__label">
                             <?= $this->t('{material:mfa:totp_input}') ?>
                         </label>
-                        <input name="mfaSubmission" class="mdl-textfield__input" autofocus
+                        <input name="mfaSubmission" class="mdl-textfield__input mdl-color-text--black" autofocus
                                id="mfaSubmission" />
                     </div>
                 </div>

@@ -44,6 +44,20 @@ $config = [
                 'prompt' => 'no',
             ],
             'schacExpiryDate' => [
+                gmdate('YmdHis\Z', strtotime('+3 days')), // Soon but not tomorrow
+            ],
+        ],
+
+        // expirychecker test user whose password expires in one day
+        'next_day:a' => [
+            'eduPersonPrincipalName' => ['NEXT_DAY@ssp-hub-idp2.local'],
+            'eduPersonTargetID' => ['22888888-2222-2222-2222-222222222222'],
+            'sn' => ['Day'],
+            'givenName' => ['Next'],
+            'mail' => ['next_day@example.com'],
+            'employeeNumber' => ['22888'],
+            'cn' => ['NEXT_DAY'],
+            'schacExpiryDate' => [
                 gmdate('YmdHis\Z', strtotime('+1 day')), // Very soon
             ],
         ],
