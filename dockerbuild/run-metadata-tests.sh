@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-set -e
+# echo script commands to stdout
 set -x
+
+# exit if any command fails
+set -e
 
 cd /data
 export COMPOSER_ALLOW_SUPERUSER=1; composer install
