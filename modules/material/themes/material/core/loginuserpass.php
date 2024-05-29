@@ -118,10 +118,10 @@
 
                 <div class="mdl-card__actions" layout-children="row">
                     <?php
-                    $forgotPasswordUrl = htmlentities($this->data['forgotPasswordUrl']);
-                    if (! empty($forgotPasswordUrl)) {
+                    $passwordForgotUrl = htmlentities($this->data['passwordForgotUrl']);
+                    if (! empty($passwordForgotUrl)) {
                     ?>
-                    <a href="<?= $forgotPasswordUrl ?>" target="_blank" class="mdl-button mdl-button--colored mdl-typography--caption">
+                    <a href="<?= $passwordForgotUrl ?>" target="_blank" class="mdl-button mdl-button--colored mdl-typography--caption">
                         <?= $this->t('{material:login:forgot}') ?>
                     </a>
                     <?php
