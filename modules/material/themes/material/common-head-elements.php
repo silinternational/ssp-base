@@ -6,7 +6,7 @@
 <base href="<?= SimpleSAML\Module::getModuleURL('material/') ?>">
 
 <?php
-$trackingId = htmlentities($this->configuration->getValue('analytics.trackingId'));
+$trackingId = htmlentities($this->data['analyticsTrackingId']);
 if (! empty($trackingId)) {
 ?>
     <script>
@@ -29,7 +29,7 @@ if (! empty($trackingId)) {
 
 
 <?php
-$colors = htmlentities($this->configuration->getValue('theme.color-scheme') ?: 'indigo-purple');
+$colors = htmlentities($this->data['themeColorScheme']);
 ?>
 <link rel="stylesheet" href="material.<?= $colors ?>.1.2.1.min.css">
 <link rel="stylesheet" href="styles.2.3.6.css">

@@ -118,6 +118,8 @@ foreach ($otherOptions as &$option) {
 $mfaTemplateToUse = Mfa::getTemplateFor($mfaOption['type']);
 
 $t = new Template($globalConfig, $mfaTemplateToUse);
+$t->data['analyticsTrackingId'] = $globalConfig->getValue('analytics.trackingId');
+$t->data['themeColorScheme'] = $globalConfig->getValue('theme.color-scheme', 'indigo-purple');
 $t->data['errorMessage'] = $errorMessage ?? null;
 $t->data['mfaOption'] = $mfaOption;
 $t->data['mfaOptions'] = $mfaOptions;

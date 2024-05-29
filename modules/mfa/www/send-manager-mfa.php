@@ -35,6 +35,8 @@ if (filter_has_var(INPUT_POST, 'send')) {
 $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'mfa:send-manager-mfa.php');
+$t->data['analyticsTrackingId'] = $globalConfig->getValue('analytics.trackingId');
+$t->data['themeColorScheme'] = $globalConfig->getValue('theme.color-scheme', 'indigo-purple');
 $t->data['stateId'] = $stateId;
 $t->data['managerEmail'] = $state['managerEmail'];
 $t->show();

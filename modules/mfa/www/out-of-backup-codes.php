@@ -32,6 +32,8 @@ if (filter_has_var(INPUT_POST, 'getMore')) {
 $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'mfa:out-of-backup-codes.php');
+$t->data['analyticsTrackingId'] = $globalConfig->getValue('analytics.trackingId');
+$t->data['themeColorScheme'] = $globalConfig->getValue('theme.color-scheme', 'indigo-purple');
 $t->data['hasOtherMfaOptions'] = $hasOtherMfaOptions;
 $t->show();
 

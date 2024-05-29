@@ -80,17 +80,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $t = new Template($globalConfig, 'core:loginuserpass.php');
+$t->data['analyticsTrackingId'] = $globalConfig->getValue('analytics.trackingId');
+$t->data['themeColorScheme'] = $globalConfig->getValue('theme.color-scheme', 'indigo-purple');
 $t->data['stateparams'] = array('AuthState' => $authStateId);
 $t->data['username'] = $username;
 $t->data['forceUsername'] = false;
 $t->data['rememberUsernameEnabled'] = false;
 $t->data['rememberMeEnabled'] = false;
-$t->data['errorcode'] = $errorCode;
+$t->data['errorcode'] = $errorCode ?? null;
 $t->data['errorparams'] = $errorParams;
 $t->data['csrfToken'] = $csrfProtector->getMasterToken();
 $t->data['profileUrl'] = $state['templateData']['profileUrl'] ?? '';
 $t->data['helpCenterUrl'] = $state['templateData']['helpCenterUrl'] ?? '';
 $t->data['announcement'] = AnnouncementUtils::getAnnouncement();
+$t->data['idpName'] = $globalConfig->getValue('idp_display_name', $globalConfig->getValue('idp_name', '—'));
+$t->data['passwordForgotUrl'] = $globalConfig->getValue('passwordForgotUrl');
 
 /* For simplicity's sake, don't bother telling this Request to trust any IP
  * addresses. This is okay because we only track the failures of untrusted

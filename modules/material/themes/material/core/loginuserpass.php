@@ -2,10 +2,7 @@
 <html>
 <head>
     <?php
-    $idpName = htmlentities($this->configuration->getValue(
-        'idp_display_name',
-        $this->configuration->getValue('idp_name', '—')
-    ));
+    $idpName = htmlentities($this->data['idpName']);
     ?>
 
     <title><?= $this->t('{material:login:title}', ['{idpName}' => $idpName]) ?></title>
@@ -121,7 +118,7 @@
 
                 <div class="mdl-card__actions" layout-children="row">
                     <?php
-                    $forgotPasswordUrl = htmlentities($this->configuration->getValue('passwordForgotUrl'));
+                    $forgotPasswordUrl = htmlentities($this->data['forgotPasswordUrl']);
                     if (! empty($forgotPasswordUrl)) {
                     ?>
                     <a href="<?= $forgotPasswordUrl ?>" target="_blank" class="mdl-button mdl-button--colored mdl-typography--caption">

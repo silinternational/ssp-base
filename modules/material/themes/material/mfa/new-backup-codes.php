@@ -58,7 +58,7 @@
             <div class="mdl-card mdl-shadow--8dp" style="min-height: 17em">
                 <div class="mdl-card__supporting-text ff-temp-flexbug-fix" layout-children="column" id="code-card">
                     <?php 
-                    $idpName = htmlentities($this->configuration->getValue('idp_display_name', $this->configuration->getValue('idp_name', '—')));
+                    $idpName = htmlentities($this->data['idpName']);
                     ?>
                     <p class="fill-parent" layout-children="row">
                         <span flex><?= $this->t('{material:mfa:account}', ['{idpName}' => $idpName]) ?></span>
