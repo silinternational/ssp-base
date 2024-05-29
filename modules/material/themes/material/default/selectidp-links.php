@@ -28,7 +28,7 @@
 <div class="mdl-layout mdl-layout--fixed-header fill-viewport">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
-            <span class="mdl-layout-title">
+            <span class="mdl-layout-title scale-to-parent">
             <?php
             $spName = $this->data['spName'] ?? null;
             if (empty($spName)) {
@@ -82,10 +82,14 @@
             ?>
             <div class="mdl-card mdl-shadow--8dp row-aware" title="<?= $hoverText ?>">
                 <div class="mdl-card__media white-bg fixed-height">
-                    <button class="mdl-button fill-parent" onclick="setSelectedIdp('<?= $idpId ?>')">
-                        <img class="scale-to-parent" id="<?= $idpId ?>"
-                             src="<?= empty($idp['logoURL']) ? 'default-logo.png'
-                                                             : $idp['logoURL'] ?>">
+                    <button class="mdl-button logo-container fill-parent" onclick="setSelectedIdp('<?= $idpId ?>')">
+                        <div class="image-wrapper">
+                            <img class="logo" id="<?= $idpId ?>"
+                               src="<?= empty($idp['logoURL']) ? 'default-logo.png'
+                                                               : $idp['logoURL'] ?>">
+                        </div>
+
+                    <span class="mdl-color-text--grey-600 logo-caption clickable-caption"><?= empty($idp['logoCaption']) ? '<br>': htmlentities($idp['logoCaption']) ?> </span>
                     </button>
                 </div>
             </div>
@@ -101,11 +105,15 @@
             ?>
             <div class="mdl-card mdl-shadow--2dp disabled row-aware" title="<?= $hoverText ?>"
                  onclick="clickedAnyway('<?= $name ?>')">
-                <div class="mdl-card__media white-bg fixed-height" layout-children="row"
-                     child-spacing="center">
-                    <img class="scale-to-parent" id="<?= $idpId ?>"
-                         src="<?= empty($idp['logoURL']) ? 'default-logo.png'
-                                                         : $idp['logoURL'] ?>">
+                <div class="mdl-card__media white-bg fixed-height" layout-children="row" child-spacing="center">
+                    <div class="logo-container fill-parent">
+                        <div class="image-wrapper">
+                            <img class="logo" id="<?= $idpId ?>"
+                                src="<?= empty($idp['logoURL']) ? 'default-logo.png'
+                                                                : $idp['logoURL'] ?>">
+                        </div>
+                        <span class="mdl-color-text--grey-600 logo-caption" ><?= empty($idp['logoCaption']) ? '<br>': htmlentities($idp['logoCaption']) ?> </span>
+                    </div>
                 </div>
             </div>
             <?php
@@ -121,4 +129,40 @@
     <?php include __DIR__ . '/../common-footer.php' ?>
 </div>
 </body>
+<style>
+  .image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 130px;
+  }
+  .logo-caption {
+    font-size: 1.5rem;
+  }
+  @media only screen and (max-width: 1200px) {
+    .logo-caption {
+      font-size: 1.2rem;
+    }
+  }
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .logo-caption {
+    text-transform: none;
+  }
+  .mdl-button:hover > .clickable-caption {
+    color: #004F9E !important;
+  }
+  .mdl-card {
+    border-radius: 8px;
+  }
+  .logo {
+    max-height: 130px;
+    max-width: 90%;
+    padding-top: 4px;
+  }
+</style>
 </html>

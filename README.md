@@ -214,7 +214,7 @@ The login page looks for `/simplesamlphp/www/logo.png` which is **NOT** provided
 Update `/simplesamlphp/config/config.php`:
 
 ```
-'analytics.trackingId' => 'UA-some-unique-id-for-your-site'
+'analytics.trackingId' => 'G-some-unique-id-for-your-site'
 ```
 
 This project provides a convenience by loading this config with whatever is in the environment variable `ANALYTICS_ID`._
