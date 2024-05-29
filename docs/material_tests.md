@@ -54,9 +54,21 @@ See [Local Testing](../README.md#local-testing) for instructions to set up your 
 
 ## Expiry functionality
 
-### About to expire page
+### About to expire page (expires in one day)
 
-_Note:  This nag only works once since choosing later will simply set the nag date into the future a little._
+_Note:  This nag only works once since choosing later will simply set the nag date into the future a little.
+If needed, use a new private/incognito browser window to retry.__
+
+1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
+1.  Click **idp2** (second one)
+1.  Login as an "about to expire" user: `username=`**next_day** `password=`**a**
+1.  Click **Later**
+1.  Click **Logout**
+
+### About to expire page (expires in three days)
+
+_Note:  This nag only works once since choosing later will simply set the nag date into the future a little.
+If needed, use a new private/incognito browser window to retry.__
 
 1.  Goto [SP 1](http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub-custom-port)
 1.  Click **idp2** (second one)
