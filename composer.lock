@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "df01bb039aaf6b25519b9e6dea6dae58",
+    "content-hash": "ae5996cffda6f7fd16dea5eb0e2a1665",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -264,20 +264,20 @@
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.16.0",
+            "version": "v4.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "523407fb06eb9e5f3d59889b3978d5bfe94299c8"
+                "reference": "bbc513d79acf6691fa9cf10f192c90dd2957f18c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/523407fb06eb9e5f3d59889b3978d5bfe94299c8",
-                "reference": "523407fb06eb9e5f3d59889b3978d5bfe94299c8",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/bbc513d79acf6691fa9cf10f192c90dd2957f18c",
+                "reference": "bbc513d79acf6691fa9cf10f192c90dd2957f18c",
                 "shasum": ""
             },
             "require": {
-                "php": "~5.6.0 || ~7.0.0 || ~7.1.0 || ~7.2.0 || ~7.3.0 || ~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0"
+                "php": "~5.6.0 || ~7.0.0 || ~7.1.0 || ~7.2.0 || ~7.3.0 || ~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0"
             },
             "require-dev": {
                 "cerdic/css-tidy": "^1.7 || ^2.0",
@@ -319,9 +319,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ezyang/htmlpurifier/issues",
-                "source": "https://github.com/ezyang/htmlpurifier/tree/v4.16.0"
+                "source": "https://github.com/ezyang/htmlpurifier/tree/v4.17.0"
             },
-            "time": "2022-09-18T07:06:19+00:00"
+            "time": "2023-11-17T15:01:25+00:00"
         },
         {
             "name": "fillup/fake-bower-assets",
@@ -1964,106 +1964,6 @@
             "time": "2019-03-08T08:55:37+00:00"
         },
         {
-            "name": "ramsey/uuid",
-            "version": "3.9.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ramsey/uuid.git",
-                "reference": "dc75aa439eb4c1b77f5379fd958b3dc0e6014178"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/dc75aa439eb4c1b77f5379fd958b3dc0e6014178",
-                "reference": "dc75aa439eb4c1b77f5379fd958b3dc0e6014178",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "paragonie/random_compat": "^1 | ^2 | ^9.99.99",
-                "php": "^5.4 | ^7.0 | ^8.0",
-                "symfony/polyfill-ctype": "^1.8"
-            },
-            "replace": {
-                "rhumsaa/uuid": "self.version"
-            },
-            "require-dev": {
-                "codeception/aspect-mock": "^1 | ^2",
-                "doctrine/annotations": "^1.2",
-                "goaop/framework": "1.0.0-alpha.2 | ^1 | >=2.1.0 <=2.3.2",
-                "mockery/mockery": "^0.9.11 | ^1",
-                "moontoast/math": "^1.1",
-                "nikic/php-parser": "<=4.5.0",
-                "paragonie/random-lib": "^2",
-                "php-mock/php-mock-phpunit": "^0.3 | ^1.1 | ^2.6",
-                "php-parallel-lint/php-parallel-lint": "^1.3",
-                "phpunit/phpunit": ">=4.8.36 <9.0.0 | >=9.3.0",
-                "squizlabs/php_codesniffer": "^3.5",
-                "yoast/phpunit-polyfills": "^1.0"
-            },
-            "suggest": {
-                "ext-ctype": "Provides support for PHP Ctype functions",
-                "ext-libsodium": "Provides the PECL libsodium extension for use with the SodiumRandomGenerator",
-                "ext-openssl": "Provides the OpenSSL extension for use with the OpenSslGenerator",
-                "ext-uuid": "Provides the PECL UUID extension for use with the PeclUuidTimeGenerator and PeclUuidRandomGenerator",
-                "moontoast/math": "Provides support for converting UUID to 128-bit integer (in string form).",
-                "paragonie/random-lib": "Provides RandomLib for use with the RandomLibAdapter",
-                "ramsey/uuid-console": "A console application for generating UUIDs with ramsey/uuid",
-                "ramsey/uuid-doctrine": "Allows the use of Ramsey\\Uuid\\Uuid as Doctrine field type."
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/functions.php"
-                ],
-                "psr-4": {
-                    "Ramsey\\Uuid\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ben Ramsey",
-                    "email": "ben@benramsey.com",
-                    "homepage": "https://benramsey.com"
-                },
-                {
-                    "name": "Marijn Huizendveld",
-                    "email": "marijn.huizendveld@gmail.com"
-                },
-                {
-                    "name": "Thibaud Fabre",
-                    "email": "thibaud@aztech.io"
-                }
-            ],
-            "description": "Formerly rhumsaa/uuid. A PHP 5.4+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
-            "homepage": "https://github.com/ramsey/uuid",
-            "keywords": [
-                "guid",
-                "identifier",
-                "uuid"
-            ],
-            "support": {
-                "issues": "https://github.com/ramsey/uuid/issues",
-                "rss": "https://github.com/ramsey/uuid/releases.atom",
-                "source": "https://github.com/ramsey/uuid",
-                "wiki": "https://github.com/ramsey/uuid/wiki"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/ramsey",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/ramsey/uuid",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-12-19T21:55:10+00:00"
-        },
-        {
             "name": "rlanvin/php-ip",
             "version": "v1.0.1",
             "source": {
@@ -2794,16 +2694,16 @@
         },
         {
             "name": "silinternational/idp-id-broker-php-client",
-            "version": "4.3.1",
+            "version": "4.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/idp-id-broker-php-client.git",
-                "reference": "c05d01c0ed0666056249bdabd97c0392c99e9790"
+                "reference": "425955b2699110d6ff9a5d7cf1a15751cc1b8ee9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/c05d01c0ed0666056249bdabd97c0392c99e9790",
-                "reference": "c05d01c0ed0666056249bdabd97c0392c99e9790",
+                "url": "https://api.github.com/repos/silinternational/idp-id-broker-php-client/zipball/425955b2699110d6ff9a5d7cf1a15751cc1b8ee9",
+                "reference": "425955b2699110d6ff9a5d7cf1a15751cc1b8ee9",
                 "shasum": ""
             },
             "require": {
@@ -2847,9 +2747,9 @@
             ],
             "support": {
                 "issues": "https://github.com/silinternational/idp-id-broker-php-client/issues",
-                "source": "https://github.com/silinternational/idp-id-broker-php-client/tree/4.3.1"
+                "source": "https://github.com/silinternational/idp-id-broker-php-client/tree/4.3.2"
             },
-            "time": "2023-06-19T12:59:34+00:00"
+            "time": "2024-02-28T19:30:43+00:00"
         },
         {
             "name": "silinternational/php-env",
@@ -2943,57 +2843,6 @@
             "time": "2022-08-24T14:44:38+00:00"
         },
         {
-            "name": "silinternational/simplesamlphp-module-expirychecker",
-            "version": "3.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silinternational/simplesamlphp-module-expirychecker.git",
-                "reference": "2a8f8b18fe60ba3e0e3d7e9c039bcf7347bddb29"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-expirychecker/zipball/2a8f8b18fe60ba3e0e3d7e9c039bcf7347bddb29",
-                "reference": "2a8f8b18fe60ba3e0e3d7e9c039bcf7347bddb29",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=7.2",
-                "silinternational/psr3-adapters": "^1.1 || ^2.0 || ^3.0",
-                "simplesamlphp/simplesamlphp": "~1.17.7 || ~1.18.4 || ~1.19.0"
-            },
-            "require-dev": {
-                "behat/behat": "^3.3",
-                "behat/mink": "^1.7",
-                "behat/mink-goutte-driver": "^1.2",
-                "phpunit/phpunit": "^8.4",
-                "roave/security-advisories": "dev-master"
-            },
-            "type": "simplesamlphp-module",
-            "autoload": {
-                "psr-4": {
-                    "Sil\\SspExpiryChecker\\": "src/",
-                    "Sil\\SspExpiryChecker\\Behat\\": "features/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-2.1"
-            ],
-            "authors": [
-                {
-                    "name": "Matt Henderson",
-                    "email": "matt_henderson@sil.org"
-                }
-            ],
-            "description": "simpleSAMLphp module for warning users that their password will expire soon or has already expired.",
-            "support": {
-                "issues": "https://github.com/silinternational/simplesamlphp-module-expirychecker/issues",
-                "source": "https://github.com/silinternational/simplesamlphp-module-expirychecker/tree/3.1.3"
-            },
-            "time": "2023-02-08T15:53:15+00:00"
-        },
-        {
             "name": "silinternational/simplesamlphp-module-material",
             "version": "8.1.1",
             "source": {
@@ -3034,175 +2883,6 @@
                 "source": "https://github.com/silinternational/simplesamlphp-module-material/tree/8.1.1"
             },
             "time": "2023-06-12T17:37:14+00:00"
-        },
-        {
-            "name": "silinternational/simplesamlphp-module-mfa",
-            "version": "5.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silinternational/simplesamlphp-module-mfa.git",
-                "reference": "2179f28e5e72e1f14e27d10025cdac5e44b45398"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-mfa/zipball/2179f28e5e72e1f14e27d10025cdac5e44b45398",
-                "reference": "2179f28e5e72e1f14e27d10025cdac5e44b45398",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=7.2",
-                "silinternational/idp-id-broker-php-client": "^4.0.0",
-                "silinternational/php-env": "^2.1 || ^3.0",
-                "silinternational/psr3-adapters": "^1.1 || ^2.0 || ^3.0",
-                "simplesamlphp/simplesamlphp": "~1.17.7 || ~1.18.5 || ~1.19.0",
-                "sinergi/browser-detector": "^6.1"
-            },
-            "require-dev": {
-                "behat/behat": "^3.3",
-                "behat/mink": "^1.7",
-                "behat/mink-goutte-driver": "^1.2",
-                "phpunit/phpunit": "^8.4",
-                "roave/security-advisories": "dev-master"
-            },
-            "type": "simplesamlphp-module",
-            "autoload": {
-                "psr-4": {
-                    "Sil\\SspMfa\\": "src/",
-                    "Sil\\SspMfa\\Behat\\": "features/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-2.1-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Matt Henderson",
-                    "email": "matt_henderson@sil.org"
-                }
-            ],
-            "description": "A simpleSAMLphp module for prompting the user for MFA credentials (such as a TOTP code, etc.).",
-            "support": {
-                "issues": "https://github.com/silinternational/simplesamlphp-module-mfa/issues",
-                "source": "https://github.com/silinternational/simplesamlphp-module-mfa/tree/5.2.1"
-            },
-            "time": "2023-06-15T13:38:51+00:00"
-        },
-        {
-            "name": "silinternational/simplesamlphp-module-profilereview",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silinternational/simplesamlphp-module-profilereview.git",
-                "reference": "4c1df2eddcd50147aec198128446c6875c751616"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-profilereview/zipball/4c1df2eddcd50147aec198128446c6875c751616",
-                "reference": "4c1df2eddcd50147aec198128446c6875c751616",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=7.2",
-                "silinternational/php-env": "^2.1 || ^3.0",
-                "silinternational/psr3-adapters": "^1.1 || ^2.0 || ^3.0",
-                "simplesamlphp/simplesamlphp": "~1.18.6 || ~1.19.0",
-                "sinergi/browser-detector": "^6.1"
-            },
-            "require-dev": {
-                "behat/behat": "^3.3",
-                "behat/mink": "^1.7",
-                "behat/mink-goutte-driver": "^1.2",
-                "phpunit/phpunit": "^8.4",
-                "roave/security-advisories": "dev-master"
-            },
-            "type": "simplesamlphp-module",
-            "autoload": {
-                "psr-4": {
-                    "Sil\\SspProfileReview\\": "src/",
-                    "Sil\\SspProfileReview\\Behat\\": "features/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-2.1-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Matt Henderson",
-                    "email": "matt_henderson@sil.org"
-                }
-            ],
-            "description": "A simpleSAMLphp module for prompting the user to review their profile (such as 2fa, email, etc.).",
-            "support": {
-                "issues": "https://github.com/silinternational/simplesamlphp-module-profilereview/issues",
-                "source": "https://github.com/silinternational/simplesamlphp-module-profilereview/tree/2.1.0"
-            },
-            "time": "2022-09-28T13:50:19+00:00"
-        },
-        {
-            "name": "silinternational/simplesamlphp-module-silauth",
-            "version": "7.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silinternational/simplesamlphp-module-silauth.git",
-                "reference": "dbd85e48ffdca86ba1074941a08491fc73c29714"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/simplesamlphp-module-silauth/zipball/dbd85e48ffdca86ba1074941a08491fc73c29714",
-                "reference": "dbd85e48ffdca86ba1074941a08491fc73c29714",
-                "shasum": ""
-            },
-            "require": {
-                "codemix/yii2-streamlog": "^1.3",
-                "ext-json": "*",
-                "fillup/fake-bower-assets": "^2.0",
-                "google/recaptcha": "^1.1",
-                "monolog/monolog": "^1.22",
-                "php": ">=7.0",
-                "psr/log": "^1.0",
-                "ramsey/uuid": "^3.5",
-                "rlanvin/php-ip": "^1.0",
-                "silinternational/idp-id-broker-php-client": "^4.0.0",
-                "silinternational/php-env": "^2.0 || ^3.0",
-                "silinternational/psr3-adapters": "^2.3 || ^3.0",
-                "silinternational/yii2-json-log-targets": "^2.0",
-                "simplesamlphp/simplesamlphp": "~1.18.6 || ~1.19.0",
-                "yiisoft/yii2": "~2.0.12",
-                "yiisoft/yii2-gii": "^2.0"
-            },
-            "require-dev": {
-                "behat/behat": "^3.2",
-                "guzzlehttp/guzzle": "^6.0",
-                "phpunit/phpunit": "^8.0",
-                "roave/security-advisories": "dev-master"
-            },
-            "type": "simplesamlphp-module",
-            "autoload": {
-                "psr-4": {
-                    "Sil\\SilAuth\\": "src/",
-                    "Sil\\SilAuth\\features\\": "features/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Phillip Shipley",
-                    "email": "phillip.shipley@gmail.com"
-                }
-            ],
-            "description": "SimpleSAMLphp auth module implementing various security measures before calls to IdP ID Broker backend",
-            "support": {
-                "issues": "https://github.com/silinternational/simplesamlphp-module-silauth/issues",
-                "source": "https://github.com/silinternational/simplesamlphp-module-silauth/tree/7.1.1"
-            },
-            "time": "2023-07-31T22:19:59+00:00"
         },
         {
             "name": "silinternational/simplesamlphp-module-sildisco",
@@ -6848,16 +6528,16 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.27.0",
+            "version": "v1.29.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936"
+                "reference": "87b68208d5c1188808dd7839ee1e6c8ec3b02f1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936",
-                "reference": "7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/87b68208d5c1188808dd7839ee1e6c8ec3b02f1b",
+                "reference": "87b68208d5c1188808dd7839ee1e6c8ec3b02f1b",
                 "shasum": ""
             },
             "require": {
@@ -6865,9 +6545,6 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "1.27-dev"
-                },
                 "thanks": {
                     "name": "symfony/polyfill",
                     "url": "https://github.com/symfony/polyfill"
@@ -6911,7 +6588,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.27.0"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.29.0"
             },
             "funding": [
                 {
@@ -6927,7 +6604,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-03T14:55:06+00:00"
+            "time": "2024-01-29T20:11:03+00:00"
         },
         {
             "name": "symfony/polyfill-php81",
@@ -7666,21 +7343,21 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.48.1",
+            "version": "2.0.49.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "de92f154eefe322fc1b1b2a52cce46677441ced4"
+                "reference": "783f65c9a743dfd7484b6026f1aa6f25e37159d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/de92f154eefe322fc1b1b2a52cce46677441ced4",
-                "reference": "de92f154eefe322fc1b1b2a52cce46677441ced4",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/783f65c9a743dfd7484b6026f1aa6f25e37159d9",
+                "reference": "783f65c9a743dfd7484b6026f1aa6f25e37159d9",
                 "shasum": ""
             },
             "require": {
                 "bower-asset/inputmask": "~3.2.2 | ~3.3.5",
-                "bower-asset/jquery": "3.6.*@stable | 3.5.*@stable | 3.4.*@stable | 3.3.*@stable | 3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
+                "bower-asset/jquery": "3.7.*@stable | 3.6.*@stable | 3.5.*@stable | 3.4.*@stable | 3.3.*@stable | 3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
                 "bower-asset/punycode": "1.3.*",
                 "bower-asset/yii2-pjax": "~2.0.1",
                 "cebe/markdown": "~1.0.0 | ~1.1.0 | ~1.2.0",
@@ -7784,7 +7461,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-24T19:04:02+00:00"
+            "time": "2023-10-31T15:39:08+00:00"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -7953,16 +7630,16 @@
     "packages-dev": [
         {
             "name": "behat/behat",
-            "version": "v3.13.0",
+            "version": "v3.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Behat.git",
-                "reference": "9dd7cdb309e464ddeab095cd1a5151c2dccba4ab"
+                "reference": "2a3832d9cb853a794af3a576f9e524ae460f3340"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Behat/zipball/9dd7cdb309e464ddeab095cd1a5151c2dccba4ab",
-                "reference": "9dd7cdb309e464ddeab095cd1a5151c2dccba4ab",
+                "url": "https://api.github.com/repos/Behat/Behat/zipball/2a3832d9cb853a794af3a576f9e524ae460f3340",
+                "reference": "2a3832d9cb853a794af3a576f9e524ae460f3340",
                 "shasum": ""
             },
             "require": {
@@ -7971,18 +7648,18 @@
                 "ext-mbstring": "*",
                 "php": "^7.2 || ^8.0",
                 "psr/container": "^1.0 || ^2.0",
-                "symfony/config": "^4.4 || ^5.0 || ^6.0",
-                "symfony/console": "^4.4 || ^5.0 || ^6.0",
-                "symfony/dependency-injection": "^4.4 || ^5.0 || ^6.0",
-                "symfony/event-dispatcher": "^4.4 || ^5.0 || ^6.0",
-                "symfony/translation": "^4.4 || ^5.0 || ^6.0",
-                "symfony/yaml": "^4.4 || ^5.0 || ^6.0"
+                "symfony/config": "^4.4 || ^5.0 || ^6.0 || ^7.0",
+                "symfony/console": "^4.4 || ^5.0 || ^6.0 || ^7.0",
+                "symfony/dependency-injection": "^4.4 || ^5.0 || ^6.0 || ^7.0",
+                "symfony/event-dispatcher": "^4.4 || ^5.0 || ^6.0 || ^7.0",
+                "symfony/translation": "^4.4 || ^5.0 || ^6.0 || ^7.0",
+                "symfony/yaml": "^4.4 || ^5.0 || ^6.0 || ^7.0"
             },
             "require-dev": {
                 "herrera-io/box": "~1.6.1",
                 "phpspec/prophecy": "^1.15",
                 "phpunit/phpunit": "^8.5 || ^9.0",
-                "symfony/process": "^4.4 || ^5.0 || ^6.0",
+                "symfony/process": "^4.4 || ^5.0 || ^6.0 || ^7.0",
                 "vimeo/psalm": "^4.8"
             },
             "suggest": {
@@ -8034,9 +7711,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Behat/Behat/issues",
-                "source": "https://github.com/Behat/Behat/tree/v3.13.0"
+                "source": "https://github.com/Behat/Behat/tree/v3.14.0"
             },
-            "time": "2023-04-18T15:40:53+00:00"
+            "time": "2023-12-09T13:55:02+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -8103,26 +7780,28 @@
         },
         {
             "name": "behat/mink",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/minkphp/Mink.git",
-                "reference": "19e58905632e7cfdc5b2bafb9b950a3521af32c5"
+                "reference": "d8527fdf8785aad38455fb426af457ab9937aece"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/minkphp/Mink/zipball/19e58905632e7cfdc5b2bafb9b950a3521af32c5",
-                "reference": "19e58905632e7cfdc5b2bafb9b950a3521af32c5",
+                "url": "https://api.github.com/repos/minkphp/Mink/zipball/d8527fdf8785aad38455fb426af457ab9937aece",
+                "reference": "d8527fdf8785aad38455fb426af457ab9937aece",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "symfony/css-selector": "^4.4 || ^5.0 || ^6.0"
+                "symfony/css-selector": "^4.4 || ^5.0 || ^6.0 || ^7.0"
             },
             "require-dev": {
+                "phpstan/phpstan": "^1.10",
+                "phpstan/phpstan-phpunit": "^1.3",
                 "phpunit/phpunit": "^8.5.22 || ^9.5.11",
-                "symfony/error-handler": "^4.4 || ^5.0 || ^6.0",
-                "symfony/phpunit-bridge": "^5.4 || ^6.0"
+                "symfony/error-handler": "^4.4 || ^5.0 || ^6.0 || ^7.0",
+                "symfony/phpunit-bridge": "^5.4 || ^6.0 || ^7.0"
             },
             "suggest": {
                 "behat/mink-browserkit-driver": "fast headless driver for any app without JS emulation",
@@ -8161,9 +7840,9 @@
             ],
             "support": {
                 "issues": "https://github.com/minkphp/Mink/issues",
-                "source": "https://github.com/minkphp/Mink/tree/v1.10.0"
+                "source": "https://github.com/minkphp/Mink/tree/v1.11.0"
             },
-            "time": "2022-03-28T14:22:43+00:00"
+            "time": "2023-12-09T11:23:23+00:00"
         },
         {
             "name": "behat/mink-extension",
@@ -9691,16 +9370,16 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v6.3.2",
+            "version": "v6.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "883d961421ab1709877c10ac99451632a3d6fa57"
+                "reference": "1c5d5c2103c3762aff27a27e1e2409e30a79083b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/883d961421ab1709877c10ac99451632a3d6fa57",
-                "reference": "883d961421ab1709877c10ac99451632a3d6fa57",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/1c5d5c2103c3762aff27a27e1e2409e30a79083b",
+                "reference": "1c5d5c2103c3762aff27a27e1e2409e30a79083b",
                 "shasum": ""
             },
             "require": {
@@ -9736,7 +9415,7 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/css-selector/tree/v6.3.2"
+                "source": "https://github.com/symfony/css-selector/tree/v6.4.7"
             },
             "funding": [
                 {
@@ -9752,7 +9431,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-12T16:00:22+00:00"
+            "time": "2024-04-18T09:22:46+00:00"
         },
         {
             "name": "symfony/translation",
@@ -10036,5 +9715,5 @@
         "ext-memcached": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

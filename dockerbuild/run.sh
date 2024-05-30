@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# echo script commands to stdout
+set -x
+
+# exit if any command fails
+set -e
+
 # This is a temporary fix (bug workaround) until ssp 2.0 is in use
 sed -i 's_\(\\SimpleSAML\\Error\\Assertion::installHandler()\)_// \1 _' /data/vendor/simplesamlphp/simplesamlphp/www/_include.php
 

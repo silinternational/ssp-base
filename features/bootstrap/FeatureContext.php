@@ -1,11 +1,15 @@
 <?php
 
+use Behat\Behat\Hook\Scope\AfterStepScope;
 use Behat\Behat\Tester\Result\StepResult;
 use Behat\Gherkin\Node\PyStringNode;
-use Behat\Behat\Hook\Scope\AfterStepScope;
+use Behat\MinkExtension\Context\MinkContext;
+use Behat\Mink\Element\DocumentElement;
+use Behat\Mink\Element\NodeElement;
+use Behat\Mink\Exception\ElementNotFoundException;
 use Behat\Mink\Mink;
 use Behat\Mink\Session;
-use Behat\MinkExtension\Context\MinkContext;
+use Behat\Testwork\Tester\Result\TestResult;
 use DMore\ChromeDriver\ChromeDriver;
 use Webmozart\Assert\Assert;
 
@@ -14,11 +18,16 @@ class FeatureContext extends MinkContext
     private const HUB_BAD_AUTH_SOURCE_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=wrong';
     private const HUB_DISCO_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=hub-discovery';
     private const HUB_HOME_URL = 'http://ssp-hub.local';
-    private const SP1_LOGIN_PAGE = 'http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub';
-    
+    protected const SP1_LOGIN_PAGE = 'http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub';
+    protected const SP2_LOGIN_PAGE = 'http://ssp-sp2.local/module.php/core/authenticate.php?as=ssp-hub';
+    protected const SP3_LOGIN_PAGE = 'http://ssp-sp3.local/module.php/core/authenticate.php?as=ssp-hub';
+
     /** @var Session */
-    private $session;
-    
+    protected $session;
+
+    protected $username = null;
+    protected $password = null;
+
     public function __construct()
     {
         $driver = new ChromeDriver('http://test-browser:9222', null, 'http://ssp-hub.local');
@@ -38,7 +47,7 @@ class FeatureContext extends MinkContext
         }
     }
     
-    private function showPageDetails()
+    protected function showPageDetails()
     {
         echo '[' . $this->session->getStatusCode() . '] ';
         $this->printLastResponse();
@@ -89,7 +98,7 @@ class FeatureContext extends MinkContext
         $this->logInAs('admin', 'abc123');
     }
 
-    private function logInAs(string $username, string $password)
+    protected function logInAs(string $username, string $password)
     {
         $this->fillField('username', $username);
         $this->fillField('password', $password);
@@ -137,69 +146,30 @@ class FeatureContext extends MinkContext
     }
 
     /**
-     * @When I go to the SP1 login page
+     * @When I go to the :sp login page
      */
-    public function iGoToTheSp1LoginPage()
+    public function iGoToTheSpLoginPage($sp)
     {
-        $this->visit(self::SP1_LOGIN_PAGE);
+        switch ($sp) {
+            case 'SP1':
+                $this->visit(self::SP1_LOGIN_PAGE);
+                break;
+            case 'SP2':
+                $this->visit(self::SP2_LOGIN_PAGE);
+                break;
+            case 'SP3':
+                $this->visit(self::SP3_LOGIN_PAGE);
+                break;
+        }
     }
 
-    /**
-     * @When I log in as a user who's password is NOT about to expire
-     */
-    public function iLogInAsAUserWhosPasswordIsNotAboutToExpire()
-    {
-        $this->logInAs('distant_future', 'a');
-    }
-
-    /**
-     * @Then I should see a page indicating that I successfully logged in
-     */
-    public function iShouldSeeAPageIndicatingThatISuccessfullyLoggedIn()
-    {
-        $this->assertResponseStatus(200);
-        $this->assertPageBodyContainsText('Your attributes');
-    }
-    
-    private function assertPageBodyContainsText(string $expectedText)
+    protected function assertPageBodyContainsText(string $expectedText)
     {
         $page = $this->session->getPage();
         $body = $page->find('css', 'body');
         Assert::contains($body->getText(), $expectedText);
     }
 
-    /**
-     * @When I log in as a user who's password is about to expire
-     */
-    public function iLogInAsAUserWhosPasswordIsAboutToExpire()
-    {
-        $this->logInAs('near_future', 'a');
-    }
-
-    /**
-     * @Then I should see a page warning me that my password is about to expire
-     */
-    public function iShouldSeeAPageWarningMeThatMyPasswordIsAboutToExpire()
-    {
-        $this->assertPageBodyContainsText('Password expiring soon');
-    }
-
-    /**
-     * @When I log in as a user who's password has expired
-     */
-    public function iLogInAsAUserWhosPasswordHasExpired()
-    {
-        $this->logInAs('already_past', 'a');
-    }
-
-    /**
-     * @Then I should see a page telling me that my password has expired
-     */
-    public function iShouldSeeAPageTellingMeThatMyPasswordHasExpired()
-    {
-        $this->assertPageBodyContainsText('Your password has expired');
-    }
-    
     private static function ensureFolderExistsForTestFile($filePath)
     {
         $folder = dirname($filePath);
@@ -246,5 +216,119 @@ class FeatureContext extends MinkContext
             json_decode($actualJson, true),
             json_decode($expectedJson, true)
         );
+    }
+
+    /**
+     * Get the login button from the given page.
+     *
+     * @param DocumentElement $page The page.
+     * @return NodeElement
+     */
+    protected function getLoginButton($page)
+    {
+        $buttons = $page->findAll('css', 'button');
+        $loginButton = null;
+        foreach ($buttons as $button) {
+            $lcButtonText = strtolower($button->getText());
+            if (strpos($lcButtonText, 'login') !== false) {
+                $loginButton = $button;
+                break;
+            }
+        }
+        Assert::notNull($loginButton, 'Failed to find the login button');
+        return $loginButton;
+    }
+
+    /**
+     * @When I log in
+     */
+    public function iLogIn()
+    {
+        $page = $this->session->getPage();
+        try {
+            $page->fillField('username', $this->username);
+            $page->fillField('password', $this->password);
+            $this->submitLoginForm($page);
+        } catch (ElementNotFoundException $e) {
+            Assert::true(false, sprintf(
+                "Did not find that element in the page.\nError: %s\nPage content: %s",
+                $e->getMessage(),
+                $page->getContent()
+            ));
+        }
+    }
+
+    /**
+     * @Given I have logged in (again)
+     */
+    public function iHaveLoggedIn()
+    {
+        $this->iLogin();
+    }
+
+    /**
+     * Submit the current form, including the secondary page's form (if
+     * simpleSAMLphp shows another page because JavaScript isn't supported) by
+     * clicking the specified button.
+     *
+     * @param string $buttonName The value of the desired button's `name`
+     *     attribute.
+     */
+    protected function submitFormByClickingButtonNamed($buttonName)
+    {
+        $page = $this->session->getPage();
+        $button = $page->find('css', sprintf(
+            '[name=%s]',
+            $buttonName
+        ));
+        Assert::notNull($button, 'Failed to find button named ' . $buttonName);
+        $button->click();
+        $this->submitSecondarySspFormIfPresent($page);
+    }
+
+    /**
+     * Submit the login form, including the secondary page's form (if
+     * simpleSAMLphp shows another page because JavaScript isn't supported).
+     *
+     * @param DocumentElement $page The page.
+     */
+    protected function submitLoginForm($page)
+    {
+        $loginButton = $this->getLoginButton($page);
+        $loginButton->click();
+        $this->submitSecondarySspFormIfPresent($page);
+    }
+
+    /**
+     * Submit the secondary page's form (if simpleSAMLphp shows another page
+     * because JavaScript isn't supported).
+     *
+     * @param DocumentElement $page The page.
+     */
+    protected function submitSecondarySspFormIfPresent($page)
+    {
+        // SimpleSAMLphp 1.15 markup for secondary page:
+        $postLoginSubmitButton = $page->findButton('postLoginSubmitButton');
+        if ($postLoginSubmitButton instanceof NodeElement) {
+            $postLoginSubmitButton->click();
+        } else {
+
+            // SimpleSAMLphp 1.14 markup for secondary page:
+            $body = $page->find('css', 'body');
+            if ($body instanceof NodeElement) {
+                $onload = $body->getAttribute('onload');
+                if ($onload === "document.getElementsByTagName('input')[0].click();") {
+                    $body->pressButton('Submit');
+                }
+            }
+        }
+    }
+
+    /**
+     * @Then I should end up at my intended destination
+     */
+    public function iShouldEndUpAtMyIntendedDestination()
+    {
+        $this->assertPageBodyContainsText('Your attributes');
     }
 }

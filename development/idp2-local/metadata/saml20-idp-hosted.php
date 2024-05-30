@@ -21,5 +21,9 @@ $metadata['http://ssp-idp2.local:8086'] = [
 	 * Authentication source to use. Must be one that is configured in
 	 * 'config/authsources.php'.
 	 */
-	'auth' => 'admin',
+    'auth' => 'example-userpass',
 ];
+
+// Copy configuration for port 80 and modify host.
+$metadata['http://ssp-idp2.local'] = $metadata['http://ssp-idp2.local:8086'];
+$metadata['http://ssp-idp2.local']['host'] = 'ssp-idp2.local';

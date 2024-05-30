@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
-set -e
+# echo script commands to stdout
 set -x
+
+# exit if any command fails
+set -e
 
 cd /data
 export COMPOSER_ALLOW_SUPERUSER=1; composer install
 
-whenavail "ssp-hub.local"     80 10 echo Hub ready
-whenavail "ssp-idp1.local" 80 10 echo IDP 1 ready
-whenavail "ssp-sp1.local"  80 10 echo SP 1 ready
+whenavail "ssp-hub.local"  80 15 echo Hub ready
+whenavail "ssp-idp1.local" 80 5 echo IDP 1 ready
+whenavail "ssp-sp1.local"  80 5 echo SP 1 ready
 
 ./vendor/bin/behat \
-    --append-snippets \
-    --snippets-for=FeatureContext \
     --no-interaction \
-    --stop-on-failure #\
-    #--strict
+    --stop-on-failure

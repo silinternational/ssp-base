@@ -4,6 +4,7 @@ local.env
 .vagrant
 composer.phar
 /nbproject/
-local.*.env
+*.env
 *.aes
 dockercfg
+node_modules/

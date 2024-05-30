@@ -1,22 +1,4 @@
-version: "2"
 services:
-  ssp:
-    build: .
-    volumes:
-      # Utilize custom certs 
-      - ./development/ssp/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
-
-      # Utilize custom configs
-      - ./development/ssp/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
-      
-      # Configure the debugger
-      - ./development/ssp/run-debug.sh:/data/run-debug.sh
-    command: ["/data/run-debug.sh"]
-    ports:
-      - "80:80"
-    env_file:
-      - ./local.env
-
   db:
     image: mariadb:10
     ports:
@@ -27,15 +9,38 @@ services:
       MYSQL_USER: silauth
       MYSQL_PASSWORD: silauth
 
+  dbadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: silauth
+      PMA_PASSWORD: silauth
+
   test:
     build: .
     depends_on:
       - ssp-hub.local
       - ssp-idp1.local
+      - ssp-idp2.local
+      - ssp-idp3.local
       - ssp-sp1.local
+      - ssp-sp2.local
+      - ssp-sp3.local
+      - pwmanager.local
       - test-browser
     environment:
-      - COMPOSER_CACHE_DIR=/composer
+      MYSQL_HOST: db
+      MYSQL_DATABASE: silauth
+      MYSQL_USER: silauth
+      MYSQL_PASSWORD: silauth
+      COMPOSER_CACHE_DIR: /composer
+      PROFILE_URL_FOR_TESTS: http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
+      ADMIN_EMAIL: john_doe@there.com
+      ADMIN_PASS: b
+      SECRET_SALT: abc123
+      IDP_NAME: x
     volumes:
       - ./composer.json:/data/composer.json
       - ./composer.lock:/data/composer.lock
@@ -45,7 +50,14 @@ services:
       - ./dockerbuild/run-tests.sh:/data/run-tests.sh
       - ./dockerbuild/apply-dictionaries-overrides.php:/data/apply-dictionaries-overrides.php
       - ./features:/data/features
+      - ./behat.yml:/data/behat.yml
       - ./tests:/data/tests
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     command: ["/data/run-tests.sh"]
 
   test-browser:
@@ -67,10 +79,17 @@ services:
     env_file:
       - ./local.env
     environment:
-      - COMPOSER_CACHE_DIR=/composer
+      COMPOSER_CACHE_DIR: /composer
 
   ssp-hub.local:
     build: .
+    depends_on:
+      - ssp-idp1.local
+      - ssp-idp2.local
+      - ssp-idp3.local
+      - ssp-sp1.local
+      - ssp-sp2.local
+      - ssp-sp3.local
     volumes:
       # Utilize custom certs
       - ./development/hub/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
@@ -89,6 +108,14 @@ services:
 
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
+
+      # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     command: /data/run-debug.sh
     ports:
       - "80:80"
@@ -120,12 +147,25 @@ services:
       - ./development/idp-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
       - ./development/idp-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
 
-      # Misc. files needed
-      - ./development/enable-exampleauth-module.sh:/data/enable-exampleauth-module.sh
+      # Customized SSP code -- TODO: make a better solution that doesn't require hacking SSP code
+      - ./development/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/lib/Auth/Source/UserPass.php
 
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
-    command: 'bash -c "/data/enable-exampleauth-module.sh && /data/run.sh"'
+
+      # Include the features folder (for the FakeIdBrokerClient class)
+      - ./features:/data/features
+
+      # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
+    command: >
+      bash -c "whenavail db 3306 60 /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/lib/Auth/Source/yii migrate --interactive=0 &&
+      /data/run.sh"
     ports:
       - "8085:80"
     environment:
@@ -133,16 +173,26 @@ services:
       ADMIN_PASS: "a"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "IDP 1"
+      IDP_DOMAIN_NAME: "mfaidp"
+      ID_BROKER_ACCESS_TOKEN: "dummy"
+      ID_BROKER_ASSERT_VALID_IP: "false"
+      ID_BROKER_BASE_URI: "dummy"
+      ID_BROKER_TRUSTED_IP_RANGES: "192.168.0.1/8"
+      MFA_SETUP_URL: "http://pwmanager.local:8084/module.php/core/authenticate.php?as=ssp-hub-custom-port"
+      REMEMBER_ME_SECRET: "12345"
+      PROFILE_URL: "http://pwmanager.local:8084/module.php/core/authenticate.php?as=ssp-hub-custom-port"
+      PROFILE_URL_FOR_TESTS: "http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
-      THEME_USE: "material:material"
+      THEME_USE: "default"
       SESSION_STORE_TYPE: "sql"
       MYSQL_HOST: "db"
       MYSQL_DATABASE: "silauth"
       MYSQL_USER: "silauth"
       MYSQL_PASSWORD: "silauth"
+      BASE_URL_PATH: "http://ssp-idp1.local/"
 
-  idp2:
+  ssp-idp2.local:
     build: .
     volumes:
       # Utilize custom certs
@@ -155,7 +205,17 @@ services:
       # Utilize custom metadata
       - ./development/idp2-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
       - ./development/idp2-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
-    command: /data/run.sh
+
+      # Customized SSP code -- TODO: make a better solution that doesn't require hacking SSP code
+      - ./development/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/lib/Auth/Source/UserPass.php
+
+      # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     ports:
       - "8086:80"
     environment:
@@ -165,6 +225,40 @@ services:
       IDP_NAME: "IDP 2"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
+      THEME_USE: "material:material"
+
+  ssp-idp3.local:
+    build: .
+    volumes:
+      # Utilize custom certs
+      - ./development/idp3-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
+
+      # Utilize custom configs
+      - ./development/idp3-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+      - ./development/idp3-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
+
+      # Utilize custom metadata
+      - ./development/idp3-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
+      - ./development/idp3-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
+
+      # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
+    ports:
+      - "8087:80"
+    env_file:
+      - local.env
+    environment:
+      ADMIN_EMAIL: "john_doe@there.com"
+      ADMIN_PASS: "c"
+      SECRET_SALT: "h57fjem34fh*nsJFGNjweJ"
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
+      IDP_NAME: "IdP3"
 
   ssp-sp1.local:
     build: .
@@ -181,6 +275,14 @@ services:
 
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
+
+      # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     ports:
       - "8081:80"
     environment:
@@ -192,7 +294,7 @@ services:
       SAML20_IDP_ENABLE: "false"
       ADMIN_PROTECT_INDEX_PAGE: "false"
 
-  sp2:
+  ssp-sp2.local:
     build: .
     volumes:
       # Utilize custom certs
@@ -204,6 +306,14 @@ services:
 
       # Utilize custom metadata
       - ./development/sp2-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
+
+      # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     ports:
       - "8082:80"
     environment:
@@ -214,7 +324,124 @@ services:
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
       ADMIN_PROTECT_INDEX_PAGE: "false"
-    
+
+  ssp-sp3.local:
+    build: .
+    volumes:
+      # Utilize custom certs
+      - ./development/sp3-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
+
+      # Utilize custom configs
+      - ./development/sp3-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
+      - ./development/sp3-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+
+      # Utilize custom metadata
+      - ./development/sp3-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
+    ports:
+      - "8083:80"
+    env_file:
+      - local.env
+    environment:
+      ADMIN_EMAIL: john_doe@there.com
+      ADMIN_PASS: sp3
+      SECRET_SALT: h57fjemb&dn^nsJFGNjweJz3
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
+      SAML20_IDP_ENABLE: "false"
+      ADMIN_PROTECT_INDEX_PAGE: "false"
+
+  pwmanager.local:
+    image: silintl/ssp-base:develop
+    volumes:
+      # Utilize custom certs
+      - ./development/sp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
+
+      # Utilize custom configs
+      - ./development/sp-local/config/authsources-pwmanager.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+
+      # Utilize custom metadata
+      - ./development/sp-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
+    ports:
+      - "8084:80"
+    environment:
+      ADMIN_EMAIL: john_doe@there.com
+      ADMIN_PASS: sp1
+      IDP_NAME: THIS VARIABLE IS REQUIRED BUT PROBABLY NOT USED
+      SECRET_SALT: NOT-a-secret-k49fjfkw73hjf9t87wjiw
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
+      SAML20_IDP_ENABLE: "false"
+      ADMIN_PROTECT_INDEX_PAGE: "false"
+      THEME_USE: material:material
+
+  # the broker and brokerDb containers are used by the silauth module
+  broker:
+    image: silintl/idp-id-broker:develop
+    ports:
+      - "80"
+    depends_on:
+      - brokerDb
+    env_file:
+      - ./local.broker.env
+    environment:
+      IDP_NAME: "idp"
+      MYSQL_HOST: "brokerDb"
+      MYSQL_DATABASE: "broker"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "pass"
+      EMAIL_SERVICE_accessToken: "dummy"
+      EMAIL_SERVICE_assertValidIp: "false"
+      EMAIL_SERVICE_baseUrl: "dummy"
+      EMAILER_CLASS: Sil\SilIdBroker\Behat\Context\fakes\FakeEmailer
+      HELP_CENTER_URL: "https://example.org/help"
+      PASSWORD_FORGOT_URL: "https://example.org/forgot"
+      PASSWORD_PROFILE_URL: "https://example.org/profile"
+      SUPPORT_EMAIL: "support@example.org"
+      EMAIL_SIGNATURE: "one red pill, please"
+      API_ACCESS_KEYS: "test-cli-abc123"
+      APP_ENV: "dev"
+    command: ["bash", "-c", "whenavail brokerDb 3306 60 ./yii migrate --interactive=0 && ./run.sh"]
+
+  brokerDb:
+    image: mariadb:10
+    ports:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "r00tp@ss!"
+      MYSQL_DATABASE: "broker"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "pass"
+
+  dynamo:
+    image: cnadiminti/dynamodb-local
+    command: "-sharedDb -inMemory"
+    hostname: dynamo
+    ports:
+      - "8000:8000"
+    environment:
+      reschedule: on-node-failure
+
+  init-dynamo:
+    image: garland/aws-cli-docker
+    command: "/init-dynamodb.sh"
+    volumes:
+      - ./development/init-dynamodb.sh:/init-dynamodb.sh
+    depends_on:
+      - dynamo
+    environment:
+      AWS_ACCESS_KEY_ID: 0
+      AWS_SECRET_ACCESS_KEY: 0
+      AWS_DEFAULT_REGION: us-east-1
+      AWS_DYNAMODB_ENDPOINT: http://dynamo:8000
+
+  node:
+    image: node:lts-alpine
+    volumes:
+      - ./package.json:/data/package.json
+      - ./package-lock.json:/data/package-lock.json
+      - ./node_modules:/data/node_modules
+    working_dir: /data
+
 networks:
   default:
     driver: bridge

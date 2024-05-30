@@ -11,7 +11,6 @@ echo "xdebug.remote_enable=1" >> $INI_FILE
 echo "xdebug.remote_host=$XDEBUG_REMOTE_HOST" >> $INI_FILE
 
 mkdir -p /data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
-touch /data/vendor/simplesamlphp/simplesamlphp/modules/sildisco/default-enable
 
 # now the builtin run script can be started
 /data/run.sh

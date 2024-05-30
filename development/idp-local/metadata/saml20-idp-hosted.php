@@ -1,4 +1,8 @@
 <?php
+
+use Sil\PhpEnv\Env;
+use Sil\Psr3Adapters\Psr3SamlLogger;
+
 /**
  * SAML 2.0 IdP configuration for SimpleSAMLphp.
  *
@@ -6,6 +10,7 @@
  */
 
 use Sil\Psr3Adapters\Psr3StdOutLogger;
+use Sil\SspBase\Features\fakes\FakeIdBrokerClient;
 
 $metadata['http://ssp-idp1.local:8085'] = [
 	/*
@@ -29,6 +34,18 @@ $metadata['http://ssp-idp1.local:8085'] = [
 
     'authproc' => [
         10 => [
+            'class' => 'mfa:Mfa',
+            'employeeIdAttr' => 'employeeNumber',
+            'idBrokerAccessToken' => Env::get('ID_BROKER_ACCESS_TOKEN'),
+            'idBrokerAssertValidIp' => Env::get('ID_BROKER_ASSERT_VALID_IP'),
+            'idBrokerBaseUri' => Env::get('ID_BROKER_BASE_URI'),
+            'idBrokerClientClass' => FakeIdBrokerClient::class,
+            'idBrokerTrustedIpRanges' => Env::get('ID_BROKER_TRUSTED_IP_RANGES'),
+            'idpDomainName' => Env::get('IDP_DOMAIN_NAME'),
+            'mfaSetupUrl' => Env::get('MFA_SETUP_URL'),
+            'loggerClass' => Psr3SamlLogger::class,
+        ],
+        15 => [
             'class' => 'expirychecker:ExpiryDate',
             'accountNameAttr' => 'cn',
             'expiryDateAttr' => 'schacExpiryDate',
@@ -37,8 +54,18 @@ $metadata['http://ssp-idp1.local:8085'] = [
             'dateFormat' => 'Y-m-d',
             'loggerClass' => Psr3StdOutLogger::class,
         ],
+        30 => [
+            'class' => 'profilereview:ProfileReview',
+            'employeeIdAttr' => 'employeeNumber',
+            'mfaLearnMoreUrl' => Env::get('MFA_LEARN_MORE_URL'),
+            'profileUrl' => Env::get('PROFILE_URL'),
+            'loggerClass' => Psr3SamlLogger::class,
+        ],
     ],
 ];
 
-// Duplicate configuration for port 80.
+// Copy configuration for port 80 and modify host and profileUrl.
 $metadata['http://ssp-idp1.local'] = $metadata['http://ssp-idp1.local:8085'];
+$metadata['http://ssp-idp1.local']['host'] = 'ssp-idp1.local';
+$metadata['http://ssp-idp1.local']['authproc'][10]['mfaSetupUrl'] = Env::get('PROFILE_URL_FOR_TESTS');
+$metadata['http://ssp-idp1.local']['authproc'][30]['profileUrl'] = Env::get('PROFILE_URL_FOR_TESTS');
