@@ -57,7 +57,7 @@ class ProfileReviewContext extends FeatureContext
      */
     public function iProvideCredentialsThatDoNotNeedReview()
     {
-        // See `development/idp-local/config/authsources.php` for options.
+        // Credentials defined in `development/idp-local/config/authsources.php`
         $this->username = 'no_review';
         $this->password = 'e';
     }
@@ -67,7 +67,7 @@ class ProfileReviewContext extends FeatureContext
      */
     public function iProvideCredentialsThatAreDueForAReminder($category, $nagType)
     {
-        // See `development/idp-local/config/authsources.php` for options.
+        // Credentials defined in `development/idp-local/config/authsources.php`
         $this->username = $category . '_' . $nagType;
         switch ($this->username) {
             case 'mfa_add':
@@ -77,11 +77,17 @@ class ProfileReviewContext extends FeatureContext
             case 'method_add':
                 $this->password = 'g';
                 break;
-
-            case 'profile_review':
-                $this->password = 'h';
-                break;
         }
+    }
+
+    /**
+     * @Given I provide credentials that are due for a profile review
+     */
+    public function iProvideCredentialsThatAreDueForAProfileReview()
+    {
+        // Credentials defined in `development/idp-local/config/authsources.php`
+        $this->username = 'profile_review';
+        $this->password = 'h';
     }
 
 
@@ -123,6 +129,14 @@ class ProfileReviewContext extends FeatureContext
     }
 
     /**
+     * @When I click the :text link
+     */
+    public function iClickTheLink($text)
+    {
+        $this->clickLink($text);
+    }
+
+    /**
      * @Then I should end up at the update profile URL
      */
     public function iShouldEndUpAtTheUpdateProfileUrl()
@@ -135,6 +149,29 @@ class ProfileReviewContext extends FeatureContext
             $currentUrl,
             'Did NOT end up at the update profile URL'
         );
+    }
+
+    /**
+     * @Then I should end up at the update profile URL on a new tab
+     */
+    public function iShouldEndUpAtTheUpdateProfileUrlOnANewTab()
+    {
+        $profileUrl = Env::get('PROFILE_URL_FOR_TESTS');
+        Assert::assertNotEmpty($profileUrl, 'No PROFILE_URL_FOR_TESTS provided');
+
+        $windowNames = $this->session->getWindowNames();
+        Assert::assertGreaterThanOrEqual(2, sizeof($windowNames),
+            'Expected to see at least 2 windows opened');
+
+        foreach ($windowNames as $windowName) {
+            $this->session->switchToWindow($windowName);
+            $currentUrl = $this->session->getCurrentUrl();
+            if ($currentUrl == $profileUrl) {
+                return;
+            }
+        }
+
+        Assert::fail('Did NOT end up at the update profile URL');
     }
 
     /**
@@ -153,6 +190,15 @@ class ProfileReviewContext extends FeatureContext
     {
         $page = $this->session->getPage();
         $this->assertFormContains('name="update"', $page);
+    }
+
+    /**
+     * @Then there should be a way to go review my profile now
+     */
+    public function thereShouldBeAWayToGoReviewMyProfileNow()
+    {
+        $page = $this->session->getPage();
+        Assert::assertContains('Some of these need updating', $page->getHtml());
     }
 
     /**

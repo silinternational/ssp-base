@@ -25,9 +25,9 @@ Feature: Ensure I can login to Sp1 through Idp1, must login to Sp2 through Idp2 
   Scenario: Logout of IDP1
     Given I have authenticated with IDP1 for SP1
     When I log out of IDP1
-    Then I should see "You have been logged out."
+    Then I should see "You have now been logged out."
 
   Scenario: Logout of IDP2
     Given I have authenticated with IDP2 for SP2
     When I log out of IDP2
-    Then I should see "You have been logged out."
+    Then I should see "You have now been logged out."

@@ -152,7 +152,7 @@ class ExpiryContext extends FeatureContext
     public function iShouldSeeAnErrorMessage()
     {
         $page = $this->session->getPage();
-        Assert::assertContains('Unhandled exception', $page->getHtml());
+        Assert::assertContains('An error occurred', $page->getHtml());
     }
 
     /**

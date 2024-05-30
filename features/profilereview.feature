@@ -16,10 +16,16 @@ Feature: Prompt to review profile information
     And there should be a way to continue to my intended destination
 
     Examples:
-      | category | nag type | message                          |
-      | mfa      | add      | "2-Step Verification"            |
-      | method   | add      | "alternate email addresses"      |
-      | profile  | review   | "Please take a moment to review" |
+      | category | nag type | message                    |
+      | mfa      | add      | "2-Step Verification"      |
+      | method   | add      | "alternate email address"  |
+
+  Scenario: Present profile review as required by the user profile
+    Given I provide credentials that are due for a profile review
+    When I log in
+    Then I should see the message: "Are these still correct?"
+    And there should be a way to go review my profile now
+    And there should be a way to continue to my intended destination
 
   Scenario Outline: Obeying a reminder
     Given I provide credentials that are due for a <category> <nag type> reminder
@@ -31,7 +37,12 @@ Feature: Prompt to review profile information
       | category | nag type |
       | mfa      | add      |
       | method   | add      |
-      | profile  | review   |
+
+  Scenario: Obeying a profile review reminder
+    Given I provide credentials that are due for a profile review
+    And I have logged in
+    When I click the "Some of these need updating" link
+    Then I should end up at the update profile URL on a new tab
 
   Scenario Outline: Ignoring a reminder
     Given I provide credentials that are due for a <category> <nag type> reminder
@@ -43,10 +54,15 @@ Feature: Prompt to review profile information
       | category | nag type |
       | mfa      | add      |
       | method   | add      |
-      | profile  | review   |
+
+  Scenario: Ignoring a profile review reminder
+    Given I provide credentials that are due for a profile review
+    And I have logged in
+    When I click the remind-me-later button
+    Then I should end up at my intended destination
 
   Scenario: Ensuring that manager mfa data is not displayed to the user
     Given I provide credentials for a user that has used the manager mfa option
     And I have logged in
-    Then I should see the message: "Please take a moment to review"
+    Then I should see the message: "Are these still correct?"
     And I should not see any manager mfa information
