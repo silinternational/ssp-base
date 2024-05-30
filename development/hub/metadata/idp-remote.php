@@ -29,7 +29,7 @@ return [
 
         // NOTE: This breaks being able to test the hub's authentication sources
         //       since the hub doesn't create an SP entry in the session
-        'SPList' => ['http://ssp-sp1.local', 'http://ssp-sp2.local', 'http://ssp-sp3.local'],
+        'SPList' => ['http://ssp-sp1.local:8081', 'http://ssp-sp2.local:8082', 'http://ssp-sp3.local:8083'],
     ],
     'http://ssp-idp1.local' => [
         'metadata-set' => 'saml20-idp-remote',

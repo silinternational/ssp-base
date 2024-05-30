@@ -19,7 +19,7 @@
     </script>
 
     <?php
-    $siteKey = htmlentities($this->data['recaptcha.siteKey'] ?? null);
+    $siteKey = htmlentities($this->data['recaptcha.siteKey']);
 
     if (! empty($siteKey)) {
     ?>

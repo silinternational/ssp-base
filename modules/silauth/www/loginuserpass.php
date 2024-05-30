@@ -1,6 +1,7 @@
 <?php
 
 use Sil\Psr3Adapters\Psr3StdOutLogger;
+use Sil\SspUtils\AnnouncementUtils;
 use SimpleSAML\Module\silauth\Auth\Source\auth\Authenticator;
 use SimpleSAML\Module\silauth\Auth\Source\csrf\CsrfProtector;
 use SimpleSAML\Module\silauth\Auth\Source\http\Request;
@@ -89,6 +90,7 @@ $t->data['errorparams'] = $errorParams;
 $t->data['csrfToken'] = $csrfProtector->getMasterToken();
 $t->data['profileUrl'] = $state['templateData']['profileUrl'] ?? '';
 $t->data['helpCenterUrl'] = $state['templateData']['helpCenterUrl'] ?? '';
+$t->data['announcement'] = AnnouncementUtils::getAnnouncement();
 
 /* For simplicity's sake, don't bother telling this Request to trust any IP
  * addresses. This is okay because we only track the failures of untrusted
@@ -96,6 +98,8 @@ $t->data['helpCenterUrl'] = $state['templateData']['helpCenterUrl'] ?? '';
 $request = new Request();
 if (Authenticator::isCaptchaRequired($username, $request->getUntrustedIpAddresses())) {
     $t->data['recaptcha.siteKey'] = $recaptchaSiteKey;
+} else {
+    $t->data['recaptcha.siteKey'] = null;
 }
 
 if (isset($state['SPMetadata'])) {

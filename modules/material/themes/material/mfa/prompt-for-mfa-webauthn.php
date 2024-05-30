@@ -5,11 +5,7 @@
 
     <?php include __DIR__ . '/../common-head-elements.php' ?>
 
-    <?php
-    // TODO: remove this
-    $webauthnJsFileHash = md5_file(__DIR__ . '/../../../www/simplewebauthn/browser.js');
-    ?>
-    <script src="simplewebauthn/browser.js?v=<?= $webauthnJsFileHash ?>"></script>
+    <script src="<?= $this->data['browserJsPath'] ?>"></script>
 
     <script>
         function verifyWebAuthn() {

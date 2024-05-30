@@ -119,7 +119,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
         $t->data['entityID'] = $this->spEntityId;
         $t->data['spName'] = $spName;
         $t->data['urlpattern'] = htmlspecialchars(\SimpleSAML\Utils\HTTP::getSelfURLNoQuery());
-        $t->data['announcement'] = AnnouncementUtils::getSimpleAnnouncement();
+        $t->data['announcement'] = AnnouncementUtils::getAnnouncement();
         $t->data['helpCenterUrl'] = $this->config->getValue('helpCenterUrl', '');
 
         $t->show();

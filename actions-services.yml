@@ -53,6 +53,7 @@ services:
 
       # Utilize custom configs
       - ./development/hub/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+      - ./development/announcement.php:/data/vendor/simplesamlphp/simplesamlphp/announcement/announcement.php
 
       # Utilize custom metadata
       - ./development/hub/metadata/idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/idp-remote.php
@@ -84,6 +85,7 @@ services:
       # Utilize custom configs
       - ./development/idp-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
       - ./development/idp-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
+      - ./development/announcement.php:/data/vendor/simplesamlphp/simplesamlphp/announcement/announcement.php
 
       # Utilize custom metadata
       - ./development/idp-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
