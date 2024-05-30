@@ -192,7 +192,7 @@ Update `/simplesamlphp/config/config.php`:
 'theme.use' => 'material:material'
 ```
 
-This project provides a convenience by loading this config with whatever is in the environment variable `THEME_USE`._
+This project sets this as the default value in the provided config file.
 
 ##### Google reCAPTCHA
 

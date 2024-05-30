@@ -70,7 +70,6 @@ services:
       SECURE_COOKIE: "false"
       ADMIN_PROTECT_INDEX_PAGE: "false"
       SHOW_SAML_ERRORS: "true"
-      THEME_USE: "material:material"
       THEME_COLOR_SCHEME: "orange-light_blue"
       HUB_MODE: "true"
 
@@ -117,7 +116,6 @@ services:
       PROFILE_URL_FOR_TESTS: "http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
-      THEME_USE: "material:material"
       MYSQL_HOST: "db"
       MYSQL_DATABASE: "silauth"
       MYSQL_USER: "silauth"
@@ -148,7 +146,6 @@ services:
       IDP_NAME: "IDP 2"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
-      THEME_USE: "material:material"
 
   ssp-idp3.local:
     build: .
@@ -261,7 +258,6 @@ services:
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
       ADMIN_PROTECT_INDEX_PAGE: "false"
-      THEME_USE: "material:material"
 
   # the broker and brokerDb containers are used by the silauth module
   broker:
