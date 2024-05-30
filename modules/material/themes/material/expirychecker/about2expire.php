@@ -27,7 +27,7 @@
 
             <p class="mdl-typography--title margin">
             <?php
-            $daysLeft = $this->data['daysLeft'] ?? 0;
+            $daysLeft = $this->data['daysLeft'] ?? '0';
             $expiringMessage = $daysLeft < 2 ?
                                $this->t('{material:about2expire:expiring_in_a_day}') :
                                $this->t('{material:about2expire:expiring_soon}',
