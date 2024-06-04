@@ -7,7 +7,6 @@ set -x
 set -e
 
 cd /data
-export COMPOSER_ALLOW_SUPERUSER=1; composer install
 
 whenavail "ssp-hub.local"  80 15 echo Hub ready
 whenavail "ssp-idp1.local" 80 5 echo IDP 1 ready
