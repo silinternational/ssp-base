@@ -11,7 +11,10 @@ services:
       MYSQL_PASSWORD: silauth
 
   test:
-    build: .
+    build:
+      context: .
+      args:
+        COMPOSER_FLAGS: "--no-interaction --no-progress"
     depends_on:
       - ssp-hub.local
       - ssp-idp1.local
