@@ -19,7 +19,10 @@ services:
       PMA_PASSWORD: silauth
 
   test:
-    build: .
+    build:
+      context: .
+      args:
+        COMPOSER_FLAGS: "--no-interaction --no-progress"
     depends_on:
       - ssp-hub.local
       - ssp-idp1.local
@@ -104,9 +107,6 @@ services:
       - ./development/hub/metadata/saml20-sp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-hosted.php
       - ./development/hub/metadata/sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/sp-remote.php
 
-      # Configure the debugger
-      - ./development/hub/run-debug.sh:/data/run-debug.sh
-
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
 
@@ -117,7 +117,6 @@ services:
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
       - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
       - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
-    command: /data/run-debug.sh
     ports:
       - "80:80"
     environment:
