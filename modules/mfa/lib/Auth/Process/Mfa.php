@@ -319,7 +319,7 @@ class Mfa extends ProcessingFilter
      * @param array $state
      * @return string
      */
-    protected static function getRelayStateUrl($state)
+    public static function getRelayStateUrl(array $state): string
     {
         if (array_key_exists('saml:RelayState', $state)) {
             $samlRelayState = $state['saml:RelayState'];
@@ -406,12 +406,12 @@ class Mfa extends ProcessingFilter
         }
     }
     
-    protected static function isHeadedToMfaSetupUrl($state, $mfaSetupUrl)
+    public static function isHeadedToUrl(array $state, string $url): bool
     {
         if (array_key_exists('saml:RelayState', $state)) {
             $currentDestination = self::getRelayStateUrl($state);
             if (! empty($currentDestination)) {
-                return (strpos($currentDestination, $mfaSetupUrl) === 0);
+                return (strpos($currentDestination, $url) === 0);
             }
         }
         return false;
@@ -578,7 +578,7 @@ class Mfa extends ProcessingFilter
         // Get the necessary info from the state data.
         $employeeId = $this->getAttribute($this->employeeIdAttr, $state);
         $mfa = $this->getAttributeAllValues('mfa', $state);
-        $isHeadedToMfaSetupUrl = self::isHeadedToMfaSetupUrl(
+        $isHeadedToMfaSetupUrl = self::isHeadedToUrl(
             $state,
             $this->mfaSetupUrl
         );

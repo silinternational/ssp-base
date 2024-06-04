@@ -7,6 +7,7 @@ use Sil\Psr3Adapters\Psr3SamlLogger;
 use SimpleSAML\Auth\ProcessingFilter;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Module;
+use SimpleSAML\Module\mfa\Auth\Process\Mfa;
 use SimpleSAML\Module\profilereview\LoggerFactory;
 use SimpleSAML\Session;
 use SimpleSAML\Utils\HTTP;
@@ -69,34 +70,12 @@ class ProfileReview extends ProcessingFilter
     {
         foreach ($attributes as $attribute) {
             $this->$attribute = $config[$attribute] ?? null;
-            
-            self::validateConfigValue(
+
+            Mfa::validateConfigValue(
                 $attribute,
                 $this->$attribute,
                 $this->logger
             );
-        }
-    }
-    
-    /**
-     * Validate the given config value
-     *
-     * @param string $attribute The name of the attribute.
-     * @param mixed $value The value to check.
-     * @param LoggerInterface $logger The logger.
-     * @throws \Exception
-     */
-    public static function validateConfigValue($attribute, $value, $logger)
-    {
-        if (empty($value) || !is_string($value)) {
-            $exception = new \Exception(sprintf(
-                'The value we have for %s (%s) is empty or is not a string',
-                $attribute,
-                var_export($value, true)
-            ), 1507146042);
-
-            $logger->critical($exception->getMessage());
-            throw $exception;
         }
     }
     
@@ -141,47 +120,12 @@ class ProfileReview extends ProcessingFilter
         return is_null($attributeData) ? null : (array)$attributeData;
     }
 
-    /**
-     * Return the saml:RelayState if it begins with "http" or "https". Otherwise
-     * return an empty string.
-     *
-     * @param array $state
-     * @returns string
-     * @return mixed|string
-     */
-    protected static function getRelayStateUrl($state)
-    {
-        if (array_key_exists('saml:RelayState', $state)) {
-            $samlRelayState = $state['saml:RelayState'];
-            
-            if (strpos($samlRelayState, "http://") === 0) {
-                return $samlRelayState;
-            }
-
-            if (strpos($samlRelayState, "https://") === 0) {
-                return $samlRelayState;
-            }
-        }
-        return '';
-    }
-
     protected function initComposerAutoloader()
     {
         $path = __DIR__ . '/../../../vendor/autoload.php';
         if (file_exists($path)) {
             require_once $path;
         }
-    }
-    
-    protected static function isHeadedToProfileUrl($state, $ProfileUrl)
-    {
-        if (array_key_exists('saml:RelayState', $state)) {
-            $currentDestination = self::getRelayStateUrl($state);
-            if (! empty($currentDestination)) {
-                return (strpos($currentDestination, $ProfileUrl) === 0);
-            }
-        }
-        return false;
     }
 
     /**
@@ -193,7 +137,7 @@ class ProfileReview extends ProcessingFilter
     {
         $profileUrl = $state['ProfileUrl'];
         // Tell the profile-setup URL where the user is ultimately trying to go (if known).
-        $currentDestination = self::getRelayStateUrl($state);
+        $currentDestination = Mfa::getRelayStateUrl($state);
         if (! empty($currentDestination)) {
             $profileUrl = HTTP::addURLParameters(
                 $profileUrl,
@@ -223,7 +167,7 @@ class ProfileReview extends ProcessingFilter
     {
         // Get the necessary info from the state data.
         $employeeId = $this->getAttribute($this->employeeIdAttr, $state);
-        $isHeadedToProfileUrl = self::isHeadedToProfileUrl($state, $this->profileUrl);
+        $isHeadedToProfileUrl = Mfa::isHeadedToUrl($state, $this->profileUrl);
 
         $mfa = $this->getAttributeAllValues('mfa', $state);
         $method = $this->getAttributeAllValues('method', $state);
