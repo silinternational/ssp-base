@@ -10,7 +10,7 @@ services:
       MYSQL_USER: silauth
       MYSQL_PASSWORD: silauth
 
-  app:
+  test:
     build: .
     depends_on:
       - ssp-hub.local
