@@ -16,7 +16,7 @@ class FailedLoginIpAddressBase extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public static function tableName()
+    public static function tableName(): string
     {
         return 'failed_login_ip_address';
     }
@@ -24,7 +24,7 @@ class FailedLoginIpAddressBase extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['ip_address', 'occurred_at_utc'], 'required'],
@@ -36,7 +36,7 @@ class FailedLoginIpAddressBase extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return [
             'id' => Yii::t('app', 'ID'),

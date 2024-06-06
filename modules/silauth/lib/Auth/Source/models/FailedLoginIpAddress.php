@@ -18,7 +18,7 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return ArrayHelper::merge(parent::attributeLabels(), [
             'ip_address' => Yii::t('app', 'IP Address'),
@@ -26,7 +26,7 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
         ]);
     }
     
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
             [
@@ -38,7 +38,7 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
         ];
     }
     
-    public static function countRecentFailedLoginsFor($ipAddress)
+    public static function countRecentFailedLoginsFor(string $ipAddress): string|int|bool|null
     {
         return self::find()->where([
             'ip_address' => strtolower($ipAddress),
@@ -47,7 +47,7 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
         ])->count();
     }
     
-    public static function getFailedLoginsFor($ipAddress)
+    public static function getFailedLoginsFor(string $ipAddress): array
     {
         if ( ! Request::isValidIpAddress($ipAddress)) {
             throw new \InvalidArgumentException(sprintf(
@@ -66,7 +66,7 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
      * @param string $ipAddress The IP address.
      * @return FailedLoginIpAddress|null
      */
-    public static function getMostRecentFailedLoginFor($ipAddress)
+    public static function getMostRecentFailedLoginFor(string $ipAddress): ?FailedLoginIpAddress
     {
         return self::find()->where([
             'ip_address' => strtolower($ipAddress),
@@ -83,7 +83,7 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
      * @param string $ipAddress The IP address in question
      * @return int The number of seconds
      */
-    public static function getSecondsUntilUnblocked($ipAddress)
+    public static function getSecondsUntilUnblocked(string $ipAddress): int
     {
         $failedLogin = self::getMostRecentFailedLoginFor($ipAddress);
         
@@ -93,20 +93,20 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
         );
     }
     
-    public function init()
+    public function init(): void
     {
         $this->initializeLogger();
         parent::init();
     }
     
-    public static function isCaptchaRequiredFor($ipAddress)
+    public static function isCaptchaRequiredFor(string $ipAddress): bool
     {
         return Authenticator::isEnoughFailedLoginsToRequireCaptcha(
             self::countRecentFailedLoginsFor($ipAddress)
         );
     }
     
-    public static function isCaptchaRequiredForAnyOfThese(array $ipAddresses)
+    public static function isCaptchaRequiredForAnyOfThese(array $ipAddresses): bool
     {
         foreach ($ipAddresses as $ipAddress) {
             if (self::isCaptchaRequiredFor($ipAddress)) {
@@ -116,13 +116,13 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
         return false;
     }
     
-    public static function isRateLimitBlocking($ipAddress)
+    public static function isRateLimitBlocking(string $ipAddress): bool
     {
         $secondsUntilUnblocked = self::getSecondsUntilUnblocked($ipAddress);
         return ($secondsUntilUnblocked > 0);
     }
     
-    public static function isRateLimitBlockingAnyOfThese($ipAddresses)
+    public static function isRateLimitBlockingAnyOfThese(array $ipAddresses): bool
     {
         foreach ($ipAddresses as $ipAddress) {
             if (self::isRateLimitBlocking($ipAddress)) {
@@ -135,7 +135,8 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
     public static function recordFailedLoginBy(
         array $ipAddresses,
         LoggerInterface $logger
-    ) {
+    ): void
+    {
         foreach ($ipAddresses as $ipAddress) {
             $newRecord = new FailedLoginIpAddress(['ip_address' => strtolower($ipAddress)]);
             
@@ -150,7 +151,7 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
         }
     }
     
-    public static function resetFailedLoginsBy(array $ipAddresses)
+    public static function resetFailedLoginsBy(array $ipAddresses): void
     {
         foreach ($ipAddresses as $ipAddress) {
             self::deleteAll(['ip_address' => strtolower($ipAddress)]);

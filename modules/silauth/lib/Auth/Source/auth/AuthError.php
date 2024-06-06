@@ -16,8 +16,8 @@ class AuthError
     const CODE_RATE_LIMIT_1_MINUTE = 'rate_limit_1_minute';
     const CODE_RATE_LIMIT_MINUTES = 'rate_limit_minutes';
     
-    private $code = null;
-    private $messageParams = [];
+    private string $code;
+    private array $messageParams = [];
     
     /**
      * Constructor.
@@ -25,7 +25,7 @@ class AuthError
      * @param string $code One of the AuthError::CODE_* constants.
      * @param array $messageParams The error message parameters.
      */
-    public function __construct($code, $messageParams = [])
+    public function __construct(string $code, array $messageParams = [])
     {
         $this->code = $code;
         $this->messageParams = $messageParams;
@@ -44,7 +44,7 @@ class AuthError
      *
      * @return string
      */
-    public function getCode()
+    public function getCode(): string
     {
         return $this->code;
     }
@@ -56,7 +56,7 @@ class AuthError
      *
      * @return string Example: '{silauth:error:generic_try_later}'
      */
-    public function getFullSspErrorTag()
+    public function getFullSspErrorTag(): string
     {
         return sprintf(
             '{%s:%s}',
@@ -65,7 +65,7 @@ class AuthError
         );
     }
     
-    public function getMessageParams()
+    public function getMessageParams(): array
     {
         return $this->messageParams;
     }

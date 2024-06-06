@@ -26,15 +26,13 @@ class ProfileReview extends ProcessingFilter
     const MFA_ADD_PAGE = 'nag-for-mfa.php';
     const METHOD_ADD_PAGE = 'nag-for-method.php';
 
-    private $employeeIdAttr = null;
-    private $mfaLearnMoreUrl = null;
-    private $profileUrl = null;
+    private string|null $employeeIdAttr = null;
+    private string|null $mfaLearnMoreUrl = null;
+    private string|null $profileUrl = null;
 
-    /** @var LoggerInterface */
-    protected $logger;
+    protected LoggerInterface $logger;
     
-    /** @var string */
-    protected $loggerClass;
+    protected string $loggerClass;
 
     /**
      * Initialize this filter.
@@ -43,7 +41,7 @@ class ProfileReview extends ProcessingFilter
      * @param mixed $reserved For future use.
      * @throws \Exception
      */
-    public function __construct($config, $reserved)
+    public function __construct(array $config, mixed $reserved)
     {
         parent::__construct($config, $reserved);
         $this->initComposerAutoloader();
@@ -66,7 +64,7 @@ class ProfileReview extends ProcessingFilter
      * @param $attributes
      * @throws \Exception
      */
-    protected function loadValuesFromConfig($config, $attributes)
+    protected function loadValuesFromConfig(array $config, array $attributes): void
     {
         foreach ($attributes as $attribute) {
             $this->$attribute = $config[$attribute] ?? null;

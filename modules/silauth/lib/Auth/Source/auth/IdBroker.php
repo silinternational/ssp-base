@@ -3,17 +3,17 @@ namespace SimpleSAML\Module\silauth\Auth\Source\auth;
 
 use Psr\Log\LoggerInterface;
 use Sil\Idp\IdBroker\Client\IdBrokerClient;
+use Sil\SspBase\Features\fakes\FakeIdBrokerClient;
 use SimpleSAML\Module\silauth\Auth\Source\saml\User as SamlUser;
 
 class IdBroker
 {
-    /** @var IdBrokerClient */
-    protected $client;
+    protected IdBrokerClient|FakeIdBrokerClient $client;
     
     /** @var LoggerInterface */
-    protected $logger;
+    protected LoggerInterface $logger;
     
-    protected $idpDomainName;
+    protected string $idpDomainName;
     
     /**
      * 
@@ -64,7 +64,7 @@ class IdBroker
      * @return array|null The user's attributes (if successful), otherwise null.
      * @throws \Exception
      */
-    public function getAuthenticatedUser(string $username, string $password)
+    public function getAuthenticatedUser(string $username, string $password): ?array
     {
         $rpOrigin = 'https://' . $this->idpDomainName;
         $userInfo = $this->client->authenticate($username, $password, $rpOrigin);
@@ -102,7 +102,7 @@ class IdBroker
      * @return string "OK"
      * @throws Exception
      */
-    public function getSiteStatus()
+    public function getSiteStatus(): string
     {
         return $this->client->getSiteStatus();
     }

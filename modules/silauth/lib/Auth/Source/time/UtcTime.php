@@ -39,7 +39,7 @@ class UtcTime
      * @throws Exception If an invalid date/time string is provided, an
      *     \Exception will be thrown.
      */
-    public static function format(string $dateTimeString = 'now')
+    public static function format(string $dateTimeString = 'now'): string
     {
         return (string)(new UtcTime($dateTimeString));
     }
@@ -55,7 +55,7 @@ class UtcTime
      *     passed.
      * @return int The number of seconds remaining.
      */
-    public static function getRemainingSeconds(int $totalSeconds, int $elapsedSeconds)
+    public static function getRemainingSeconds(int $totalSeconds, int $elapsedSeconds): int
     {
         $remainingSeconds = $totalSeconds - $elapsedSeconds;
         return max($remainingSeconds, 0);
@@ -71,7 +71,7 @@ class UtcTime
      *     (presumably in the past, though not necessarily).
      * @return int The number of seconds
      */
-    public function getSecondsSince(UtcTime $otherUtcTime)
+    public function getSecondsSince(UtcTime $otherUtcTime): int
     {
         return $this->getTimestamp() - $otherUtcTime->getTimestamp();
     }
@@ -85,7 +85,7 @@ class UtcTime
      *     \Exception will be thrown.
      * @throws \InvalidArgumentException
      */
-    public static function getSecondsSinceDateTime(string $dateTimeString)
+    public static function getSecondsSinceDateTime(string $dateTimeString): int
     {
         if (empty($dateTimeString)) {
             throw new \InvalidArgumentException(sprintf(
@@ -98,12 +98,12 @@ class UtcTime
         return $nowUtc->getSecondsSince($dateTimeUtc);
     }
     
-    public function getSecondsUntil(UtcTime $otherUtcTime)
+    public function getSecondsUntil(UtcTime $otherUtcTime): int
     {
         return $otherUtcTime->getTimestamp() - $this->getTimestamp();
     }
     
-    public function getTimestamp()
+    public function getTimestamp(): int
     {
         return $this->dateTime->getTimestamp();
     }
@@ -113,7 +113,7 @@ class UtcTime
      * 
      * @return string
      */
-    public static function now()
+    public static function now(): string
     {
         return self::format('now');
     }

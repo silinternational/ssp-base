@@ -16,7 +16,8 @@ class TagGroup extends \SimpleSAML\Auth\ProcessingFilter {
     const IDP_CODE_KEY = 'IDPNamespace'; 
 
     
-    public function prependIdp2Groups($attributes, $attributeLabel, $idpLabel) {
+    public function prependIdp2Groups(array $attributes, string $attributeLabel, string $idpLabel): array
+    {
         $newGroups = [];
         $delimiter = '|';
 

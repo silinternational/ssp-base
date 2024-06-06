@@ -10,7 +10,7 @@ class Text
      * @param string|mixed $input The input.
      * @return string The sanitized string.
      */
-    public static function sanitizeString($input)
+    public static function sanitizeString(mixed $input): string
     {
         $inputAsString = is_string($input) ? $input : '';
         $output = filter_var($inputAsString, FILTER_SANITIZE_STRING, [
@@ -26,7 +26,7 @@ class Text
      * @param string $needle The string to search for.
      * @return boolean
      */
-    public static function startsWith(string $haystack, string $needle)
+    public static function startsWith(string $haystack, string $needle): bool
     {
         $length = mb_strlen($needle);
         return (mb_substr($haystack, 0, $length) === $needle);

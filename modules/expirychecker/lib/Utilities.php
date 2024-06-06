@@ -10,8 +10,8 @@ class Utilities {
   * 
   * Returns a string with the domain portion of the url (e.g. www.insitehome.org)
   */
-    public static function getUrlDomain($in_url, $start_marker='//', 
-                                        $end_marker='/') {
+    public static function getUrlDomain(string $in_url, string $start_marker='//', string $end_marker='/'): string
+    {
     
         $sm_len = strlen($start_marker);
         $em_len = strlen($end_marker);
@@ -29,9 +29,10 @@ class Utilities {
          *
          * Returns 1 if the domains of the two urls are the same and 0 otherwise.
          */
-    public static function haveSameDomain($url1, $start_marker1,
-                                        $end_marker1, $url2, $start_marker2='//', 
-                                        $end_marker2='/') {
+    public static function haveSameDomain(string $url1, string $start_marker1,
+                                        string $end_marker1, string $url2, string $start_marker2='//',
+                                        string $end_marker2='/'): int
+    {
         $domain1 = self::getUrlDomain($url1, $start_marker1, $end_marker1);
         $domain2 = self::getUrlDomain($url2, $start_marker2, $end_marker2);
                     
@@ -51,8 +52,9 @@ class Utilities {
   *  for apex to use. If the domains of the change password url and the 
   *  original url are different, it appends the StateId to the output.
          */
-    public static function convertOriginalUrl($passwordChangeUrl,
-                                  $originalUrlParam, $originalUrl, $stateId ) {
+    public static function convertOriginalUrl(string $passwordChangeUrl,
+                                  string $originalUrlParam, string $originalUrl, string $stateId ): array|string
+    {
         $sameDomain = self::haveSameDomain($passwordChangeUrl,
           '//', '/', $originalUrl, '//', '/');
         $original = $originalUrlParam . ":" . urlencode($originalUrl);
@@ -80,7 +82,8 @@ class Utilities {
      * @param string $relayState
      * @return string
      **/
-    public static function getUrlFromRelayState($relayState) {
+    public static function getUrlFromRelayState(string $relayState): string
+    {
         if (strpos($relayState, "http") === 0) {
             return $relayState;
         }

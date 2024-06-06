@@ -38,13 +38,13 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
 
 
     // The host of the aws dynamodb
-    private $dynamoEndpoint;
+    private ?string $dynamoEndpoint;
 
     // The region of the aws dynamodb
-    private $dynamoRegion;
+    private ?string $dynamoRegion;
 
     // The name of the aws dynamodb table that stores the login data
-    private $dynamoLogTable;
+    private ?string $dynamoLogTable;
 
     /**
      * Initialize this filter, parse configuration.
@@ -52,9 +52,9 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
      * @param array $config  Configuration information about this filter.
      * @param mixed $reserved  For future use.
      */
-    public function __construct($config, $reserved) {
+    public function __construct(array $config, mixed $reserved)
+    {
         parent::__construct($config, $reserved);
-        assert(is_array($config));
 
         $this->dynamoEndpoint = $config[self::DYNAMO_ENDPOINT_KEY] ?? null;
         $this->dynamoRegion = $config[self::DYNAMO_REGION_KEY] ?? null;
@@ -62,11 +62,12 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
     }
 
     /**
-     * Log info for a user's login to Dyanmodb
+     * Log info for a user's login to Dynamodb
      *
      * @param array &$state  The current state array
      */
-    public function process(&$state) {
+    public function process(&$state): void
+    {
         if (! $this->configsAreValid()) {
             return;
         }
@@ -137,7 +138,8 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
         }
     }
 
-    private function configsAreValid() {
+    private function configsAreValid(): bool
+    {
         $msg = ' config value not provided to LogUser.';
 
         if (empty($this->dynamoRegion)) {
@@ -153,7 +155,8 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
         return true;
     }
 
-    private function getIdp(&$state) {
+    private function getIdp(array &$state)
+    {
         if (empty($state[self::IDP_KEY])) {
             return 'No IDP available';
         }
@@ -182,7 +185,8 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
     }
 
     // Get the current user's common name attribute and/or eduPersonPrincipalName and/or employeeNumber
-    private function getUserAttributes($state) {
+    private function getUserAttributes(array $state): array
+    {
         $attributes = $state['Attributes'];
 
         $cn = $this->getAttributeFrom($attributes, 'urn:oid:2.5.4.3', 'cn');
@@ -208,7 +212,8 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
         return $userAttrs;
     }
 
-    private function getAttributeFrom($attributes, $oidKey, $friendlyKey) {
+    private function getAttributeFrom(array $attributes, string $oidKey, string $friendlyKey): string
+    {
         if (!empty($attributes[$oidKey])) {
             return $attributes[$oidKey][0];
         }
@@ -222,7 +227,7 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
 
     // Dynamodb seems to complain when a value is an empty string.
     // This ensures that only attributes with a non empty value get included.
-    private function addUserAttribute($attributes, $attrKey, $attr) {
+    private function addUserAttribute(array $attributes, string $attrKey, string $attr): array {
         if (!empty($attr)) {
             $attributes[$attrKey] = $attr;
         }

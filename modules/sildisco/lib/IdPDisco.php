@@ -18,23 +18,23 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
 {
 
     /* The session type for this class */
-    public static $sessionType = 'sildisco:authentication';
+    public static string $sessionType = 'sildisco:authentication';
 
     /* The session key for checking if the current user has the beta_tester cookie */
-    public static $betaTesterSessionKey = 'beta_tester';
+    public static string $betaTesterSessionKey = 'beta_tester';
 
     /* The idp metadata key that says whether an IDP is betaEnabled */
-    public static $betaEnabledMdKey = 'betaEnabled';
+    public static string $betaEnabledMdKey = 'betaEnabled';
 
     /* The idp metadata key that says whether an IDP is enabled */
-    public static $enabledMdKey = 'enabled';
+    public static string $enabledMdKey = 'enabled';
 
     /* The sp metadata key that gives the name of the SP */
-    public static $spNameMdKey = 'name';
+    public static string $spNameMdKey = 'name';
 
     /* Used to get the SP Entity ID, e.g. $spEntityId = $this->session->getData($sessionDataType, $sessionKeyForSP); */
-    public static $sessionDataType = 'sildisco:authentication';
-    public static $sessionKeyForSP = 'spentityid';
+    public static string $sessionDataType = 'sildisco:authentication';
+    public static string $sessionKeyForSP = 'spentityid';
 
 
     /**
@@ -44,7 +44,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
      *
      * @param string $message The message which should be logged.
      */
-    protected function log($message)
+    protected function log($message): void
     {
         \SimpleSAML\Logger::info('SildiscoIdPDisco.'.$this->instance.': '.$message);
     }
@@ -54,7 +54,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
         return __DIR__ . '/../../../metadata/';
     }
 
-    private function getSPEntityIDAndReducedIdpList()
+    private function getSPEntityIDAndReducedIdpList(): array
     {
 
         $idpList = $this->getIdPList();
@@ -76,7 +76,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
      *
      * The IdP disco parameters should be set before calling this function.
      */
-    public function handleRequest()
+    public function handleRequest(): void
     {
 
         $this->start();
@@ -127,14 +127,15 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
 
     /**
      * @param array $idpList the IDPs with their metadata
-     * @param bool $isBetaTester optional (default=null) just for unit testing
+     * @param bool|null $isBetaTester optional (default=null) just for unit testing
      * @return array $idpList
      *
      * If the current user has the beta_tester cookie, then for each IDP in
      * the idpList that has 'betaEnabled' => true, give it 'enabled' => true
      *
      */
-    public static function enableBetaEnabled($idpList, $isBetaTester=null) {
+    public static function enableBetaEnabled(array $idpList, ?bool $isBetaTester=null): array
+    {
 
         if ( $isBetaTester === null) {
             $session = \SimpleSAML\Session::getSessionFromRequest();
@@ -168,7 +169,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
      *
      * @return string|null The entity id if it is valid, null if not.
      */
-    protected function validateIdP($idp)
+    protected function validateIdP($idp): ?string
     {
         if ($idp === null) {
             return null;
@@ -202,7 +203,6 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
             $this->log($message);
             return null;
         }
-
 
         if (array_key_exists($idp, $idpList) && $idpList[$idp]['enabled']) {
             return $idp;

@@ -23,11 +23,11 @@ use SimpleSAML\Utils\HTTP;
  */
 class SilAuth extends UserPassBase
 {
-    protected $authConfig;
-    protected $idBrokerConfig;
-    protected $mysqlConfig;
-    protected $recaptchaConfig;
-    protected $templateData;
+    protected array $authConfig;
+    protected array $idBrokerConfig;
+    protected array $mysqlConfig;
+    protected array $recaptchaConfig;
+    protected array $templateData;
 
     /**
      * Constructor for this authentication source.
@@ -38,7 +38,7 @@ class SilAuth extends UserPassBase
      * @param array $info Information about this authentication source.
      * @param array $config Configuration for this authentication source.
      */
-    public function __construct($info, $config)
+    public function __construct(array $info, array $config)
     {
         parent::__construct($info, $config);
         
@@ -67,7 +67,7 @@ class SilAuth extends UserPassBase
      *
      * @param array &$state  Information about the current authentication.
      */
-    public function authenticate(&$state)
+    public function authenticate(&$state): void
     {
         assert('is_array($state)');
 
@@ -95,7 +95,7 @@ class SilAuth extends UserPassBase
         assert('FALSE');
     }
     
-    protected function getTrustedIpAddresses()
+    protected function getTrustedIpAddresses(): array
     {
         $trustedIpAddresses = [];
         $ipAddressesString = $this->authConfig['trustedIpAddresses'] ?? '';
@@ -108,7 +108,7 @@ class SilAuth extends UserPassBase
         return $trustedIpAddresses;
     }
     
-    protected function login($username, $password)
+    protected function login($username, $password): ?array
     {
         $logger = new Psr3StdOutLogger();
         $captcha = new Captcha($this->recaptchaConfig['secret'] ?? null);

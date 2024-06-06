@@ -17,14 +17,14 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return ArrayHelper::merge(parent::attributeLabels(), [
             'occurred_at_utc' => Yii::t('app', 'Occurred At (UTC)'),
         ]);
     }
     
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
             [
@@ -36,7 +36,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
         ];
     }
     
-    public static function countRecentFailedLoginsFor($username)
+    public static function countRecentFailedLoginsFor(string $username): bool|int|string|null
     {
         return self::find()->where([
             'username' => strtolower($username),
@@ -51,7 +51,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
      * @param string $username The username.
      * @return FailedLoginUsername[] An array of any matching records.
      */
-    public static function getFailedLoginsFor($username)
+    public static function getFailedLoginsFor(string $username): array
     {
         return self::findAll(['username' => strtolower($username)]);
     }
@@ -63,7 +63,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
      * @param string $username The username.
      * @return FailedLoginUsername|null
      */
-    public static function getMostRecentFailedLoginFor($username)
+    public static function getMostRecentFailedLoginFor(string $username): ?FailedLoginUsername
     {
         return self::find()->where([
             'username' => strtolower($username),
@@ -80,7 +80,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
      * @param string $username The username in question
      * @return int The number of seconds
      */
-    public static function getSecondsUntilUnblocked($username)
+    public static function getSecondsUntilUnblocked(string $username): int
     {
         $failedLogin = self::getMostRecentFailedLoginFor($username);
         
@@ -90,7 +90,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
         );
     }
     
-    public function init()
+    public function init(): void
     {
         $this->initializeLogger();
         parent::init();
@@ -102,13 +102,13 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
      * @param string $username The username
      * @return bool
      */
-    public static function isRateLimitBlocking($username)
+    public static function isRateLimitBlocking(string $username): bool
     {
         $secondsUntilUnblocked = self::getSecondsUntilUnblocked($username);
         return ($secondsUntilUnblocked > 0);
     }
     
-    public static function isCaptchaRequiredFor($username)
+    public static function isCaptchaRequiredFor(string $username): bool
     {
         if (empty($username)) {
             return false;
@@ -119,9 +119,10 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
     }
     
     public static function recordFailedLoginBy(
-        $username,
+        string $username,
         LoggerInterface $logger
-    ) {
+    ): void
+    {
         $newRecord = new FailedLoginUsername(['username' => strtolower($username)]);
         if ( ! $newRecord->save()) {
             $logger->critical(json_encode([
@@ -133,7 +134,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
         }
     }
     
-    public static function resetFailedLoginsBy($username)
+    public static function resetFailedLoginsBy(string $username): void
     {
         self::deleteAll(['username' => strtolower($username)]);
     }

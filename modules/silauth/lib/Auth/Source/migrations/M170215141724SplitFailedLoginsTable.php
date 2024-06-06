@@ -6,7 +6,7 @@ use yii\db\Migration;
 
 class M170215141724SplitFailedLoginsTable extends Migration
 {
-    public function safeUp()
+    public function safeUp(): void
     {
         // Remove old indexes.
         $this->dropIndex('idx_failed_logins_ip_address', '{{failed_logins}}');
@@ -36,7 +36,7 @@ class M170215141724SplitFailedLoginsTable extends Migration
         );
     }
 
-    public function safeDown()
+    public function safeDown(): bool
     {
         echo "M170215141724SplitFailedLoginsTable cannot be reverted.\n";
         return false;

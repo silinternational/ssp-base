@@ -5,7 +5,7 @@ use GuzzleHttp\Psr7\Response;
 
 class FakeFailedIdBroker extends FakeIdBroker
 {
-    public function getAuthenticatedUser(string $username, string $password)
+    public function getAuthenticatedUser(string $username, string $password): ?array
     {
         $this->logger->info('FAKE FAILURE: rejecting {username} and {password}.', [
             'username' => var_export($username, true),
@@ -14,7 +14,7 @@ class FakeFailedIdBroker extends FakeIdBroker
         return parent::getAuthenticatedUser($username, $password);
     }
     
-    protected function getDesiredResponse()
+    protected function getDesiredResponse(): Response
     {
         return new Response(400);
     }

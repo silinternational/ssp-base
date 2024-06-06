@@ -13,13 +13,13 @@ class LoginBrowser
      *
      * @return string|null
      */
-    public static function getUserAgent()
+    public static function getUserAgent(): ?string
     {
         return filter_input(INPUT_SERVER, 'HTTP_USER_AGENT') ?: null;
     }
     
     // TODO: Replace this with client-side feature detection.
-    public static function supportsWebAuthn($userAgent)
+    public static function supportsWebAuthn(string $userAgent): bool
     {
         $browser = new Browser($userAgent);
         $browserName = $browser->getName();
