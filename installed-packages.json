@@ -17,7 +17,7 @@
   },
   {
     "name": "ezyang/htmlpurifier",
-    "version": "v4.16.0"
+    "version": "v4.17.0"
   },
   {
     "name": "fillup/fake-bower-assets",
@@ -116,10 +116,6 @@
     "version": "3.0.3"
   },
   {
-    "name": "ramsey/uuid",
-    "version": "3.9.7"
-  },
-  {
     "name": "rlanvin/php-ip",
     "version": "v1.0.1"
   },
@@ -133,7 +129,7 @@
   },
   {
     "name": "silinternational/idp-id-broker-php-client",
-    "version": "4.3.1"
+    "version": "4.3.2"
   },
   {
     "name": "silinternational/php-env",
@@ -144,24 +140,8 @@
     "version": "3.1.0"
   },
   {
-    "name": "silinternational/simplesamlphp-module-expirychecker",
-    "version": "3.1.3"
-  },
-  {
     "name": "silinternational/simplesamlphp-module-material",
     "version": "8.1.1"
-  },
-  {
-    "name": "silinternational/simplesamlphp-module-mfa",
-    "version": "5.2.1"
-  },
-  {
-    "name": "silinternational/simplesamlphp-module-profilereview",
-    "version": "2.1.0"
-  },
-  {
-    "name": "silinternational/simplesamlphp-module-silauth",
-    "version": "7.1.1"
   },
   {
     "name": "silinternational/simplesamlphp-module-sildisco",
@@ -393,7 +373,7 @@
   },
   {
     "name": "symfony/polyfill-php80",
-    "version": "v1.27.0"
+    "version": "v1.29.0"
   },
   {
     "name": "symfony/polyfill-php81",
@@ -437,7 +417,7 @@
   },
   {
     "name": "yiisoft/yii2",
-    "version": "2.0.48.1"
+    "version": "2.0.49.3"
   },
   {
     "name": "yiisoft/yii2-composer",

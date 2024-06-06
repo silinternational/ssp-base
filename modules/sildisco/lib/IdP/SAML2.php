@@ -5,7 +5,7 @@
  * Copied from the built-in simplesamlphp module modules/saml/lib/IdP/SAML2.php with code inserted.
  *  See comment below about GTIS.
  *
- * 2022-09-26 -- Merged with simplesamlphp 1.19.6, lines marked with GTIS are modified
+ * 2024-06-06 -- Merged with simplesamlphp 1.19.8, lines marked with GTIS are modified
  */
 declare(strict_types=1);
 
@@ -487,7 +487,7 @@ class SAML2
           * to authenticate through any of the IDP's that have so far
           * been used for authentication.
           *
-          * In order for this for this to avoid forcing authentication
+          * In order for this to avoid forcing authentication
           * in every case, the hub's saml20-idp-hosted.php entry needs
           * to include an authproc entry that adds each authenticating
           * IDP to a list in the session.

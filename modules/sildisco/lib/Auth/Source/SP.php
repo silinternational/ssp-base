@@ -2,7 +2,7 @@
 
 /**
  * Modified from origin: modules/saml/lib/Auth/Source/SP.php
- * 2022-09-26 -- Merged with simplesamlphp 1.19.6, lines/sections marked with GTIS are modified
+ * 2024-06-06 -- Merged with simplesamlphp 1.19.8, lines/sections marked with GTIS are modified
  */
 
 declare(strict_types=1);
@@ -561,6 +561,7 @@ class SP extends \SimpleSAML\Auth\Source
         if (isset($state['saml:Audience'])) {
             $ar->setAudiences($state['saml:Audience']);
         }
+
         if (isset($state['ForceAuthn'])) {
             $ar->setForceAuthn((bool) $state['ForceAuthn']);
         }
@@ -865,7 +866,6 @@ class SP extends \SimpleSAML\Auth\Source
     public function reauthenticate(array &$state)
     {
         $session = Session::getSessionFromRequest();
-        $data = $session->getAuthState($this->authId);
         $data = $session->getAuthState($this->authId);
         if ($data === null) {
             throw new Error\NoState();
