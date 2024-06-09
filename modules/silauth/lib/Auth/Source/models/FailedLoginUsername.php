@@ -108,7 +108,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
         return ($secondsUntilUnblocked > 0);
     }
     
-    public static function isCaptchaRequiredFor(string $username): bool
+    public static function isCaptchaRequiredFor(?string $username): bool
     {
         if (empty($username)) {
             return false;

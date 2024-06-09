@@ -274,7 +274,7 @@ class Authenticator
                FailedLoginIpAddress::isRateLimitBlockingAnyOfThese($ipAddresses);
     }
     
-    public static function isCaptchaRequired(string $username, array $ipAddresses): bool
+    public static function isCaptchaRequired(?string $username, array $ipAddresses): bool
     {
         return FailedLoginUsername::isCaptchaRequiredFor($username) ||
                FailedLoginIpAddress::isCaptchaRequiredForAnyOfThese($ipAddresses);
