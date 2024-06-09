@@ -98,6 +98,7 @@ services:
       - ./development/hub/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
+      - ./dockerbuild/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
       - ./development/hub/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
       - ./development/announcement.php:/data/vendor/simplesamlphp/simplesamlphp/announcement/announcement.php
 
@@ -134,12 +135,12 @@ services:
     build: .
     depends_on:
       - db
+      - broker
     volumes:
       # Utilize custom certs
-      - ./development/idp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert 
+      - ./development/idp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
-      - ./development/idp-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
       - ./development/idp-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
       - ./development/announcement.php:/data/vendor/simplesamlphp/simplesamlphp/announcement/announcement.php
 
@@ -173,11 +174,11 @@ services:
       ADMIN_PASS: "a"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "IDP 1"
-      IDP_DOMAIN_NAME: "mfaidp"
-      ID_BROKER_ACCESS_TOKEN: "dummy"
-      ID_BROKER_ASSERT_VALID_IP: "false"
-      ID_BROKER_BASE_URI: "dummy"
-      ID_BROKER_TRUSTED_IP_RANGES: "192.168.0.1/8"
+      IDP_DOMAIN_NAME: "ssp-idp1.local"
+      ID_BROKER_ACCESS_TOKEN: "test-cli-abc123"
+      ID_BROKER_ASSERT_VALID_IP: "true"
+      ID_BROKER_BASE_URI: "http://broker"
+      ID_BROKER_TRUSTED_IP_RANGES: "10.20.38.0/24"
       MFA_SETUP_URL: "http://pwmanager.local:8084/module.php/core/authenticate.php?as=ssp-hub-custom-port"
       REMEMBER_ME_SECRET: "12345"
       PROFILE_URL: "http://pwmanager.local:8084/module.php/core/authenticate.php?as=ssp-hub-custom-port"
@@ -397,6 +398,19 @@ services:
       EMAIL_SIGNATURE: "one red pill, please"
       API_ACCESS_KEYS: "test-cli-abc123"
       APP_ENV: "dev"
+      RP_ORIGINS: "https://ssp-idp1.local,https://ssp-idp3.local,https://ssp-idp3.local"
+      HIBP_CHECK_ON_LOGIN: "false"
+      MFA_TOTP_apiBaseUrl: dummy
+      MFA_TOTP_apiKey: 10345678-1234-1234-1234-123456789012
+      MFA_TOTP_apiSecret: 11345678-1234-1234-1234-12345678
+      MFA_WEBAUTHN_apiBaseUrl: dummy
+      MFA_WEBAUTHN_apiKey: 10345678-1234-1234-1234-123456789012
+      MFA_WEBAUTHN_apiSecret: 11345678-1234-1234-1234-12345678
+      MFA_WEBAUTHN_appId: ourApp99
+      MFA_WEBAUTHN_rpDisplayName: Our App
+      MFA_WEBAUTHN_rpId: http://app99
+    volumes:
+      - ./development/m991231_235959_insert_test_users.php:/data/console/migrations/m991231_235959_insert_test_users.php
     command: ["bash", "-c", "whenavail brokerDb 3306 60 ./yii migrate --interactive=0 && ./run.sh"]
 
   brokerDb:
@@ -408,6 +422,15 @@ services:
       MYSQL_DATABASE: "broker"
       MYSQL_USER: "user"
       MYSQL_PASSWORD: "pass"
+
+  brokerpma:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8088:80"
+    environment:
+      PMA_HOST: brokerDb
+      PMA_USER: user
+      PMA_PASSWORD: pass
 
   dynamo:
     image: cnadiminti/dynamodb-local

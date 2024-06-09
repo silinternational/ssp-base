@@ -66,7 +66,6 @@ class ExpiryContext extends FeatureContext
      */
     public function iProvideCredentialsThatWillExpireInTheDistantFuture()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'distant_future';
         $this->password = 'a';
     }
@@ -76,7 +75,6 @@ class ExpiryContext extends FeatureContext
      */
     public function iProvideCredentialsThatWillExpireVerySoon()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'near_future';
         $this->password = 'b';
     }
@@ -113,7 +111,6 @@ class ExpiryContext extends FeatureContext
      */
     public function iProvideCredentialsThatHaveExpired()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'already_past';
         $this->password = 'c';
     }
@@ -141,7 +138,6 @@ class ExpiryContext extends FeatureContext
      */
     public function iProvideCredentialsThatHaveNoPasswordExpirationDate()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'missing_exp';
         $this->password = 'd';
     }
@@ -160,7 +156,6 @@ class ExpiryContext extends FeatureContext
      */
     public function iProvideCredentialsThatHaveAnInvalidPasswordExpirationDate()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'invalid_exp';
         $this->password = 'e';
     }

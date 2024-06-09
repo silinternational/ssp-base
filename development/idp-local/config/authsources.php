@@ -1,6 +1,7 @@
 <?php
 
 use Sil\SspBase\Features\fakes\FakeIdBrokerClient;
+use SimpleSAML\Module\silauth\Auth\Source\config\ConfigManager;
 
 $config = [
 
@@ -11,7 +12,10 @@ $config = [
 
         'core:AdminPassword',
     ],
-    
+
+    // Use SilAuth
+    'silauth' => ConfigManager::getSspConfig(),
+
     // Set up example users for testing expirychecker module.
     'example-userpass' => [
         'exampleauth:UserPass',

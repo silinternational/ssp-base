@@ -4,7 +4,6 @@ use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ElementNotFoundException;
 use PHPUnit\Framework\Assert;
 use Sil\PhpEnv\Env;
-use Sil\SspBase\Features\fakes\FakeIdBrokerClient;
 use SimpleSAML\Module\mfa\LoginBrowser;
 
 /**
@@ -100,7 +99,6 @@ class MfaContext extends FeatureContext
      */
     public function iProvideCredentialsThatDoNotNeedMfa()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'no_mfa_needed';
         $this->password = 'a';
     }
@@ -110,7 +108,6 @@ class MfaContext extends FeatureContext
      */
     public function iProvideCredentialsThatNeedMfaButHaveNoMfaOptionsAvailable()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'must_set_up_mfa';
         $this->password = 'a';
     }
@@ -138,7 +135,6 @@ class MfaContext extends FeatureContext
      */
     public function iProvideCredentialsThatNeedMfaAndHaveBackupCodesAvailable()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'has_backupcode';
         $this->password = 'a';
     }
@@ -159,7 +155,6 @@ class MfaContext extends FeatureContext
      */
     public function iProvideCredentialsThatNeedMfaAndHaveTotpAvailable()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'has_totp';
         $this->password = 'a';
     }
@@ -180,7 +175,6 @@ class MfaContext extends FeatureContext
      */
     public function iProvideCredentialsThatNeedMfaAndHaveUfAvailable()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'has_webauthn';
         $this->password = 'a';
     }
@@ -212,7 +206,7 @@ class MfaContext extends FeatureContext
             $printableCodeOption = $this->session->getPage()->find('css', 'img[src=mfa-backupcode\002Esvg]');
             $printableCodeOption->click();
         }
-        $this->submitMfaValue(FakeIdBrokerClient::CORRECT_VALUE);
+        $this->submitMfaValue(94923279);
     }
     
     protected function pageContainsElementWithText($cssSelector, $text)
@@ -232,7 +226,7 @@ class MfaContext extends FeatureContext
      */
     public function iSubmitAnIncorrectBackupCode()
     {
-        $this->submitMfaValue(FakeIdBrokerClient::INCORRECT_VALUE);
+        $this->submitMfaValue('000000');
     }
 
     /**
@@ -261,7 +255,6 @@ class MfaContext extends FeatureContext
      */
     public function iProvideCredentialsThatHaveARateLimitedMfa()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'has_rate_limited_mfa';
         $this->password = 'a';
     }
@@ -334,7 +327,6 @@ class MfaContext extends FeatureContext
      */
     public function iProvideCredentialsThatNeedMfaAndHave4BackupCodesAvailable()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'has_4_backupcodes';
         $this->password = 'a';
     }
@@ -365,7 +357,6 @@ class MfaContext extends FeatureContext
      */
     public function iProvideCredentialsThatNeedMfaAndHave1BackupCodeAvailableAndNoOtherMfa()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'has_1_backupcode_only';
         $this->password = 'a';
     }
@@ -387,7 +378,6 @@ class MfaContext extends FeatureContext
      */
     public function iProvideCredentialsThatNeedMfaAndHave1BackupCodeAvailablePlusSomeOtherMfa()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'has_1_backupcode_plus';
         $this->password = 'a';
     }
@@ -451,7 +441,6 @@ class MfaContext extends FeatureContext
      */
     public function iProvideCredentialsThatHaveUfTotp()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'has_webauthn_totp';
         $this->password = 'a';
     }
@@ -461,7 +450,6 @@ class MfaContext extends FeatureContext
      */
     public function iProvideCredentialsThatHaveUfBackupCodes()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'has_webauthn_backupcodes';
         $this->password = 'a';
     }
@@ -471,7 +459,6 @@ class MfaContext extends FeatureContext
      */
     public function iProvideCredentialsThatHaveUfTotpBackupCodes()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'has_webauthn_totp_backupcodes';
         $this->password = 'a';
     }
@@ -489,7 +476,6 @@ class MfaContext extends FeatureContext
      */
     public function iProvideCredentialsThatHaveTotpBackupCodes()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'has_totp_backupcodes';
         $this->password = 'a';
     }
@@ -507,7 +493,6 @@ class MfaContext extends FeatureContext
      */
     public function IProvideCredentialsThatHaveManagerCodeWebauthnAndMoreRecentlyUsedTotp()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'has_mgr_code_webauthn_and_more_recently_used_totp';
         $this->password = 'a';
     }
@@ -668,7 +653,7 @@ class MfaContext extends FeatureContext
      */
     public function iSubmitTheCorrectManagerCode()
     {
-        $this->submitMfaValue(FakeIdBrokerClient::CORRECT_VALUE);
+        $this->submitMfaValue('94923279');
     }
 
     /**
@@ -676,7 +661,7 @@ class MfaContext extends FeatureContext
      */
     public function iSubmitAnIncorrectManagerCode()
     {
-        $this->submitMfaValue(FakeIdBrokerClient::INCORRECT_VALUE);
+        $this->submitMfaValue('000000');
     }
 
     /**
@@ -684,7 +669,6 @@ class MfaContext extends FeatureContext
      */
     public function iProvideCredentialsThatHaveAManagerCode()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'has_mgr_code';
         $this->password = 'a';
     }

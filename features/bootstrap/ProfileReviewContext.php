@@ -57,7 +57,6 @@ class ProfileReviewContext extends FeatureContext
      */
     public function iProvideCredentialsThatDoNotNeedReview()
     {
-        // Credentials defined in `development/idp-local/config/authsources.php`
         $this->username = 'no_review';
         $this->password = 'e';
     }
@@ -67,7 +66,6 @@ class ProfileReviewContext extends FeatureContext
      */
     public function iProvideCredentialsThatAreDueForAReminder($category, $nagType)
     {
-        // Credentials defined in `development/idp-local/config/authsources.php`
         $this->username = $category . '_' . $nagType;
         switch ($this->username) {
             case 'mfa_add':
@@ -85,7 +83,6 @@ class ProfileReviewContext extends FeatureContext
      */
     public function iProvideCredentialsThatAreDueForAProfileReview()
     {
-        // Credentials defined in `development/idp-local/config/authsources.php`
         $this->username = 'profile_review';
         $this->password = 'h';
     }
@@ -206,7 +203,6 @@ class ProfileReviewContext extends FeatureContext
      */
     public function iProvideCredentialsForAUserThatHasUsedTheManagerMfaOption()
     {
-        // See `development/idp-local/config/authsources.php` for options.
         $this->username = 'profile_review';
         $this->password = 'h';
     }

@@ -10,7 +10,7 @@ use Sil\Psr3Adapters\Psr3SamlLogger;
  */
 
 use Sil\Psr3Adapters\Psr3StdOutLogger;
-use Sil\SspBase\Features\fakes\FakeIdBrokerClient;
+use Sil\Idp\IdBroker\Client\IdBrokerClient;
 
 $metadata['http://ssp-idp1.local:8085'] = [
 	/*
@@ -30,7 +30,7 @@ $metadata['http://ssp-idp1.local:8085'] = [
 	 * Authentication source to use. Must be one that is configured in
 	 * 'config/authsources.php'.
 	 */
-    'auth' => 'example-userpass',
+    'auth' => 'silauth',
 
     'authproc' => [
         10 => [
@@ -39,7 +39,7 @@ $metadata['http://ssp-idp1.local:8085'] = [
             'idBrokerAccessToken' => Env::get('ID_BROKER_ACCESS_TOKEN'),
             'idBrokerAssertValidIp' => Env::get('ID_BROKER_ASSERT_VALID_IP'),
             'idBrokerBaseUri' => Env::get('ID_BROKER_BASE_URI'),
-            'idBrokerClientClass' => FakeIdBrokerClient::class,
+            'idBrokerClientClass' => IdBrokerClient::class,
             'idBrokerTrustedIpRanges' => Env::get('ID_BROKER_TRUSTED_IP_RANGES'),
             'idpDomainName' => Env::get('IDP_DOMAIN_NAME'),
             'mfaSetupUrl' => Env::get('MFA_SETUP_URL'),
