@@ -8,6 +8,7 @@ return [
     'id' => 'SilAuth',
     'aliases' => [
         '@SimpleSAML/Module/silauth/Auth/Source' => __DIR__ . '/..',
+        '@Sil/SilAuth' => __DIR__ . '/../../../..',
     ],
     'bootstrap' => [
         'gii',
@@ -57,7 +58,7 @@ return [
         'migrate' => [
             'class' => 'yii\console\controllers\MigrateController',
             'migrationNamespaces' => [
-                'SimpleSAML\\Module\\silauth\\Auth\\Source\\migrations\\',
+                'Sil\\SilAuth\\migrations\\',
             ],
             
             // Disable non-namespaced migrations.

@@ -45,7 +45,7 @@
     ],
     "psr-4": {
       "Sil\\SspBase\\Features\\": "features/",
-      "Sil\\SilAuth\\migrations\\": "migrations/"
+      "Sil\\SilAuth\\migrations\\": "modules/silauth/migrations/"
     }
   },
   "config": {
