@@ -12,7 +12,7 @@ class FakeIdBrokerClient
     const CORRECT_VALUE = '111111';
     const INCORRECT_VALUE = '999999';
     
-    const RATE_LIMITED_MFA_ID = '987';
+    const RATE_LIMITED_MFA_ID = 987;
     
     /**
      * Constructor.

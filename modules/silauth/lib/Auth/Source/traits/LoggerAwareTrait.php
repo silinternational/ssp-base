@@ -7,9 +7,9 @@ use Psr\Log\NullLogger;
 trait LoggerAwareTrait
 {
     /** @var LoggerInterface */
-    protected $logger;
+    protected LoggerInterface $logger;
     
-    public function initializeLogger()
+    public function initializeLogger(): void
     {
         if (empty($this->logger)) {
             $this->logger = new NullLogger();
@@ -22,7 +22,7 @@ trait LoggerAwareTrait
      * @param LoggerInterface $logger A PSR-3 compliant logger.
      * @return null
      */
-    public function setLogger(LoggerInterface $logger)
+    public function setLogger(LoggerInterface $logger): void
     {
         $this->logger = $logger;
     }

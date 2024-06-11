@@ -11,8 +11,8 @@ class WaitTime
     const UNIT_MINUTE = 'minute';
     const UNIT_SECOND = 'second';
     
-    private $friendlyNumber = null;
-    private $unit = null;
+    private int $friendlyNumber;
+    private string $unit;
     
     /**
      * Constructor.
@@ -22,7 +22,7 @@ class WaitTime
      * 
      * @param int $secondsToWait The number of seconds the user must wait.
      */
-    public function __construct($secondsToWait)
+    public function __construct(int $secondsToWait)
     {
         if ($secondsToWait <= 5) {
             $this->friendlyNumber = 5;
@@ -36,7 +36,7 @@ class WaitTime
         }
     }
     
-    public function getFriendlyNumber()
+    public function getFriendlyNumber(): int
     {
         return $this->friendlyNumber;
     }
@@ -48,7 +48,7 @@ class WaitTime
      *     seconds.
      * @return WaitTime
      */
-    public static function getLongestWaitTime(array $durationsInSeconds)
+    public static function getLongestWaitTime(array $durationsInSeconds): WaitTime
     {
         if (empty($durationsInSeconds)) {
             throw new \InvalidArgumentException('No durations given.', 1487605801);
@@ -56,7 +56,7 @@ class WaitTime
         return new WaitTime(max($durationsInSeconds));
     }
     
-    public function getUnit()
+    public function getUnit(): string
     {
         return $this->unit;
     }

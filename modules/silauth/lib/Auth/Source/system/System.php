@@ -11,19 +11,19 @@ use Throwable;
 
 class System
 {
-    protected $logger;
+    protected LoggerInterface|NullLogger $logger;
 
     /**
      * Constructor.
      *
      * @param LoggerInterface|null $logger (Optional:) A PSR-3 compatible logger.
      */
-    public function __construct($logger = null)
+    public function __construct(LoggerInterface $logger = null)
     {
         $this->logger = $logger ?? new NullLogger();
     }
 
-    protected function isDatabaseOkay()
+    protected function isDatabaseOkay(): bool
     {
         try {
             FailedLoginIpAddress::getMostRecentFailedLoginFor('');
@@ -34,7 +34,7 @@ class System
         }
     }
 
-    protected function isRequiredConfigPresent()
+    protected function isRequiredConfigPresent(): bool
     {
         $globalConfig = Configuration::getInstance();
 
@@ -57,7 +57,7 @@ class System
      *
      * @throws \Exception
      */
-    public function reportStatus()
+    public function reportStatus(): void
     {
         if ( ! $this->isRequiredConfigPresent()) {
             $this->reportError('Config problem', 1485984755);
@@ -75,7 +75,7 @@ class System
      *
      * @param string $message The error message.
      */
-    protected function logError($message)
+    protected function logError(string $message): void
     {
         $this->logger->error($message);
     }
@@ -88,7 +88,7 @@ class System
      * @param int $code An error code.
      * @throws \Exception
      */
-    protected function reportError($message, $code)
+    protected function reportError(string $message, int $code): void
     {
         $this->logError($message);
         throw new \Exception($message, $code);

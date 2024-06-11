@@ -2,6 +2,7 @@
 
 namespace SimpleSAML\Module\sildisco\Auth\Process;
 
+use SAML2\XML\saml\NameID;
 use Sil\SspUtils\Metadata;
 
 /**
@@ -39,7 +40,7 @@ class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter {
      *
      * @var string|bool
      */
-    private $nameQualifier;
+    private string|bool $nameQualifier;
 
 
     /**
@@ -51,7 +52,7 @@ class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter {
      *
      * @var string|bool
      */
-    private $spNameQualifier;
+    private sring|bool $spNameQualifier;
 
 
     /**
@@ -61,7 +62,7 @@ class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter {
      *
      * @var string
      */
-    protected $format;
+    protected ?string $format;
 
 
     /**
@@ -70,7 +71,7 @@ class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter {
      * @param array $config  Configuration information about this filter.
      * @param mixed $reserved  For future use.
      */
-    public function __construct($config, $reserved) {
+    public function __construct(array $config, mixed $reserved) {
         parent::__construct($config, $reserved);
         assert('is_array($config)');
 
@@ -93,12 +94,13 @@ class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter {
     }
 
     /**
-     * @param $nameId \SAML2\XML\saml\NameID
+     * @param $nameId NameID
      * @param $IDPNamespace string
      *
      * Modifies the nameID object by adding text to the end of its value attribute
      */
-    public function appendIdp($nameId, $IDPNamespace) {
+    public function appendIdp(NameID $nameId, string $IDPNamespace): void
+    {
 
         $suffix = self::DELIMITER . $IDPNamespace;
         $value = $nameId->getValue();
@@ -112,7 +114,8 @@ class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter {
      *
      * @param array &$state  The current state array
      */
-    public function process(&$state) {
+    public function process(&$state): void
+    {
         assert('is_array($state)');
 
         $samlIDP = $state[self::IDP_KEY];

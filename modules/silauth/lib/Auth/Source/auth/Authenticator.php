@@ -21,13 +21,9 @@ class Authenticator
     const BLOCK_AFTER_NTH_FAILED_LOGIN = 50;
     const MAX_SECONDS_TO_BLOCK = 3600; // 3600 seconds = 1 hour
     
-    /** @var AuthError|null */
-    private $authError = null;
-    
-    /** @var LoggerInterface */
-    protected $logger;
-    
-    private $userAttributes = null;
+    private ?AuthError $authError = null;
+    protected LoggerInterface $logger;
+    private ?array $userAttributes = null;
     
     /**
      * Attempt to authenticate using the given username and password. Check
@@ -41,12 +37,12 @@ class Authenticator
      * @param LoggerInterface $logger A PSR-3 compliant logger.
      */
     public function __construct(
-            $username,
-            $password,
-            Request $request,
-            Captcha $captcha,
-            IdBroker $idBroker,
-            LoggerInterface $logger
+        string          $username,
+        string          $password,
+        Request         $request,
+        Captcha         $captcha,
+        IdBroker        $idBroker,
+        LoggerInterface $logger
     ) {
         $this->logger = $logger;
         
@@ -143,7 +139,7 @@ class Authenticator
      * @return int The number of seconds to delay before allowing another such
      *     login attempt.
      */
-    public static function calculateSecondsToDelay($numRecentFailures)
+    public static function calculateSecondsToDelay(int $numRecentFailures): int
     {
         if ( ! self::isEnoughFailedLoginsToBlock($numRecentFailures)) {
             return 0;
@@ -164,7 +160,7 @@ class Authenticator
      * 
      * @return AuthError|null
      */
-    public function getAuthError()
+    public function getAuthError(): ?AuthError
     {
         return $this->authError;
     }
@@ -184,8 +180,9 @@ class Authenticator
      */
     public static function getSecondsUntilUnblocked(
         int $numRecentFailures,
-        $mostRecentFailureAt
-    ) {
+        ?string $mostRecentFailureAt
+    ): int
+    {
         if ($mostRecentFailureAt === null) {
             return 0;
         }
@@ -216,7 +213,7 @@ class Authenticator
      *     </pre>
      * @throws \Exception
      */
-    public function getUserAttributes()
+    public function getUserAttributes(): ?array
     {
         if ($this->userAttributes === null) {
             throw new \Exception(
@@ -242,7 +239,7 @@ class Authenticator
      *     this request).
      * @return WaitTime
      */
-    protected function getWaitTimeUntilUnblocked($username, array $ipAddresses)
+    protected function getWaitTimeUntilUnblocked(string $username, array $ipAddresses): WaitTime
     {
         $durationsInSeconds = [
             FailedLoginUsername::getSecondsUntilUnblocked($username),
@@ -255,7 +252,7 @@ class Authenticator
         return WaitTime::getLongestWaitTime($durationsInSeconds);
     }
     
-    protected function hasError()
+    protected function hasError(): bool
     {
         return ($this->authError !== null);
     }
@@ -266,46 +263,46 @@ class Authenticator
      * 
      * @return bool
      */
-    public function isAuthenticated()
+    public function isAuthenticated(): bool
     {
         return ( ! $this->hasError());
     }
     
-    protected function isBlockedByRateLimit($username, array $ipAddresses)
+    protected function isBlockedByRateLimit(string $username, array $ipAddresses): bool
     {
         return FailedLoginUsername::isRateLimitBlocking($username) ||
                FailedLoginIpAddress::isRateLimitBlockingAnyOfThese($ipAddresses);
     }
     
-    public static function isCaptchaRequired($username, array $ipAddresses)
+    public static function isCaptchaRequired(?string $username, array $ipAddresses): bool
     {
         return FailedLoginUsername::isCaptchaRequiredFor($username) ||
                FailedLoginIpAddress::isCaptchaRequiredForAnyOfThese($ipAddresses);
     }
     
-    public static function isEnoughFailedLoginsToBlock($numFailedLogins)
+    public static function isEnoughFailedLoginsToBlock(int $numFailedLogins): bool
     {
         return ($numFailedLogins >= self::BLOCK_AFTER_NTH_FAILED_LOGIN);
     }
     
-    public static function isEnoughFailedLoginsToRequireCaptcha($numFailedLogins)
+    public static function isEnoughFailedLoginsToRequireCaptcha(int $numFailedLogins): bool
     {
         return ($numFailedLogins >= self::REQUIRE_CAPTCHA_AFTER_NTH_FAILED_LOGIN);
     }
     
-    protected function recordFailedLoginBy($username, array $ipAddresses)
+    protected function recordFailedLoginBy(string $username, array $ipAddresses): void
     {
         FailedLoginUsername::recordFailedLoginBy($username, $this->logger);
         FailedLoginIpAddress::recordFailedLoginBy($ipAddresses, $this->logger);
     }
     
-    protected function resetFailedLoginsBy($username, array $ipAddresses)
+    protected function resetFailedLoginsBy(string $username, array $ipAddresses): void
     {
         FailedLoginUsername::resetFailedLoginsBy($username);
         FailedLoginIpAddress::resetFailedLoginsBy($ipAddresses);
     }
     
-    protected function setError($code, $messageParams = [])
+    protected function setError(string $code, array $messageParams = []): void
     {
         $this->authError = new AuthError($code, $messageParams);
     }
@@ -313,7 +310,7 @@ class Authenticator
     /**
      * @param WaitTime $waitTime
      */
-    protected function setErrorBlockedByRateLimit($waitTime)
+    protected function setErrorBlockedByRateLimit(WaitTime $waitTime): void
     {
         $unit = $waitTime->getUnit();
         $number = $waitTime->getFriendlyNumber();
@@ -331,32 +328,32 @@ class Authenticator
         $this->setError($errorCode, ['{number}' => $number]);
     }
     
-    protected function setErrorGenericTryLater()
+    protected function setErrorGenericTryLater(): void
     {
         $this->setError(AuthError::CODE_GENERIC_TRY_LATER);
     }
     
-    protected function setErrorInvalidLogin()
+    protected function setErrorInvalidLogin(): void
     {
         $this->setError(AuthError::CODE_INVALID_LOGIN);
     }
     
-    protected function setErrorNeedToSetAcctPassword()
+    protected function setErrorNeedToSetAcctPassword(): void
     {
         $this->setError(AuthError::CODE_NEED_TO_SET_ACCT_PASSWORD);
     }
     
-    protected function setErrorPasswordRequired()
+    protected function setErrorPasswordRequired(): void
     {
         $this->setError(AuthError::CODE_PASSWORD_REQUIRED);
     }
     
-    protected function setErrorUsernameRequired()
+    protected function setErrorUsernameRequired(): void
     {
         $this->setError(AuthError::CODE_USERNAME_REQUIRED);
     }
     
-    protected function setUserAttributes($attributes)
+    protected function setUserAttributes(?array $attributes): void
     {
         $this->userAttributes = $attributes;
     }

@@ -12,12 +12,12 @@ class DummyRequest extends Request
      *
      * @return string[] A list containing the dummy IP address.
      */
-    public function getIpAddresses()
+    public function getIpAddresses(): array
     {
         return [$this->dummyIpAddress];
     }
     
-    public function setDummyIpAddress($dummyIpAddress)
+    public function setDummyIpAddress(string $dummyIpAddress): void
     {
         if ( ! self::isValidIpAddress($dummyIpAddress)) {
             throw new \InvalidArgumentException(sprintf(

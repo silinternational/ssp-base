@@ -2,6 +2,7 @@
 namespace SimpleSAML\Module\silauth\Auth\Source\config;
 
 use SimpleSAML\Module\silauth\Auth\Source\text\Text;
+use yii\console\Application;
 
 class ConfigManager
 {
@@ -12,7 +13,7 @@ class ConfigManager
      *
      * @return array
      */
-    public static function getSspConfig()
+    public static function getSspConfig(): array
     {
         return require __DIR__ . '/ssp-config.php';
     }
@@ -26,7 +27,7 @@ class ConfigManager
      *     prefix will have been removed, so 'mysql.database' will be returned
      *     as 'database', etc.
      */
-    public static function getSspConfigFor($category)
+    public static function getSspConfigFor(string $category): array
     {
         return self::getConfigFor($category, self::getSspConfig());
     }
@@ -41,7 +42,7 @@ class ConfigManager
      *     prefix will have been removed, so 'mysql.database' will be returned
      *     as 'database', etc.
      */
-    public static function getConfigFor($category, $config)
+    public static function getConfigFor(string $category, array $config): array
     {
         $categoryPrefix = $category . self::SEPARATOR;
         $categoryConfig = [];
@@ -60,7 +61,7 @@ class ConfigManager
      * @param array $customConfig
      * @return array
      */
-    public static function getMergedYii2Config($customConfig)
+    public static function getMergedYii2Config(array $customConfig): array
     {
         $defaultConfig = require __DIR__ . '/yii2-config.php';
         return array_replace_recursive(
@@ -69,21 +70,21 @@ class ConfigManager
         );
     }
 
-    private static function initializeYiiClass()
+    private static function initializeYiiClass(): void
     {
         if ( ! class_exists('Yii')) {
             require_once __DIR__ . '/../../vendor/yiisoft/yii2/Yii.php';
         }
     }
 
-    public static function getYii2ConsoleApp($customConfig)
+    public static function getYii2ConsoleApp(array $customConfig): Application
     {
         self::initializeYiiClass();
         $mergedYii2Config = self::getMergedYii2Config($customConfig);
-        return new \yii\console\Application($mergedYii2Config);
+        return new Application($mergedYii2Config);
     }
 
-    public static function initializeYii2WebApp($customConfig = [])
+    public static function initializeYii2WebApp(array $customConfig = []): void
     {
         self::initializeYiiClass();
 
@@ -99,7 +100,7 @@ class ConfigManager
         $app->log->getLogger();
     }
 
-    public static function removeCategory($key)
+    public static function removeCategory(?string $key): bool|string|null
     {
         if ($key === null) {
             return null;

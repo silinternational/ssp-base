@@ -9,9 +9,9 @@ use SimpleSAML\Session;
  */
 class CsrfProtector
 {
-    protected $csrfSessionKey = 'silauth.csrfToken';
-    protected $csrfTokenDataType = 'string';
-    private $session;
+    protected string $csrfSessionKey = 'silauth.csrfToken';
+    protected string $csrfTokenDataType = 'string';
+    private Session $session;
     
     /**
      * Constructor.
@@ -23,13 +23,13 @@ class CsrfProtector
         $this->session = $session;
     }
     
-    public function changeMasterToken()
+    public function changeMasterToken(): void
     {
         $newMasterToken = $this->generateToken();
         $this->setTokenInSession($newMasterToken);
     }
     
-    protected function generateToken()
+    protected function generateToken(): string
     {
         return bin2hex(random_bytes(32));
     }
@@ -40,7 +40,7 @@ class CsrfProtector
      *
      * @return string The master (aka. authoritative) CSRF token.
      */
-    public function getMasterToken()
+    public function getMasterToken(): string
     {
         $masterToken = $this->getTokenFromSession();
         if (empty($masterToken)) {
@@ -50,7 +50,7 @@ class CsrfProtector
         return $masterToken;
     }
     
-    protected function getTokenFromSession()
+    protected function getTokenFromSession(): mixed
     {
         return $this->session->getData(
             $this->csrfTokenDataType,
@@ -65,12 +65,12 @@ class CsrfProtector
      *     HTTP request.
      * @return bool
      */
-    public function isTokenCorrect($submittedToken)
+    public function isTokenCorrect(string $submittedToken): bool
     {
         return hash_equals($this->getMasterToken(), $submittedToken);
     }
     
-    protected function setTokenInSession($masterToken)
+    protected function setTokenInSession(string $masterToken): void
     {
         $this->session->setData(
             $this->csrfTokenDataType,
