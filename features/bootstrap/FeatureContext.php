@@ -22,6 +22,8 @@ class FeatureContext extends MinkContext
     protected const SP2_LOGIN_PAGE = 'http://ssp-sp2.local/module.php/core/authenticate.php?as=ssp-hub';
     protected const SP3_LOGIN_PAGE = 'http://ssp-sp3.local/module.php/core/authenticate.php?as=ssp-hub';
 
+    const SCREENSHOTS_PATH = '/data/features/screenshots/';
+
     /** @var Session */
     protected $session;
 
@@ -42,11 +44,27 @@ class FeatureContext extends MinkContext
     /** @AfterStep */
     public function afterStep(AfterStepScope $scope)
     {
-        if (! $scope->getTestResult()->getResultCode() === StepResult::FAILED) {
+        if ($scope->getTestResult()->getResultCode() === StepResult::FAILED) {
             $this->showPageDetails();
+            $this->takeScreenshot();
         }
     }
-    
+
+    /**
+     * Store a screenshot.
+     */
+    private function takeScreenshot() {
+        $screenshot = $this->getSession()->getDriver()->getScreenshot();
+        if (!is_dir(self::SCREENSHOTS_PATH)) {
+            mkdir(self::SCREENSHOTS_PATH);
+        }
+        if (is_dir(self::SCREENSHOTS_PATH)) {
+            $path = self::SCREENSHOTS_PATH . date('d-m-y') . '-' . uniqid() . '.png';
+            file_put_contents($path, $screenshot);
+            print "\n\nScreenshot: " . $path;
+        }
+    }
+
     protected function showPageDetails()
     {
         echo '[' . $this->session->getStatusCode() . '] ';
@@ -251,9 +269,8 @@ class FeatureContext extends MinkContext
             $this->submitLoginForm($page);
         } catch (ElementNotFoundException $e) {
             Assert::true(false, sprintf(
-                "Did not find that element in the page.\nError: %s\nPage content: %s",
-                $e->getMessage(),
-                $page->getContent()
+                "Did not find that element in the page.\nError: %s",
+                $e->getMessage()
             ));
         }
     }
