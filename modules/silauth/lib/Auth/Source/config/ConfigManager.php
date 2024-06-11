@@ -100,7 +100,7 @@ class ConfigManager
         $app->log->getLogger();
     }
 
-    public static function removeCategory($key): bool|string|null
+    public static function removeCategory(?string $key): bool|string|null
     {
         if ($key === null) {
             return null;
