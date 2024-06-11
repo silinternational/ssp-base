@@ -36,13 +36,17 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
         ];
     }
     
-    public static function countRecentFailedLoginsFor(string $username): bool|int|string|null
+    public static function countRecentFailedLoginsFor(string $username): int
     {
-        return self::find()->where([
+        $count = self::find()->where([
             'username' => strtolower($username),
         ])->andWhere([
             '>=', 'occurred_at_utc', UtcTime::format('-60 minutes')
         ])->count();
+        if (!is_numeric($count)) {
+            throw new \Exception('expected a numeric value for recent failed logins by username, got '. $count);
+        }
+        return (int)$count;
     }
     
     /**

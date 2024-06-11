@@ -38,13 +38,17 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
         ];
     }
     
-    public static function countRecentFailedLoginsFor(string $ipAddress): string|int|bool|null
+    public static function countRecentFailedLoginsFor(string $ipAddress): int
     {
-        return self::find()->where([
+        $count = self::find()->where([
             'ip_address' => strtolower($ipAddress),
         ])->andWhere([
             '>=', 'occurred_at_utc', UtcTime::format('-60 minutes')
         ])->count();
+        if (!is_numeric($count)) {
+            throw new \Exception('expected a numeric value for recent failed logins by IP address, got '. $count);
+        }
+        return (int)$count;
     }
     
     public static function getFailedLoginsFor(string $ipAddress): array
