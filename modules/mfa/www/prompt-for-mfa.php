@@ -124,7 +124,7 @@ $t->data['mfaOptions'] = $mfaOptions;
 $t->data['stateId'] = $stateId;
 $t->data['supportsWebAuthn'] = LoginBrowser::supportsWebAuthn($userAgent);
 $browserJsHash = md5_file(__DIR__ . '/simplewebauthn/browser.js');
-$t->data['browserJsPath'] = 'simplewebauthn/browser.js?v=' . $browserJsHash;
+$t->data['browserJsPath'] = '/module.php/mfa/simplewebauthn/browser.js?v=' . $browserJsHash;
 $t->data['managerEmail'] = $state['managerEmail'];
 $t->data['otherOptions'] = $otherOptions;
 $t->show();
