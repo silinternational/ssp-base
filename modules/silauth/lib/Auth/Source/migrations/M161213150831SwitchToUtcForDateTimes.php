@@ -1,6 +1,6 @@
 <?php
 
-namespace SimpleSAML\Module\silauth\Auth\Source\migrations;
+namespace Sil\SilAuth\migrations;
 
 use yii\db\Migration;
 
