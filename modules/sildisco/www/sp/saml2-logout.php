@@ -6,7 +6,7 @@
  * This endpoint handles both logout requests and logout responses.
  *
  * Similar to modules/saml/www/sp/saml2-logout.php
- * 2022-09-26 -- Merged with simplesamlphp 1.19.6, lines marked with GTIS are modified
+ * 2024-06-06 -- Merged with simplesamlphp 1.19.8, lines marked with GTIS are modified
  */
 
 if (!array_key_exists('PATH_INFO', $_SERVER)) {
