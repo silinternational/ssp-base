@@ -53,7 +53,7 @@ class Utilities {
   *  original url are different, it appends the StateId to the output.
          */
     public static function convertOriginalUrl(string $passwordChangeUrl,
-                                  string $originalUrlParam, string $originalUrl, string $stateId ): array|string
+                                  string $originalUrlParam, string $originalUrl, string $stateId): string
     {
         $sameDomain = self::haveSameDomain($passwordChangeUrl,
           '//', '/', $originalUrl, '//', '/');

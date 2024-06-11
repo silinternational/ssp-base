@@ -353,7 +353,7 @@ class Authenticator
         $this->setError(AuthError::CODE_USERNAME_REQUIRED);
     }
     
-    protected function setUserAttributes($attributes): void
+    protected function setUserAttributes(?array $attributes): void
     {
         $this->userAttributes = $attributes;
     }
