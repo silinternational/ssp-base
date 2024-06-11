@@ -32,12 +32,9 @@ class FakeIdBrokerClient
 
     /**
      * Verify an MFA value
-     * @param int $id
-     * @param string $value
-     * @return array
      * @throws ServiceException
      */
-    public function mfaVerify($id, $employeeId, $value)
+    public function mfaVerify(int $id, string $employeeId, string|array $value):array
     {
         if ($id === self::RATE_LIMITED_MFA_ID) {
             throw new ServiceException('Too many recent failures for this MFA', 0, 429);

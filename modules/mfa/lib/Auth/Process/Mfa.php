@@ -438,7 +438,7 @@ class Mfa extends ProcessingFilter
     public static function validateMfaSubmission(
         int $mfaId,
         string $employeeId,
-        string $mfaSubmission,
+        string|array $mfaSubmission,
         array $state,
         bool $rememberMe,
         LoggerInterface $logger,

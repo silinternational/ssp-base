@@ -67,6 +67,7 @@ $mfaOption = Mfa::getMfaOptionById($mfaOptions, $mfaId);
 
 // If the user has submitted their MFA value...
 if (filter_has_var(INPUT_POST, 'submitMfa')) {
+    /* @var string|array $mfaSubmission */
     $mfaSubmission = filter_input(INPUT_POST, 'mfaSubmission');
     if (substr($mfaSubmission, 0, 1) == '{') {
         $mfaSubmission = json_decode($mfaSubmission, true);
