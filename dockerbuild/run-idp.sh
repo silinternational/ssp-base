@@ -7,10 +7,10 @@ set -x
 set -e
 
 # Try to run database migrations
-cd /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/lib/Auth/Source
-chmod a+x ./yii
+cd /data/vendor/simplesamlphp/simplesamlphp
+chmod a+x ./modules/silauth/lib/Auth/Source/yii
 
-./yii migrate --interactive=0
+./modules/silauth/lib/Auth/Source/yii migrate --interactive=0
 
 cd /data
 ./run.sh

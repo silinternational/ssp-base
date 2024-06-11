@@ -44,7 +44,8 @@
       "vendor/yiisoft/yii2/Yii.php"
     ],
     "psr-4": {
-      "Sil\\SspBase\\Features\\": "features/"
+      "Sil\\SspBase\\Features\\": "features/",
+      "Sil\\SilAuth\\migrations\\": "migrations/"
     }
   },
   "config": {
