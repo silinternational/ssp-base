@@ -1,8 +1,7 @@
 <?php
 /**
  * Modified version of modules/saml/www/sp/discoresp.php
- * 2024-06-06 -- merged with SimpleSAMLphp 1.19.8
- * Changes marked with "GTIS"
+ * 2024-06-06 -- Merged with simplesamlphp 1.19.8, lines marked with GTIS are modified
  */
 
 /**
