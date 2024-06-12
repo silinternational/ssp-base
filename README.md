@@ -40,6 +40,8 @@ will overwrite variables set in the execution environment.
 4. `make` or `docker-compose up -d` within the project root.
 5. Visit http://ssp-hub.local to see SimpleSAMLphp 
 
+_Note:_ there is an unresolved problem that requires a change to BASE_URL_PATH for ssp-idp1.local in docker-compose.yml due to a requirement in silauth that it be a full URL. For automated testing, it must not have a port number, but for manual testing it needs the port number.
+
 ### Configure a container for debugging with Xdebug
 
 1. Add a volume map for run-debug.sh on the container you wish to debug.
