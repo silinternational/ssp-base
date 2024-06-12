@@ -32,8 +32,8 @@ $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'profilereview:' . $state['template']);
 $t->data['profileUrl'] = $state['profileUrl'];
-$t->data['methodOptions'] = $state['methodOptions'];
-$t->data['mfaOptions'] = $state['mfaOptions'];
+$t->data['methodOptions'] = $state['methodOptions'] ?? [];
+$t->data['mfaOptions'] = $state['mfaOptions'] ?? [];
 $t->data['mfaLearnMoreUrl'] = $state['mfaLearnMoreUrl'];
 $t->show();
 
