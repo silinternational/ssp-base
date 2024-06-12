@@ -22,7 +22,7 @@ $logLevels = [
 
 try {
     // Required to be defined in environment variables
-    $ADMIN_EMAIL = Env::requireEnv('ADMIN_EMAIL');
+    $ADMIN_EMAIL = Env::get('ADMIN_EMAIL', 'na@example.org');
     $ADMIN_PASS = Env::requireEnv('ADMIN_PASS');
     $SECRET_SALT = Env::requireEnv('SECRET_SALT');
     $IDP_NAME = Env::requireEnv('IDP_NAME');
