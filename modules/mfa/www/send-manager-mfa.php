@@ -24,7 +24,7 @@ $state = State::loadState($stateId, Mfa::STAGE_SENT_TO_MFA_PROMPT);
 $logger = LoggerFactory::getAccordingToState($state);
 
 if (filter_has_var(INPUT_POST, 'send')) {
-    Mfa::sendManagerCode($state, $logger);
+    $errorMessage = Mfa::sendManagerCode($state, $logger);
 } elseif (filter_has_var(INPUT_POST, 'cancel')) {
     $moduleUrl = SimpleSAML\Module::getModuleURL('mfa/prompt-for-mfa.php', [
         'StateId' => $stateId,
@@ -37,6 +37,7 @@ $globalConfig = Configuration::getInstance();
 $t = new Template($globalConfig, 'mfa:send-manager-mfa.php');
 $t->data['stateId'] = $stateId;
 $t->data['managerEmail'] = $state['managerEmail'];
+$t->data['errorMessage'] = $errorMessage ?? null;
 $t->show();
 
 $logger->info(json_encode([

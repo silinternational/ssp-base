@@ -33,6 +33,24 @@
                     </p>
                 </div>
 
+                <?php
+                $message = $this->data['errorMessage'];
+
+                if (! empty($message)) {
+                ?>
+                    <div class="mdl-card__supporting-text" layout-children="column">
+                        <p class="mdl-color-text--red error">
+                            <i class="material-icons">error</i>
+
+                            <span class="mdl-typography--caption">
+                                <?= htmlentities($message) ?>
+                            </span>
+                        </p>
+                    </div>
+                <?php
+                }
+                ?>
+
                 <div class="mdl-card__actions" layout-children="row">
                 <button name="cancel" class="mdl-button mdl-button--primary">
                         <?= $this->t('{material:mfa:button_cancel}') ?>

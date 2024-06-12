@@ -819,12 +819,12 @@ class Mfa extends ProcessingFilter
      * Send a rescue code to the manager, then redirect the user to a page where they
      * can enter the code.
      *
-     * NOTE: This function never returns.
+     * If successful, this function triggers a redirect and does not return
      *
      * @param array $state The state data.
      * @param LoggerInterface $logger A PSR-3 compatible logger.
      */
-    public static function sendManagerCode(array &$state, LoggerInterface $logger): void
+    public static function sendManagerCode(array &$state, LoggerInterface $logger): string
     {
         try {
             $idBrokerClient = self::getIdBrokerClient($state['idBrokerConfig']);
@@ -841,6 +841,7 @@ class Mfa extends ProcessingFilter
                 'employeeId' => $state['employeeId'],
                 'error' => $t->getCode() . ': ' . $t->getMessage(),
             ]));
+            return 'There was an unexpected error. Please try again or contact tech support for assistance';
         }
 
         $mfaOptions = $state['mfaOptions'];
