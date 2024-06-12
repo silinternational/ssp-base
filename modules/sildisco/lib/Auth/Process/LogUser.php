@@ -3,6 +3,7 @@
 namespace SimpleSAML\Module\sildisco\Auth\Process;
 
 use Aws\DynamoDb\Marshaler;
+use Aws\Sdk;
 
 /**
  * This Auth Proc logs information about each successful login to an AWS Dynamodb table.
@@ -104,7 +105,7 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
             $sdkConfig['endpoint'] =  $this->dynamoEndpoint;
         }
 
-        $sdk = new \Aws\Sdk($sdkConfig);
+        $sdk = new Sdk($sdkConfig);
 
         $dynamodb = $sdk->createDynamoDb();
         $marshaler = new Marshaler();

@@ -30,7 +30,8 @@
     "fillup/fake-bower-assets": "^2.0",
     "google/recaptcha": "^1.1",
     "psr/log": "^1.0",
-    "monolog/monolog": "^1.22"
+    "monolog/monolog": "^1.22",
+    "aws/aws-sdk-php": "^3.313"
   },
   "require-dev": {
     "behat/behat": "^3.8",
