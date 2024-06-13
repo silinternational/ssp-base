@@ -128,7 +128,7 @@ services:
       THEME_COLOR_SCHEME: "orange-light_blue"
       HUB_MODE: "true"
 
-  ssp-idp1.local:  # using a database session store type ("sql")
+  ssp-idp1.local:
     build: .
     depends_on:
       - db
@@ -181,7 +181,6 @@ services:
       PROFILE_URL_FOR_TESTS: "http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
-      SESSION_STORE_TYPE: "sql"
       MYSQL_HOST: "db"
       MYSQL_DATABASE: "silauth"
       MYSQL_USER: "silauth"

@@ -56,11 +56,6 @@ $THEME_COLOR_SCHEME = Env::get('THEME_COLOR_SCHEME', null);
 
 $SECURE_COOKIE = Env::get('SECURE_COOKIE', true);
 $SESSION_DURATION = (int)(Env::get('SESSION_DURATION', (60 * 60 * 10))); // 10 hours.
-$SESSION_STORE_TYPE = Env::get('SESSION_STORE_TYPE', 'phpsession');
-$MEMCACHE_HOST1 = Env::get('MEMCACHE_HOST1', null);
-$MEMCACHE_HOST2 = Env::get('MEMCACHE_HOST2', null);
-$MEMCACHE_HOST1_PORT = Env::get('MEMCACHE_HOST1_PORT', 11211);
-$MEMCACHE_HOST2_PORT = Env::get('MEMCACHE_HOST2_PORT', 11211);
 $MYSQL_HOST = Env::get('MYSQL_HOST', '');
 $MYSQL_DATABASE = Env::get('MYSQL_DATABASE', '');
 $MYSQL_USER = Env::get('MYSQL_USER', '');
@@ -813,20 +808,13 @@ $config = [
      * ],
      *
      */
-    'memcache_store.servers' => [
-        [
-            [
-                'hostname' => $MEMCACHE_HOST1,
-                'port' => $MEMCACHE_HOST1_PORT,
-            ],
-        ],
-        [
-            [
-                'hostname' => $MEMCACHE_HOST2,
-                'port' => $MEMCACHE_HOST2_PORT,
-            ],
-        ],
-    ],
+//    'memcache_store.servers' => [
+//        [
+//            [
+//                'hostname' => 'localhost',
+//            ],
+//        ],
+//    ],
 
     /*
      * This value allows you to set a prefix for memcache-keys. The default
@@ -1348,7 +1336,7 @@ $config = [
      *
      * The default datastore is 'phpsession'.
      */
-    'store.type'         => $SESSION_STORE_TYPE,
+    'store.type'                    => 'sql',
 
     /*
      * The DSN the sql datastore should connect to.

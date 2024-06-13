@@ -2,12 +2,11 @@ FROM silintl/php8:8.1
 
 LABEL maintainer="Steve Bagwell <steve_bagwell@sil.org>"
 
-ENV REFRESHED_AT 2021-06-14
+ENV REFRESHED_AT 2021-06-15
 
 RUN apt-get update -y \
     && apt-get install -y \
         php-gmp \
-        php-memcached \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

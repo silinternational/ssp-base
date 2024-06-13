@@ -27,7 +27,6 @@ $SESSION_STATE_TIMEOUT = (int)(Env::get('SESSION_STATE_TIMEOUT', (60 * 60))); //
 $SESSION_COOKIE_LIFETIME = (int)(Env::get('SESSION_COOKIE_LIFETIME', 0));
 $SESSION_REMEMBERME_LIFETIME = (int)(Env::get('SESSION_REMEMBERME_LIFETIME', (14 * 86400))); // 14 days
 $SECURE_COOKIE = Env::get('SECURE_COOKIE', true);
-$MEMCACHE_STORE_EXPIRES = (int)(Env::get('MEMCACHE_STORE_EXPIRES', (36 * 60 * 60))); // 36 hours.
 $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
 $GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
 $FORCE_DISCOVERY = Env::get('FORCE_DISCOVERY', false);
@@ -647,7 +646,7 @@ $config = [
      *
      * (This option replaces the old 'session.handler'-option.)
      */
-    'store.type'                    => 'phpsession',
+    'store.type'                    => 'sql',
 
 
     /*
@@ -721,12 +720,21 @@ $config = [
      * ),
      *
      */
-    'memcache_store.servers' => [
-        [
-            ['hostname' => 'localhost'],
-        ],
-    ],
+//    'memcache_store.servers' => [
+//        [
+//            ['hostname' => 'localhost'],
+//        ],
+//    ],
 
+    /*
+     * This value allows you to set a prefix for memcache-keys. The default
+     * for this value is 'simpleSAMLphp', which is fine in most cases.
+     *
+     * When running multiple instances of SSP on the same host, and more
+     * than one instance is using memcache, you probably want to assign
+     * a unique value per instance to this setting to avoid data collision.
+     */
+//    'memcache_store.prefix' => '',
 
     /*
      * This value is the duration data should be stored in memcache. Data
@@ -743,7 +751,7 @@ $config = [
      * Note: The oldest data will always be deleted if the memcache server
      * runs out of storage space.
      */
-    'memcache_store.expires' => 36 * (60 * 60), // 36 hours.
+//    'memcache_store.expires' => 36 * (60 * 60), // 36 hours.
 
 
     /*
