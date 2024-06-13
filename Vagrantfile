@@ -56,8 +56,8 @@ Vagrant.configure(2) do |config|
     sudo groupadd docker
     sudo usermod -aG docker vagrant
     # Install Docker Compose
-    curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-    chmod +x /usr/local/bin/docker-compose
+    curl -L https://github.com/docker/compose/releases/download/1.17.0/docker compose-`uname -s`-`uname -m` > /usr/local/bin/docker compose
+    chmod +x /usr/local/bin/docker compose
   SHELL
 
   # This provisioner runs on every `vagrant reload' (as well as the first
@@ -65,7 +65,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision "recompose", type: "shell",
      run: "always", inline: <<-SHELL
 
-    # Run docker-compose (which will update preloaded images, and
+    # Run docker compose (which will update preloaded images, and
     # pulls any images not preloaded)
     cd /vagrant
     

@@ -4,11 +4,11 @@ This is done through behat acceptance tests
 
 Once your containers are up, in your VM run ...
 
-`> docker-compose run --rm test /data/run-integration-tests.sh`
+`> docker compose run --rm test /data/run-integration-tests.sh`
 
 Or, if you need to run just one of the tests, run ...
 
-`> docker-compose run --rm test bash`
+`> docker compose run --rm test bash`
 
 then
 
