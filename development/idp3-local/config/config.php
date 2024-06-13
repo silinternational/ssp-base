@@ -19,7 +19,6 @@ $BASE_URL_PATH = Env::get('BASE_URL_PATH', '/');
 $ADMIN_NAME = Env::get('ADMIN_NAME', 'SAML Admin');
 $ADMIN_PROTECT_INDEX_PAGE = Env::get('ADMIN_PROTECT_INDEX_PAGE', true);
 $SHOW_SAML_ERRORS = Env::get('SHOW_SAML_ERRORS', false);
-$TIMEZONE = Env::get('TIMEZONE', 'GMT');
 $LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'syslog');
 $SESSION_DURATION = (int)(Env::get('SESSION_DURATION', 540));
 $SESSION_DATASTORE_TIMEOUT = (int)(Env::get('SESSION_DATASTORE_TIMEOUT', (4 * 60 * 60))); // 4 hours
@@ -132,7 +131,7 @@ $config = [
      *
      * See this page for a list of valid timezones: http://php.net/manual/en/timezones.php
      */
-    'timezone' => $TIMEZONE,
+    'timezone' => 'GMT',
 
     /*
      * Logging.
