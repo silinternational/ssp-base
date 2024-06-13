@@ -1,12 +1,12 @@
 <?php
 
-namespace SimpleSAML\Module\silauth\Auth\Source\migrations;
+namespace Sil\SilAuth\migrations;
 
 use yii\db\Migration;
 
 class M161213135750CreateInitialTables extends Migration
 {
-    public function safeUp()
+    public function safeUp(): void
     {
         $this->createTable('{{user}}', [
             'id' => 'pk',
@@ -45,7 +45,7 @@ class M161213135750CreateInitialTables extends Migration
         );
     }
 
-    public function safeDown()
+    public function safeDown(): void
     {
         $this->dropForeignKey(
             'fk_prev_pw_user_user_id',

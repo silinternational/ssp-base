@@ -5,7 +5,7 @@ use GuzzleHttp\Psr7\Response;
 
 class FakeSuccessfulIdBroker extends FakeIdBroker
 {
-    public function getAuthenticatedUser(string $username, string $password)
+    public function getAuthenticatedUser(string $username, string $password): ?array
     {
         $this->logger->info('FAKE SUCCESS: accepting {username} and {password}.', [
             'username' => var_export($username, true),
@@ -14,7 +14,7 @@ class FakeSuccessfulIdBroker extends FakeIdBroker
         return parent::getAuthenticatedUser($username, $password);
     }
     
-    protected function getDesiredResponse()
+    protected function getDesiredResponse(): Response
     {
         return new Response(200, [], json_encode([
             'uuid' => '11111111-aaaa-1111-aaaa-111111111111',

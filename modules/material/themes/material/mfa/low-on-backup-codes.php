@@ -29,7 +29,7 @@
 
                 <div class="mdl-card__title center" >
                     <p class="mdl-card__subtitle-text">
-                        <?= $this->t('{material:mfa:running_out_info}', ['{numBackupCodesRemaining}' => (string)(int)$this->data['numBackupCodesRemaining']]) ?>
+                        <?= $this->t('{material:mfa:running_out_info}', ['{numBackupCodesRemaining}' => $this->data['numBackupCodesRemaining']]) ?>
                     </p>
                 </div>
 

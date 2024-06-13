@@ -13,7 +13,7 @@ class Assert
      * @param string $className The name of the class in question.
      * @throws InvalidArgumentException
      */
-    public static function classExists(string $className)
+    public static function classExists(string $className): void
     {
         if (! class_exists($className)) {
             throw new InvalidArgumentException(sprintf(
@@ -30,7 +30,7 @@ class Assert
      * @param mixed $value The value in question.
      * @return string
      */
-    protected static function describe($value)
+    protected static function describe(mixed $value): string
     {
         return is_object($value) ? get_class($value) : var_export($value, true);
     }
@@ -42,7 +42,7 @@ class Assert
      * @param string $className The name/classpath of the class in question.
      * @throws InvalidArgumentException
      */
-    public static function isInstanceOf($object, string $className)
+    public static function isInstanceOf(mixed $object, string $className): void
     {
         if (! ($object instanceof $className)) {
             throw new InvalidArgumentException(sprintf(

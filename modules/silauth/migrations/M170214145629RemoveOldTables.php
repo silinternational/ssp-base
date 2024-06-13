@@ -1,12 +1,12 @@
 <?php
 
-namespace SimpleSAML\Module\silauth\Auth\Source\migrations;
+namespace Sil\SilAuth\migrations;
 
 use yii\db\Migration;
 
 class M170214145629RemoveOldTables extends Migration
 {
-    public function safeUp()
+    public function safeUp(): void
     {
         $this->dropForeignKey(
             'fk_prev_pw_user_user_id',
@@ -21,7 +21,7 @@ class M170214145629RemoveOldTables extends Migration
         $this->dropTable('{{user}}');
     }
 
-    public function safeDown()
+    public function safeDown(): bool
     {
         echo "M170214145629RemoveOldTables cannot be reverted.\n";
 

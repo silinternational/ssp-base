@@ -8,3 +8,4 @@ composer.phar
 *.aes
 dockercfg
 node_modules/
+features/screenshots/

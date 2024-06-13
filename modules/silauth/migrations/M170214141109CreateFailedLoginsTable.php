@@ -1,12 +1,12 @@
 <?php
 
-namespace SimpleSAML\Module\silauth\Auth\Source\migrations;
+namespace Sil\SilAuth\migrations;
 
 use yii\db\Migration;
 
 class M170214141109CreateFailedLoginsTable extends Migration
 {
-    public function safeUp()
+    public function safeUp(): void
     {
         /* The max length needed to store an IP address is 45 characters. See
          * http://stackoverflow.com/a/1076755/3813891 for details.  */
@@ -30,7 +30,7 @@ class M170214141109CreateFailedLoginsTable extends Migration
         );
     }
 
-    public function safeDown()
+    public function safeDown(): void
     {
         $this->dropIndex('idx_failed_logins_ip_address', '{{failed_logins}}');
         $this->dropIndex('idx_failed_logins_username', '{{failed_logins}}');

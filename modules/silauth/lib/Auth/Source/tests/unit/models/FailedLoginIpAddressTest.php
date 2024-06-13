@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class FailedLoginIpAddressTest extends TestCase
 {
-    protected function setDbFixture($recordsData)
+    protected function setDbFixture(array $recordsData): void
     {
         FailedLoginIpAddress::deleteAll();
         foreach ($recordsData as $recordData) {

@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class FailedLoginUsernameTest extends TestCase
 {
-    protected function setDbFixture($recordsData)
+    protected function setDbFixture(array $recordsData): void
     {
         FailedLoginUsername::deleteAll();
         foreach ($recordsData as $recordData) {

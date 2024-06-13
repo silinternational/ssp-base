@@ -150,7 +150,7 @@ class MfaContext extends FeatureContext
     {
         $page = $this->session->getPage();
         $pageHtml = $page->getHtml();
-        Assert::assertContains('<h2>Printable Backup Code</h2>', $pageHtml);
+        Assert::assertContains('Printable code', $pageHtml);
         Assert::assertContains('Enter code', $pageHtml);
     }
     
@@ -171,7 +171,7 @@ class MfaContext extends FeatureContext
     {
         $page = $this->session->getPage();
         $pageHtml = $page->getHtml();
-        Assert::assertContains('<h2>Smartphone App</h2>', $pageHtml);
+        Assert::assertContains('Authenticator app', $pageHtml);
         Assert::assertContains('Enter 6-digit code', $pageHtml);
     }
 
@@ -191,7 +191,7 @@ class MfaContext extends FeatureContext
     public function iShouldSeeAPromptForAWebAuthn()
     {
         $page = $this->session->getPage();
-        Assert::assertContains('<h2>USB Security Key</h2>', $page->getHtml());
+        Assert::assertContains('Security key', $page->getHtml());
     }
 
     protected function submitMfaValue($mfaValue)
@@ -207,8 +207,10 @@ class MfaContext extends FeatureContext
      */
     public function iSubmitACorrectBackupCode()
     {
-        if (! $this->pageContainsElementWithText('h2', 'Printable Backup Code')) {
-            $this->clickLink('backupcode');
+        if (! $this->pageContainsElementWithText('h1', 'Printable code')) {
+            // find image of the backup code option presented in other_mfas.php
+            $printableCodeOption = $this->session->getPage()->find('css', 'img[src=mfa-backupcode\002Esvg]');
+            $printableCodeOption->click();
         }
         $this->submitMfaValue(FakeIdBrokerClient::CORRECT_VALUE);
     }
@@ -344,7 +346,7 @@ class MfaContext extends FeatureContext
     {
         $page = $this->session->getPage();
         Assert::assertContains(
-            'You are almost out of Printable Backup Codes',
+            'Almost out of printable codes',
             $page->getHtml()
         );
     }
@@ -375,7 +377,7 @@ class MfaContext extends FeatureContext
     {
         $page = $this->session->getPage();
         Assert::assertContains(
-            'You just used your last Printable Backup Code',
+            'Last printable code used',
             $page->getHtml()
         );
     }
@@ -405,7 +407,7 @@ class MfaContext extends FeatureContext
     {
         $page = $this->session->getPage();
         Assert::assertContains(
-            'You only have ' . $numRemaining . ' remaining',
+            'You only have ' . $numRemaining . ' more left',
             $page->getHtml()
         );
     }
@@ -417,7 +419,7 @@ class MfaContext extends FeatureContext
     {
         $page = $this->session->getPage();
         Assert::assertContains(
-            'Here are your new Printable Backup Codes',
+            'New printable codes',
             $page->getContent()
         );
     }
@@ -610,7 +612,7 @@ class MfaContext extends FeatureContext
     public function iShouldSeeALinkToSendACodeToTheUsersManager()
     {
         $page = $this->session->getPage();
-        Assert::assertContains('Can\'t use any of your 2-Step Verification options', $page->getContent());
+        Assert::assertContains('I need help', $page->getContent());
     }
 
     /**
@@ -637,7 +639,9 @@ class MfaContext extends FeatureContext
      */
     public function iClickTheRequestAssistanceLink()
     {
-        $this->clickLink('Click here');
+        // find image of the recovery contact option presented in prompt_for_mfa_manager.php
+        $printableCodeOption = $this->session->getPage()->find('css', 'img[src=mfa-manager\002Esvg]');
+        $printableCodeOption->click();
     }
 
     /**
@@ -655,7 +659,7 @@ class MfaContext extends FeatureContext
     {
         $page = $this->session->getPage();
         $pageHtml = $page->getHtml();
-        Assert::assertContains('<h2>Manager Rescue Code</h2>', $pageHtml);
+        Assert::assertContains('Ask Your Recovery Contact for Help', $pageHtml);
         Assert::assertContains('Enter code', $pageHtml);
     }
 

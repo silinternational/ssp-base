@@ -40,6 +40,26 @@ will overwrite variables set in the execution environment.
 4. `make` or `docker-compose up -d` within the project root.
 5. Visit http://ssp-hub.local to see SimpleSAMLphp 
 
+### Configure a container for debugging with Xdebug
+
+1. Add a volume map for run-debug.sh on the container you wish to debug.
+
+```yml
+    - ./development/run-debug.sh:/data/run-debug.sh
+```
+
+2. Add or change the `command` for the container.
+
+```yml
+    command: /data/run-debug.sh
+```
+
+3. Restart the container.
+
+```shell
+docker composer up -d ssp-hub.local
+```
+
 ### Setup PhpStorm for remote debugging with Docker
 
 1. Make sure you're running PhpStorm 2016.3 or later
@@ -192,7 +212,7 @@ Update `/simplesamlphp/config/config.php`:
 'theme.use' => 'material:material'
 ```
 
-This project provides a convenience by loading this config with whatever is in the environment variable `THEME_USE`._
+This project sets this as the default value in the provided config file.
 
 ##### Google reCAPTCHA
 

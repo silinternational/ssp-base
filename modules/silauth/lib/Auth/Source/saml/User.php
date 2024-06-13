@@ -11,13 +11,14 @@ class User
         string $email,
         string $uuid,
         string $idpDomainName,
-        $passwordExpirationDate,
+        ?string $passwordExpirationDate,
         array $mfa,
         array $method,
-        $managerEmail,
-        $profileReview,
+        ?string $managerEmail,
+        string $profileReview,
         array $member
-    ) {
+    ): array
+    {
 
         // eduPersonUniqueId (only alphanumeric allowed)
         $alphaNumericUuid = str_replace('-', '', $uuid);

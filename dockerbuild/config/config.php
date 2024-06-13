@@ -22,11 +22,9 @@ $logLevels = [
 
 try {
     // Required to be defined in environment variables
-    $ADMIN_EMAIL = Env::requireEnv('ADMIN_EMAIL');
     $ADMIN_PASS = Env::requireEnv('ADMIN_PASS');
     $SECRET_SALT = Env::requireEnv('SECRET_SALT');
     $IDP_NAME = Env::requireEnv('IDP_NAME');
-    $IDP_DISPLAY_NAME = Env::get('IDP_DISPLAY_NAME', $IDP_NAME);
 } catch (EnvVarNotFoundException $e) {
 
     // Return error response code/message to HTTP request.
@@ -41,9 +39,10 @@ try {
     exit($responseContent);
 }
 
-
 // Defaults provided if not defined in environment
+$IDP_DISPLAY_NAME = Env::get('IDP_DISPLAY_NAME', $IDP_NAME);
 $BASE_URL_PATH = Env::get('BASE_URL_PATH', '/');
+$ADMIN_EMAIL = Env::get('ADMIN_EMAIL', 'na@example.org');
 $ADMIN_NAME = Env::get('ADMIN_NAME', 'SAML Admin');
 $ADMIN_PROTECT_INDEX_PAGE = Env::get('ADMIN_PROTECT_INDEX_PAGE', true);
 $SHOW_SAML_ERRORS = Env::get('SHOW_SAML_ERRORS', false);
@@ -51,7 +50,6 @@ $TIMEZONE = Env::get('TIMEZONE', 'GMT');
 $ENABLE_DEBUG = Env::get('ENABLE_DEBUG', false);
 $LOGGING_LEVEL = Env::get('LOGGING_LEVEL', 'NOTICE');
 $LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'stderr');
-$THEME_USE = Env::get('THEME_USE', 'material:material');
 
 // Options: https://github.com/silinternational/simplesamlphp-module-material/blob/develop/README.md#branding
 $THEME_COLOR_SCHEME = Env::get('THEME_COLOR_SCHEME', null);
@@ -333,9 +331,8 @@ $config = [
      * SAML messages will be logged, including plaintext versions of encrypted
      * messages.
      *
-     * - 'backtraces': this action controls the logging of error backtraces. If you
-     * want to log backtraces so that you can debug any possible errors happening in
-     * SimpleSAMLphp, enable this action (add it to the array or set it to true).
+     * - 'backtraces': this action controls the logging of error backtraces so you
+     * can debug any possible errors happening in SimpleSAMLphp.
      *
      * - 'validatexml': this action allows you to validate SAML documents against all
      * the relevant XML schemas. SAML 1.1 messages or SAML metadata parsed with
@@ -556,6 +553,8 @@ $config = [
      * Which functionality in SimpleSAMLphp do you want to enable. Normally you would enable only
      * one of the functionalities below, but in some cases you could run multiple functionalities.
      * In example when you are setting up a federation bridge.
+     *
+     * Note that shib13-idp has been deprecated and will be removed in SimpleSAMLphp 2.0.
      */
     'enable.saml20-idp' => $SAML20_IDP_ENABLE,
     'enable.shib13-idp' => false,
@@ -675,6 +674,13 @@ $config = [
      * You can set this to the strings 'None', 'Lax', or 'Strict' to support
      * the RFC6265bis SameSite cookie attribute. If set to null, no SameSite
      * attribute will be sent.
+     *
+     * A value of "None" is required to properly support cross-domain POST
+     * requests which are used by different SAML bindings. Because some older
+     * browsers do not support this value, the canSetSameSiteNone function
+     * can be called to only set it for compatible browsers.
+     *
+     * You must also set the 'session.cookie.secure' value above to true.
      *
      * Example:
      *  'session.cookie.samesite' => 'None',
@@ -875,7 +881,7 @@ $config = [
          * ],
          *
          * establishing that if a translation for the "no" language code is
-         * not available, we look for translations in "nb" (Norwegian Bokmål),
+         * not available, we look for translations in "nb",
          * and so on, in that order.
          */
         'priorities' => [
@@ -885,6 +891,8 @@ $config = [
             'se' => ['nb', 'no', 'nn', 'en'],
             'nr' => ['zu', 'en'],
             'nd' => ['zu', 'en'],
+            'tw' => ['st', 'en'],
+            'nso' => ['st', 'en'],
         ],
     ],
 
@@ -894,7 +902,7 @@ $config = [
     'language.available' => [
         'en', 'no', 'nn', 'se', 'da', 'de', 'sv', 'fi', 'es', 'ca', 'fr', 'it', 'nl', 'lb',
         'cs', 'sl', 'lt', 'hr', 'hu', 'pl', 'pt', 'pt-br', 'tr', 'ja', 'zh', 'zh-tw', 'ru',
-        'et', 'he', 'id', 'sr', 'lv', 'ro', 'eu', 'el', 'af', 'zu', 'xh',
+        'et', 'he', 'id', 'sr', 'lv', 'ro', 'eu', 'el', 'af', 'zu', 'xh', 'st',
     ],
     'language.rtl' => ['ar', 'dv', 'fa', 'ur', 'he'],
     'language.default' => 'en',
@@ -911,10 +919,10 @@ $config = [
     'language.cookie.name' => 'language',
     'language.cookie.domain' => null,
     'language.cookie.path' => '/',
-    'language.cookie.secure' => false,
+    'language.cookie.secure' => true,
     'language.cookie.httponly' => false,
     'language.cookie.lifetime' => (60 * 60 * 24 * 900),
-    'language.cookie.samesite' => null,
+    'language.cookie.samesite' => \SimpleSAML\Utils\HTTP::canSetSameSiteNone() ? 'None' : null,
 
     /**
      * Custom getLanguage function called from SimpleSAML\Locale\Language::getLanguage().
@@ -963,7 +971,7 @@ $config = [
     /*
      * Which theme directory should be used?
      */
-    'theme.use' => $THEME_USE,
+    'theme.use' => 'material:material',
 
     /*
      * Set this option to the text you would like to appear at the header of each page. Set to false if you don't want
@@ -1036,7 +1044,7 @@ $config = [
     ],
 
     /*
-     * If using the material theme, which color scheme to use
+     * color scheme to use for the material theme
      * Options: https://github.com/silinternational/simplesamlphp-module-material/blob/develop/README.md#branding
      */
     'theme.color-scheme' => $THEME_COLOR_SCHEME,
@@ -1119,6 +1127,7 @@ $config = [
         ],
 
         // 48 =>  *** WARNING: For Hubs this entry is added at the end of this file
+        // 49 =>  *** WARNING: For Hubs this entry is added at the end of this file
 
 
         // If no attributes are requested in the SP metadata, then these will be sent through

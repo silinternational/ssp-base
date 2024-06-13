@@ -14,7 +14,7 @@ class LoggerFactory
      *
      * @throws InvalidArgumentException
      */
-    public static function get($loggerClass)
+    public static function get(string $loggerClass): LoggerInterface
     {
         Assert::classExists($loggerClass);
         $logger = new $loggerClass();
@@ -32,7 +32,7 @@ class LoggerFactory
      *
      * @throws InvalidArgumentException
      */
-    public static function getAccordingToState($state)
+    public static function getAccordingToState(array $state): LoggerInterface
     {
         return self::get($state['loggerClass'] ?? Psr3SamlLogger::class);
     }

@@ -6,7 +6,7 @@ use SimpleSAML\Module\silauth\Auth\Source\http\Request;
 
 class DummySuccessfulCaptcha extends Captcha
 {
-    public function isValidIn(Request $request)
+    public function isValidIn(Request $request): bool
     {
         return true;
     }

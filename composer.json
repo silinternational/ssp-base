@@ -19,8 +19,6 @@
     "simplesamlphp/composer-module-installer": "1.1.8",
     "rlanvin/php-ip": "^1.0",
     "silinternational/ssp-utilities": "^1.1.0",
-    "silinternational/simplesamlphp-module-material": "^8.1.1",
-    "silinternational/simplesamlphp-module-sildisco": "^4.0.0",
     "silinternational/php-env": "^3.1.0",
     "silinternational/psr3-adapters": "^3.1",
     "silinternational/yii2-json-log-targets": "^2.0",
@@ -32,7 +30,8 @@
     "fillup/fake-bower-assets": "^2.0",
     "google/recaptcha": "^1.1",
     "psr/log": "^1.0",
-    "monolog/monolog": "^1.22"
+    "monolog/monolog": "^1.22",
+    "aws/aws-sdk-php": "^3.313"
   },
   "require-dev": {
     "behat/behat": "^3.8",
@@ -46,7 +45,8 @@
       "vendor/yiisoft/yii2/Yii.php"
     ],
     "psr-4": {
-      "Sil\\SspBase\\Features\\": "features/"
+      "Sil\\SspBase\\Features\\": "features/",
+      "Sil\\SilAuth\\migrations\\": "modules/silauth/migrations/"
     }
   },
   "config": {

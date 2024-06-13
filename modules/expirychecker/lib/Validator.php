@@ -20,7 +20,7 @@ class Validator
      * @param LoggerInterface $logger The logger.
      * @throws Exception
      */
-    public static function validate($value, $rules, $logger, $attribute)
+    public static function validate(mixed $value, array $rules, LoggerInterface $logger, string $attribute): void
     {
         foreach ($rules as $rule) {
             if ( ! self::isValid($value, $rule, $logger)) {
@@ -47,7 +47,7 @@ class Validator
      * @return bool
      * @throws InvalidArgumentException
      */
-    protected static function isValid($value, $rule, $logger)
+    protected static function isValid(mixed $value, string $rule, LoggerInterface $logger): bool
     {
         switch ($rule) {
             case self::INT:

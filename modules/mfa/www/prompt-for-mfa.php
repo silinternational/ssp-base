@@ -67,6 +67,7 @@ $mfaOption = Mfa::getMfaOptionById($mfaOptions, $mfaId);
 
 // If the user has submitted their MFA value...
 if (filter_has_var(INPUT_POST, 'submitMfa')) {
+    /* @var string|array $mfaSubmission */
     $mfaSubmission = filter_input(INPUT_POST, 'mfaSubmission');
     if (substr($mfaSubmission, 0, 1) == '{') {
         $mfaSubmission = json_decode($mfaSubmission, true);
@@ -96,6 +97,25 @@ if (filter_has_var(INPUT_POST, 'submitMfa')) {
 
 $globalConfig = Configuration::getInstance();
 
+$otherOptions = array_filter($mfaOptions, function($option) use ($mfaId) {
+    return $option['id'] != $mfaId;
+});
+if (! empty($state['managerEmail'])) {
+    $otherOptions[] = [
+        'type' => 'manager',
+        'callback' => '/module.php/mfa/send-manager-mfa.php?StateId='.htmlentities($stateId)
+    ];
+}
+foreach ($otherOptions as &$option) {
+    $option['callback'] = $option['callback'] ?? sprintf(
+        '/module.php/mfa/prompt-for-mfa.php?StateId=%s&mfaId=%s',
+        htmlentities($stateId),
+        htmlentities($option['id'])
+    );
+    $option['image'] = 'mfa-' . $option['type'] . '.svg';
+    $option['label'] = empty($option['id']) ? 'help' : $option['type'];
+}
+
 $mfaTemplateToUse = Mfa::getTemplateFor($mfaOption['type']);
 
 $t = new Template($globalConfig, $mfaTemplateToUse);
@@ -104,7 +124,10 @@ $t->data['mfaOption'] = $mfaOption;
 $t->data['mfaOptions'] = $mfaOptions;
 $t->data['stateId'] = $stateId;
 $t->data['supportsWebAuthn'] = LoginBrowser::supportsWebAuthn($userAgent);
+$browserJsHash = md5_file(__DIR__ . '/simplewebauthn/browser.js');
+$t->data['browserJsPath'] = '/module.php/mfa/simplewebauthn/browser.js?v=' . $browserJsHash;
 $t->data['managerEmail'] = $state['managerEmail'];
+$t->data['otherOptions'] = $otherOptions;
 $t->show();
 
 $logger->info(json_encode([

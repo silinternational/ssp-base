@@ -3,10 +3,13 @@
 namespace SimpleSAML\Module\mfa\Auth\Process;
 
 use Psr\Log\LoggerInterface;
+use Sil\Idp\IdBroker\Client\BaseClient;
 use Sil\PhpEnv\Env;
 use Sil\Idp\IdBroker\Client\ServiceException;
 use Sil\Idp\IdBroker\Client\IdBrokerClient;
+use Sil\PhpEnv\EnvVarNotFoundException;
 use Sil\Psr3Adapters\Psr3SamlLogger;
+use Sil\SspBase\Features\fakes\FakeIdBrokerClient;
 use SimpleSAML\Module\mfa\LoggerFactory;
 use SimpleSAML\Module\mfa\LoginBrowser;
 use SimpleSAML\Auth\ProcessingChain;
@@ -30,21 +33,19 @@ class Mfa extends ProcessingFilter
     const STAGE_SENT_TO_NEW_BACKUP_CODES_PAGE = 'mfa:sent_to_new_backup_codes_page';
     const STAGE_SENT_TO_OUT_OF_BACKUP_CODES_MESSAGE = 'mfa:sent_to_out_of_backup_codes_message';
 
-    private $employeeIdAttr = null;
-    private $idpDomainName = null;
-    private $mfaSetupUrl = null;
+    private string|null $employeeIdAttr = null;
+    private string|null $idpDomainName = null;
+    private string|null $mfaSetupUrl = null;
     
-    private $idBrokerAccessToken = null;
-    private $idBrokerAssertValidIp;
-    private $idBrokerBaseUri = null;
-    private $idBrokerClientClass = null;
-    private $idBrokerTrustedIpRanges = [];
+    private string|null $idBrokerAccessToken = null;
+    private bool $idBrokerAssertValidIp;
+    private string|null $idBrokerBaseUri = null;
+    private string|null $idBrokerClientClass = null;
+    private array $idBrokerTrustedIpRanges = [];
     
-    /** @var LoggerInterface */
-    protected $logger;
+    protected LoggerInterface $logger;
     
-    /** @var string */
-    protected $loggerClass;
+    protected string $loggerClass;
 
     /**
      * Initialize this filter.
@@ -53,7 +54,7 @@ class Mfa extends ProcessingFilter
      * @param mixed $reserved For future use.
      * @throws \Exception
      */
-    public function __construct($config, $reserved)
+    public function __construct(array $config, mixed $reserved)
     {
         parent::__construct($config, $reserved);
         $this->initComposerAutoloader();
@@ -78,7 +79,7 @@ class Mfa extends ProcessingFilter
         $this->idBrokerClientClass = $config['idBrokerClientClass'] ?? IdBrokerClient::class;
     }
     
-    protected function loadValuesFromConfig($config, $attributes)
+    protected function loadValuesFromConfig(array $config, array $attributes): void
     {
         foreach ($attributes as $attribute) {
             $this->$attribute = $config[$attribute] ?? null;
@@ -99,7 +100,7 @@ class Mfa extends ProcessingFilter
      * @param LoggerInterface $logger The logger.
      * @throws \Exception
      */
-    public static function validateConfigValue($attribute, $value, $logger)
+    public static function validateConfigValue(string $attribute, mixed $value, LoggerInterface $logger): void
     {
         if (empty($value) || !is_string($value)) {
             $exception = new \Exception(sprintf(
@@ -124,7 +125,7 @@ class Mfa extends ProcessingFilter
      * @param array $state The state data.
      * @return mixed The attribute value, or null if not found.
      */
-    protected function getAttribute($attributeName, $state)
+    protected function getAttribute(string $attributeName, array $state): mixed
     {
         $attributeData = $state['Attributes'][$attributeName] ?? null;
         
@@ -147,7 +148,7 @@ class Mfa extends ProcessingFilter
      * @return array|null The attribute's value(s), or null if the attribute was
      *     not found.
      */
-    protected function getAttributeAllValues($attributeName, $state)
+    protected function getAttributeAllValues(string $attributeName, array $state): ?array
     {
         $attributeData = $state['Attributes'][$attributeName] ?? null;
         
@@ -160,7 +161,7 @@ class Mfa extends ProcessingFilter
      * @param array $idBrokerConfig
      * @return IdBrokerClient
      */
-    protected static function getIdBrokerClient($idBrokerConfig)
+    protected static function getIdBrokerClient(array $idBrokerConfig): IdBrokerClient|FakeIdBrokerClient
     {
         $clientClass = $idBrokerConfig['clientClass'];
         $baseUri = $idBrokerConfig['baseUri'];
@@ -186,7 +187,7 @@ class Mfa extends ProcessingFilter
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    public static function getMfaOptionById($mfaOptions, $mfaId)
+    public static function getMfaOptionById(array $mfaOptions, int $mfaId): array
     {
         if (empty($mfaId)) {
             throw new \Exception('No MFA ID was provided.');
@@ -213,7 +214,7 @@ class Mfa extends ProcessingFilter
      * @throws \InvalidArgumentException
      * @throws \Exception
      */
-    public static function getMfaOptionToUse($mfaOptions, $userAgent)
+    public static function getMfaOptionToUse(array $mfaOptions, string $userAgent): array
     {
         if (empty($mfaOptions)) {
             throw new \Exception('No MFA options were provided.');
@@ -253,7 +254,8 @@ class Mfa extends ProcessingFilter
      * @param array[] $mfaOptions The available MFA options.
      * @return ?array The MFA option to use.
      */
-    private static function getMostRecentUsedMfaOption($mfaOptions) {
+    private static function getMostRecentUsedMfaOption(array $mfaOptions): ?array
+    {
         $recentMfa = null;
         $recentDate = '1991-01-01T00:00:00Z';
 
@@ -270,10 +272,9 @@ class Mfa extends ProcessingFilter
      * Get the number of backup codes that the user had left PRIOR to this login.
      *
      * @param array $mfaOptions The list of MFA options.
-     * @return int The number of backup codes that the user HAD (prior to this
-     *     login).
+     * @return int The number of backup codes that the user HAD (prior to this login).
      */
-    public static function getNumBackupCodesUserHad(array $mfaOptions)
+    public static function getNumBackupCodesUserHad(array $mfaOptions): int
     {
         $numBackupCodes = 0;
         foreach ($mfaOptions as $mfaOption) {
@@ -293,7 +294,7 @@ class Mfa extends ProcessingFilter
      * @return string
      * @throws \InvalidArgumentException
      */
-    public static function getTemplateFor($mfaType)
+    public static function getTemplateFor(string $mfaType): string
     {
         $mfaOptionTemplates = [
             'backupcode' => 'mfa:prompt-for-mfa-backupcode.php',
@@ -344,7 +345,7 @@ class Mfa extends ProcessingFilter
      * @param array $state The state data.
      * @param LoggerInterface $logger A PSR-3 compatible logger.
      */
-    public static function giveUserNewBackupCodes(array &$state, $logger)
+    public static function giveUserNewBackupCodes(array &$state, LoggerInterface $logger): void
     {
         try {
             $idBrokerClient = self::getIdBrokerClient($state['idBrokerConfig']);
@@ -375,7 +376,7 @@ class Mfa extends ProcessingFilter
         HTTP::redirectTrustedURL($url, ['StateId' => $stateId]);
     }
     
-    protected static function hasMfaOptions($mfa)
+    protected static function hasMfaOptions(array $mfa): bool
     {
         return (count($mfa['options']) > 0);
     }
@@ -387,7 +388,7 @@ class Mfa extends ProcessingFilter
      * @param array $state
      * @return bool
      */
-    public static function hasMfaOptionsOtherThan($excludedMfaType, $state)
+    public static function hasMfaOptionsOtherThan(string $excludedMfaType, array $state): bool
     {
         $mfaOptions = $state['mfaOptions'] ?? [];
         foreach ($mfaOptions as $mfaOption) {
@@ -398,7 +399,7 @@ class Mfa extends ProcessingFilter
         return false;
     }
     
-    protected function initComposerAutoloader()
+    protected function initComposerAutoloader(): void
     {
         $path = __DIR__ . '/../../../vendor/autoload.php';
         if (file_exists($path)) {
@@ -430,20 +431,20 @@ class Mfa extends ProcessingFilter
      * @param LoggerInterface $logger A PSR-3 compatible logger.
      * @param string $mfaType The type of the MFA ('webauthn', 'totp', 'backupcode').
      * @param string $rpOrigin The Relying Party Origin (for WebAuthn)
-     * @return void|string If validation fails, an error message to show to the
+     * @return string If validation fails, an error message to show to the
      *     end user will be returned.
      * @throws \Sil\PhpEnv\EnvVarNotFoundException
      */
     public static function validateMfaSubmission(
-        $mfaId,
-        $employeeId,
-        $mfaSubmission,
-        $state,
-        $rememberMe,
+        int $mfaId,
+        string $employeeId,
+        string|array $mfaSubmission,
+        array $state,
+        bool $rememberMe,
         LoggerInterface $logger,
         string $mfaType,
         string $rpOrigin
-    ) {
+    ): string {
         if (empty($mfaId)) {
             return 'No MFA ID was provided.';
         } elseif (empty($employeeId)) {
@@ -543,7 +544,7 @@ class Mfa extends ProcessingFilter
      *
      * @param array $state
      */
-    public static function redirectToMfaSetup(&$state)
+    public static function redirectToMfaSetup(array &$state): void
     {
         $mfaSetupUrl = $state['mfaSetupUrl'];
         
@@ -573,7 +574,7 @@ class Mfa extends ProcessingFilter
      *
      * @param array &$state The current state.
      */
-    public function process(&$state)
+    public function process(&$state): void
     {
         // Get the necessary info from the state data.
         $employeeId = $this->getAttribute($this->employeeIdAttr, $state);
@@ -621,7 +622,7 @@ class Mfa extends ProcessingFilter
      * @param string $employeeId The Employee ID of the user account.
      * @param string $mfaSetupUrl URL to MFA setup process
      */
-    protected function redirectToMfaNeededMessage(&$state, $employeeId, $mfaSetupUrl)
+    protected function redirectToMfaNeededMessage(array &$state, string $employeeId, string $mfaSetupUrl): void
     {
         assert('is_array($state)');
         
@@ -648,7 +649,7 @@ class Mfa extends ProcessingFilter
      * @param array $mfaOptions Array of MFA options
      * @throws \Exception
      */
-    protected function redirectToMfaPrompt(&$state, $employeeId, $mfaOptions)
+    protected function redirectToMfaPrompt(array &$state, string $employeeId, array $mfaOptions): void
     {
         assert('is_array($state)');
         
@@ -696,16 +697,16 @@ class Mfa extends ProcessingFilter
      * Validate that remember me cookie values are legit and valid
      * @param string $cookieHash
      * @param string $expireDate
-     * @param $mfaOptions
-     * @param $state
+     * @param array $mfaOptions
+     * @param array $state
      * @return bool
-     * @throws \Sil\PhpEnv\EnvVarNotFoundException
+     * @throws EnvVarNotFoundException
      */
     public static function isRememberMeCookieValid(
         string $cookieHash,
         string $expireDate,
-        $mfaOptions,
-        $state
+        array $mfaOptions,
+        array $state
     ): bool {
         $rememberSecret = Env::requireEnv('REMEMBER_ME_SECRET');
         if (! empty($cookieHash) && ! empty($expireDate) && is_numeric($expireDate)) {
@@ -757,11 +758,11 @@ class Mfa extends ProcessingFilter
      */
     protected static function redirectToLowOnBackupCodesNag(
         array &$state,
-        $employeeId,
-        $numBackupCodesRemaining
-    ) {
+        string $employeeId,
+        int $numBackupCodesRemaining
+    ): void {
         $state['employeeId'] = $employeeId;
-        $state['numBackupCodesRemaining'] = $numBackupCodesRemaining;
+        $state['numBackupCodesRemaining'] = (string)$numBackupCodesRemaining;
         
         $stateId = State::saveState($state, self::STAGE_SENT_TO_LOW_ON_BACKUP_CODES_NAG);
         $url = Module::getModuleURL('mfa/low-on-backup-codes.php');
@@ -778,7 +779,7 @@ class Mfa extends ProcessingFilter
      * @param array $state The state data.
      * @param string $employeeId The Employee ID of the user account.
      */
-    protected static function redirectToOutOfBackupCodesMessage(array &$state, $employeeId)
+    protected static function redirectToOutOfBackupCodesMessage(array &$state, string $employeeId): void
     {
         $state['employeeId'] = $employeeId;
         
@@ -799,7 +800,7 @@ class Mfa extends ProcessingFilter
         string $employeeId,
         array $mfaOptions,
         string $rememberDuration = '+30 days'
-    ) {
+    ): void {
         $rememberSecret = Env::requireEnv('REMEMBER_ME_SECRET');
         $secureCookie = Env::get('SECURE_COOKIE', true);
         $expireDate = strtotime($rememberDuration);
@@ -809,7 +810,7 @@ class Mfa extends ProcessingFilter
         setcookie('c2', $expireDate, $expireDate, '/', null, $secureCookie, true);
     }
     
-    protected static function shouldPromptForMfa($mfa)
+    protected static function shouldPromptForMfa(array $mfa): bool
     {
         return (strtolower($mfa['prompt']) !== 'no');
     }
@@ -818,12 +819,12 @@ class Mfa extends ProcessingFilter
      * Send a rescue code to the manager, then redirect the user to a page where they
      * can enter the code.
      *
-     * NOTE: This function never returns.
+     * If successful, this function triggers a redirect and does not return
      *
      * @param array $state The state data.
      * @param LoggerInterface $logger A PSR-3 compatible logger.
      */
-    public static function sendManagerCode(array &$state, $logger)
+    public static function sendManagerCode(array &$state, LoggerInterface $logger): string
     {
         try {
             $idBrokerClient = self::getIdBrokerClient($state['idBrokerConfig']);
@@ -840,6 +841,7 @@ class Mfa extends ProcessingFilter
                 'employeeId' => $state['employeeId'],
                 'error' => $t->getCode() . ': ' . $t->getMessage(),
             ]));
+            return 'There was an unexpected error. Please try again or contact tech support for assistance';
         }
 
         $mfaOptions = $state['mfaOptions'];
@@ -864,7 +866,7 @@ class Mfa extends ProcessingFilter
      * @param array $state
      * @return string|null
      */
-    public static function getManagerEmail($state)
+    public static function getManagerEmail(array $state): ?string
     {
         $managerEmail = $state['Attributes']['manager_email'] ?? [''];
         if (empty($managerEmail[0])) {
@@ -880,7 +882,7 @@ class Mfa extends ProcessingFilter
      * @return array The manager MFA.
      * @throws \InvalidArgumentException
      */
-    public static function getManagerMfa($mfaOptions)
+    public static function getManagerMfa(array $mfaOptions): ?array
     {
         foreach ($mfaOptions as $mfaOption) {
             if ($mfaOption['type'] === 'manager') {
@@ -895,7 +897,7 @@ class Mfa extends ProcessingFilter
      * @param string $email an email address
      * @return string with most letters changed to asterisks
      */
-    public static function maskEmail($email)
+    public static function maskEmail(string $email): string
     {
         list($part1, $domain) = explode('@', $email);
         $newEmail = '';
@@ -942,7 +944,7 @@ class Mfa extends ProcessingFilter
      * @param array $state
      * @param LoggerInterface $logger
      */
-    protected static function updateStateWithNewMfaData(&$state, $logger)
+    protected static function updateStateWithNewMfaData(array &$state, LoggerInterface $logger): void
     {
         $idBrokerClient = self::getIdBrokerClient($state['idBrokerConfig']);
 

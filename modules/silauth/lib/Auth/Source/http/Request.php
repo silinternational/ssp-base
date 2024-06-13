@@ -12,14 +12,14 @@ class Request
      *
      * @var IP[]
      */
-    private $trustedIpAddresses = [];
+    private array $trustedIpAddresses = [];
 
     /**
      * The list of trusted IP address ranges (aka. blocks).
      *
      * @var IPBlock[]
      */
-    private $trustedIpAddressRanges = [];
+    private array $trustedIpAddressRanges = [];
 
     /**
      * Constructor.
@@ -39,7 +39,7 @@ class Request
         }
     }
 
-    public function getCaptchaResponse()
+    public function getCaptchaResponse(): string
     {
         return self::sanitizeInputString(INPUT_POST, 'g-recaptcha-response');
     }
@@ -53,7 +53,7 @@ class Request
      *
      * @return string[] A list of IP addresses.
      */
-    public function getIpAddresses()
+    public function getIpAddresses(): array
     {
         $ipAddresses = [];
 
@@ -84,7 +84,7 @@ class Request
      *
      * @return string|null An IP address, or null if none was available.
      */
-    public function getMostLikelyIpAddress()
+    public function getMostLikelyIpAddress(): ?string
     {
         $untrustedIpAddresses = $this->getUntrustedIpAddresses();
 
@@ -117,13 +117,13 @@ class Request
      * @param string $variableName Example: 'username'
      * @return string
      */
-    public static function getRawInputString(int $inputType, string $variableName)
+    public static function getRawInputString(int $inputType, string $variableName): string
     {
         $input = filter_input($inputType, $variableName);
         return is_string($input) ? $input : '';
     }
 
-    public function getUntrustedIpAddresses()
+    public function getUntrustedIpAddresses(): array
     {
         $untrustedIpAddresses = [];
         foreach ($this->getIpAddresses() as $ipAddress) {
@@ -139,7 +139,7 @@ class Request
      *
      * @return string The UA string, or an empty string if not found.
      */
-    public static function getUserAgent()
+    public static function getUserAgent(): string
     {
         return self::sanitizeInputString(INPUT_SERVER, 'HTTP_USER_AGENT');
     }
@@ -151,7 +151,7 @@ class Request
      * @param string $ipAddress The IP address in question.
      * @return bool
      */
-    public function isTrustedIpAddress($ipAddress)
+    public function isTrustedIpAddress(string $ipAddress): bool
     {
         foreach ($this->trustedIpAddresses as $trustedIp) {
             if ($trustedIp->numeric() === IP::create($ipAddress)->numeric()) {
@@ -174,7 +174,7 @@ class Request
      * @param string $ipAddress The IP address in question.
      * @return bool
      */
-    public static function isValidIpAddress($ipAddress)
+    public static function isValidIpAddress(string $ipAddress): bool
     {
         $flags = FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6;
         return (filter_var($ipAddress, FILTER_VALIDATE_IP, $flags) !== false);
@@ -188,12 +188,12 @@ class Request
      * @param string $variableName Example: 'username'
      * @return string
      */
-    public static function sanitizeInputString(int $inputType, string $variableName)
+    public static function sanitizeInputString(int $inputType, string $variableName): string
     {
         return Text::sanitizeString(filter_input($inputType, $variableName));
     }
 
-    public function trustIpAddress($ipAddress)
+    public function trustIpAddress(string $ipAddress): void
     {
         if ( ! self::isValidIpAddress($ipAddress)) {
             throw new \InvalidArgumentException(sprintf(
@@ -204,7 +204,7 @@ class Request
         $this->trustedIpAddresses[] = IP::create($ipAddress);
     }
 
-    public function trustIpAddressRange($ipAddressRangeString)
+    public function trustIpAddressRange(string $ipAddressRangeString): void
     {
         $ipBlock = IPBlock::create($ipAddressRangeString);
         $this->trustedIpAddressRanges[] = $ipBlock;
