@@ -646,7 +646,7 @@ $config = [
      *
      * (This option replaces the old 'session.handler'-option.)
      */
-    'store.type'                    => 'sql',
+    'store.type'                    => 'phpsession',
 
 
     /*

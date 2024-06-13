@@ -56,6 +56,7 @@ $THEME_COLOR_SCHEME = Env::get('THEME_COLOR_SCHEME', null);
 
 $SECURE_COOKIE = Env::get('SECURE_COOKIE', true);
 $SESSION_DURATION = (int)(Env::get('SESSION_DURATION', (60 * 60 * 10))); // 10 hours.
+$SESSION_STORE_TYPE = Env::get('SESSION_STORE_TYPE', 'phpsession');
 $MYSQL_HOST = Env::get('MYSQL_HOST', '');
 $MYSQL_DATABASE = Env::get('MYSQL_DATABASE', '');
 $MYSQL_USER = Env::get('MYSQL_USER', '');
@@ -1326,7 +1327,7 @@ $config = [
      *
      * The default datastore is 'phpsession'.
      */
-    'store.type'                    => 'sql',
+    'store.type'         => $SESSION_STORE_TYPE,
 
     /*
      * The DSN the sql datastore should connect to.
