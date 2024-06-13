@@ -67,7 +67,6 @@ $MYSQL_USER = Env::get('MYSQL_USER', '');
 $MYSQL_PASSWORD = Env::get('MYSQL_PASSWORD', '');
 
 $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
-$GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
 $HUB_MODE = Env::get('HUB_MODE', false);
 $ANALYTICS_ID = Env::get('ANALYTICS_ID', null);
 $PASSWORD_CHANGE_URL = Env::get('PASSWORD_CHANGE_URL');
@@ -590,8 +589,6 @@ $config = [
      */
 
     'module.enable' => [
-        // Setting to TRUE enables.
-        'authgoogle' => $GOOGLE_ENABLE,
         'expirychecker' => true,
         'material' => true,
         'mfa' => true,

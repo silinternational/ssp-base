@@ -29,7 +29,6 @@ $SESSION_REMEMBERME_LIFETIME = (int)(Env::get('SESSION_REMEMBERME_LIFETIME', (14
 $SECURE_COOKIE = Env::get('SECURE_COOKIE', true);
 $MEMCACHE_STORE_EXPIRES = (int)(Env::get('MEMCACHE_STORE_EXPIRES', (36 * 60 * 60))); // 36 hours.
 $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
-$GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
 $FORCE_DISCOVERY = Env::get('FORCE_DISCOVERY', false);
 
 $config = [
@@ -257,10 +256,7 @@ $config = [
      *
      */
 
-    'module.enable' => [
-        // Setting to TRUE enables.
-        'authgoogle' => $GOOGLE_ENABLE,
-    ],
+    'module.enable' => [],
 
     /*
      * This value is the duration of the session in seconds. Make sure that the time duration of
