@@ -22,11 +22,9 @@ $logLevels = [
 
 try {
     // Required to be defined in environment variables
-    $ADMIN_EMAIL = Env::get('ADMIN_EMAIL', 'na@example.org');
     $ADMIN_PASS = Env::requireEnv('ADMIN_PASS');
     $SECRET_SALT = Env::requireEnv('SECRET_SALT');
     $IDP_NAME = Env::requireEnv('IDP_NAME');
-    $IDP_DISPLAY_NAME = Env::get('IDP_DISPLAY_NAME', $IDP_NAME);
 } catch (EnvVarNotFoundException $e) {
 
     // Return error response code/message to HTTP request.
@@ -41,9 +39,10 @@ try {
     exit($responseContent);
 }
 
-
 // Defaults provided if not defined in environment
+$IDP_DISPLAY_NAME = Env::get('IDP_DISPLAY_NAME', $IDP_NAME);
 $BASE_URL_PATH = Env::get('BASE_URL_PATH', '/');
+$ADMIN_EMAIL = Env::get('ADMIN_EMAIL', 'na@example.org');
 $ADMIN_NAME = Env::get('ADMIN_NAME', 'SAML Admin');
 $ADMIN_PROTECT_INDEX_PAGE = Env::get('ADMIN_PROTECT_INDEX_PAGE', true);
 $SHOW_SAML_ERRORS = Env::get('SHOW_SAML_ERRORS', false);
