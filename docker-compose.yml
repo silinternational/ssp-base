@@ -268,14 +268,6 @@ services:
 
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
-
-      # Local modules
-      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
-      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
-      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
-      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
-      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
-      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     ports:
       - "8081:80"
     environment:
@@ -298,14 +290,6 @@ services:
 
       # Utilize custom metadata
       - ./development/sp2-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
-
-      # Local modules
-      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
-      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
-      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
-      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
-      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
-      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     ports:
       - "8082:80"
     environment:

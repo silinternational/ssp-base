@@ -38,7 +38,6 @@ $SESSION_COOKIE_LIFETIME = (int)(Env::get('SESSION_COOKIE_LIFETIME', 0));
 $SESSION_REMEMBERME_LIFETIME = (int)(Env::get('SESSION_REMEMBERME_LIFETIME', (14 * 86400))); // 14 days
 $SECURE_COOKIE = Env::get('SECURE_COOKIE', true);
 $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
-$GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
 
 $config = [
 
@@ -292,16 +291,7 @@ $config = [
      *
      */
 
-    'module.enable' => [
-        // Setting to TRUE enables.
-        'authgoogle' => $GOOGLE_ENABLE,
-        'expirychecker' => true,
-        'material' => true,
-        'mfa' => true,
-        'profilereview' => true,
-        'silauth' => true,
-        'sildisco' => true,
-    ],
+    'module.enable' => [],
 
     /*
      * This value is the duration of the session in seconds. Make sure that the time duration of
