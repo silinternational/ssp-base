@@ -31,9 +31,10 @@ class TagGroup extends \SimpleSAML\Auth\ProcessingFilter {
     /**
      * Apply filter to copy attributes.
      *
-     * @param array &$state  The current request
+     * @inheritDoc
      */
-    public function process(&$state) {
+    public function process(array &$state): void
+    {
         assert('is_array($request)');
         assert('array_key_exists("Attributes", $request)');
 

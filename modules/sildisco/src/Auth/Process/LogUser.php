@@ -65,9 +65,9 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
     /**
      * Log info for a user's login to Dynamodb
      *
-     * @param array &$state  The current state array
+     * @inheritDoc
      */
-    public function process(&$state): void
+    public function process(array &$state): void
     {
         if (! $this->configsAreValid()) {
             return;

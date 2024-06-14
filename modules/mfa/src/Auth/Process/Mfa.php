@@ -566,15 +566,11 @@ class Mfa extends ProcessingFilter
         
         HTTP::redirectTrustedURL($mfaSetupUrl);
     }
-    
+
     /**
-     * Apply this AuthProc Filter. It will either return (indicating that it
-     * has completed) or it will redirect the user, in which case it will
-     * later call `SimpleSAML\Auth\ProcessingChain::resumeProcessing($state)`.
-     *
-     * @param array &$state The current state.
+     * @inheritDoc
      */
-    public function process(&$state): void
+    public function process(array &$state): void
     {
         // Get the necessary info from the state data.
         $employeeId = $this->getAttribute($this->employeeIdAttr, $state);
