@@ -1,9 +1,9 @@
 <?php
 /**
- * Borrowed and modified from simplesamlphp/www/saml2/idp/metadata.php
+ * Borrowed and modified from simplesamlphp/public/saml2/idp/metadata.php
  */
 
-require_once('../www/_include.php');
+require_once('../public/_include.php');
 
 use SAML2\Constants;
 use SimpleSAML\Utils\Auth as Auth;

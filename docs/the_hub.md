@@ -2,8 +2,8 @@ The hub will need its certs, `config.php` and `authsources.php` files as a norma
 
 Other files it will need are as follows ...
 * The files in the `./src` folder will need to go into `/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco/src`
-* The files in the `./www` folder will need to go into `/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco/www`
-* The `./sspoverrides/www_saml2_idp/SSOService.php` file will need overwrite the same out-of-the-box file in `/data/vendor/simplesamlphp/simplesamlphp/www/saml2/idp/`
+* The files in the `./public` folder will need to go into `/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco/public`
+* The `./sspoverrides/www_saml2_idp/SSOService.php` file will need overwrite the same out-of-the-box file in `/data/vendor/simplesamlphp/simplesamlphp/public/saml2/idp/`
 
 ### Metadata files
 The hub should use the `saml20-*-remote.php`  files from [ssp-base](https://github.com/silinternational/ssp-base) in `/data/vendor/simplesamlphp/simplesamlphp/metadata/`.  These pull in metadata from all the files named `idp-*.php` and `sp-*.php` respectively, including those in sub-folders.
