@@ -17,6 +17,9 @@ then
 The tests are found in `/features`.  They are similar to the manual tests listed below.
 
 # Manual Testing
+
+See [Local Testing](../README.md#local-testing) for instructions to set up your local development environment.
+
 ## Main SP authenticates through Main Idp. Third SP is also authenticated. Second SP must re-authenticate.
 ### Ensure main SP goes to discovery page and can login through the main IdP
 * Kill all your cookies for ssp\*
