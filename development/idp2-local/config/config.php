@@ -46,7 +46,6 @@ $ADMIN_EMAIL = Env::get('ADMIN_EMAIL', 'na@example.org');
 $ADMIN_NAME = Env::get('ADMIN_NAME', 'SAML Admin');
 $ADMIN_PROTECT_INDEX_PAGE = Env::get('ADMIN_PROTECT_INDEX_PAGE', true);
 $SHOW_SAML_ERRORS = Env::get('SHOW_SAML_ERRORS', false);
-$TIMEZONE = Env::get('TIMEZONE', 'GMT');
 $ENABLE_DEBUG = Env::get('ENABLE_DEBUG', false);
 $LOGGING_LEVEL = Env::get('LOGGING_LEVEL', 'NOTICE');
 $LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'stderr');
@@ -204,7 +203,7 @@ $config = [
      *
      * See this page for a list of valid timezones: http://php.net/manual/en/timezones.php
      */
-    'timezone' => $TIMEZONE,
+    'timezone' => 'GMT',
 
 
 
