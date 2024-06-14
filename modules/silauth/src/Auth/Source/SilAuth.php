@@ -59,15 +59,7 @@ class SilAuth extends UserPassBase
         ]]]);
     }
 
-    /**
-     * Initialize login.
-     *
-     * This function saves the information about the login, and redirects to a
-     * login page.
-     *
-     * @param array &$state  Information about the current authentication.
-     */
-    public function authenticate(&$state): void
+    public function authenticate(array &$state): void
     {
         assert('is_array($state)');
 
@@ -107,8 +99,8 @@ class SilAuth extends UserPassBase
         }
         return $trustedIpAddresses;
     }
-    
-    protected function login($username, $password): ?array
+
+    protected function login(string $username, string $password): array
     {
         $logger = new Psr3StdOutLogger();
         $captcha = new Captcha($this->recaptchaConfig['secret'] ?? null);
