@@ -588,6 +588,9 @@ $config = [
      */
 
     'module.enable' => [
+        'saml' => true,
+        'core' => true,
+        'admin' => true,
         'expirychecker' => true,
         'material' => true,
         'mfa' => true,

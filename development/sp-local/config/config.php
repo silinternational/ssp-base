@@ -291,7 +291,11 @@ $config = [
      *
      */
 
-    'module.enable' => [],
+    'module.enable' => [
+        'saml' => true,
+        'core' => true,
+        'admin' => true,
+    ],
 
     /*
      * This value is the duration of the session in seconds. Make sure that the time duration of
