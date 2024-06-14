@@ -61,7 +61,7 @@ COPY dockerbuild/ssp-overrides/id.php $SSP_PATH/www/id.php
 COPY dockerbuild/ssp-overrides/announcement.php $SSP_PATH/announcement/announcement.php
 COPY tests /data/tests
 
-RUN cp $SSP_PATH/modules/sildisco/lib/SSOService.php $SSP_PATH/www/saml2/idp/
+RUN cp $SSP_PATH/modules/sildisco/src/SSOService.php $SSP_PATH/www/saml2/idp/
 RUN chmod a+x /data/run.sh /data/run-tests.sh
 
 ADD https://github.com/silinternational/config-shim/releases/latest/download/config-shim.gz config-shim.gz

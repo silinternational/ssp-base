@@ -1,7 +1,7 @@
 The hub will need its certs, `config.php` and `authsources.php` files as a normal simplesamlphp installation. Examples of these can be found in the `./development/hub` folder. (Note the `discoURL` entry in the `authsources.php` file.)
 
 Other files it will need are as follows ...
-* The files in the `./lib` folder will need to go into `/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco/lib`
+* The files in the `./src` folder will need to go into `/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco/src`
 * The files in the `./www` folder will need to go into `/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco/www`
 * The `./sspoverrides/www_saml2_idp/SSOService.php` file will need overwrite the same out-of-the-box file in `/data/vendor/simplesamlphp/simplesamlphp/www/saml2/idp/`
 
@@ -35,6 +35,6 @@ In order to limit access to an IdP to only certain SP's, add an `'SPList'` array
 If you want to require SP's to list a certain IdP in their IDPList entry in order to be able to access it, add `excludeByDefault => true` to that IdP's metadata.
 
 ### Forced IdP discovery
-The `.../lib/IdP/SAML2.php` file ensures that if an SP is allowed to access more than one IdP, then the user will be forced back to the IdP discovery page, even if they are already authenticated through one of those IdP's.
+The `.../src/IdP/SAML2.php` file ensures that if an SP is allowed to access more than one IdP, then the user will be forced back to the IdP discovery page, even if they are already authenticated through one of those IdP's.
 
 The reason for this is to ensure that the user has a chance to decide which of their identities is used for that SP.
