@@ -25,7 +25,6 @@
     "sinergi/browser-detector": "^6.1",
     "yiisoft/yii2": "~2.0.12",
     "yiisoft/yii2-gii": "^2.0",
-    "fillup/fake-bower-assets": "^2.0",
     "google/recaptcha": "^1.1",
     "psr/log": "^3.0",
     "monolog/monolog": "^3.0",
