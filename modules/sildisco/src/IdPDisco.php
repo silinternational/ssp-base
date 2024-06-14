@@ -38,13 +38,9 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
 
 
     /**
-     * Log a message.
-     *
-     * This is an helper function for logging messages. It will prefix the messages with our discovery service type.
-     *
-     * @param string $message The message which should be logged.
+     * @inheritDoc
      */
-    protected function log($message): void
+    protected function log(string $message): void
     {
         \SimpleSAML\Logger::info('SildiscoIdPDisco.'.$this->instance.': '.$message);
     }
@@ -72,9 +68,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
     }
 
     /**
-     * Handles a request to this discovery service.
-     *
-     * The IdP disco parameters should be set before calling this function.
+     * @inheritDoc
      */
     public function handleRequest(): void
     {
@@ -160,16 +154,9 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
     }
 
     /**
-     * Validates the given IdP entity id.
-     *
-     * Takes a string with the IdP entity id, and returns the entity id if it is valid, or
-     * null if not. Ensures that the selected IdP is allowed for the current SP
-     *
-     * @param string|null $idp The entity id we want to validate. This can be null, in which case we will return null.
-     *
-     * @return string|null The entity id if it is valid, null if not.
+     * @inheritDoc
      */
-    protected function validateIdP($idp): ?string
+    protected function validateIdP(?string $idp): ?string
     {
         if ($idp === null) {
             return null;
