@@ -7,7 +7,6 @@ ENV REFRESHED_AT 2021-06-14
 RUN apt-get update -y \
     && apt-get install -y \
         php-gmp \
-        php-memcached \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

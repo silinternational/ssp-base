@@ -46,7 +46,6 @@ $ADMIN_EMAIL = Env::get('ADMIN_EMAIL', 'na@example.org');
 $ADMIN_NAME = Env::get('ADMIN_NAME', 'SAML Admin');
 $ADMIN_PROTECT_INDEX_PAGE = Env::get('ADMIN_PROTECT_INDEX_PAGE', true);
 $SHOW_SAML_ERRORS = Env::get('SHOW_SAML_ERRORS', false);
-$TIMEZONE = Env::get('TIMEZONE', 'GMT');
 $ENABLE_DEBUG = Env::get('ENABLE_DEBUG', false);
 $LOGGING_LEVEL = Env::get('LOGGING_LEVEL', 'NOTICE');
 $LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'stderr');
@@ -57,17 +56,12 @@ $THEME_COLOR_SCHEME = Env::get('THEME_COLOR_SCHEME', null);
 $SECURE_COOKIE = Env::get('SECURE_COOKIE', true);
 $SESSION_DURATION = (int)(Env::get('SESSION_DURATION', (60 * 60 * 10))); // 10 hours.
 $SESSION_STORE_TYPE = Env::get('SESSION_STORE_TYPE', 'phpsession');
-$MEMCACHE_HOST1 = Env::get('MEMCACHE_HOST1', null);
-$MEMCACHE_HOST2 = Env::get('MEMCACHE_HOST2', null);
-$MEMCACHE_HOST1_PORT = Env::get('MEMCACHE_HOST1_PORT', 11211);
-$MEMCACHE_HOST2_PORT = Env::get('MEMCACHE_HOST2_PORT', 11211);
 $MYSQL_HOST = Env::get('MYSQL_HOST', '');
 $MYSQL_DATABASE = Env::get('MYSQL_DATABASE', '');
 $MYSQL_USER = Env::get('MYSQL_USER', '');
 $MYSQL_PASSWORD = Env::get('MYSQL_PASSWORD', '');
 
 $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
-$GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
 $HUB_MODE = Env::get('HUB_MODE', false);
 $ANALYTICS_ID = Env::get('ANALYTICS_ID', null);
 $PASSWORD_CHANGE_URL = Env::get('PASSWORD_CHANGE_URL');
@@ -208,7 +202,7 @@ $config = [
      *
      * See this page for a list of valid timezones: http://php.net/manual/en/timezones.php
      */
-    'timezone' => $TIMEZONE,
+    'timezone' => 'GMT',
 
 
 
@@ -590,8 +584,9 @@ $config = [
      */
 
     'module.enable' => [
-        // Setting to TRUE enables.
-        'authgoogle' => $GOOGLE_ENABLE,
+        'saml' => true,
+        'core' => true,
+        'admin' => true,
         'expirychecker' => true,
         'material' => true,
         'mfa' => true,
@@ -813,20 +808,13 @@ $config = [
      * ],
      *
      */
-    'memcache_store.servers' => [
-        [
-            [
-                'hostname' => $MEMCACHE_HOST1,
-                'port' => $MEMCACHE_HOST1_PORT,
-            ],
-        ],
-        [
-            [
-                'hostname' => $MEMCACHE_HOST2,
-                'port' => $MEMCACHE_HOST2_PORT,
-            ],
-        ],
-    ],
+//    'memcache_store.servers' => [
+//        [
+//            [
+//                'hostname' => 'localhost',
+//            ],
+//        ],
+//    ],
 
     /*
      * This value allows you to set a prefix for memcache-keys. The default

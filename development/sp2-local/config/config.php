@@ -27,7 +27,6 @@ $BASE_URL_PATH = Env::get('BASE_URL_PATH', '/');
 $ADMIN_NAME = Env::get('ADMIN_NAME', 'SAML Admin');
 $ADMIN_PROTECT_INDEX_PAGE = Env::get('ADMIN_PROTECT_INDEX_PAGE', true);
 $SHOW_SAML_ERRORS = Env::get('SHOW_SAML_ERRORS', false);
-$TIMEZONE = Env::get('TIMEZONE', 'GMT');
 $ENABLE_DEBUG = Env::get('ENABLE_DEBUG', false);
 $LOGGING_LEVEL = Env::get('LOGGING_LEVEL', 'NOTICE');
 $LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'stderr');
@@ -38,7 +37,6 @@ $SESSION_COOKIE_LIFETIME = (int)(Env::get('SESSION_COOKIE_LIFETIME', 0));
 $SESSION_REMEMBERME_LIFETIME = (int)(Env::get('SESSION_REMEMBERME_LIFETIME', (14 * 86400))); // 14 days
 $SECURE_COOKIE = Env::get('SECURE_COOKIE', true);
 $SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
-$GOOGLE_ENABLE = Env::get('GOOGLE_ENABLE', false);
 
 $config = [
 
@@ -167,7 +165,7 @@ $config = [
      *
      * See this page for a list of valid timezones: http://php.net/manual/en/timezones.php
      */
-    'timezone' => $TIMEZONE,
+    'timezone' => 'GMT',
 
     /*
      * Logging.
@@ -293,14 +291,9 @@ $config = [
      */
 
     'module.enable' => [
-        // Setting to TRUE enables.
-        'authgoogle' => $GOOGLE_ENABLE,
-        'expirychecker' => true,
-        'material' => true,
-        'mfa' => true,
-        'profilereview' => true,
-        'silauth' => true,
-        'sildisco' => true,
+        'saml' => true,
+        'core' => true,
+        'admin' => true,
     ],
 
     /*
