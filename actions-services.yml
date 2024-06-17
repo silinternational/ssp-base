@@ -176,7 +176,6 @@ services:
       - ./development/sp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
-      - ./development/sp-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
       - ./development/sp-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
 
       # Utilize custom metadata
@@ -186,6 +185,7 @@ services:
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
     environment:
       ADMIN_PASS: "sp1"
+      IDP_NAME: "NA"
       SECRET_SALT: "not-secret-h57fjemb&dn^nsJFGNjweJz1"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
@@ -199,7 +199,6 @@ services:
       - ./development/sp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
-      - ./development/sp2-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
       - ./development/sp2-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
 
       # Utilize custom metadata
@@ -207,6 +206,7 @@ services:
 
     environment:
       ADMIN_PASS: sp2
+      IDP_NAME: "NA"
       SECRET_SALT: h57fjemb&dn^nsJFGNjweJz2
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
@@ -220,7 +220,6 @@ services:
       - ./development/sp3-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
-      - ./development/sp3-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
       - ./development/sp3-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
 
       # Utilize custom metadata
@@ -228,6 +227,7 @@ services:
 
     environment:
       ADMIN_PASS: sp3
+      IDP_NAME: "NA"
       SECRET_SALT: h57fjemb&dn^nsJFGNjweJz3
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
