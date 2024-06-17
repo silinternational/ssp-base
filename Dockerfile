@@ -67,6 +67,10 @@ RUN chmod a+x /data/run.sh /data/run-tests.sh
 ADD https://github.com/silinternational/config-shim/releases/latest/download/config-shim.gz config-shim.gz
 RUN gzip -d config-shim.gz && chmod 755 config-shim && mv config-shim /usr/local/bin
 
+# Set permissions for cache directory. Corresponds to the `cachedir` setting in config.php.
+RUN mkdir /data/cache
+RUN chown -R www-data:www-data /data/cache
+
 EXPOSE 80
 ENTRYPOINT ["/usr/local/bin/s3-expand"]
 CMD ["/data/run.sh"]
