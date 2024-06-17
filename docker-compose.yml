@@ -138,8 +138,8 @@ services:
 
       # Utilize custom configs
       - ./development/idp-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
-      - ./development/idp-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
       - ./development/announcement.php:/data/vendor/simplesamlphp/simplesamlphp/announcement/announcement.php
+      - ./development/enable-exampleauth.sh:/data/enable-exampleauth.sh
 
       # Utilize custom metadata
       - ./development/idp-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
@@ -163,6 +163,7 @@ services:
       - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     command: >
       bash -c "whenavail db 3306 60 /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/src/Auth/Source/yii migrate --interactive=0 &&
+      /data/enable-exampleauth.sh &&
       /data/run.sh"
     ports:
       - "8085:80"
@@ -196,7 +197,7 @@ services:
 
       # Utilize custom configs
       - ./development/idp2-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
-      - ./development/idp2-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
+      - ./development/enable-exampleauth.sh:/data/enable-exampleauth.sh
 
       # Utilize custom metadata
       - ./development/idp2-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
@@ -212,6 +213,7 @@ services:
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
       - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
       - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
+    command: bash -c "/data/enable-exampleauth.sh && /data/run.sh"
     ports:
       - "8086:80"
     environment:
@@ -229,7 +231,6 @@ services:
 
       # Utilize custom configs
       - ./development/idp3-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
-      - ./development/idp3-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
 
       # Utilize custom metadata
       - ./development/idp3-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
