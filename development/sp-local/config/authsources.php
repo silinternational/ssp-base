@@ -32,7 +32,7 @@ $config = [
         'NameIDPolicy' => "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
         
         // Specify what private key to use (such as for decrypting assertions).
-        'privatekey' => 'ssp-hub-sp1.pem',
+        'privatekey' => 'saml.pem',
     ],
 
     'ssp-hub-custom-port' => [
@@ -54,6 +54,6 @@ $config = [
         'NameIDPolicy' => "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
 
         // Specify what private key to use (such as for decrypting assertions).
-        'privatekey' => 'ssp-hub-sp1.pem',
+        'privatekey' => 'saml.pem',
     ],
 ];

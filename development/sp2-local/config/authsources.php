@@ -29,7 +29,7 @@ $config = [
         'discoURL' => null,
 
         // Specify what private key to use (such as for decrypting assertions).
-        'privatekey' => 'ssp-hub-sp2.pem',
+        'privatekey' => 'saml.pem',
     ],
 
     'ssp-hub-custom-port' => [
@@ -48,6 +48,6 @@ $config = [
         'discoURL' => null,
 
         // Specify what private key to use (such as for decrypting assertions).
-        'privatekey' => 'ssp-hub-sp2.pem',
+        'privatekey' => 'saml.pem',
     ],
 ];
