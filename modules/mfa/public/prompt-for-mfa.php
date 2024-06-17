@@ -60,7 +60,8 @@ if (empty($mfaId)) {
         'mfaId' => $mfaOption['id'],
         'StateId' => $stateId,
     ]);
-    HTTP::redirectTrustedURL($moduleUrl);
+    $httpUtils = new HTTP;
+    $httpUtils->redirectTrustedURL($moduleUrl);
     return;
 }
 $mfaOption = Mfa::getMfaOptionById($mfaOptions, $mfaId);

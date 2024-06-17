@@ -20,8 +20,9 @@ if (!$config->getBoolean('enable.saml20-idp', false)) {
 }
 
 // check if valid local session exists
+//$authUtils = new Auth;
 //if ($config->getBoolean('admin.protectmetadata', false)) {
-//    Auth::requireAdmin();
+//    $authUtils->requireAdmin();
 //}
 
 try {
@@ -32,8 +33,10 @@ try {
 
     $availableCerts = array();
 
+    $cryptoUtils = new Crypto;
+
     $keys = array();
-    $certInfo = Crypto::loadPublicKey($idpmeta, false, 'new_');
+    $certInfo = $cryptoUtils->loadPublicKey($idpmeta, false, 'new_');
     if ($certInfo !== null) {
         $availableCerts['new_idp.crt'] = $certInfo;
         $keys[] = array(
@@ -47,7 +50,7 @@ try {
         $hasNewCert = false;
     }
 
-    $certInfo = Crypto::loadPublicKey($idpmeta, true);
+    $certInfo = $cryptoUtils->loadPublicKey($idpmeta, true);
     $availableCerts['idp.crt'] = $certInfo;
     $keys[] = array(
         'type'            => 'X509Certificate',
@@ -57,7 +60,7 @@ try {
     );
 
     if ($idpmeta->hasValue('https.certificate')) {
-        $httpsCert = Crypto::loadPublicKey($idpmeta, true, 'https.');
+        $httpsCert = $cryptoUtils->loadPublicKey($idpmeta, true, 'https.');
         assert('isset($httpsCert["certData"])');
         $availableCerts['https.crt'] = $httpsCert;
         $keys[] = array(
@@ -112,11 +115,13 @@ try {
         $metaArray['keys'] = $keys;
     }
 
+    $httpUtils = new HTTP;
+
     if ($idpmeta->getBoolean('saml20.sendartifact', false)) {
         // Artifact sending enabled
         $metaArray['ArtifactResolutionService'][] = array(
             'index'    => 0,
-            'Location' => HTTP::getBaseURL().'saml2/idp/ArtifactResolutionService.php',
+            'Location' => $httpUtils->getBaseURL().'saml2/idp/ArtifactResolutionService.php',
             'Binding'  => Constants::BINDING_SOAP,
         );
     }
@@ -126,7 +131,7 @@ try {
         array_unshift($metaArray['SingleSignOnService'], array(
             'hoksso:ProtocolBinding' => Constants::BINDING_HTTP_REDIRECT,
             'Binding'                => Constants::BINDING_HOK_SSO,
-            'Location'               => HTTP::getBaseURL().'saml2/idp/SSOService.php'
+            'Location'               => $httpUtils->getBaseURL().'saml2/idp/SSOService.php'
         ));
     }
 

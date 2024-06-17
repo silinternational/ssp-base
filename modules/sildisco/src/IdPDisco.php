@@ -5,6 +5,8 @@ namespace SimpleSAML\Module\sildisco;
 use Sil\SspUtils\AnnouncementUtils;
 use Sil\SspUtils\DiscoUtils;
 use Sil\SspUtils\Metadata;
+use SimpleSAML\Utils\Arrays;
+use SimpleSAML\Utils\HTTP;
 
 /**
  * This class implements a custom IdP discovery service, for use with a ssp hub (proxy)
@@ -76,6 +78,8 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
         $this->start();
         list($spEntityId, $idpList) = $this->getSPEntityIDAndReducedIdpList();
 
+        $httpUtils = new HTTP;
+
         if (sizeof($idpList) == 1) {
             $idp = array_keys($idpList)[0];
             $idp = $this->validateIdP($idp);
@@ -86,7 +90,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
                     $this->returnIdParam . ')'
                 );
 
-                \SimpleSAML\Utils\HTTP::redirectTrustedURL(
+                $httpUtils->redirectTrustedURL(
                     $this->returnURL,
                     array($this->returnIdParam => $idp)
                 );
@@ -102,8 +106,9 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
 
         $rawSPName = $spEntries[$spEntityId][self::$spNameMdKey] ?? null;
         if ($rawSPName !== null) {
+            $arrayUtils = new Arrays;
             $spName = htmlspecialchars($t->getTranslator()->getPreferredTranslation(
-                \SimpleSAML\Utils\Arrays::arrayize($rawSPName, 'en')
+                $arrayUtils->arrayize($rawSPName, 'en')
             ))   ;
         }
 
@@ -112,7 +117,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
         $t->data['returnIDParam'] = $this->returnIdParam;
         $t->data['entityID'] = $this->spEntityId;
         $t->data['spName'] = $spName;
-        $t->data['urlpattern'] = htmlspecialchars(\SimpleSAML\Utils\HTTP::getSelfURLNoQuery());
+        $t->data['urlpattern'] = htmlspecialchars($httpUtils->getSelfURLNoQuery());
         $t->data['announcement'] = AnnouncementUtils::getAnnouncement();
         $t->data['helpCenterUrl'] = $this->config->getValue('helpCenterUrl', '');
 

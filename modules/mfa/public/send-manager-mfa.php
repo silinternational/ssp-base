@@ -29,7 +29,8 @@ if (filter_has_var(INPUT_POST, 'send')) {
     $moduleUrl = SimpleSAML\Module::getModuleURL('mfa/prompt-for-mfa.php', [
         'StateId' => $stateId,
     ]);
-    HTTP::redirectTrustedURL($moduleUrl);
+    $httpUtils = new HTTP;
+    $httpUtils->redirectTrustedURL($moduleUrl);
 }
 
 $globalConfig = Configuration::getInstance();

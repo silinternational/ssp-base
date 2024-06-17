@@ -41,7 +41,8 @@ if (array_key_exists('changepwd', $_REQUEST)) {
         }
     }
 
-    HTTP::redirectTrustedURL($passwordChangeUrl, array());
+    $httpUtils = new HTTP;
+    $httpUtils->redirectTrustedURL($passwordChangeUrl, array());
 }
 
 $globalConfig = Configuration::getInstance();
