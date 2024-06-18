@@ -298,11 +298,9 @@ class ExpiryDate extends ProcessingFilter
     }
     
     /**
-     * Apply this AuthProc Filter.
-     *
-     * @param array &$state The current state.
+     * @inheritDoc
      */
-    public function process(&$state): void
+    public function process(array &$state): void
     {
         $employeeId = $this->getAttribute($this->employeeIdAttr, $state);
         

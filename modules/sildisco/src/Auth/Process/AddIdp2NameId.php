@@ -110,11 +110,9 @@ class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter {
 
 
     /**
-     * Apply filter to copy attributes.
-     *
-     * @param array &$state  The current state array
+     * @inheritDoc
      */
-    public function process(&$state): void
+    public function process(array &$state): void
     {
         assert('is_array($state)');
 

@@ -213,7 +213,7 @@ class Authenticator
      *     </pre>
      * @throws \Exception
      */
-    public function getUserAttributes(): ?array
+    public function getUserAttributes(): array
     {
         if ($this->userAttributes === null) {
             throw new \Exception(

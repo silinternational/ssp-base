@@ -11,9 +11,10 @@ class TrackIdps extends \SimpleSAML\Auth\ProcessingFilter {
     /**
      * Apply filter to save IDPs to session.
      *
-     * @param array &$request  The current request
+     * @inheritDoc
      */
-    public function process(&$request) {
+    public function process(array &$state): void
+    {
         // get the authenticating Idp and add it to the list of previous ones
         $session = \SimpleSAML\Session::getSessionFromRequest();
         $sessionDataType = "sildisco:authentication";
