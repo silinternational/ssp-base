@@ -192,8 +192,9 @@ class ProfileReview extends ProcessingFilter
         $profileUrl = $state['ProfileUrl'];
         // Tell the profile-setup URL where the user is ultimately trying to go (if known).
         $currentDestination = self::getRelayStateUrl($state);
+        $httpUtils = new HTTP();
         if (! empty($currentDestination)) {
-            $profileUrl = HTTP::addURLParameters(
+            $profileUrl = $httpUtils->addURLParameters(
                 $profileUrl,
                 ['returnTo' => $currentDestination]
             );
@@ -207,7 +208,7 @@ class ProfileReview extends ProcessingFilter
             'profileUrl' => $profileUrl,
         ]));
 
-        HTTP::redirectTrustedURL($profileUrl);
+        $httpUtils->redirectTrustedURL($profileUrl);
     }
 
     /**
@@ -290,7 +291,8 @@ class ProfileReview extends ProcessingFilter
         $stateId = State::saveState($state, self::STAGE_SENT_TO_NAG);
         $url = Module::getModuleURL('profilereview/nag.php');
 
-        HTTP::redirectTrustedURL($url, array('StateId' => $stateId));
+        $httpUtils = new HTTP();
+        $httpUtils->redirectTrustedURL($url, array('StateId' => $stateId));
     }
 
     /**
@@ -309,7 +311,8 @@ class ProfileReview extends ProcessingFilter
         $stateId = State::saveState($state, self::STAGE_SENT_TO_NAG);
         $url = Module::getModuleURL('profilereview/nag.php');
 
-        HTTP::redirectTrustedURL($url, array('StateId' => $stateId));
+        $httpUtils = new HTTP();
+        $httpUtils->redirectTrustedURL($url, array('StateId' => $stateId));
     }
 
     public static function hasSeenSplashPageRecently(string $page)

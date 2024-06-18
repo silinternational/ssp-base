@@ -373,7 +373,8 @@ class Mfa extends ProcessingFilter
         $stateId = State::saveState($state, self::STAGE_SENT_TO_NEW_BACKUP_CODES_PAGE);
         $url = Module::getModuleURL('mfa/new-backup-codes.php');
         
-        HTTP::redirectTrustedURL($url, ['StateId' => $stateId]);
+        $httpUtils = new HTTP();
+        $httpUtils->redirectTrustedURL($url, ['StateId' => $stateId]);
     }
     
     protected static function hasMfaOptions(array $mfa): bool
@@ -547,11 +548,13 @@ class Mfa extends ProcessingFilter
     public static function redirectToMfaSetup(array &$state): void
     {
         $mfaSetupUrl = $state['mfaSetupUrl'];
-        
+
+        $httpUtils = new HTTP();
+
         // Tell the MFA-setup URL where the user is ultimately trying to go (if known).
         $currentDestination = self::getRelayStateUrl($state);
         if (! empty($currentDestination)) {
-            $mfaSetupUrl = HTTP::addURLParameters(
+            $mfaSetupUrl = $httpUtils->addURLParameters(
                 $mfaSetupUrl,
                 ['returnTo' => $currentDestination]
             );
@@ -564,7 +567,7 @@ class Mfa extends ProcessingFilter
             var_export($mfaSetupUrl, true)
         ));
         
-        HTTP::redirectTrustedURL($mfaSetupUrl);
+        $httpUtils->redirectTrustedURL($mfaSetupUrl);
     }
 
     /**
@@ -634,7 +637,8 @@ class Mfa extends ProcessingFilter
         $stateId = State::saveState($state, self::STAGE_SENT_TO_MFA_NEEDED_MESSAGE);
         $url = Module::getModuleURL('mfa/must-set-up-mfa.php');
         
-        HTTP::redirectTrustedURL($url, ['StateId' => $stateId]);
+        $httpUtils = new HTTP();
+        $httpUtils->redirectTrustedURL($url, ['StateId' => $stateId]);
     }
 
     /**
@@ -683,7 +687,8 @@ class Mfa extends ProcessingFilter
 
         $mfaOption = self::getMfaOptionToUse($mfaOptions, $userAgent);
         
-        HTTP::redirectTrustedURL($url, [
+        $httpUtils = new HTTP();
+        $httpUtils->redirectTrustedURL($url, [
             'mfaId' => $mfaOption['id'],
             'StateId' => $id,
         ]);
@@ -763,7 +768,8 @@ class Mfa extends ProcessingFilter
         $stateId = State::saveState($state, self::STAGE_SENT_TO_LOW_ON_BACKUP_CODES_NAG);
         $url = Module::getModuleURL('mfa/low-on-backup-codes.php');
         
-        HTTP::redirectTrustedURL($url, ['StateId' => $stateId]);
+        $httpUtils = new HTTP();
+        $httpUtils->redirectTrustedURL($url, ['StateId' => $stateId]);
     }
     
     /**
@@ -782,7 +788,8 @@ class Mfa extends ProcessingFilter
         $stateId = State::saveState($state, self::STAGE_SENT_TO_OUT_OF_BACKUP_CODES_MESSAGE);
         $url = Module::getModuleURL('mfa/out-of-backup-codes.php');
         
-        HTTP::redirectTrustedURL($url, ['StateId' => $stateId]);
+        $httpUtils = new HTTP();
+        $httpUtils->redirectTrustedURL($url, ['StateId' => $stateId]);
     }
 
     /**
@@ -853,7 +860,8 @@ class Mfa extends ProcessingFilter
 
         $url = Module::getModuleURL('mfa/prompt-for-mfa.php');
 
-        HTTP::redirectTrustedURL($url, ['mfaId' => $mfaOption['id'], 'StateId' => $stateId]);
+        $httpUtils = new HTTP();
+        $httpUtils->redirectTrustedURL($url, ['mfaId' => $mfaOption['id'], 'StateId' => $stateId]);
     }
 
     /**

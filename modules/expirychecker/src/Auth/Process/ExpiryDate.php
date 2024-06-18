@@ -294,7 +294,8 @@ class ExpiryDate extends ProcessingFilter
             'passwordChangeUrl' => $passwordChangeUrl,
         ]));
 
-        HTTP::redirectTrustedURL($passwordChangeUrl, array());
+        $httpUtils = new HTTP();
+        $httpUtils->redirectTrustedURL($passwordChangeUrl, array());
     }
     
     /**
@@ -367,7 +368,8 @@ class ExpiryDate extends ProcessingFilter
         $id = State::saveState($state, 'expirychecker:expired');
         $url = Module::getModuleURL('expirychecker/expired.php');
 
-        HTTP::redirectTrustedURL($url, array('StateId' => $id));
+        $httpUtils = new HTTP();
+        $httpUtils->redirectTrustedURL($url, array('StateId' => $id));
     }
     
     /**
@@ -403,6 +405,7 @@ class ExpiryDate extends ProcessingFilter
         $id = State::saveState($state, 'expirychecker:about2expire');
         $url = Module::getModuleURL('expirychecker/about2expire.php');
 
-        HTTP::redirectTrustedURL($url, array('StateId' => $id));
+        $httpUtils = new HTTP();
+        $httpUtils->redirectTrustedURL($url, array('StateId' => $id));
     }
 }
