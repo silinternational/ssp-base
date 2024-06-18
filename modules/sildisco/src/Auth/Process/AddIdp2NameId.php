@@ -11,7 +11,10 @@ use Sil\SspUtils\Metadata;
  *
  * Also, for this to work, the SP needs to include a line in its
  * authsources.php file in the IdP's entry ...
- *   'NameIDPolicy' => "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+ *   'NameIDPolicy' => [
+ *     'Format' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent',
+ *     'AllowCreate' => true,
+ *   ],
  *
  */
 class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter {
