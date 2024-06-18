@@ -123,7 +123,6 @@ services:
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "Hub"
       SECURE_COOKIE: "false"
-      ADMIN_PROTECT_INDEX_PAGE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_COLOR_SCHEME: "orange-light_blue"
       HUB_MODE: "true"
@@ -277,7 +276,6 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
-      ADMIN_PROTECT_INDEX_PAGE: "false"
 
   ssp-sp2.local:
     build: .
@@ -299,7 +297,6 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
-      ADMIN_PROTECT_INDEX_PAGE: "false"
 
   ssp-sp3.local:
     build: .
@@ -323,7 +320,6 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
-      ADMIN_PROTECT_INDEX_PAGE: "false"
 
   pwmanager.local:
     image: silintl/ssp-base:develop
@@ -345,7 +341,6 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
-      ADMIN_PROTECT_INDEX_PAGE: "false"
 
   # the broker and brokerDb containers are used by the silauth module
   broker:
