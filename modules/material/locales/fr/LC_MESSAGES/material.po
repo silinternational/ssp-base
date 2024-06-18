@@ -1,0 +1,63 @@
+
+msgid "{about2expire:title}"
+msgstr "Mot de passe expiré"
+
+msgid "{about2expire:header}"
+msgstr "Mot de passe expire bientôt"
+
+msgid "{about2expire:expiring_in_a_day}"
+msgstr "Votre mot de passe expirera en un jour."
+
+msgid "{about2expire:expiring_soon}"
+msgstr "Votre mot de passe expirera en {daysLeft} jours."
+
+msgid "{about2expire:change_now}"
+msgstr "Voulez-vous le changer maintenant?"
+
+msgid "{about2expire:button_change}"
+msgstr "Oui"
+
+msgid "{about2expire:button_continue}"
+msgstr "Plus tard"
+
+msgid "{error:title}"
+msgstr "Erreur"
+
+msgid "{error:header}"
+msgstr "Erreur"
+
+msgid "{error:message}"
+msgstr "Une erreur s'est produite, s'il vous plaît contacter votre service d'assistance pour plus d'assistance."
+
+msgid "{expired:title}"
+msgstr "Mot de passe expiré"
+
+msgid "{expired:header}"
+msgstr "Mot de passe expiré"
+
+msgid "{expired:expired}"
+msgstr "Votre mot de passe a expiré et doit être modifié avant de continuer."
+
+msgid "{expired:button_change}"
+msgstr "Changer"
+
+msgid "{footer:copyright}"
+msgstr "L'utilisation non autorisée de ce site est interdite et peut faire l'objet de poursuites civiles et pénales."
+
+msgid "{selectidp-links:title}"
+msgstr "Choisissez un compte d'identité"
+
+msgid "{selectidp-links:header}"
+msgstr "Choisissez un compte d'identité"
+
+msgid "{selectidp-links:header-for-sp}"
+msgstr "Choisissez un compte d'identité pour continuer vers %spName%"
+
+msgid "{selectidp-links:enabled}"
+msgstr "Connectez-vous avec votre compte d'identité %idpName%"
+
+msgid "{selectidp-links:disabled}"
+msgstr "%idpName% à venir"
+
+msgid "{selectidp-links:help}"
+msgstr "Aidez-moi"

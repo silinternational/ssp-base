@@ -1,0 +1,5 @@
+{% if not announcement is empty %}
+  <div class="mdl-typography--subhead mdl-typography--text-center alert margin" layout-children="column">
+    {{ announcement|raw }}
+  </div>
+{% endif %}

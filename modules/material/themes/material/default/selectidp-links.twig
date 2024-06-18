@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ '{selectidp-links:title}'|trans }}</title>
+
+  {% include 'header.twig' %}
+
+  <script>
+    function setSelectedIdp(id) {
+      const idpInput = document.createElement('input');
+
+      idpInput.type = 'hidden';
+      idpInput.name = '{{ returnIDParam|e }}';
+      idpInput.value = id;
+
+      document.querySelector('form').appendChild(idpInput);
+
+      ga('send', 'event', 'hub', 'choice', 'IdP', id);
+    }
+
+    function clickedAnyway(idpName) {
+      ga('send', 'event', 'hub', 'choice-disabled', 'IdP', idpName);
+    }
+  </script>
+</head>
+<body>
+<div class="mdl-layout mdl-layout--fixed-header fill-viewport">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title scale-to-parent">
+        {% if spName is empty %}
+          {{ '{selectidp-links:header}'|trans }}
+        {%  else %}
+          {{ '{selectidp-links:header-for-sp}'|trans({'%spName%': spName|e}) }}
+        {% endif %}
+      </span>
+
+      <div class="mdl-layout-spacer"></div>
+
+      {% if not helpCenterUrl is empty %}
+        <nav class="mdl-navigation">
+          <a href="{{ helpCenterUrl }}" target="_blank" class="mdl-navigation__link">
+            {{ '{selectidp-links:help}'|trans }}
+          </a>
+        </nav>
+      {% endif %}
+    </div>
+  </header>
+
+  <main class="mdl-layout__content">
+    {% include 'announcement.twig' %}
+
+    <form layout-children="row" child-spacing="space-around">
+      <input type="hidden" name="entityID" value="{{ entityID|e }}"/>
+      <input type="hidden" name="return" value="{{ return|e }}"/>
+      <input type="hidden" name="returnIDParam" value="{{ returnIDParam|e }}"/>
+
+      {% for idp in enabledIdps %}
+        <div
+          class="mdl-card mdl-shadow--8dp row-aware"
+          title="{{ '{selectidp-links:enabled}'|trans({'%idpName%': idp.name|e}) }}"
+        >
+          <div class="mdl-card__media white-bg fixed-height">
+            <button class="mdl-button logo-container fill-parent" onclick="setSelectedIdp('{{ entityID|e }}')">
+              <div class="image-wrapper">
+                <img
+                  class="logo"
+                  id="{{ idp.entityid|e }}"
+                  src="{{ idp.logoURL is empty ? 'default-logo.png' : idp.logoURL }}"
+                >
+              </div>
+
+              <span class="mdl-color-text--grey-600 logo-caption clickable-caption">
+                {{ idp.logoCaption is empty ? '<br>' : idp.logoCaption|e }}
+              </span>
+            </button>
+          </div>
+        </div>
+      {% endfor %}
+
+      {% for idp in disabledIdps %}
+        <div
+          class="mdl-card mdl-shadow--2dp disabled row-aware"
+          title="{{ '{selectidp-links:disabled}'|trans({'%idpName%': idp.name|e}) }}"
+          onclick="clickedAnyway('{{ idp.name|e }}')"
+        >
+          <div class="mdl-card__media white-bg fixed-height" layout-children="row" child-spacing="center">
+            <div class="logo-container fill-parent">
+              <div class="image-wrapper">
+                <img
+                  class="logo"
+                  id="{{ idp.entityid|e }}"
+                  src="{{ idp.logoURL is empty ? 'default-logo.png' : idp.logoURL }}"
+                >
+              </div>
+              <span class="mdl-color-text--grey-600 logo-caption">
+                {{ idp.logoCaption is empty ? '<br>' : idp.logoCaption|e }}
+              </span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </form>
+  </main>
+
+  <script>
+    ga('send', 'event', 'hub', 'choices', 'enabled', {{ enabledIdps|length }});
+    ga('send', 'event', 'hub', 'choices', 'disabled', {{ disabledIdps|length }});
+  </script>
+
+  {% include 'footer.twig' %}
+</div>
+<style>
+  .image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 130px;
+  }
+
+  .logo-caption {
+    font-size: 1.5rem;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .logo-caption {
+      font-size: 1.2rem;
+    }
+  }
+
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .logo-caption {
+    text-transform: none;
+  }
+
+  .mdl-button:hover > .clickable-caption {
+    color: #004F9E !important;
+  }
+
+  .mdl-card {
+    border-radius: 8px;
+  }
+
+  .logo {
+    max-height: 130px;
+    max-width: 90%;
+    padding-top: 4px;
+  }
+</style>
+</body>
+</html>
