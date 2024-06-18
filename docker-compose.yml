@@ -254,7 +254,7 @@ services:
       IDP_NAME: "IdP3"
 
   ssp-sp1.local:
-    build: .
+    image: silintl/ssp-base:9.3.0
     volumes:
       # Utilize custom certs
       - ./development/sp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
@@ -270,15 +270,17 @@ services:
     ports:
       - "8081:80"
     environment:
+      ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: "sp1"
       IDP_NAME: "NA"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJz1"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
+      ADMIN_PROTECT_INDEX_PAGE: "false"
 
   ssp-sp2.local:
-    build: .
+    image: silintl/ssp-base:9.3.0
     volumes:
       # Utilize custom certs
       - ./development/sp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
@@ -291,15 +293,17 @@ services:
     ports:
       - "8082:80"
     environment:
+      ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: "sp2"
       IDP_NAME: "NA"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJz2"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
+      ADMIN_PROTECT_INDEX_PAGE: "false"
 
   ssp-sp3.local:
-    build: .
+    image: silintl/ssp-base:9.3.0
     volumes:
       # Utilize custom certs
       - ./development/sp3-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
@@ -314,15 +318,17 @@ services:
     env_file:
       - local.env
     environment:
+      ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: sp3
       IDP_NAME: "NA"
       SECRET_SALT: h57fjemb&dn^nsJFGNjweJz3
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
+      ADMIN_PROTECT_INDEX_PAGE: "false"
 
   pwmanager.local:
-    image: silintl/ssp-base:develop
+    image: silintl/ssp-base:9.3.0
     volumes:
       # Utilize custom certs
       - ./development/sp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
