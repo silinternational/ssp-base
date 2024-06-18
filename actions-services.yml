@@ -69,7 +69,6 @@ services:
       SECRET_SALT: "not-secret-h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "Hub"
       SECURE_COOKIE: "false"
-      ADMIN_PROTECT_INDEX_PAGE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_COLOR_SCHEME: "orange-light_blue"
       HUB_MODE: "true"
@@ -84,8 +83,8 @@ services:
 
       # Utilize custom configs
       - ./development/idp-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
-      - ./development/idp-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
       - ./development/announcement.php:/data/vendor/simplesamlphp/simplesamlphp/announcement/announcement.php
+      - ./development/enable-exampleauth.sh:/data/enable-exampleauth.sh
 
       # Utilize custom metadata
       - ./development/idp-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
@@ -101,6 +100,7 @@ services:
       - ./features:/data/features
     command: >
       bash -c "whenavail db 3306 60 /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/src/Auth/Source/yii migrate --interactive=0 &&
+      /data/enable-exampleauth.sh &&
       /data/run.sh"
     environment:
       ADMIN_PASS: "a"
@@ -131,7 +131,7 @@ services:
 
       # Utilize custom configs
       - ./development/idp2-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
-      - ./development/idp2-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
+      - ./development/enable-exampleauth.sh:/data/enable-exampleauth.sh
 
       # Utilize custom metadata
       - ./development/idp2-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
@@ -140,6 +140,7 @@ services:
       # Customized SSP code -- TODO: make a better solution that doesn't require hacking SSP code
       - ./development/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/src/Auth/Source/UserPass.php
 
+    command: bash -c "/data/enable-exampleauth.sh && /data/run.sh"
     environment:
       ADMIN_PASS: "b"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
@@ -155,7 +156,6 @@ services:
 
       # Utilize custom configs
       - ./development/idp3-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
-      - ./development/idp3-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
 
       # Utilize custom metadata
       - ./development/idp3-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
@@ -175,7 +175,6 @@ services:
       - ./development/sp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
-      - ./development/sp-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
       - ./development/sp-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
 
       # Utilize custom metadata
@@ -185,11 +184,11 @@ services:
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
     environment:
       ADMIN_PASS: "sp1"
+      IDP_NAME: "NA"
       SECRET_SALT: "not-secret-h57fjemb&dn^nsJFGNjweJz1"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
-      ADMIN_PROTECT_INDEX_PAGE: "false"
 
   ssp-sp2.local:
     build: .
@@ -198,7 +197,6 @@ services:
       - ./development/sp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
-      - ./development/sp2-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
       - ./development/sp2-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
 
       # Utilize custom metadata
@@ -206,11 +204,11 @@ services:
 
     environment:
       ADMIN_PASS: sp2
+      IDP_NAME: "NA"
       SECRET_SALT: h57fjemb&dn^nsJFGNjweJz2
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
-      ADMIN_PROTECT_INDEX_PAGE: "false"
 
   ssp-sp3.local:
     build: .
@@ -219,7 +217,6 @@ services:
       - ./development/sp3-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
-      - ./development/sp3-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
       - ./development/sp3-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
 
       # Utilize custom metadata
@@ -227,11 +224,11 @@ services:
 
     environment:
       ADMIN_PASS: sp3
+      IDP_NAME: "NA"
       SECRET_SALT: h57fjemb&dn^nsJFGNjweJz3
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
-      ADMIN_PROTECT_INDEX_PAGE: "false"
 
 
   pwmanager.local:
@@ -252,7 +249,6 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       SAML20_IDP_ENABLE: "false"
-      ADMIN_PROTECT_INDEX_PAGE: "false"
 
   # the broker and brokerDb containers are used by the silauth module
   broker:
