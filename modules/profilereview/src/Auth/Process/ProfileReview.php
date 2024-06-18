@@ -192,7 +192,7 @@ class ProfileReview extends ProcessingFilter
         $profileUrl = $state['ProfileUrl'];
         // Tell the profile-setup URL where the user is ultimately trying to go (if known).
         $currentDestination = self::getRelayStateUrl($state);
-        $httpUtils = new HTTP;
+        $httpUtils = new HTTP();
         if (! empty($currentDestination)) {
             $profileUrl = $httpUtils->addURLParameters(
                 $profileUrl,
@@ -291,7 +291,7 @@ class ProfileReview extends ProcessingFilter
         $stateId = State::saveState($state, self::STAGE_SENT_TO_NAG);
         $url = Module::getModuleURL('profilereview/nag.php');
 
-        $httpUtils = new HTTP;
+        $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, array('StateId' => $stateId));
     }
 
@@ -311,7 +311,7 @@ class ProfileReview extends ProcessingFilter
         $stateId = State::saveState($state, self::STAGE_SENT_TO_NAG);
         $url = Module::getModuleURL('profilereview/nag.php');
 
-        $httpUtils = new HTTP;
+        $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, array('StateId' => $stateId));
     }
 

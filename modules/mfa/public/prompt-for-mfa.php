@@ -60,7 +60,7 @@ if (empty($mfaId)) {
         'mfaId' => $mfaOption['id'],
         'StateId' => $stateId,
     ]);
-    $httpUtils = new HTTP;
+    $httpUtils = new HTTP();
     $httpUtils->redirectTrustedURL($moduleUrl);
     return;
 }

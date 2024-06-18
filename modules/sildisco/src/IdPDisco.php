@@ -78,7 +78,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
         $this->start();
         list($spEntityId, $idpList) = $this->getSPEntityIDAndReducedIdpList();
 
-        $httpUtils = new HTTP;
+        $httpUtils = new HTTP();
 
         if (sizeof($idpList) == 1) {
             $idp = array_keys($idpList)[0];
@@ -106,7 +106,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
 
         $rawSPName = $spEntries[$spEntityId][self::$spNameMdKey] ?? null;
         if ($rawSPName !== null) {
-            $arrayUtils = new Arrays;
+            $arrayUtils = new Arrays();
             $spName = htmlspecialchars($t->getTranslator()->getPreferredTranslation(
                 $arrayUtils->arrayize($rawSPName, 'en')
             ))   ;

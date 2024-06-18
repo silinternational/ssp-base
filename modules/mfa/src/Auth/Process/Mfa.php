@@ -373,7 +373,7 @@ class Mfa extends ProcessingFilter
         $stateId = State::saveState($state, self::STAGE_SENT_TO_NEW_BACKUP_CODES_PAGE);
         $url = Module::getModuleURL('mfa/new-backup-codes.php');
         
-        $httpUtils = new HTTP;
+        $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, ['StateId' => $stateId]);
     }
     
@@ -549,7 +549,7 @@ class Mfa extends ProcessingFilter
     {
         $mfaSetupUrl = $state['mfaSetupUrl'];
 
-        $httpUtils = new HTTP;
+        $httpUtils = new HTTP();
 
         // Tell the MFA-setup URL where the user is ultimately trying to go (if known).
         $currentDestination = self::getRelayStateUrl($state);
@@ -637,7 +637,7 @@ class Mfa extends ProcessingFilter
         $stateId = State::saveState($state, self::STAGE_SENT_TO_MFA_NEEDED_MESSAGE);
         $url = Module::getModuleURL('mfa/must-set-up-mfa.php');
         
-        $httpUtils = new HTTP;
+        $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, ['StateId' => $stateId]);
     }
 
@@ -687,7 +687,7 @@ class Mfa extends ProcessingFilter
 
         $mfaOption = self::getMfaOptionToUse($mfaOptions, $userAgent);
         
-        $httpUtils = new HTTP;
+        $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, [
             'mfaId' => $mfaOption['id'],
             'StateId' => $id,
@@ -768,7 +768,7 @@ class Mfa extends ProcessingFilter
         $stateId = State::saveState($state, self::STAGE_SENT_TO_LOW_ON_BACKUP_CODES_NAG);
         $url = Module::getModuleURL('mfa/low-on-backup-codes.php');
         
-        $httpUtils = new HTTP;
+        $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, ['StateId' => $stateId]);
     }
     
@@ -788,7 +788,7 @@ class Mfa extends ProcessingFilter
         $stateId = State::saveState($state, self::STAGE_SENT_TO_OUT_OF_BACKUP_CODES_MESSAGE);
         $url = Module::getModuleURL('mfa/out-of-backup-codes.php');
         
-        $httpUtils = new HTTP;
+        $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, ['StateId' => $stateId]);
     }
 
@@ -860,7 +860,7 @@ class Mfa extends ProcessingFilter
 
         $url = Module::getModuleURL('mfa/prompt-for-mfa.php');
 
-        $httpUtils = new HTTP;
+        $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, ['mfaId' => $mfaOption['id'], 'StateId' => $stateId]);
     }
 

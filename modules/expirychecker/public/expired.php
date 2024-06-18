@@ -41,7 +41,7 @@ if (array_key_exists('changepwd', $_REQUEST)) {
         }
     }
 
-    $httpUtils = new HTTP;
+    $httpUtils = new HTTP();
     $httpUtils->redirectTrustedURL($passwordChangeUrl, array());
 }
 

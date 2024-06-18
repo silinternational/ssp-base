@@ -20,7 +20,7 @@ if (!$config->getBoolean('enable.saml20-idp', false)) {
 }
 
 // check if valid local session exists
-//$authUtils = new Auth;
+//$authUtils = new Auth();
 //if ($config->getBoolean('admin.protectmetadata', false)) {
 //    $authUtils->requireAdmin();
 //}
@@ -33,7 +33,7 @@ try {
 
     $availableCerts = array();
 
-    $cryptoUtils = new Crypto;
+    $cryptoUtils = new Crypto();
 
     $keys = array();
     $certInfo = $cryptoUtils->loadPublicKey($idpmeta, false, 'new_');
@@ -115,7 +115,7 @@ try {
         $metaArray['keys'] = $keys;
     }
 
-    $httpUtils = new HTTP;
+    $httpUtils = new HTTP();
 
     if ($idpmeta->getBoolean('saml20.sendartifact', false)) {
         // Artifact sending enabled
