@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Note: This has been copied from the core code (www/saml2/idp/SSOService.php version 1.19.6)
+ * Note: This has been copied from the core code (public/saml2/idp/SSOService.php version 1.19.6)
  *   and modified to call a different authentication class/method
  *
  * Original comments ...

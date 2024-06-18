@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Modified from origin: modules/saml/lib/Auth/Source/SP.php
+ * Modified from origin: modules/saml/src/Auth/Source/SP.php
  * 2024-06-06 -- Merged with simplesamlphp 1.19.8, lines/sections marked with GTIS are modified
  */
 

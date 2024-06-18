@@ -1,7 +1,7 @@
 <?php
 
 include __DIR__ . '/../vendor/autoload.php';
-include __DIR__ . '/../vendor/simplesamlphp/simplesamlphp/modules/sildisco/lib/IdPDisco.php';
+include __DIR__ . '/../vendor/simplesamlphp/simplesamlphp/modules/sildisco/src/IdPDisco.php';
 
 use PHPUnit\Framework\TestCase;
 use SimpleSAML\Module\sildisco\IdPDisco;

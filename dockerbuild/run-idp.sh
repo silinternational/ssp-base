@@ -8,9 +8,9 @@ set -e
 
 # Try to run database migrations
 cd /data/vendor/simplesamlphp/simplesamlphp
-chmod a+x ./modules/silauth/lib/Auth/Source/yii
+chmod a+x ./modules/silauth/src/Auth/Source/yii
 
-./modules/silauth/lib/Auth/Source/yii migrate --interactive=0
+./modules/silauth/src/Auth/Source/yii migrate --interactive=0
 
 cd /data
 ./run.sh

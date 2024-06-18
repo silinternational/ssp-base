@@ -3,7 +3,7 @@
 /**
  * Assertion consumer service handler for SAML 2.0 SP authentication client.
  *
- * Similar to modules/saml/www/sp/saml2-acs.php
+ * Similar to modules/saml/public/sp/saml2-acs.php
  * 2024-06-06 -- Merged with simplesamlphp 1.19.8, lines marked with GTIS are modified
  */
 
