@@ -81,7 +81,8 @@ class SilAuth extends UserPassBase
          */
         $url = Module::getModuleURL('silauth/loginuserpass.php');
         $params = array('AuthState' => $id);
-        HTTP::redirectTrustedURL($url, $params);
+        $httpUtils = new HTTP();
+        $httpUtils->redirectTrustedURL($url, $params);
 
         /* The previous function never returns, so this code is never executed. */
         assert('FALSE');

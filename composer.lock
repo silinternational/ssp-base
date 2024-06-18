@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f83d8f3f828482ea5f55c186a325c8a",
+    "content-hash": "a4096531caaadf1c30b8c7600e11a4e1",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2977,16 +2977,16 @@
         },
         {
             "name": "silinternational/psr3-adapters",
-            "version": "dev-develop",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/psr3-adapters.git",
-                "reference": "3c9bf52795e569ae7b08e5d808cb5e179e6c1efa"
+                "reference": "80a364235da0ff114c151e3b35eadb117db463cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/psr3-adapters/zipball/3c9bf52795e569ae7b08e5d808cb5e179e6c1efa",
-                "reference": "3c9bf52795e569ae7b08e5d808cb5e179e6c1efa",
+                "url": "https://api.github.com/repos/silinternational/psr3-adapters/zipball/80a364235da0ff114c151e3b35eadb117db463cd",
+                "reference": "80a364235da0ff114c151e3b35eadb117db463cd",
                 "shasum": ""
             },
             "require": {
@@ -3005,7 +3005,6 @@
                 "simplesamlphp/simplesamlphp": "^2.0",
                 "yiisoft/yii2": "^2.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -3026,22 +3025,22 @@
             "description": "Various PSR3-compatible logging adapters.",
             "support": {
                 "issues": "https://github.com/silinternational/psr3-adapters/issues",
-                "source": "https://github.com/silinternational/psr3-adapters/tree/develop"
+                "source": "https://github.com/silinternational/psr3-adapters/tree/4.0.0"
             },
-            "time": "2024-06-14T04:45:18+00:00"
+            "time": "2024-06-18T00:37:01+00:00"
         },
         {
             "name": "silinternational/ssp-utilities",
-            "version": "dev-develop",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/ssp-utilities.git",
-                "reference": "d62cbee61a008d80f4ad758b3ec84cbac76f75bb"
+                "reference": "816a506c5d44e820d9c71372b024c279907dd382"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/ssp-utilities/zipball/d62cbee61a008d80f4ad758b3ec84cbac76f75bb",
-                "reference": "d62cbee61a008d80f4ad758b3ec84cbac76f75bb",
+                "url": "https://api.github.com/repos/silinternational/ssp-utilities/zipball/816a506c5d44e820d9c71372b024c279907dd382",
+                "reference": "816a506c5d44e820d9c71372b024c279907dd382",
                 "shasum": ""
             },
             "require": {
@@ -3052,7 +3051,6 @@
                 "phpunit/phpunit": ">=7.0",
                 "roave/security-advisories": "dev-master"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -3066,9 +3064,9 @@
             "description": "SimpleSAMLphp related utility classes",
             "support": {
                 "issues": "https://github.com/silinternational/ssp-utilities/issues",
-                "source": "https://github.com/silinternational/ssp-utilities/tree/develop"
+                "source": "https://github.com/silinternational/ssp-utilities/tree/2.0.0"
             },
-            "time": "2024-06-14T04:45:01+00:00"
+            "time": "2024-06-15T02:06:26+00:00"
         },
         {
             "name": "silinternational/yii2-json-log-targets",
@@ -8727,8 +8725,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "silinternational/ssp-utilities": 20,
-        "silinternational/psr3-adapters": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
