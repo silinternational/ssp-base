@@ -5,7 +5,7 @@
  * 2024-06-14 -- Updated to simplesamlphp/config/config.php.dist 2.2.2
  *
  */
- 
+
 use Sil\PhpEnv\Env;
 use Sil\PhpEnv\EnvVarNotFoundException;
 
@@ -146,7 +146,7 @@ $config = [
     /*
      * The following settings are *filesystem paths* which define where
      * SimpleSAMLphp can find or write the following things:
-     * - 'cachedir': Where SimpleSAMLphp can write its cache. 
+     * - 'cachedir': Where SimpleSAMLphp can write its cache.
      * - 'loggingdir': Where to write logs. MUST be set to NULL when using a logging
      *                 handler other than `file`.
      * - 'datadir': Storage of general data.
@@ -1096,12 +1096,6 @@ $config = [
         // Adopts language from attribute to use in UI
         30 => 'core:LanguageAdaptor',
 
-        35 => [
-            'class'         => 'core:StatisticsWithAttribute',
-            'attributename' => 'realm',
-            'type'          => 'saml20-idp-SSO',
-        ],
-
         /*
          * Copy friendly names attribute keys to oids ...
          */
@@ -1129,7 +1123,7 @@ $config = [
          * by checking the 'attributes' parameter in metadata on IdP hosted and SP remote.
          */
 //        50 => 'core:AttributeLimit',
-	 
+
         // If no attributes are requested in the SP metadata, then these will be sent through
         50 => [
             'class' => 'core:AttributeLimit',
