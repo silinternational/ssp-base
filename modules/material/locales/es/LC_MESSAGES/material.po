@@ -9,7 +9,7 @@ msgid "{about2expire:expiring_in_a_day}"
 msgstr "Su contraseña caducará en un día."
 
 msgid "{about2expire:expiring_soon}"
-msgstr "Su contraseña caducará en {daysLeft} días."
+msgstr "Su contraseña caducará en %daysLeft% días."
 
 msgid "{about2expire:change_now}"
 msgstr "¿Quieres cambiarlo ahora?"
@@ -43,6 +43,204 @@ msgstr "Cambiar"
 
 msgid "{footer:copyright}"
 msgstr "El uso no autorizado de este sitio está prohibido y puede ser sometido a procesamiento civil y penal."
+
+msgid "{mfa:title}"
+msgstr "Verificación en 2 pasos"
+
+msgid "{mfa:header}"
+msgstr "Verificación en 2 pasos"
+
+msgid "{mfa:backupcode_header}"
+msgstr "código imprimible"
+
+msgid "{mfa:backupcode_icon}"
+msgstr "icono de código imprimible"
+
+msgid "{mfa:backupcode_reminder}"
+msgstr "Cada código solo se puede usar una vez, por lo que el código que ingrese esta vez se agotará y no estará disponible nuevamente."
+
+msgid "{mfa:backupcode_input}"
+msgstr "Introduzca el código"
+
+msgid "{mfa:totp_header}"
+msgstr "Obtenga un código de su aplicación de autenticación"
+
+msgid "{mfa:totp_icon}"
+msgstr "Icono de aplicación de teléfono inteligente"
+
+msgid "{mfa:totp_instructions}"
+msgstr "Deberá verificar la aplicación de autenticación para ver el código actual."
+
+msgid "{mfa:totp_input}"
+msgstr "Ingrese el código de 6 dígitos"
+
+msgid "{mfa:u2f_header}"
+msgstr "Clave de seguridad"
+
+msgid "{mfa:webauthn_header}"
+msgstr "Clave de seguridad"
+
+msgid "{mfa:u2f_icon}"
+msgstr "Icono de la llave USB"
+
+msgid "{mfa:webauthn_icon}"
+msgstr "Icono de la llave USB"
+
+msgid "{mfa:u2f_instructions}"
+msgstr "Ahora puede insertar su clave de seguridad y presionar su botón."
+
+msgid "{mfa:webauthn_instructions}"
+msgstr "Ahora puede insertar su clave de seguridad y presionar su botón."
+
+msgid "{mfa:u2f_unsupported}"
+msgstr "No compatible en su navegador actual. Considere un navegador más seguro como <a href='https://www.google.com/chrome/browser' target='_blank'>Google Chrome</a>."
+
+msgid "{mfa:webauthn_unsupported}"
+msgstr "No compatible en su navegador actual. Considere un navegador más seguro como <a href='https://www.google.com/chrome/browser' target='_blank'>Google Chrome</a>."
+
+msgid "{mfa:u2f_error_unknown}"
+msgstr "Algo salió mal con esa solicitud, no se pudo verificar en este momento."
+
+msgid "{mfa:webauthn_error_unknown}"
+msgstr "Algo salió mal con esa solicitud, no se pudo verificar en este momento."
+
+msgid "{mfa:u2f_error_wrong_key}"
+msgstr "Esta puede no ser la clave correcta para este sitio."
+
+msgid "{mfa:u2f_error_timeout}"
+msgstr "Eso llevó demasiado tiempo, verifique que su clave esté insertada boca arriba."
+
+msgid "{mfa:webauthn_error_abort}"
+msgstr "Parece que has hecho clic en cancelar. ¿Quieres que lo intentemos de nuevo?"
+
+msgid "{mfa:webauthn_error_not_allowed}"
+msgstr "Algo de eso no funcionó. Por favor, asegúrese de que su clave de seguridad está conectada y de que la toca en un plazo de 60 segundos cuando parpadea."
+
+msgid "{mfa:manager_icon}"
+msgstr "Icono de contacto de recuperación"
+
+msgid "{mfa:manager_header}"
+msgstr "Pida ayuda de contacto de recuperación"
+
+msgid "{mfa:manager_info}"
+msgstr "Puede enviar un código de verificación de dos pasos a su contacto de recuperación (normalmente su supervisor). La dirección de correo electrónico que tenemos para su contacto de recuperación es:<br><br><code>%managerEmail%</code><br><br>Ocultamos la mayoría de las letras para proteger a su contacto."
+
+msgid "{mfa:manager_sent}"
+msgstr "Se envió un código temporal a su contacto de recuperación en %managerEmail%."
+
+msgid "{mfa:manager_input}"
+msgstr "Introduzca el código"
+
+msgid "{mfa:shield_icon}"
+msgstr "Icono de escudo"
+
+msgid "{mfa:required_header}"
+msgstr "Protege esta cuenta"
+
+msgid "{mfa:required_info}"
+msgstr "Su cuenta de identidad requiere seguridad adicional, debe configurar la verificación en dos pasos en este momento."
+
+msgid "{mfa:running_out_header}"
+msgstr "Casi sin códigos imprimibles"
+
+msgid "{mfa:running_out_info}"
+msgstr "Solo tiene %numBackupCodesRemaining% más disponible."
+
+msgid "{mfa:no_more_codes_header}"
+msgstr "Último código imprimible utilizado"
+
+msgid "{mfa:new_codes_header}"
+msgstr "Nuevos códigos imprimibles"
+
+msgid "{mfa:old_codes_gone}"
+msgstr "Ahora puede descartar cualquiera de sus códigos anteriores, se han eliminado."
+
+msgid "{mfa:new_codes_info}"
+msgstr "Los códigos imprimibles deben tratarse con el mismo nivel de atención que cualquier contraseña."
+
+msgid "{mfa:new_codes_only_once}"
+msgstr "Cada código solo puede usarse una vez."
+
+msgid "{mfa:new_codes_failed}"
+msgstr "Algo salió mal al crear nuevos códigos imprimibles para usted. Disculpe las molestias, compruebe su configuración en la siguiente dirección después de continuar: "
+
+msgid "{mfa:new_codes_saved}"
+msgstr "Guardé una copia personal de estos para uso posterior"
+
+msgid "{mfa:account}"
+msgstr "Cuenta de identidad de %idpName%"
+
+msgid "{mfa:has_options_besides_codes}"
+msgstr "Afortunadamente, tiene otras opciones de verificación en dos pasos configuradas, pero debe crear más códigos imprimibles si planea necesitarlos en el futuro."
+
+msgid "{mfa:has_no_more_options}"
+msgstr "Como no tiene configuradas otras opciones de verificación en dos pasos en este momento, necesitará obtener más códigos imprimibles antes de que se requiera otro."
+
+msgid "{mfa:use_others}"
+msgstr "Mas opciones"
+
+msgid "{mfa:use_u2f}"
+msgstr "Use mi clave de seguridad en su lugar"
+
+msgid "{mfa:use_webauthn}"
+msgstr "Use mi clave de seguridad en su lugar"
+
+msgid "{mfa:use_totp}"
+msgstr "Use la aplicación autenticación en su lugar"
+
+msgid "{mfa:use_backupcode}"
+msgstr "Use un código imprimible en su lugar"
+
+msgid "{mfa:use_help}"
+msgstr "necesito ayuda"
+
+msgid "{mfa:use_manager}"
+msgstr "Usar código de mi contacto de recuperación"
+
+msgid "{mfa:button_verify}"
+msgstr "Verificar"
+
+msgid "{mfa:button_later}"
+msgstr "Recuérdame más tarde"
+
+msgid "{mfa:button_enable}"
+msgstr "Habilite ahora"
+
+msgid "{mfa:button_set_up}"
+msgstr "Configurar ahora"
+
+msgid "{mfa:button_try_again}"
+msgstr "Inténtalo de nuevo"
+
+msgid "{mfa:button_get_more}"
+msgstr "Obtenga más"
+
+msgid "{mfa:button_continue}"
+msgstr "Continuar"
+
+msgid "{mfa:button_print}"
+msgstr "Imprimir"
+
+msgid "{mfa:button_download}"
+msgstr "Descargar"
+
+msgid "{mfa:button_copy}"
+msgstr "Copiar"
+
+msgid "{mfa:button_send}"
+msgstr "Enviar código"
+
+msgid "{mfa:button_cancel}"
+msgstr "Cancelar"
+
+msgid "{mfa:button_copied}"
+msgstr "Copiado ✓"
+
+msgid "{mfa:remember_this}"
+msgstr "Recuerde esta navegador por 30 días"
+
+msgid "{mfa:unsupported}"
+msgstr "No compatible con este navegador"
 
 msgid "{selectidp-links:title}"
 msgstr "Elige una cuenta de identidad"

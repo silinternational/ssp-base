@@ -9,7 +9,7 @@ msgid "{about2expire:expiring_in_a_day}"
 msgstr "암호는 하루 만료됩니다."
 
 msgid "{about2expire:expiring_soon}"
-msgstr "비밀번호는 {daysLeft} 일 후에 만료됩니다."
+msgstr "비밀번호는 %daysLeft% 일 후에 만료됩니다."
 
 msgid "{about2expire:change_now}"
 msgstr "지금 변경 하시겠습니까?"
@@ -43,6 +43,204 @@ msgstr "바꾸다"
 
 msgid "{footer:copyright}"
 msgstr "이 사이트의 무단 사용은 금지되어 있으며 민사 및 형사 고발의 대상이 될 수 있습니다."
+
+msgid "{mfa:title}"
+msgstr "2 단계 인증"
+
+msgid "{mfa:header}"
+msgstr "2 단계 인증"
+
+msgid "{mfa:backupcode_header}"
+msgstr "인쇄 가능한 코드"
+
+msgid "{mfa:backupcode_icon}"
+msgstr "인쇄 가능한 코드 아이콘"
+
+msgid "{mfa:backupcode_reminder}"
+msgstr "각 코드는 한번만 사용할 수 있으므로 이번에 입력한 코드는 소멸되어 다시 사용할 수 없습니다."
+
+msgid "{mfa:backupcode_input}"
+msgstr "코드 입력"
+
+msgid "{mfa:totp_header}"
+msgstr "인증 앱에서 코드 받기"
+
+msgid "{mfa:totp_icon}"
+msgstr "인증 응용 프로그램 아이콘"
+
+msgid "{mfa:totp_instructions}"
+msgstr "인증 앱에서 현재 코드를 확인해야합니다."
+
+msgid "{mfa:totp_input}"
+msgstr "6 자리 코드 입력"
+
+msgid "{mfa:u2f_header}"
+msgstr "보안키"
+
+msgid "{mfa:webauthn_header}"
+msgstr "보안키"
+
+msgid "{mfa:u2f_icon}"
+msgstr "USB 키 아이콘"
+
+msgid "{mfa:webauthn_icon}"
+msgstr "USB 키 아이콘"
+
+msgid "{mfa:u2f_instructions}"
+msgstr "이제 보안 키를 삽입하고 단추를 누를 수 있습니다."
+
+msgid "{mfa:webauthn_instructions}"
+msgstr "이제 보안 키를 삽입하고 단추를 누를 수 있습니다."
+
+msgid "{mfa:u2f_unsupported}"
+msgstr "현재 브라우저에서 지원되지 않습니다. <a href='https://www.google.com/chrome/browser' target='_blank'>Chrome과</a> 같은 보다 안전한 브라우저를 고려하십시오."
+
+msgid "{mfa:webauthn_unsupported}"
+msgstr "현재 브라우저에서 지원되지 않습니다. <a href='https://www.google.com/chrome/browser' target='_blank'>Chrome과</a> 같은 보다 안전한 브라우저를 고려하십시오."
+
+msgid "{mfa:u2f_error_unknown}"
+msgstr "요청에 문제가 발생하여 지금은 확인할 수 없습니다."
+
+msgid "{mfa:webauthn_error_unknown}"
+msgstr "요청에 문제가 발생하여 지금은 확인할 수 없습니다."
+
+msgid "{mfa:u2f_error_wrong_key}"
+msgstr "이 사이트의 올바른 키가 아닐 수도 있습니다."
+
+msgid "{mfa:u2f_error_timeout}"
+msgstr "오랜 시간이 경과 되었으니 키가 오른쪽 위로 삽입되었는지 확인 하십시오."
+
+msgid "{mfa:webauthn_error_abort}"
+msgstr "취소를 클릭하신 것 같습니다. 다시 시도해 보시겠어요?"
+
+msgid "{mfa:webauthn_error_not_allowed}"
+msgstr "문제가 해결되지 않았습니다. 보안 키가 연결되어 있고 깜박일 때 60초 이내에 터치했는지 확인하세요."
+
+msgid "{mfa:manager_icon}"
+msgstr "복구 연락처 아이콘"
+
+msgid "{mfa:manager_header}"
+msgstr "복구 담당자에게 도움을 요청하십시오"
+
+msgid "{mfa:manager_info}"
+msgstr "2단계 인증 코드를 복구 연락처(보통 상사)에게 보낼 수 있습니다. 복구 연락처에 대한 이메일은 다음과 같습니다. <br><br><code>%managerEmail%</code><br><br> 연락처 보호를 위해 대부분의 편지를 숨겼습니다."
+
+msgid "{mfa:manager_sent}"
+msgstr "%managerEmail% (으)로 복구 담당자에게 임시 코드를 보냈습니다."
+
+msgid "{mfa:manager_input}"
+msgstr "코드 입력"
+
+msgid "{mfa:shield_icon}"
+msgstr "방패 아이콘"
+
+msgid "{mfa:required_header}"
+msgstr "이 계정 보호"
+
+msgid "{mfa:required_info}"
+msgstr "신원 계정에 추가 보안이 필요하므로 현재 2 단계 인증을 설정해야합니다."
+
+msgid "{mfa:running_out_header}"
+msgstr "인쇄 ​가능한 ​코드​가 거의 남지 않았습니다"
+
+msgid "{mfa:running_out_info}"
+msgstr "%numBackupCodesRemaining% 만 남았습니다."
+
+msgid "{mfa:no_more_codes_header}"
+msgstr "​​마지막 인쇄 가능 코드가​​ ​사용되었습니다."
+
+msgid "{mfa:new_codes_header}"
+msgstr "​​새로운 인쇄 가능 코드"
+
+msgid "{mfa:old_codes_gone}"
+msgstr "​​이제 이전 코드를 삭제해도 삭제 될 수 있습니다."
+
+msgid "{mfa:new_codes_info}"
+msgstr "​​인쇄 가능한 코드는 모든 비밀번호와 동일한주의 수준으로 처리되어야합니다."
+
+msgid "{mfa:new_codes_only_once}"
+msgstr "​​각 코드는 한 번만 사용할 수 있습니다."
+
+msgid "{mfa:new_codes_failed}"
+msgstr "새로운 인쇄 가능한 코드를 만드는 동안 문제가 발생했습니다. 불편을 끼쳐 드려 죄송합니다. 계속 진행 한 후 다음 주소로 구성을 확인하십시오. "
+
+msgid "{mfa:new_codes_saved}"
+msgstr "나는 나중에 사용하기 위해 이들의 개인 사본을 저장했다."
+
+msgid "{mfa:account}"
+msgstr "%idpName% 신원 계정"
+
+msgid "{mfa:has_options_besides_codes}"
+msgstr "다른 2 단계 인증 옵션​은​ 설정​ 되었으나​ ​인쇄 가능 코드가 나중에 ​필요할 ​것으로 ​예상되면​ 코드를 ​더 ​만들어야​ ​합니다."
+
+msgid "{mfa:has_no_more_options}"
+msgstr "코드​가 요구되기 전에 인쇄 가능 코드를​ 더 가져와야​ ​합니다."
+
+msgid "{mfa:use_others}"
+msgstr "추가 옵션"
+
+msgid "{mfa:use_u2f}"
+msgstr "내 보안키 사용"
+
+msgid "{mfa:use_webauthn}"
+msgstr "내 보안키 사용"
+
+msgid "{mfa:use_totp}"
+msgstr "내 인증 앱 사용"
+
+msgid "{mfa:use_backupcode}"
+msgstr "인쇄 가능한 코드 사용"
+
+msgid "{mfa:use_help}"
+msgstr "도움이 필요해."
+
+msgid "{mfa:use_manager}"
+msgstr "복구 담당자의 코드 사용"
+
+msgid "{mfa:button_verify}"
+msgstr "검증"
+
+msgid "{mfa:button_later}"
+msgstr "추후 알림"
+
+msgid "{mfa:button_enable}"
+msgstr "지금 사용"
+
+msgid "{mfa:button_set_up}"
+msgstr "지금 설정"
+
+msgid "{mfa:button_try_again}"
+msgstr "다시 시도"
+
+msgid "{mfa:button_get_more}"
+msgstr "더​ ​​가져오기"
+
+msgid "{mfa:button_continue}"
+msgstr "계속하다"
+
+msgid "{mfa:button_print}"
+msgstr "인쇄"
+
+msgid "{mfa:button_download}"
+msgstr "다운로드"
+
+msgid "{mfa:button_copy}"
+msgstr "사본"
+
+msgid "{mfa:button_send}"
+msgstr "코드 보내기"
+
+msgid "{mfa:button_cancel}"
+msgstr "취소"
+
+msgid "{mfa:button_copied}"
+msgstr "복사 됨 ✓"
+
+msgid "{mfa:remember_this}"
+msgstr "이 브라우저를 30일간 기억"
+
+msgid "{mfa:unsupported}"
+msgstr "이 브라우저에서는 지원되지 않습니다."
 
 msgid "{selectidp-links:title}"
 msgstr "ID 계정 선택"

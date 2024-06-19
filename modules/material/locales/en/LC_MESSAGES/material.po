@@ -44,6 +44,204 @@ msgstr "Change"
 msgid "{footer:copyright}"
 msgstr "Unauthorized use of this site is prohibited and may be subjected to civil and criminal prosecution."
 
+msgid "{mfa:title}"
+msgstr "2-Step Verification"
+
+msgid "{mfa:header}"
+msgstr "2-Step Verification"
+
+msgid "{mfa:backupcode_header}"
+msgstr "Printable code"
+
+msgid "{mfa:backupcode_icon}"
+msgstr "Printable code icon"
+
+msgid "{mfa:backupcode_reminder}"
+msgstr "Each code can only be used once, so the code you enter this time will be used up and will not be available again."
+
+msgid "{mfa:backupcode_input}"
+msgstr "Enter code"
+
+msgid "{mfa:totp_header}"
+msgstr "Get a code from your authenticator app"
+
+msgid "{mfa:totp_icon}"
+msgstr "Authenticator app icon"
+
+msgid "{mfa:totp_instructions}"
+msgstr "You will need to check your authenticator app for the current code."
+
+msgid "{mfa:totp_input}"
+msgstr "Enter 6-digit code"
+
+msgid "{mfa:u2f_header}"
+msgstr "Security key"
+
+msgid "{mfa:webauthn_header}"
+msgstr "Security key"
+
+msgid "{mfa:u2f_icon}"
+msgstr "USB key icon"
+
+msgid "{mfa:webauthn_icon}"
+msgstr "USB key icon"
+
+msgid "{mfa:u2f_instructions}"
+msgstr "You may now insert your security key and press its button."
+
+msgid "{mfa:webauthn_instructions}"
+msgstr "You may now insert your security key and press its button."
+
+msgid "{mfa:u2f_unsupported}"
+msgstr "Unsupported in your current browser.  Please consider a more secure browser like <a href='https://www.google.com/chrome/browser' target='_blank'>Google Chrome</a>."
+
+msgid "{mfa:webauthn_unsupported}"
+msgstr "Unsupported in your current browser.  Please consider a more secure browser like <a href='https://www.google.com/chrome/browser' target='_blank'>Google Chrome</a>."
+
+msgid "{mfa:u2f_error_unknown}"
+msgstr "Something went wrong with that request, unable to verify at this time."
+
+msgid "{mfa:webauthn_error_unknown}"
+msgstr "Something went wrong with that request, unable to verify at this time."
+
+msgid "{mfa:u2f_error_wrong_key}"
+msgstr "This may not be the correct key for this site."
+
+msgid "{mfa:u2f_error_timeout}"
+msgstr "That took a little too long, check to make sure your key is inserted right-side up."
+
+msgid "{mfa:webauthn_error_abort}"
+msgstr "It looks like you clicked cancel. Would you like us to try again?"
+
+msgid "{mfa:webauthn_error_not_allowed}"
+msgstr "Something about that didn't work. Please ensure that your security key is plugged in and that you touch it within 60 seconds when it blinks."
+
+msgid "{mfa:manager_icon}"
+msgstr "Recovery contact icon"
+
+msgid "{mfa:manager_header}"
+msgstr "Ask Your Recovery Contact for Help"
+
+msgid "{mfa:manager_info}"
+msgstr "You can send a 2-step verification code to your recovery contact (usually your supervisor). The email we have for your recovery contact is:<br><br><code>%managerEmail%</code><br><br>We've hidden most of the letters for your contact's protection."
+
+msgid "{mfa:manager_sent}"
+msgstr "A temporary code was sent your recovery contact at %managerEmail%."
+
+msgid "{mfa:manager_input}"
+msgstr "Enter code"
+
+msgid "{mfa:shield_icon}"
+msgstr "Shield icon"
+
+msgid "{mfa:required_header}"
+msgstr "Protect this account"
+
+msgid "{mfa:required_info}"
+msgstr "Your identity account requires additional security, you must set up 2-Step Verification at this time."
+
+msgid "{mfa:running_out_header}"
+msgstr "Almost out of printable codes"
+
+msgid "{mfa:running_out_info}"
+msgstr "You only have %numBackupCodesRemaining% more left."
+
+msgid "{mfa:no_more_codes_header}"
+msgstr "Last printable code used"
+
+msgid "{mfa:new_codes_header}"
+msgstr "New printable codes"
+
+msgid "{mfa:old_codes_gone}"
+msgstr "You may now discard any of your previous codes, they have been deleted."
+
+msgid "{mfa:new_codes_info}"
+msgstr "Printable codes should be treated with the same level of attention as any password."
+
+msgid "{mfa:new_codes_only_once}"
+msgstr "Each code may only be used once."
+
+msgid "{mfa:new_codes_failed}"
+msgstr "Something went wrong while creating new printable codes for you.  We are sorry for the inconvenience, please check your configuration at the following address after continuing: "
+
+msgid "{mfa:new_codes_saved}"
+msgstr "I saved a personal copy of these for later use"
+
+msgid "{mfa:account}"
+msgstr "%idpName% identity account"
+
+msgid "{mfa:has_options_besides_codes}"
+msgstr "Thankfully you do have other 2-Step Verification options set up but you should create more Printable codes if you plan to need them in the future."
+
+msgid "{mfa:has_no_more_options}"
+msgstr "Since you do not have any other 2-Step Verification options set up at this time, you will need to get more Printable codes before another one is required."
+
+msgid "{mfa:use_others}"
+msgstr "More options"
+
+msgid "{mfa:use_u2f}"
+msgstr "Use my security key instead"
+
+msgid "{mfa:use_webauthn}"
+msgstr "Use my security key instead"
+
+msgid "{mfa:use_totp}"
+msgstr "Use my authenticator app instead"
+
+msgid "{mfa:use_backupcode}"
+msgstr "Use a printable code instead"
+
+msgid "{mfa:use_help}"
+msgstr "I need help"
+
+msgid "{mfa:use_manager}"
+msgstr "Use code from my recovery contact"
+
+msgid "{mfa:button_verify}"
+msgstr "Verify"
+
+msgid "{mfa:button_later}"
+msgstr "Remind me later"
+
+msgid "{mfa:button_enable}"
+msgstr "Enable now"
+
+msgid "{mfa:button_set_up}"
+msgstr "Set up now"
+
+msgid "{mfa:button_try_again}"
+msgstr "Try again"
+
+msgid "{mfa:button_get_more}"
+msgstr "Get more"
+
+msgid "{mfa:button_continue}"
+msgstr "Continue"
+
+msgid "{mfa:button_print}"
+msgstr "Print"
+
+msgid "{mfa:button_download}"
+msgstr "Download"
+
+msgid "{mfa:button_copy}"
+msgstr "Copy"
+
+msgid "{mfa:button_send}"
+msgstr "Send code"
+
+msgid "{mfa:button_cancel}"
+msgstr "Cancel"
+
+msgid "{mfa:button_copied}"
+msgstr "Copied ✓"
+
+msgid "{mfa:remember_this}"
+msgstr "Remember this browser for 30 days"
+
+msgid "{mfa:unsupported}"
+msgstr "Not supported in this browser"
+
 msgid "{selectidp-links:title}"
 msgstr "Choose an identity account"
 
