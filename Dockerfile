@@ -52,8 +52,6 @@ COPY modules/material/themes/material/profilereview/* $SSP_PATH/modules/profiler
 # Copy in SSP override files
 RUN mv $SSP_PATH/public/index.php $SSP_PATH/public/ssp-index.php
 COPY dockerbuild/ssp-overrides/index.php $SSP_PATH/public/index.php
-RUN mv $SSP_PATH/public/saml2/idp/SingleLogoutService.php $SSP_PATH/public/saml2/idp/ssp-SingleLogoutService.php
-COPY dockerbuild/ssp-overrides/SingleLogoutService.php $SSP_PATH/public/saml2/idp/SingleLogoutService.php
 COPY dockerbuild/ssp-overrides/saml20-idp-remote.php $SSP_PATH/metadata/saml20-idp-remote.php
 COPY dockerbuild/ssp-overrides/saml20-sp-remote.php $SSP_PATH/metadata/saml20-sp-remote.php
 COPY dockerbuild/config/* $SSP_PATH/config/
@@ -61,7 +59,6 @@ COPY dockerbuild/ssp-overrides/id.php $SSP_PATH/public/id.php
 COPY dockerbuild/ssp-overrides/announcement.php $SSP_PATH/announcement/announcement.php
 COPY tests /data/tests
 
-RUN cp $SSP_PATH/modules/sildisco/src/SSOService.php $SSP_PATH/public/saml2/idp/
 RUN chmod a+x /data/run.sh /data/run-tests.sh
 
 ADD https://github.com/silinternational/config-shim/releases/latest/download/config-shim.gz config-shim.gz

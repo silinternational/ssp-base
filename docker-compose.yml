@@ -98,13 +98,11 @@ services:
 
       # Utilize custom configs
       - ./development/hub/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+      - ./dockerbuild/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
       - ./development/announcement.php:/data/vendor/simplesamlphp/simplesamlphp/announcement/announcement.php
 
       # Utilize custom metadata
-      - ./development/hub/metadata/idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/idp-remote.php
-      - ./development/hub/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
-      - ./development/hub/metadata/saml20-sp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-hosted.php
-      - ./development/hub/metadata/sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/sp-remote.php
+      - ./development/hub/metadata/:/data/vendor/simplesamlphp/simplesamlphp/metadata/
 
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
@@ -127,6 +125,7 @@ services:
       THEME_COLOR_SCHEME: "orange-light_blue"
       HUB_MODE: "true"
       HELP_CENTER_URL: "https://example.org/help"
+      LOGGING_LEVEL: INFO
 
   ssp-idp1.local:  # using a database session store type ("sql")
     build: .

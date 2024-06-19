@@ -1460,5 +1460,5 @@ $config = [
 if ($HUB_MODE) {
     // prefix the 'member' (urn:oid:2.5.4.31) attribute elements with idp.idp_name.
     $config['authproc.idp'][48] = 'sildisco:TagGroup';
-    $config['authproc.idp'][49] = 'sildisco:AddIdp2NameId';
+//    $config['authproc.idp'][49] = 'sildisco:AddIdp2NameId';
 }
