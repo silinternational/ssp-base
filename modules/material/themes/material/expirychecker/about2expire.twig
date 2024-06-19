@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="{{ currentLanguage }}">
+  <head>
+    <title>{{ '{about2expire:title}'|trans }}</title>
+
+    {% include 'header.twig' %}
+  </head>
+  <body>
+    <div class="mdl-layout mdl-layout--fixed-header fill-viewport">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">
+              {{ '{about2expire:header}'|trans }}
+          </span>
+        </div>
+      </header>
+      <main class="mdl-layout__content" layout-children="column">
+        <form layout-children="column">
+          {% for name, value in formData %}
+            <input type="hidden" name="{{ name|e }}" value="{{ value|e }}">
+          {% endfor %}
+
+          <p class="mdl-typography--title margin">
+            {% if daysLeft < 2 %}
+              {{ '{about2expire:expiring_in_a_day}'|trans }}
+            {% else %}
+              {{ '{about2expire:expiring_soon}'|trans({'%daysLeft%': daysLeft}) }}
+            {% endif %}
+          </p>
+
+          <p class="mdl-typography--body-1">
+            {{ '{about2expire:change_now}'|trans }}
+          </p>
+
+          <div class="fill-parent" layout-children="row" child-spacing="space-around">
+            <button name="continue" class="mdl-button mdl-button--raised">
+              {{ '{about2expire:button_continue}'|trans }}
+            </button>
+
+            <button name="changepwd" class="mdl-button mdl-button--raised mdl-button--primary">
+              {{ '{about2expire:button_change}'|trans }}
+            </button>
+          </div>
+        </form>
+      </main>
+
+      {% include 'footer.twig' %}
+    </div>
+  </body>
+</html>
