@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="{{ currentLanguage }}">
+  <head>
+    <title>{{ '{material:error:title}'|trans }}</title>
+
+    {% include 'header.twig' %}
+  </head>
+  <body>
+    <div class="mdl-layout mdl-layout--fixed-header fill-viewport">
+      <header class="mdl-layout__header mdl-color--red">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">
+            {{ '{material:error:header}'|trans }}
+          </span>
+        </div>
+      </header>
+
+      <main class="mdl-layout__content margin" layout-children="column">
+        <p>
+          {{ '{material:error:message}'|trans }}
+        </p>
+
+        {% if showerrors ?? false %}
+          <p class="mdl-typography--body-2">
+            {{ error.exceptionMsg|e }}
+          </p>
+
+          <pre class="mdl-typography--caption">
+            {{ error.exceptionTrace|e }}
+          </pre>
+        {% endif %}
+      </main>
+
+      {% include 'footer.twig' %}
+    </div>
+  </body>
+</html>
