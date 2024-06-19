@@ -68,47 +68,23 @@ msgstr "인증 앱에서 코드 받기"
 msgid "{mfa:totp_icon}"
 msgstr "인증 응용 프로그램 아이콘"
 
-msgid "{mfa:totp_instructions}"
-msgstr "인증 앱에서 현재 코드를 확인해야합니다."
-
 msgid "{mfa:totp_input}"
 msgstr "6 자리 코드 입력"
-
-msgid "{mfa:u2f_header}"
-msgstr "보안키"
 
 msgid "{mfa:webauthn_header}"
 msgstr "보안키"
 
-msgid "{mfa:u2f_icon}"
-msgstr "USB 키 아이콘"
-
 msgid "{mfa:webauthn_icon}"
 msgstr "USB 키 아이콘"
-
-msgid "{mfa:u2f_instructions}"
-msgstr "이제 보안 키를 삽입하고 단추를 누를 수 있습니다."
 
 msgid "{mfa:webauthn_instructions}"
 msgstr "이제 보안 키를 삽입하고 단추를 누를 수 있습니다."
 
-msgid "{mfa:u2f_unsupported}"
-msgstr "현재 브라우저에서 지원되지 않습니다. <a href='https://www.google.com/chrome/browser' target='_blank'>Chrome과</a> 같은 보다 안전한 브라우저를 고려하십시오."
-
 msgid "{mfa:webauthn_unsupported}"
 msgstr "현재 브라우저에서 지원되지 않습니다. <a href='https://www.google.com/chrome/browser' target='_blank'>Chrome과</a> 같은 보다 안전한 브라우저를 고려하십시오."
 
-msgid "{mfa:u2f_error_unknown}"
-msgstr "요청에 문제가 발생하여 지금은 확인할 수 없습니다."
-
 msgid "{mfa:webauthn_error_unknown}"
 msgstr "요청에 문제가 발생하여 지금은 확인할 수 없습니다."
-
-msgid "{mfa:u2f_error_wrong_key}"
-msgstr "이 사이트의 올바른 키가 아닐 수도 있습니다."
-
-msgid "{mfa:u2f_error_timeout}"
-msgstr "오랜 시간이 경과 되었으니 키가 오른쪽 위로 삽입되었는지 확인 하십시오."
 
 msgid "{mfa:webauthn_error_abort}"
 msgstr "취소를 클릭하신 것 같습니다. 다시 시도해 보시겠어요?"
@@ -178,24 +154,6 @@ msgstr "코드​가 요구되기 전에 인쇄 가능 코드를​ 더 가져�
 
 msgid "{mfa:use_others}"
 msgstr "추가 옵션"
-
-msgid "{mfa:use_u2f}"
-msgstr "내 보안키 사용"
-
-msgid "{mfa:use_webauthn}"
-msgstr "내 보안키 사용"
-
-msgid "{mfa:use_totp}"
-msgstr "내 인증 앱 사용"
-
-msgid "{mfa:use_backupcode}"
-msgstr "인쇄 가능한 코드 사용"
-
-msgid "{mfa:use_help}"
-msgstr "도움이 필요해."
-
-msgid "{mfa:use_manager}"
-msgstr "복구 담당자의 코드 사용"
 
 msgid "{mfa:button_verify}"
 msgstr "검증"

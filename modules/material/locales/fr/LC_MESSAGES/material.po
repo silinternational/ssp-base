@@ -68,47 +68,23 @@ msgstr "Obtenez un code depuis votre application d'authentification"
 msgid "{mfa:totp_icon}"
 msgstr "Icône de l'application Smartphone"
 
-msgid "{mfa:totp_instructions}"
-msgstr "Vous devriez vérifier l'application d'authentification pour voir le code actuel."
-
 msgid "{mfa:totp_input}"
 msgstr "Entrer le code à 6 chiffres"
-
-msgid "{mfa:u2f_header}"
-msgstr "Clé de sécurité"
 
 msgid "{mfa:webauthn_header}"
 msgstr "Clé de sécurité"
 
-msgid "{mfa:u2f_icon}"
-msgstr "Icône de clé USB"
-
 msgid "{mfa:webauthn_icon}"
 msgstr "Icône de clé USB"
-
-msgid "{mfa:u2f_instructions}"
-msgstr "Vous pouvez maintenant insérer votre clé de sécurité et appuyer sur le bouton."
 
 msgid "{mfa:webauthn_instructions}"
 msgstr "Vous pouvez maintenant insérer votre clé de sécurité et appuyer sur le bouton."
 
-msgid "{mfa:u2f_unsupported}"
-msgstr "Non compatible avec votre navigateur actuel. Veuillez considérer un navigateur plus sûr comme <a href='https://www.google.com/chrome/browser' target='_blank'>Google Chrome</a>."
-
 msgid "{mfa:webauthn_unsupported}"
 msgstr "Non compatible avec votre navigateur actuel. Veuillez considérer un navigateur plus sûr comme <a href='https://www.google.com/chrome/browser' target='_blank'>Google Chrome</a>."
 
-msgid "{mfa:u2f_error_unknown}"
-msgstr "Quelque chose s'est mal passé avec cette demande, impossible de vérifier pour le moment."
-
 msgid "{mfa:webauthn_error_unknown}"
 msgstr "Quelque chose s'est mal passé avec cette demande, impossible de vérifier pour le moment."
-
-msgid "{mfa:u2f_error_wrong_key}"
-msgstr "Ce n'est peut-être pas la bonne clé pour ce site."
-
-msgid "{mfa:u2f_error_timeout}"
-msgstr "Cela a pris un peu trop de temps, vérifiez que votre clé est insérée dans le bons sens."
 
 msgid "{mfa:webauthn_error_abort}"
 msgstr "Il semble que vous ayez cliqué sur annuler. Souhaitez-vous que nous essayions à nouveau ?"
@@ -178,24 +154,6 @@ msgstr "Comme aucune autre option de vérification en deux étapes n'est configu
 
 msgid "{mfa:use_others}"
 msgstr "Davantage d'options"
-
-msgid "{mfa:use_u2f}"
-msgstr "Utiliser plutôt ma clé de sécurité"
-
-msgid "{mfa:use_webauthn}"
-msgstr "Utiliser plutôt ma clé de sécurité"
-
-msgid "{mfa:use_totp}"
-msgstr "Utiliser plutôt mon application d'authentification"
-
-msgid "{mfa:use_backupcode}"
-msgstr "Utiliser plutôt un code imprimable"
-
-msgid "{mfa:use_help}"
-msgstr "j'ai besoin d'aide"
-
-msgid "{mfa:use_manager}"
-msgstr "Utiliser le code de mon contact de récupération"
 
 msgid "{mfa:button_verify}"
 msgstr "Vérifier"

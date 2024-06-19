@@ -68,47 +68,23 @@ msgstr "Obtenga un código de su aplicación de autenticación"
 msgid "{mfa:totp_icon}"
 msgstr "Icono de aplicación de teléfono inteligente"
 
-msgid "{mfa:totp_instructions}"
-msgstr "Deberá verificar la aplicación de autenticación para ver el código actual."
-
 msgid "{mfa:totp_input}"
 msgstr "Ingrese el código de 6 dígitos"
-
-msgid "{mfa:u2f_header}"
-msgstr "Clave de seguridad"
 
 msgid "{mfa:webauthn_header}"
 msgstr "Clave de seguridad"
 
-msgid "{mfa:u2f_icon}"
-msgstr "Icono de la llave USB"
-
 msgid "{mfa:webauthn_icon}"
 msgstr "Icono de la llave USB"
-
-msgid "{mfa:u2f_instructions}"
-msgstr "Ahora puede insertar su clave de seguridad y presionar su botón."
 
 msgid "{mfa:webauthn_instructions}"
 msgstr "Ahora puede insertar su clave de seguridad y presionar su botón."
 
-msgid "{mfa:u2f_unsupported}"
-msgstr "No compatible en su navegador actual. Considere un navegador más seguro como <a href='https://www.google.com/chrome/browser' target='_blank'>Google Chrome</a>."
-
 msgid "{mfa:webauthn_unsupported}"
 msgstr "No compatible en su navegador actual. Considere un navegador más seguro como <a href='https://www.google.com/chrome/browser' target='_blank'>Google Chrome</a>."
 
-msgid "{mfa:u2f_error_unknown}"
-msgstr "Algo salió mal con esa solicitud, no se pudo verificar en este momento."
-
 msgid "{mfa:webauthn_error_unknown}"
 msgstr "Algo salió mal con esa solicitud, no se pudo verificar en este momento."
-
-msgid "{mfa:u2f_error_wrong_key}"
-msgstr "Esta puede no ser la clave correcta para este sitio."
-
-msgid "{mfa:u2f_error_timeout}"
-msgstr "Eso llevó demasiado tiempo, verifique que su clave esté insertada boca arriba."
 
 msgid "{mfa:webauthn_error_abort}"
 msgstr "Parece que has hecho clic en cancelar. ¿Quieres que lo intentemos de nuevo?"
@@ -178,24 +154,6 @@ msgstr "Como no tiene configuradas otras opciones de verificación en dos pasos 
 
 msgid "{mfa:use_others}"
 msgstr "Mas opciones"
-
-msgid "{mfa:use_u2f}"
-msgstr "Use mi clave de seguridad en su lugar"
-
-msgid "{mfa:use_webauthn}"
-msgstr "Use mi clave de seguridad en su lugar"
-
-msgid "{mfa:use_totp}"
-msgstr "Use la aplicación autenticación en su lugar"
-
-msgid "{mfa:use_backupcode}"
-msgstr "Use un código imprimible en su lugar"
-
-msgid "{mfa:use_help}"
-msgstr "necesito ayuda"
-
-msgid "{mfa:use_manager}"
-msgstr "Usar código de mi contacto de recuperación"
 
 msgid "{mfa:button_verify}"
 msgstr "Verificar"

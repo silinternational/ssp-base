@@ -68,47 +68,23 @@ msgstr "Get a code from your authenticator app"
 msgid "{mfa:totp_icon}"
 msgstr "Authenticator app icon"
 
-msgid "{mfa:totp_instructions}"
-msgstr "You will need to check your authenticator app for the current code."
-
 msgid "{mfa:totp_input}"
 msgstr "Enter 6-digit code"
-
-msgid "{mfa:u2f_header}"
-msgstr "Security key"
 
 msgid "{mfa:webauthn_header}"
 msgstr "Security key"
 
-msgid "{mfa:u2f_icon}"
-msgstr "USB key icon"
-
 msgid "{mfa:webauthn_icon}"
 msgstr "USB key icon"
-
-msgid "{mfa:u2f_instructions}"
-msgstr "You may now insert your security key and press its button."
 
 msgid "{mfa:webauthn_instructions}"
 msgstr "You may now insert your security key and press its button."
 
-msgid "{mfa:u2f_unsupported}"
-msgstr "Unsupported in your current browser.  Please consider a more secure browser like <a href='https://www.google.com/chrome/browser' target='_blank'>Google Chrome</a>."
-
 msgid "{mfa:webauthn_unsupported}"
 msgstr "Unsupported in your current browser.  Please consider a more secure browser like <a href='https://www.google.com/chrome/browser' target='_blank'>Google Chrome</a>."
 
-msgid "{mfa:u2f_error_unknown}"
-msgstr "Something went wrong with that request, unable to verify at this time."
-
 msgid "{mfa:webauthn_error_unknown}"
 msgstr "Something went wrong with that request, unable to verify at this time."
-
-msgid "{mfa:u2f_error_wrong_key}"
-msgstr "This may not be the correct key for this site."
-
-msgid "{mfa:u2f_error_timeout}"
-msgstr "That took a little too long, check to make sure your key is inserted right-side up."
 
 msgid "{mfa:webauthn_error_abort}"
 msgstr "It looks like you clicked cancel. Would you like us to try again?"
@@ -178,24 +154,6 @@ msgstr "Since you do not have any other 2-Step Verification options set up at th
 
 msgid "{mfa:use_others}"
 msgstr "More options"
-
-msgid "{mfa:use_u2f}"
-msgstr "Use my security key instead"
-
-msgid "{mfa:use_webauthn}"
-msgstr "Use my security key instead"
-
-msgid "{mfa:use_totp}"
-msgstr "Use my authenticator app instead"
-
-msgid "{mfa:use_backupcode}"
-msgstr "Use a printable code instead"
-
-msgid "{mfa:use_help}"
-msgstr "I need help"
-
-msgid "{mfa:use_manager}"
-msgstr "Use code from my recovery contact"
 
 msgid "{mfa:button_verify}"
 msgstr "Verify"
