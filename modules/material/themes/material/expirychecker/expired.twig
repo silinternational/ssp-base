@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{ currentLanguage }}">
+<head>
+  <title>{{ '{expired:title}'|trans }}</title>
+
+  {% include 'header.twig' %}
+</head>
+<body>
+  <div class="mdl-layout mdl-layout--fixed-header fill-viewport">
+    <header class="mdl-layout__header mdl-color--red">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">
+            {{ '{expired:header}'|trans }}
+        </span>
+      </div>
+    </header>
+    <main class="mdl-layout__content" layout-children="column">
+      <form layout-children="column">
+        {% for name, value in formData %}
+          <input type="hidden" name="{{ name|e }}" value="{{ value|e }}">
+        {% endfor %}
+
+        <p class="mdl-typography--title margin">
+          {{ '{expired:expired}'|trans }}
+        </p>
+
+        <button name="changepwd" class="mdl-button mdl-button--raised mdl-button--primary">
+          {{ '{expired:button_change}'|trans }}
+        </button>
+      </form>
+    </main>
+
+    {% include 'footer.twig' %}
+  </div>
+</body>
+</html>

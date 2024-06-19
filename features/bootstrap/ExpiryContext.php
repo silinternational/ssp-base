@@ -152,7 +152,7 @@ class ExpiryContext extends FeatureContext
     public function iShouldSeeAnErrorMessage()
     {
         $page = $this->session->getPage();
-        Assert::assertContains('An error occurred', $page->getHtml());
+        Assert::assertContains('We could not understand the expiration date', $page->getHtml());
     }
 
     /**
