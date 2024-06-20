@@ -257,6 +257,42 @@ msgstr "Activer maintenant"
 msgid "{nag:button_add}"
 msgstr "Ajouter un maintenant"
 
+msgid "{review:title}"
+msgstr "Examen du profil"
+
+msgid "{review:header}"
+msgstr "Examen du profil"
+
+msgid "{review:info}"
+msgstr "Sont-ils toujours corrects?"
+
+msgid "{review:mfa_header}"
+msgstr "Vérification en 2 étapes"
+
+msgid "{review:methods_header}"
+msgstr "Méthodes de récupération de mot de passe"
+
+msgid "{review:remaining}"
+msgstr "(%count% restant)"
+
+msgid "{review:used}"
+msgstr "dernière utilisation: %when%"
+
+msgid "{review:used_never}"
+msgstr "Dernière utilisation: Jamais"
+
+msgid "{review:verified}"
+msgstr "Vérifié"
+
+msgid "{review:unverified}"
+msgstr "Non vérifié"
+
+msgid "{review:button_update}"
+msgstr "Certains ont besoin d'être mis à jour"
+
+msgid "{review:button_continue}"
+msgstr "Ceux-ci sont toujours corrects"
+
 msgid "{selectidp-links:title}"
 msgstr "Choisissez un compte d'identité"
 

@@ -257,6 +257,42 @@ msgstr "Habilite ahora"
 msgid "{nag:button_add}"
 msgstr "Agrega uno ahora"
 
+msgid "{review:title}"
+msgstr "Revisión del perfil"
+
+msgid "{review:header}"
+msgstr "Revisión del perfil"
+
+msgid "{review:info}"
+msgstr "¿Siguen siendo correctos?"
+
+msgid "{review:mfa_header}"
+msgstr "Verificación en 2 pasos"
+
+msgid "{review:methods_header}"
+msgstr "Métodos de recuperación de contraseña"
+
+msgid "{review:remaining}"
+msgstr "(%count% restante)"
+
+msgid "{review:used}"
+msgstr "último uso: %when%"
+
+msgid "{review:used_never}"
+msgstr "último uso: nunca"
+
+msgid "{review:verified}"
+msgstr "Verificado"
+
+msgid "{review:unverified}"
+msgstr "Inconfirmado"
+
+msgid "{review:button_update}"
+msgstr "Algunos de estos necesitan actualización"
+
+msgid "{review:button_continue}"
+msgstr "Estos siguen siendo correctos"
+
 msgid "{selectidp-links:title}"
 msgstr "Elige una cuenta de identidad"
 

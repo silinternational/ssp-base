@@ -34,11 +34,11 @@ if (filter_has_var(INPUT_POST, 'update')) {
 
 $globalConfig = Configuration::getInstance();
 
-$t = new Template($globalConfig, 'profilereview:review.php');
+$t = new Template($globalConfig, 'profilereview:review');
 $t->data['profileUrl'] = $state['profileUrl'];
 $t->data['methodOptions'] = $state['methodOptions'];
 $t->data['mfaOptions'] = $state['mfaOptions'];
-$t->show();
+$t->send();
 
 $logger->warning(json_encode([
     'module' => 'profilereview',

@@ -257,6 +257,42 @@ msgstr "Enable now"
 msgid "{nag:button_add}"
 msgstr "Add one now"
 
+msgid "{review:title}"
+msgstr "Profile review"
+
+msgid "{review:header}"
+msgstr "Profile review"
+
+msgid "{review:info}"
+msgstr "Are these still correct?"
+
+msgid "{review:mfa_header}"
+msgstr "2-Step Verification"
+
+msgid "{review:methods_header}"
+msgstr "Password Recovery Methods"
+
+msgid "{review:remaining}"
+msgstr "(%count% remaining)"
+
+msgid "{review:used}"
+msgstr "last used: %when%"
+
+msgid "{review:used_never}"
+msgstr "last used: Never"
+
+msgid "{review:verified}"
+msgstr "Verified"
+
+msgid "{review:unverified}"
+msgstr "Unverified"
+
+msgid "{review:button_update}"
+msgstr "Some of these need updating"
+
+msgid "{review:button_continue}"
+msgstr "These are still correct"
+
 msgid "{selectidp-links:title}"
 msgstr "Choose an identity account"
 

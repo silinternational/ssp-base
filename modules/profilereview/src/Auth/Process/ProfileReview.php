@@ -286,7 +286,7 @@ class ProfileReview extends ProcessingFilter
         $state['profileUrl'] = $this->profileUrl;
         $state['mfaOptions'] = $mfaOptions;
         $state['methodOptions'] = $methodOptions;
-        $state['template'] = 'review.php';
+        $state['template'] = 'review';
 
         $stateId = State::saveState($state, self::STAGE_SENT_TO_NAG);
         $url = Module::getModuleURL('profilereview/nag.php');
