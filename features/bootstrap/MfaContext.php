@@ -208,7 +208,7 @@ class MfaContext extends FeatureContext
     public function iSubmitACorrectBackupCode()
     {
         if (! $this->pageContainsElementWithText('h1', 'Printable code')) {
-            // find image of the backup code option presented in other_mfas.php
+            // find image of the backup code option presented in other_mfas.twig
             $printableCodeOption = $this->session->getPage()->find('css', 'img[src=mfa-backupcode\002Esvg]');
             $printableCodeOption->click();
         }

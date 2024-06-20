@@ -297,10 +297,10 @@ class Mfa extends ProcessingFilter
     public static function getTemplateFor(string $mfaType): string
     {
         $mfaOptionTemplates = [
-            'backupcode' => 'mfa:prompt-for-mfa-backupcode.php',
-            'totp' => 'mfa:prompt-for-mfa-totp.php',
-            'webauthn' => 'mfa:prompt-for-mfa-webauthn.php',
-            'manager' => 'mfa:prompt-for-mfa-manager.php',
+            'backupcode' => 'mfa:prompt-for-mfa-backupcode',
+            'totp' => 'mfa:prompt-for-mfa-totp',
+            'webauthn' => 'mfa:prompt-for-mfa-webauthn',
+            'manager' => 'mfa:prompt-for-mfa-manager',
         ];
         $template = $mfaOptionTemplates[$mfaType] ?? null;
         

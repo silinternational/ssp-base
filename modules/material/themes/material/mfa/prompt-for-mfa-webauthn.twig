@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="{{ currentLanguage }}">
+<head>
+  <title>{{ '{mfa:title}'|trans }}</title>
+
+  {% include 'header.twig' %}
+
+  <script src="{{ browserJsPath }}"></script>
+
+  <script>
+    function verifyWebAuthn() {
+      const loginChallenge = {{ mfaOptionData|raw }};
+      SimpleWebAuthnBrowser.startAuthentication(loginChallenge.publicKey).then(submitForm).catch(handleError);
+    }
+
+    function handleError(error) {
+      console.error(error)
+      const errorMessage = createMessage(error)
+
+      const errorNode = document.querySelector('p.error');
+      errorNode.classList.remove('hide');
+      errorNode.querySelector('span').textContent = errorMessage;
+
+      offerRetry();
+    }
+
+    function createMessage(error) {
+      switch (error.name) {
+        case 'AbortError':
+          return '{{ '{mfa:webauthn_error_abort}'|trans|e('js')|raw }}';
+        case 'NotAllowedError':
+          return '{{ '{mfa:webauthn_error_not_allowed}'|trans|e('js')|raw }}';
+        default:
+          return '{{ '{mfa:webauthn_error_unknown}'|trans|e('js')|raw }}';
+      }
+    }
+
+    function offerRetry() {
+      const retryButton = document.querySelector('.mdl-button.mdl-color-text--red');
+
+      retryButton.classList.remove('hide');
+    }
+
+    function submitForm(webAuthnResponse) {
+      const form = document.querySelector('form');
+      const submissionInput = createHiddenInput('submitMfa');
+      const webAuthnResponseInput = createHiddenInput('mfaSubmission');
+
+      webAuthnResponseInput.value = JSON.stringify(webAuthnResponse);
+
+      form.appendChild(submissionInput);
+      form.appendChild(webAuthnResponseInput);
+
+      form.submit();
+    }
+
+    function createHiddenInput(name) {
+      const input = document.createElement('input');
+
+      input.type = 'hidden';
+      input.name = name;
+
+      return input;
+    }
+  </script>
+</head>
+
+<body class="gradient-bg" onload="{{ supportsWebAuthn ? 'verifyWebAuthn()' : '' }}">
+<div class="mdl-layout mdl-layout--fixed-header fill-viewport">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">
+        {{ '{mfa:header}'|trans }}
+      </span>
+    </div>
+  </header>
+
+  <main class="mdl-layout__content" layout-children="column">
+    <form layout-children="column" method="post">
+      <div class="mdl-card mdl-shadow--8dp">
+        <div class="mdl-card__media white-bg margin" layout-children="column">
+          <img src="mfa-webauthn.svg" alt="{{ '{mfa:webauthn_icon}'|trans }}" class="icon">
+        </div>
+
+        <div class="mdl-card__title center">
+          <h1 class="mdl-card__title-text">
+            {{ '{mfa:webauthn_header}'|trans }}
+          </h1>
+        </div>
+
+        {% if supportsWebAuthn %}
+          <div class="mdl-card__title">
+            <p class="mdl-card__subtitle-text">
+              {{ '{mfa:webauthn_instructions}'|trans }}
+            </p>
+          </div>
+        {% else %}
+          <div class="mdl-card__title">
+            <p class="mdl-typography--text-center mdl-color-text--red">
+              {{ '{mfa:webauthn_unsupported}'|trans|raw }}
+            </p>
+          </div>
+        {% endif %}
+
+        {% if not errorMessage is empty %}
+          <script>
+            ga('send', 'event', 'error', 'webauthn', '{{ errorMessage|e('js')|raw }}');
+          </script>
+        {% endif %}
+        <div class="mdl-card__supporting-text" layout-children="column">
+          <p class="mdl-color-text--red error {{ errorMessage is empty ? 'hide' : 'show' }}">
+            <i class="material-icons">error</i>
+
+            <span class="mdl-typography--caption">
+              {{ errorMessage|e }}
+            </span>
+          </p>
+        </div>
+
+        <div class="mdl-card__actions" layout-children="row">
+          <span flex></span>
+          <!-- used type=button to avoid form submission on click -->
+          <button
+            type="button"
+            onclick="verifyWebAuthn()"
+            class="mdl-button mdl-color-text--red {{ errorMessage is empty ? 'hide' : 'show' }}"
+          >
+            {{ '{mfa:button_try_again}'|trans }}
+          </button>
+
+        </div>
+
+        {% include 'other_mfas.twig' %}
+      </div>
+
+      <div>
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+          <span class="mdl-checkbox__label">
+            {{ '{mfa:remember_this}'|trans }}
+          </span>
+          <input type="checkbox" name="rememberMe" checked class="mdl-checkbox__input">
+        </label>
+      </div>
+    </form>
+  </main>
+</div>
+</body>
+</html>
