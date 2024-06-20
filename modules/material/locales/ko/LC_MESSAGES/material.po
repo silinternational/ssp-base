@@ -74,6 +74,9 @@ msgstr "6 자리 코드 입력"
 msgid "{mfa:webauthn_header}"
 msgstr "보안키"
 
+msgid "{mfa:u2f_icon}"
+msgstr "USB 키 아이콘"
+
 msgid "{mfa:webauthn_icon}"
 msgstr "USB 키 아이콘"
 
@@ -154,6 +157,24 @@ msgstr "코드​가 요구되기 전에 인쇄 가능 코드를​ 더 가져�
 
 msgid "{mfa:use_others}"
 msgstr "추가 옵션"
+
+msgid "{mfa:use_u2f}"
+msgstr "내 보안키 사용"
+
+msgid "{mfa:use_webauthn}"
+msgstr "내 보안키 사용"
+
+msgid "{mfa:use_totp}"
+msgstr "내 인증 앱 사용"
+
+msgid "{mfa:use_backupcode}"
+msgstr "인쇄 가능한 코드 사용"
+
+msgid "{mfa:use_help}"
+msgstr "도움이 필요해."
+
+msgid "{mfa:use_manager}"
+msgstr "복구 담당자의 코드 사용"
 
 msgid "{mfa:button_verify}"
 msgstr "검증"
