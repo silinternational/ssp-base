@@ -84,7 +84,7 @@ msgid "{mfa:webauthn_instructions}"
 msgstr "Ahora puede insertar su clave de seguridad y presionar su botón."
 
 msgid "{mfa:webauthn_unsupported}"
-msgstr "No compatible en su navegador actual. Considere un navegador más seguro como <a href='https://www.google.com/chrome/browser' target='_blank'>Google Chrome</a>."
+msgstr "No compatible en su navegador actual. Considere un navegador más seguro como <a href='https://www.google.com/chrome/browser' target='_blank' rel='noopener'>Google Chrome</a>."
 
 msgid "{mfa:webauthn_error_unknown}"
 msgstr "Algo salió mal con esa solicitud, no se pudo verificar en este momento."
