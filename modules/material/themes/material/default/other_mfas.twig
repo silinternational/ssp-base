@@ -8,6 +8,7 @@
     </button>
     <ul class="mdl-menu mdl-js-menu mdl-menu--top-left" data-mdl-for="others">
       {% for option in otherOptions %}
+        {# TODO: Non-interactive elements should not be assigned mouse or keyboard event listeners. #}
         <li class="mdl-menu__item" onclick="location.href = '{{ option.callback|raw }}'">
           <span class="mdl-list__item-primary-content">
             <img
