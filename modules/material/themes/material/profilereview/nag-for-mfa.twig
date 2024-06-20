@@ -41,7 +41,12 @@
           <span flex></span>
 
           {% if not mfaLearnMoreUrl is empty %}
-            <a href="{{ mfaLearnMoreUrl }}" target="_blank" class="mdl-button mdl-button--primary margin">
+            <a
+              href="{{ mfaLearnMoreUrl }}"
+              target="_blank"
+              rel="noopener"
+              class="mdl-button mdl-button--primary margin"
+            >
               {{ '{nag:button_learn_more}'|trans }}
             </a>
           {% endif %}
