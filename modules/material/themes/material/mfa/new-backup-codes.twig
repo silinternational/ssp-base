@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ '{mfa:title}'|trans }}</title>
+
+  {% include 'header.twig' %}
+
+  <script src="bowser.1.9.4.min.js"></script>
+  <script>
+    function disableUnsupportedFeatures() {
+      if (bowser.msie) {
+        disablePrint();
+        disableDownload();
+      } else if (bowser.msedge) {
+        disableDownload();
+      }
+    }
+
+    function disablePrint() {
+      document.querySelector('button#print').disabled = true;
+      document.querySelector('button#print').classList.add('not-allowed');
+      document.querySelector('button#print').title = '{{ '{mfa:unsupported}'|trans|e('js')|raw }}';
+    }
+
+    function disableDownload() {
+      document.querySelector('a[download]').href = '';
+      document.querySelector('a[download]').classList.add('mdl-button--disabled', 'not-allowed');
+      document.querySelector('a[download]').title = '{{ '{mfa:unsupported}'|trans|e('js')|raw }}';
+    }
+  </script>
+</head>
+<body class="gradient-bg" onload="disableUnsupportedFeatures()">
+<div class="mdl-layout mdl-layout--fixed-header fill-viewport">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">
+        {{ '{mfa:header}'|trans }}
+      </span>
+    </div>
+  </header>
+  <main class="mdl-layout__content" layout-children="column">
+    <form layout-children="column" method="post">
+      {% if not newBackupCodes is empty %}
+        <h1 class="mdl-typography--display-1">
+          {{ '{mfa:new_codes_header}'|trans }}
+        </h1>
+
+        <p class="mdl-typography--body-1">
+          <em>{{ '{mfa:old_codes_gone}'|trans }}</em>
+        </p>
+
+        <p class="mdl-typography--body-1">
+          {{ '{mfa:new_codes_info}'|trans }}
+          <span class="mdl-typography--body-2">{{ '{mfa:new_codes_only_once}'|trans }}</span>
+        </p>
+
+        <div class="mdl-card mdl-shadow--8dp" style="min-height: 17em">
+          <div class="mdl-card__supporting-text ff-temp-flexbug-fix" layout-children="column" id="code-card">
+            <p class="fill-parent" layout-children="row">
+              <span flex>{{ '{mfa:account}'|trans({'%idpName%':idpName}) }}</span>
+              <em class="mdl-typography--caption">{{ "now"|date("M j, Y") }}</em>
+            </p>
+
+            <div class="code-container">
+              {% for newCode in newBackupCodes %}
+                <code>☐ {{ newCode }}</code>
+              {% endfor %}
+            </div>
+
+            <span class="mdl-typography--caption">{{ '{mfa:new_codes_only_once}'|trans }}</span>
+          </div>
+
+          <div class="mdl-card__actions" layout-children="row" child-spacing="space-around">
+            <script>
+              function printElement(selector) {
+                var elementToPrint = document.querySelector(selector);
+
+                elementToPrint.classList.add('printable-codes');
+
+                window.print();
+              }
+            </script>
+            <button
+              class="mdl-button mdl-button--primary"
+              type="button"
+              onclick="printElement('#code-card')"
+              id="print"
+            >
+              {{ '{mfa:button_print}'|trans }}
+            </button>
+
+            <a
+              href="data:text/plain,{{ idpNameAndCodes }}"
+              download="{{ idpName }}-printable-codes.txt"
+              class="mdl-button mdl-button--primary"
+            >
+              {{ '{mfa:button_download}'|trans }}
+            </a>
+
+            <script>
+              function copyCodesToClipboard(button) {
+                document.querySelector('textarea').select();
+
+                {# FIXME: replace deprecated document.execCommand #}
+                document.execCommand('copy');
+
+                button.innerHTML = button.innerHTML.replace(
+                  '{{ '{mfa:button_copy}'|trans }}',
+                  '{{ '{mfa:button_copied}'|trans }}'
+                );
+              }
+            </script>
+            <button class="mdl-button mdl-button--primary" type="button" onclick="copyCodesToClipboard(this)">
+              {{ '{mfa:button_copy}'|trans }}
+              <textarea class="out-of-sight">{{ idpNameAndCodes }}</textarea>
+            </button>
+          </div>
+        </div>
+      {% else %}
+        <div class="mdl-card mdl-shadow--8dp">
+          <div class="mdl-card__media white-bg margin" layout-children="column">
+            <i class="mdl-color-text--red error material-icons mdl-typography--display-4">error</i>
+          </div>
+
+          <div class="mdl-card__title center">
+            <h1 class="mdl-card__title-text">
+              {{ '{error:header}'|trans }}
+            </h1>
+          </div>
+
+          <div class="mdl-card__supporting-text">
+            <p>
+              {{ '{mfa:new_codes_failed}'|trans }}
+              <a href="{{ mfaSetupUrl }}" target="_blank">{{ mfaSetupUrl }}</a>
+            </p>
+          </div>
+        </div>
+
+        <script>
+          ga('send', 'event', 'error', 'backupcode', 'generation-failed');
+        </script>
+      {% endif %}
+
+      <div layout-children="row" class="fill-parent">
+        <label class="mdl-checkbox mdl-js-checkbox" flex>
+          <input type="checkbox" onclick="toggleContinue(this)" class="mdl-checkbox__input">
+          <span class="mdl-checkbox__label">{{ '{mfa:new_codes_saved}'|trans }}</span>
+        </label>
+
+        <button name="continue" class="mdl-button mdl-button--raised mdl-button--primary" disabled>
+          {{ '{mfa:button_continue}'|trans }}
+        </button>
+      </div>
+
+      <script>
+        function toggleContinue(event) {
+          contBtn = document.querySelector('button[name="continue"]');
+
+          contBtn.disabled = !event.checked;
+        }
+      </script>
+    </form>
+  </main>
+</div>
+</body>
+</html>

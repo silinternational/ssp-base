@@ -33,7 +33,9 @@ if (filter_has_var(INPUT_POST, 'continue')) {
 
 $globalConfig = Configuration::getInstance();
 
-$t = new Template($globalConfig, 'mfa:new-backup-codes.php');
+$t = new Template($globalConfig, 'mfa:new-backup-codes');
 $t->data['mfaSetupUrl'] = $state['mfaSetupUrl'];
 $t->data['newBackupCodes'] = $state['newBackupCodes'] ?? [];
-$t->show();
+$t->data['idpName'] = $globalConfig->getString('idp_display_name');
+$t->data['idpNameAndCodes'] = $t->data['idpName'] . join('\r\n', $t->data['newBackupCodes']);
+$t->send();
