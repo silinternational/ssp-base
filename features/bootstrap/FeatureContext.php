@@ -59,7 +59,7 @@ class FeatureContext extends MinkContext
             mkdir(self::SCREENSHOTS_PATH);
         }
         if (is_dir(self::SCREENSHOTS_PATH)) {
-            $path = self::SCREENSHOTS_PATH . date('d-m-y') . '-' . uniqid() . '.png';
+            $path = self::SCREENSHOTS_PATH . date('Y-m-d_H:i:s_') . uniqid() . '.png';
             file_put_contents($path, $screenshot);
             print "\n\nScreenshot: " . $path;
         }
