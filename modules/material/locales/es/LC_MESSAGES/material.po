@@ -74,6 +74,9 @@ msgstr "Ingrese el código de 6 dígitos"
 msgid "{mfa:webauthn_header}"
 msgstr "Clave de seguridad"
 
+msgid "{mfa:u2f_icon}"
+msgstr "Icono de la llave USB"
+
 msgid "{mfa:webauthn_icon}"
 msgstr "Icono de la llave USB"
 
@@ -154,6 +157,24 @@ msgstr "Como no tiene configuradas otras opciones de verificación en dos pasos 
 
 msgid "{mfa:use_others}"
 msgstr "Mas opciones"
+
+msgid "{mfa:use_u2f}"
+msgstr "Use mi clave de seguridad en su lugar"
+
+msgid "{mfa:use_webauthn}"
+msgstr "Use mi clave de seguridad en su lugar"
+
+msgid "{mfa:use_totp}"
+msgstr "Use la aplicación autenticación en su lugar"
+
+msgid "{mfa:use_backupcode}"
+msgstr "Use un código imprimible en su lugar"
+
+msgid "{mfa:use_help}"
+msgstr "necesito ayuda"
+
+msgid "{mfa:use_manager}"
+msgstr "Usar código de mi contacto de recuperación"
 
 msgid "{mfa:button_verify}"
 msgstr "Verificar"

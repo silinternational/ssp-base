@@ -74,6 +74,9 @@ msgstr "Enter 6-digit code"
 msgid "{mfa:webauthn_header}"
 msgstr "Security key"
 
+msgid "{mfa:u2f_icon}"
+msgstr "USB key icon"
+
 msgid "{mfa:webauthn_icon}"
 msgstr "USB key icon"
 
@@ -154,6 +157,24 @@ msgstr "Since you do not have any other 2-Step Verification options set up at th
 
 msgid "{mfa:use_others}"
 msgstr "More options"
+
+msgid "{mfa:use_u2f}"
+msgstr "Use my security key instead"
+
+msgid "{mfa:use_webauthn}"
+msgstr "Use my security key instead"
+
+msgid "{mfa:use_totp}"
+msgstr "Use my authenticator app instead"
+
+msgid "{mfa:use_backupcode}"
+msgstr "Use a printable code instead"
+
+msgid "{mfa:use_help}"
+msgstr "I need help"
+
+msgid "{mfa:use_manager}"
+msgstr "Use code from my recovery contact"
 
 msgid "{mfa:button_verify}"
 msgstr "Verify"
