@@ -221,6 +221,42 @@ msgstr "Recuerde esta navegador por 30 días"
 msgid "{mfa:unsupported}"
 msgstr "No compatible con este navegador"
 
+msgid "{nag:mfa_title}"
+msgstr "Verificación en 2 pasos"
+
+msgid "{nag:mfa_header}"
+msgstr "Verificación en 2 pasos"
+
+msgid "{nag:method_title}"
+msgstr "Métodos de recuperación de contraseña"
+
+msgid "{nag:method_header}"
+msgstr "Métodos de recuperación de contraseña"
+
+msgid "{nag:shield_icon}"
+msgstr "Icono de escudo"
+
+msgid "{nag:header}"
+msgstr "Protéjase"
+
+msgid "{nag:mfa_info}"
+msgstr "¿Sabía que podría aumentar fácilmente la seguridad de su cuenta de identidad al habilitar la verificación en dos pasos?"
+
+msgid "{nag:method_info}"
+msgstr "¿Olvidas tu contraseña a veces? ¿Sabía que es muy fácil agregar una dirección de correo electrónico alternativa para recuperar la contraseña por si acaso?"
+
+msgid "{nag:button_later}"
+msgstr "Recuérdame más tarde"
+
+msgid "{nag:button_learn_more}"
+msgstr "Aprende más"
+
+msgid "{nag:button_enable}"
+msgstr "Habilite ahora"
+
+msgid "{nag:button_add}"
+msgstr "Agrega uno ahora"
+
 msgid "{selectidp-links:title}"
 msgstr "Elige una cuenta de identidad"
 

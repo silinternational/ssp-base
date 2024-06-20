@@ -22,8 +22,8 @@ class ProfileReview extends ProcessingFilter
     const STAGE_SENT_TO_NAG = 'profilereview:sent_to_nag';
 
     const REVIEW_PAGE = 'review.php';
-    const MFA_ADD_PAGE = 'nag-for-mfa.php';
-    const METHOD_ADD_PAGE = 'nag-for-method.php';
+    const MFA_ADD_PAGE = 'nag-for-mfa';
+    const METHOD_ADD_PAGE = 'nag-for-method';
 
     private string|null $employeeIdAttr = null;
     private string|null $mfaLearnMoreUrl = null;

@@ -221,6 +221,42 @@ msgstr "Se rappeler de ce navigatuer pour 30 jours"
 msgid "{mfa:unsupported}"
 msgstr "Non pris en charge dans ce navigateur"
 
+msgid "{nag:mfa_title}"
+msgstr "Vérification en deux étapes"
+
+msgid "{nag:mfa_header}"
+msgstr "Vérification en deux étapes"
+
+msgid "{nag:method_title}"
+msgstr "Méthodes de récupération de mot de passe"
+
+msgid "{nag:method_header}"
+msgstr "Méthodes de récupération de mot de passe"
+
+msgid "{nag:shield_icon}"
+msgstr "Icône de bouclier"
+
+msgid "{nag:header}"
+msgstr "Protégez-vous"
+
+msgid "{nag:mfa_info}"
+msgstr "Savez-vous que vous pouvez facilement augmenter la sécurité de votre compte d'identité en activant la vérification en deux étapes?"
+
+msgid "{nag:method_info}"
+msgstr "Avez-vous oublié votre mot de passe parfois? Saviez-vous qu'il est très facile d'ajouter une adresse électronique de remplacement pour la récupération du mot de passe au cas où?"
+
+msgid "{nag:button_later}"
+msgstr "Rappelez-moi plus tard"
+
+msgid "{nag:button_learn_more}"
+msgstr "Apprendre encore plus"
+
+msgid "{nag:button_enable}"
+msgstr "Activer maintenant"
+
+msgid "{nag:button_add}"
+msgstr "Ajouter un maintenant"
+
 msgid "{selectidp-links:title}"
 msgstr "Choisissez un compte d'identité"
 
