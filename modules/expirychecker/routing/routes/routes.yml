@@ -1,0 +1,13 @@
+expirychecker-about2expire:
+  path: /about2expire
+  defaults: {
+    _controller: 'SimpleSAML\Module\expirychecker\Controller\ExpiryChecker::about2expire'
+  }
+  methods: [ GET ]
+
+expirychecker-expired:
+  path: /expired
+  defaults: {
+    _controller: 'SimpleSAML\Module\expirychecker\Controller\ExpiryChecker::expired'
+  }
+  methods: [ GET ]

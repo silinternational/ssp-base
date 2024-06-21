@@ -366,7 +366,7 @@ class ExpiryDate extends ProcessingFilter
         $state['originalUrlParam'] = $this->originalUrlParam;
 
         $id = State::saveState($state, 'expirychecker:expired');
-        $url = Module::getModuleURL('expirychecker/expired.php');
+        $url = Module::getModuleURL('expirychecker/expired');
 
         $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, array('StateId' => $id));
@@ -403,7 +403,7 @@ class ExpiryDate extends ProcessingFilter
         $state['originalUrlParam'] = $this->originalUrlParam;
 
         $id = State::saveState($state, 'expirychecker:about2expire');
-        $url = Module::getModuleURL('expirychecker/about2expire.php');
+        $url = Module::getModuleURL('expirychecker/about2expire');
 
         $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, array('StateId' => $id));
