@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\tests\fakes;
 
 use GuzzleHttp\Psr7\Response;
@@ -13,7 +14,7 @@ class FakeFailedIdBroker extends FakeIdBroker
         ]);
         return parent::getAuthenticatedUser($username, $password);
     }
-    
+
     protected function getDesiredResponse(): Response
     {
         return new Response(400);

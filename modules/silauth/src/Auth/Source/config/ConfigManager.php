@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\config;
 
 use SimpleSAML\Module\silauth\Auth\Source\text\Text;
@@ -72,7 +73,7 @@ class ConfigManager
 
     private static function initializeYiiClass(): void
     {
-        if ( ! class_exists('Yii')) {
+        if (!class_exists('Yii')) {
             require_once __DIR__ . '/../../vendor/yiisoft/yii2/Yii.php';
         }
     }

@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\tests\unit\auth;
 
 use SimpleSAML\Module\silauth\Auth\Source\auth\Authenticator;
@@ -29,12 +30,12 @@ class AuthenticatorTest extends TestCase
             ['failedLoginAttempts' => $blockAfterNth + 100, 'expected' => 3600],
         ];
         foreach ($testCases as $testCase) {
-            
+
             // Act:
             $actual = Authenticator::calculateSecondsToDelay(
                 $testCase['failedLoginAttempts']
             );
-            
+
             // Assert:
             $this->assertSame($testCase['expected'], $actual, sprintf(
                 'Expected %s failed login attempts to result in %s second(s), not %s.',
@@ -44,7 +45,7 @@ class AuthenticatorTest extends TestCase
             ));
         }
     }
-    
+
     public function testGetSecondsUntilUnblocked()
     {
         // Arrange:
@@ -62,18 +63,18 @@ class AuthenticatorTest extends TestCase
             'expected' => 20,
         ]];
         foreach ($testCases as $testCase) {
-            
+
             // Act:
             $actual = Authenticator::getSecondsUntilUnblocked(
                 $testCase['numRecentFailures'],
                 $testCase['mostRecentFailureAt']
             );
-            
+
             // Assert:
             $this->assertSame($testCase['expected'], $actual);
         }
     }
-    
+
     public function testIsEnoughFailedLoginsToBlock()
     {
         // Arrange:
@@ -84,12 +85,12 @@ class AuthenticatorTest extends TestCase
             ['expected' => true, 'failedLogins' => Authenticator::BLOCK_AFTER_NTH_FAILED_LOGIN + 1],
         ];
         foreach ($testCases as $testCase) {
-            
+
             // Act:
             $actual = Authenticator::isEnoughFailedLoginsToBlock(
                 $testCase['failedLogins']
             );
-            
+
             // Assert:
             $this->assertSame($testCase['expected'], $actual);
         }

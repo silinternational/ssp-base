@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\csrf;
 
 use SimpleSAML\Session;
@@ -12,7 +13,7 @@ class CsrfProtector
     protected string $csrfSessionKey = 'silauth.csrfToken';
     protected string $csrfTokenDataType = 'string';
     private Session $session;
-    
+
     /**
      * Constructor.
      *
@@ -22,18 +23,18 @@ class CsrfProtector
     {
         $this->session = $session;
     }
-    
+
     public function changeMasterToken(): void
     {
         $newMasterToken = $this->generateToken();
         $this->setTokenInSession($newMasterToken);
     }
-    
+
     protected function generateToken(): string
     {
         return bin2hex(random_bytes(32));
     }
-    
+
     /**
      * Get the CSRF protection token from the session. If not found, a new one
      * will be generated and stored in the session.
@@ -49,7 +50,7 @@ class CsrfProtector
         }
         return $masterToken;
     }
-    
+
     protected function getTokenFromSession(): mixed
     {
         return $this->session->getData(
@@ -57,7 +58,7 @@ class CsrfProtector
             $this->csrfSessionKey
         );
     }
-    
+
     /**
      * Check the given CSRF token to see if it was correct.
      *
@@ -69,7 +70,7 @@ class CsrfProtector
     {
         return hash_equals($this->getMasterToken(), $submittedToken);
     }
-    
+
     protected function setTokenInSession(string $masterToken): void
     {
         $this->session->setData(

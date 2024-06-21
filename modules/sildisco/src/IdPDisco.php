@@ -44,11 +44,12 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
      */
     protected function log(string $message): void
     {
-        \SimpleSAML\Logger::info('SildiscoIdPDisco.'.$this->instance.': '.$message);
+        \SimpleSAML\Logger::info('SildiscoIdPDisco.' . $this->instance . ': ' . $message);
     }
 
     /* Path to the folder with the SP and IdP metadata */
-    private function getMetadataPath() {
+    private function getMetadataPath()
+    {
         return __DIR__ . '/../../../metadata/';
     }
 
@@ -109,7 +110,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
             $arrayUtils = new Arrays();
             $spName = htmlspecialchars($t->getTranslator()->getPreferredTranslation(
                 $arrayUtils->arrayize($rawSPName, 'en')
-            ))   ;
+            ));
         }
 
         // in order to bypass some built-in simplesaml behavior, an extra idp
@@ -147,10 +148,10 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
      * the idpList that has 'betaEnabled' => true, give it 'enabled' => true
      *
      */
-    public static function enableBetaEnabled(array $idpList, ?bool $isBetaTester=null): array
+    public static function enableBetaEnabled(array $idpList, ?bool $isBetaTester = null): array
     {
 
-        if ( $isBetaTester === null) {
+        if ($isBetaTester === null) {
             $session = \SimpleSAML\Session::getSessionFromRequest();
             $isBetaTester = $session->getData(
                 self::$sessionType,
@@ -158,12 +159,12 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
             );
         }
 
-        if ( ! $isBetaTester) {
+        if (!$isBetaTester) {
             return $idpList;
         }
 
         foreach ($idpList as $idp => $idpMetadata) {
-            if ( ! empty($idpMetadata[self::$betaEnabledMdKey])) {
+            if (!empty($idpMetadata[self::$betaEnabledMdKey])) {
                 $idpMetadata[self::$enabledMdKey] = true;
                 $idpList[$idp] = $idpMetadata;
             }
@@ -198,10 +199,10 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
          * request's 'return' entry.
          */
         $returnKey = 'return';
-        $requestReturn =  array_key_exists($returnKey, $_REQUEST) ?
+        $requestReturn = array_key_exists($returnKey, $_REQUEST) ?
             urldecode(urldecode($_REQUEST[$returnKey])) : "";
 
-        $spEntityIdParam = 'spentityid='.$spEntityId;
+        $spEntityIdParam = 'spentityid=' . $spEntityId;
 
         if (strpos($requestReturn, $spEntityIdParam) === false) {
             $message = 'Invalid SP entity id [' . $spEntityId . ']. ' .
@@ -213,7 +214,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
         if (array_key_exists($idp, $idpList) && $idpList[$idp]['enabled']) {
             return $idp;
         }
-        $this->log('Invalid IdP entity id ['.$idp.'] received from discovery page.');
+        $this->log('Invalid IdP entity id [' . $idp . '] received from discovery page.');
         // the entity id wasn't valid
         return null;
     }

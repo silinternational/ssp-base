@@ -40,9 +40,9 @@ try {
     if ($certInfo !== null) {
         $availableCerts['new_idp.crt'] = $certInfo;
         $keys[] = array(
-            'type'            => 'X509Certificate',
-            'signing'         => true,
-            'encryption'      => true,
+            'type' => 'X509Certificate',
+            'signing' => true,
+            'encryption' => true,
             'X509Certificate' => $certInfo['certData'],
         );
         $hasNewCert = true;
@@ -53,9 +53,9 @@ try {
     $certInfo = $cryptoUtils->loadPublicKey($idpmeta, true);
     $availableCerts['idp.crt'] = $certInfo;
     $keys[] = array(
-        'type'            => 'X509Certificate',
-        'signing'         => true,
-        'encryption'      => ($hasNewCert ? false : true),
+        'type' => 'X509Certificate',
+        'signing' => true,
+        'encryption' => ($hasNewCert ? false : true),
         'X509Certificate' => $certInfo['certData'],
     );
 
@@ -64,16 +64,16 @@ try {
         assert('isset($httpsCert["certData"])');
         $availableCerts['https.crt'] = $httpsCert;
         $keys[] = array(
-            'type'            => 'X509Certificate',
-            'signing'         => true,
-            'encryption'      => false,
+            'type' => 'X509Certificate',
+            'signing' => true,
+            'encryption' => false,
             'X509Certificate' => $httpsCert['certData'],
         );
     }
 
     $metaArray = array(
         'metadata-set' => 'saml20-idp-remote',
-        'entityid'     => $idpentityid,
+        'entityid' => $idpentityid,
     );
 
     $ssob = $metadata->getGenerated('SingleSignOnServiceBinding', 'saml20-idp-hosted');
@@ -84,13 +84,13 @@ try {
     if (is_array($ssob)) {
         foreach ($ssob as $binding) {
             $metaArray['SingleSignOnService'][] = array(
-                'Binding'  => $binding,
+                'Binding' => $binding,
                 'Location' => $ssol,
             );
         }
     } else {
         $metaArray['SingleSignOnService'][] = array(
-            'Binding'  => $ssob,
+            'Binding' => $ssob,
             'Location' => $ssol,
         );
     }
@@ -98,13 +98,13 @@ try {
     if (is_array($slob)) {
         foreach ($slob as $binding) {
             $metaArray['SingleLogoutService'][] = array(
-                'Binding'  => $binding,
+                'Binding' => $binding,
                 'Location' => $slol,
             );
         }
     } else {
         $metaArray['SingleLogoutService'][] = array(
-            'Binding'  => $slob,
+            'Binding' => $slob,
             'Location' => $slol,
         );
     }
@@ -120,9 +120,9 @@ try {
     if ($idpmeta->getBoolean('saml20.sendartifact', false)) {
         // Artifact sending enabled
         $metaArray['ArtifactResolutionService'][] = array(
-            'index'    => 0,
-            'Location' => $httpUtils->getBaseURL().'saml2/idp/ArtifactResolutionService.php',
-            'Binding'  => Constants::BINDING_SOAP,
+            'index' => 0,
+            'Location' => $httpUtils->getBaseURL() . 'saml2/idp/ArtifactResolutionService.php',
+            'Binding' => Constants::BINDING_SOAP,
         );
     }
 
@@ -130,8 +130,8 @@ try {
         // Prepend HoK SSO Service endpoint.
         array_unshift($metaArray['SingleSignOnService'], array(
             'hoksso:ProtocolBinding' => Constants::BINDING_HTTP_REDIRECT,
-            'Binding'                => Constants::BINDING_HOK_SSO,
-            'Location'               => $httpUtils->getBaseURL().'saml2/idp/SSOService.php'
+            'Binding' => Constants::BINDING_HOK_SSO,
+            'Location' => $httpUtils->getBaseURL() . 'saml2/idp/SSOService.php'
         ));
     }
 
@@ -207,7 +207,7 @@ try {
 
     $metaxml = $metaBuilder->getEntityDescriptorText();
 
-    $metaflat = '$metadata['.var_export($idpentityid, true).'] = '.var_export($metaArray, true).';';
+    $metaflat = '$metadata[' . var_export($idpentityid, true) . '] = ' . var_export($metaArray, true) . ';';
 
     // sign the metadata if enabled
     $metaxml = \SimpleSAML\Metadata\Signer::sign($metaxml, $idpmeta->toArray(), 'SAML 2 IdP');

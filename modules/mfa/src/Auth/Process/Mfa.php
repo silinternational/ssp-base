@@ -36,15 +36,15 @@ class Mfa extends ProcessingFilter
     private string|null $employeeIdAttr = null;
     private string|null $idpDomainName = null;
     private string|null $mfaSetupUrl = null;
-    
+
     private string|null $idBrokerAccessToken = null;
     private bool $idBrokerAssertValidIp;
     private string|null $idBrokerBaseUri = null;
     private string|null $idBrokerClientClass = null;
     private array $idBrokerTrustedIpRanges = [];
-    
+
     protected LoggerInterface $logger;
-    
+
     protected string $loggerClass;
 
     /**
@@ -59,10 +59,10 @@ class Mfa extends ProcessingFilter
         parent::__construct($config, $reserved);
         $this->initComposerAutoloader();
         assert('is_array($config)');
-        
+
         $this->loggerClass = $config['loggerClass'] ?? Psr3SamlLogger::class;
         $this->logger = LoggerFactory::get($this->loggerClass);
-        
+
         $this->loadValuesFromConfig($config, [
             'mfaSetupUrl',
             'employeeIdAttr',
@@ -70,20 +70,20 @@ class Mfa extends ProcessingFilter
             'idBrokerBaseUri',
             'idpDomainName',
         ]);
-        
+
         $tempTrustedIpRanges = $config['idBrokerTrustedIpRanges'] ?? '';
-        if (! empty($tempTrustedIpRanges)) {
+        if (!empty($tempTrustedIpRanges)) {
             $this->idBrokerTrustedIpRanges = explode(',', $tempTrustedIpRanges);
         }
         $this->idBrokerAssertValidIp = (bool)($config['idBrokerAssertValidIp'] ?? true);
         $this->idBrokerClientClass = $config['idBrokerClientClass'] ?? IdBrokerClient::class;
     }
-    
+
     protected function loadValuesFromConfig(array $config, array $attributes): void
     {
         foreach ($attributes as $attribute) {
             $this->$attribute = $config[$attribute] ?? null;
-            
+
             self::validateConfigValue(
                 $attribute,
                 $this->$attribute,
@@ -91,7 +91,7 @@ class Mfa extends ProcessingFilter
             );
         }
     }
-    
+
     /**
      * Validate the given config value
      *
@@ -113,7 +113,7 @@ class Mfa extends ProcessingFilter
             throw $exception;
         }
     }
-    
+
     /**
      * Get the specified attribute from the given state data.
      *
@@ -128,14 +128,14 @@ class Mfa extends ProcessingFilter
     protected function getAttribute(string $attributeName, array $state): mixed
     {
         $attributeData = $state['Attributes'][$attributeName] ?? null;
-        
+
         if (is_array($attributeData)) {
             return $attributeData[0] ?? null;
         }
-        
+
         return $attributeData;
     }
-    
+
     /**
      * Get all of the values for the specified attribute from the given state
      * data.
@@ -151,10 +151,10 @@ class Mfa extends ProcessingFilter
     protected function getAttributeAllValues(string $attributeName, array $state): ?array
     {
         $attributeData = $state['Attributes'][$attributeName] ?? null;
-        
+
         return is_null($attributeData) ? null : (array)$attributeData;
     }
-    
+
     /**
      * Get an ID Broker client.
      *
@@ -168,7 +168,7 @@ class Mfa extends ProcessingFilter
         $accessToken = $idBrokerConfig['accessToken'];
         $trustedIpRanges = $idBrokerConfig['trustedIpRanges'];
         $assertValidIp = $idBrokerConfig['assertValidIp'];
-        
+
         return new $clientClass($baseUri, $accessToken, [
             'http_client_options' => [
                 'timeout' => 10,
@@ -192,13 +192,13 @@ class Mfa extends ProcessingFilter
         if (empty($mfaId)) {
             throw new \Exception('No MFA ID was provided.');
         }
-        
+
         foreach ($mfaOptions as $mfaOption) {
             if ((int)$mfaOption['id'] === (int)$mfaId) {
                 return $mfaOption;
             }
         }
-        
+
         throw new \Exception(
             'No MFA option has an ID of ' . var_export($mfaId, true)
         );
@@ -236,7 +236,7 @@ class Mfa extends ProcessingFilter
             }
             array_push($mfaTypePriority, 'totp', 'backupcode', 'webauthn');
         }
-        
+
         foreach ($mfaTypePriority as $mfaType) {
             foreach ($mfaOptions as $mfaOption) {
                 if ($mfaOption['type'] === $mfaType) {
@@ -267,7 +267,7 @@ class Mfa extends ProcessingFilter
         }
         return $recentMfa;
     }
-    
+
     /**
      * Get the number of backup codes that the user had left PRIOR to this login.
      *
@@ -283,10 +283,10 @@ class Mfa extends ProcessingFilter
                 $numBackupCodes += intval($mfaOption['data']['count'] ?? 0);
             }
         }
-        
+
         return $numBackupCodes;
     }
-    
+
     /**
      * Get the template identifier (string) to use for the specified MFA type.
      *
@@ -303,7 +303,7 @@ class Mfa extends ProcessingFilter
             'manager' => 'mfa:prompt-for-mfa-manager',
         ];
         $template = $mfaOptionTemplates[$mfaType] ?? null;
-        
+
         if ($template === null) {
             throw new \InvalidArgumentException(sprintf(
                 'No %s MFA template is available.',
@@ -324,7 +324,7 @@ class Mfa extends ProcessingFilter
     {
         if (array_key_exists('saml:RelayState', $state)) {
             $samlRelayState = $state['saml:RelayState'];
-            
+
             if (strpos($samlRelayState, "http://") === 0) {
                 return $samlRelayState;
             }
@@ -335,7 +335,7 @@ class Mfa extends ProcessingFilter
         }
         return '';
     }
-    
+
     /**
      * Get new Printable Backup Codes for the user, then redirect the user to a
      * page showing the user their new codes.
@@ -354,7 +354,7 @@ class Mfa extends ProcessingFilter
                 'backupcode'
             );
             $newBackupCodes = $newMfaRecord['data'];
-            
+
             $logger->warning(json_encode([
                 'event' => 'New backup codes result: succeeded',
                 'employeeId' => $state['employeeId'],
@@ -372,16 +372,16 @@ class Mfa extends ProcessingFilter
         $state['newBackupCodes'] = $newBackupCodes ?? null;
         $stateId = State::saveState($state, self::STAGE_SENT_TO_NEW_BACKUP_CODES_PAGE);
         $url = Module::getModuleURL('mfa/new-backup-codes.php');
-        
+
         $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, ['StateId' => $stateId]);
     }
-    
+
     protected static function hasMfaOptions(array $mfa): bool
     {
         return (count($mfa['options']) > 0);
     }
-    
+
     /**
      * See if the user has any MFA options other than the specified type.
      *
@@ -399,7 +399,7 @@ class Mfa extends ProcessingFilter
         }
         return false;
     }
-    
+
     protected function initComposerAutoloader(): void
     {
         $path = __DIR__ . '/../../../vendor/autoload.php';
@@ -407,12 +407,12 @@ class Mfa extends ProcessingFilter
             require_once $path;
         }
     }
-    
+
     protected static function isHeadedToMfaSetupUrl($state, $mfaSetupUrl)
     {
         if (array_key_exists('saml:RelayState', $state)) {
             $currentDestination = self::getRelayStateUrl($state);
-            if (! empty($currentDestination)) {
+            if (!empty($currentDestination)) {
                 return (strpos($currentDestination, $mfaSetupUrl) === 0);
             }
         }
@@ -437,15 +437,16 @@ class Mfa extends ProcessingFilter
      * @throws \Sil\PhpEnv\EnvVarNotFoundException
      */
     public static function validateMfaSubmission(
-        int $mfaId,
-        string $employeeId,
-        string|array $mfaSubmission,
-        array $state,
-        bool $rememberMe,
+        int             $mfaId,
+        string          $employeeId,
+        string|array    $mfaSubmission,
+        array           $state,
+        bool            $rememberMe,
         LoggerInterface $logger,
-        string $mfaType,
-        string $rpOrigin
-    ): string {
+        string          $mfaType,
+        string          $rpOrigin
+    ): string
+    {
         if (empty($mfaId)) {
             return 'No MFA ID was provided.';
         } elseif (empty($employeeId)) {
@@ -455,7 +456,7 @@ class Mfa extends ProcessingFilter
         } elseif (empty($rpOrigin)) {
             return 'No RP Origin was provided.';
         }
-        
+
         try {
             $idBrokerClient = self::getIdBrokerClient($state['idBrokerConfig']);
             $mfaDataFromBroker = $idBrokerClient->mfaVerify(
@@ -474,7 +475,7 @@ class Mfa extends ProcessingFilter
                             . 'codes can only be used once, please try a different code.';
                     }
                     return 'Incorrect 2-step verification code.';
-                } elseif ($t->httpStatusCode === 429){
+                } elseif ($t->httpStatusCode === 429) {
                     $logger->error(json_encode([
                         'event' => 'MFA is rate-limited',
                         'employeeId' => $employeeId,
@@ -488,7 +489,7 @@ class Mfa extends ProcessingFilter
                     return $message;
                 }
             }
-            
+
             $logger->critical($t->getCode() . ': ' . $t->getMessage());
             return $message;
         }
@@ -499,20 +500,20 @@ class Mfa extends ProcessingFilter
         if ($rememberMe) {
             self::setRememberMeCookies($state['employeeId'], $state['mfaOptions']);
         }
-        
+
         $logger->warning(json_encode([
             'event' => 'MFA validation result: success',
             'employeeId' => $employeeId,
             'mfaType' => $mfaType,
         ]));
-        
+
         // Handle situations where the user is running low on backup codes.
         if ($mfaType === 'backupcode') {
             $numBackupCodesUserHad = self::getNumBackupCodesUserHad(
                 $state['mfaOptions'] ?? []
             );
             $numBackupCodesRemaining = $numBackupCodesUserHad - 1;
-            
+
             if ($numBackupCodesRemaining <= 0) {
                 self::redirectToOutOfBackupCodesMessage($state, $employeeId);
                 throw new \Exception('Failed to send user to out-of-backup-codes page.');
@@ -539,7 +540,7 @@ class Mfa extends ProcessingFilter
         ProcessingChain::resumeProcessing($state);
         throw new \Exception('Failed to resume processing auth proc chain.');
     }
-    
+
     /**
      * Redirect the user to set up MFA.
      *
@@ -553,20 +554,20 @@ class Mfa extends ProcessingFilter
 
         // Tell the MFA-setup URL where the user is ultimately trying to go (if known).
         $currentDestination = self::getRelayStateUrl($state);
-        if (! empty($currentDestination)) {
+        if (!empty($currentDestination)) {
             $mfaSetupUrl = $httpUtils->addURLParameters(
                 $mfaSetupUrl,
                 ['returnTo' => $currentDestination]
             );
         }
-        
+
         $logger = LoggerFactory::getAccordingToState($state);
         $logger->warning(sprintf(
             'mfa: Sending Employee ID %s to set up MFA at %s',
             var_export($state['employeeId'] ?? null, true),
             var_export($mfaSetupUrl, true)
         ));
-        
+
         $httpUtils->redirectTrustedURL($mfaSetupUrl);
     }
 
@@ -594,7 +595,7 @@ class Mfa extends ProcessingFilter
 
         // Record to the state what logger class to use.
         $state['loggerClass'] = $this->loggerClass;
-        
+
         // Add to the state any config data we may need for the low-on/out-of
         // backup codes pages.
         $state['mfaSetupUrl'] = $this->mfaSetupUrl;
@@ -604,8 +605,8 @@ class Mfa extends ProcessingFilter
                 $this->redirectToMfaPrompt($state, $employeeId, $mfa['options']);
                 return;
             }
-            
-            if (! $isHeadedToMfaSetupUrl) {
+
+            if (!$isHeadedToMfaSetupUrl) {
                 $this->redirectToMfaNeededMessage($state, $employeeId, $this->mfaSetupUrl);
                 return;
             }
@@ -613,7 +614,7 @@ class Mfa extends ProcessingFilter
 
         unset($state['Attributes']['manager_email']);
     }
-    
+
     /**
      * Redirect the user to a page telling them they must set up MFA.
      *
@@ -624,19 +625,19 @@ class Mfa extends ProcessingFilter
     protected function redirectToMfaNeededMessage(array &$state, string $employeeId, string $mfaSetupUrl): void
     {
         assert('is_array($state)');
-        
+
         $this->logger->info(sprintf(
             'mfa: Redirecting Employee ID %s to must-set-up-MFA message.',
             var_export($employeeId, true)
         ));
-        
+
         /* Save state and redirect. */
         $state['employeeId'] = $employeeId;
         $state['mfaSetupUrl'] = $mfaSetupUrl;
-        
+
         $stateId = State::saveState($state, self::STAGE_SENT_TO_MFA_NEEDED_MESSAGE);
         $url = Module::getModuleURL('mfa/must-set-up-mfa.php');
-        
+
         $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, ['StateId' => $stateId]);
     }
@@ -652,9 +653,9 @@ class Mfa extends ProcessingFilter
     protected function redirectToMfaPrompt(array &$state, string $employeeId, array $mfaOptions): void
     {
         assert('is_array($state)');
-        
+
         /** @todo Check for valid remember-me cookies here rather doing a redirect first. */
-        
+
         $state['mfaOptions'] = $mfaOptions;
         $state['managerEmail'] = self::getManagerEmail($state);
         $state['idBrokerConfig'] = [
@@ -664,16 +665,16 @@ class Mfa extends ProcessingFilter
             'clientClass' => $this->idBrokerClientClass,
             'trustedIpRanges' => $this->idBrokerTrustedIpRanges,
         ];
-        
+
         $this->logger->info(sprintf(
             'mfa: Redirecting Employee ID %s to MFA prompt.',
             var_export($employeeId, true)
         ));
-        
+
         /* Save state and redirect. */
         $state['employeeId'] = $employeeId;
         $state['rpOrigin'] = 'https://' . $this->idpDomainName;
-        
+
         $id = State::saveState($state, self::STAGE_SENT_TO_MFA_PROMPT);
         $url = Module::getModuleURL('mfa/prompt-for-mfa.php');
         $userAgent = LoginBrowser::getUserAgent();
@@ -686,7 +687,7 @@ class Mfa extends ProcessingFilter
         ]));
 
         $mfaOption = self::getMfaOptionToUse($mfaOptions, $userAgent);
-        
+
         $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, [
             'mfaId' => $mfaOption['id'],
@@ -706,11 +707,12 @@ class Mfa extends ProcessingFilter
     public static function isRememberMeCookieValid(
         string $cookieHash,
         string $expireDate,
-        array $mfaOptions,
-        array $state
-    ): bool {
+        array  $mfaOptions,
+        array  $state
+    ): bool
+    {
         $rememberSecret = Env::requireEnv('REMEMBER_ME_SECRET');
-        if (! empty($cookieHash) && ! empty($expireDate) && is_numeric($expireDate)) {
+        if (!empty($cookieHash) && !empty($expireDate) && is_numeric($expireDate)) {
             // Check if value of expireDate is in future
             if ((int)$expireDate > time()) {
                 $expectedString = self::generateRememberMeCookieString($rememberSecret, $state['employeeId'], $expireDate, $mfaOptions);
@@ -732,9 +734,10 @@ class Mfa extends ProcessingFilter
     public static function generateRememberMeCookieString(
         string $rememberSecret,
         string $employeeId,
-        int $expireDate,
-        array $mfaOptions
-    ): string {
+        int    $expireDate,
+        array  $mfaOptions
+    ): string
+    {
         $allMfaIds = '';
         foreach ($mfaOptions as $opt) {
             if ($opt['type'] !== 'manager') {
@@ -745,7 +748,7 @@ class Mfa extends ProcessingFilter
         $string = $rememberSecret . $employeeId . $expireDate . $allMfaIds;
         return $string;
     }
-    
+
     /**
      * Redirect the user to a page telling them they are running low on backup
      * codes and encouraging them to create more now.
@@ -758,20 +761,21 @@ class Mfa extends ProcessingFilter
      *     user has left (now that they have used up one for this login).
      */
     protected static function redirectToLowOnBackupCodesNag(
-        array &$state,
+        array  &$state,
         string $employeeId,
-        int $numBackupCodesRemaining
-    ): void {
+        int    $numBackupCodesRemaining
+    ): void
+    {
         $state['employeeId'] = $employeeId;
         $state['numBackupCodesRemaining'] = (string)$numBackupCodesRemaining;
-        
+
         $stateId = State::saveState($state, self::STAGE_SENT_TO_LOW_ON_BACKUP_CODES_NAG);
         $url = Module::getModuleURL('mfa/low-on-backup-codes.php');
-        
+
         $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, ['StateId' => $stateId]);
     }
-    
+
     /**
      * Redirect the user to a page telling them they just used up their last
      * backup code.
@@ -784,10 +788,10 @@ class Mfa extends ProcessingFilter
     protected static function redirectToOutOfBackupCodesMessage(array &$state, string $employeeId): void
     {
         $state['employeeId'] = $employeeId;
-        
+
         $stateId = State::saveState($state, self::STAGE_SENT_TO_OUT_OF_BACKUP_CODES_MESSAGE);
         $url = Module::getModuleURL('mfa/out-of-backup-codes.php');
-        
+
         $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, ['StateId' => $stateId]);
     }
@@ -801,9 +805,10 @@ class Mfa extends ProcessingFilter
      */
     public static function setRememberMeCookies(
         string $employeeId,
-        array $mfaOptions,
+        array  $mfaOptions,
         string $rememberDuration = '+30 days'
-    ): void {
+    ): void
+    {
         $rememberSecret = Env::requireEnv('REMEMBER_ME_SECRET');
         $secureCookie = Env::get('SECURE_COOKIE', true);
         $expireDate = strtotime($rememberDuration);
@@ -812,7 +817,7 @@ class Mfa extends ProcessingFilter
         setcookie('c1', base64_encode($cookieHash), $expireDate, '/', null, $secureCookie, true);
         setcookie('c2', $expireDate, $expireDate, '/', null, $secureCookie, true);
     }
-    
+
     protected static function shouldPromptForMfa(array $mfa): bool
     {
         return (strtolower($mfa['prompt']) !== 'no');

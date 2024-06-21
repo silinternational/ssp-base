@@ -11,7 +11,7 @@ class Validator
     const INT = 'int';
     const NOT_EMPTY = 'not empty';
     const STRING = 'string';
-    
+
     /**
      * Validate the given value against the specified rules.
      *
@@ -23,21 +23,21 @@ class Validator
     public static function validate(mixed $value, array $rules, LoggerInterface $logger, string $attribute): void
     {
         foreach ($rules as $rule) {
-            if ( ! self::isValid($value, $rule, $logger)) {
-                
+            if (!self::isValid($value, $rule, $logger)) {
+
                 $exception = new Exception(sprintf(
                     'The value we have for %s (%s) does not meet the following validation rule: %s.',
                     $attribute,
                     var_export($value, true),
                     $rule
                 ), 1496867717);
-                
+
                 $logger->critical($exception->getMessage());
                 throw $exception;
             }
         }
     }
-    
+
     /**
      * See if the given value satisfies the specified rule.
      *
@@ -52,19 +52,19 @@ class Validator
         switch ($rule) {
             case self::INT:
                 return is_int($value);
-                
+
             case self::NOT_EMPTY:
                 return !empty($value);
-                
+
             case self::STRING:
                 return is_string($value);
-                
+
             default:
                 $exception = new InvalidArgumentException(sprintf(
                     'Unknown validation rule: %s',
                     var_export($rule, true)
                 ), 1496866914);
-                
+
                 $logger->critical($exception->getMessage());
                 throw $exception;
         }

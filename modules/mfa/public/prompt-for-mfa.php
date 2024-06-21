@@ -98,13 +98,13 @@ if (filter_has_var(INPUT_POST, 'submitMfa')) {
 
 $globalConfig = Configuration::getInstance();
 
-$otherOptions = array_filter($mfaOptions, function($option) use ($mfaId) {
+$otherOptions = array_filter($mfaOptions, function ($option) use ($mfaId) {
     return $option['id'] != $mfaId;
 });
-if (! empty($state['managerEmail'])) {
+if (!empty($state['managerEmail'])) {
     $otherOptions[] = [
         'type' => 'manager',
-        'callback' => '/module.php/mfa/send-manager-mfa.php?StateId='.htmlentities($stateId)
+        'callback' => '/module.php/mfa/send-manager-mfa.php?StateId=' . htmlentities($stateId)
     ];
 }
 foreach ($otherOptions as &$option) {

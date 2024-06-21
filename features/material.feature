@@ -2,14 +2,14 @@ Feature: Material theme
 
   Scenario: Hub (disco) page
     When I go to the Hub's discovery page
-      And I log in as a hub administrator
+    And I log in as a hub administrator
     Then I should see our material theme
 
   Scenario: Error page
     When I go to the Hub but specify an invalid authentication source
-      And I log in as a hub administrator
+    And I log in as a hub administrator
     Then I should see an "Error" page
-      And I should see our material theme
+    And I should see our material theme
 
     # TODO: if this is really used, fix it. If not, delete the test, the template, and the translation file.
 #  Scenario: Logout page

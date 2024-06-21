@@ -1,4 +1,5 @@
 <?php
+
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ElementNotFoundException;
@@ -36,7 +37,7 @@ class MfaContext extends FeatureContext
             $page->getHtml()
         ));
     }
-    
+
     /**
      * Get the "continue" button.
      *
@@ -94,8 +95,8 @@ class MfaContext extends FeatureContext
         $submitMfaButton->click();
         $this->submitSecondarySspFormIfPresent($page);
     }
-    
-        /**
+
+    /**
      * @Given I provide credentials that do not need MFA
      */
     public function iProvideCredentialsThatDoNotNeedMfa()
@@ -104,7 +105,7 @@ class MfaContext extends FeatureContext
         $this->username = 'no_mfa_needed';
         $this->password = 'a';
     }
-    
+
     /**
      * @Given I provide credentials that need MFA but have no MFA options available
      */
@@ -114,7 +115,7 @@ class MfaContext extends FeatureContext
         $this->username = 'must_set_up_mfa';
         $this->password = 'a';
     }
-    
+
     /**
      * @Then I should see a message that I have to set up MFA
      */
@@ -123,7 +124,7 @@ class MfaContext extends FeatureContext
         $page = $this->session->getPage();
         Assert::assertContains('must set up 2-', $page->getHtml());
     }
-    
+
     /**
      * @Then there should be a way to go set up MFA now
      */
@@ -132,7 +133,7 @@ class MfaContext extends FeatureContext
         $page = $this->session->getPage();
         $this->assertFormContains('name="setUpMfa"', $page);
     }
-    
+
     /**
      * @Given I provide credentials that need MFA and have backup codes available
      */
@@ -142,7 +143,7 @@ class MfaContext extends FeatureContext
         $this->username = 'has_backupcode';
         $this->password = 'a';
     }
-    
+
     /**
      * @Then I should see a prompt for a backup code
      */
@@ -153,7 +154,7 @@ class MfaContext extends FeatureContext
         Assert::assertContains('Printable code', $pageHtml);
         Assert::assertContains('Enter code', $pageHtml);
     }
-    
+
     /**
      * @Given I provide credentials that need MFA and have TOTP available
      */
@@ -163,7 +164,7 @@ class MfaContext extends FeatureContext
         $this->username = 'has_totp';
         $this->password = 'a';
     }
-    
+
     /**
      * @Then I should see a prompt for a TOTP (code)
      */
@@ -207,14 +208,14 @@ class MfaContext extends FeatureContext
      */
     public function iSubmitACorrectBackupCode()
     {
-        if (! $this->pageContainsElementWithText('h1', 'Printable code')) {
+        if (!$this->pageContainsElementWithText('h1', 'Printable code')) {
             // find image of the backup code option presented in other_mfas.twig
             $printableCodeOption = $this->session->getPage()->find('css', 'img[src=mfa-backupcode\002Esvg]');
             $printableCodeOption->click();
         }
         $this->submitMfaValue(FakeIdBrokerClient::CORRECT_VALUE);
     }
-    
+
     protected function pageContainsElementWithText($cssSelector, $text)
     {
         $page = $this->session->getPage();
@@ -442,7 +443,7 @@ class MfaContext extends FeatureContext
             LoginBrowser::supportsWebAuthn($userAgentWithWebAuthn),
             'Update USER_AGENT_WITH_WEBAUTHN_SUPPORT to a User Agent with WebAuthn support'
         );
-        
+
 //        $this->driver->getClient()->setServerParameter('HTTP_USER_AGENT', $userAgentWithWebAuthn);
     }
 
@@ -576,7 +577,7 @@ class MfaContext extends FeatureContext
             LoginBrowser::supportsWebAuthn($userAgentWithoutWebAuthn),
             'Update USER_AGENT_WITHOUT_WEBAUTHN_SUPPORT to a User Agent without WebAuthn support'
         );
-        
+
 //        $this->driver->getClient()->setServerParameter('HTTP_USER_AGENT', $userAgentWithoutWebAuthn);
     }
 

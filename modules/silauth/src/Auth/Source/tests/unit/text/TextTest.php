@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\tests\unit\text;
 
 use SimpleSAML\Module\silauth\Auth\Source\text\Text;
@@ -26,10 +27,10 @@ class TextTest extends TestCase
             ['input' => 'with `backticks`', 'expected' => 'with backticks'],
         ];
         foreach ($testCases as $testCase) {
-            
+
             // Act:
             $actual = Text::sanitizeString($testCase['input']);
-            
+
             // Assert:
             $this->assertSame($testCase['expected'], $actual, sprintf(
                 'Expected sanitizing %s to result in %s, not %s.',

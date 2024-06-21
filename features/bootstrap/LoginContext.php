@@ -18,6 +18,7 @@ use SimpleSAML\Module\silauth\Auth\Source\tests\unit\captcha\DummySuccessfulCapt
 use SimpleSAML\Module\silauth\Auth\Source\tests\unit\http\DummyRequest;
 use SimpleSAML\Module\silauth\Auth\Source\time\UtcTime;
 use Webmozart\Assert\Assert;
+
 //use yii\helpers\ArrayHelper;
 
 /**
@@ -33,13 +34,13 @@ class LoginContext extends FeatureContext
 
     /** @var Captcha */
     private $captcha;
-    
+
     /** @var IdBroker */
     private $idBroker;
-    
+
     /** @var Request */
     private $request;
-    
+
     /**
      * Initializes context.
      *
@@ -58,9 +59,9 @@ class LoginContext extends FeatureContext
             'username' => Env::get('MYSQL_USER'),
             'password' => Env::get('MYSQL_PASSWORD'),
         ]]]);
-        
+
         $this->logger = new Psr3EchoLogger();
-        
+
         $this->captcha = new Captcha();
         $this->idBroker = new IdBroker(
             'http://fake.example.com/api/',
@@ -71,25 +72,25 @@ class LoginContext extends FeatureContext
             false
         );
         $this->request = new Request();
-        
+
         $this->resetDatabase();
     }
-    
+
     protected function addXFailedLoginUsernames(int $number, $username)
     {
         Assert::notEmpty($username);
-        
+
         for ($i = 0; $i < $number; $i++) {
             $newRecord = new FailedLoginUsername(['username' => $username]);
             Assert::true($newRecord->save());
         }
-        
+
         Assert::count(
             FailedLoginUsername::getFailedLoginsFor($username),
             $number
         );
     }
-    
+
     protected function login()
     {
         $this->authenticator = new Authenticator(
@@ -101,20 +102,20 @@ class LoginContext extends FeatureContext
             $this->logger
         );
     }
-    
+
     protected function loginXTimes($numberOfTimes)
     {
         for ($i = 0; $i < $numberOfTimes; $i++) {
             $this->login();
-        }   
+        }
     }
-    
+
     protected function resetDatabase()
     {
         FailedLoginIpAddress::deleteAll();
         FailedLoginUsername::deleteAll();
     }
-    
+
     /**
      * @Given I provide a username
      */
@@ -149,7 +150,7 @@ class LoginContext extends FeatureContext
         );
         $authenticator = $this->authenticator;
         Assert::throws(
-            function() use ($authenticator) {
+            function () use ($authenticator) {
                 $authenticator->getUserAttributes();
             },
             \Exception::class,
@@ -234,7 +235,7 @@ class LoginContext extends FeatureContext
     public function thatUsernameWillBeRateLimitedAfterOneMoreFailedAttempt()
     {
         FailedLoginUsername::resetFailedLoginsBy($this->username);
-        
+
         $this->addXFailedLoginUsernames(
             Authenticator::BLOCK_AFTER_NTH_FAILED_LOGIN - 1,
             $this->username
@@ -291,9 +292,9 @@ class LoginContext extends FeatureContext
     public function thatUsernameHasMoreRecentFailedLoginsThanTheLimit($number)
     {
         Assert::true(is_numeric($number));
-        
+
         FailedLoginUsername::resetFailedLoginsBy($this->username);
-        
+
         $this->addXFailedLoginUsernames(
             $number + Authenticator::BLOCK_AFTER_NTH_FAILED_LOGIN,
             $this->username
@@ -318,13 +319,13 @@ class LoginContext extends FeatureContext
     public function thatUsernameHasEnoughFailedLoginsToRequireACaptcha()
     {
         FailedLoginUsername::resetFailedLoginsBy($this->username);
-        
+
         $this->addXFailedLoginUsernames(
             Authenticator::REQUIRE_CAPTCHA_AFTER_NTH_FAILED_LOGIN,
             $this->username
         );
     }
-    
+
     /**
      * @Given that username has no recent failed login attempts
      */
@@ -354,10 +355,10 @@ class LoginContext extends FeatureContext
      */
     public function myRequestComesFromIpAddress($ipAddress)
     {
-        if ( ! $this->request instanceof DummyRequest) {
+        if (!$this->request instanceof DummyRequest) {
             $this->request = new DummyRequest();
         }
-        
+
         $this->request->setDummyIpAddress($ipAddress);
     }
 
@@ -369,7 +370,7 @@ class LoginContext extends FeatureContext
         $ipAddresses = $this->request->getUntrustedIpAddresses();
         Assert::count($ipAddresses, 1);
         $ipAddress = $ipAddresses[0];
-        
+
         Assert::true(
             FailedLoginIpAddress::isRateLimitBlocking($ipAddress)
         );
@@ -407,16 +408,16 @@ class LoginContext extends FeatureContext
         Assert::notNull($ipAddress, 'No IP address was provided.');
         FailedLoginIpAddress::deleteAll();
         Assert::isEmpty(FailedLoginIpAddress::getFailedLoginsFor($ipAddress));
-        
+
         $desiredCount = Authenticator::REQUIRE_CAPTCHA_AFTER_NTH_FAILED_LOGIN;
-        
+
         for ($i = 0; $i < $desiredCount; $i++) {
             $failedLoginIpAddress = new FailedLoginIpAddress([
                 'ip_address' => $ipAddress,
             ]);
             Assert::true($failedLoginIpAddress->save());
         }
-        
+
         Assert::eq(
             Authenticator::REQUIRE_CAPTCHA_AFTER_NTH_FAILED_LOGIN,
             FailedLoginIpAddress::countRecentFailedLoginsFor($ipAddress)
@@ -429,7 +430,7 @@ class LoginContext extends FeatureContext
     public function thatUsernameHasEnoughFailedLoginsToBeBlockedByTheRateLimit()
     {
         FailedLoginUsername::resetFailedLoginsBy($this->username);
-        
+
         $this->addXFailedLoginUsernames(
             Authenticator::BLOCK_AFTER_NTH_FAILED_LOGIN,
             $this->username
@@ -444,19 +445,19 @@ class LoginContext extends FeatureContext
         $ipAddresses = $this->request->getUntrustedIpAddresses();
         Assert::count($ipAddresses, 1);
         $ipAddress = $ipAddresses[0];
-        
+
         FailedLoginIpAddress::deleteAll();
         Assert::isEmpty(FailedLoginIpAddress::getFailedLoginsFor($ipAddress));
-        
+
         $desiredCount = Authenticator::BLOCK_AFTER_NTH_FAILED_LOGIN;
-        
+
         for ($i = 0; $i < $desiredCount; $i++) {
             $failedLoginIpAddress = new FailedLoginIpAddress([
                 'ip_address' => $ipAddress,
             ]);
             Assert::true($failedLoginIpAddress->save());
         }
-        
+
         Assert::true(
             FailedLoginIpAddress::isRateLimitBlocking($ipAddress)
         );
@@ -477,28 +478,28 @@ class LoginContext extends FeatureContext
     {
         Assert::notEmpty($this->username);
         Assert::true(is_numeric($number));
-        
+
         $desiredNumber = $number + Authenticator::BLOCK_AFTER_NTH_FAILED_LOGIN;
-        
+
         $numTotalFailures = count(FailedLoginUsername::getFailedLoginsFor($this->username));
         $numRecentFailures = FailedLoginUsername::countRecentFailedLoginsFor($this->username);
         $numNonRecentFailures = $numTotalFailures - $numRecentFailures;
-        
+
         for ($i = $numNonRecentFailures; $i < $desiredNumber; $i++) {
             $failedLoginUsername = new FailedLoginUsername([
                 'username' => $this->username,
-                
+
                 // NOTE: Use some time (UTC) longer ago than we consider "recent".
                 'occurred_at_utc' => new UtcTime('-1 month'),
             ]);
             // NOTE: Don't validate, as that would overwrite the datetime field.
             Assert::true($failedLoginUsername->save(false));
         }
-        
+
         $numTotalFailuresPost = count(FailedLoginUsername::getFailedLoginsFor($this->username));
         $numRecentFailuresPost = FailedLoginUsername::countRecentFailedLoginsFor($this->username);
         $numNonRecentFailuresPost = $numTotalFailuresPost - $numRecentFailuresPost;
-        
+
         Assert::eq($desiredNumber, $numNonRecentFailuresPost);
     }
 
@@ -574,15 +575,16 @@ class LoginContext extends FeatureContext
     public function secondsAgoThatUsernameHadMoreFailedLoginsThanTheLimit(
         $numSeconds,
         $numFailuresBeyondLimit
-    ) {
+    )
+    {
         Assert::notEmpty($this->username);
         Assert::true(is_numeric($numSeconds));
         Assert::true(is_numeric($numFailuresBeyondLimit));
-        
+
         FailedLoginUsername::resetFailedLoginsBy($this->username);
-        
+
         $numDesiredFailuresTotal = $numFailuresBeyondLimit + Authenticator::BLOCK_AFTER_NTH_FAILED_LOGIN;
-        
+
         for ($i = 0; $i < $numDesiredFailuresTotal; $i++) {
             $failedLoginUsername = new FailedLoginUsername([
                 'username' => $this->username,
@@ -594,9 +596,9 @@ class LoginContext extends FeatureContext
             // NOTE: Don't validate, as that would overwrite the datetime field.
             Assert::true($failedLoginUsername->save(false));
         }
-        
+
         $numTotalFailuresPost = count(FailedLoginUsername::getFailedLoginsFor($this->username));
-        
+
         Assert::eq($numDesiredFailuresTotal, $numTotalFailuresPost);
     }
 
@@ -607,15 +609,16 @@ class LoginContext extends FeatureContext
         $numSeconds,
         $ipAddress,
         $numFailuresBeyondLimit
-    ) {
+    )
+    {
         Assert::notEmpty($ipAddress);
         Assert::true(is_numeric($numSeconds));
         Assert::true(is_numeric($numFailuresBeyondLimit));
-        
+
         FailedLoginIpAddress::resetFailedLoginsBy([$ipAddress]);
-        
+
         $numDesiredFailuresTotal = $numFailuresBeyondLimit + Authenticator::BLOCK_AFTER_NTH_FAILED_LOGIN;
-        
+
         for ($i = 0; $i < $numDesiredFailuresTotal; $i++) {
             $failedLoginIpAddress = new FailedLoginIpAddress([
                 'ip_address' => $ipAddress,
@@ -627,9 +630,9 @@ class LoginContext extends FeatureContext
             // NOTE: Don't validate, as that would overwrite the datetime field.
             Assert::true($failedLoginIpAddress->save(false));
         }
-        
+
         $numTotalFailuresPost = count(FailedLoginIpAddress::getFailedLoginsFor($ipAddress));
-        
+
         Assert::eq($numDesiredFailuresTotal, $numTotalFailuresPost);
     }
 }

@@ -13,7 +13,7 @@ class M170214145629RemoveOldTables extends Migration
             '{{previous_password}}'
         );
         $this->dropTable('{{previous_password}}');
-        
+
         $this->dropIndex('uq_user_uuid', '{{user}}');
         $this->dropIndex('uq_user_employee_id', '{{user}}');
         $this->dropIndex('uq_user_username', '{{user}}');

@@ -1,4 +1,5 @@
 <?php
+
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Session;

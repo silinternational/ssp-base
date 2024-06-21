@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\mfa;
 
 use Sinergi\BrowserDetector\Browser;
@@ -17,13 +18,13 @@ class LoginBrowser
     {
         return filter_input(INPUT_SERVER, 'HTTP_USER_AGENT') ?: null;
     }
-    
+
     // TODO: Replace this with client-side feature detection.
     public static function supportsWebAuthn(string $userAgent): bool
     {
         $browser = new Browser($userAgent);
         $browserName = $browser->getName();
-        
+
         // For now, simply set these to approximate the results shown on caniuse:
         // https://caniuse.com/?search=webauthn
         return in_array(

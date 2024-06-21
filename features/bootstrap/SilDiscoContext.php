@@ -1,4 +1,5 @@
 <?php
+
 use PHPUnit\Framework\Assert;
 
 class SilDiscoContext extends FeatureContext

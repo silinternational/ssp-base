@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\http;
 
 use IP;
@@ -127,7 +128,7 @@ class Request
     {
         $untrustedIpAddresses = [];
         foreach ($this->getIpAddresses() as $ipAddress) {
-            if ( ! $this->isTrustedIpAddress($ipAddress)) {
+            if (!$this->isTrustedIpAddress($ipAddress)) {
                 $untrustedIpAddresses[] = $ipAddress;
             }
         }
@@ -195,7 +196,7 @@ class Request
 
     public function trustIpAddress(string $ipAddress): void
     {
-        if ( ! self::isValidIpAddress($ipAddress)) {
+        if (!self::isValidIpAddress($ipAddress)) {
             throw new \InvalidArgumentException(sprintf(
                 '%s is not a valid IP address.',
                 var_export($ipAddress, true)

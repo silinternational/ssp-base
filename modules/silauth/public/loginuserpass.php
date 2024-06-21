@@ -20,7 +20,7 @@ use SimpleSAML\XHTML\Template;
  */
 
 // Retrieve the authentication state
-if ( ! array_key_exists('AuthState', $_REQUEST)) {
+if (!array_key_exists('AuthState', $_REQUEST)) {
     throw new BadRequest('Missing AuthState parameter.');
 }
 $authStateId = $_REQUEST['AuthState'];
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
 
         $logger = new Psr3StdOutLogger();
-        $csrfFromRequest = Request::sanitizeInputString(INPUT_POST, 'csrf-token'); 
+        $csrfFromRequest = Request::sanitizeInputString(INPUT_POST, 'csrf-token');
         if ($csrfProtector->isTokenCorrect($csrfFromRequest)) {
 
             $username = Request::sanitizeInputString(INPUT_POST, 'username');

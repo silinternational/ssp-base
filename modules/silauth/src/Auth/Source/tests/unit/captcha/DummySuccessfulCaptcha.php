@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\tests\unit\captcha;
 
 use SimpleSAML\Module\silauth\Auth\Source\captcha\Captcha;

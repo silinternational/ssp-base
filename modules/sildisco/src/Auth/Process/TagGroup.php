@@ -8,26 +8,27 @@ use Sil\SspUtils\Metadata;
  * Attribute filter for prefixing group names
  *
  */
-class TagGroup extends \SimpleSAML\Auth\ProcessingFilter {
+class TagGroup extends \SimpleSAML\Auth\ProcessingFilter
+{
 
     const IDP_NAME_KEY = 'name'; // the metadata key for the IDP's name
 
     // the metadata key for the IDP's Namespace code (i.e. short name to be prefixed to groups)
-    const IDP_CODE_KEY = 'IDPNamespace'; 
+    const IDP_CODE_KEY = 'IDPNamespace';
 
-    
+
     public function prependIdp2Groups(array $attributes, string $attributeLabel, string $idpLabel): array
     {
         $newGroups = [];
         $delimiter = '|';
 
-        foreach($attributes[$attributeLabel] as $group) {
+        foreach ($attributes[$attributeLabel] as $group) {
             $newGroups[] = "idp" . $delimiter . $idpLabel . $delimiter . $group;
         }
         return $newGroups;
     }
-        
-    
+
+
     /**
      * Apply filter to copy attributes.
      *
@@ -57,7 +58,7 @@ class TagGroup extends \SimpleSAML\Auth\ProcessingFilter {
         }
 
         $idpEntries = \Sil\SspUtils\Metadata::getIdpMetadataEntries($metadataPath);
-        
+
         $samlIDP = $state["saml:sp:IdP"];
 
         $idpEntry = $idpEntries[$samlIDP];
@@ -68,19 +69,19 @@ class TagGroup extends \SimpleSAML\Auth\ProcessingFilter {
          * use the IDP's entity id.
          */
         if (isset($idpEntry[self::IDP_CODE_KEY]) &&
-                is_string($idpEntry[self::IDP_CODE_KEY])) {
+            is_string($idpEntry[self::IDP_CODE_KEY])) {
             $idpLabel = $idpEntry[self::IDP_CODE_KEY];
         } else if (isset($idpEntry[self::IDP_NAME_KEY]) &&
-                is_string($idpEntry[self::IDP_NAME_KEY])) {
+            is_string($idpEntry[self::IDP_NAME_KEY])) {
             $idpLabel = $idpEntry[self::IDP_NAME_KEY];
         } else {
             $idpLabel = $samlIDP;
         }
 
         $idpLabel = str_replace(' ', '_', $idpLabel);
-        
+
         foreach ([$oid4member, $member] as $nextAttribute) {
-            if ( ! empty($attributes[$nextAttribute])) {
+            if (!empty($attributes[$nextAttribute])) {
                 $attributes[$nextAttribute] = self::prependIdp2Groups(
                     $attributes,
                     $nextAttribute,

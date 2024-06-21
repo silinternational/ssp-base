@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\tests\unit\models;
 
 use Sil\Psr3Adapters\Psr3EchoLogger;
@@ -17,7 +18,7 @@ class FailedLoginIpAddressTest extends TestCase
             $this->assertTrue($model->insert(false));
         }
     }
-    
+
     public function testCountRecentFailedLoginsFor()
     {
         // Arrange:
@@ -33,7 +34,7 @@ class FailedLoginIpAddressTest extends TestCase
             'occurred_at_utc' => UtcTime::format(), // Now (thus, recent).
         ]];
         $this->setDbFixture($fixtures);
-        
+
         // Pre-assert:
         $this->assertCount(
             count($fixtures),
@@ -46,7 +47,7 @@ class FailedLoginIpAddressTest extends TestCase
         // Assert:
         $this->assertEquals(2, $result);
     }
-    
+
     public function testGetMostRecentFailedLoginFor()
     {
         // Arrange:
@@ -63,14 +64,14 @@ class FailedLoginIpAddressTest extends TestCase
             'occurred_at_utc' => UtcTime::format('-59 minutes'),
         ]];
         $this->setDbFixture($fixtures);
-        
+
         // Act:
         $fliaRecord = FailedLoginIpAddress::getMostRecentFailedLoginFor($ipAddress);
 
         // Assert:
         $this->assertSame($nowDateTimeString, $fliaRecord->occurred_at_utc);
     }
-    
+
     public function testIsCaptchaRequiredFor()
     {
         // Arrange:
@@ -102,7 +103,7 @@ class FailedLoginIpAddressTest extends TestCase
             $this->assertSame($testCase['expected'], $actual);
         }
     }
-    
+
     public function testIsRateLimitBlocking()
     {
         // Arrange:
@@ -134,7 +135,7 @@ class FailedLoginIpAddressTest extends TestCase
             $this->assertSame($testCase['expected'], $actual);
         }
     }
-    
+
     public function testRecordFailedLoginBy()
     {
         // Arrange:
@@ -146,23 +147,23 @@ class FailedLoginIpAddressTest extends TestCase
         $logger = new Psr3EchoLogger();
         $expectedPre = count($dbFixture);
         $expectedPost = $expectedPre + 1;
-        
+
         // Pre-assert:
         $this->assertCount(
             $expectedPre,
             FailedLoginIpAddress::getFailedLoginsFor($ipAddress)
         );
-        
+
         // Act:
         FailedLoginIpAddress::recordFailedLoginBy([$ipAddress], $logger);
-        
+
         // Assert:
         $this->assertCount(
             $expectedPost,
             FailedLoginIpAddress::getFailedLoginsFor($ipAddress)
         );
     }
-    
+
     public function testResetFailedLoginsBy()
     {
         // Arrange:
@@ -174,14 +175,14 @@ class FailedLoginIpAddressTest extends TestCase
             [$ipAddress, $otherIpAddress],
             $logger
         );
-        
+
         // Pre-assert:
         $this->assertCount(1, FailedLoginIpAddress::getFailedLoginsFor($ipAddress));
         $this->assertCount(1, FailedLoginIpAddress::getFailedLoginsFor($otherIpAddress));
-        
+
         // Act:
         FailedLoginIpAddress::resetFailedLoginsBy([$ipAddress]);
-        
+
         // Assert:
         $this->assertCount(0, FailedLoginIpAddress::getFailedLoginsFor($ipAddress));
         $this->assertCount(1, FailedLoginIpAddress::getFailedLoginsFor($otherIpAddress));

@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\traits;
 
 use Psr\Log\LoggerInterface;
@@ -8,14 +9,14 @@ trait LoggerAwareTrait
 {
     /** @var LoggerInterface */
     protected LoggerInterface $logger;
-    
+
     public function initializeLogger(): void
     {
         if (empty($this->logger)) {
             $this->logger = new NullLogger();
         }
     }
-    
+
     /**
      * Set a logger for this class instance to use.
      *

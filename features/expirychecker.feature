@@ -1,7 +1,8 @@
 Feature: Expiry Checker module
+
   Background:
     Given I go to the SP1 login page
-      And I click on the "IDP 1" tile
+    And I click on the "IDP 1" tile
 
   Scenario: Password will expire in the distant future
     Given I provide credentials that will expire in the distant future

@@ -53,7 +53,8 @@ class FeatureContext extends MinkContext
     /**
      * Store a screenshot.
      */
-    private function takeScreenshot() {
+    private function takeScreenshot()
+    {
         $screenshot = $this->getSession()->getDriver()->getScreenshot();
         if (!is_dir(self::SCREENSHOTS_PATH)) {
             mkdir(self::SCREENSHOTS_PATH);

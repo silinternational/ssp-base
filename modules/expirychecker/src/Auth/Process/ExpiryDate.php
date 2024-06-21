@@ -24,7 +24,7 @@ class ExpiryDate extends ProcessingFilter
 {
     const HAS_SEEN_SPLASH_PAGE = 'has_seen_splash_page';
     const SESSION_TYPE = 'expirychecker';
-    
+
     private int $warnDaysBefore = 14;
     private string $originalUrlParam = 'originalurl';
     private string|null $passwordChangeUrl = null;
@@ -32,23 +32,23 @@ class ExpiryDate extends ProcessingFilter
     private string $employeeIdAttr = 'employeeNumber';
     private string|null $expiryDateAttr = null;
     private string $dateFormat = 'Y-m-d';
-    
+
     protected LoggerInterface $logger;
-    
+
     /**
      * Initialize this filter.
      *
-     * @param array $config  Configuration information about this filter.
-     * @param mixed $reserved  For future use.
+     * @param array $config Configuration information about this filter.
+     * @param mixed $reserved For future use.
      */
     public function __construct(array $config, mixed $reserved)
     {
         parent::__construct($config, $reserved);
 
         assert('is_array($config)');
-        
+
         $this->initLogger($config);
-        
+
         $this->loadValuesFromConfig($config, [
             'warnDaysBefore' => [
                 Validator::INT,
@@ -75,18 +75,18 @@ class ExpiryDate extends ProcessingFilter
             ],
         ]);
     }
-    
+
     protected function loadValuesFromConfig(array $config, array $attributeRules): void
     {
         foreach ($attributeRules as $attribute => $rules) {
             if (array_key_exists($attribute, $config)) {
                 $this->$attribute = $config[$attribute];
             }
-            
+
             Validator::validate($this->$attribute, $rules, $this->logger, $attribute);
         }
     }
-    
+
     /**
      * Get the specified attribute from the given state data.
      *
@@ -101,14 +101,14 @@ class ExpiryDate extends ProcessingFilter
     protected function getAttribute(string $attributeName, array $state): mixed
     {
         $attributeData = $state['Attributes'][$attributeName] ?? null;
-        
+
         if (is_array($attributeData)) {
             return $attributeData[0] ?? null;
         }
-        
+
         return $attributeData;
     }
-    
+
     /**
      * Calculate how many days remain between now and when the password will
      * expire.
@@ -121,9 +121,9 @@ class ExpiryDate extends ProcessingFilter
     {
         $now = time();
         $end = $expiryTimestamp;
-        return round(($end - $now) / (24*60*60));
+        return round(($end - $now) / (24 * 60 * 60));
     }
-    
+
     /**
      * Get the timestamp for when the user's password will expire, throwing an
      * exception if unable to do so.
@@ -137,7 +137,7 @@ class ExpiryDate extends ProcessingFilter
     protected function getExpiryTimestamp(string $expiryDateAttr, array $state): int
     {
         $expiryDateString = $this->getAttribute($expiryDateAttr, $state);
-        
+
         // Ensure that EVERY user login provides a usable password expiration date.
         $expiryTimestamp = strtotime($expiryDateString) ?: null;
         if (empty($expiryTimestamp)) {
@@ -151,7 +151,7 @@ class ExpiryDate extends ProcessingFilter
         }
         return $expiryTimestamp;
     }
-    
+
     public static function hasSeenSplashPageRecently(): bool
     {
         $session = Session::getSessionFromRequest();
@@ -160,7 +160,7 @@ class ExpiryDate extends ProcessingFilter
             self::HAS_SEEN_SPLASH_PAGE
         );
     }
-    
+
     public static function skipSplashPagesFor(int $seconds): void
     {
         $session = Session::getSessionFromRequest();
@@ -177,7 +177,7 @@ class ExpiryDate extends ProcessingFilter
     {
         $loggerClass = $config['loggerClass'] ?? Psr3SamlLogger::class;
         $this->logger = new $loggerClass();
-        if (! $this->logger instanceof LoggerInterface) {
+        if (!$this->logger instanceof LoggerInterface) {
             throw new \Exception(sprintf(
                 'The specified loggerClass (%s) does not implement '
                 . '\\Psr\\Log\\LoggerInterface.',
@@ -185,7 +185,7 @@ class ExpiryDate extends ProcessingFilter
             ), 1496928725);
         }
     }
-    
+
     /**
      * See if the given timestamp is in the past.
      *
@@ -196,7 +196,7 @@ class ExpiryDate extends ProcessingFilter
     {
         return ($timestamp < time());
     }
-    
+
     /**
      * Check whether the user's password has expired.
      *
@@ -208,7 +208,7 @@ class ExpiryDate extends ProcessingFilter
     {
         return $this->isDateInPast($expiryTimestamp);
     }
-    
+
     /**
      * Check whether it's time to warn the user that they will need to change
      * their password soon.
@@ -253,7 +253,7 @@ class ExpiryDate extends ProcessingFilter
 
         $session = Session::getSessionFromRequest();
         $idpExpirySession = $session->getData($sessionType, $change_pwd_session);
-        
+
         // If the session shows that the User already passed this way,
         //  don't redirect to change password page
         if ($idpExpirySession !== null) {
@@ -269,8 +269,8 @@ class ExpiryDate extends ProcessingFilter
             );
             $session->save();
         }
-        
-        
+
+
         /* If state already has the change password url, go straight there to
          * avoid eternal loop between that and the idp. Otherwise add the
          * original destination url as a parameter.  */
@@ -282,7 +282,7 @@ class ExpiryDate extends ProcessingFilter
                 $returnTo = Utilities::getUrlFromRelayState(
                     $relayState
                 );
-                if (! empty($returnTo)) {
+                if (!empty($returnTo)) {
                     $passwordChangeUrl .= '?returnTo=' . $returnTo;
                 }
             }
@@ -297,14 +297,14 @@ class ExpiryDate extends ProcessingFilter
         $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($passwordChangeUrl, array());
     }
-    
+
     /**
      * @inheritDoc
      */
     public function process(array &$state): void
     {
         $employeeId = $this->getAttribute($this->employeeIdAttr, $state);
-        
+
         /* If the user has already seen a splash page from this AuthProc
          * recently, simply let them pass on through (so they can get into the
          * change-password website, for example).  */
@@ -315,11 +315,11 @@ class ExpiryDate extends ProcessingFilter
             ]));
             return;
         }
-        
+
         // Get the necessary info from the state data.
         $accountName = $this->getAttribute($this->accountNameAttr, $state);
         $expiryTimestamp = $this->getExpiryTimestamp($this->expiryDateAttr, $state);
-        
+
         $this->logger->warning(json_encode([
             'event' => 'expirychecker: will check expiration date',
             'employeeId' => $employeeId,
@@ -327,22 +327,22 @@ class ExpiryDate extends ProcessingFilter
             'expiryDateAttrValue' => $this->getAttribute($this->expiryDateAttr, $state),
             'expiryTimestamp' => $expiryTimestamp,
         ]));
-        
+
         if ($this->isExpired($expiryTimestamp)) {
             $this->redirectToExpiredPage($state, $accountName, $expiryTimestamp);
         }
-        
+
         // Display a password expiration warning page if it's time to do so.
         if ($this->isTimeToWarn($expiryTimestamp, $this->warnDaysBefore)) {
             $this->redirectToWarningPage($state, $accountName, $expiryTimestamp);
         }
-        
+
         $this->logger->warning(json_encode([
             'event' => 'expirychecker: no action necessary',
             'employeeId' => $employeeId,
         ]));
     }
-    
+
     /**
      * Redirect the user to the expired-password page.
      *
@@ -353,7 +353,7 @@ class ExpiryDate extends ProcessingFilter
     public function redirectToExpiredPage(array &$state, string $accountName, int $expiryTimestamp): void
     {
         assert('is_array($state)');
-        
+
         $this->logger->warning(json_encode([
             'event' => 'expirychecker: password expired',
             'accountName' => $accountName,
@@ -364,14 +364,14 @@ class ExpiryDate extends ProcessingFilter
         $state['accountName'] = $accountName;
         $state['passwordChangeUrl'] = $this->passwordChangeUrl;
         $state['originalUrlParam'] = $this->originalUrlParam;
-        
+
         $id = State::saveState($state, 'expirychecker:expired');
         $url = Module::getModuleURL('expirychecker/expired.php');
 
         $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, array('StateId' => $id));
     }
-    
+
     /**
      * Redirect the user to the warning page.
      *
@@ -382,26 +382,26 @@ class ExpiryDate extends ProcessingFilter
     protected function redirectToWarningPage(array &$state, string $accountName, int $expiryTimestamp): void
     {
         assert('is_array($state)');
-        
+
         $this->logger->warning(json_encode([
             'event' => 'expirychecker: about to expire',
             'accountName' => $accountName,
         ]));
-        
+
         $daysLeft = $this->getDaysLeftBeforeExpiry($expiryTimestamp);
         $state['daysLeft'] = (string)$daysLeft;
-        
+
         if (isset($state['isPassive']) && $state['isPassive'] === true) {
             /* We have a passive request. Skip the warning. */
             return;
         }
-        
+
         /* Save state and redirect. */
         $state['expiresAtTimestamp'] = $expiryTimestamp;
         $state['accountName'] = $accountName;
         $state['passwordChangeUrl'] = $this->passwordChangeUrl;
         $state['originalUrlParam'] = $this->originalUrlParam;
-        
+
         $id = State::saveState($state, 'expirychecker:about2expire');
         $url = Module::getModuleURL('expirychecker/about2expire.php');
 
