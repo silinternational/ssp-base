@@ -2,14 +2,14 @@
 
 use Sil\Psr3Adapters\Psr3StdOutLogger;
 use Sil\SspUtils\AnnouncementUtils;
-use SimpleSAML\Module\silauth\Auth\Source\auth\Authenticator;
-use SimpleSAML\Module\silauth\Auth\Source\csrf\CsrfProtector;
-use SimpleSAML\Module\silauth\Auth\Source\http\Request;
 use SimpleSAML\Auth\Source;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Configuration;
 use SimpleSAML\Error\BadRequest;
 use SimpleSAML\Error\Error as SimpleSAMLError;
+use SimpleSAML\Module\silauth\Auth\Source\auth\Authenticator;
+use SimpleSAML\Module\silauth\Auth\Source\csrf\CsrfProtector;
+use SimpleSAML\Module\silauth\Auth\Source\http\Request;
 use SimpleSAML\Module\silauth\Auth\Source\SilAuth;
 use SimpleSAML\Session;
 use SimpleSAML\XHTML\Template;
@@ -45,7 +45,7 @@ $globalConfig = Configuration::getInstance();
 $authSourcesConfig = $globalConfig->getConfig('authsources.php');
 $silAuthConfig = $authSourcesConfig->getConfigItem('silauth');
 
-$recaptchaSiteKey = $silAuthConfig->getString('recaptcha.siteKey', null);
+$recaptchaSiteKey = $silAuthConfig->getOptionalString('recaptcha.siteKey', null);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $csrfProtector->changeMasterToken();
 }
 
-$t = new Template($globalConfig, 'core:loginuserpass.php');
+$t = new Template($globalConfig, 'silauth:loginuserpass');
 $t->data['stateparams'] = array('AuthState' => $authStateId);
 $t->data['username'] = $username;
 $t->data['forceUsername'] = false;
@@ -91,6 +91,8 @@ $t->data['csrfToken'] = $csrfProtector->getMasterToken();
 $t->data['profileUrl'] = $state['templateData']['profileUrl'] ?? '';
 $t->data['helpCenterUrl'] = $state['templateData']['helpCenterUrl'] ?? '';
 $t->data['announcement'] = AnnouncementUtils::getAnnouncement();
+$t->data['idpName'] = $globalConfig->getString('idp_display_name');
+$t->data['siteKey'] = $recaptchaSiteKey;
 
 /* For simplicity's sake, don't bother telling this Request to trust any IP
  * addresses. This is okay because we only track the failures of untrusted
@@ -108,5 +110,5 @@ if (isset($state['SPMetadata'])) {
     $t->data['SPMetadata'] = null;
 }
 
-$t->show();
+$t->send();
 exit();

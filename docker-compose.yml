@@ -60,7 +60,7 @@ services:
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
       - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
       - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
-    command: ["/data/run-tests.sh"]
+    command: [ "/data/run-tests.sh" ]
 
   test-browser:
     image: justinribeiro/chrome-headless:stable
@@ -127,7 +127,7 @@ services:
       HELP_CENTER_URL: "https://example.org/help"
       LOGGING_LEVEL: INFO
 
-  ssp-idp1.local:  # using a database session store type ("sql")
+  ssp-idp1.local: # using a database session store type ("sql")
     build: .
     depends_on:
       - db
@@ -191,6 +191,9 @@ services:
 
   ssp-idp2.local:
     build: .
+    depends_on:
+      - db
+      - broker
     volumes:
       # Utilize custom certs
       - ./development/idp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
@@ -220,8 +223,18 @@ services:
       ADMIN_PASS: "b"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "IDP 2"
+      IDP_DOMAIN_NAME: "ssp-idp2.local"
+      ID_BROKER_ACCESS_TOKEN: "test-cli-abc123"
+      ID_BROKER_ASSERT_VALID_IP: "true"
+      ID_BROKER_BASE_URI: "http://broker"
+      ID_BROKER_TRUSTED_IP_RANGES: "10.20.38.0/24"
+      MYSQL_HOST: "db"
+      MYSQL_DATABASE: "silauth"
+      MYSQL_USER: "silauth"
+      MYSQL_PASSWORD: "silauth"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
+      RECAPTCHA_SITE_KEY: "0123456789abcdefghijklmnoABCDEFGHIJKLMNO"
 
   ssp-idp3.local:
     build: .
@@ -377,7 +390,20 @@ services:
       EMAIL_SIGNATURE: "one red pill, please"
       API_ACCESS_KEYS: "test-cli-abc123"
       APP_ENV: "dev"
-    command: ["bash", "-c", "whenavail brokerDb 3306 60 ./yii migrate --interactive=0 && ./run.sh"]
+      RP_ORIGINS: "https://ssp-idp1.local,https://ssp-idp3.local,https://ssp-idp3.local"
+      HIBP_CHECK_ON_LOGIN: "false"
+      MFA_TOTP_apiBaseUrl: dummy
+      MFA_TOTP_apiKey: 10345678-1234-1234-1234-123456789012
+      MFA_TOTP_apiSecret: 11345678-1234-1234-1234-12345678
+      MFA_WEBAUTHN_apiBaseUrl: dummy
+      MFA_WEBAUTHN_apiKey: 10345678-1234-1234-1234-123456789012
+      MFA_WEBAUTHN_apiSecret: 11345678-1234-1234-1234-12345678
+      MFA_WEBAUTHN_appId: ourApp99
+      MFA_WEBAUTHN_rpDisplayName: Our App
+      MFA_WEBAUTHN_rpId: http://app99
+    volumes:
+      - ./development/m991231_235959_insert_test_users.php:/data/console/migrations/m991231_235959_insert_test_users.php
+    command: [ "bash", "-c", "whenavail brokerDb 3306 60 ./yii migrate --interactive=0 && ./run.sh" ]
 
   brokerDb:
     image: mariadb:10
@@ -388,6 +414,15 @@ services:
       MYSQL_DATABASE: "broker"
       MYSQL_USER: "user"
       MYSQL_PASSWORD: "pass"
+
+  brokerpma:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8088:80"
+    environment:
+      PMA_HOST: brokerDb
+      PMA_USER: user
+      PMA_PASSWORD: pass
 
   dynamo:
     image: cnadiminti/dynamodb-local

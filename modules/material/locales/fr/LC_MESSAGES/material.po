@@ -44,6 +44,36 @@ msgstr "Changer"
 msgid "{footer:copyright}"
 msgstr "L'utilisation non autorisée de ce site est interdite et peut faire l'objet de poursuites civiles et pénales."
 
+msgid "{login:title}"
+msgstr "Connectez-vous avec votre identité %idpName%"
+
+msgid "{login:header}"
+msgstr "Connectez-vous avec votre identité %idpName%"
+
+msgid "{login:label_username}"
+msgstr "Nom d'utilisateur"
+
+msgid "{login:label_password}"
+msgstr "Mot de passe"
+
+msgid "{login:error_wronguserpass}"
+msgstr "Quelque chose ne va pas avec ce nom d'utilisateur ou ce mot de passe, veuillez vérifier et essayer à nouveau."
+
+msgid "{login:button_login}"
+msgstr "Connexion"
+
+msgid "{login:forgot}"
+msgstr "Mot de passe oublié?"
+
+msgid "{login:logo}"
+msgstr "Logo %idpName%"
+
+msgid "{login:help}"
+msgstr "j'ai besoin d'aide"
+
+msgid "{login:profile}"
+msgstr "Gérer mon profil"
+
 msgid "{mfa:title}"
 msgstr "Vérification en deux étapes"
 
