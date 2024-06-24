@@ -38,8 +38,7 @@ class IdBroker
         string          $idpDomainName,
         array           $trustedIpRanges,
         bool            $assertValidIp = true
-    )
-    {
+    ) {
         $this->logger = $logger;
         $this->idpDomainName = $idpDomainName;
         $this->client = new IdBrokerClient($baseUri, $accessToken, [

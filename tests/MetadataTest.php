@@ -107,7 +107,6 @@ class MetadataTest extends TestCase
             var_export($badIdps, True));
     }
 
-
     public function testIDPRemoteMetadataMissingLogoCaption()
     {
         $hubMode = Env::get('HUB_MODE', true);

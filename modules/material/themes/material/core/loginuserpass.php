@@ -23,8 +23,8 @@
 
     if (!empty($siteKey)) {
         ?>
-        <script src='https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit' async
-                defer></script>
+        <script src='https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit' async defer>
+        </script>
 
         <script>
             function submitForm() {
@@ -83,9 +83,14 @@
                         <?php
                         $username = htmlentities($this->data['username'] ?? null);
                         ?>
-                        <input type="text" required name="username" class="mdl-textfield__input mdl-color-text--black"
-                               value="<?= $username ?>"
-                            <?= empty($username) ? 'autofocus' : '' ?> id="username"/>
+                        <input
+                            type="text"
+                            required
+                            name="username"
+                            class="mdl-textfield__input mdl-color-text--black"
+                            value="<?= $username ?>"
+                            <?= empty($username) ? 'autofocus' : '' ?> id="username"
+                        >
                     </div>
 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -93,9 +98,12 @@
                             <?= $this->t('{material:login:label_password}') ?>
                         </label>
 
-                        <input type="password" required name="password"
-                               class="mdl-textfield__input mdl-color-text--black" <?= !empty($username) ? 'autofocus' : '' ?>
-                               id="password"/>
+                        <input
+                            type="password"
+                            required name="password"
+                            class="mdl-textfield__input mdl-color-text--black" <?= !empty($username) ? 'autofocus' : '' ?>
+                            id="password"
+                        >
                     </div>
                 </div>
 

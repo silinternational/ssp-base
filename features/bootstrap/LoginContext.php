@@ -575,8 +575,7 @@ class LoginContext extends FeatureContext
     public function secondsAgoThatUsernameHadMoreFailedLoginsThanTheLimit(
         $numSeconds,
         $numFailuresBeyondLimit
-    )
-    {
+    ) {
         Assert::notEmpty($this->username);
         Assert::true(is_numeric($numSeconds));
         Assert::true(is_numeric($numFailuresBeyondLimit));
@@ -609,8 +608,7 @@ class LoginContext extends FeatureContext
         $numSeconds,
         $ipAddress,
         $numFailuresBeyondLimit
-    )
-    {
+    ) {
         Assert::notEmpty($ipAddress);
         Assert::true(is_numeric($numSeconds));
         Assert::true(is_numeric($numFailuresBeyondLimit));

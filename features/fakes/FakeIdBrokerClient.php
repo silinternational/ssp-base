@@ -27,8 +27,7 @@ class FakeIdBrokerClient
         string $baseUri,
         string $accessToken,
         array  $config = []
-    )
-    {
+    ) {
         // No-op
     }
 

@@ -44,8 +44,7 @@ class Authenticator
         Captcha         $captcha,
         IdBroker        $idBroker,
         LoggerInterface $logger
-    )
-    {
+    ) {
         $this->logger = $logger;
 
         /** @todo Check CSRF here, too, if feasible. */
@@ -183,8 +182,7 @@ class Authenticator
     public static function getSecondsUntilUnblocked(
         int     $numRecentFailures,
         ?string $mostRecentFailureAt
-    ): int
-    {
+    ): int {
         if ($mostRecentFailureAt === null) {
             return 0;
         }
