@@ -2,7 +2,7 @@ Four SPs, a hub (a combined IdP and SP) and three IdPs get spun up by docker com
 * ssp-sp1.local   # to be used with port 8081
 * ssp-sp2.local   # to be used with port 8082
 * ssp-sp3.local   # to be used with port 8083
-* pwmanager.local # to be used with port 8084
+* pwmanager.local
 * ssp-hub.local
 * ssp-idp1.local  # to be used with port 8085
 * ssp-idp2.local  # to be used with port 8086

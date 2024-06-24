@@ -341,8 +341,6 @@ services:
 
       # Utilize custom metadata
       - ./development/sp-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
-    #    ports:
-    #      - "8084:80"
     environment:
       ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: sp1

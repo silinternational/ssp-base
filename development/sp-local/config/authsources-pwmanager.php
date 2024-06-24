@@ -12,7 +12,7 @@ $config = [
 
     'mfa-idp' => [
         'saml:SP',
-        'entityID' => 'http://pwmanager.local:8084',
+        'entityID' => 'http://pwmanager.local',
         'idp' => 'http://ssp-idp1.local:8085',
         'discoURL' => null,
         'NameIDPolicy' => [
