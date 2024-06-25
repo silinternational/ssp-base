@@ -17,7 +17,6 @@ $metadata['ssp-hub.local'] = [
 	'privatekey' => 'saml.pem',
 	'certificate' => 'saml.crt',
 
-    // User the SSOService.php file provided by the sildisco module
     'SingleSignOnService' => 'http://ssp-hub.local/saml2/idp/SSOService.php',
 
 	/*

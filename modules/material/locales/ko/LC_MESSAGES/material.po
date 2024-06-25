@@ -1,0 +1,63 @@
+
+msgid "{about2expire:title}"
+msgstr "만료 된 암호"
+
+msgid "{about2expire:header}"
+msgstr "곧 만료되는 암호"
+
+msgid "{about2expire:expiring_in_a_day}"
+msgstr "암호는 하루 만료됩니다."
+
+msgid "{about2expire:expiring_soon}"
+msgstr "비밀번호는 {daysLeft} 일 후에 만료됩니다."
+
+msgid "{about2expire:change_now}"
+msgstr "지금 변경 하시겠습니까?"
+
+msgid "{about2expire:button_change}"
+msgstr "예"
+
+msgid "{about2expire:button_continue}"
+msgstr "후에"
+
+msgid "{error:title}"
+msgstr "오류"
+
+msgid "{error:header}"
+msgstr "오류"
+
+msgid "{error:message}"
+msgstr "오류가 발생했습니다. 도움을 받으려면 헬프 데스크에 문의하십시오."
+
+msgid "{expired:title}"
+msgstr "만료 된 암호"
+
+msgid "{expired:header}"
+msgstr "암호가 만료되었습니다."
+
+msgid "{expired:expired}"
+msgstr "비밀번호가 만료되었으므로 계속하기 전에 비밀번호를 변경해야합니다."
+
+msgid "{expired:button_change}"
+msgstr "바꾸다"
+
+msgid "{footer:copyright}"
+msgstr "이 사이트의 무단 사용은 금지되어 있으며 민사 및 형사 고발의 대상이 될 수 있습니다."
+
+msgid "{selectidp-links:title}"
+msgstr "ID 계정 선택"
+
+msgid "{selectidp-links:header}"
+msgstr "ID 계정 선택"
+
+msgid "{selectidp-links:header-for-sp}"
+msgstr "%spName%을 계속 진행하려면 신원 계정을 선택하십시오."
+
+msgid "{selectidp-links:enabled}"
+msgstr "%idpName% 신원 계정으로 로그인하십시오."
+
+msgid "{selectidp-links:disabled}"
+msgstr "%idpName% 곧 제공됨"
+
+msgid "{selectidp-links:help}"
+msgstr "도움"

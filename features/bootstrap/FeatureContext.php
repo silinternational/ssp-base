@@ -78,7 +78,7 @@ class FeatureContext extends MinkContext
     {
         $this->visit(self::HUB_DISCO_URL);
     }
-    
+
     /**
      * @Then I should see our material theme
      */

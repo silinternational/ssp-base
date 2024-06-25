@@ -100,7 +100,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
         // Get the SP's name
         $spEntries = Metadata::getSpMetadataEntries($this->getMetadataPath());
 
-        $t = new \SimpleSAML\XHTML\Template($this->config, 'selectidp-links.php', 'disco');
+        $t = new \SimpleSAML\XHTML\Template($this->config, 'selectidp-links', 'disco');
 
         $spName = null;
 
@@ -112,7 +112,21 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
             ))   ;
         }
 
-        $t->data['idplist'] = $idpList;
+        // in order to bypass some built-in simplesaml behavior, an extra idp
+        // might've been added.  It's not meant to be displayed.
+        unset($idpList['dummy']);
+
+        $enabledIdps = [];
+        foreach ($idpList as $idp) {
+            if ($idp['enabled'] === true) {
+                $enabledIdps[] = $idp;
+            } else {
+                $disabledIdps[] = $idp;
+            }
+        }
+
+        $t->data['enabledIdps'] = $enabledIdps;
+        $t->data['disabledIdps'] = $disabledIdps;
         $t->data['return'] = $this->returnURL;
         $t->data['returnIDParam'] = $this->returnIdParam;
         $t->data['entityID'] = $this->spEntityId;
