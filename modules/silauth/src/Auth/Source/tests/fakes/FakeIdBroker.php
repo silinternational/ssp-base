@@ -16,8 +16,7 @@ abstract class FakeIdBroker extends IdBroker
         string          $accessToken,
         LoggerInterface $logger,
         string          $idpDomainName = 'fake.example.com'
-    )
-    {
+    ) {
         parent::__construct(
             $baseUri,
             $accessToken,

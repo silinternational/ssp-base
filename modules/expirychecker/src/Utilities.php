@@ -30,10 +30,14 @@ class Utilities
      *
      * Returns 1 if the domains of the two urls are the same and 0 otherwise.
      */
-    public static function haveSameDomain(string $url1, string $start_marker1,
-                                          string $end_marker1, string $url2, string $start_marker2 = '//',
-                                          string $end_marker2 = '/'): int
-    {
+    public static function haveSameDomain(
+        string $url1,
+        string $start_marker1,
+        string $end_marker1,
+        string $url2,
+        string $start_marker2 = '//',
+        string $end_marker2 = '/'
+    ): int {
         $domain1 = self::getUrlDomain($url1, $start_marker1, $end_marker1);
         $domain2 = self::getUrlDomain($url2, $start_marker2, $end_marker2);
 
@@ -53,9 +57,12 @@ class Utilities
      *  for apex to use. If the domains of the change password url and the
      *  original url are different, it appends the StateId to the output.
      */
-    public static function convertOriginalUrl(string $passwordChangeUrl,
-                                              string $originalUrlParam, string $originalUrl, string $stateId): string
-    {
+    public static function convertOriginalUrl(
+        string $passwordChangeUrl,
+        string $originalUrlParam,
+        string $originalUrl,
+        string $stateId
+    ): string {
         $sameDomain = self::haveSameDomain($passwordChangeUrl,
             '//', '/', $originalUrl, '//', '/');
         $original = $originalUrlParam . ":" . urlencode($originalUrl);

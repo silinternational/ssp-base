@@ -140,8 +140,7 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
     public static function recordFailedLoginBy(
         array           $ipAddresses,
         LoggerInterface $logger
-    ): void
-    {
+    ): void {
         foreach ($ipAddresses as $ipAddress) {
             $newRecord = new FailedLoginIpAddress(['ip_address' => strtolower($ipAddress)]);
 
