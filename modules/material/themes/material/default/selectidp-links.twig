@@ -10,7 +10,7 @@
       const idpInput = document.createElement('input');
 
       idpInput.type = 'hidden';
-      idpInput.name = '{{ returnIDParam|e }}';
+      idpInput.name = '{{ returnIDParam|e('js')|raw }}';
       idpInput.value = id;
 
       document.querySelector('form').appendChild(idpInput);
@@ -39,7 +39,7 @@
 
       {% if not helpCenterUrl ?? '' is empty %}
         <nav class="mdl-navigation">
-          <a href="{{ helpCenterUrl }}" target="_blank" class="mdl-navigation__link">
+          <a href="{{ helpCenterUrl|e('html_attr') }}" target="_blank" class="mdl-navigation__link">
             {{ '{selectidp-links:help}'|trans }}
           </a>
         </nav>
@@ -51,9 +51,9 @@
     {% include 'announcement.twig' %}
 
     <form layout-children="row" child-spacing="space-around">
-      <input type="hidden" name="entityID" value="{{ entityID|e }}"/>
-      <input type="hidden" name="return" value="{{ return|e }}"/>
-      <input type="hidden" name="returnIDParam" value="{{ returnIDParam|e }}"/>
+      <input type="hidden" name="entityID" value="{{ entityID|e('html_attr') }}"/>
+      <input type="hidden" name="return" value="{{ return|e('html_attr') }}"/>
+      <input type="hidden" name="returnIDParam" value="{{ returnIDParam|e('html_attr') }}"/>
 
       {% for idp in idplist %}
         <div
@@ -63,14 +63,14 @@
           <div class="mdl-card__media white-bg fixed-height">
             <button
               class="mdl-button logo-container fill-parent"
-              onclick="setSelectedIdp('{{ idp.entityid|e }}')"
-              name="idp_{{ idp.entityid }}"
+              onclick="setSelectedIdp('{{ idp.entityid|e('js')|raw }}')"
+              name="idp_{{ idp.entityid|e('html_attr') }}"
             >
               <div class="image-wrapper">
                 <img
                   class="logo"
-                  id="{{ idp.entityid|e }}"
-                  src="{{ idp.iconurl is defined ? idp.iconurl : 'default-logo.png' }}"
+                  id="{{ idp.entityid|e('html_attr') }}"
+                  src="{{ idp.iconurl is defined ? idp.iconurl|e('html_attr') : 'default-logo.png' }}"
                 >
               </div>
             </button>
