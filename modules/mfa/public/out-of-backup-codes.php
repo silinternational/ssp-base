@@ -31,9 +31,9 @@ if (filter_has_var(INPUT_POST, 'getMore')) {
 
 $globalConfig = Configuration::getInstance();
 
-$t = new Template($globalConfig, 'mfa:out-of-backup-codes.php');
+$t = new Template($globalConfig, 'mfa:out-of-backup-codes');
 $t->data['hasOtherMfaOptions'] = $hasOtherMfaOptions;
-$t->show();
+$t->send();
 
 $logger->info(sprintf(
     'mfa: Told Employee ID %s they are out of backup codes%s.',

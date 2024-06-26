@@ -30,9 +30,9 @@ if (filter_has_var(INPUT_POST, 'getMore')) {
 
 $globalConfig = Configuration::getInstance();
 
-$t = new Template($globalConfig, 'mfa:low-on-backup-codes.php');
+$t = new Template($globalConfig, 'mfa:low-on-backup-codes');
 $t->data['numBackupCodesRemaining'] = $state['numBackupCodesRemaining'];
-$t->show();
+$t->send();
 
 $logger->info(sprintf(
     'mfa: Told Employee ID %s they are low on backup codes.',
