@@ -23,8 +23,8 @@ if (filter_has_var(INPUT_POST, 'setUpMfa')) {
 
 $globalConfig = Configuration::getInstance();
 
-$t = new Template($globalConfig, 'mfa:must-set-up-mfa.php');
-$t->show();
+$t = new Template($globalConfig, 'mfa:must-set-up-mfa');
+$t->send();
 
 $logger->info(sprintf(
     'mfa: Told Employee ID %s they they must set up MFA.',

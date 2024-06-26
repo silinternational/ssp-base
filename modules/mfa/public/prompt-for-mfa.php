@@ -53,7 +53,7 @@ if (empty($mfaId)) {
         'event' => 'MFA ID missing in URL. Choosing one and doing a redirect.',
         'employeeId' => $state['employeeId'],
     ]));
-    
+
     // Pick an MFA ID and do a redirect to put that into the URL.
     $mfaOption = Mfa::getMfaOptionToUse($mfaOptions, $userAgent);
     $moduleUrl = SimpleSAML\Module::getModuleURL('mfa/prompt-for-mfa.php', [
@@ -75,7 +75,7 @@ if (filter_has_var(INPUT_POST, 'submitMfa')) {
     }
 
     $rememberMe = filter_input(INPUT_POST, 'rememberMe') ?? false;
-    
+
     // NOTE: This will only return if validation fails.
     $errorMessage = Mfa::validateMfaSubmission(
         $mfaId,
@@ -87,7 +87,7 @@ if (filter_has_var(INPUT_POST, 'submitMfa')) {
         $mfaOption['type'],
         $state['rpOrigin']
     );
-    
+
     $logger->warning(json_encode([
         'event' => 'MFA validation result: failed',
         'employeeId' => $state['employeeId'],
@@ -122,6 +122,7 @@ $mfaTemplateToUse = Mfa::getTemplateFor($mfaOption['type']);
 $t = new Template($globalConfig, $mfaTemplateToUse);
 $t->data['errorMessage'] = $errorMessage ?? null;
 $t->data['mfaOption'] = $mfaOption;
+$t->data['mfaOptionData'] = json_encode($mfaOption['data']);
 $t->data['mfaOptions'] = $mfaOptions;
 $t->data['stateId'] = $stateId;
 $t->data['supportsWebAuthn'] = LoginBrowser::supportsWebAuthn($userAgent);
@@ -129,7 +130,8 @@ $browserJsHash = md5_file(__DIR__ . '/simplewebauthn/browser.js');
 $t->data['browserJsPath'] = '/module.php/mfa/simplewebauthn/browser.js?v=' . $browserJsHash;
 $t->data['managerEmail'] = $state['managerEmail'];
 $t->data['otherOptions'] = $otherOptions;
-$t->show();
+$t->data['idpName'] = $globalConfig->getString('idp_display_name');
+$t->send();
 
 $logger->info(json_encode([
     'event' => 'Prompted user for MFA',
