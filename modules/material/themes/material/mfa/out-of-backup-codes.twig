@@ -39,14 +39,14 @@
 
         <div class="mdl-card__actions" layout-children="row">
           {% if hasOtherMfaOptions %}
-            <button name="continue" class="mdl-button">
+            <button name="continue" type="submit" class="mdl-button">
               {{ '{mfa:button_later}'|trans }}
             </button>
           {% endif %}
 
           <span flex></span>
 
-          <button name="getMore" class="mdl-button mdl-button--raised mdl-button--primary">
+          <button name="getMore" type="submit" class="mdl-button mdl-button--raised mdl-button--primary">
             {{ '{mfa:button_get_more}'|trans }}
           </button>
         </div>
