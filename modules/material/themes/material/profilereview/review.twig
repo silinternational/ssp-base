@@ -3,7 +3,7 @@
 <head>
   <title>{{ '{review:title}'|trans }}</title>
 
-  {% include 'header.twig' %}
+  {{ include('header.twig') }}
 
   <script>
     function prettifyDates() {
@@ -128,7 +128,7 @@
     </form>
   </main>
 
-  {% include 'footer.twig' %}
+  {{ include('footer.twig') }}
 </div>
 </body>
 </html>

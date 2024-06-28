@@ -3,7 +3,7 @@
 <head>
   <title>{{ '{selectidp-links:title}'|trans }}</title>
 
-  {% include 'header.twig' %}
+  {{ include('header.twig') }}
 
   <script>
     function setSelectedIdp(id) {
@@ -48,7 +48,7 @@
   </header>
 
   <main class="mdl-layout__content">
-    {% include 'announcement.twig' %}
+    {{ include('announcement.twig') }}
 
     <form layout-children="row" child-spacing="space-around">
       <input type="hidden" name="entityID" value="{{ entityID|e('html_attr') }}"/>
@@ -80,7 +80,7 @@
     </form>
   </main>
 
-  {% include 'footer.twig' %}
+  {{ include('footer.twig') }}
 </div>
 <style>
   .image-wrapper {

@@ -3,7 +3,7 @@
 <head>
   <title>{{ '{mfa:title}'|trans }}</title>
 
-  {% include 'header.twig' %}
+  {{ include('header.twig') }}
 </head>
 <body class="gradient-bg">
 <div class="mdl-layout mdl-layout--fixed-header fill-viewport">
@@ -65,7 +65,7 @@
           </button>
         </div>
 
-        {% include 'other_mfas.twig' %}
+        {{ include('other_mfas.twig') }}
       </div>
 
       <div>

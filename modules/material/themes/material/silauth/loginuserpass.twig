@@ -3,7 +3,7 @@
 <head>
   <title>{{ '{login:title}'|trans({'%idpName%': idpName}) }}</title>
 
-  {% include 'header.twig' %}
+  {{ include('header.twig') }}
 
   <script>
     function preventDefault(event) {
@@ -35,7 +35,7 @@
 <body class="gradient-bg">
 <div class="mdl-layout mdl-layout--fixed-header fill-viewport">
   <main class="mdl-layout__content" layout-children="column" child-spacing="center">
-    {% include 'announcement.twig' %}
+    {{ include('announcement.twig') }}
 
     <form method="post" autocomplete="off" onsubmit="event.target.onsubmit = preventDefault">
       <input type="hidden" name="AuthState" value="{{ (stateparams.AuthState??'')|e }}"/>

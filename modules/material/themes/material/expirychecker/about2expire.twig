@@ -3,7 +3,7 @@
 <head>
   <title>{{ '{about2expire:title}'|trans }}</title>
 
-  {% include 'header.twig' %}
+  {{ include('header.twig') }}
 </head>
 <body>
 <div class="mdl-layout mdl-layout--fixed-header fill-viewport">
@@ -44,7 +44,7 @@
     </form>
   </main>
 
-  {% include 'footer.twig' %}
+  {{ include('footer.twig') }}
 </div>
 </body>
 </html>

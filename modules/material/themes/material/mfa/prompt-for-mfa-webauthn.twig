@@ -3,7 +3,7 @@
 <head>
   <title>{{ '{mfa:title}'|trans }}</title>
 
-  {% include 'header.twig' %}
+  {{ include('header.twig') }}
 
   <script src="{{ browserJsPath }}"></script>
 
@@ -130,7 +130,7 @@
 
         </div>
 
-        {% include 'other_mfas.twig' %}
+        {{ include('other_mfas.twig') }}
       </div>
 
       <div>
