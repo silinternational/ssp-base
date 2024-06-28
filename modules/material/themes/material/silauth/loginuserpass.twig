@@ -88,7 +88,7 @@
           </div>
         </div>
 
-        {% if errorCode ?? '' == 'WRONGUSERPASS' %}
+        {% if errorcode ?? '' == 'WRONGUSERPASS' %}
           {% set errorMessageKey = errorparams[1] ?? '{login:error_wronguserpass}' %}
           {% set errorMessageTokens = errorparams[2] ?? null %}
           {% set message = errorMessageKey|trans({errorMessageKey, errorMessageTokens}) %}
@@ -101,7 +101,7 @@
           </p>
 
           <script>
-            ga('send', 'event', 'error',{{ errorCode|e(js) }}, 'message',{{ message|e(js) }});
+            ga('send', 'event', 'error',{{ errorcode|e(js) }}, 'message',{{ message|e(js) }});
           </script>
         {% endif %}
 
