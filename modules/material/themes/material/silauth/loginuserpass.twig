@@ -11,7 +11,7 @@
     }
   </script>
 
-  {% if siteKey is defined %}
+  {% if siteKey is defined and siteKey is not empty %}
     <script src='https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit' async defer></script>
 
     <script>
@@ -106,7 +106,7 @@
         {% endif %}
 
         <div class="mdl-card__actions" layout-children="row">
-          {% if forgotPasswordUrl is defined %}
+          {% if forgotPasswordUrl is defined and forgotPasswordUrl is not empty %}
             <a
               href="{{ forgotPasswordUrl|e }}"
               target="_blank"
@@ -124,14 +124,14 @@
         </div>
 
         <section layout-children="row" child-spacing="space-around">
-          {% if helpCenterUrl is defined %}
+          {% if helpCenterUrl is defined and helpCenterUrl is not empty %}
             <a href="{{ helpCenterUrl }}" target="_blank" class="mdl-button mdl-button--colored mdl-typography--body-2">
               {{ '{login:help}'|trans }}
               <i class="material-icons">launch</i>
             </a>
           {% endif %}
 
-          {% if profileUrl is defined %}
+          {% if profileUrl is defined and profileUrl is not empty %}
             <a href="{{ profileUrl }}" target="_blank" class="mdl-button mdl-button--colored mdl-typography--body-2">
               {{ '{login:profile}'|trans }}
               <i class="material-icons">launch</i>
