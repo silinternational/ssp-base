@@ -371,13 +371,13 @@ class MetadataTest extends TestCase
                 continue;
             }
 
-            if (empty($spEntry['certData']) && empty($spEntry['certFingerprint'])) {
+            if (empty($spEntry['certData'])) {
                 $badSps[] = $spEntityId;
             }
         }
 
         $this->assertTrue(empty($badSps),
-            'At least one SP has neither a certData or certFingerprint entry ... ' .
+            'At least one SP has no certData entry ... ' .
             var_export($badSps, True));
 
     }
