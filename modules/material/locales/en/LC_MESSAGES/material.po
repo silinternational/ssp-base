@@ -114,7 +114,7 @@ msgid "{mfa:webauthn_instructions}"
 msgstr "You may now insert your security key and press its button."
 
 msgid "{mfa:webauthn_unsupported}"
-msgstr "Unsupported in your current browser.  Please consider a more secure browser like <a href='https://www.google.com/chrome/browser' target='_blank' rel=noopener'>Google Chrome</a>."
+msgstr "Unsupported in your current browser. Please consider a more secure browser like <a href='https://www.google.com/chrome/browser' target='_blank' rel=noopener'>Google Chrome</a>."
 
 msgid "{mfa:webauthn_error_unknown}"
 msgstr "Something went wrong with that request, unable to verify at this time."
@@ -171,7 +171,7 @@ msgid "{mfa:new_codes_only_once}"
 msgstr "Each code may only be used once."
 
 msgid "{mfa:new_codes_failed}"
-msgstr "Something went wrong while creating new printable codes for you.  We are sorry for the inconvenience, please check your configuration at the following address after continuing: "
+msgstr "Something went wrong while creating new printable codes for you. We are sorry for the inconvenience, please check your configuration at the following address after continuing: "
 
 msgid "{mfa:new_codes_saved}"
 msgstr "I saved a personal copy of these for later use"
