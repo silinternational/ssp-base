@@ -10,7 +10,7 @@ services:
       MYSQL_PASSWORD: silauth
 
   dbadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin
     ports:
       - "8080:80"
     environment:
@@ -416,7 +416,7 @@ services:
       MYSQL_PASSWORD: "pass"
 
   brokerpma:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin
     ports:
       - "8088:80"
     environment:
