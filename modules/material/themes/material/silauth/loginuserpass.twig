@@ -89,7 +89,7 @@
         </div>
 
         {% if errorCode ?? '' == 'WRONGUSERPASS' %}
-          {% set errorMessageKey = errorparams[1] ?? '{login:error_wronguserpass}'|trans %}
+          {% set errorMessageKey = errorparams[1] ?? '{login:error_wronguserpass}' %}
           {% set errorMessageTokens = errorparams[2] ?? null %}
           {% set message = errorMessageKey|trans({errorMessageKey, errorMessageTokens}) %}
           <p class="mdl-card__supporting-text mdl-color-text--red error">
