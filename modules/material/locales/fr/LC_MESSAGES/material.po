@@ -84,7 +84,7 @@ msgid "{mfa:webauthn_instructions}"
 msgstr "Vous pouvez maintenant insérer votre clé de sécurité et appuyer sur le bouton."
 
 msgid "{mfa:webauthn_unsupported}"
-msgstr "Non compatible avec votre navigateur actuel. Veuillez considérer un navigateur plus sûr comme <a href='https://www.google.com/chrome/browser' target='_blank'>Google Chrome</a>."
+msgstr "Non compatible avec votre navigateur actuel. Veuillez considérer un navigateur plus sûr comme <a href='https://www.google.com/chrome/browser' target='_blank' rel='noopener'>Google Chrome</a>."
 
 msgid "{mfa:webauthn_error_unknown}"
 msgstr "Quelque chose s'est mal passé avec cette demande, impossible de vérifier pour le moment."
@@ -220,6 +220,78 @@ msgstr "Se rappeler de ce navigatuer pour 30 jours"
 
 msgid "{mfa:unsupported}"
 msgstr "Non pris en charge dans ce navigateur"
+
+msgid "{nag:mfa_title}"
+msgstr "Vérification en deux étapes"
+
+msgid "{nag:mfa_header}"
+msgstr "Vérification en deux étapes"
+
+msgid "{nag:method_title}"
+msgstr "Méthodes de récupération de mot de passe"
+
+msgid "{nag:method_header}"
+msgstr "Méthodes de récupération de mot de passe"
+
+msgid "{nag:shield_icon}"
+msgstr "Icône de bouclier"
+
+msgid "{nag:header}"
+msgstr "Protégez-vous"
+
+msgid "{nag:mfa_info}"
+msgstr "Savez-vous que vous pouvez facilement augmenter la sécurité de votre compte d'identité en activant la vérification en deux étapes?"
+
+msgid "{nag:method_info}"
+msgstr "Avez-vous oublié votre mot de passe parfois? Saviez-vous qu'il est très facile d'ajouter une adresse électronique de remplacement pour la récupération du mot de passe au cas où?"
+
+msgid "{nag:button_later}"
+msgstr "Rappelez-moi plus tard"
+
+msgid "{nag:button_learn_more}"
+msgstr "Apprendre encore plus"
+
+msgid "{nag:button_enable}"
+msgstr "Activer maintenant"
+
+msgid "{nag:button_add}"
+msgstr "Ajouter un maintenant"
+
+msgid "{review:title}"
+msgstr "Examen du profil"
+
+msgid "{review:header}"
+msgstr "Examen du profil"
+
+msgid "{review:info}"
+msgstr "Sont-ils toujours corrects?"
+
+msgid "{review:mfa_header}"
+msgstr "Vérification en 2 étapes"
+
+msgid "{review:methods_header}"
+msgstr "Méthodes de récupération de mot de passe"
+
+msgid "{review:remaining}"
+msgstr "(%count% restant)"
+
+msgid "{review:used}"
+msgstr "dernière utilisation: %when%"
+
+msgid "{review:used_never}"
+msgstr "Dernière utilisation: Jamais"
+
+msgid "{review:verified}"
+msgstr "Vérifié"
+
+msgid "{review:unverified}"
+msgstr "Non vérifié"
+
+msgid "{review:button_update}"
+msgstr "Certains ont besoin d'être mis à jour"
+
+msgid "{review:button_continue}"
+msgstr "Ceux-ci sont toujours corrects"
 
 msgid "{selectidp-links:title}"
 msgstr "Choisissez un compte d'identité"

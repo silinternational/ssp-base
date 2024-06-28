@@ -29,7 +29,7 @@ class System
             FailedLoginIpAddress::getMostRecentFailedLoginFor('');
             return true;
         } catch (Throwable $t) {
-            $this->logError($t->getMessage());
+            $this->logError('isDatabaseOkay database check returned error: ' . $t->getMessage());
             return false;
         }
     }
@@ -47,6 +47,9 @@ class System
          */
         $baseURL = $globalConfig->getString('baseurlpath', '');
         $avoidsSecurityHole = (preg_match('#^https?://.*/$#D', $baseURL) === 1);
+        if (!$avoidsSecurityHole) {
+            $this->logError('isRequiredConfigPresent failed: baseurlpath (' . $baseURL . ') does not meet requirements');
+        }
         return $avoidsSecurityHole;
     }
 

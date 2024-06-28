@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="{{ currentLanguage }}">
+<head>
+  <title>{{ '{nag:mfa_title}'|trans }}</title>
+
+  {% include 'header.twig' %}
+</head>
+<body class="gradient-bg">
+<div class="mdl-layout mdl-layout--fixed-header fill-viewport">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">
+        {{ '{nag:mfa_header}'|trans }}
+      </span>
+    </div>
+  </header>
+  <main class="mdl-layout__content" layout-children="column">
+    <form layout-children="column" method="post">
+      <div class="mdl-card mdl-shadow--8dp">
+        <div class="mdl-card__media white-bg margin" layout-children="column">
+          <img src="shield.svg" alt="{{ '{nag:shield_icon}'|trans }}">
+        </div>
+
+        <div class="mdl-card__title center">
+          <h1 class="mdl-card__title-text">
+            {{ '{nag:header}'|trans }}
+          </h1>
+        </div>
+
+        <div class="mdl-card__title center">
+          <p class="mdl-card__subtitle-text">
+            {{ '{nag:mfa_info}'|trans }}
+          </p>
+        </div>
+
+        <div class="mdl-card__actions" layout-children="row" child-spacing="space-around">
+          <button name="continue" class="mdl-button">
+            {{ '{nag:button_later}'|trans }}
+          </button>
+
+          <span flex></span>
+
+          {% if not mfaLearnMoreUrl is empty %}
+            <a
+              href="{{ mfaLearnMoreUrl }}"
+              target="_blank"
+              rel="noopener"
+              class="mdl-button mdl-button--primary margin"
+            >
+              {{ '{nag:button_learn_more}'|trans }}
+            </a>
+          {% endif %}
+
+          <button name="update" class="mdl-button mdl-button--raised mdl-button--primary">
+            {{ '{nag:button_enable}'|trans }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </main>
+</div>
+</body>
+</html>

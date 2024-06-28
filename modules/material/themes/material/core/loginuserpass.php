@@ -124,7 +124,7 @@
                     $forgotPasswordUrl = htmlentities($this->configuration->getValue('passwordForgotUrl'));
                     if (! empty($forgotPasswordUrl)) {
                     ?>
-                    <a href="<?= $forgotPasswordUrl ?>" target="_blank" class="mdl-button mdl-button--colored mdl-typography--caption">
+                    <a href="<?= $forgotPasswordUrl ?>" target="_blank" rel="noopener" class="mdl-button mdl-button--colored mdl-typography--caption">
                         <?= $this->t('{material:login:forgot}') ?>
                     </a>
                     <?php
@@ -141,13 +141,13 @@
 
             <section layout-children="row" child-spacing="space-around">
                 <?php if (! empty($this->data['helpCenterUrl'])): ?>
-                <a href="<?= $this->data['helpCenterUrl'] ?>" target="_blank" class="mdl-button mdl-button--colored mdl-typography--body-2">
+                <a href="<?= $this->data['helpCenterUrl'] ?>" target="_blank" rel="noopener" class="mdl-button mdl-button--colored mdl-typography--body-2">
                     <?= $this->t('{material:login:help}') ?> <i class="material-icons">launch</i>
                 </a>
                 <?php endif; ?>
 
                 <?php if (! empty($this->data['profileUrl'])): ?>
-                <a href="<?= $this->data['profileUrl'] ?>" target="_blank" class="mdl-button mdl-button--colored mdl-typography--body-2">
+                <a href="<?= $this->data['profileUrl'] ?>" target="_blank" rel="noopener" class="mdl-button mdl-button--colored mdl-typography--body-2">
                     <?= $this->t('{material:login:profile}') ?> <i class="material-icons">launch</i>
                 </a>
                 <?php endif; ?>

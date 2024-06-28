@@ -84,7 +84,7 @@ msgid "{mfa:webauthn_instructions}"
 msgstr "You may now insert your security key and press its button."
 
 msgid "{mfa:webauthn_unsupported}"
-msgstr "Unsupported in your current browser.  Please consider a more secure browser like <a href='https://www.google.com/chrome/browser' target='_blank'>Google Chrome</a>."
+msgstr "Unsupported in your current browser.  Please consider a more secure browser like <a href='https://www.google.com/chrome/browser' target='_blank' rel=noopener'>Google Chrome</a>."
 
 msgid "{mfa:webauthn_error_unknown}"
 msgstr "Something went wrong with that request, unable to verify at this time."
@@ -220,6 +220,78 @@ msgstr "Remember this browser for 30 days"
 
 msgid "{mfa:unsupported}"
 msgstr "Not supported in this browser"
+
+msgid "{nag:mfa_title}"
+msgstr "2-Step Verification"
+
+msgid "{nag:mfa_header}"
+msgstr "2-Step Verification"
+
+msgid "{nag:method_title}"
+msgstr "Password recovery methods"
+
+msgid "{nag:method_header}"
+msgstr "Password recovery methods"
+
+msgid "{nag:shield_icon}"
+msgstr "Shield icon"
+
+msgid "{nag:header}"
+msgstr "Protect yourself"
+
+msgid "{nag:mfa_info}"
+msgstr "Did you know you could easily increase the security of your identity account by enabling 2-Step Verification?"
+
+msgid "{nag:method_info}"
+msgstr "Do you forget your password sometimes?  Did you know it is very easy to add an alternate email address for password recovery just in case?"
+
+msgid "{nag:button_later}"
+msgstr "Remind me later"
+
+msgid "{nag:button_learn_more}"
+msgstr "Learn more"
+
+msgid "{nag:button_enable}"
+msgstr "Enable now"
+
+msgid "{nag:button_add}"
+msgstr "Add one now"
+
+msgid "{review:title}"
+msgstr "Profile review"
+
+msgid "{review:header}"
+msgstr "Profile review"
+
+msgid "{review:info}"
+msgstr "Are these still correct?"
+
+msgid "{review:mfa_header}"
+msgstr "2-Step Verification"
+
+msgid "{review:methods_header}"
+msgstr "Password Recovery Methods"
+
+msgid "{review:remaining}"
+msgstr "(%count% remaining)"
+
+msgid "{review:used}"
+msgstr "last used: %when%"
+
+msgid "{review:used_never}"
+msgstr "last used: Never"
+
+msgid "{review:verified}"
+msgstr "Verified"
+
+msgid "{review:unverified}"
+msgstr "Unverified"
+
+msgid "{review:button_update}"
+msgstr "Some of these need updating"
+
+msgid "{review:button_continue}"
+msgstr "These are still correct"
 
 msgid "{selectidp-links:title}"
 msgstr "Choose an identity account"

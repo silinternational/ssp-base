@@ -84,7 +84,7 @@ msgid "{mfa:webauthn_instructions}"
 msgstr "Ahora puede insertar su clave de seguridad y presionar su botón."
 
 msgid "{mfa:webauthn_unsupported}"
-msgstr "No compatible en su navegador actual. Considere un navegador más seguro como <a href='https://www.google.com/chrome/browser' target='_blank'>Google Chrome</a>."
+msgstr "No compatible en su navegador actual. Considere un navegador más seguro como <a href='https://www.google.com/chrome/browser' target='_blank' rel='noopener'>Google Chrome</a>."
 
 msgid "{mfa:webauthn_error_unknown}"
 msgstr "Algo salió mal con esa solicitud, no se pudo verificar en este momento."
@@ -220,6 +220,78 @@ msgstr "Recuerde esta navegador por 30 días"
 
 msgid "{mfa:unsupported}"
 msgstr "No compatible con este navegador"
+
+msgid "{nag:mfa_title}"
+msgstr "Verificación en 2 pasos"
+
+msgid "{nag:mfa_header}"
+msgstr "Verificación en 2 pasos"
+
+msgid "{nag:method_title}"
+msgstr "Métodos de recuperación de contraseña"
+
+msgid "{nag:method_header}"
+msgstr "Métodos de recuperación de contraseña"
+
+msgid "{nag:shield_icon}"
+msgstr "Icono de escudo"
+
+msgid "{nag:header}"
+msgstr "Protéjase"
+
+msgid "{nag:mfa_info}"
+msgstr "¿Sabía que podría aumentar fácilmente la seguridad de su cuenta de identidad al habilitar la verificación en dos pasos?"
+
+msgid "{nag:method_info}"
+msgstr "¿Olvidas tu contraseña a veces? ¿Sabía que es muy fácil agregar una dirección de correo electrónico alternativa para recuperar la contraseña por si acaso?"
+
+msgid "{nag:button_later}"
+msgstr "Recuérdame más tarde"
+
+msgid "{nag:button_learn_more}"
+msgstr "Aprende más"
+
+msgid "{nag:button_enable}"
+msgstr "Habilite ahora"
+
+msgid "{nag:button_add}"
+msgstr "Agrega uno ahora"
+
+msgid "{review:title}"
+msgstr "Revisión del perfil"
+
+msgid "{review:header}"
+msgstr "Revisión del perfil"
+
+msgid "{review:info}"
+msgstr "¿Siguen siendo correctos?"
+
+msgid "{review:mfa_header}"
+msgstr "Verificación en 2 pasos"
+
+msgid "{review:methods_header}"
+msgstr "Métodos de recuperación de contraseña"
+
+msgid "{review:remaining}"
+msgstr "(%count% restante)"
+
+msgid "{review:used}"
+msgstr "último uso: %when%"
+
+msgid "{review:used_never}"
+msgstr "último uso: nunca"
+
+msgid "{review:verified}"
+msgstr "Verificado"
+
+msgid "{review:unverified}"
+msgstr "Inconfirmado"
+
+msgid "{review:button_update}"
+msgstr "Algunos de estos necesitan actualización"
+
+msgid "{review:button_continue}"
+msgstr "Estos siguen siendo correctos"
 
 msgid "{selectidp-links:title}"
 msgstr "Elige una cuenta de identidad"
