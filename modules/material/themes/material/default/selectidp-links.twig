@@ -31,7 +31,7 @@
         {% if spName ?? '' is empty %}
           {{ '{selectidp-links:header}'|trans }}
         {% else %}
-          {{ '{selectidp-links:header-for-sp}'|trans({'%spName%': spName|e}) }}
+          {{ '{selectidp-links:header-for-sp}'|trans({'%spName%': spName})|e }}
         {% endif %}
       </span>
 
