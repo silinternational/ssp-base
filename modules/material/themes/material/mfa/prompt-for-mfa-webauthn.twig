@@ -102,7 +102,7 @@
           </div>
         {% endif %}
 
-        {% if not errorMessage is empty %}
+        {% if errorMessage is not empty %}
           <script>
             ga('send', 'event', 'error', 'webauthn', '{{ errorMessage|e('js')|raw }}');
           </script>

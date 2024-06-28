@@ -40,7 +40,7 @@
   </header>
   <main class="mdl-layout__content" layout-children="column">
     <form layout-children="column" method="post">
-      {% if not newBackupCodes is empty %}
+      {% if newBackupCodes is not empty %}
         <h1 class="mdl-typography--display-1">
           {{ '{mfa:new_codes_header}'|trans }}
         </h1>

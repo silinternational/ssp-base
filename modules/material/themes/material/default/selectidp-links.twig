@@ -37,7 +37,7 @@
 
       <div class="mdl-layout-spacer"></div>
 
-      {% if not helpCenterUrl ?? '' is empty %}
+      {% if helpCenterUrl is defined and helpCenterUrl is not empty %}
         <nav class="mdl-navigation">
           <a href="{{ helpCenterUrl|e(html_attr) }}" target="_blank" rel="noopener" class="mdl-navigation__link">
             {{ '{selectidp-links:help}'|trans }}
