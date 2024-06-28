@@ -239,8 +239,7 @@ class ExpiryDate extends ProcessingFilter
         string $passwordChangeUrl,
         string $change_pwd_session,
         int    $expiryTimestamp
-    ): void
-    {
+    ): void {
         $sessionType = 'expirychecker';
         /* Save state and redirect. */
         $state['expiresAtTimestamp'] = $expiryTimestamp;

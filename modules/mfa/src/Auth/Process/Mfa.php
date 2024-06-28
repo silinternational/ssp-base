@@ -445,8 +445,7 @@ class Mfa extends ProcessingFilter
         LoggerInterface $logger,
         string          $mfaType,
         string          $rpOrigin
-    ): string
-    {
+    ): string {
         if (empty($mfaId)) {
             return 'No MFA ID was provided.';
         } elseif (empty($employeeId)) {
@@ -709,8 +708,7 @@ class Mfa extends ProcessingFilter
         string $expireDate,
         array  $mfaOptions,
         array  $state
-    ): bool
-    {
+    ): bool {
         $rememberSecret = Env::requireEnv('REMEMBER_ME_SECRET');
         if (!empty($cookieHash) && !empty($expireDate) && is_numeric($expireDate)) {
             // Check if value of expireDate is in future
@@ -736,8 +734,7 @@ class Mfa extends ProcessingFilter
         string $employeeId,
         int    $expireDate,
         array  $mfaOptions
-    ): string
-    {
+    ): string {
         $allMfaIds = '';
         foreach ($mfaOptions as $opt) {
             if ($opt['type'] !== 'manager') {
@@ -764,8 +761,7 @@ class Mfa extends ProcessingFilter
         array  &$state,
         string $employeeId,
         int    $numBackupCodesRemaining
-    ): void
-    {
+    ): void {
         $state['employeeId'] = $employeeId;
         $state['numBackupCodesRemaining'] = (string)$numBackupCodesRemaining;
 
@@ -807,8 +803,7 @@ class Mfa extends ProcessingFilter
         string $employeeId,
         array  $mfaOptions,
         string $rememberDuration = '+30 days'
-    ): void
-    {
+    ): void {
         $rememberSecret = Env::requireEnv('REMEMBER_ME_SECRET');
         $secureCookie = Env::get('SECURE_COOKIE', true);
         $expireDate = strtotime($rememberDuration);

@@ -18,8 +18,7 @@ class User
         ?string $managerEmail,
         string  $profileReview,
         array   $member
-    ): array
-    {
+    ): array {
 
         // eduPersonUniqueId (only alphanumeric allowed)
         $alphaNumericUuid = str_replace('-', '', $uuid);

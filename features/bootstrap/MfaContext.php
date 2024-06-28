@@ -662,6 +662,7 @@ class MfaContext extends FeatureContext
         $pageHtml = $page->getHtml();
         Assert::assertContains('Ask Your Recovery Contact for Help', $pageHtml);
         Assert::assertContains('Enter code', $pageHtml);
+        Assert::assertContains('m*****r@e******.c**', $pageHtml);
     }
 
     /**

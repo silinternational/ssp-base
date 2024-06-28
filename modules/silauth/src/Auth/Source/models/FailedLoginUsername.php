@@ -126,8 +126,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
     public static function recordFailedLoginBy(
         string          $username,
         LoggerInterface $logger
-    ): void
-    {
+    ): void {
         $newRecord = new FailedLoginUsername(['username' => strtolower($username)]);
         if (!$newRecord->save()) {
             $logger->critical(json_encode([
