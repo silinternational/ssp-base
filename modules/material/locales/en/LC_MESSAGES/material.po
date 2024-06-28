@@ -44,6 +44,36 @@ msgstr "Change"
 msgid "{footer:copyright}"
 msgstr "Unauthorized use of this site is prohibited and may be subjected to civil and criminal prosecution."
 
+msgid "{login:title}"
+msgstr "Login with your %idpName% identity"
+
+msgid "{login:header}"
+msgstr "Login with your %idpName% identity"
+
+msgid "{login:label_username}"
+msgstr "Username"
+
+msgid "{login:label_password}"
+msgstr "Password"
+
+msgid "{login:error_wronguserpass}"
+msgstr "Something is wrong with that username or password, please verify and try again."
+
+msgid "{login:button_login}"
+msgstr "Login"
+
+msgid "{login:forgot}"
+msgstr "Forgot password?"
+
+msgid "{login:logo}"
+msgstr "%idpName% logo"
+
+msgid "{login:help}"
+msgstr "I need help"
+
+msgid "{login:profile}"
+msgstr "Manage my profile"
+
 msgid "{mfa:title}"
 msgstr "2-Step Verification"
 

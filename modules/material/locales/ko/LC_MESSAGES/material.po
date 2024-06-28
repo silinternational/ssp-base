@@ -44,6 +44,36 @@ msgstr "바꾸다"
 msgid "{footer:copyright}"
 msgstr "이 사이트의 무단 사용은 금지되어 있으며 민사 및 형사 고발의 대상이 될 수 있습니다."
 
+msgid "{login:title}"
+msgstr "%idpName% 신원 계정으로 로그인하십시오."
+
+msgid "{login:header}"
+msgstr "%idpName% 신원 계정으로 로그인하십시오."
+
+msgid "{login:label_username}"
+msgstr "사용자 이름"
+
+msgid "{login:label_password}"
+msgstr "암호"
+
+msgid "{login:error_wronguserpass}"
+msgstr "해당 사용자 이름 또는 비밀번호가 잘못되었습니다. 다시 확인하고 다시 시도하십시오."
+
+msgid "{login:button_login}"
+msgstr "로그인"
+
+msgid "{login:forgot}"
+msgstr "비밀번호를 잊으 셨나요?"
+
+msgid "{login:logo}"
+msgstr "%idpName% 로고"
+
+msgid "{login:help}"
+msgstr "도움이 필요해."
+
+msgid "{login:profile}"
+msgstr "내 프로필 관리"
+
 msgid "{mfa:title}"
 msgstr "2 단계 인증"
 
