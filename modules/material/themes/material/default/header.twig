@@ -7,13 +7,13 @@
 
 {% if not (analyticsTrackingId ?? null) is empty %}
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ trackingId }}"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ analyticsTrackingId }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', '{{ trackingId }}');
+    gtag('config', '{{ analyticsTrackingId }}');
   </script>
 {% endif %}
 
