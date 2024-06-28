@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\profilereview;
 
 /**
@@ -15,14 +16,14 @@ class Assert
      */
     public static function classExists(string $className): void
     {
-        if (! class_exists($className)) {
+        if (!class_exists($className)) {
             throw new InvalidArgumentException(sprintf(
                 'The specified class (%s) does not exist.',
                 self::describe($className)
             ));
         }
     }
-    
+
     /**
      * Describe the given value. If it's an object, return the class name,
      * otherwise just get a string representation of the value.
@@ -34,7 +35,7 @@ class Assert
     {
         return is_object($value) ? get_class($value) : var_export($value, true);
     }
-    
+
     /**
      * Assert that the given object is an instance of the specified class.
      *
@@ -44,7 +45,7 @@ class Assert
      */
     public static function isInstanceOf(mixed $object, string $className): void
     {
-        if (! ($object instanceof $className)) {
+        if (!($object instanceof $className)) {
             throw new InvalidArgumentException(sprintf(
                 'The given object (%s) is not an instance of %s.',
                 self::describe($object),

@@ -23,7 +23,6 @@ use SimpleSAML\Utils;
  *
  * @package SimpleSAMLphp
  */
-
 class UserPass extends \SimpleSAML\Module\core\Auth\UserPassBase // GTIS
 {
     /**
@@ -38,8 +37,8 @@ class UserPass extends \SimpleSAML\Module\core\Auth\UserPassBase // GTIS
     /**
      * Constructor for this authentication source.
      *
-     * @param array $info  Information about this authentication source.
-     * @param array $config  Configuration.
+     * @param array $info Information about this authentication source.
+     * @param array $config Configuration.
      */
     public function __construct(array $info, array $config)
     {
@@ -100,8 +99,8 @@ class UserPass extends \SimpleSAML\Module\core\Auth\UserPassBase // GTIS
      *
      * Note that both the username and the password are UTF-8 encoded.
      *
-     * @param string $username  The username the user wrote.
-     * @param string $password  The password the user wrote.
+     * @param string $username The username the user wrote.
+     * @param string $password The password the user wrote.
      * @return array  Associative array with the users attributes.
      */
     protected function login(string $username, string $password): array

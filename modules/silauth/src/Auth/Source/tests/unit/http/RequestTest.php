@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\tests\unit\http;
 
 use PHPUnit\Framework\TestCase;
@@ -39,7 +40,7 @@ class RequestTest extends TestCase
 
             // Act:
             $actual = $request->isTrustedIpAddress($testCase['ipAddress']);
-            
+
             // Assert:
             $this->assertSame($testCase['expected'], $actual, sprintf(
                 'Expected %s %sto be trusted.',

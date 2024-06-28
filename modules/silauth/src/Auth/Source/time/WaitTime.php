@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\time;
 
 /**
@@ -10,16 +11,16 @@ class WaitTime
 {
     const UNIT_MINUTE = 'minute';
     const UNIT_SECOND = 'second';
-    
+
     private int $friendlyNumber;
     private string $unit;
-    
+
     /**
      * Constructor.
      *
      * NOTE: This will not be precise, as it may round up to have a more
      *       natural-sounding result (e.g. 20 seconds, rather than 17 seconds).
-     * 
+     *
      * @param int $secondsToWait The number of seconds the user must wait.
      */
     public function __construct(int $secondsToWait)
@@ -35,12 +36,12 @@ class WaitTime
             $this->unit = self::UNIT_MINUTE;
         }
     }
-    
+
     public function getFriendlyNumber(): int
     {
         return $this->friendlyNumber;
     }
-    
+
     /**
      * Get a WaitTime representing the longest of the given durations.
      *
@@ -55,12 +56,12 @@ class WaitTime
         }
         return new WaitTime(max($durationsInSeconds));
     }
-    
+
     public function getUnit(): string
     {
         return $this->unit;
     }
-    
+
     public function __toString()
     {
         return sprintf(

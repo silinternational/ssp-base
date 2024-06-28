@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\tests\fakes;
 
 use GuzzleHttp\Handler\MockHandler;
@@ -11,10 +12,10 @@ use SimpleSAML\Module\silauth\Auth\Source\auth\IdBroker;
 abstract class FakeIdBroker extends IdBroker
 {
     public function __construct(
-        string $baseUri,
-        string $accessToken,
+        string          $baseUri,
+        string          $accessToken,
         LoggerInterface $logger,
-        string $idpDomainName = 'fake.example.com'
+        string          $idpDomainName = 'fake.example.com'
     ) {
         parent::__construct(
             $baseUri,
@@ -24,14 +25,14 @@ abstract class FakeIdBroker extends IdBroker
             [],
             false
         );
-        
+
         // Now replace the client with one that will return the desired response.
         $this->client = new IdBrokerClient($baseUri, $accessToken, [
             'http_client_options' => [
                 'handler' => HandlerStack::create(new MockHandler(
-                    
-                    /* Set up several, since this may be called multiple times
-                     * during a test: */
+
+                /* Set up several, since this may be called multiple times
+                 * during a test: */
                     array_fill(
                         0,
                         Authenticator::BLOCK_AFTER_NTH_FAILED_LOGIN * 2,
@@ -42,6 +43,6 @@ abstract class FakeIdBroker extends IdBroker
             IdBrokerClient::ASSERT_VALID_BROKER_IP_CONFIG => false,
         ]);
     }
-    
+
     abstract protected function getDesiredResponse();
 }

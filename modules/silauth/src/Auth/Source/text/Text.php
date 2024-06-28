@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\text;
 
 class Text
@@ -18,10 +19,10 @@ class Text
         ]);
         return trim($output);
     }
-    
+
     /**
      * See if the given string (haystack) starts with the given prefix (needle).
-     * 
+     *
      * @param string $haystack The string to search.
      * @param string $needle The string to search for.
      * @return boolean

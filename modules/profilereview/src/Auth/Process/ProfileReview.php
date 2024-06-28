@@ -30,7 +30,7 @@ class ProfileReview extends ProcessingFilter
     private string|null $profileUrl = null;
 
     protected LoggerInterface $logger;
-    
+
     protected string $loggerClass;
 
     /**
@@ -45,10 +45,10 @@ class ProfileReview extends ProcessingFilter
         parent::__construct($config, $reserved);
         $this->initComposerAutoloader();
         assert('is_array($config)');
-        
+
         $this->loggerClass = $config['loggerClass'] ?? Psr3SamlLogger::class;
         $this->logger = LoggerFactory::get($this->loggerClass);
-        
+
         $this->loadValuesFromConfig($config, [
             'profileUrl',
             'employeeIdAttr',
@@ -67,7 +67,7 @@ class ProfileReview extends ProcessingFilter
     {
         foreach ($attributes as $attribute) {
             $this->$attribute = $config[$attribute] ?? null;
-            
+
             self::validateConfigValue(
                 $attribute,
                 $this->$attribute,
@@ -75,7 +75,7 @@ class ProfileReview extends ProcessingFilter
             );
         }
     }
-    
+
     /**
      * Validate the given config value
      *
@@ -97,7 +97,7 @@ class ProfileReview extends ProcessingFilter
             throw $exception;
         }
     }
-    
+
     /**
      * Get the specified attribute from the given state data.
      *
@@ -112,14 +112,14 @@ class ProfileReview extends ProcessingFilter
     protected function getAttribute($attributeName, $state)
     {
         $attributeData = $state['Attributes'][$attributeName] ?? null;
-        
+
         if (is_array($attributeData)) {
             return $attributeData[0] ?? null;
         }
-        
+
         return $attributeData;
     }
-    
+
     /**
      * Get all of the values for the specified attribute from the given state
      * data.
@@ -135,7 +135,7 @@ class ProfileReview extends ProcessingFilter
     protected function getAttributeAllValues($attributeName, $state)
     {
         $attributeData = $state['Attributes'][$attributeName] ?? null;
-        
+
         return is_null($attributeData) ? null : (array)$attributeData;
     }
 
@@ -151,7 +151,7 @@ class ProfileReview extends ProcessingFilter
     {
         if (array_key_exists('saml:RelayState', $state)) {
             $samlRelayState = $state['saml:RelayState'];
-            
+
             if (strpos($samlRelayState, "http://") === 0) {
                 return $samlRelayState;
             }
@@ -170,12 +170,12 @@ class ProfileReview extends ProcessingFilter
             require_once $path;
         }
     }
-    
+
     protected static function isHeadedToProfileUrl($state, $ProfileUrl)
     {
         if (array_key_exists('saml:RelayState', $state)) {
             $currentDestination = self::getRelayStateUrl($state);
-            if (! empty($currentDestination)) {
+            if (!empty($currentDestination)) {
                 return (strpos($currentDestination, $ProfileUrl) === 0);
             }
         }
@@ -193,7 +193,7 @@ class ProfileReview extends ProcessingFilter
         // Tell the profile-setup URL where the user is ultimately trying to go (if known).
         $currentDestination = self::getRelayStateUrl($state);
         $httpUtils = new HTTP();
-        if (! empty($currentDestination)) {
+        if (!empty($currentDestination)) {
             $profileUrl = $httpUtils->addURLParameters(
                 $profileUrl,
                 ['returnTo' => $currentDestination]
@@ -224,7 +224,7 @@ class ProfileReview extends ProcessingFilter
         $method = $this->getAttributeAllValues('method', $state);
         $profileReview = $this->getAttribute('profile_review', $state);
 
-        if (! $isHeadedToProfileUrl) {
+        if (!$isHeadedToProfileUrl) {
             // Record to the state what logger class to use.
             $state['loggerClass'] = $this->loggerClass;
 
@@ -238,8 +238,7 @@ class ProfileReview extends ProcessingFilter
                 $this->redirectToNag($state, $employeeId, self::METHOD_ADD_PAGE);
             }
 
-            if (self::needToShow($profileReview, self::REVIEW_PAGE))
-            {
+            if (self::needToShow($profileReview, self::REVIEW_PAGE)) {
                 $this->redirectToProfileReview($state, $employeeId, $mfa['options'], $method['options']);
             }
         }
@@ -339,7 +338,7 @@ class ProfileReview extends ProcessingFilter
     public static function needToShow($flag, $page)
     {
         $oneDay = 24 * 60 * 60;
-        if ($flag === 'yes' && ! self::hasSeenSplashPageRecently($page)) {
+        if ($flag === 'yes' && !self::hasSeenSplashPageRecently($page)) {
             self::skipSplashPagesFor($oneDay, $page);
             return true;
         }

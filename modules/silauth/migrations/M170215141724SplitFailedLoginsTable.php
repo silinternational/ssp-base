@@ -11,7 +11,7 @@ class M170215141724SplitFailedLoginsTable extends Migration
         // Remove old indexes.
         $this->dropIndex('idx_failed_logins_ip_address', '{{failed_logins}}');
         $this->dropIndex('idx_failed_logins_username', '{{failed_logins}}');
-        
+
         // Split/update table and add new indexes.
         $this->dropColumn('{{failed_logins}}', 'ip_address');
         $this->renameTable('{{failed_logins}}', '{{failed_login_username}}');

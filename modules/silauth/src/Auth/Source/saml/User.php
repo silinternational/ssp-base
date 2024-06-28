@@ -1,24 +1,24 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\saml;
 
 class User
 {
     public static function convertToSamlFieldNames(
-        string $employeeId,
-        string $firstName,
-        string $lastName,
-        string $username,
-        string $email,
-        string $uuid,
-        string $idpDomainName,
+        string  $employeeId,
+        string  $firstName,
+        string  $lastName,
+        string  $username,
+        string  $email,
+        string  $uuid,
+        string  $idpDomainName,
         ?string $passwordExpirationDate,
-        array $mfa,
-        array $method,
+        array   $mfa,
+        array   $method,
         ?string $managerEmail,
-        string $profileReview,
-        array $member
-    ): array
-    {
+        string  $profileReview,
+        array   $member
+    ): array {
 
         // eduPersonUniqueId (only alphanumeric allowed)
         $alphaNumericUuid = str_replace('-', '', $uuid);

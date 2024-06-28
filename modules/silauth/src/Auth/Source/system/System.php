@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\system;
 
 use Psr\Log\LoggerInterface;
@@ -62,11 +63,11 @@ class System
      */
     public function reportStatus(): void
     {
-        if ( ! $this->isRequiredConfigPresent()) {
+        if (!$this->isRequiredConfigPresent()) {
             $this->reportError('Config problem', 1485984755);
         }
 
-        if ( ! $this->isDatabaseOkay()) {
+        if (!$this->isDatabaseOkay()) {
             $this->reportError('Database problem', 1485284407);
         }
 

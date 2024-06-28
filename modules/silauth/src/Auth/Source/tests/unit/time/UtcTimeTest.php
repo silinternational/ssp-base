@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\tests\unit\time;
 
 use SimpleSAML\Module\silauth\Auth\Source\time\UtcTime;
@@ -19,15 +20,15 @@ class UtcTimeTest extends TestCase
             ],
         ];
         foreach ($testCases as $testCase) {
-            
+
             // Act:
             $actual = UtcTime::format($testCase['dateTimeString']);
-            
+
             // Assert:
             $this->assertSame($testCase['expected'], $actual);
         }
     }
-    
+
     public function testGetRemainingSeconds()
     {
         // Arrange:
@@ -50,15 +51,15 @@ class UtcTimeTest extends TestCase
             $elapsed = $testCase['elapsed'];
             $expected = $testCase['expected'] ?? null;
             $expectException = $testCase['expectException'] ?? null;
-            
+
             // Pre-assert:
             if ($expectException !== null) {
                 $this->expectException($expectException);
             }
-            
+
             // Act:
             $actual = UtcTime::getRemainingSeconds($total, $elapsed);
-            
+
             // Assert:
             if ($expectException !== null) {
                 $this->fail(sprintf(
@@ -77,7 +78,7 @@ class UtcTimeTest extends TestCase
             ));
         }
     }
-    
+
     public function testGetSecondsSinceDateTime()
     {
         // Arrange:
@@ -88,10 +89,10 @@ class UtcTimeTest extends TestCase
             ['value' => UtcTime::format('-2 hours'), 'expected' => 7200],
         ];
         foreach ($testCases as $testCase) {
-            
+
             // Act:
             $actual = UtcTime::getSecondsSinceDateTime($testCase['value']);
-            
+
             // Assert:
             $this->assertEqualsWithDelta(
                 $testCase['expected'],
@@ -105,25 +106,25 @@ class UtcTimeTest extends TestCase
             );
         }
     }
-    
+
     public function testGetSecondsSinceDateTimeEmptyString()
     {
         $this->expectException('\InvalidArgumentException');
         UtcTime::getSecondsSinceDateTime('');
     }
-    
+
     public function testGetSecondsSinceDateTimeInvalidDateTimeString()
     {
         $this->expectException('\Exception');
         UtcTime::getSecondsSinceDateTime('asdf');
     }
-    
+
     public function testGetSecondsSinceDateTimeNull()
     {
         $this->expectException('\TypeError');
         UtcTime::getSecondsSinceDateTime(null);
     }
-    
+
     public function testGetSecondsUntil()
     {
         // Arrange:
@@ -132,35 +133,35 @@ class UtcTimeTest extends TestCase
         $expected = 86400; // 86400 = seconds in a day
         $dayOneUtcTime = new UtcTime($dayOneString);
         $dayTwoUtcTime = new UtcTime($dayTwoString);
-        
+
         // Act:
         $actual = $dayOneUtcTime->getSecondsUntil($dayTwoUtcTime);
-        
+
         // Assert:
         $this->assertSame($expected, $actual);
     }
-    
+
     public function testGetTimestamp()
     {
         // Arrange:
         $timestamp = time();
         $utcTime = new UtcTime(date('r', $timestamp));
-        
+
         // Act:
         $result = $utcTime->getTimestamp();
-        
+
         // Assert:
         $this->assertSame($timestamp, $result);
     }
-    
+
     public function testNow()
     {
         // Arrange:
         $expected = gmdate(UtcTime::DATE_TIME_FORMAT, time());
-        
+
         // Act:
         $actual = UtcTime::now();
-        
+
         // Assert:
         $this->assertSame($expected, $actual);
     }

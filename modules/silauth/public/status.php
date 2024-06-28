@@ -7,7 +7,7 @@ use SimpleSAML\Module\silauth\Auth\Source\system\System;
 
 try {
     header('Content-Type: text/plain');
-    
+
     ConfigManager::initializeYii2WebApp(['components' => ['db' => [
         'dsn' => sprintf(
             'mysql:host=%s;dbname=%s',
@@ -20,9 +20,9 @@ try {
     $logger = new Psr3StdOutLogger();
     $system = new System($logger);
     $system->reportStatus();
-    
+
 } catch (Throwable $t) {
-    
+
     echo sprintf(
         '%s (%s)',
         $t->getMessage(),

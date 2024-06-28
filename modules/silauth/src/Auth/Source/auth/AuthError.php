@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\auth;
 
 /**
@@ -15,10 +16,10 @@ class AuthError
     const CODE_RATE_LIMIT_SECONDS = 'rate_limit_seconds';
     const CODE_RATE_LIMIT_1_MINUTE = 'rate_limit_1_minute';
     const CODE_RATE_LIMIT_MINUTES = 'rate_limit_minutes';
-    
+
     private string $code;
     private array $messageParams = [];
-    
+
     /**
      * Constructor.
      *
@@ -30,7 +31,7 @@ class AuthError
         $this->code = $code;
         $this->messageParams = $messageParams;
     }
-    
+
     public function __toString()
     {
         return var_export([
@@ -38,7 +39,7 @@ class AuthError
             'messageParams' => $this->messageParams,
         ], true);
     }
-    
+
     /**
      * Get the error code, which will be one of the AuthError::CODE_* constants.
      *
@@ -48,7 +49,7 @@ class AuthError
     {
         return $this->code;
     }
-    
+
     /**
      * Get the error string that should be passed to simpleSAMLphp's translate
      * function for this AuthError. It will correspond to an entry in the
@@ -64,7 +65,7 @@ class AuthError
             $this->getCode()
         );
     }
-    
+
     public function getMessageParams(): array
     {
         return $this->messageParams;

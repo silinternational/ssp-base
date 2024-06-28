@@ -41,7 +41,7 @@ class SilAuth extends UserPassBase
     public function __construct(array $info, array $config)
     {
         parent::__construct($info, $config);
-        
+
         $this->authConfig = ConfigManager::getConfigFor('auth', $config);
         $this->idBrokerConfig = ConfigManager::getConfigFor('idBroker', $config);
         $this->mysqlConfig = ConfigManager::getConfigFor('mysql', $config);
@@ -87,14 +87,14 @@ class SilAuth extends UserPassBase
         /* The previous function never returns, so this code is never executed. */
         assert('FALSE');
     }
-    
+
     protected function getTrustedIpAddresses(): array
     {
         $trustedIpAddresses = [];
         $ipAddressesString = $this->authConfig['trustedIpAddresses'] ?? '';
         $stringPieces = explode(',', $ipAddressesString);
         foreach ($stringPieces as $stringPiece) {
-            if (! empty($stringPiece)) {
+            if (!empty($stringPiece)) {
                 $trustedIpAddresses[] = $stringPiece;
             }
         }
@@ -123,8 +123,8 @@ class SilAuth extends UserPassBase
             $idBroker,
             $logger
         );
-        
-        if (! $authenticator->isAuthenticated()) {
+
+        if (!$authenticator->isAuthenticated()) {
             $authError = $authenticator->getAuthError();
             $logger->warning(json_encode([
                 'event' => 'User/pass authentication result: failure',
@@ -140,14 +140,14 @@ class SilAuth extends UserPassBase
                 $authError->getMessageParams()
             ]);
         }
-        
+
         $logger->warning(json_encode([
             'event' => 'User/pass authentication result: success',
             'username' => $username,
             'ipAddresses' => join(',', $request->getIpAddresses()),
             'userAgent' => $userAgent,
         ]));
-        
+
         return $authenticator->getUserAttributes();
     }
 }

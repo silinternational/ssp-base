@@ -1,4 +1,5 @@
 <?php
+
 namespace Sil\IdPHubTests;
 
 include __DIR__ . '/../vendor/autoload.php';
@@ -21,13 +22,13 @@ class MetadataTest extends TestCase
     const LogoCaptionKey = 'logoCaption';
 
     const SPNameKey = 'name';
-    
+
     public $metadataPath = __DIR__ . '/../vendor/simplesamlphp/simplesamlphp/metadata';
 
     public function testLintTestMetadataFiles()
     {
         $spFiles = $this->getSpMetadataFiles();
-        foreach($spFiles as $file) {
+        foreach ($spFiles as $file) {
             $output = $returnVal = null;
             exec('php -l ' . $file, $output, $returnVal);
             $this->assertEquals(
@@ -38,7 +39,7 @@ class MetadataTest extends TestCase
         }
 
         $idpFiles = $this->getIdPMetadataFiles();
-        foreach($idpFiles as $file) {
+        foreach ($idpFiles as $file) {
             $output = $returnVal = null;
             exec('php -l ' . $file, $output, $returnVal);
             $this->assertEquals(
@@ -52,13 +53,13 @@ class MetadataTest extends TestCase
     public function testMetadataFilesReturnArrays()
     {
         $spFiles = $this->getSpMetadataFiles();
-        foreach($spFiles as $file) {
+        foreach ($spFiles as $file) {
             $returnVal = include $file;
             $this->assertTrue(is_array($returnVal), 'Metadata file does not return array as expected. File: ' . $file);
         }
 
         $idpFiles = $this->getIdPMetadataFiles();
-        foreach($idpFiles as $file) {
+        foreach ($idpFiles as $file) {
             $returnVal = include $file;
             $this->assertTrue(is_array($returnVal), 'Metadata file does not return array as expected. File: ' . $file);
         }
@@ -68,15 +69,15 @@ class MetadataTest extends TestCase
     {
         $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
 
-        foreach($idpEntries as $entityId => $entry) {
+        foreach ($idpEntries as $entityId => $entry) {
             $this->assertTrue(isset($entry[self::IdpCode]), 'Metadata entry does not ' .
                 'include an ' . self::IdpCode . ' element as expected. IDP: ' . $entityId);
 
             $nextCode = $entry[self::IdpCode];
-            $this->assertTrue(is_string($nextCode), 'Metadata entry has an ' . 
+            $this->assertTrue(is_string($nextCode), 'Metadata entry has an ' .
                 self::IdpCode . 'element that is not a string. IDP: ' . $entityId);
             $this->assertRegExp("/^[A-Za-z0-9_-]+$/", $nextCode, 'Metadata entry has an ' .
-                self::IdpCode .' element that has something other than letters, ' .
+                self::IdpCode . ' element that has something other than letters, ' .
                 'numbers, hyphens and underscores. IDP: ' . $entityId);
         }
     }
@@ -84,7 +85,7 @@ class MetadataTest extends TestCase
     public function testIDPRemoteMetadataBadSPList()
     {
         $hubMode = Env::get('HUB_MODE', true);
-        if ( ! $hubMode) {
+        if (!$hubMode) {
             $this->markTestSkipped('Skipping test because HUB_MODE = false');
             return;
         }
@@ -94,8 +95,8 @@ class MetadataTest extends TestCase
         $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
         $spListKey = Utils::SP_LIST_KEY;
 
-        foreach($idpEntries as $entityId => $entry) {
-            if (isset($entry[$spListKey]) && ! is_array($entry[$spListKey])) {
+        foreach ($idpEntries as $entityId => $entry) {
+            if (isset($entry[$spListKey]) && !is_array($entry[$spListKey])) {
                 $badIdps[] = $entityId;
             }
         }
@@ -106,12 +107,10 @@ class MetadataTest extends TestCase
             var_export($badIdps, True));
     }
 
-
-
     public function testIDPRemoteMetadataMissingLogoCaption()
     {
         $hubMode = Env::get('HUB_MODE', true);
-        if ( ! $hubMode) {
+        if (!$hubMode) {
             $this->markTestSkipped('Skipping test because HUB_MODE = false');
             return;
         }
@@ -120,7 +119,7 @@ class MetadataTest extends TestCase
 
         $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
 
-        foreach($idpEntries as $entityId => $entry) {
+        foreach ($idpEntries as $entityId => $entry) {
             if (!isset($entry[self::LogoCaptionKey])) {
                 $badIdps[] = $entityId;
             }
@@ -136,7 +135,7 @@ class MetadataTest extends TestCase
     public function testIDPRemoteMetadataBadSPListEntry()
     {
         $hubMode = Env::get('HUB_MODE', true);
-        if ( ! $hubMode) {
+        if (!$hubMode) {
             $this->markTestSkipped('Skipping test because HUB_MODE = false');
             return;
         }
@@ -148,10 +147,10 @@ class MetadataTest extends TestCase
         $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
         $spListKey = Utils::SP_LIST_KEY;
 
-        foreach($idpEntries as $entityId => $entry) {
+        foreach ($idpEntries as $entityId => $entry) {
             if (isset($entry[$spListKey]) && is_array($entry[$spListKey])) {
-                foreach($entry[$spListKey] as $nextSp) {
-                    if ( ! isset($spEntries[$nextSp])) {
+                foreach ($entry[$spListKey] as $nextSp) {
+                    if (!isset($spEntries[$nextSp])) {
                         $badSps[] = $nextSp;
                     }
                 }
@@ -170,7 +169,7 @@ class MetadataTest extends TestCase
         $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
         $codes = [];
 
-        foreach($idpEntries as $entityId => $entry) {
+        foreach ($idpEntries as $entityId => $entry) {
             $nextCode = $entry[self::IdpCode];
             $this->assertFalse(in_array($nextCode, $codes),
                 "Metadata has a duplicate " . self::IdpCode . " entry: " . $nextCode);
@@ -182,7 +181,7 @@ class MetadataTest extends TestCase
     {
         $entities = [];
         $spFiles = $this->getSpMetadataFiles();
-        foreach($spFiles as $file) {
+        foreach ($spFiles as $file) {
             $returnVal = include $file;
             foreach ($returnVal as $entityId => $entity) {
                 $this->assertFalse(
@@ -194,7 +193,7 @@ class MetadataTest extends TestCase
         }
 
         $idpFiles = $this->getIdPMetadataFiles();
-        foreach($idpFiles as $file) {
+        foreach ($idpFiles as $file) {
             $returnVal = include $file;
             foreach ($returnVal as $entityId => $entity) {
                 $this->assertFalse(
@@ -209,15 +208,15 @@ class MetadataTest extends TestCase
     public function testMetadataNoSpsWithoutAnIdp()
     {
         $hubMode = Env::get('HUB_MODE', true);
-        if ( ! $hubMode) {
+        if (!$hubMode) {
             $this->markTestSkipped('Skipping test because HUB_MODE = false');
             return;
         }
-        
+
         $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
 
         $badSps = [];
-        foreach($spEntries as $spEntityId => $spEntry) {
+        foreach ($spEntries as $spEntityId => $spEntry) {
             $results = DiscoUtils::getIdpsForSp(
                 $spEntityId,
                 $this->metadataPath
@@ -239,7 +238,7 @@ class MetadataTest extends TestCase
 
         $badNames = [];
 
-        foreach($idpEntries as $idpEntityId => $idpEntry) {
+        foreach ($idpEntries as $idpEntityId => $idpEntry) {
             if (empty($idpEntry['name']['en'])) {
                 $badNames[] = $idpEntityId;
             }
@@ -256,7 +255,7 @@ class MetadataTest extends TestCase
 
         $badLogos = [];
 
-        foreach($idpEntries as $idpEntityId => $idpEntry) {
+        foreach ($idpEntries as $idpEntityId => $idpEntry) {
             if (empty($idpEntry['logoURL'])) {
                 $badLogos[] = $idpEntityId;
             }
@@ -277,13 +276,13 @@ class MetadataTest extends TestCase
 
         foreach ($spEntries as $spEntityId => $spEntry) {
             $nextBad = [];
-            if ( ! empty($spEntry[$idpListKey])) {
+            if (!empty($spEntry[$idpListKey])) {
                 foreach ($spEntry[$idpListKey] as $nextIdp) {
-                    if ( empty($idpEntries[$nextIdp])) {
+                    if (empty($idpEntries[$nextIdp])) {
                         $nextBad[] = $nextIdp;
                     }
                 }
-                if ( ! empty($nextBad)) {
+                if (!empty($nextBad)) {
                     $badSps[$spEntityId] = $nextBad;
                 }
             }
@@ -297,7 +296,7 @@ class MetadataTest extends TestCase
     public function testMetadataSPWithNoIDPList()
     {
         $hubMode = Env::get('HUB_MODE', true);
-        if ( ! $hubMode) {
+        if (!$hubMode) {
             $this->markTestSkipped('Skipping test because HUB_MODE = false');
             return;
         }
@@ -313,14 +312,14 @@ class MetadataTest extends TestCase
         }
 
         $this->assertTrue(empty($badSps),
-            'At least one SP has an empty IDPList entry (required) ... ' . 
+            'At least one SP has an empty IDPList entry (required) ... ' .
             var_export($badSps, True));
     }
 
     public function testMetadataSPWithNoName()
     {
         $hubMode = Env::get('HUB_MODE', true);
-        if ( ! $hubMode) {
+        if (!$hubMode) {
             $this->markTestSkipped('Skipping test because HUB_MODE = false');
             return;
         }
@@ -346,13 +345,13 @@ class MetadataTest extends TestCase
         $enabledKey = 'enabled';
         $badEnabled = [];
 
-        foreach($idpEntries as $idpEntityId => $idpEntry) {
-            if ( ! isset($idpEntry[$enabledKey]) || 
-                 ! is_bool($idpEntry[$enabledKey])) {
+        foreach ($idpEntries as $idpEntityId => $idpEntry) {
+            if (!isset($idpEntry[$enabledKey]) ||
+                !is_bool($idpEntry[$enabledKey])) {
                 $badEnabled[] = $idpEntityId;
-            } 
+            }
         }
-        
+
         $this->assertTrue(empty($badEnabled),
             "The following Idp's do not have a boolean '" . $enabledKey . "' entry ... " .
             var_export($badEnabled, True));
@@ -367,7 +366,7 @@ class MetadataTest extends TestCase
 
         foreach ($spEntries as $spEntityId => $spEntry) {
 
-            if ( ! empty($spEntry[self::SkipTestsKey])) {
+            if (!empty($spEntry[self::SkipTestsKey])) {
                 continue;
             }
 
@@ -384,14 +383,14 @@ class MetadataTest extends TestCase
 
     public function testMetadataSignResponse()
     {
-       // $this->markTestSkipped('Disabled for testing/verification');
+        // $this->markTestSkipped('Disabled for testing/verification');
         $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
 
         $badSps = [];
         $skippedSps = [];
 
         foreach ($spEntries as $spEntityId => $spEntry) {
-            if ( ! empty($spEntry[self::SkipTestsKey])) {
+            if (!empty($spEntry[self::SkipTestsKey])) {
                 $skippedSps[] = $spEntityId;
                 continue;
             }
@@ -407,21 +406,21 @@ class MetadataTest extends TestCase
             var_export($badSps, True));
 
         if ($skippedSps) {
-           $this->markTestSkipped('At least one SP had the ' . self::SkipTestsKey .
-               ' metadata entry set ... ' . var_export($skippedSps, True));
+            $this->markTestSkipped('At least one SP had the ' . self::SkipTestsKey .
+                ' metadata entry set ... ' . var_export($skippedSps, True));
         }
     }
 
     public function testMetadataSignAssertion()
     {
-       // $this->markTestSkipped('Disabled for testing/verification');
+        // $this->markTestSkipped('Disabled for testing/verification');
         $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
 
         $badSps = [];
         $skippedSps = [];
 
         foreach ($spEntries as $spEntityId => $spEntry) {
-            if ( ! empty($spEntry[self::SkipTestsKey])) {
+            if (!empty($spEntry[self::SkipTestsKey])) {
                 $skippedSps[] = $spEntityId;
                 continue;
             }
@@ -437,8 +436,8 @@ class MetadataTest extends TestCase
             var_export($badSps, True));
 
         if ($skippedSps) {
-           $this->markTestSkipped('At least one SP had the ' . self::SkipTestsKey .
-               ' metadata entry set ... ' . var_export($skippedSps, True));
+            $this->markTestSkipped('At least one SP had the ' . self::SkipTestsKey .
+                ' metadata entry set ... ' . var_export($skippedSps, True));
         }
     }
 
@@ -449,9 +448,9 @@ class MetadataTest extends TestCase
 
         $badSps = [];
         $skippedSps = [];
-        
+
         foreach ($spEntries as $spEntityId => $spEntry) {
-            if ( ! empty($spEntry[self::SkipTestsKey])) {
+            if (!empty($spEntry[self::SkipTestsKey])) {
                 $skippedSps[] = $spEntityId;
                 continue;
             }
@@ -466,8 +465,8 @@ class MetadataTest extends TestCase
             var_export($badSps, True));
 
         if ($skippedSps) {
-           $this->markTestSkipped('At least one SP had the ' . self::SkipTestsKey .
-               ' metadata entry set ... ' . var_export($skippedSps, True));
+            $this->markTestSkipped('At least one SP had the ' . self::SkipTestsKey .
+                ' metadata entry set ... ' . var_export($skippedSps, True));
         }
     }
 

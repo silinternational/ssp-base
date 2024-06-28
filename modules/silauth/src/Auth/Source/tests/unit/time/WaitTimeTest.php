@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\tests\unit\time;
 
 use SimpleSAML\Module\silauth\Auth\Source\time\WaitTime;
@@ -24,10 +25,10 @@ class WaitTimeTest extends TestCase
         ];
         foreach ($testCases as $testCase) {
             $waitTime = new WaitTime($testCase['secondsToWait']);
-            
+
             // Act:
             $actual = (string)$waitTime;
-            
+
             // Assert:
             $this->assertSame($testCase['expected'], $actual, sprintf(
                 'Expected %s second(s) to result in %s, not %s.',
@@ -37,7 +38,7 @@ class WaitTimeTest extends TestCase
             ));
         }
     }
-    
+
     public function testGetLongestWaitTime()
     {
         // Arrange:
@@ -57,10 +58,10 @@ class WaitTimeTest extends TestCase
             if (array_key_exists('expectException', $testCase)) {
                 $this->expectException($testCase['expectException']);
             }
-            
+
             // Act:
             $actual = WaitTime::getLongestWaitTime($testCase['durations']);
-            
+
             // Assert:
             $this->assertEquals($testCase['expected'], $actual, sprintf(
                 'Expected the longest of %s second(s) to be a wait time of %s, not %s.',

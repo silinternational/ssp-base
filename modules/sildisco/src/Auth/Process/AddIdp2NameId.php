@@ -17,7 +17,8 @@ use Sil\SspUtils\Metadata;
  *   ],
  *
  */
-class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter {
+class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter
+{
 
     const IDP_KEY = "saml:sp:IdP"; // the key that points to the entity id in the state
 
@@ -71,10 +72,11 @@ class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter {
     /**
      * Initialize this filter, parse configuration.
      *
-     * @param array $config  Configuration information about this filter.
-     * @param mixed $reserved  For future use.
+     * @param array $config Configuration information about this filter.
+     * @param mixed $reserved For future use.
      */
-    public function __construct(array $config, mixed $reserved) {
+    public function __construct(array $config, mixed $reserved)
+    {
         parent::__construct($config, $reserved);
         assert('is_array($config)');
 
@@ -91,8 +93,8 @@ class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter {
         }
 
         $this->format = Null;
-        if ( ! empty($config[self::FORMAT_KEY])) {
-            $this->format = (string) $config[self::FORMAT_KEY];
+        if (!empty($config[self::FORMAT_KEY])) {
+            $this->format = (string)$config[self::FORMAT_KEY];
         }
     }
 
@@ -141,19 +143,19 @@ class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter {
         $idpEntry = $idpEntries[$samlIDP];
 
         // The IDP metadata must have an IDPNamespace entry
-        if ( ! isset($idpEntry[self::IDP_CODE_KEY])) {
+        if (!isset($idpEntry[self::IDP_CODE_KEY])) {
             throw new \SimpleSAML\Error\Exception(self::ERROR_PREFIX . "Missing required metadata entry: " .
                 self::IDP_CODE_KEY . ".");
         }
 
         // IDPNamespace must be a non-empty string
-        if ( ! is_string($idpEntry[self::IDP_CODE_KEY])) {
+        if (!is_string($idpEntry[self::IDP_CODE_KEY])) {
             throw new \SimpleSAML\Error\Exception(self::ERROR_PREFIX . "Required metadata " .
                 "entry, " . self::IDP_CODE_KEY . ", must be a non-empty string.");
         }
 
         // IDPNamespace must not have special characters in it
-        if ( ! preg_match("/^[A-Za-z0-9_-]+$/", $idpEntry[self::IDP_CODE_KEY])) {
+        if (!preg_match("/^[A-Za-z0-9_-]+$/", $idpEntry[self::IDP_CODE_KEY])) {
             throw new \SimpleSAML\Error\Exception(self::ERROR_PREFIX . "Required metadata " .
                 "entry, " . self::IDP_CODE_KEY . ", must not be empty or contain anything except " .
                 "letters, numbers, hyphens and underscores.");
@@ -164,11 +166,11 @@ class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter {
         $nameId = $state[self::SP_NAMEID_ATTR];
         self::appendIdp($nameId, $IDPNamespace);
 
-        $format =  'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent';
+        $format = 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent';
 
-        if ( ! empty($this->format)) {
+        if (!empty($this->format)) {
             $format = $this->format;
-        } elseif ( ! empty($nameId->Format)) {
+        } elseif (!empty($nameId->Format)) {
             $format = $nameId->Format;
         }
 

@@ -2,7 +2,7 @@
 
 use Sil\SspUtils\Metadata;
 
-$mdPath = __DIR__; 
+$mdPath = __DIR__;
 
 $startMetadata = Metadata::getSpMetadataEntries($mdPath);
 

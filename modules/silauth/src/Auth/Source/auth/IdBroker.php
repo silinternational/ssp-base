@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\auth;
 
 use Psr\Log\LoggerInterface;
@@ -9,14 +10,14 @@ use SimpleSAML\Module\silauth\Auth\Source\saml\User as SamlUser;
 class IdBroker
 {
     protected IdBrokerClient|FakeIdBrokerClient $client;
-    
+
     /** @var LoggerInterface */
     protected LoggerInterface $logger;
-    
+
     protected string $idpDomainName;
-    
+
     /**
-     * 
+     *
      * @param string $baseUri The base of the API's URL.
      *     Example: 'https://api.example.com/'.
      * @param string $accessToken Your authorization access (bearer) token.
@@ -31,12 +32,12 @@ class IdBroker
      *     IP address for the ID Broker API is trusted.
      */
     public function __construct(
-        string $baseUri,
-        string $accessToken,
+        string          $baseUri,
+        string          $accessToken,
         LoggerInterface $logger,
-        string $idpDomainName,
-        array $trustedIpRanges,
-        bool $assertValidIp = true
+        string          $idpDomainName,
+        array           $trustedIpRanges,
+        bool            $assertValidIp = true
     ) {
         $this->logger = $logger;
         $this->idpDomainName = $idpDomainName;
@@ -48,7 +49,7 @@ class IdBroker
             IdBrokerClient::ASSERT_VALID_BROKER_IP_CONFIG => $assertValidIp,
         ]);
     }
-    
+
     /**
      * Attempt to authenticate with the given username and password, returning
      * the attributes for that user if the credentials were acceptable (or null
@@ -68,16 +69,16 @@ class IdBroker
     {
         $rpOrigin = 'https://' . $this->idpDomainName;
         $userInfo = $this->client->authenticate($username, $password, $rpOrigin);
-        
+
         if ($userInfo === null) {
             return null;
         }
-        
+
         $pwExpDate = $userInfo['password']['expires_on'] ?? null;
         if ($pwExpDate !== null) {
             $schacExpiryDate = gmdate('YmdHis\Z', strtotime($pwExpDate));
         }
-        
+
         return SamlUser::convertToSamlFieldNames(
             $userInfo['employee_id'],
             $userInfo['first_name'],
@@ -94,7 +95,7 @@ class IdBroker
             $userInfo['member'] ?? []
         );
     }
-    
+
     /**
      * Ping the /site/status URL. If the ID Broker's status is fine, the
      * response string is returned. If not, an exception is thrown.

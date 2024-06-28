@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\models;
 
 use Psr\Log\LoggerAwareInterface;
@@ -13,7 +14,7 @@ use Yii;
 class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAwareInterface
 {
     use \SimpleSAML\Module\silauth\Auth\Source\traits\LoggerAwareTrait;
-    
+
     /**
      * @inheritdoc
      */
@@ -23,7 +24,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
             'occurred_at_utc' => Yii::t('app', 'Occurred At (UTC)'),
         ]);
     }
-    
+
     public function behaviors(): array
     {
         return [
@@ -35,7 +36,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
             ],
         ];
     }
-    
+
     public static function countRecentFailedLoginsFor(string $username): int
     {
         $count = self::find()->where([
@@ -44,14 +45,14 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
             '>=', 'occurred_at_utc', UtcTime::format('-60 minutes')
         ])->count();
         if (!is_numeric($count)) {
-            throw new \Exception('expected a numeric value for recent failed logins by username, got '. $count);
+            throw new \Exception('expected a numeric value for recent failed logins by username, got ' . $count);
         }
         return (int)$count;
     }
-    
+
     /**
      * Find the records with the given username (if any).
-     * 
+     *
      * @param string $username The username.
      * @return FailedLoginUsername[] An array of any matching records.
      */
@@ -59,7 +60,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
     {
         return self::findAll(['username' => strtolower($username)]);
     }
-    
+
     /**
      * Get the most recent failed-login record for the given username, or null
      * if none is found.
@@ -75,31 +76,31 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
             'occurred_at_utc' => SORT_DESC,
         ])->one();
     }
-    
+
     /**
      * Get the number of seconds remaining until the specified username is
      * no longer blocked by a rate-limit. Returns zero if the user is not
      * currently blocked.
-     * 
+     *
      * @param string $username The username in question
      * @return int The number of seconds
      */
     public static function getSecondsUntilUnblocked(string $username): int
     {
         $failedLogin = self::getMostRecentFailedLoginFor($username);
-        
+
         return Authenticator::getSecondsUntilUnblocked(
             self::countRecentFailedLoginsFor($username),
             $failedLogin->occurred_at_utc ?? null
         );
     }
-    
+
     public function init(): void
     {
         $this->initializeLogger();
         parent::init();
     }
-    
+
     /**
      * Find out whether a rate limit is blocking the specified username.
      *
@@ -111,7 +112,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
         $secondsUntilUnblocked = self::getSecondsUntilUnblocked($username);
         return ($secondsUntilUnblocked > 0);
     }
-    
+
     public static function isCaptchaRequiredFor(?string $username): bool
     {
         if (empty($username)) {
@@ -121,23 +122,22 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
             self::countRecentFailedLoginsFor($username)
         );
     }
-    
+
     public static function recordFailedLoginBy(
-        string $username,
+        string          $username,
         LoggerInterface $logger
-    ): void
-    {
+    ): void {
         $newRecord = new FailedLoginUsername(['username' => strtolower($username)]);
-        if ( ! $newRecord->save()) {
+        if (!$newRecord->save()) {
             $logger->critical(json_encode([
                 'event' => 'Failed to update login attempts counter in '
-                . 'database, so unable to rate limit that username.',
+                    . 'database, so unable to rate limit that username.',
                 'username' => $username,
                 'errors' => $newRecord->getErrors(),
             ]));
         }
     }
-    
+
     public static function resetFailedLoginsBy(string $username): void
     {
         self::deleteAll(['username' => strtolower($username)]);

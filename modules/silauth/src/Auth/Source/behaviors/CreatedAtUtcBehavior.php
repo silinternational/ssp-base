@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\silauth\Auth\Source\behaviors;
 
 use SimpleSAML\Module\silauth\Auth\Source\time\UtcTime;

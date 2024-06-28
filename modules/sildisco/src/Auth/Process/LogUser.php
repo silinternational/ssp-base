@@ -50,8 +50,8 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
     /**
      * Initialize this filter, parse configuration.
      *
-     * @param array $config  Configuration information about this filter.
-     * @param mixed $reserved  For future use.
+     * @param array $config Configuration information about this filter.
+     * @param mixed $reserved For future use.
      */
     public function __construct(array $config, mixed $reserved)
     {
@@ -69,17 +69,17 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
      */
     public function process(array &$state): void
     {
-        if (! $this->configsAreValid()) {
+        if (!$this->configsAreValid()) {
             return;
         }
 
         $awsKey = getenv(self::AWS_ACCESS_KEY_ID_ENV);
-        if (! $awsKey ) {
+        if (!$awsKey) {
             \SimpleSAML\Logger::error(self::AWS_ACCESS_KEY_ID_ENV . " environment variable is required for LogUser.");
             return;
         }
         $awsSecret = getenv(self::AWS_SECRET_ACCESS_KEY_ENV);
-        if (! $awsSecret ) {
+        if (!$awsSecret) {
             \SimpleSAML\Logger::error(self::AWS_SECRET_ACCESS_KEY_ENV . " environment variable is required for LogUser.");
             return;
         }
@@ -88,7 +88,7 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
 
         // Get the SP's entity id
         $spEntityId = "SP entity ID not available";
-        if (! empty($state['saml:sp:State']['SPMetadata']['entityid'])) {
+        if (!empty($state['saml:sp:State']['SPMetadata']['entityid'])) {
             $spEntityId = $state['saml:sp:State']['SPMetadata']['entityid'];
         }
 
@@ -96,13 +96,13 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
             'region' => $this->dynamoRegion,
             'version' => 'latest',
             'credentials' => [
-                'key'    => $awsKey,
+                'key' => $awsKey,
                 'secret' => $awsSecret,
             ],
         ];
 
         if (!empty($this->dynamoEndpoint)) {
-            $sdkConfig['endpoint'] =  $this->dynamoEndpoint;
+            $sdkConfig['endpoint'] = $this->dynamoEndpoint;
         }
 
         $sdk = new Sdk($sdkConfig);
@@ -135,7 +135,7 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
         try {
             $result = $dynamodb->putItem($params);
         } catch (\Exception $e) {
-            \SimpleSAML\Logger::error("Unable to add item: ". $e->getMessage());
+            \SimpleSAML\Logger::error("Unable to add item: " . $e->getMessage());
         }
     }
 
@@ -228,7 +228,8 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
 
     // Dynamodb seems to complain when a value is an empty string.
     // This ensures that only attributes with a non empty value get included.
-    private function addUserAttribute(array $attributes, string $attrKey, string $attr): array {
+    private function addUserAttribute(array $attributes, string $attrKey, string $attr): array
+    {
         if (!empty($attr)) {
             $attributes[$attrKey] = $attr;
         }

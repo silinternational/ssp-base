@@ -1,4 +1,5 @@
 <?php
+
 namespace SimpleSAML\Module\mfa;
 
 use InvalidArgumentException;
@@ -23,7 +24,7 @@ class LoggerFactory
         Assert::isInstanceOf($logger, LoggerInterface::class);
         return $logger;
     }
-    
+
     /**
      * Get a logger of the type specified in the state's loggerClass config. If
      * no loggerClass is present, a logger will be returned that works within

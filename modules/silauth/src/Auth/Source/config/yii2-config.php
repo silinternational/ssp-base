@@ -60,7 +60,7 @@ return [
             'migrationNamespaces' => [
                 'Sil\\SilAuth\\migrations\\',
             ],
-            
+
             // Disable non-namespaced migrations.
             'migrationPath' => null,
         ],
