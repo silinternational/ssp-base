@@ -110,6 +110,7 @@
             <a
               href="{{ forgotPasswordUrl|e }}"
               target="_blank"
+              rel="noopener"
               class="mdl-button mdl-button--colored mdl-typography--caption"
             >
               {{ '{login:forgot}'|trans }}
@@ -125,14 +126,23 @@
 
         <section layout-children="row" child-spacing="space-around">
           {% if helpCenterUrl is defined and helpCenterUrl is not empty %}
-            <a href="{{ helpCenterUrl }}" target="_blank" class="mdl-button mdl-button--colored mdl-typography--body-2">
+            <a
+              href="{{ helpCenterUrl }}"
+              target="_blank"
+              rel="noopener"
+              class="mdl-button mdl-button--colored mdl-typography--body-2"
+            >
               {{ '{login:help}'|trans }}
               <i class="material-icons">launch</i>
             </a>
           {% endif %}
 
           {% if profileUrl is defined and profileUrl is not empty %}
-            <a href="{{ profileUrl }}" target="_blank" class="mdl-button mdl-button--colored mdl-typography--body-2">
+            <a href="{{ profileUrl }}"
+               target="_blank"
+               rel="noopener"
+               class="mdl-button mdl-button--colored mdl-typography--body-2"
+            >
               {{ '{login:profile}'|trans }}
               <i class="material-icons">launch</i>
             </a>
