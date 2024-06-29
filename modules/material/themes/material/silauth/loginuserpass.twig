@@ -101,7 +101,7 @@
           </p>
 
           <script>
-            ga('send', 'event', 'error',{{ errorcode|e(js) }}, 'message',{{ message|e(js) }});
+            ga('send', 'event', 'error', '{{ errorcode|e('js') }}', 'message', '{{ message|e('js') }}');
           </script>
         {% endif %}
 
