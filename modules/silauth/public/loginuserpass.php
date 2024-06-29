@@ -93,6 +93,7 @@ $t->data['helpCenterUrl'] = $state['templateData']['helpCenterUrl'] ?? '';
 $t->data['announcement'] = AnnouncementUtils::getAnnouncement();
 $t->data['idpName'] = $globalConfig->getString('idp_display_name');
 $t->data['siteKey'] = $recaptchaSiteKey;
+$t->data['passwordForgotUrl'] = $globalConfig->getOptionalString('passwordForgotUrl', '');
 
 /* For simplicity's sake, don't bother telling this Request to trust any IP
  * addresses. This is okay because we only track the failures of untrusted
