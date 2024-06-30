@@ -7,13 +7,13 @@
  * - newBackupCodes
  */
 
-use SimpleSAML\Module\mfa\LoggerFactory;
 use SimpleSAML\Auth\ProcessingChain;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Configuration;
 use SimpleSAML\Error\BadRequest;
-use SimpleSAML\XHTML\Template;
 use SimpleSAML\Module\mfa\Auth\Process\Mfa;
+use SimpleSAML\Module\mfa\LoggerFactory;
+use SimpleSAML\XHTML\Template;
 
 $stateId = filter_input(INPUT_GET, 'StateId') ?? null;
 if (empty($stateId)) {
@@ -37,5 +37,8 @@ $t = new Template($globalConfig, 'mfa:new-backup-codes');
 $t->data['mfaSetupUrl'] = $state['mfaSetupUrl'];
 $t->data['newBackupCodes'] = $state['newBackupCodes'] ?? [];
 $t->data['idpName'] = $globalConfig->getString('idp_display_name');
-$t->data['idpNameAndCodes'] = $t->data['idpName'] . join('\r\n', $t->data['newBackupCodes']);
+$t->data['codesForDownload'] = urlencode(
+    $t->data['idpName'] . "\r\n" . join("\r\n", $t->data['newBackupCodes'])
+);
+$t->data['codesForClipboard'] = $t->data['idpName'] . "\n" . join("\n", $t->data['newBackupCodes']);
 $t->send();

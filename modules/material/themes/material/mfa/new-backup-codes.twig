@@ -90,7 +90,7 @@
             </button>
 
             <a
-              href="data:text/plain,{{ idpNameAndCodes }}"
+              href="data:text/plain,{{ codesForDownload }}"
               download="{{ idpName }}-printable-codes.txt"
               class="mdl-button mdl-button--primary"
             >
@@ -112,7 +112,7 @@
             </script>
             <button class="mdl-button mdl-button--primary" type="button" onclick="copyCodesToClipboard(this)">
               {{ '{mfa:button_copy}'|trans }}
-              <textarea class="out-of-sight">{{ idpNameAndCodes }}</textarea>
+              <textarea class="out-of-sight">{{ codesForClipboard }}</textarea>
             </button>
           </div>
         </div>
