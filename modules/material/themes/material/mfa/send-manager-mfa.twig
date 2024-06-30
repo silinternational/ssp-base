@@ -34,16 +34,16 @@
         </div>
 
         {% if errorMessage is not empty %}
-        <div class="mdl-card__supporting-text" layout-children="column">
-          <p class="mdl-color-text--red error">
-            <i class="material-icons">error</i>
+          <div class="mdl-card__supporting-text" layout-children="column">
+            <p class="mdl-color-text--red error">
+              <i class="material-icons">error</i>
 
-            <span class="mdl-typography--caption">
+              <span class="mdl-typography--caption">
               {{ errorMessage|e }}
             </span>
-          </p>
-        </div>
-        {% endif %}}
+            </p>
+          </div>
+        {% endif %}
 
         <div class="mdl-card__actions" layout-children="row">
           <button name="cancel" type="submit" class="mdl-button mdl-button--primary">
