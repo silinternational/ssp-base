@@ -1,4 +1,5 @@
 Feature: Prompt to review profile information
+
   Background:
     Given I go to the SP1 login page
     And I click on the "IDP 1" tile
@@ -16,9 +17,9 @@ Feature: Prompt to review profile information
     And there should be a way to continue to my intended destination
 
     Examples:
-      | category | nag type | message                    |
-      | mfa      | add      | "2-Step Verification"      |
-      | method   | add      | "alternate email address"  |
+      | category | nag type | message                   |
+      | mfa      | add      | "2-Step Verification"     |
+      | method   | add      | "alternate email address" |
 
   Scenario: Present profile review as required by the user profile
     Given I provide credentials that are due for a profile review

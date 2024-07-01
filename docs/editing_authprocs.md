@@ -16,7 +16,12 @@ The IdP's metadata needs to include an `'IDPNamespace'` entry with a string valu
 
 In order for this to work, the SP needs to include a line in its authsources.php file in the Hub's entry ...
 
-` 'NameIDPolicy' => "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",`
+```
+    'NameIDPolicy' => [
+        'Format' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent',
+        'AllowCreate' => true,
+    ],
+```
 
 In addition, the IDP's sp-remote metadata stanza for the Hub needs to include ...
 

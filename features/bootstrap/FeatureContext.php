@@ -3,21 +3,20 @@
 use Behat\Behat\Hook\Scope\AfterStepScope;
 use Behat\Behat\Tester\Result\StepResult;
 use Behat\Gherkin\Node\PyStringNode;
-use Behat\MinkExtension\Context\MinkContext;
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ElementNotFoundException;
 use Behat\Mink\Mink;
 use Behat\Mink\Session;
-use Behat\Testwork\Tester\Result\TestResult;
+use Behat\MinkExtension\Context\MinkContext;
 use DMore\ChromeDriver\ChromeDriver;
 use Webmozart\Assert\Assert;
 
 class FeatureContext extends MinkContext
 {
-    private const HUB_BAD_AUTH_SOURCE_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=wrong';
-    private const HUB_DISCO_URL = 'http://ssp-hub.local/module.php/core/authenticate.php?as=hub-discovery';
-    private const HUB_HOME_URL = 'http://ssp-hub.local';
+    private const HUB_BAD_AUTH_SOURCE_URL = 'http://ssp-hub.local/module.php/admin/test/wrong';
+    private const HUB_DISCO_URL = 'http://ssp-hub.local/module.php/admin/test/hub-discovery';
+    private const HUB_ADMIN_URL = 'http://ssp-hub.local/admin';
     protected const SP1_LOGIN_PAGE = 'http://ssp-sp1.local/module.php/core/authenticate.php?as=ssp-hub';
     protected const SP2_LOGIN_PAGE = 'http://ssp-sp2.local/module.php/core/authenticate.php?as=ssp-hub';
     protected const SP3_LOGIN_PAGE = 'http://ssp-sp3.local/module.php/core/authenticate.php?as=ssp-hub';
@@ -53,13 +52,14 @@ class FeatureContext extends MinkContext
     /**
      * Store a screenshot.
      */
-    private function takeScreenshot() {
+    private function takeScreenshot()
+    {
         $screenshot = $this->getSession()->getDriver()->getScreenshot();
         if (!is_dir(self::SCREENSHOTS_PATH)) {
             mkdir(self::SCREENSHOTS_PATH);
         }
         if (is_dir(self::SCREENSHOTS_PATH)) {
-            $path = self::SCREENSHOTS_PATH . date('d-m-y') . '-' . uniqid() . '.png';
+            $path = self::SCREENSHOTS_PATH . date('Y-m-d_H:i:s_') . uniqid() . '.png';
             file_put_contents($path, $screenshot);
             print "\n\nScreenshot: " . $path;
         }
@@ -78,7 +78,7 @@ class FeatureContext extends MinkContext
     {
         $this->visit(self::HUB_DISCO_URL);
     }
-    
+
     /**
      * @Then I should see our material theme
      */
@@ -97,7 +97,7 @@ class FeatureContext extends MinkContext
      */
     public function iGoToTheHubsHomePage()
     {
-        $this->visit(self::HUB_HOME_URL);
+        $this->visit(self::HUB_ADMIN_URL);
     }
 
     /**
@@ -114,6 +114,15 @@ class FeatureContext extends MinkContext
     public function iLogInAsAHubAdministrator()
     {
         $this->logInAs('admin', 'abc123');
+    }
+
+    /**
+     * @When I provide a username and an incorrect password
+     */
+    public function iProvideAUsernameAndAnIncorrectPassword()
+    {
+        $this->username = "sildisco_idp2";
+        $this->password = "not_correct";
     }
 
     protected function logInAs(string $username, string $password)

@@ -8,7 +8,8 @@ if (basename(getcwd()) !== 'overrides') {
     ));
 }
 
-function assertSuccess($result, $valueIndicatingFailure, $messageIfFailed) {
+function assertSuccess($result, $valueIndicatingFailure, $messageIfFailed)
+{
     if ($result === $valueIndicatingFailure) {
         throw new Exception($messageIfFailed);
     }
@@ -40,10 +41,10 @@ foreach (glob('*.json') as $fileName) {
     assertSuccess($changesData, null, 'Failed to decode the changes JSON.');
 
     $combinedData = array_merge($originalData, $changesData);
-    
+
     $combinedJson = json_encode($combinedData, JSON_PRETTY_PRINT);
     assertSuccess($combinedJson, false, 'Failed to encode the combined JSON.');
-    
+
     $fileWriteResult = file_put_contents($originalFile, $combinedJson);
     assertSuccess(
         $fileWriteResult,

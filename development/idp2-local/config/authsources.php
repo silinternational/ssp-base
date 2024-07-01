@@ -1,5 +1,7 @@
 <?php
 
+use SimpleSAML\Module\silauth\Auth\Source\config\ConfigManager;
+
 $config = [
 
     // This is a authentication source which handles admin authentication.
@@ -9,6 +11,9 @@ $config = [
 
         'core:AdminPassword',
     ],
+
+    // Use SilAuth
+    'silauth' => ConfigManager::getSspConfig(),
 
     'example-userpass' => [
         'exampleauth:UserPass',

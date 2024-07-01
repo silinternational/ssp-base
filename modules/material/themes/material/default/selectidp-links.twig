@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ '{selectidp-links:title}'|trans }}</title>
+
+  {{ include('header.twig') }}
+
+  <script>
+    function setSelectedIdp(id) {
+      const idpInput = document.createElement('input');
+
+      idpInput.type = 'hidden';
+      idpInput.name = '{{ returnIDParam|e('js')|raw }}';
+      idpInput.value = id;
+
+      document.querySelector('form').appendChild(idpInput);
+
+      ga('send', 'event', 'hub', 'choice', 'IdP', id);
+    }
+
+    function clickedAnyway(idpName) {
+      ga('send', 'event', 'hub', 'choice-disabled', 'IdP', idpName);
+    }
+  </script>
+</head>
+<body>
+<div class="mdl-layout mdl-layout--fixed-header fill-viewport">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title scale-to-parent">
+        {% if spName ?? '' is empty %}
+          {{ '{selectidp-links:header}'|trans }}
+        {% else %}
+          {{ '{selectidp-links:header-for-sp}'|trans({'%spName%': spName})|e }}
+        {% endif %}
+      </span>
+
+      <div class="mdl-layout-spacer"></div>
+
+      {% if helpCenterUrl is defined and helpCenterUrl is not empty %}
+        <nav class="mdl-navigation">
+          <a href="{{ helpCenterUrl|e(html_attr) }}" target="_blank" rel="noopener" class="mdl-navigation__link">
+            {{ '{selectidp-links:help}'|trans }}
+          </a>
+        </nav>
+      {% endif %}
+    </div>
+  </header>
+
+  <main class="mdl-layout__content">
+    {{ include('announcement.twig') }}
+
+    <form layout-children="row" child-spacing="space-around">
+      <input type="hidden" name="entityID" value="{{ entityID|e('html_attr') }}"/>
+      <input type="hidden" name="return" value="{{ return|e('html_attr') }}"/>
+      <input type="hidden" name="returnIDParam" value="{{ returnIDParam|e('html_attr') }}"/>
+
+      {% for idp in idplist %}
+        <div
+          class="mdl-card mdl-shadow--8dp row-aware"
+          title="{{ '{selectidp-links:enabled}'|trans({'%idpName%': idp.name|e}) }}"
+        >
+          <div class="mdl-card__media white-bg fixed-height">
+            <button
+              class="mdl-button logo-container fill-parent"
+              onclick="setSelectedIdp('{{ idp.entityid|e('js')|raw }}')"
+              name="idp_{{ idp.entityid|e('html_attr') }}"
+            >
+              <div class="image-wrapper">
+                <img
+                  class="logo"
+                  id="{{ idp.entityid|e('html_attr') }}"
+                  src="{{ idp.iconurl is defined ? idp.iconurl|e('html_attr') : 'default-logo.png' }}"
+                >
+              </div>
+            </button>
+          </div>
+        </div>
+      {% endfor %}
+    </form>
+  </main>
+
+  {{ include('footer.twig') }}
+</div>
+<style>
+  .image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 130px;
+  }
+
+  .logo-caption {
+    font-size: 1.5rem;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .logo-caption {
+      font-size: 1.2rem;
+    }
+  }
+
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .logo-caption {
+    text-transform: none;
+  }
+
+  .mdl-button:hover > .clickable-caption {
+    color: #004F9E !important;
+  }
+
+  .mdl-card {
+    border-radius: 8px;
+  }
+
+  .logo {
+    max-height: 130px;
+    max-width: 90%;
+    padding-top: 4px;
+  }
+</style>
+</body>
+</html>

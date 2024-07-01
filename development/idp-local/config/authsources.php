@@ -11,7 +11,7 @@ $config = [
 
         'core:AdminPassword',
     ],
-    
+
     // Set up example users for testing expirychecker module.
     'example-userpass' => [
         'exampleauth:UserPass',
@@ -448,6 +448,13 @@ $config = [
                         'last_used_utc' => null,
                         'data' => [
                             // Response from "POST /webauthn/login" MFA API call.
+                            "id" => 88,
+                            "label" => "My Webauthn Key",
+                            "last_used_utc" => null,
+                            "created_utc" => "2022-12-15 19:42:37",
+                            "publicKey" => [
+                                "challenge" => "xxxxxxx",
+                            ],
                         ],
                     ],
                 ]

@@ -13,23 +13,23 @@ use Sil\Psr3Adapters\Psr3StdOutLogger;
 use Sil\SspBase\Features\fakes\FakeIdBrokerClient;
 
 $metadata['http://ssp-idp1.local:8085'] = [
-	/*
-	 * The hostname of the server (VHOST) that will use this SAML entity.
-	 *
-	 * Can be '__DEFAULT__', to use this entry by default.
-	 */
-	'host' => '__DEFAULT__',
+    /*
+     * The hostname of the server (VHOST) that will use this SAML entity.
+     *
+     * Can be '__DEFAULT__', to use this entry by default.
+     */
+    'host' => '__DEFAULT__',
 
-	// X.509 key and certificate. Relative to the cert directory.
-	'privatekey' => 'ssp-hub-idp.pem',
-	'certificate' => 'ssp-hub-idp.crt',
-    
+    // X.509 key and certificate. Relative to the cert directory.
+    'privatekey' => 'ssp-hub-idp.pem',
+    'certificate' => 'ssp-hub-idp.crt',
+
     'logoURL' => 'https://dummyimage.com/125x125/0f4fbd/ffffff.png&text=IDP+1+8085',
 
-	/*
-	 * Authentication source to use. Must be one that is configured in
-	 * 'config/authsources.php'.
-	 */
+    /*
+     * Authentication source to use. Must be one that is configured in
+     * 'config/authsources.php'.
+     */
     'auth' => 'example-userpass',
 
     'authproc' => [

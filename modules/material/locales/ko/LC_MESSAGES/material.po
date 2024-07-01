@@ -1,0 +1,366 @@
+
+msgid "{about2expire:title}"
+msgstr "만료 된 암호"
+
+msgid "{about2expire:header}"
+msgstr "곧 만료되는 암호"
+
+msgid "{about2expire:expiring_in_a_day}"
+msgstr "암호는 하루 만료됩니다."
+
+msgid "{about2expire:expiring_soon}"
+msgstr "비밀번호는 %daysLeft% 일 후에 만료됩니다."
+
+msgid "{about2expire:change_now}"
+msgstr "지금 변경 하시겠습니까?"
+
+msgid "{about2expire:button_change}"
+msgstr "예"
+
+msgid "{about2expire:button_continue}"
+msgstr "후에"
+
+msgid "{error:title}"
+msgstr "오류"
+
+msgid "{error:header}"
+msgstr "오류"
+
+msgid "{error:message}"
+msgstr "오류가 발생했습니다. 도움을 받으려면 헬프 데스크에 문의하십시오."
+
+msgid "{error:generic_try_later}"
+msgstr "문제가 발생했습니다. 나중에 다시 시도 해주십시오."
+
+msgid "{error:username_required}"
+msgstr "사용자 이름을 입력하세요."
+
+msgid "{error:password_required}"
+msgstr "비밀번호를 입력하세요."
+
+msgid "{error:invalid_login}"
+msgstr "해당 사용자 이름이나 비밀번호에 문제가 있습니다(또는 해당 계정이 비활성화되었습니다). 다시 시도하거나 조직의 지원 센터에 문의하세요."
+
+msgid "{error:need_to_set_acct_password}"
+msgstr "계정 설정을 완료하려면 비밀번호를 설정해야 합니다. 아래 비밀번호 찾기 링크를 이용해 주세요."
+
+msgid "{error:rate_limit_seconds}"
+msgstr "이 계정에 대한 로그인 실패 횟수가 너무 많습니다. %number%초 정도 기다린 후 다시 시도하십시오."
+
+msgid "{error:rate_limit_1_minute}"
+msgstr "이 계정에 대한 로그인 실패 횟수가 너무 많습니다. 잠시 기다린 후 다시 시도해 주세요."
+
+msgid "{error:rate_limit_minutes}"
+msgstr "이 계정에 대한 로그인 실패 횟수가 너무 많습니다. %number%분 정도 기다린 후 다시 시도하십시오."
+
+msgid "{expired:title}"
+msgstr "만료 된 암호"
+
+msgid "{expired:header}"
+msgstr "암호가 만료되었습니다."
+
+msgid "{expired:expired}"
+msgstr "비밀번호가 만료되었으므로 계속하기 전에 비밀번호를 변경해야합니다."
+
+msgid "{expired:button_change}"
+msgstr "바꾸다"
+
+msgid "{footer:copyright}"
+msgstr "이 사이트의 무단 사용은 금지되어 있으며 민사 및 형사 고발의 대상이 될 수 있습니다."
+
+msgid "{login:title}"
+msgstr "%idpName% 신원 계정으로 로그인하십시오."
+
+msgid "{login:header}"
+msgstr "%idpName% 신원 계정으로 로그인하십시오."
+
+msgid "{login:label_username}"
+msgstr "사용자 이름"
+
+msgid "{login:label_password}"
+msgstr "암호"
+
+msgid "{login:error_wronguserpass}"
+msgstr "해당 사용자 이름 또는 비밀번호가 잘못되었습니다. 다시 확인하고 다시 시도하십시오."
+
+msgid "{login:button_login}"
+msgstr "로그인"
+
+msgid "{login:forgot}"
+msgstr "비밀번호를 잊으 셨나요?"
+
+msgid "{login:logo}"
+msgstr "%idpName% 로고"
+
+msgid "{login:help}"
+msgstr "도움이 필요해."
+
+msgid "{login:profile}"
+msgstr "내 프로필 관리"
+
+msgid "{mfa:title}"
+msgstr "2 단계 인증"
+
+msgid "{mfa:header}"
+msgstr "2 단계 인증"
+
+msgid "{mfa:backupcode_header}"
+msgstr "인쇄 가능한 코드"
+
+msgid "{mfa:backupcode_icon}"
+msgstr "인쇄 가능한 코드 아이콘"
+
+msgid "{mfa:backupcode_reminder}"
+msgstr "각 코드는 한번만 사용할 수 있으므로 이번에 입력한 코드는 소멸되어 다시 사용할 수 없습니다."
+
+msgid "{mfa:backupcode_input}"
+msgstr "코드 입력"
+
+msgid "{mfa:totp_header}"
+msgstr "인증 앱에서 코드 받기"
+
+msgid "{mfa:totp_icon}"
+msgstr "인증 응용 프로그램 아이콘"
+
+msgid "{mfa:totp_input}"
+msgstr "6 자리 코드 입력"
+
+msgid "{mfa:webauthn_header}"
+msgstr "보안키"
+
+msgid "{mfa:u2f_icon}"
+msgstr "USB 키 아이콘"
+
+msgid "{mfa:webauthn_icon}"
+msgstr "USB 키 아이콘"
+
+msgid "{mfa:webauthn_instructions}"
+msgstr "이제 보안 키를 삽입하고 단추를 누를 수 있습니다."
+
+msgid "{mfa:webauthn_unsupported}"
+msgstr "현재 브라우저에서 지원되지 않습니다. <a href='https://www.google.com/chrome/browser' target='_blank' rel='noopener'>Chrome과</a> 같은 보다 안전한 브라우저를 고려하십시오."
+
+msgid "{mfa:webauthn_error_unknown}"
+msgstr "요청에 문제가 발생하여 지금은 확인할 수 없습니다."
+
+msgid "{mfa:webauthn_error_abort}"
+msgstr "취소를 클릭하신 것 같습니다. 다시 시도해 보시겠어요?"
+
+msgid "{mfa:webauthn_error_not_allowed}"
+msgstr "문제가 해결되지 않았습니다. 보안 키가 연결되어 있고 깜박일 때 60초 이내에 터치했는지 확인하세요."
+
+msgid "{mfa:manager_icon}"
+msgstr "복구 연락처 아이콘"
+
+msgid "{mfa:manager_header}"
+msgstr "복구 담당자에게 도움을 요청하십시오"
+
+msgid "{mfa:manager_info}"
+msgstr "2단계 인증 코드를 복구 연락처(보통 상사)에게 보낼 수 있습니다. 복구 연락처에 대한 이메일은 다음과 같습니다. <br><br><code>%managerEmail%</code><br><br> 연락처 보호를 위해 대부분의 편지를 숨겼습니다."
+
+msgid "{mfa:manager_sent}"
+msgstr "%managerEmail% (으)로 복구 담당자에게 임시 코드를 보냈습니다."
+
+msgid "{mfa:manager_input}"
+msgstr "코드 입력"
+
+msgid "{mfa:shield_icon}"
+msgstr "방패 아이콘"
+
+msgid "{mfa:required_header}"
+msgstr "이 계정 보호"
+
+msgid "{mfa:required_info}"
+msgstr "신원 계정에 추가 보안이 필요하므로 현재 2 단계 인증을 설정해야합니다."
+
+msgid "{mfa:running_out_header}"
+msgstr "인쇄 ​가능한 ​코드​가 거의 남지 않았습니다"
+
+msgid "{mfa:running_out_info}"
+msgstr "%numBackupCodesRemaining% 만 남았습니다."
+
+msgid "{mfa:no_more_codes_header}"
+msgstr "​​마지막 인쇄 가능 코드가​​ ​사용되었습니다."
+
+msgid "{mfa:new_codes_header}"
+msgstr "​​새로운 인쇄 가능 코드"
+
+msgid "{mfa:old_codes_gone}"
+msgstr "​​이제 이전 코드를 삭제해도 삭제 될 수 있습니다."
+
+msgid "{mfa:new_codes_info}"
+msgstr "​​인쇄 가능한 코드는 모든 비밀번호와 동일한주의 수준으로 처리되어야합니다."
+
+msgid "{mfa:new_codes_only_once}"
+msgstr "​​각 코드는 한 번만 사용할 수 있습니다."
+
+msgid "{mfa:new_codes_failed}"
+msgstr "새로운 인쇄 가능한 코드를 만드는 동안 문제가 발생했습니다. 불편을 끼쳐 드려 죄송합니다. 계속 진행 한 후 다음 주소로 구성을 확인하십시오. "
+
+msgid "{mfa:new_codes_saved}"
+msgstr "나는 나중에 사용하기 위해 이들의 개인 사본을 저장했다."
+
+msgid "{mfa:account}"
+msgstr "%idpName% 신원 계정"
+
+msgid "{mfa:has_options_besides_codes}"
+msgstr "다른 2 단계 인증 옵션​은​ 설정​ 되었으나​ ​인쇄 가능 코드가 나중에 ​필요할 ​것으로 ​예상되면​ 코드를 ​더 ​만들어야​ ​합니다."
+
+msgid "{mfa:has_no_more_options}"
+msgstr "코드​가 요구되기 전에 인쇄 가능 코드를​ 더 가져와야​ ​합니다."
+
+msgid "{mfa:use_others}"
+msgstr "추가 옵션"
+
+msgid "{mfa:use_u2f}"
+msgstr "내 보안키 사용"
+
+msgid "{mfa:use_webauthn}"
+msgstr "내 보안키 사용"
+
+msgid "{mfa:use_totp}"
+msgstr "내 인증 앱 사용"
+
+msgid "{mfa:use_backupcode}"
+msgstr "인쇄 가능한 코드 사용"
+
+msgid "{mfa:use_help}"
+msgstr "도움이 필요해."
+
+msgid "{mfa:use_manager}"
+msgstr "복구 담당자의 코드 사용"
+
+msgid "{mfa:button_verify}"
+msgstr "검증"
+
+msgid "{mfa:button_later}"
+msgstr "추후 알림"
+
+msgid "{mfa:button_enable}"
+msgstr "지금 사용"
+
+msgid "{mfa:button_set_up}"
+msgstr "지금 설정"
+
+msgid "{mfa:button_try_again}"
+msgstr "다시 시도"
+
+msgid "{mfa:button_get_more}"
+msgstr "더​ ​​가져오기"
+
+msgid "{mfa:button_continue}"
+msgstr "계속하다"
+
+msgid "{mfa:button_print}"
+msgstr "인쇄"
+
+msgid "{mfa:button_download}"
+msgstr "다운로드"
+
+msgid "{mfa:button_copy}"
+msgstr "사본"
+
+msgid "{mfa:button_send}"
+msgstr "코드 보내기"
+
+msgid "{mfa:button_cancel}"
+msgstr "취소"
+
+msgid "{mfa:button_copied}"
+msgstr "복사 됨 ✓"
+
+msgid "{mfa:remember_this}"
+msgstr "이 브라우저를 30일간 기억"
+
+msgid "{mfa:unsupported}"
+msgstr "이 브라우저에서는 지원되지 않습니다."
+
+msgid "{nag:mfa_title}"
+msgstr "2 단계 인증"
+
+msgid "{nag:mfa_header}"
+msgstr "2 단계 인증"
+
+msgid "{nag:method_title}"
+msgstr "비밀번호 복구 방법"
+
+msgid "{nag:method_header}"
+msgstr "비밀번호 복구 방법"
+
+msgid "{nag:shield_icon}"
+msgstr "방패 아이콘"
+
+msgid "{nag:header}"
+msgstr "자기 보호"
+
+msgid "{nag:mfa_info}"
+msgstr "2 단계 인증을 사용하여 신원 계정의 보안을 쉽게 높일 수 있다는 사실을 알고 계셨습니까?"
+
+msgid "{nag:method_info}"
+msgstr "가끔 암호를 잊어 버리십니까? 혹시라도 비밀번호 복구를 위해 보조 이메일 주소를 추가하는 것이 매우 쉽다는 것을 알고 계셨습니까?"
+
+msgid "{nag:button_later}"
+msgstr "추후 알림"
+
+msgid "{nag:button_learn_more}"
+msgstr "더 알아보기"
+
+msgid "{nag:button_enable}"
+msgstr "지금 사용"
+
+msgid "{nag:button_add}"
+msgstr "지금 하나 추가"
+
+msgid "{review:title}"
+msgstr "프로필 검토"
+
+msgid "{review:header}"
+msgstr "프로필 검토"
+
+msgid "{review:info}"
+msgstr "여전히 맞습니까?"
+
+msgid "{review:mfa_header}"
+msgstr "2 단계 인증"
+
+msgid "{review:methods_header}"
+msgstr "비밀번호 복구 방법"
+
+msgid "{review:remaining}"
+msgstr "(%count% 남음)"
+
+msgid "{review:used}"
+msgstr "마지막 사용 시간 : %when%"
+
+msgid "{review:used_never}"
+msgstr "마지막 사용 : Never"
+
+msgid "{review:verified}"
+msgstr "검증 된"
+
+msgid "{review:unverified}"
+msgstr "확인되지 않음"
+
+msgid "{review:button_update}"
+msgstr "이들 중 일부는 업데이트해야합니다."
+
+msgid "{review:button_continue}"
+msgstr "이들은 여전히 정확하다."
+
+msgid "{selectidp-links:title}"
+msgstr "ID 계정 선택"
+
+msgid "{selectidp-links:header}"
+msgstr "ID 계정 선택"
+
+msgid "{selectidp-links:header-for-sp}"
+msgstr "%spName%을 계속 진행하려면 신원 계정을 선택하십시오."
+
+msgid "{selectidp-links:enabled}"
+msgstr "%idpName% 신원 계정으로 로그인하십시오."
+
+msgid "{selectidp-links:disabled}"
+msgstr "%idpName% 곧 제공됨"
+
+msgid "{selectidp-links:help}"
+msgstr "도움"

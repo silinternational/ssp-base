@@ -18,8 +18,8 @@ test-integration:
 	docker compose run --rm test ./run-integration-tests.sh
 
 copyJsLib:
-	cp ./node_modules/@simplewebauthn/browser/dist/bundle/index.umd.min.js ./modules/mfa/www/simplewebauthn/browser.js
-	cp ./node_modules/@simplewebauthn/browser/LICENSE.md ./modules/mfa/www/simplewebauthn/LICENSE.md
+	cp ./node_modules/@simplewebauthn/browser/dist/bundle/index.umd.min.js ./modules/mfa/public/simplewebauthn/browser.js
+	cp ./node_modules/@simplewebauthn/browser/LICENSE.md ./modules/mfa/public/simplewebauthn/LICENSE.md
 
 deps:
 	docker compose run --rm node npm install --ignore-scripts

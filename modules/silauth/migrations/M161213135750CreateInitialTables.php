@@ -27,7 +27,7 @@ class M161213135750CreateInitialTables extends Migration
         $this->createIndex('uq_user_employee_id', '{{user}}', 'employee_id', true);
         $this->createIndex('uq_user_username', '{{user}}', 'username', true);
         $this->createIndex('uq_user_email', '{{user}}', 'email', true);
-        
+
         $this->createTable('{{previous_password}}', [
             'id' => 'pk',
             'user_id' => 'integer NOT NULL',
@@ -52,7 +52,7 @@ class M161213135750CreateInitialTables extends Migration
             '{{previous_password}}'
         );
         $this->dropTable('{{previous_password}}');
-        
+
         $this->dropIndex('uq_user_uuid', '{{user}}');
         $this->dropIndex('uq_user_employee_id', '{{user}}');
         $this->dropIndex('uq_user_username', '{{user}}');

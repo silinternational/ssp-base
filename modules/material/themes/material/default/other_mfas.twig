@@ -1,0 +1,27 @@
+{% if otherOptions|length > 0 %}
+  <div layout-children="column" child-spacing="center">
+    {# used type=button to avoid form submission on click since this is just used to display the ul #}
+    <button id="others" type="button" class="mdl-button mdl-js-button">
+      <span class="mdl-typography--caption">
+        {{ '{mfa:use_others}'|trans }}
+      </span>
+    </button>
+    <ul class="mdl-menu mdl-js-menu mdl-menu--top-left" data-mdl-for="others">
+      {% for option in otherOptions %}
+        {# TODO: Non-interactive elements should not be assigned mouse or keyboard event listeners. #}
+        <li class="mdl-menu__item" onclick="location.href = '{{ option.callback|raw }}'">
+          <span class="mdl-list__item-primary-content">
+            <img
+              class="mdl-list__item-icon"
+              src="{{ option.image }}"
+              {% set alt = '{mfa:' ~ option.type ~ '_icon}' %}
+              alt="{{ alt|trans }}"
+            >
+            {% set text = '{mfa:use_' ~ option.label ~ '}' %}
+            {{ text|trans }}
+          </span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
