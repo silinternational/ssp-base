@@ -3,13 +3,12 @@
 use Behat\Behat\Hook\Scope\AfterStepScope;
 use Behat\Behat\Tester\Result\StepResult;
 use Behat\Gherkin\Node\PyStringNode;
-use Behat\MinkExtension\Context\MinkContext;
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ElementNotFoundException;
 use Behat\Mink\Mink;
 use Behat\Mink\Session;
-use Behat\Testwork\Tester\Result\TestResult;
+use Behat\MinkExtension\Context\MinkContext;
 use DMore\ChromeDriver\ChromeDriver;
 use Webmozart\Assert\Assert;
 
@@ -115,6 +114,15 @@ class FeatureContext extends MinkContext
     public function iLogInAsAHubAdministrator()
     {
         $this->logInAs('admin', 'abc123');
+    }
+
+    /**
+     * @When I provide a username and an incorrect password
+     */
+    public function iProvideAUsernameAndAnIncorrectPassword()
+    {
+        $this->username = "sildisco_idp2";
+        $this->password = "not_correct";
     }
 
     protected function logInAs(string $username, string $password)

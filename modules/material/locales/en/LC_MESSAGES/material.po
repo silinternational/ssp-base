@@ -29,6 +29,30 @@ msgstr "Error"
 msgid "{error:message}"
 msgstr "An error occurred, please contact your help desk for further assistance."
 
+msgid "{error:generic_try_later}"
+msgstr "Hmm... something went wrong. Please try again later."
+
+msgid "{error:username_required}"
+msgstr "Please provide a username."
+
+msgid "{error:password_required}"
+msgstr "Please provide a password."
+
+msgid "{error:invalid_login}"
+msgstr "There was a problem with that username or password (or that account is disabled). Please try again or contact your organization's help desk."
+
+msgid "{error:need_to_set_acct_password}"
+msgstr "You need to set your password to finish setting up your account. Please use the forgot password link below."
+
+msgid "{error:rate_limit_seconds}"
+msgstr "There have been too many failed logins for this account. Please wait about %number% seconds, then try again."
+
+msgid "{error:rate_limit_1_minute}"
+msgstr "There have been too many failed logins for this account. Please wait a minute, then try again."
+
+msgid "{error:rate_limit_minutes}"
+msgstr "There have been too many failed logins for this account. Please wait about %number% minutes, then try again."
+
 msgid "{expired:title}"
 msgstr "Expired password"
 

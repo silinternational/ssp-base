@@ -223,7 +223,6 @@ services:
       MYSQL_PASSWORD: "silauth"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
-      RECAPTCHA_SITE_KEY: "0123456789abcdefghijklmnoABCDEFGHIJKLMNO"
 
   ssp-idp3.local:
     build: .
@@ -377,7 +376,7 @@ services:
       EMAIL_SIGNATURE: "one red pill, please"
       API_ACCESS_KEYS: "test-cli-abc123"
       APP_ENV: "prod"
-      RP_ORIGINS: "https://ssp-idp1.local,https://ssp-idp3.local,https://ssp-idp3.local"
+      RP_ORIGINS: "https://ssp-idp1.local,https://ssp-idp2.local,https://ssp-idp3.local"
       HIBP_CHECK_ON_LOGIN: "false"
       MFA_TOTP_apiBaseUrl: dummy
       MFA_TOTP_apiKey: 10345678-1234-1234-1234-123456789012

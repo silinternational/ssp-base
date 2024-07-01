@@ -60,8 +60,7 @@ class AuthError
     public function getFullSspErrorTag(): string
     {
         return sprintf(
-            '{%s:%s}',
-            'silauth:error',
+            '{error:%s}',
             $this->getCode()
         );
     }

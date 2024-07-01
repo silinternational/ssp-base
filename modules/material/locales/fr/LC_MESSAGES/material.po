@@ -29,6 +29,30 @@ msgstr "Erreur"
 msgid "{error:message}"
 msgstr "Une erreur s'est produite, s'il vous plaît contacter votre service d'assistance pour plus d'assistance."
 
+msgid "{error:generic_try_later}"
+msgstr "Quelque chose s'est mal passé. Veuillez réessayer plus tard."
+
+msgid "{error:username_required}"
+msgstr "Veuillez fournir un nom d'utilisateur."
+
+msgid "{error:password_required}"
+msgstr "Veuillez fournir un mot de passe."
+
+msgid "{error:invalid_login}"
+msgstr "Il y a eu un problème avec ce nom d'utilisateur ou ce mot de passe (ou ce compte est désactivé). Veuillez réessayer ou contacter le service d'assistance de votre organisation."
+
+msgid "{error:need_to_set_acct_password}"
+msgstr "Vous devez définir votre mot de passe pour terminer la configuration de votre compte. Veuillez utiliser le lien mot de passe oublié ci-dessous."
+
+msgid "{error:rate_limit_seconds}"
+msgstr "Il y a eu trop d'échecs de connexion pour ce compte. Veuillez patienter environ %number% secondes, puis réessayez."
+
+msgid "{error:rate_limit_1_minute}"
+msgstr "Il y a eu trop d'échecs de connexion pour ce compte. Veuillez patienter une minute, puis réessayez."
+
+msgid "{error:rate_limit_minutes}"
+msgstr "Il y a eu trop d'échecs de connexion pour ce compte. Veuillez patienter environ %number% minutes, puis réessayez."
+
 msgid "{expired:title}"
 msgstr "Mot de passe expiré"
 

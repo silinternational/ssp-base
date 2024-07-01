@@ -92,7 +92,6 @@ $t->data['profileUrl'] = $state['templateData']['profileUrl'] ?? '';
 $t->data['helpCenterUrl'] = $state['templateData']['helpCenterUrl'] ?? '';
 $t->data['announcement'] = AnnouncementUtils::getAnnouncement();
 $t->data['idpName'] = $globalConfig->getString('idp_display_name');
-$t->data['siteKey'] = $recaptchaSiteKey;
 $t->data['passwordForgotUrl'] = $globalConfig->getOptionalString('passwordForgotUrl', '');
 
 /* For simplicity's sake, don't bother telling this Request to trust any IP
@@ -100,9 +99,9 @@ $t->data['passwordForgotUrl'] = $globalConfig->getOptionalString('passwordForgot
  * IP addresses, so there will be no failed logins of IP addresses we trust. */
 $request = new Request();
 if (Authenticator::isCaptchaRequired($username, $request->getUntrustedIpAddresses())) {
-    $t->data['recaptcha.siteKey'] = $recaptchaSiteKey;
+    $t->data['siteKey'] = $recaptchaSiteKey;
 } else {
-    $t->data['recaptcha.siteKey'] = null;
+    $t->data['siteKey'] = null;
 }
 
 if (isset($state['SPMetadata'])) {

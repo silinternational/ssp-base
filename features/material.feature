@@ -25,3 +25,10 @@ Feature: Material theme
     And I click on the "IDP 2" tile
     Then I should see a "Login with your IDP 2 identity" page
     And I should see our material theme
+
+  Scenario: Login error
+    When I go to the SP1 login page
+    And I click on the "IDP 2" tile
+    And I provide a username and an incorrect password
+    And I log in
+    Then I should see "There was a problem with that username or password"

@@ -29,6 +29,30 @@ msgstr "Error"
 msgid "{error:message}"
 msgstr "Se ha producido un error, póngase en contacto con su asistencia técnica para obtener más ayuda."
 
+msgid "{error:generic_try_later}"
+msgstr "Algo salió mal. Por favor, inténtelo de nuevo más tarde."
+
+msgid "{error:username_required}"
+msgstr "Por favor proporcione un nombre de usuario."
+
+msgid "{error:password_required}"
+msgstr "Proporcione una contraseña."
+
+msgid "{error:invalid_login}"
+msgstr "Hubo un problema con ese nombre de usuario o contraseña (o esa cuenta está deshabilitada). Inténtelo de nuevo o comuníquese con el servicio de asistencia técnica de su organización."
+
+msgid "{error:need_to_set_acct_password}"
+msgstr "Debes configurar tu contraseña para terminar de configurar tu cuenta. Utilice el enlace de olvidé mi contraseña que aparece a continuación."
+
+msgid "{error:rate_limit_seconds}"
+msgstr "Ha habido demasiados inicios de sesión fallidos para esta cuenta. Espere unos %number% segundos y vuelva a intentarlo."
+
+msgid "{error:rate_limit_1_minute}"
+msgstr "Ha habido demasiados inicios de sesión fallidos para esta cuenta. Espere un minuto y vuelva a intentarlo."
+
+msgid "{error:rate_limit_minutes}"
+msgstr "Ha habido demasiados inicios de sesión fallidos para esta cuenta. Espere unos %number% minutos y vuelva a intentarlo."
+
 msgid "{expired:title}"
 msgstr "Contraseña caducada"
 

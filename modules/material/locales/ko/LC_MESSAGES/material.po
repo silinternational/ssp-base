@@ -29,6 +29,30 @@ msgstr "오류"
 msgid "{error:message}"
 msgstr "오류가 발생했습니다. 도움을 받으려면 헬프 데스크에 문의하십시오."
 
+msgid "{error:generic_try_later}"
+msgstr "문제가 발생했습니다. 나중에 다시 시도 해주십시오."
+
+msgid "{error:username_required}"
+msgstr "사용자 이름을 입력하세요."
+
+msgid "{error:password_required}"
+msgstr "비밀번호를 입력하세요."
+
+msgid "{error:invalid_login}"
+msgstr "해당 사용자 이름이나 비밀번호에 문제가 있습니다(또는 해당 계정이 비활성화되었습니다). 다시 시도하거나 조직의 지원 센터에 문의하세요."
+
+msgid "{error:need_to_set_acct_password}"
+msgstr "계정 설정을 완료하려면 비밀번호를 설정해야 합니다. 아래 비밀번호 찾기 링크를 이용해 주세요."
+
+msgid "{error:rate_limit_seconds}"
+msgstr "이 계정에 대한 로그인 실패 횟수가 너무 많습니다. %number%초 정도 기다린 후 다시 시도하십시오."
+
+msgid "{error:rate_limit_1_minute}"
+msgstr "이 계정에 대한 로그인 실패 횟수가 너무 많습니다. 잠시 기다린 후 다시 시도해 주세요."
+
+msgid "{error:rate_limit_minutes}"
+msgstr "이 계정에 대한 로그인 실패 횟수가 너무 많습니다. %number%분 정도 기다린 후 다시 시도하십시오."
+
 msgid "{expired:title}"
 msgstr "만료 된 암호"
 

@@ -24,7 +24,7 @@ class m991231_235959_insert_test_users extends Migration
                 $passwords,
             ]);
 
-        for ($i = 0; $i < count($users); $i++) {
+        for ($i = 1; $i <= count($users); $i++) {
             $this->update('{{user}}', ['current_password_id' => $i], 'id=' . $i);
         }
     }
