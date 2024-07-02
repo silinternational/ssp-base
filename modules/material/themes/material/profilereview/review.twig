@@ -61,14 +61,14 @@
                       {{ mfa.label }}
 
                       {% if mfa.type == 'backupcode' %}
-                        {{ '{review:remaining}'|trans({'%count%':mfa.data.count}) }}
+                        {{ '{review:remaining}'|trans({'%count%': mfa.data.count}) }}
                       {% endif %}
 
                       <span class="mdl-list__item-text-body">
                         {% if mfa.last_used_utc is empty %}
                           {{ '{review:used_never}'|trans }}
                         {% else %}
-                          {{ '{review:used}'|trans({'%when%':mfa.last_used_utc}) }}
+                          {{ '{review:used}'|trans({'%when%': mfa.last_used_utc}) }}
                         {% endif %}
                       </span>
                     </span>
