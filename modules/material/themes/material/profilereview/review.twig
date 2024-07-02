@@ -43,7 +43,7 @@
       </p>
 
       <section layout-children="row-top">
-        {% if mfaOptions|length > 0 %}
+        {% if mfa_options|length > 0 %}
           <div class="mdl-card fixed-width mdl-shadow--8dp">
             <div class="mdl-card__title center">
               <h1 class="mdl-card__title-text">
@@ -53,7 +53,7 @@
 
             <div class="mdl-card__title">
               <ul class="mdl-card__subtitle-text mdl-list">
-                {% for mfa in mfaOptions %}
+                {% for mfa in mfa_options %}
                   <li class="mdl-list__item mdl-list__item--three-line">
                     <span class="mdl-list__item-primary-content">
                       <img class="mdl-list__item-icon" src="mfa-{{ mfa.type }}.svg">
@@ -79,11 +79,11 @@
           </div>
         {% endif %}
 
-        {% if methodOptions|length > 0 %}
+        {% if method_options|length > 0 %}
           <div
             class="mdl-card fixed-width mdl-shadow--8dp"
             {# if there are two cards, remove the right margin so the buttons align with the edge of the card. #}
-            {% if methodOptions|length == 2 %}
+            {% if method_options|length == 2 %}
               style="margin-right: 0px"
             {% endif %}
           >
@@ -95,7 +95,7 @@
 
             <div class="mdl-card__title">
               <ul class="mdl-card__subtitle-text mdl-list">
-                {% for method in methodOptions %}
+                {% for method in method_options %}
                   <li class="mdl-list__item mdl-list__item--two-line">
                     <span class="mdl-list__item-primary-content">
                       <img class="mdl-list__item-icon" src="email.svg">
@@ -116,7 +116,7 @@
       </section>
 
       <section layout-children="row" child-spacing="end" class="fill-parent margin">
-        <a href="{{ profileUrl }}" target="_blank" rel="noopener" onclick="document.querySelector('button').click()"
+        <a href="{{ profile_url }}" target="_blank" rel="noopener" onclick="document.querySelector('button').click()"
            class="mdl-button mdl-button--colored" layout-children="row">
           {{ '{review:button_update}'|trans }} <i class="material-icons">launch</i>
         </a>

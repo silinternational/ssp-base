@@ -16,15 +16,15 @@
   </header>
   <main class="mdl-layout__content" layout-children="column">
     <form layout-children="column">
-      {% for name, value in formData %}
+      {% for name, value in form_data %}
         <input type="hidden" name="{{ name|e }}" value="{{ value|e }}">
       {% endfor %}
 
       <p class="mdl-typography--title margin">
-        {% if daysLeft < 2 %}
+        {% if days_left < 2 %}
           {{ '{about2expire:expiring_in_a_day}'|trans }}
         {% else %}
-          {{ '{about2expire:expiring_soon}'|trans({'%daysLeft%': daysLeft}) }}
+          {{ '{about2expire:expiring_soon}'|trans({'%daysLeft%': days_left}) }}
         {% endif %}
       </p>
 

@@ -1,12 +1,12 @@
 <?php
 
-use SimpleSAML\Module\mfa\LoggerFactory;
 use SimpleSAML\Auth\ProcessingChain;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Configuration;
 use SimpleSAML\Error\BadRequest;
-use SimpleSAML\XHTML\Template;
 use SimpleSAML\Module\mfa\Auth\Process\Mfa;
+use SimpleSAML\Module\mfa\LoggerFactory;
+use SimpleSAML\XHTML\Template;
 
 $stateId = filter_input(INPUT_GET, 'StateId') ?? null;
 if (empty($stateId)) {
@@ -31,7 +31,7 @@ if (filter_has_var(INPUT_POST, 'getMore')) {
 $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'mfa:low-on-backup-codes');
-$t->data['numBackupCodesRemaining'] = $state['numBackupCodesRemaining'];
+$t->data['num_backup_codes_remaining'] = $state['numBackupCodesRemaining'];
 $t->send();
 
 $logger->info(sprintf(

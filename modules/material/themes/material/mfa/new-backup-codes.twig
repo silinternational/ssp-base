@@ -40,7 +40,7 @@
   </header>
   <main class="mdl-layout__content" layout-children="column">
     <form layout-children="column" method="post">
-      {% if newBackupCodes is not empty %}
+      {% if new_backup_codes is not empty %}
         <h1 class="mdl-typography--display-1">
           {{ '{mfa:new_codes_header}'|trans }}
         </h1>
@@ -57,12 +57,12 @@
         <div class="mdl-card mdl-shadow--8dp" style="min-height: 17em">
           <div class="mdl-card__supporting-text ff-temp-flexbug-fix" layout-children="column" id="code-card">
             <p class="fill-parent" layout-children="row">
-              <span flex>{{ '{mfa:account}'|trans({'%idpName%': idpName}) }}</span>
+              <span flex>{{ '{mfa:account}'|trans({'%idpName%': idp_name}) }}</span>
               <em class="mdl-typography--caption">{{ "now"|date("M j, Y") }}</em>
             </p>
 
             <div class="code-container">
-              {% for newCode in newBackupCodes %}
+              {% for newCode in new_backup_codes %}
                 <code>☐ {{ newCode }}</code>
               {% endfor %}
             </div>
@@ -90,8 +90,8 @@
             </button>
 
             <a
-              href="data:text/plain,{{ codesForDownload }}"
-              download="{{ idpName }}-printable-codes.txt"
+              href="data:text/plain,{{ codes_for_download }}"
+              download="{{ idp_name }}-printable-codes.txt"
               class="mdl-button mdl-button--primary"
             >
               {{ '{mfa:button_download}'|trans }}
@@ -112,7 +112,7 @@
             </script>
             <button class="mdl-button mdl-button--primary" type="button" onclick="copyCodesToClipboard(this)">
               {{ '{mfa:button_copy}'|trans }}
-              <textarea class="out-of-sight">{{ codesForClipboard }}</textarea>
+              <textarea class="out-of-sight">{{ codes_for_clipboard }}</textarea>
             </button>
           </div>
         </div>
@@ -131,7 +131,7 @@
           <div class="mdl-card__supporting-text">
             <p>
               {{ '{mfa:new_codes_failed}'|trans }}
-              <a href="{{ mfaSetupUrl }}" target="_blank" rel="noopener">{{ mfaSetupUrl }}</a>
+              <a href="{{ mfa_setup_url }}" target="_blank" rel="noopener">{{ mfa_setup_url }}</a>
             </p>
           </div>
         </div>
