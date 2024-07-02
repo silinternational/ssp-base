@@ -4,10 +4,8 @@ namespace SimpleSAML\Module\silauth\Auth\Source\system;
 
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
-use SimpleSAML\Module\silauth\Auth\Source\auth\IdBroker;
-use SimpleSAML\Module\silauth\Auth\Source\config\ConfigManager;
+use SimpleSAML\Configuration;
 use SimpleSAML\Module\silauth\Auth\Source\models\FailedLoginIpAddress;
-use \SimpleSAML\Configuration;
 use Throwable;
 
 class System
@@ -46,7 +44,7 @@ class System
          *       HTTP_HOST value (provided by the user's request) is used to
          *       build a trusted URL (see SimpleSaml\Module::authenticate()).
          */
-        $baseURL = $globalConfig->getString('baseurlpath', '');
+        $baseURL = $globalConfig->getOptionalString('baseurlpath', '');
         $avoidsSecurityHole = (preg_match('#^https?://.*/$#D', $baseURL) === 1);
         if (!$avoidsSecurityHole) {
             $this->logError('isRequiredConfigPresent failed: baseurlpath (' . $baseURL . ') does not meet requirements');
