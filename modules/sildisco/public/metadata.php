@@ -192,8 +192,8 @@ try {
         }
     }
 
-    $technicalContactEmail = $config->getOptionalString('technicalcontact_email', false);
-    if ($technicalContactEmail && $technicalContactEmail !== 'na@example.org') {
+    $technicalContactEmail = $config->getOptionalString('technicalcontact_email', null);
+    if (!empty($technicalContactEmail) && $technicalContactEmail !== 'na@example.org') {
         $techcontact['emailAddress'] = $technicalContactEmail;
         $techcontact['name'] = $config->getOptionalString('technicalcontact_name', null);
         $techcontact['contactType'] = 'technical';
