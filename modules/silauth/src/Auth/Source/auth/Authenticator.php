@@ -325,7 +325,7 @@ class Authenticator
             }
         }
 
-        $this->setError($errorCode, ['{number}' => $number]);
+        $this->setError($errorCode, ['%number%' => $number]);
     }
 
     protected function setErrorGenericTryLater(): void
