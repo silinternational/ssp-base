@@ -14,13 +14,13 @@ use SimpleSAML\Utils\HTTP as HTTP;
 $config = \SimpleSAML\Configuration::getInstance();
 $metadata = \SimpleSAML\Metadata\MetaDataStorageHandler::getMetadataHandler();
 
-if (!$config->getBoolean('enable.saml20-idp', false)) {
+if (!$config->getOptionalBoolean('enable.saml20-idp', false)) {
     throw new \SimpleSAML\Error\Error('NOACCESS');
 }
 
 // check if valid local session exists
 //$authUtils = new Auth();
-//if ($config->getBoolean('admin.protectmetadata', false)) {
+//if ($config->getOptionalBoolean('admin.protectmetadata', false)) {
 //    $authUtils->requireAdmin();
 //}
 
@@ -116,7 +116,7 @@ try {
 
     $httpUtils = new HTTP();
 
-    if ($idpmeta->getBoolean('saml20.sendartifact', false)) {
+    if ($idpmeta->getOptionalBoolean('saml20.sendartifact', false)) {
         // Artifact sending enabled
         $metaArray['ArtifactResolutionService'][] = array(
             'index' => 0,
@@ -125,7 +125,7 @@ try {
         );
     }
 
-    if ($idpmeta->getBoolean('saml20.hok.assertion', false)) {
+    if ($idpmeta->getOptionalBoolean('saml20.hok.assertion', false)) {
         // Prepend HoK SSO Service endpoint.
         array_unshift($metaArray['SingleSignOnService'], array(
             'hoksso:ProtocolBinding' => Constants::BINDING_HTTP_REDIRECT,

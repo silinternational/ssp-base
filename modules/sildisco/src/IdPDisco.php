@@ -181,7 +181,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
         if ($idp === null) {
             return null;
         }
-        if (!$this->config->getBoolean('idpdisco.validate', true)) {
+        if (!$this->config->getOptionalBoolean('idpdisco.validate', true)) {
             return $idp;
         }
 
