@@ -1,4 +1,4 @@
-{% if otherOptions|length > 0 %}
+{% if other_options|length > 0 %}
   <div layout-children="column" child-spacing="center">
     {# used type=button to avoid form submission on click since this is just used to display the ul #}
     <button id="others" type="button" class="mdl-button mdl-js-button">
@@ -7,7 +7,7 @@
       </span>
     </button>
     <ul class="mdl-menu mdl-js-menu mdl-menu--top-left" data-mdl-for="others">
-      {% for option in otherOptions %}
+      {% for option in other_options %}
         {# TODO: Non-interactive elements should not be assigned mouse or keyboard event listeners. #}
         <li class="mdl-menu__item" onclick="location.href = '{{ option.callback|raw }}'">
           <span class="mdl-list__item-primary-content">

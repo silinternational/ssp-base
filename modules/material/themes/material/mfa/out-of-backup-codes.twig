@@ -29,7 +29,7 @@
 
         <div class="mdl-card__title center">
           <p class="mdl-card__subtitle-text">
-            {% if hasOtherMfaOptions %}
+            {% if has_other_mfa_options %}
               {{ '{mfa:has_options_besides_codes}'|trans }}
             {% else %}
               {{ '{mfa:has_no_more_options}'|trans }}
@@ -38,7 +38,7 @@
         </div>
 
         <div class="mdl-card__actions" layout-children="row">
-          {% if hasOtherMfaOptions %}
+          {% if has_other_mfa_options %}
             <button name="continue" type="submit" class="mdl-button">
               {{ '{mfa:button_later}'|trans }}
             </button>

@@ -55,12 +55,9 @@ if (array_key_exists('changepwd', $_REQUEST)) {
 $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'expirychecker:about2expire');
-$t->data['formTarget'] = Module::getModuleURL('expirychecker/about2expire.php');
-$t->data['formData'] = ['StateId' => $stateId];
-$t->data['daysLeft'] = $state['daysLeft'];
-$t->data['dayOrDays'] = (intval($state['daysLeft']) === 1 ? 'day' : 'days');
-$t->data['expiresAtTimestamp'] = $state['expiresAtTimestamp'];
-$t->data['accountName'] = $state['accountName'];
+$t->data['form_target'] = Module::getModuleURL('expirychecker/about2expire.php');
+$t->data['form_data'] = ['StateId' => $stateId];
+$t->data['days_left'] = $state['daysLeft'];
 $t->send();
 
 Logger::info('expirychecker - User has been warned that their password will expire soon.');
