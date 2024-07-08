@@ -6,9 +6,7 @@
 require_once('../public/_include.php');
 
 use SAML2\Constants;
-use SimpleSAML\Utils\Config\Metadata as Metadata;
-use SimpleSAML\Utils\Crypto as Crypto;
-use SimpleSAML\Utils\HTTP as HTTP;
+use SimpleSAML\Utils;
 
 // load SimpleSAMLphp, configuration and metadata
 $config = \SimpleSAML\Configuration::getInstance();
@@ -19,7 +17,7 @@ if (!$config->getOptionalBoolean('enable.saml20-idp', false)) {
 }
 
 // check if valid local session exists
-//$authUtils = new Auth();
+//$authUtils = new Utils\Auth();
 //if ($config->getOptionalBoolean('admin.protectmetadata', false)) {
 //    $authUtils->requireAdmin();
 //}
@@ -32,7 +30,7 @@ try {
 
     $availableCerts = array();
 
-    $cryptoUtils = new Crypto();
+    $cryptoUtils = new Utils\Crypto();
 
     $keys = array();
     $certInfo = $cryptoUtils->loadPublicKey($idpmeta, false, 'new_');
@@ -114,7 +112,7 @@ try {
         $metaArray['keys'] = $keys;
     }
 
-    $httpUtils = new HTTP();
+    $httpUtils = new Utils\HTTP();
 
     if ($idpmeta->getOptionalBoolean('saml20.sendartifact', false)) {
         // Artifact sending enabled
@@ -156,11 +154,13 @@ try {
         $metaArray['scope'] = $idpmeta->getArray('scope');
     }
 
+    $metadataUtils = new Utils\Metadata();
+
     if ($idpmeta->hasValue('EntityAttributes')) {
         $metaArray['EntityAttributes'] = $idpmeta->getArray('EntityAttributes');
 
         // check for entity categories
-        if (Metadata::isHiddenFromDiscovery($metaArray)) {
+        if ($metadataUtils->isHiddenFromDiscovery($metaArray)) {
             $metaArray['hide.from.discovery'] = true;
         }
     }
@@ -188,7 +188,7 @@ try {
     if ($idpmeta->hasValue('contacts')) {
         $contacts = $idpmeta->getArray('contacts');
         foreach ($contacts as $contact) {
-            $metaArray['contacts'][] = Metadata::getContact($contact);
+            $metaArray['contacts'][] = $metadataUtils->getContact($contact);
         }
     }
 
@@ -197,7 +197,7 @@ try {
         $techcontact['emailAddress'] = $technicalContactEmail;
         $techcontact['name'] = $config->getOptionalString('technicalcontact_name', null);
         $techcontact['contactType'] = 'technical';
-        $metaArray['contacts'][] = Metadata::getContact($techcontact);
+        $metaArray['contacts'][] = $metadataUtils->getContact($techcontact);
     }
 
     $metaBuilder = new \SimpleSAML\Metadata\SAMLBuilder($idpentityid);
