@@ -6,22 +6,21 @@
 require_once('../public/_include.php');
 
 use SAML2\Constants;
-use SimpleSAML\Utils\Auth as Auth;
+use SimpleSAML\Utils\Config\Metadata as Metadata;
 use SimpleSAML\Utils\Crypto as Crypto;
 use SimpleSAML\Utils\HTTP as HTTP;
-use SimpleSAML\Utils\Config\Metadata as Metadata;
 
 // load SimpleSAMLphp, configuration and metadata
 $config = \SimpleSAML\Configuration::getInstance();
 $metadata = \SimpleSAML\Metadata\MetaDataStorageHandler::getMetadataHandler();
 
-if (!$config->getBoolean('enable.saml20-idp', false)) {
+if (!$config->getOptionalBoolean('enable.saml20-idp', false)) {
     throw new \SimpleSAML\Error\Error('NOACCESS');
 }
 
 // check if valid local session exists
 //$authUtils = new Auth();
-//if ($config->getBoolean('admin.protectmetadata', false)) {
+//if ($config->getOptionalBoolean('admin.protectmetadata', false)) {
 //    $authUtils->requireAdmin();
 //}
 
@@ -117,7 +116,7 @@ try {
 
     $httpUtils = new HTTP();
 
-    if ($idpmeta->getBoolean('saml20.sendartifact', false)) {
+    if ($idpmeta->getOptionalBoolean('saml20.sendartifact', false)) {
         // Artifact sending enabled
         $metaArray['ArtifactResolutionService'][] = array(
             'index' => 0,
@@ -126,7 +125,7 @@ try {
         );
     }
 
-    if ($idpmeta->getBoolean('saml20.hok.assertion', false)) {
+    if ($idpmeta->getOptionalBoolean('saml20.hok.assertion', false)) {
         // Prepend HoK SSO Service endpoint.
         array_unshift($metaArray['SingleSignOnService'], array(
             'hoksso:ProtocolBinding' => Constants::BINDING_HTTP_REDIRECT,
@@ -135,7 +134,7 @@ try {
         ));
     }
 
-    $metaArray['NameIDFormat'] = $idpmeta->getString(
+    $metaArray['NameIDFormat'] = $idpmeta->getOptionalString(
         'NameIDFormat',
         'urn:oasis:names:tc:SAML:2.0:nameid-format:transient'
     );
@@ -193,10 +192,10 @@ try {
         }
     }
 
-    $technicalContactEmail = $config->getString('technicalcontact_email', false);
-    if ($technicalContactEmail && $technicalContactEmail !== 'na@example.org') {
+    $technicalContactEmail = $config->getOptionalString('technicalcontact_email', null);
+    if (!empty($technicalContactEmail) && $technicalContactEmail !== 'na@example.org') {
         $techcontact['emailAddress'] = $technicalContactEmail;
-        $techcontact['name'] = $config->getString('technicalcontact_name', null);
+        $techcontact['name'] = $config->getOptionalString('technicalcontact_name', null);
         $techcontact['contactType'] = 'technical';
         $metaArray['contacts'][] = Metadata::getContact($techcontact);
     }
