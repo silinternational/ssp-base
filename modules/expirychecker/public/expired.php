@@ -48,7 +48,7 @@ if (array_key_exists('changepwd', $_REQUEST)) {
 $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'expirychecker:expired');
-$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', '');
+$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', null);
 $t->data['analytics_tracking_id'] = $globalConfig->getOptionalString('analytics.trackingId', '');
 $t->data['form_target'] = Module::getModuleURL('expirychecker/expired.php');
 $t->data['form_data'] = ['StateId' => $stateId];

@@ -34,7 +34,7 @@ if (filter_has_var(INPUT_POST, 'continue')) {
 $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'mfa:new-backup-codes');
-$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', '');
+$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', null);
 $t->data['analytics_tracking_id'] = $globalConfig->getOptionalString('analytics.trackingId', '');
 $t->data['mfa_setup_url'] = $state['mfaSetupUrl'];
 $t->data['new_backup_codes'] = $state['newBackupCodes'] ?? [];

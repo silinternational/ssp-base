@@ -120,7 +120,7 @@ foreach ($otherOptions as &$option) {
 $mfaTemplateToUse = Mfa::getTemplateFor($mfaOption['type']);
 
 $t = new Template($globalConfig, $mfaTemplateToUse);
-$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', '');
+$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', null);
 $t->data['analytics_tracking_id'] = $globalConfig->getOptionalString('analytics.trackingId', '');
 $t->data['error_message'] = $errorMessage ?? null;
 $t->data['mfa_option_data'] = json_encode($mfaOption['data']);
