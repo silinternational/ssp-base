@@ -31,6 +31,8 @@ if (filter_has_var(INPUT_POST, 'update')) {
 $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'profilereview:' . $state['template']);
+$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', '');
+$t->data['analytics_tracking_id'] = $globalConfig->getOptionalString('analytics.trackingId', '');
 $t->data['profile_url'] = $state['profileUrl'];
 $t->data['method_options'] = $state['methodOptions'] ?? [];
 $t->data['mfa_options'] = $state['mfaOptions'] ?? [];

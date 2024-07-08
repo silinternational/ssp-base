@@ -31,6 +31,8 @@ if (filter_has_var(INPUT_POST, 'getMore')) {
 $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'mfa:low-on-backup-codes');
+$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', '');
+$t->data['analytics_tracking_id'] = $globalConfig->getOptionalString('analytics.trackingId', '');
 $t->data['num_backup_codes_remaining'] = $state['numBackupCodesRemaining'];
 $t->send();
 
