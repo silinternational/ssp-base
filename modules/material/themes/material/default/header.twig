@@ -5,9 +5,9 @@
 
 <base href="{{ baseurlpath }}/module.php/material/">
 
-{% if analyticsTrackingId is defined and analyticsTrackingId is not empty %}
+{% if analytics_tracking_id is not empty %}
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ analyticsTrackingId }}"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ analytics_tracking_id }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -17,12 +17,11 @@
 
     gtag('js', new Date());
 
-    gtag('config', '{{ analyticsTrackingId }}');
+    gtag('config', '{{ analytics_tracking_id }}');
   </script>
 {% endif %}
 
-{# FIXME: <link rel="stylesheet" href="material.{{ theme.color-scheme | e ?: 'indigo-purple' }}.1.2.1.min.css"> #}
-<link rel="stylesheet" href="material.indigo-purple.1.2.1.min.css">
+<link rel="stylesheet" href="material.{{ theme_color_scheme | e ?: 'indigo-purple' }}.1.2.1.min.css">
 <link rel="stylesheet" href="styles.2.3.6.css">
 
 <script async src="material.1.2.1.min.js"></script>
