@@ -1,0 +1,366 @@
+
+msgid "{about2expire:title}"
+msgstr "Contraseña vencida"
+
+msgid "{about2expire:header}"
+msgstr "Contraseña caducada pronto"
+
+msgid "{about2expire:expiring_in_a_day}"
+msgstr "Su contraseña caducará en un día."
+
+msgid "{about2expire:expiring_soon}"
+msgstr "Su contraseña caducará en %daysLeft% días."
+
+msgid "{about2expire:change_now}"
+msgstr "¿Quieres cambiarlo ahora?"
+
+msgid "{about2expire:button_change}"
+msgstr "Sí"
+
+msgid "{about2expire:button_continue}"
+msgstr "Después"
+
+msgid "{error:title}"
+msgstr "Error"
+
+msgid "{error:header}"
+msgstr "Error"
+
+msgid "{error:message}"
+msgstr "Se ha producido un error, póngase en contacto con su asistencia técnica para obtener más ayuda."
+
+msgid "{error:generic_try_later}"
+msgstr "Algo salió mal. Por favor, inténtelo de nuevo más tarde."
+
+msgid "{error:username_required}"
+msgstr "Por favor proporcione un nombre de usuario."
+
+msgid "{error:password_required}"
+msgstr "Proporcione una contraseña."
+
+msgid "{error:invalid_login}"
+msgstr "Hubo un problema con ese nombre de usuario o contraseña (o esa cuenta está deshabilitada). Inténtelo de nuevo o comuníquese con el servicio de asistencia técnica de su organización."
+
+msgid "{error:need_to_set_acct_password}"
+msgstr "Debes configurar tu contraseña para terminar de configurar tu cuenta. Utilice el enlace de olvidé mi contraseña que aparece a continuación."
+
+msgid "{error:rate_limit_seconds}"
+msgstr "Ha habido demasiados inicios de sesión fallidos para esta cuenta. Espere unos %number% segundos y vuelva a intentarlo."
+
+msgid "{error:rate_limit_1_minute}"
+msgstr "Ha habido demasiados inicios de sesión fallidos para esta cuenta. Espere un minuto y vuelva a intentarlo."
+
+msgid "{error:rate_limit_minutes}"
+msgstr "Ha habido demasiados inicios de sesión fallidos para esta cuenta. Espere unos %number% minutos y vuelva a intentarlo."
+
+msgid "{expired:title}"
+msgstr "Contraseña caducada"
+
+msgid "{expired:header}"
+msgstr "La contraseña expiró"
+
+msgid "{expired:expired}"
+msgstr "Su contraseña ha caducado y debe cambiarse antes de continuar."
+
+msgid "{expired:button_change}"
+msgstr "Cambiar"
+
+msgid "{footer:copyright}"
+msgstr "El uso no autorizado de este sitio está prohibido y puede ser sometido a procesamiento civil y penal."
+
+msgid "{login:title}"
+msgstr "Inicie sesión con su identidad de %idpName%"
+
+msgid "{login:header}"
+msgstr "Inicie sesión con su identidad de %idpName%"
+
+msgid "{login:label_username}"
+msgstr "Nombre de usuario"
+
+msgid "{login:label_password}"
+msgstr "Contraseña"
+
+msgid "{login:error_wronguserpass}"
+msgstr "Algo está mal con ese nombre de usuario o contraseña, compruebe e inténtelo de nuevo."
+
+msgid "{login:button_login}"
+msgstr "Iniciar sesión"
+
+msgid "{login:forgot}"
+msgstr "¿Se te olvidó tu contraseña?"
+
+msgid "{login:logo}"
+msgstr "Logotipo de %idpName%"
+
+msgid "{login:help}"
+msgstr "necesito ayuda"
+
+msgid "{login:profile}"
+msgstr "Administrar mi perfil"
+
+msgid "{mfa:title}"
+msgstr "Verificación en 2 pasos"
+
+msgid "{mfa:header}"
+msgstr "Verificación en 2 pasos"
+
+msgid "{mfa:backupcode_header}"
+msgstr "código imprimible"
+
+msgid "{mfa:backupcode_icon}"
+msgstr "icono de código imprimible"
+
+msgid "{mfa:backupcode_reminder}"
+msgstr "Cada código solo se puede usar una vez, por lo que el código que ingrese esta vez se agotará y no estará disponible nuevamente."
+
+msgid "{mfa:backupcode_input}"
+msgstr "Introduzca el código"
+
+msgid "{mfa:totp_header}"
+msgstr "Obtenga un código de su aplicación de autenticación"
+
+msgid "{mfa:totp_icon}"
+msgstr "Icono de aplicación de teléfono inteligente"
+
+msgid "{mfa:totp_input}"
+msgstr "Ingrese el código de 6 dígitos"
+
+msgid "{mfa:webauthn_header}"
+msgstr "Clave de seguridad"
+
+msgid "{mfa:u2f_icon}"
+msgstr "Icono de la llave USB"
+
+msgid "{mfa:webauthn_icon}"
+msgstr "Icono de la llave USB"
+
+msgid "{mfa:webauthn_instructions}"
+msgstr "Ahora puede insertar su clave de seguridad y presionar su botón."
+
+msgid "{mfa:webauthn_unsupported}"
+msgstr "No compatible en su navegador actual. Considere un navegador más seguro como <a href='https://www.google.com/chrome/browser' target='_blank' rel='noopener'>Google Chrome</a>."
+
+msgid "{mfa:webauthn_error_unknown}"
+msgstr "Algo salió mal con esa solicitud, no se pudo verificar en este momento."
+
+msgid "{mfa:webauthn_error_abort}"
+msgstr "Parece que has hecho clic en cancelar. ¿Quieres que lo intentemos de nuevo?"
+
+msgid "{mfa:webauthn_error_not_allowed}"
+msgstr "Algo de eso no funcionó. Por favor, asegúrese de que su clave de seguridad está conectada y de que la toca en un plazo de 60 segundos cuando parpadea."
+
+msgid "{mfa:manager_icon}"
+msgstr "Icono de contacto de recuperación"
+
+msgid "{mfa:manager_header}"
+msgstr "Pida ayuda de contacto de recuperación"
+
+msgid "{mfa:manager_info}"
+msgstr "Puede enviar un código de verificación de dos pasos a su contacto de recuperación (normalmente su supervisor). La dirección de correo electrónico que tenemos para su contacto de recuperación es:<br><br><code>%managerEmail%</code><br><br>Ocultamos la mayoría de las letras para proteger a su contacto."
+
+msgid "{mfa:manager_sent}"
+msgstr "Se envió un código temporal a su contacto de recuperación en %managerEmail%."
+
+msgid "{mfa:manager_input}"
+msgstr "Introduzca el código"
+
+msgid "{mfa:shield_icon}"
+msgstr "Icono de escudo"
+
+msgid "{mfa:required_header}"
+msgstr "Protege esta cuenta"
+
+msgid "{mfa:required_info}"
+msgstr "Su cuenta de identidad requiere seguridad adicional, debe configurar la verificación en dos pasos en este momento."
+
+msgid "{mfa:running_out_header}"
+msgstr "Casi sin códigos imprimibles"
+
+msgid "{mfa:running_out_info}"
+msgstr "Solo tiene %numBackupCodesRemaining% más disponible."
+
+msgid "{mfa:no_more_codes_header}"
+msgstr "Último código imprimible utilizado"
+
+msgid "{mfa:new_codes_header}"
+msgstr "Nuevos códigos imprimibles"
+
+msgid "{mfa:old_codes_gone}"
+msgstr "Ahora puede descartar cualquiera de sus códigos anteriores, se han eliminado."
+
+msgid "{mfa:new_codes_info}"
+msgstr "Los códigos imprimibles deben tratarse con el mismo nivel de atención que cualquier contraseña."
+
+msgid "{mfa:new_codes_only_once}"
+msgstr "Cada código solo puede usarse una vez."
+
+msgid "{mfa:new_codes_failed}"
+msgstr "Algo salió mal al crear nuevos códigos imprimibles para usted. Disculpe las molestias, compruebe su configuración en la siguiente dirección después de continuar: "
+
+msgid "{mfa:new_codes_saved}"
+msgstr "Guardé una copia personal de estos para uso posterior"
+
+msgid "{mfa:account}"
+msgstr "Cuenta de identidad de %idpName%"
+
+msgid "{mfa:has_options_besides_codes}"
+msgstr "Afortunadamente, tiene otras opciones de verificación en dos pasos configuradas, pero debe crear más códigos imprimibles si planea necesitarlos en el futuro."
+
+msgid "{mfa:has_no_more_options}"
+msgstr "Como no tiene configuradas otras opciones de verificación en dos pasos en este momento, necesitará obtener más códigos imprimibles antes de que se requiera otro."
+
+msgid "{mfa:use_others}"
+msgstr "Mas opciones"
+
+msgid "{mfa:use_u2f}"
+msgstr "Use mi clave de seguridad en su lugar"
+
+msgid "{mfa:use_webauthn}"
+msgstr "Use mi clave de seguridad en su lugar"
+
+msgid "{mfa:use_totp}"
+msgstr "Use la aplicación autenticación en su lugar"
+
+msgid "{mfa:use_backupcode}"
+msgstr "Use un código imprimible en su lugar"
+
+msgid "{mfa:use_help}"
+msgstr "necesito ayuda"
+
+msgid "{mfa:use_manager}"
+msgstr "Usar código de mi contacto de recuperación"
+
+msgid "{mfa:button_verify}"
+msgstr "Verificar"
+
+msgid "{mfa:button_later}"
+msgstr "Recuérdame más tarde"
+
+msgid "{mfa:button_enable}"
+msgstr "Habilite ahora"
+
+msgid "{mfa:button_set_up}"
+msgstr "Configurar ahora"
+
+msgid "{mfa:button_try_again}"
+msgstr "Inténtalo de nuevo"
+
+msgid "{mfa:button_get_more}"
+msgstr "Obtenga más"
+
+msgid "{mfa:button_continue}"
+msgstr "Continuar"
+
+msgid "{mfa:button_print}"
+msgstr "Imprimir"
+
+msgid "{mfa:button_download}"
+msgstr "Descargar"
+
+msgid "{mfa:button_copy}"
+msgstr "Copiar"
+
+msgid "{mfa:button_send}"
+msgstr "Enviar código"
+
+msgid "{mfa:button_cancel}"
+msgstr "Cancelar"
+
+msgid "{mfa:button_copied}"
+msgstr "Copiado ✓"
+
+msgid "{mfa:remember_this}"
+msgstr "Recuerde esta navegador por 30 días"
+
+msgid "{mfa:unsupported}"
+msgstr "No compatible con este navegador"
+
+msgid "{nag:mfa_title}"
+msgstr "Verificación en 2 pasos"
+
+msgid "{nag:mfa_header}"
+msgstr "Verificación en 2 pasos"
+
+msgid "{nag:method_title}"
+msgstr "Métodos de recuperación de contraseña"
+
+msgid "{nag:method_header}"
+msgstr "Métodos de recuperación de contraseña"
+
+msgid "{nag:shield_icon}"
+msgstr "Icono de escudo"
+
+msgid "{nag:header}"
+msgstr "Protéjase"
+
+msgid "{nag:mfa_info}"
+msgstr "¿Sabía que podría aumentar fácilmente la seguridad de su cuenta de identidad al habilitar la verificación en dos pasos?"
+
+msgid "{nag:method_info}"
+msgstr "¿Olvidas tu contraseña a veces? ¿Sabía que es muy fácil agregar una dirección de correo electrónico alternativa para recuperar la contraseña por si acaso?"
+
+msgid "{nag:button_later}"
+msgstr "Recuérdame más tarde"
+
+msgid "{nag:button_learn_more}"
+msgstr "Aprende más"
+
+msgid "{nag:button_enable}"
+msgstr "Habilite ahora"
+
+msgid "{nag:button_add}"
+msgstr "Agrega uno ahora"
+
+msgid "{review:title}"
+msgstr "Revisión del perfil"
+
+msgid "{review:header}"
+msgstr "Revisión del perfil"
+
+msgid "{review:info}"
+msgstr "¿Siguen siendo correctos?"
+
+msgid "{review:mfa_header}"
+msgstr "Verificación en 2 pasos"
+
+msgid "{review:methods_header}"
+msgstr "Métodos de recuperación de contraseña"
+
+msgid "{review:remaining}"
+msgstr "(%count% restante)"
+
+msgid "{review:used}"
+msgstr "último uso: %when%"
+
+msgid "{review:used_never}"
+msgstr "último uso: nunca"
+
+msgid "{review:verified}"
+msgstr "Verificado"
+
+msgid "{review:unverified}"
+msgstr "Inconfirmado"
+
+msgid "{review:button_update}"
+msgstr "Algunos de estos necesitan actualización"
+
+msgid "{review:button_continue}"
+msgstr "Estos siguen siendo correctos"
+
+msgid "{selectidp-links:title}"
+msgstr "Elige una cuenta de identidad"
+
+msgid "{selectidp-links:header}"
+msgstr "Elige una cuenta de identidad"
+
+msgid "{selectidp-links:header-for-sp}"
+msgstr "Elija una cuenta de identidad para continuar en %spName%"
+
+msgid "{selectidp-links:enabled}"
+msgstr "Inicie sesión con su cuenta de identidad %idpName%"
+
+msgid "{selectidp-links:disabled}"
+msgstr "%idpName% próximamente"
+
+msgid "{selectidp-links:help}"
+msgstr "Ayuda"

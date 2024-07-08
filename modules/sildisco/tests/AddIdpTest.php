@@ -4,7 +4,8 @@
 class AddIdpTest extends PHPUnit_Framework_TestCase
 {
 
-    private static function getNameID($idp) {
+    private static function getNameID($idp)
+    {
         return [
             'saml:sp:IdP' => $idp,
             'saml:sp:NameID' => [
@@ -22,8 +23,8 @@ class AddIdpTest extends PHPUnit_Framework_TestCase
     /**
      * Helper function to run the filter with a given configuration.
      *
-     * @param array $config  The filter configuration.
-     * @param array $request  The request state.
+     * @param array $config The filter configuration.
+     * @param array $request The request state.
      * @return array  The state array after processing.
      */
     private static function processAddIdp2NameId(array $config, array $request)
@@ -40,7 +41,7 @@ class AddIdpTest extends PHPUnit_Framework_TestCase
     public function testAddIdp2NameId_NoIDPNamespace()
     {
         $this->setExpectedException('\SimpleSAML\Error\Exception');
-        $config = [ 'test' => ['value1', 'value2'], ];
+        $config = ['test' => ['value1', 'value2'],];
         $request = self::getNameID('idp-bare');
 
         self::processAddIdp2NameId($config, $request);
@@ -54,7 +55,7 @@ class AddIdpTest extends PHPUnit_Framework_TestCase
     public function testAddIdp2NameId_EmptyIDPNamespace()
     {
         $this->setExpectedException('\SimpleSAML\Error\Exception');
-        $config = [ 'test' => ['value1', 'value2'], ];
+        $config = ['test' => ['value1', 'value2'],];
         $request = self::getNameID('idp-empty');
         self::processAddIdp2NameId($config, $request);
     }
@@ -72,7 +73,6 @@ class AddIdpTest extends PHPUnit_Framework_TestCase
         $request = self::getNameID('idp-bad');
         self::processAddIdp2NameId($config, $request);
     }
-
 
 
     /*
@@ -97,6 +97,7 @@ class AddIdpTest extends PHPUnit_Framework_TestCase
         $results = self::processAddIdp2NameId($config, $state);
         $this->assertEquals($expected, $results);
     }
+
     /*
      * Test with IdP metadata having a good IDPNamespace entry
      */

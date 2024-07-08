@@ -1,5 +1,5 @@
 Feature: Applying dictionary overrides
-  
+
   Scenario: Successfully merging a dictionary file
     Given a "/tmp/test/mfa.definition.json" file containing
         """
@@ -12,7 +12,7 @@ Feature: Applying dictionary overrides
           }
         }
         """
-      And a "/tmp/test/overrides/mfa.definition.json" file containing
+    And a "/tmp/test/overrides/mfa.definition.json" file containing
         """
         {
           "webauthn_header": {

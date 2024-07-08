@@ -229,14 +229,14 @@ Update `/simplesamlphp/config/config.php`:
 'theme.color-scheme' => ['indigo-purple'|'blue_grey-teal'|'red-teal'|'orange-light_blue'|'brown-orange'|'teal-blue']
 ```
 
-The login page looks for `/simplesamlphp/www/logo.png` which is **NOT** provided by default.
+The login page looks for `/simplesamlphp/public/logo.png` which is **NOT** provided by default.
 
 ##### Analytics
 
 Update `/simplesamlphp/config/config.php`:
 
 ```
-'analytics.trackingId' => 'G-some-unique-id-for-your-site'
+'analytics.trackingId' => 'UA-some-unique-id-for-your-site'
 ```
 
 This project provides a convenience by loading this config with whatever is in the environment variable `ANALYTICS_ID`._

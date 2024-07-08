@@ -39,7 +39,7 @@ class StatusContext extends FeatureContext
             'cookies' => true,
             'http_errors' => false,
         ]);
-        $response = $client->get('http://ssp-idp1.local/module.php/core/authenticate.php?as=silauth');
+        $response = $client->get('http://ssp-idp1.local/module.php/admin/test/silauth');
         $this->responseCode = $response->getStatusCode();
     }
 

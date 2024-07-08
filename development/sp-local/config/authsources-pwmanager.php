@@ -12,10 +12,13 @@ $config = [
 
     'mfa-idp' => [
         'saml:SP',
-        'entityID' => 'http://pwmanager.local:8084',
+        'entityID' => 'http://pwmanager.local',
         'idp' => 'http://ssp-idp1.local:8085',
         'discoURL' => null,
-        'NameIDPolicy' => "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+        'NameIDPolicy' => [
+            'Format' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent',
+            'AllowCreate' => true,
+        ],
     ],
 
     'mfa-idp-no-port' => [
@@ -23,6 +26,9 @@ $config = [
         'entityID' => 'http://pwmanager.local',
         'idp' => 'http://ssp-idp1.local',
         'discoURL' => null,
-        'NameIDPolicy' => "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+        'NameIDPolicy' => [
+            'Format' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent',
+            'AllowCreate' => true,
+        ],
     ],
 ];

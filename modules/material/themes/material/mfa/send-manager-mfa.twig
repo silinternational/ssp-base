@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="{{ currentLanguage }}">
+<head>
+  <title>{{ '{mfa:title}'|trans }}</title>
+
+  {{ include('header.twig') }}
+</head>
+<body class="gradient-bg">
+<div class="mdl-layout mdl-layout--fixed-header fill-viewport">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">
+        {{ '{mfa:header}'|trans }}
+      </span>
+    </div>
+  </header>
+  <main class="mdl-layout__content" layout-children="column">
+    <form layout-children="column" method="post" autocomplete="off">
+      <div class="mdl-card mdl-shadow--8dp">
+        <div class="mdl-card__media white-bg margin" layout-children="column">
+          <img src="mfa-manager.svg" class="icon" alt="{{ '{mfa:manager_icon}'|trans }}">
+        </div>
+
+        <div class="mdl-card__title center">
+          <h1 class="mdl-card__title-text">
+            {{ '{mfa:manager_header}'|trans }}
+          </h1>
+        </div>
+
+        <div class="mdl-card__title center">
+          <p class="mdl-card__subtitle-text">
+            {{ '{mfa:manager_info}'|trans({'%managerEmail%':managerEmail})|raw }}
+          </p>
+        </div>
+
+        {% if errorMessage is not empty %}
+          <div class="mdl-card__supporting-text" layout-children="column">
+            <p class="mdl-color-text--red error">
+              <i class="material-icons">error</i>
+
+              <span class="mdl-typography--caption">
+              {{ errorMessage|e }}
+            </span>
+            </p>
+          </div>
+        {% endif %}
+
+        <div class="mdl-card__actions" layout-children="row">
+          <button name="cancel" type="submit" class="mdl-button mdl-button--primary">
+            {{ '{mfa:button_cancel}'|trans }}
+          </button>
+          <span flex></span>
+
+          <button name="send" type="submit" class="mdl-button mdl-button--raised mdl-button--primary">
+            {{ '{mfa:button_send}'|trans }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </main>
+</div>
+</body>
+</html>

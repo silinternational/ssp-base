@@ -10,14 +10,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Create env files
+        run: cp local.env.dist local.env && cp local.broker.env.dist local.broker.env
       - name: test
-        run: docker compose -f actions-services.yml run test ./run-tests.sh
+        run: docker compose run test ./run-tests.sh
       - name: check hub metadata for tests
-        run: docker compose -f actions-services.yml run ssp-hub.local ./run-metadata-tests.sh
+        run: docker compose run ssp-hub.local ./run-metadata-tests.sh
       - name: check idp metadata for tests
-        run: docker compose -f actions-services.yml run ssp-idp1.local ./run-metadata-tests.sh
+        run: docker compose run ssp-idp1.local ./run-metadata-tests.sh
       - name: check sp metadata for tests
-        run: docker compose -f actions-services.yml run ssp-sp1.local ./run-metadata-tests.sh
+        run: docker compose run ssp-sp1.local ./run-metadata-tests.sh
 
   build-and-publish:
     name: Build and Publish

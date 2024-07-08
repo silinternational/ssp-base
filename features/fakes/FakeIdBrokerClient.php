@@ -1,4 +1,5 @@
 <?php
+
 namespace Sil\SspBase\Features\fakes;
 
 use InvalidArgumentException;
@@ -11,9 +12,9 @@ class FakeIdBrokerClient
 {
     const CORRECT_VALUE = '111111';
     const INCORRECT_VALUE = '999999';
-    
+
     const RATE_LIMITED_MFA_ID = 987;
-    
+
     /**
      * Constructor.
      *
@@ -25,7 +26,7 @@ class FakeIdBrokerClient
     public function __construct(
         string $baseUri,
         string $accessToken,
-        array $config = []
+        array  $config = []
     ) {
         // No-op
     }
@@ -34,7 +35,7 @@ class FakeIdBrokerClient
      * Verify an MFA value
      * @throws ServiceException
      */
-    public function mfaVerify(int $id, string $employeeId, string|array $value):array
+    public function mfaVerify(int $id, string $employeeId, string|array $value): array
     {
         if ($id === self::RATE_LIMITED_MFA_ID) {
             throw new ServiceException('Too many recent failures for this MFA', 0, 429);
@@ -54,7 +55,7 @@ class FakeIdBrokerClient
             ],
         ];
     }
-    
+
     /**
      * Create a new MFA configuration
      * @param string $employee_id
@@ -68,7 +69,7 @@ class FakeIdBrokerClient
         if (empty($employee_id)) {
             throw new InvalidArgumentException('employee_id is required');
         }
-        
+
         if ($type === 'backupcode') {
             return [
                 "id" => 1234,

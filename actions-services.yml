@@ -57,10 +57,7 @@ services:
       - ./development/announcement.php:/data/vendor/simplesamlphp/simplesamlphp/announcement/announcement.php
 
       # Utilize custom metadata
-      - ./development/hub/metadata/idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/idp-remote.php
-      - ./development/hub/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
-      - ./development/hub/metadata/saml20-sp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-hosted.php
-      - ./development/hub/metadata/sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/sp-remote.php
+      - ./development/hub/metadata/:/data/vendor/simplesamlphp/simplesamlphp/metadata/
 
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
@@ -69,7 +66,6 @@ services:
       SECRET_SALT: "not-secret-h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "Hub"
       SECURE_COOKIE: "false"
-      ADMIN_PROTECT_INDEX_PAGE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_COLOR_SCHEME: "orange-light_blue"
       HUB_MODE: "true"
@@ -84,15 +80,15 @@ services:
 
       # Utilize custom configs
       - ./development/idp-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
-      - ./development/idp-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
       - ./development/announcement.php:/data/vendor/simplesamlphp/simplesamlphp/announcement/announcement.php
+      - ./development/enable-exampleauth.sh:/data/enable-exampleauth.sh
 
       # Utilize custom metadata
       - ./development/idp-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
       - ./development/idp-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
 
       # Customized SSP code -- TODO: make a better solution that doesn't require hacking SSP code
-      - ./development/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/lib/Auth/Source/UserPass.php
+      - ./development/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/src/Auth/Source/UserPass.php
 
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
@@ -100,7 +96,8 @@ services:
       # Include the features folder (for the FakeIdBrokerClient class)
       - ./features:/data/features
     command: >
-      bash -c "whenavail db 3306 60 /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/lib/Auth/Source/yii migrate --interactive=0 &&
+      bash -c "whenavail db 3306 60 /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/src/Auth/Source/yii migrate --interactive=0 &&
+      /data/enable-exampleauth.sh &&
       /data/run.sh"
     environment:
       ADMIN_PASS: "a"
@@ -125,25 +122,38 @@ services:
 
   ssp-idp2.local:
     build: .
+    depends_on:
+      - db
+      - broker
     volumes:
       # Utilize custom certs
-      - ./development/idp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert  
+      - ./development/idp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
       - ./development/idp2-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
-      - ./development/idp2-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
+      - ./development/enable-exampleauth.sh:/data/enable-exampleauth.sh
 
       # Utilize custom metadata
       - ./development/idp2-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
       - ./development/idp2-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
 
       # Customized SSP code -- TODO: make a better solution that doesn't require hacking SSP code
-      - ./development/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/lib/Auth/Source/UserPass.php
+      - ./development/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/src/Auth/Source/UserPass.php
 
+    command: bash -c "/data/enable-exampleauth.sh && /data/run.sh"
     environment:
       ADMIN_PASS: "b"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
       IDP_NAME: "IDP 2"
+      IDP_DOMAIN_NAME: "ssp-idp1.local"
+      ID_BROKER_ACCESS_TOKEN: "test-cli-abc123"
+      ID_BROKER_ASSERT_VALID_IP: "true"
+      ID_BROKER_BASE_URI: "http://broker"
+      ID_BROKER_TRUSTED_IP_RANGES: "10.20.38.0/24"
+      MYSQL_HOST: "db"
+      MYSQL_DATABASE: "silauth"
+      MYSQL_USER: "silauth"
+      MYSQL_PASSWORD: "silauth"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
 
@@ -155,7 +165,6 @@ services:
 
       # Utilize custom configs
       - ./development/idp3-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
-      - ./development/idp3-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
 
       # Utilize custom metadata
       - ./development/idp3-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
@@ -169,13 +178,12 @@ services:
       IDP_NAME: "IdP3"
 
   ssp-sp1.local:
-    build: .
+    image: silintl/ssp-base:9.3.0
     volumes:
       # Utilize custom certs
       - ./development/sp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
-      - ./development/sp-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
       - ./development/sp-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
 
       # Utilize custom metadata
@@ -184,7 +192,9 @@ services:
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
     environment:
+      ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: "sp1"
+      IDP_NAME: "NA"
       SECRET_SALT: "not-secret-h57fjemb&dn^nsJFGNjweJz1"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
@@ -192,20 +202,21 @@ services:
       ADMIN_PROTECT_INDEX_PAGE: "false"
 
   ssp-sp2.local:
-    build: .
+    image: silintl/ssp-base:9.3.0
     volumes:
       # Utilize custom certs
       - ./development/sp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
-      - ./development/sp2-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
       - ./development/sp2-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
 
       # Utilize custom metadata
       - ./development/sp2-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
 
     environment:
+      ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: sp2
+      IDP_NAME: "NA"
       SECRET_SALT: h57fjemb&dn^nsJFGNjweJz2
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
@@ -213,20 +224,21 @@ services:
       ADMIN_PROTECT_INDEX_PAGE: "false"
 
   ssp-sp3.local:
-    build: .
+    image: silintl/ssp-base:9.3.0
     volumes:
       # Utilize custom certs
       - ./development/sp3-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
-      - ./development/sp3-local/config/config.php:/data/vendor/simplesamlphp/simplesamlphp/config/config.php
       - ./development/sp3-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
 
       # Utilize custom metadata
       - ./development/sp3-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
 
     environment:
+      ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: sp3
+      IDP_NAME: "NA"
       SECRET_SALT: h57fjemb&dn^nsJFGNjweJz3
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
@@ -235,7 +247,7 @@ services:
 
 
   pwmanager.local:
-    image: silintl/ssp-base:develop
+    image: silintl/ssp-base:9.3.0
     volumes:
       # Utilize custom certs
       - ./development/sp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
@@ -246,6 +258,7 @@ services:
       # Utilize custom metadata
       - ./development/sp-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
     environment:
+      ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: sp1
       IDP_NAME: THIS VARIABLE IS REQUIRED BUT PROBABLY NOT USED
       SECRET_SALT: NOT-a-secret-k49fjfkw73hjf9t87wjiw
@@ -276,12 +289,19 @@ services:
       EMAIL_SIGNATURE: "one red pill, please"
       API_ACCESS_KEYS: "test-cli-abc123"
       APP_ENV: "prod"
-      MFA_TOTP_apiBaseUrl: not_needed_here
-      MFA_TOTP_apiKey: not_needed_here
-      MFA_TOTP_apiSecret: not_needed_here
-      MFA_WEBAUTHN_apiBaseUrl: not_needed_here
-      MFA_WEBAUTHN_apiKey: not_needed_here
-      MFA_WEBAUTHN_apiSecret: not_needed_here
+      RP_ORIGINS: "https://ssp-idp1.local,https://ssp-idp3.local,https://ssp-idp3.local"
+      HIBP_CHECK_ON_LOGIN: "false"
+      MFA_TOTP_apiBaseUrl: dummy
+      MFA_TOTP_apiKey: 10345678-1234-1234-1234-123456789012
+      MFA_TOTP_apiSecret: 11345678-1234-1234-1234-12345678
+      MFA_WEBAUTHN_apiBaseUrl: dummy
+      MFA_WEBAUTHN_apiKey: 10345678-1234-1234-1234-123456789012
+      MFA_WEBAUTHN_apiSecret: 11345678-1234-1234-1234-12345678
+      MFA_WEBAUTHN_appId: ourApp99
+      MFA_WEBAUTHN_rpDisplayName: Our App
+      MFA_WEBAUTHN_rpId: http://app99
+    volumes:
+      - ./development/m991231_235959_insert_test_users.php:/data/console/migrations/m991231_235959_insert_test_users.php
     command: "bash -c 'whenavail brokerDb 3306 60 ./yii migrate --interactive=0 && ./run.sh'"
 
   brokerDb:
