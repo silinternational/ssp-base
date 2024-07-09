@@ -120,10 +120,6 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
 
         $enabledIdps = [];
         foreach ($idpList as $idp) {
-            // TODO: make this work for any language
-            if (is_array($idp['name'])) {
-                $idp['name'] = $idp['name']['en'];
-            }
             if ($idp['enabled'] === true) {
                 $enabledIdps[] = $idp;
             } else {

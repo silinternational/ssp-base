@@ -58,7 +58,7 @@
       {% for idp in enabledIdps %}
         <div
           class="mdl-card mdl-shadow--8dp row-aware"
-          title="{{ '{selectidp-links:enabled}'|trans({'%idpName%': idp.name|e}) }}"
+          title="{{ '{selectidp-links:enabled}'|trans({'%idpName%': idp|entityDisplayName}) }}"
         >
           <div class="mdl-card__media white-bg fixed-height">
             <button class="mdl-button logo-container fill-parent" onclick="setSelectedIdp('{{ idp.entityid|e }}')">
@@ -81,8 +81,8 @@
       {% for idp in disabledIdps %}
         <div
           class="mdl-card mdl-shadow--2dp disabled row-aware"
-          title="{{ '{selectidp-links:disabled}'|trans({'%idpName%': idp.name|e}) }}"
-          onclick="clickedAnyway('{{ idp.name|e }}')"
+          title="{{ '{selectidp-links:disabled}'|trans({'%idpName%': idp|entityDisplayName}) }}"
+          onclick="clickedAnyway('{{ idp|entityDisplayName }}')"
         >
           <div class="mdl-card__media white-bg fixed-height" layout-children="row" child-spacing="center">
             <div class="logo-container fill-parent">
