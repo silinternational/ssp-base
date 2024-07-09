@@ -5,7 +5,7 @@ namespace SimpleSAML\Module\sildisco;
 use Sil\SspUtils\AnnouncementUtils;
 use Sil\SspUtils\DiscoUtils;
 use Sil\SspUtils\Metadata;
-use SimpleSAML\Utils\Arrays;
+use SimpleSAML\Auth;
 use SimpleSAML\Utils\HTTP;
 
 /**
@@ -31,14 +31,6 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
     /* The idp metadata key that says whether an IDP is enabled */
     public static string $enabledMdKey = 'enabled';
 
-    /* The sp metadata key that gives the name of the SP */
-    public static string $spNameMdKey = 'name';
-
-    /* Used to get the SP Entity ID, e.g. $spEntityId = $this->session->getData($sessionDataType, $sessionKeyForSP); */
-    public static string $sessionDataType = 'sildisco:authentication';
-    public static string $sessionKeyForSP = 'spentityid';
-
-
     /**
      * @inheritDoc
      */
@@ -59,7 +51,16 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
         $idpList = $this->getIdPList();
         $idpList = $this->filterList($idpList);
 
-        $spEntityId = $this->session->getData(self::$sessionDataType, self::$sessionKeyForSP);
+        // Creative solution for getting the EntityID from the SPMetadata entry in the state
+        // Source: https://github.com/simplesamlphp/simplesamlphp-module-discopower/blob/5e2e5e9da751104d1553d273cfb2d0bd1e2b57df/src/PowerIdPDisco.php#L231
+        // Before the SimpleSAMLphp 2 upgrade, we added it to the state ourselves by overriding the SAML2.php file
+        parse_str(parse_url($_GET['return'], PHP_URL_QUERY), $returnState);
+        $state = Auth\State::loadState($returnState['AuthID'], 'saml:sp:sso');
+        if ($state && array_key_exists('SPMetadata', $state)) {
+            $spmd = $state['SPMetadata'];
+            $this->log('Updated SP metadata from ' . $this->spEntityId . ' to ' . $spmd['entityid']);
+        }
+        $spEntityId = $spmd['entityid'];
 
         if (!empty($spEntityId)) {
             $idpList = DiscoUtils::getReducedIdpList(
@@ -99,20 +100,11 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
             }
         }
 
-        // Get the SP's name
+        // Get the SP metadata entry
         $spEntries = Metadata::getSpMetadataEntries($this->getMetadataPath());
+        $sp = $spEntries[$spEntityId];
 
         $t = new \SimpleSAML\XHTML\Template($this->config, 'selectidp-links', 'disco');
-
-        $spName = null;
-
-        $rawSPName = $spEntries[$spEntityId][self::$spNameMdKey] ?? null;
-        if ($rawSPName !== null) {
-            $arrayUtils = new Arrays();
-            $spName = htmlspecialchars($t->getTranslator()->getPreferredTranslation(
-                $arrayUtils->arrayize($rawSPName, 'en')
-            ));
-        }
 
         // in order to bypass some built-in simplesaml behavior, an extra idp
         // might've been added.  It's not meant to be displayed.
@@ -132,7 +124,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
         $t->data['return'] = $this->returnURL;
         $t->data['returnIDParam'] = $this->returnIdParam;
         $t->data['entityID'] = $this->spEntityId;
-        $t->data['spName'] = $spName;
+        $t->data['sp'] = $sp;
         $t->data['urlpattern'] = htmlspecialchars($httpUtils->getSelfURLNoQuery());
         $t->data['announcement'] = AnnouncementUtils::getAnnouncement();
         $t->data['helpCenterUrl'] = $this->config->getOptionalString('helpCenterUrl', '');
