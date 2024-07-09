@@ -6,6 +6,8 @@
  */
 
 $metadata['ssp-hub.local'] = [
+    'entityid' => 'ssp-hub.local',
+
     /*
      * The hostname of the server (VHOST) that will use this SAML entity.
      *

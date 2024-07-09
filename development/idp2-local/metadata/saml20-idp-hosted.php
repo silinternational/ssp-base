@@ -6,6 +6,8 @@
  */
 
 $metadata['http://ssp-idp2.local:8086'] = [
+    'entityid' => 'http://ssp-idp2.local:8086',
+
     /*
      * The hostname of the server (VHOST) that will use this SAML entity.
      *
@@ -26,4 +28,5 @@ $metadata['http://ssp-idp2.local:8086'] = [
 
 // Copy configuration for port 80 and modify host.
 $metadata['http://ssp-idp2.local'] = $metadata['http://ssp-idp2.local:8086'];
+$metadata['http://ssp-idp2.local']['entityid'] = 'http://ssp-idp2.local';
 $metadata['http://ssp-idp2.local']['host'] = 'ssp-idp2.local';
