@@ -61,11 +61,13 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
 
         $spEntityId = $this->session->getData(self::$sessionDataType, self::$sessionKeyForSP);
 
-        $idpList = DiscoUtils::getReducedIdpList(
-            $idpList,
-            $this->getMetadataPath(),
-            $spEntityId
-        );
+        if (!empty($spEntityId)) {
+            $idpList = DiscoUtils::getReducedIdpList(
+                $idpList,
+                $this->getMetadataPath(),
+                $spEntityId
+            );
+        }
 
         return array($spEntityId, self::enableBetaEnabled($idpList));
     }
@@ -75,7 +77,6 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
      */
     public function handleRequest(): void
     {
-
         $this->start();
         list($spEntityId, $idpList) = $this->getSPEntityIDAndReducedIdpList();
 
@@ -119,6 +120,10 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
 
         $enabledIdps = [];
         foreach ($idpList as $idp) {
+            // TODO: make this work for any language
+            if (is_array($idp['name'])) {
+                $idp['name'] = $idp['name']['en'];
+            }
             if ($idp['enabled'] === true) {
                 $enabledIdps[] = $idp;
             } else {
@@ -136,7 +141,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
         $t->data['announcement'] = AnnouncementUtils::getAnnouncement();
         $t->data['helpCenterUrl'] = $this->config->getOptionalString('helpCenterUrl', '');
 
-        $t->show();
+        $t->send();
     }
 
     /**
