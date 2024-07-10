@@ -119,15 +119,15 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
             }
         }
 
-        $t->data['enabledIdps'] = $enabledIdps;
-        $t->data['disabledIdps'] = $disabledIdps;
+        $t->data['enabled_idps'] = $enabledIdps;
+        $t->data['disabled_idps'] = $disabledIdps;
         $t->data['return'] = $this->returnURL;
-        $t->data['returnIDParam'] = $this->returnIdParam;
-        $t->data['entityID'] = $this->spEntityId;
+        $t->data['return_id_param'] = $this->returnIdParam;
+        $t->data['entity_id'] = $this->spEntityId;
         $t->data['sp'] = $sp;
         $t->data['urlpattern'] = htmlspecialchars($httpUtils->getSelfURLNoQuery());
         $t->data['announcement'] = AnnouncementUtils::getAnnouncement();
-        $t->data['helpCenterUrl'] = $this->config->getOptionalString('helpCenterUrl', '');
+        $t->data['help_center_url'] = $this->config->getOptionalString('helpCenterUrl', '');
 
         $t->send();
     }
