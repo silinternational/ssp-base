@@ -1,0 +1,4 @@
+sildisco-main:
+  path: /disco.php
+  defaults: { _controller: 'SimpleSAML\Module\sildisco\Controller\SilDisco::main' }
+  methods: [ GET ]

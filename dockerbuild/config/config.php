@@ -372,6 +372,7 @@ $config = [
         'Referrer-Policy' => 'origin-when-cross-origin',
     ],
      */
+    'headers.security' => [],
 
 
     /************************
