@@ -3,6 +3,7 @@
 namespace SimpleSAML\Module\silauth\Auth\Source\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "failed_login_username".
@@ -11,7 +12,7 @@ use Yii;
  * @property string $username
  * @property string $occurred_at_utc
  */
-class FailedLoginUsernameBase extends \yii\db\ActiveRecord
+class FailedLoginUsernameBase extends ActiveRecord
 {
     /**
      * @inheritdoc

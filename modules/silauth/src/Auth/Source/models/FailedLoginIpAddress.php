@@ -2,6 +2,8 @@
 
 namespace SimpleSAML\Module\silauth\Auth\Source\models;
 
+use Exception;
+use InvalidArgumentException;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use SimpleSAML\Module\silauth\Auth\Source\auth\Authenticator;
@@ -48,7 +50,7 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
             '>=', 'occurred_at_utc', UtcTime::format('-60 minutes')
         ])->count();
         if (!is_numeric($count)) {
-            throw new \Exception('expected a numeric value for recent failed logins by IP address, got ' . $count);
+            throw new Exception('expected a numeric value for recent failed logins by IP address, got ' . $count);
         }
         return (int)$count;
     }
@@ -56,7 +58,7 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
     public static function getFailedLoginsFor(string $ipAddress): array
     {
         if (!Request::isValidIpAddress($ipAddress)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '%s is not a valid IP address.',
                 var_export($ipAddress, true)
             ));

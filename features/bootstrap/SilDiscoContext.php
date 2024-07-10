@@ -26,7 +26,7 @@ class SilDiscoContext extends FeatureContext
                 break;
 
             default:
-                throw new \Exception('credential name not recognized');
+                throw new Exception('credential name not recognized');
         }
         $this->iLogIn();
     }

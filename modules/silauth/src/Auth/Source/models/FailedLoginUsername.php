@@ -2,6 +2,7 @@
 
 namespace SimpleSAML\Module\silauth\Auth\Source\models;
 
+use Exception;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use SimpleSAML\Module\silauth\Auth\Source\auth\Authenticator;
@@ -46,7 +47,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
             '>=', 'occurred_at_utc', UtcTime::format('-60 minutes')
         ])->count();
         if (!is_numeric($count)) {
-            throw new \Exception('expected a numeric value for recent failed logins by username, got ' . $count);
+            throw new Exception('expected a numeric value for recent failed logins by username, got ' . $count);
         }
         return (int)$count;
     }

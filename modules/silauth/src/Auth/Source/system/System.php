@@ -2,6 +2,7 @@
 
 namespace SimpleSAML\Module\silauth\Auth\Source\system;
 
+use Exception;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use SimpleSAML\Configuration;
@@ -57,7 +58,7 @@ class System
      * show to the public) if any serious error conditions are found. Log any
      * problems, even if recoverable.
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function reportStatus(): void
     {
@@ -88,11 +89,11 @@ class System
      *
      * @param string $message The error message.
      * @param int $code An error code.
-     * @throws \Exception
+     * @throws Exception
      */
     protected function reportError(string $message, int $code): void
     {
         $this->logError($message);
-        throw new \Exception($message, $code);
+        throw new Exception($message, $code);
     }
 }

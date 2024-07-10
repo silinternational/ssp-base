@@ -2,6 +2,10 @@
 
 namespace SimpleSAML\Module\silauth\Auth\Source\time;
 
+use DateTime;
+use DateTimeZone;
+use InvalidArgumentException;
+
 class UtcTime
 {
     const DATE_TIME_FORMAT = 'Y-m-d H:i:s';
@@ -21,8 +25,8 @@ class UtcTime
      */
     public function __construct(string $dateTimeString = 'now')
     {
-        $this->utc = new \DateTimeZone('UTC');
-        $this->dateTime = new \DateTime($dateTimeString, $this->utc);
+        $this->utc = new DateTimeZone('UTC');
+        $this->dateTime = new DateTime($dateTimeString, $this->utc);
     }
 
     public function __toString()
@@ -84,12 +88,12 @@ class UtcTime
      * @return int The number of seconds that have elapsed since that date/time.
      * @throws Exception If an invalid date/time string is provided, an
      *     \Exception will be thrown.
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public static function getSecondsSinceDateTime(string $dateTimeString): int
     {
         if (empty($dateTimeString)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'The given value (%s) is not a date/time string.',
                 var_export($dateTimeString, true)
             ));

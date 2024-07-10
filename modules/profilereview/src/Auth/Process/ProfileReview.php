@@ -2,6 +2,7 @@
 
 namespace SimpleSAML\Module\profilereview\Auth\Process;
 
+use Exception;
 use Psr\Log\LoggerInterface;
 use Sil\Psr3Adapters\Psr3SamlLogger;
 use SimpleSAML\Auth\ProcessingFilter;
@@ -38,7 +39,7 @@ class ProfileReview extends ProcessingFilter
      *
      * @param array $config Configuration information about this filter.
      * @param mixed $reserved For future use.
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct(array $config, mixed $reserved)
     {
@@ -61,7 +62,7 @@ class ProfileReview extends ProcessingFilter
     /**
      * @param $config
      * @param $attributes
-     * @throws \Exception
+     * @throws Exception
      */
     protected function loadValuesFromConfig(array $config, array $attributes): void
     {
@@ -82,12 +83,12 @@ class ProfileReview extends ProcessingFilter
      * @param string $attribute The name of the attribute.
      * @param mixed $value The value to check.
      * @param LoggerInterface $logger The logger.
-     * @throws \Exception
+     * @throws Exception
      */
     public static function validateConfigValue($attribute, $value, $logger)
     {
         if (empty($value) || !is_string($value)) {
-            $exception = new \Exception(sprintf(
+            $exception = new Exception(sprintf(
                 'The value we have for %s (%s) is empty or is not a string',
                 $attribute,
                 var_export($value, true)

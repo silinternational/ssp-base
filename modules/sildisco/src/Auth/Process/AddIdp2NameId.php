@@ -3,6 +3,7 @@
 namespace SimpleSAML\Module\sildisco\Auth\Process;
 
 use SAML2\XML\saml\NameID;
+use Sil\SspUtils\Metadata;
 use SimpleSAML\Auth\ProcessingFilter;
 use SimpleSAML\Error;
 use SimpleSAML\Logger;
@@ -140,7 +141,7 @@ class AddIdp2NameId extends ProcessingFilter
         if (isset($state['metadataPath'])) {
             $metadataPath = $state['metadataPath'];
         }
-        $idpEntries = \Sil\SspUtils\Metadata::getIdpMetadataEntries($metadataPath);
+        $idpEntries = Metadata::getIdpMetadataEntries($metadataPath);
 
         $idpEntry = $idpEntries[$samlIDP];
 

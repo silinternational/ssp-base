@@ -4,6 +4,7 @@ namespace SimpleSAML\Module\sildisco\Auth\Process;
 
 use Aws\DynamoDb\Marshaler;
 use Aws\Sdk;
+use Sil\SspUtils\Metadata;
 use SimpleSAML\Auth\ProcessingFilter;
 use SimpleSAML\Logger;
 
@@ -173,7 +174,7 @@ class LogUser extends ProcessingFilter
         if (isset($state['metadataPath'])) {
             $metadataPath = $state['metadataPath'];
         }
-        $idpEntries = \Sil\SspUtils\Metadata::getIdpMetadataEntries($metadataPath);
+        $idpEntries = Metadata::getIdpMetadataEntries($metadataPath);
 
         // Get the IDPNamespace or else just use the IDP's entity ID
         $idpEntry = $idpEntries[$samlIDP];

@@ -2,6 +2,7 @@
 
 namespace SimpleSAML\Module\silauth\Auth\Source\tests\unit\http;
 
+use InvalidArgumentException;
 use SimpleSAML\Module\silauth\Auth\Source\http\Request;
 
 class DummyRequest extends Request
@@ -21,7 +22,7 @@ class DummyRequest extends Request
     public function setDummyIpAddress(string $dummyIpAddress): void
     {
         if (!self::isValidIpAddress($dummyIpAddress)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '%s is not a valid IP address.',
                 var_export($dummyIpAddress, true)
             ));

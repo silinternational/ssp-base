@@ -2,6 +2,8 @@
 
 namespace SimpleSAML\Module\mfa\Auth\Process;
 
+use Exception;
+use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use Sil\Idp\IdBroker\Client\BaseClient;
 use Sil\PhpEnv\Env;
@@ -52,7 +54,7 @@ class Mfa extends ProcessingFilter
      *
      * @param array $config Configuration information about this filter.
      * @param mixed $reserved For future use.
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct(array $config, mixed $reserved)
     {
@@ -98,12 +100,12 @@ class Mfa extends ProcessingFilter
      * @param string $attribute The name of the attribute.
      * @param mixed $value The value to check.
      * @param LoggerInterface $logger The logger.
-     * @throws \Exception
+     * @throws Exception
      */
     public static function validateConfigValue(string $attribute, mixed $value, LoggerInterface $logger): void
     {
         if (empty($value) || !is_string($value)) {
-            $exception = new \Exception(sprintf(
+            $exception = new Exception(sprintf(
                 'The value we have for %s (%s) is empty or is not a string',
                 $attribute,
                 var_export($value, true)
@@ -184,13 +186,13 @@ class Mfa extends ProcessingFilter
      * @param array[] $mfaOptions The available MFA options.
      * @param int $mfaId The ID of the desired MFA option.
      * @return array The MFA option to use.
-     * @throws \InvalidArgumentException
-     * @throws \Exception
+     * @throws InvalidArgumentException
+     * @throws Exception
      */
     public static function getMfaOptionById(array $mfaOptions, int $mfaId): array
     {
         if (empty($mfaId)) {
-            throw new \Exception('No MFA ID was provided.');
+            throw new Exception('No MFA ID was provided.');
         }
 
         foreach ($mfaOptions as $mfaOption) {
@@ -199,7 +201,7 @@ class Mfa extends ProcessingFilter
             }
         }
 
-        throw new \Exception(
+        throw new Exception(
             'No MFA option has an ID of ' . var_export($mfaId, true)
         );
     }
@@ -211,13 +213,13 @@ class Mfa extends ProcessingFilter
      * @param string $userAgent The User-Agent sent by the user's browser, used
      *     for detecting WebAuthn support.
      * @return array The MFA option to use.
-     * @throws \InvalidArgumentException
-     * @throws \Exception
+     * @throws InvalidArgumentException
+     * @throws Exception
      */
     public static function getMfaOptionToUse(array $mfaOptions, string $userAgent): array
     {
         if (empty($mfaOptions)) {
-            throw new \Exception('No MFA options were provided.');
+            throw new Exception('No MFA options were provided.');
         }
 
         $recentMfa = self::getMostRecentUsedMfaOption($mfaOptions);
@@ -292,7 +294,7 @@ class Mfa extends ProcessingFilter
      *
      * @param string $mfaType The desired MFA type, such as 'webauthn', 'totp', or 'backupcode'.
      * @return string
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public static function getTemplateFor(string $mfaType): string
     {
@@ -305,7 +307,7 @@ class Mfa extends ProcessingFilter
         $template = $mfaOptionTemplates[$mfaType] ?? null;
 
         if ($template === null) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'No %s MFA template is available.',
                 var_export($mfaType, true)
             ), 1507219338);
@@ -515,14 +517,14 @@ class Mfa extends ProcessingFilter
 
             if ($numBackupCodesRemaining <= 0) {
                 self::redirectToOutOfBackupCodesMessage($state, $employeeId);
-                throw new \Exception('Failed to send user to out-of-backup-codes page.');
+                throw new Exception('Failed to send user to out-of-backup-codes page.');
             } elseif ($numBackupCodesRemaining < 4) {
                 self::redirectToLowOnBackupCodesNag(
                     $state,
                     $employeeId,
                     $numBackupCodesRemaining
                 );
-                throw new \Exception('Failed to send user to low-on-backup-codes page.');
+                throw new Exception('Failed to send user to low-on-backup-codes page.');
             }
         }
 
@@ -537,7 +539,7 @@ class Mfa extends ProcessingFilter
 
         // The following function call will never return.
         ProcessingChain::resumeProcessing($state);
-        throw new \Exception('Failed to resume processing auth proc chain.');
+        throw new Exception('Failed to resume processing auth proc chain.');
     }
 
     /**
@@ -647,7 +649,7 @@ class Mfa extends ProcessingFilter
      * @param array $state The state data.
      * @param string $employeeId The Employee ID of the user account.
      * @param array $mfaOptions Array of MFA options
-     * @throws \Exception
+     * @throws Exception
      */
     protected function redirectToMfaPrompt(array &$state, string $employeeId, array $mfaOptions): void
     {
@@ -884,7 +886,7 @@ class Mfa extends ProcessingFilter
      *
      * @param array[] $mfaOptions The available MFA options.
      * @return array The manager MFA.
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public static function getManagerMfa(array $mfaOptions): ?array
     {
@@ -958,7 +960,7 @@ class Mfa extends ProcessingFilter
 
         try {
             $newMfaOptions = $idBrokerClient->mfaList($state['employeeId']);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $log['status'] = 'failed: id-broker exception';
             $logger->error(json_encode($log));
             return;

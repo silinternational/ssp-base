@@ -2,6 +2,7 @@
 
 namespace SimpleSAML\Module\sildisco\Auth\Process;
 
+use Sil\SspUtils\Metadata;
 use SimpleSAML\Auth\ProcessingFilter;
 
 /**
@@ -57,7 +58,7 @@ class TagGroup extends ProcessingFilter
             $metadataPath = $state['metadataPath'];
         }
 
-        $idpEntries = \Sil\SspUtils\Metadata::getIdpMetadataEntries($metadataPath);
+        $idpEntries = Metadata::getIdpMetadataEntries($metadataPath);
 
         $samlIDP = $state["saml:sp:IdP"];
 
