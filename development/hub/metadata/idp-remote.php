@@ -66,7 +66,6 @@ return [
         'IDPNamespace' => 'IDP-2-custom-port',
         'logoCaption' => 'IDP-2:8086 staff',
         'enabled' => true,
-        'betaEnabled' => true,
         'logoURL' => 'https://dummyimage.com/125x125/0f4fbd/ffffff.png&text=IDP+2+8086',
 
         'description' => 'Local IDP2 for testing SSP Hub (custom port)',
@@ -87,7 +86,6 @@ return [
         'IDPNamespace' => 'IDP-2',
         'logoCaption' => 'IDP-2 staff',
         'enabled' => true,
-        'betaEnabled' => true,
         'logoURL' => 'https://dummyimage.com/125x125/0f4fbd/ffffff.png&text=IDP+2',
 
         'description' => 'Local IDP2 for testing SSP Hub (normal port)',
@@ -112,7 +110,6 @@ return [
         'IDPNamespace' => 'IDP-3-custom-port',
         'logoCaption' => 'IDP-3:8087 staff',
         'enabled' => false,
-        'betaEnabled' => true,
         'logoURL' => 'https://dummyimage.com/125x125/0f4fbd/ffffff.png&text=IDP+3+8087',
 
         'description' => 'Local IDP3 for testing SSP Hub (custom port)',
@@ -130,7 +127,6 @@ return [
         'IDPNamespace' => 'IDP-3',
         'logoCaption' => 'IDP-3 staff',
         'enabled' => false,
-        'betaEnabled' => true,
         'logoURL' => 'https://dummyimage.com/125x125/0f4fbd/ffffff.png&text=IDP+3',
 
         'description' => 'Local IDP3 for testing SSP Hub',
