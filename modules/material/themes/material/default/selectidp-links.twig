@@ -66,12 +66,12 @@
                 <img
                   class="logo"
                   id="{{ idp.entityid|e }}"
-                  src="{{ idp.logoURL is empty ? 'default-logo.png' : idp.logoURL }}"
+                  src="{{ idp.logoURL|default('default-logo.png') }}"
                 >
               </div>
 
               <span class="mdl-color-text--grey-600 logo-caption clickable-caption">
-                {{ idp.logoCaption is empty ? '<br>' : idp.logoCaption|e }}
+                {{ idp.logoCaption|e|default('<br>') }}
               </span>
             </button>
           </div>
@@ -90,11 +90,11 @@
                 <img
                   class="logo"
                   id="{{ idp.entityid|e }}"
-                  src="{{ idp.logoURL is empty ? 'default-logo.png' : idp.logoURL }}"
+                  src="{{ idp.logoURL|default('default-logo.png') }}"
                 >
               </div>
               <span class="mdl-color-text--grey-600 logo-caption">
-                {{ idp.logoCaption is empty ? '<br>' : idp.logoCaption|e }}
+                {{ idp.logoCaption|e|default('<br>') }}
               </span>
             </div>
           </div>
