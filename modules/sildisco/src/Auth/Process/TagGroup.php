@@ -2,13 +2,13 @@
 
 namespace SimpleSAML\Module\sildisco\Auth\Process;
 
-use Sil\SspUtils\Metadata;
+use SimpleSAML\Auth\ProcessingFilter;
 
 /**
  * Attribute filter for prefixing group names
  *
  */
-class TagGroup extends \SimpleSAML\Auth\ProcessingFilter
+class TagGroup extends ProcessingFilter
 {
 
     const IDP_NAME_KEY = 'name'; // the metadata key for the IDP's name

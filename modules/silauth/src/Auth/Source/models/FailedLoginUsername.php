@@ -7,13 +7,14 @@ use Psr\Log\LoggerInterface;
 use SimpleSAML\Module\silauth\Auth\Source\auth\Authenticator;
 use SimpleSAML\Module\silauth\Auth\Source\behaviors\CreatedAtUtcBehavior;
 use SimpleSAML\Module\silauth\Auth\Source\time\UtcTime;
+use SimpleSAML\Module\silauth\Auth\Source\traits\LoggerAwareTrait;
+use Yii;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
-use Yii;
 
 class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAwareInterface
 {
-    use \SimpleSAML\Module\silauth\Auth\Source\traits\LoggerAwareTrait;
+    use LoggerAwareTrait;
 
     /**
      * @inheritdoc

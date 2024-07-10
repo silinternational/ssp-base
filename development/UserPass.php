@@ -13,7 +13,6 @@ use Exception;
 use SimpleSAML\Error;
 use SimpleSAML\Logger;
 use SimpleSAML\Module\core\Auth\UserPassBase;
-use SimpleSAML\Utils;
 
 /**
  * Example authentication source - username & password.
@@ -23,7 +22,7 @@ use SimpleSAML\Utils;
  *
  * @package SimpleSAMLphp
  */
-class UserPass extends \SimpleSAML\Module\core\Auth\UserPassBase // GTIS
+class UserPass extends UserPassBase // GTIS
 {
     /**
      * Our users, stored in an associative array. The key of the array is "<username>:<password>",

@@ -1,5 +1,6 @@
 <?php
 
+use SimpleSAML\Module\sildisco\Auth\Process\TagGroup;
 
 class TagGroupTest extends PHPUnit_Framework_TestCase
 {
@@ -12,7 +13,7 @@ class TagGroupTest extends PHPUnit_Framework_TestCase
      */
     private static function processTagGroup(array $config, array $request)
     {
-        $filter = new \SimpleSAML\Module\sildisco\Auth\Process\TagGroup($config, NULL);
+        $filter = new TagGroup($config, NULL);
         $filter->process($request);
         return $request;
     }
