@@ -39,7 +39,7 @@
 
       {% if help_center_url is defined and help_center_url is not empty %}
         <nav class="mdl-navigation">
-          <a href="{{ help_center_url|e(html_attr) }}" target="_blank" rel="noopener" class="mdl-navigation__link">
+          <a href="{{ help_center_url|e('html_attr') }}" target="_blank" rel="noopener" class="mdl-navigation__link">
             {{ '{selectidp-links:help}'|trans }}
           </a>
         </nav>
