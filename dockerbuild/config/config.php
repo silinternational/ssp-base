@@ -8,8 +8,9 @@
 
 use Sil\PhpEnv\Env;
 use Sil\PhpEnv\EnvVarNotFoundException;
+use SimpleSAML\Utils;
 
-$httpUtils = new \SimpleSAML\Utils\HTTP();
+$httpUtils = new Utils\HTTP();
 
 /*
  * Get config settings from ENV vars or set defaults

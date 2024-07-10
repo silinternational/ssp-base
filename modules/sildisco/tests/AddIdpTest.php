@@ -1,6 +1,8 @@
 <?php
 
 
+use SimpleSAML\Module\sildisco\Auth\Process\AddIdp2NameId;
+
 class AddIdpTest extends PHPUnit_Framework_TestCase
 {
 
@@ -29,7 +31,7 @@ class AddIdpTest extends PHPUnit_Framework_TestCase
      */
     private static function processAddIdp2NameId(array $config, array $request)
     {
-        $filter = new \SimpleSAML\Module\sildisco\Auth\Process\AddIdp2NameId($config, NULL);
+        $filter = new AddIdp2NameId($config, NULL);
         $filter->process($request);
         return $request;
     }

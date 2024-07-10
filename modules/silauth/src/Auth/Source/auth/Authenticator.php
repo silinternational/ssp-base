@@ -2,6 +2,7 @@
 
 namespace SimpleSAML\Module\silauth\Auth\Source\auth;
 
+use Exception;
 use Psr\Log\LoggerInterface;
 use SimpleSAML\Module\silauth\Auth\Source\auth\AuthError;
 use SimpleSAML\Module\silauth\Auth\Source\auth\IdBroker;
@@ -95,7 +96,7 @@ class Authenticator
                 $username,
                 $password
             );
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $logger->critical(json_encode([
                 'event' => 'Problem communicating with ID Broker',
                 'errorCode' => $e->getCode(),
@@ -211,12 +212,12 @@ class Authenticator
      *         // ...
      *     ]
      *     </pre>
-     * @throws \Exception
+     * @throws Exception
      */
     public function getUserAttributes(): array
     {
         if ($this->userAttributes === null) {
-            throw new \Exception(
+            throw new Exception(
                 "You cannot get the user's attributes until you have authenticated the user.",
                 1482270373
             );

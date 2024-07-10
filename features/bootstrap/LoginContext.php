@@ -153,7 +153,7 @@ class LoginContext extends FeatureContext
             function () use ($authenticator) {
                 $authenticator->getUserAttributes();
             },
-            \Exception::class,
+            Exception::class,
             'The call to getUserAttributes() should have thrown an exception.'
         );
     }

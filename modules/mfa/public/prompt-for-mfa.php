@@ -42,7 +42,7 @@ if (Mfa::isRememberMeCookieValid(base64_decode($cookieHash), $expireDate, $mfaOp
 
     // This condition should never return
     ProcessingChain::resumeProcessing($state);
-    throw new \Exception('Failed to resume processing auth proc chain.');
+    throw new Exception('Failed to resume processing auth proc chain.');
 }
 
 $mfaId = filter_input(INPUT_GET, 'mfaId');

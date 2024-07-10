@@ -6,7 +6,11 @@ use Sil\SspUtils\AnnouncementUtils;
 use Sil\SspUtils\DiscoUtils;
 use Sil\SspUtils\Metadata;
 use SimpleSAML\Auth;
+use SimpleSAML\Logger;
+use SimpleSAML\Session;
 use SimpleSAML\Utils\HTTP;
+use SimpleSAML\XHTML\IdPDisco as SSPIdPDisco;
+use SimpleSAML\XHTML\Template;
 
 /**
  * This class implements a custom IdP discovery service, for use with a ssp hub (proxy)
@@ -16,7 +20,7 @@ use SimpleSAML\Utils\HTTP;
  * @author Steve Bagwell SIL GTIS
  * @package SimpleSAMLphp
  */
-class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
+class IdPDisco extends SSPIdPDisco
 {
 
     /* The session type for this class */
@@ -36,7 +40,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
      */
     protected function log(string $message): void
     {
-        \SimpleSAML\Logger::info('SildiscoIdPDisco.' . $this->instance . ': ' . $message);
+        Logger::info('SildiscoIdPDisco.' . $this->instance . ': ' . $message);
     }
 
     /* Path to the folder with the SP and IdP metadata */
@@ -104,7 +108,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
         $spEntries = Metadata::getSpMetadataEntries($this->getMetadataPath());
         $sp = $spEntries[$spEntityId];
 
-        $t = new \SimpleSAML\XHTML\Template($this->config, 'selectidp-links', 'disco');
+        $t = new Template($this->config, 'selectidp-links', 'disco');
 
         // in order to bypass some built-in simplesaml behavior, an extra idp
         // might've been added.  It's not meant to be displayed.
@@ -144,7 +148,7 @@ class IdPDisco extends \SimpleSAML\XHTML\IdPDisco
     {
 
         if ($isBetaTester === null) {
-            $session = \SimpleSAML\Session::getSessionFromRequest();
+            $session = Session::getSessionFromRequest();
             $isBetaTester = $session->getData(
                 self::$sessionType,
                 self::$betaTesterSessionKey

@@ -3,6 +3,7 @@
 namespace SimpleSAML\Module\silauth\Auth\Source\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "failed_login_ip_address".
@@ -11,7 +12,7 @@ use Yii;
  * @property string $ip_address
  * @property string $occurred_at_utc
  */
-class FailedLoginIpAddressBase extends \yii\db\ActiveRecord
+class FailedLoginIpAddressBase extends ActiveRecord
 {
     /**
      * @inheritdoc

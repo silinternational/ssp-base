@@ -2,6 +2,7 @@
 
 namespace SimpleSAML\Module\expirychecker\Auth\Process;
 
+use Exception;
 use Psr\Log\LoggerInterface;
 use Sil\Psr3Adapters\Psr3SamlLogger;
 use SimpleSAML\Auth\ProcessingChain;
@@ -132,7 +133,7 @@ class ExpiryDate extends ProcessingFilter
      *     expiration date (as a string) is stored.
      * @param array $state The state data.
      * @return int The expiration timestamp.
-     * @throws \Exception
+     * @throws Exception
      */
     protected function getExpiryTimestamp(string $expiryDateAttr, array $state): int
     {
@@ -141,7 +142,7 @@ class ExpiryDate extends ProcessingFilter
         // Ensure that EVERY user login provides a usable password expiration date.
         $expiryTimestamp = strtotime($expiryDateString) ?: null;
         if (empty($expiryTimestamp)) {
-            throw new \Exception(sprintf(
+            throw new Exception(sprintf(
                 "We could not understand the expiration date (%s, from %s) for "
                 . "the user's password, so we do not know whether their "
                 . "password is still valid.",
@@ -178,7 +179,7 @@ class ExpiryDate extends ProcessingFilter
         $loggerClass = $config['loggerClass'] ?? Psr3SamlLogger::class;
         $this->logger = new $loggerClass();
         if (!$this->logger instanceof LoggerInterface) {
-            throw new \Exception(sprintf(
+            throw new Exception(sprintf(
                 'The specified loggerClass (%s) does not implement '
                 . '\\Psr\\Log\\LoggerInterface.',
                 var_export($loggerClass, true)

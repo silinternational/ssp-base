@@ -2,6 +2,8 @@
 
 namespace SimpleSAML\Module\silauth\Auth\Source\time;
 
+use InvalidArgumentException;
+
 /**
  * Class to enable assembling a human-friendly description of approximately how
  * long the user must wait before (at least) the given number of seconds have
@@ -52,7 +54,7 @@ class WaitTime
     public static function getLongestWaitTime(array $durationsInSeconds): WaitTime
     {
         if (empty($durationsInSeconds)) {
-            throw new \InvalidArgumentException('No durations given.', 1487605801);
+            throw new InvalidArgumentException('No durations given.', 1487605801);
         }
         return new WaitTime(max($durationsInSeconds));
     }
