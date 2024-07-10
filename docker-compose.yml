@@ -128,6 +128,7 @@ services:
       - ./development/idp-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
       - ./development/announcement.php:/data/vendor/simplesamlphp/simplesamlphp/announcement/announcement.php
       - ./development/enable-exampleauth.sh:/data/enable-exampleauth.sh
+      - ./development/logo_idp1.png:/data/vendor/simplesamlphp/simplesamlphp/public/logo.png
 
       # Utilize custom metadata
       - ./development/idp-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
@@ -177,6 +178,7 @@ services:
       MYSQL_PASSWORD: "silauth"
       BASE_URL_PATH: "http://ssp-idp1.local/" # change this to "http://ssp-idp1.local:8085" for manual browser testing
       HELP_CENTER_URL: "https://example.org/help"
+      THEME_COLOR_SCHEME: "blue_grey-teal"
 
   ssp-idp2.local:
     build: .
@@ -190,6 +192,7 @@ services:
       # Utilize custom configs
       - ./development/idp2-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
       - ./development/enable-exampleauth.sh:/data/enable-exampleauth.sh
+      - ./development/logo_idp2.png:/data/vendor/simplesamlphp/simplesamlphp/public/logo.png
 
       # Utilize custom metadata
       - ./development/idp2-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
@@ -223,6 +226,7 @@ services:
       MYSQL_PASSWORD: "silauth"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
+      THEME_COLOR_SCHEME: "red-teal"
 
   ssp-idp3.local:
     build: .
@@ -232,6 +236,7 @@ services:
 
       # Utilize custom configs
       - ./development/idp3-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+      - ./development/logo_idp3.png:/data/vendor/simplesamlphp/simplesamlphp/public/logo.png
 
       # Utilize custom metadata
       - ./development/idp3-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
@@ -254,6 +259,7 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       IDP_NAME: "IdP3"
+      THEME_COLOR_SCHEME: "orange-light_blue"
 
   ssp-sp1.local:
     image: silintl/ssp-base:9.3.0

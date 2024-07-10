@@ -42,19 +42,19 @@
           </div>
         </div>
 
-        {% if errorMessage is not empty %}
+        {% if error_message is not empty %}
           <div class="mdl-card__supporting-text" layout-children="column">
             <p class="mdl-color-text--red error">
               <i class="material-icons">error</i>
 
               <span class="mdl-typography--caption">
-                {{ errorMessage|e }}
+                {{ error_message|e }}
               </span>
             </p>
           </div>
 
           <script>
-            ga('send', 'event', 'error', 'backupcode', '{{ errorMessage|e('js')|raw }}');
+            ga('send', 'event', 'error', 'backupcode', '{{ error_message|e('js')|raw }}');
           </script>
         {% endif %}
 

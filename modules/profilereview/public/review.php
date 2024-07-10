@@ -35,9 +35,11 @@ if (filter_has_var(INPUT_POST, 'update')) {
 $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'profilereview:review');
-$t->data['profileUrl'] = $state['profileUrl'];
-$t->data['methodOptions'] = $state['methodOptions'];
-$t->data['mfaOptions'] = $state['mfaOptions'];
+$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', null);
+$t->data['analytics_tracking_id'] = $globalConfig->getOptionalString('analytics.trackingId', '');
+$t->data['profile_url'] = $state['profileUrl'];
+$t->data['method_options'] = $state['methodOptions'];
+$t->data['mfa_options'] = $state['mfaOptions'];
 $t->send();
 
 $logger->warning(json_encode([

@@ -6,13 +6,13 @@
  * - StateId
  */
 
-use SimpleSAML\Module\mfa\LoggerFactory;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Configuration;
 use SimpleSAML\Error\BadRequest;
+use SimpleSAML\Module\mfa\Auth\Process\Mfa;
+use SimpleSAML\Module\mfa\LoggerFactory;
 use SimpleSAML\Utils\HTTP;
 use SimpleSAML\XHTML\Template;
-use SimpleSAML\Module\mfa\Auth\Process\Mfa;
 
 $stateId = filter_input(INPUT_GET, 'StateId');
 if (empty($stateId)) {
@@ -36,9 +36,10 @@ if (filter_has_var(INPUT_POST, 'send')) {
 $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'mfa:send-manager-mfa');
-$t->data['stateId'] = $stateId;
-$t->data['managerEmail'] = $state['managerEmail'];
-$t->data['errorMessage'] = $errorMessage ?? null;
+$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', null);
+$t->data['analytics_tracking_id'] = $globalConfig->getOptionalString('analytics.trackingId', '');
+$t->data['manager_email'] = $state['managerEmail'];
+$t->data['error_message'] = $errorMessage ?? null;
 $t->send();
 
 $logger->info(json_encode([

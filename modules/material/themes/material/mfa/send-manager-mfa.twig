@@ -29,17 +29,17 @@
 
         <div class="mdl-card__title center">
           <p class="mdl-card__subtitle-text">
-            {{ '{mfa:manager_info}'|trans({'%managerEmail%':managerEmail})|raw }}
+            {{ '{mfa:manager_info}'|trans({'%managerEmail%': manager_email})|raw }}
           </p>
         </div>
 
-        {% if errorMessage is not empty %}
+        {% if error_message is not empty %}
           <div class="mdl-card__supporting-text" layout-children="column">
             <p class="mdl-color-text--red error">
               <i class="material-icons">error</i>
 
               <span class="mdl-typography--caption">
-              {{ errorMessage|e }}
+              {{ error_message|e }}
             </span>
             </p>
           </div>

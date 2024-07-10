@@ -34,11 +34,13 @@ if (filter_has_var(INPUT_POST, 'continue')) {
 $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'mfa:new-backup-codes');
-$t->data['mfaSetupUrl'] = $state['mfaSetupUrl'];
-$t->data['newBackupCodes'] = $state['newBackupCodes'] ?? [];
-$t->data['idpName'] = $globalConfig->getString('idp_display_name');
-$t->data['codesForDownload'] = urlencode(
-    $t->data['idpName'] . "\r\n" . join("\r\n", $t->data['newBackupCodes'])
+$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', null);
+$t->data['analytics_tracking_id'] = $globalConfig->getOptionalString('analytics.trackingId', '');
+$t->data['mfa_setup_url'] = $state['mfaSetupUrl'];
+$t->data['new_backup_codes'] = $state['newBackupCodes'] ?? [];
+$t->data['idp_name'] = $globalConfig->getString('idp_display_name');
+$t->data['codes_for_download'] = urlencode(
+    $t->data['idp_name'] . "\r\n" . join("\r\n", $t->data['new_backup_codes'])
 );
-$t->data['codesForClipboard'] = $t->data['idpName'] . "\n" . join("\n", $t->data['newBackupCodes']);
+$t->data['codes_for_clipboard'] = $t->data['idp_name'] . "\n" . join("\n", $t->data['new_backup_codes']);
 $t->send();

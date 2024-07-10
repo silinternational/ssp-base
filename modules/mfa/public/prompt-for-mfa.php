@@ -7,15 +7,15 @@
  * - mfaId
  */
 
-use SimpleSAML\Module\mfa\LoggerFactory;
-use SimpleSAML\Module\mfa\LoginBrowser;
 use SimpleSAML\Auth\ProcessingChain;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Configuration;
 use SimpleSAML\Error\BadRequest;
+use SimpleSAML\Module\mfa\Auth\Process\Mfa;
+use SimpleSAML\Module\mfa\LoggerFactory;
+use SimpleSAML\Module\mfa\LoginBrowser;
 use SimpleSAML\Utils\HTTP;
 use SimpleSAML\XHTML\Template;
-use SimpleSAML\Module\mfa\Auth\Process\Mfa;
 
 $stateId = filter_input(INPUT_GET, 'StateId');
 if (empty($stateId)) {
@@ -120,17 +120,17 @@ foreach ($otherOptions as &$option) {
 $mfaTemplateToUse = Mfa::getTemplateFor($mfaOption['type']);
 
 $t = new Template($globalConfig, $mfaTemplateToUse);
-$t->data['errorMessage'] = $errorMessage ?? null;
-$t->data['mfaOption'] = $mfaOption;
-$t->data['mfaOptionData'] = json_encode($mfaOption['data']);
-$t->data['mfaOptions'] = $mfaOptions;
-$t->data['stateId'] = $stateId;
-$t->data['supportsWebAuthn'] = LoginBrowser::supportsWebAuthn($userAgent);
+$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', null);
+$t->data['analytics_tracking_id'] = $globalConfig->getOptionalString('analytics.trackingId', '');
+$t->data['error_message'] = $errorMessage ?? null;
+$t->data['mfa_option_data'] = json_encode($mfaOption['data']);
+$t->data['mfa_options'] = $mfaOptions;
+$t->data['supports_web_authn'] = LoginBrowser::supportsWebAuthn($userAgent);
 $browserJsHash = md5_file(__DIR__ . '/simplewebauthn/browser.js');
-$t->data['browserJsPath'] = '/module.php/mfa/simplewebauthn/browser.js?v=' . $browserJsHash;
-$t->data['managerEmail'] = $state['managerEmail'];
-$t->data['otherOptions'] = $otherOptions;
-$t->data['idpName'] = $globalConfig->getString('idp_display_name');
+$t->data['browser_js_path'] = '/module.php/mfa/simplewebauthn/browser.js?v=' . $browserJsHash;
+$t->data['manager_email'] = $state['managerEmail'];
+$t->data['other_options'] = $otherOptions;
+$t->data['idp_name'] = $globalConfig->getString('idp_display_name');
 $t->send();
 
 $logger->info(json_encode([

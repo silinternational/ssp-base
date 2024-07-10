@@ -80,34 +80,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $t = new Template($globalConfig, 'silauth:loginuserpass');
+$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', null);
+$t->data['analytics_tracking_id'] = $globalConfig->getOptionalString('analytics.trackingId', '');
 $t->data['stateparams'] = array('AuthState' => $authStateId);
 $t->data['username'] = $username;
-$t->data['forceUsername'] = false;
-$t->data['rememberUsernameEnabled'] = false;
-$t->data['rememberMeEnabled'] = false;
 $t->data['errorcode'] = $errorCode;
 $t->data['errorparams'] = $errorParams;
-$t->data['csrfToken'] = $csrfProtector->getMasterToken();
-$t->data['profileUrl'] = $state['templateData']['profileUrl'] ?? '';
-$t->data['helpCenterUrl'] = $state['templateData']['helpCenterUrl'] ?? '';
+$t->data['csrf_token'] = $csrfProtector->getMasterToken();
+$t->data['profile_url'] = $state['templateData']['profileUrl'] ?? '';
+$t->data['help_center_url'] = $state['templateData']['helpCenterUrl'] ?? '';
 $t->data['announcement'] = AnnouncementUtils::getAnnouncement();
-$t->data['idpName'] = $globalConfig->getString('idp_display_name');
-$t->data['passwordForgotUrl'] = $globalConfig->getOptionalString('passwordForgotUrl', '');
+$t->data['idp_name'] = $globalConfig->getString('idp_display_name');
+$t->data['password_forgot_url'] = $globalConfig->getOptionalString('passwordForgotUrl', '');
 
 /* For simplicity's sake, don't bother telling this Request to trust any IP
  * addresses. This is okay because we only track the failures of untrusted
  * IP addresses, so there will be no failed logins of IP addresses we trust. */
 $request = new Request();
 if (Authenticator::isCaptchaRequired($username, $request->getUntrustedIpAddresses())) {
-    $t->data['siteKey'] = $recaptchaSiteKey;
+    $t->data['site_key'] = $recaptchaSiteKey;
 } else {
-    $t->data['siteKey'] = null;
-}
-
-if (isset($state['SPMetadata'])) {
-    $t->data['SPMetadata'] = $state['SPMetadata'];
-} else {
-    $t->data['SPMetadata'] = null;
+    $t->data['site_key'] = null;
 }
 
 $t->send();

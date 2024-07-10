@@ -48,10 +48,10 @@ if (array_key_exists('changepwd', $_REQUEST)) {
 $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'expirychecker:expired');
-$t->data['formTarget'] = Module::getModuleURL('expirychecker/expired.php');
-$t->data['formData'] = ['StateId' => $stateId];
-$t->data['expiresAtTimestamp'] = $state['expiresAtTimestamp'];
-$t->data['accountName'] = $state['accountName'];
+$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', null);
+$t->data['analytics_tracking_id'] = $globalConfig->getOptionalString('analytics.trackingId', '');
+$t->data['form_target'] = Module::getModuleURL('expirychecker/expired.php');
+$t->data['form_data'] = ['StateId' => $stateId];
 $t->send();
 
 Logger::info('expirychecker - User has been told that their password has expired.');

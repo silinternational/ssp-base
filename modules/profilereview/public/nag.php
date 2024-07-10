@@ -31,10 +31,12 @@ if (filter_has_var(INPUT_POST, 'update')) {
 $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'profilereview:' . $state['template']);
-$t->data['profileUrl'] = $state['profileUrl'];
-$t->data['methodOptions'] = $state['methodOptions'] ?? [];
-$t->data['mfaOptions'] = $state['mfaOptions'] ?? [];
-$t->data['mfaLearnMoreUrl'] = $state['mfaLearnMoreUrl'];
+$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', null);
+$t->data['analytics_tracking_id'] = $globalConfig->getOptionalString('analytics.trackingId', '');
+$t->data['profile_url'] = $state['profileUrl'];
+$t->data['method_options'] = $state['methodOptions'] ?? [];
+$t->data['mfa_options'] = $state['mfaOptions'] ?? [];
+$t->data['mfa_learn_more_url'] = $state['mfaLearnMoreUrl'];
 $t->send();
 
 $logger->warning(json_encode([

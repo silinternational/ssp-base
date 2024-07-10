@@ -242,8 +242,6 @@ class ExpiryDate extends ProcessingFilter
     ): void {
         $sessionType = 'expirychecker';
         /* Save state and redirect. */
-        $state['expiresAtTimestamp'] = $expiryTimestamp;
-        $state['accountName'] = $accountName;
         $id = State::saveState(
             $state,
             'expirychecker:redirected_to_password_change_url'
@@ -359,8 +357,6 @@ class ExpiryDate extends ProcessingFilter
         ]));
 
         /* Save state and redirect. */
-        $state['expiresAtTimestamp'] = $expiryTimestamp;
-        $state['accountName'] = $accountName;
         $state['passwordChangeUrl'] = $this->passwordChangeUrl;
         $state['originalUrlParam'] = $this->originalUrlParam;
 
@@ -396,8 +392,6 @@ class ExpiryDate extends ProcessingFilter
         }
 
         /* Save state and redirect. */
-        $state['expiresAtTimestamp'] = $expiryTimestamp;
-        $state['accountName'] = $accountName;
         $state['passwordChangeUrl'] = $this->passwordChangeUrl;
         $state['originalUrlParam'] = $this->originalUrlParam;
 
