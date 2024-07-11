@@ -21,13 +21,6 @@ It is also used by the `TagGroup.php` Auth Proc to convert group names into the 
 
 `idp|<IDPNamespace>|<group name>`.
 
-##### betaEnabled
-An optional metadata entry is `betaEnabled`.  
-This will allow the IdP to be marked as `'enable' => true` when the user has a certain cookie ('beta_tester') that they would get from visiting `hub_domain/module.php/sildisco/betatest.php`.  
-The user would need to manually remove that cookie to be free of this effect.
-
-Sildisco does not otherwise deal with looking at the `'enable'` value.  However, a theme for idp discovery may (e.g. simplesamlphp-module-material).
-
 ##### SPList
 In order to limit access to an IdP to only certain SP's, add an `'SPList'` array entry to the metadata for the IdP.  The values of this array should match the `entity_id` values from the `sp-remote.php` metadata.
 

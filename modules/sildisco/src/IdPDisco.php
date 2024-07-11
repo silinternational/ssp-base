@@ -7,7 +7,6 @@ use Sil\SspUtils\DiscoUtils;
 use Sil\SspUtils\Metadata;
 use SimpleSAML\Auth;
 use SimpleSAML\Logger;
-use SimpleSAML\Session;
 use SimpleSAML\Utils\HTTP;
 use SimpleSAML\XHTML\IdPDisco as SSPIdPDisco;
 use SimpleSAML\XHTML\Template;
@@ -25,12 +24,6 @@ class IdPDisco extends SSPIdPDisco
 
     /* The session type for this class */
     public static string $sessionType = 'sildisco:authentication';
-
-    /* The session key for checking if the current user has the beta_tester cookie */
-    public static string $betaTesterSessionKey = 'beta_tester';
-
-    /* The idp metadata key that says whether an IDP is betaEnabled */
-    public static string $betaEnabledMdKey = 'betaEnabled';
 
     /* The idp metadata key that says whether an IDP is enabled */
     public static string $enabledMdKey = 'enabled';
@@ -74,7 +67,7 @@ class IdPDisco extends SSPIdPDisco
             );
         }
 
-        return array($spEntityId, self::enableBetaEnabled($idpList));
+        return array($spEntityId, $idpList);
     }
 
     /**
@@ -133,40 +126,6 @@ class IdPDisco extends SSPIdPDisco
         $t->data['help_center_url'] = $this->config->getOptionalString('helpCenterUrl', '');
 
         $t->send();
-    }
-
-    /**
-     * @param array $idpList the IDPs with their metadata
-     * @param bool|null $isBetaTester optional (default=null) just for unit testing
-     * @return array $idpList
-     *
-     * If the current user has the beta_tester cookie, then for each IDP in
-     * the idpList that has 'betaEnabled' => true, give it 'enabled' => true
-     *
-     */
-    public static function enableBetaEnabled(array $idpList, ?bool $isBetaTester = null): array
-    {
-
-        if ($isBetaTester === null) {
-            $session = Session::getSessionFromRequest();
-            $isBetaTester = $session->getData(
-                self::$sessionType,
-                self::$betaTesterSessionKey
-            );
-        }
-
-        if (!$isBetaTester) {
-            return $idpList;
-        }
-
-        foreach ($idpList as $idp => $idpMetadata) {
-            if (!empty($idpMetadata[self::$betaEnabledMdKey])) {
-                $idpMetadata[self::$enabledMdKey] = true;
-                $idpList[$idp] = $idpMetadata;
-            }
-        }
-
-        return $idpList;
     }
 
     /**
