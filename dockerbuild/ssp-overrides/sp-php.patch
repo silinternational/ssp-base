@@ -1,0 +1,16 @@
+811a812,819
+>         /*
+>          * If this SP is allowed to use more than one IdP, then send to discovery page
+>          */
+>         if (sizeof($state['saml:IDPList']) > 1) {
+>             $state['LoginCompletedHandler'] = [SP::class, 'reauthPostLogin'];
+>             $this->authenticate($state);
+>         }
+> 
+861,863c869,870
+<             $state['saml:sp:IdPMetadata'] = $this->getIdPMetadata($state['saml:sp:IdP']);
+<             $state['saml:sp:AuthId'] = $this->authId;
+<             self::askForIdPChange($state);
+---
+>             $state['LoginCompletedHandler'] = [SP::class, 'reauthPostLogin'];
+>             $this->authenticate($state);
