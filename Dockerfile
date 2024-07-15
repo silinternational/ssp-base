@@ -59,6 +59,9 @@ COPY dockerbuild/ssp-overrides/saml20-sp-remote.php $SSP_PATH/metadata/saml20-sp
 COPY dockerbuild/config/* $SSP_PATH/config/
 COPY dockerbuild/ssp-overrides/id.php $SSP_PATH/public/id.php
 COPY dockerbuild/ssp-overrides/announcement.php $SSP_PATH/announcement/announcement.php
+COPY dockerbuild/ssp-overrides/sp-php.patch sp-php.patch
+RUN patch /data/vendor/simplesamlphp/simplesamlphp/modules/saml/src/Auth/Source/SP.php sp-php.patch
+
 COPY tests /data/tests
 
 RUN chmod a+x /data/run.sh /data/run-tests.sh
