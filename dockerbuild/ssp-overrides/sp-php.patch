@@ -1,16 +1,39 @@
-811a812,819
->         /*
->          * If this SP is allowed to use more than one IdP, then send to discovery page
->          */
->         if (sizeof($state['saml:IDPList']) > 1) {
->             $state['LoginCompletedHandler'] = [SP::class, 'reauthPostLogin'];
->             $this->authenticate($state);
->         }
-> 
-861,863c869,870
-<             $state['saml:sp:IdPMetadata'] = $this->getIdPMetadata($state['saml:sp:IdP']);
-<             $state['saml:sp:AuthId'] = $this->authId;
-<             self::askForIdPChange($state);
----
->             $state['LoginCompletedHandler'] = [SP::class, 'reauthPostLogin'];
->             $this->authenticate($state);
+*** ../../vendor/simplesamlphp/simplesamlphp/modules/saml/src/Auth/Source/SP.php	2024-04-30 10:38:57.000000000 -0600
+--- SP.php	2024-07-11 17:07:40.000000000 -0600
+***************
+*** 809,814 ****
+--- 809,822 ----
+              $state[$k] = $v;
+          }
+  
++         /*
++          * If this SP is allowed to use more than one IdP, then send to discovery page
++          */
++         if (sizeof($state['saml:IDPList']) > 1) {
++             $state['LoginCompletedHandler'] = [SP::class, 'reauthPostLogin'];
++             $this->authenticate($state);
++         }
++ 
+          // check if we have an IDPList specified in the request
+          if (
+              isset($state['saml:IDPList'])
+***************
+*** 858,866 ****
+                  $state['core:SP']
+              ));
+  
+!             $state['saml:sp:IdPMetadata'] = $this->getIdPMetadata($state['saml:sp:IdP']);
+!             $state['saml:sp:AuthId'] = $this->authId;
+!             self::askForIdPChange($state);
+          }
+  
+          /*
+--- 866,873 ----
+                  $state['core:SP']
+              ));
+  
+!             $state['LoginCompletedHandler'] = [SP::class, 'reauthPostLogin'];
+!             $this->authenticate($state);
+          }
+  
+          /*
