@@ -8,8 +8,8 @@
 
 use Sil\PhpEnv\Env;
 use Sil\PhpEnv\EnvVarNotFoundException;
-use SimpleSAML\Utils;
 use SimpleSAML\Module\material\MaterialController;
+use SimpleSAML\Utils;
 
 $httpUtils = new Utils\HTTP();
 
@@ -71,7 +71,7 @@ $ANALYTICS_ID = Env::get('ANALYTICS_ID', null);
 $PASSWORD_CHANGE_URL = Env::get('PASSWORD_CHANGE_URL');
 $PASSWORD_FORGOT_URL = Env::get('PASSWORD_FORGOT_URL');
 $HELP_CENTER_URL = Env::get('HELP_CENTER_URL');
-$TRUSTED_URL_DOMAINS = Env::getArray('TRUSTED_URL_DOMAINS', null);
+$TRUSTED_URL_DOMAINS = Env::getArray('TRUSTED_URL_DOMAINS', []);
 
 $config = [
 
