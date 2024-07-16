@@ -1,9 +1,11 @@
 <?php
 
 
+use PHPUnit\Framework\TestCase;
+use SAML2\XML\saml\NameID;
 use SimpleSAML\Module\sildisco\Auth\Process\AddIdp2NameId;
 
-class AddIdpTest extends PHPUnit_Framework_TestCase
+class AddIdpTest extends TestCase
 {
 
     private static function getNameID($idp)
@@ -12,7 +14,7 @@ class AddIdpTest extends PHPUnit_Framework_TestCase
             'saml:sp:IdP' => $idp,
             'saml:sp:NameID' => [
                 [
-                    'Format' => 'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified',
+                    'Format' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent',
                     'Value' => 'Tester1_Smith',
                     'SPNameQualifier' => 'http://ssp-sp1.local',
                 ],
@@ -42,7 +44,7 @@ class AddIdpTest extends PHPUnit_Framework_TestCase
      */
     public function testAddIdp2NameId_NoIDPNamespace()
     {
-        $this->setExpectedException('\SimpleSAML\Error\Exception');
+        $this->expectException('\SimpleSAML\Error\Exception');
         $config = ['test' => ['value1', 'value2'],];
         $request = self::getNameID('idp-bare');
 
@@ -56,7 +58,7 @@ class AddIdpTest extends PHPUnit_Framework_TestCase
      */
     public function testAddIdp2NameId_EmptyIDPNamespace()
     {
-        $this->setExpectedException('\SimpleSAML\Error\Exception');
+        $this->expectException('\SimpleSAML\Error\Exception');
         $config = ['test' => ['value1', 'value2'],];
         $request = self::getNameID('idp-empty');
         self::processAddIdp2NameId($config, $request);
@@ -68,7 +70,7 @@ class AddIdpTest extends PHPUnit_Framework_TestCase
      */
     public function testAddIdp2NameId_BadIDPNamespace()
     {
-        $this->setExpectedException('\SimpleSAML\Error\Exception');
+        $this->expectException('\SimpleSAML\Error\Exception');
         $config = [
             'test' => ['value1', 'value2'],
         ];
@@ -82,19 +84,21 @@ class AddIdpTest extends PHPUnit_Framework_TestCase
      */
     public function testAddIdp2NameId_GoodString()
     {
+        $nameID = new NameID();
+        $nameID->setValue('Tester1_SmithA');
         $config = ['test' => ['value1', 'value2']];
         $state = [
             'saml:sp:IdP' => 'idp-good',
-            'saml:sp:NameID' => 'Tester1_SmithA',
+            'saml:sp:NameID' => $nameID,
             'Attributes' => [],
             'metadataPath' => __DIR__ . '/fixtures/metadata/',
         ];
 
-        $newNameID = $state['saml:sp:NameID'];
-        $newNameID = 'Tester1_SmithA@idpGood';
+        $newNameID = new NameID();
+        $newNameID->setValue('Tester1_SmithA@idpGood');
 
         $expected = $state;
-        $expected['saml:NameID']['urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified'] = $newNameID;
+        $expected['saml:NameID']['urn:oasis:names:tc:SAML:2.0:nameid-format:persistent'] = $newNameID;
 
         $results = self::processAddIdp2NameId($config, $state);
         $this->assertEquals($expected, $results);
@@ -105,23 +109,24 @@ class AddIdpTest extends PHPUnit_Framework_TestCase
      */
     public function testAddIdp2NameId_GoodArray()
     {
+        $nameID = new NameID();
+        $nameID->setValue('Tester1_SmithA');
+        $nameID->setFormat('urn:oasis:names:tc:SAML:2.0:nameid-format:persistent');
+        $nameID->setSPNameQualifier('http://ssp-sp1.local');
+
         $config = ['test' => ['value1', 'value2']];
         $state = [
             'saml:sp:IdP' => 'idp-good',
-            'saml:sp:NameID' => [
-                'Format' => 'urn:oasis:names:tc:SAML:1.1:nameid-format:transient',
-                'Value' => 'Tester1_SmithA',
-                'SPNameQualifier' => 'http://ssp-sp1.local',
-            ],
+            'saml:sp:NameID' => $nameID,
             'Attributes' => [],
             'metadataPath' => __DIR__ . '/fixtures/metadata/',
         ];
 
         $newNameID = $state['saml:sp:NameID'];
-        $newNameID['Value'] = 'Tester1_SmithA@idpGood';
+        $newNameID->setValue('Tester1_SmithA@idpGood');
 
         $expected = $state;
-        $expected['saml:NameID']['urn:oasis:names:tc:SAML:1.1:nameid-format:transient'] = $newNameID;
+        $expected['saml:NameID']['urn:oasis:names:tc:SAML:2.0:nameid-format:persistent'] = $newNameID;
 
         $results = self::processAddIdp2NameId($config, $state);
 

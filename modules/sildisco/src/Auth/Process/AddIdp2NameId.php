@@ -59,7 +59,7 @@ class AddIdp2NameId extends ProcessingFilter
      *
      * @var string|bool
      */
-    private sring|bool $spNameQualifier;
+    private string|bool $spNameQualifier;
 
 
     /**

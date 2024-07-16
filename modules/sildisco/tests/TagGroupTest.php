@@ -1,8 +1,9 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use SimpleSAML\Module\sildisco\Auth\Process\TagGroup;
 
-class TagGroupTest extends PHPUnit_Framework_TestCase
+class TagGroupTest extends TestCase
 {
     /**
      * Helper function to run the filter with a given configuration.
