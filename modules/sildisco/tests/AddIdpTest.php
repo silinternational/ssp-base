@@ -14,7 +14,7 @@ class AddIdpTest extends TestCase
             'saml:sp:IdP' => $idp,
             'saml:sp:NameID' => [
                 [
-                    'Format' => 'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified',
+                    'Format' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent',
                     'Value' => 'Tester1_Smith',
                     'SPNameQualifier' => 'http://ssp-sp1.local',
                 ],
@@ -111,7 +111,7 @@ class AddIdpTest extends TestCase
     {
         $nameID = new NameID();
         $nameID->setValue('Tester1_SmithA');
-        $nameID->setFormat('urn:oasis:names:tc:SAML:1.1:nameid-format:transient');
+        $nameID->setFormat('urn:oasis:names:tc:SAML:2.0:nameid-format:persistent');
         $nameID->setSPNameQualifier('http://ssp-sp1.local');
 
         $config = ['test' => ['value1', 'value2']];
