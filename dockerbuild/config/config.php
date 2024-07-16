@@ -9,6 +9,7 @@
 use Sil\PhpEnv\Env;
 use Sil\PhpEnv\EnvVarNotFoundException;
 use SimpleSAML\Utils;
+use SimpleSAML\Module\material\MaterialController;
 
 $httpUtils = new Utils\HTTP();
 
@@ -977,7 +978,7 @@ $config = [
      * the 'theme.controller' configuration option to a class that implements the
      * \SimpleSAML\XHTML\TemplateControllerInterface interface to use it.
      */
-    //'theme.controller' => '',
+    'theme.controller' => MaterialController::class,
 
     /*
      * Templating options
