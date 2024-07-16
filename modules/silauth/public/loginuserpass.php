@@ -80,8 +80,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $t = new Template($globalConfig, 'silauth:loginuserpass');
-$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', null);
-$t->data['analytics_tracking_id'] = $globalConfig->getOptionalString('analytics.trackingId', '');
 $t->data['stateparams'] = array('AuthState' => $authStateId);
 $t->data['username'] = $username;
 $t->data['errorcode'] = $errorCode;

@@ -5,7 +5,7 @@
 
 <base href="{{ baseurlpath }}/module.php/material/">
 
-{% if analytics_tracking_id is defined and analytics_tracking_id is not empty %}
+{% if analytics_tracking_id is not empty %}
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ analytics_tracking_id }}"></script>
   <script>

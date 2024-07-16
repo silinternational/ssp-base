@@ -977,7 +977,7 @@ $config = [
      * the 'theme.controller' configuration option to a class that implements the
      * \SimpleSAML\XHTML\TemplateControllerInterface interface to use it.
      */
-    //'theme.controller' => '',
+    'theme.controller' => '\SimpleSAML\Module\material\MaterialController',
 
     /*
      * Templating options
