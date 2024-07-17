@@ -108,6 +108,7 @@ class IdPDisco extends SSPIdPDisco
         unset($idpList['dummy']);
 
         $enabledIdps = [];
+        $disabledIdps = [];
         foreach ($idpList as $idp) {
             if ($idp['enabled'] === true) {
                 $enabledIdps[] = $idp;
