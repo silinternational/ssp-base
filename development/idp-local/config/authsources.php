@@ -1,7 +1,5 @@
 <?php
 
-use Sil\SspBase\Features\fakes\FakeIdBrokerClient;
-
 $config = [
 
     // This is a authentication source which handles admin authentication.
@@ -26,6 +24,10 @@ $config = [
             'cn' => ['DISTANT_FUTURE'],
             'mfa' => [
                 'prompt' => 'no',
+                'add' => 'no',
+            ],
+            'method' => [
+                'add' => 'no',
             ],
             'schacExpiryDate' => [
                 gmdate('YmdHis\Z', strtotime('+6 months')), // Distant future
@@ -42,6 +44,10 @@ $config = [
             'cn' => ['NEAR_FUTURE'],
             'mfa' => [
                 'prompt' => 'no',
+                'add' => 'no',
+            ],
+            'method' => [
+                'add' => 'no',
             ],
             'schacExpiryDate' => [
                 gmdate('YmdHis\Z', strtotime('+3 days')), // Soon but not tomorrow
@@ -57,6 +63,13 @@ $config = [
             'mail' => ['next_day@example.com'],
             'employeeNumber' => ['22888'],
             'cn' => ['NEXT_DAY'],
+            'mfa' => [
+                'prompt' => 'no',
+                'add' => 'no',
+            ],
+            'method' => [
+                'add' => 'no',
+            ],
             'schacExpiryDate' => [
                 gmdate('YmdHis\Z', strtotime('+1 day')), // Very soon
             ],
@@ -72,6 +85,10 @@ $config = [
             'cn' => ['ALREADY_PAST'],
             'mfa' => [
                 'prompt' => 'no',
+                'add' => 'no',
+            ],
+            'method' => [
+                'add' => 'no',
             ],
             'schacExpiryDate' => [
                 gmdate('YmdHis\Z', strtotime('-1 day')), // In the past
@@ -88,6 +105,10 @@ $config = [
             'cn' => ['MISSING_EXP'],
             'mfa' => [
                 'prompt' => 'no',
+                'add' => 'no',
+            ],
+            'method' => [
+                'add' => 'no',
             ],
         ],
 
@@ -101,6 +122,10 @@ $config = [
             'cn' => ['INVALID_EXP'],
             'mfa' => [
                 'prompt' => 'no',
+                'add' => 'no',
+            ],
+            'method' => [
+                'add' => 'no',
             ],
             'schacExpiryDate' => [
                 'invalid'
