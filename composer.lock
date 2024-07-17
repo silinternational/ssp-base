@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a4096531caaadf1c30b8c7600e11a4e1",
+    "content-hash": "ae39419f02098a2449c62a732a3c87b9",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2940,16 +2940,16 @@
         },
         {
             "name": "silinternational/php-env",
-            "version": "3.1.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/php-env.git",
-                "reference": "d69cf17b7fc02cf6450d7d947634d07b7c2168af"
+                "reference": "9a60ee2653d89c1719263122cbb3abbbe7880d1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/php-env/zipball/d69cf17b7fc02cf6450d7d947634d07b7c2168af",
-                "reference": "d69cf17b7fc02cf6450d7d947634d07b7c2168af",
+                "url": "https://api.github.com/repos/silinternational/php-env/zipball/9a60ee2653d89c1719263122cbb3abbbe7880d1f",
+                "reference": "9a60ee2653d89c1719263122cbb3abbbe7880d1f",
                 "shasum": ""
             },
             "require": {
@@ -2971,9 +2971,9 @@
             "description": "Simple PHP library for getting (or requiring) environment variables, designed to handle true, false, and null more intelligently. If desired, an environment variable's value can be split into an array automatically.",
             "support": {
                 "issues": "https://github.com/silinternational/php-env/issues",
-                "source": "https://github.com/silinternational/php-env/tree/3.1.0"
+                "source": "https://github.com/silinternational/php-env/tree/3.2.0"
             },
-            "time": "2022-08-29T20:48:09+00:00"
+            "time": "2024-07-17T13:16:07+00:00"
         },
         {
             "name": "silinternational/psr3-adapters",
