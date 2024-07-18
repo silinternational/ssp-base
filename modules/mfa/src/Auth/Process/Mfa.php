@@ -5,19 +5,17 @@ namespace SimpleSAML\Module\mfa\Auth\Process;
 use Exception;
 use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
-use Sil\Idp\IdBroker\Client\BaseClient;
-use Sil\PhpEnv\Env;
-use Sil\Idp\IdBroker\Client\ServiceException;
 use Sil\Idp\IdBroker\Client\IdBrokerClient;
+use Sil\Idp\IdBroker\Client\ServiceException;
+use Sil\PhpEnv\Env;
 use Sil\PhpEnv\EnvVarNotFoundException;
 use Sil\Psr3Adapters\Psr3SamlLogger;
 use Sil\SspBase\Features\fakes\FakeIdBrokerClient;
-use SimpleSAML\Module\mfa\LoggerFactory;
-use SimpleSAML\Module\mfa\LoginBrowser;
 use SimpleSAML\Auth\ProcessingChain;
 use SimpleSAML\Auth\ProcessingFilter;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Module;
+use SimpleSAML\Module\mfa\LoggerFactory;
 use SimpleSAML\Utils\HTTP;
 
 /**
@@ -210,13 +208,11 @@ class Mfa extends ProcessingFilter
      * Get the MFA type to use based on the available options.
      *
      * @param array[] $mfaOptions The available MFA options.
-     * @param string $userAgent The User-Agent sent by the user's browser, used
-     *     for detecting WebAuthn support.
      * @return array The MFA option to use.
      * @throws InvalidArgumentException
      * @throws Exception
      */
-    public static function getMfaOptionToUse(array $mfaOptions, string $userAgent): array
+    public static function getMfaOptionToUse(array $mfaOptions): array
     {
         if (empty($mfaOptions)) {
             throw new Exception('No MFA options were provided.');
@@ -225,19 +221,11 @@ class Mfa extends ProcessingFilter
         $recentMfa = self::getMostRecentUsedMfaOption($mfaOptions);
         $mfaTypePriority = ['manager'];
 
-        if (LoginBrowser::supportsWebAuthn($userAgent)) {
-            if (isset($recentMfa['type'])) {
-                $mfaTypePriority[] = $recentMfa['type'];
-            }
-            // Doubling up a type shouldn't be a problem.
-            array_push($mfaTypePriority, 'webauthn', 'totp', 'backupcode');
-        } else {
-            // Browser doesn't support webauthn, so ensure that's the last option
-            if (isset($recentMfa['type']) && $recentMfa['type'] != 'webauthn') {
-                $mfaTypePriority[] = $recentMfa['type'];
-            }
-            array_push($mfaTypePriority, 'totp', 'backupcode', 'webauthn');
+        if (isset($recentMfa['type'])) {
+            $mfaTypePriority[] = $recentMfa['type'];
         }
+        // Doubling up a type shouldn't be a problem.
+        array_push($mfaTypePriority, 'webauthn', 'totp', 'backupcode');
 
         foreach ($mfaTypePriority as $mfaType) {
             foreach ($mfaOptions as $mfaOption) {
@@ -678,16 +666,7 @@ class Mfa extends ProcessingFilter
 
         $id = State::saveState($state, self::STAGE_SENT_TO_MFA_PROMPT);
         $url = Module::getModuleURL('mfa/prompt-for-mfa.php');
-        $userAgent = LoginBrowser::getUserAgent();
-        $webauthnSupport = LoginBrowser::supportsWebAuthn($userAgent);
-
-        $this->logger->debug(json_encode([
-            'event' => 'check browser',
-            'user_agent' => $userAgent,
-            'webauthn_support' => $webauthnSupport,
-        ]));
-
-        $mfaOption = self::getMfaOptionToUse($mfaOptions, $userAgent);
+        $mfaOption = self::getMfaOptionToUse($mfaOptions);
 
         $httpUtils = new HTTP();
         $httpUtils->redirectTrustedURL($url, [
