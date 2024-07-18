@@ -159,7 +159,7 @@ try {
         $metaArray['scope'] = $idpmeta->getArray('scope');
     }
 
-    $metadataUtils = new Utils\Metadata();
+    $metadataUtils = new Utils\Config\Metadata();
 
     if ($idpmeta->hasValue('EntityAttributes')) {
         $metaArray['EntityAttributes'] = $idpmeta->getArray('EntityAttributes');
