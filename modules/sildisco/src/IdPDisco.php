@@ -25,9 +25,6 @@ class IdPDisco extends SSPIdPDisco
     /* The session type for this class */
     public static string $sessionType = 'sildisco:authentication';
 
-    /* The idp metadata key that says whether an IDP is enabled */
-    public static string $enabledMdKey = 'enabled';
-
     /**
      * @inheritDoc
      */
@@ -53,10 +50,8 @@ class IdPDisco extends SSPIdPDisco
         // Before the SimpleSAMLphp 2 upgrade, we added it to the state ourselves by overriding the SAML2.php file
         parse_str(parse_url($_GET['return'], PHP_URL_QUERY), $returnState);
         $state = Auth\State::loadState($returnState['AuthID'], 'saml:sp:sso');
-        if ($state && array_key_exists('SPMetadata', $state)) {
-            $spmd = $state['SPMetadata'];
-            $this->log('Updated SP metadata from ' . $this->spEntityId . ' to ' . $spmd['entityid']);
-        }
+        assert($state && array_key_exists('SPMetadata', $state));
+        $spmd = $state['SPMetadata'];
         $spEntityId = $spmd['entityid'];
 
         if (!empty($spEntityId)) {
@@ -103,22 +98,7 @@ class IdPDisco extends SSPIdPDisco
 
         $t = new Template($this->config, 'selectidp-links', 'disco');
 
-        // in order to bypass some built-in simplesaml behavior, an extra idp
-        // might've been added.  It's not meant to be displayed.
-        unset($idpList['dummy']);
-
-        $enabledIdps = [];
-        $disabledIdps = [];
-        foreach ($idpList as $idp) {
-            if ($idp['enabled'] === true) {
-                $enabledIdps[] = $idp;
-            } else {
-                $disabledIdps[] = $idp;
-            }
-        }
-
-        $t->data['enabled_idps'] = $enabledIdps;
-        $t->data['disabled_idps'] = $disabledIdps;
+        $t->data['idp_list'] = $idpList;
         $t->data['return'] = $this->returnURL;
         $t->data['return_id_param'] = $this->returnIdParam;
         $t->data['entity_id'] = $this->spEntityId;
@@ -167,7 +147,7 @@ class IdPDisco extends SSPIdPDisco
             return null;
         }
 
-        if (array_key_exists($idp, $idpList) && $idpList[$idp]['enabled']) {
+        if (array_key_exists($idp, $idpList)) {
             return $idp;
         }
         $this->log('Invalid IdP entity id [' . $idp . '] received from discovery page.');

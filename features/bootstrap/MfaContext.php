@@ -2,20 +2,15 @@
 
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Element\NodeElement;
-use Behat\Mink\Exception\ElementNotFoundException;
 use PHPUnit\Framework\Assert;
 use Sil\PhpEnv\Env;
 use Sil\SspBase\Features\fakes\FakeIdBrokerClient;
-use SimpleSAML\Module\mfa\LoginBrowser;
 
 /**
  * Defines application features from the specific context.
  */
 class MfaContext extends FeatureContext
 {
-    const USER_AGENT_WITHOUT_WEBAUTHN_SUPPORT = 'Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko';
-    const USER_AGENT_WITH_WEBAUTHN_SUPPORT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36';
-
     /**
      * Assert that the given page has a form that contains the given text.
      *
@@ -434,20 +429,6 @@ class MfaContext extends FeatureContext
     }
 
     /**
-     * @Given the user's browser supports WebAuthn
-     */
-    public function theUsersBrowserSupportsUf()
-    {
-        $userAgentWithWebAuthn = self::USER_AGENT_WITH_WEBAUTHN_SUPPORT;
-        Assert::assertTrue(
-            LoginBrowser::supportsWebAuthn($userAgentWithWebAuthn),
-            'Update USER_AGENT_WITH_WEBAUTHN_SUPPORT to a User Agent with WebAuthn support'
-        );
-
-//        $this->driver->getClient()->setServerParameter('HTTP_USER_AGENT', $userAgentWithWebAuthn);
-    }
-
-    /**
      * @Given I provide credentials that have WebAuthn, TOTP
      */
     public function iProvideCredentialsThatHaveUfTotp()
@@ -565,38 +546,6 @@ class MfaContext extends FeatureContext
     {
         $this->username .= 'and_more_recently_used_backup_code';
         $this->password = 'a';
-    }
-
-    /**
-     * @Given the user's browser does not support WebAuthn
-     */
-    public function theUsersBrowserDoesNotSupportUf()
-    {
-        $userAgentWithoutWebAuthn = self::USER_AGENT_WITHOUT_WEBAUTHN_SUPPORT;
-        Assert::assertFalse(
-            LoginBrowser::supportsWebAuthn($userAgentWithoutWebAuthn),
-            'Update USER_AGENT_WITHOUT_WEBAUTHN_SUPPORT to a User Agent without WebAuthn support'
-        );
-
-//        $this->driver->getClient()->setServerParameter('HTTP_USER_AGENT', $userAgentWithoutWebAuthn);
-    }
-
-    /**
-     * @Then I should not see an error message about WebAuthn being unsupported
-     */
-    public function iShouldNotSeeAnErrorMessageAboutUfBeingUnsupported()
-    {
-        $page = $this->session->getPage();
-        Assert::assertNotContains('USB Security Keys are not supported', $page->getContent());
-    }
-
-    /**
-     * @Then I should see an error message about WebAuthn being unsupported
-     */
-    public function iShouldSeeAnErrorMessageAboutUfBeingUnsupported()
-    {
-        $page = $this->session->getPage();
-        Assert::assertContains('USB Security Keys are not supported', $page->getContent());
     }
 
     /**

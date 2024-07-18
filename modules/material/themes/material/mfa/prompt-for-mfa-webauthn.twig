@@ -65,7 +65,7 @@
   </script>
 </head>
 
-<body class="gradient-bg" onload="{{ supports_web_authn ? 'verifyWebAuthn()' : '' }}">
+<body class="gradient-bg" onload="verifyWebAuthn()">
 <div class="mdl-layout mdl-layout--fixed-header fill-viewport">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
@@ -88,19 +88,11 @@
           </h1>
         </div>
 
-        {% if supports_web_authn %}
-          <div class="mdl-card__title">
-            <p class="mdl-card__subtitle-text">
-              {{ '{mfa:webauthn_instructions}'|trans }}
-            </p>
-          </div>
-        {% else %}
-          <div class="mdl-card__title">
-            <p class="mdl-typography--text-center mdl-color-text--red">
-              {{ '{mfa:webauthn_unsupported}'|trans|raw }}
-            </p>
-          </div>
-        {% endif %}
+        <div class="mdl-card__title">
+          <p class="mdl-card__subtitle-text">
+            {{ '{mfa:webauthn_instructions}'|trans }}
+          </p>
+        </div>
 
         {% if error_message is not empty %}
           <script>

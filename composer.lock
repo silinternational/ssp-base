@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a4096531caaadf1c30b8c7600e11a4e1",
+    "content-hash": "e806cb0ece59b36ea060f0d8bc0e906a",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2940,16 +2940,16 @@
         },
         {
             "name": "silinternational/php-env",
-            "version": "3.1.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silinternational/php-env.git",
-                "reference": "d69cf17b7fc02cf6450d7d947634d07b7c2168af"
+                "reference": "9a60ee2653d89c1719263122cbb3abbbe7880d1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silinternational/php-env/zipball/d69cf17b7fc02cf6450d7d947634d07b7c2168af",
-                "reference": "d69cf17b7fc02cf6450d7d947634d07b7c2168af",
+                "url": "https://api.github.com/repos/silinternational/php-env/zipball/9a60ee2653d89c1719263122cbb3abbbe7880d1f",
+                "reference": "9a60ee2653d89c1719263122cbb3abbbe7880d1f",
                 "shasum": ""
             },
             "require": {
@@ -2971,9 +2971,9 @@
             "description": "Simple PHP library for getting (or requiring) environment variables, designed to handle true, false, and null more intelligently. If desired, an environment variable's value can be split into an array automatically.",
             "support": {
                 "issues": "https://github.com/silinternational/php-env/issues",
-                "source": "https://github.com/silinternational/php-env/tree/3.1.0"
+                "source": "https://github.com/silinternational/php-env/tree/3.2.0"
             },
-            "time": "2022-08-29T20:48:09+00:00"
+            "time": "2024-07-17T13:16:07+00:00"
         },
         {
             "name": "silinternational/psr3-adapters",
@@ -3445,60 +3445,6 @@
                 "source": "https://github.com/simplesamlphp/simplesamlphp-assets-base/tree/v2.2.1"
             },
             "time": "2024-06-12T21:08:27+00:00"
-        },
-        {
-            "name": "sinergi/browser-detector",
-            "version": "6.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sinergi/php-browser-detector.git",
-                "reference": "4927f7c2bedc48b68f183bd420aa3549c59e133b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sinergi/php-browser-detector/zipball/4927f7c2bedc48b68f183bd420aa3549c59e133b",
-                "reference": "4927f7c2bedc48b68f183bd420aa3549c59e133b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.0 || ^9.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Sinergi\\BrowserDetector\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Gabriel Bull",
-                    "email": "me@gabrielbull.com"
-                },
-                {
-                    "name": "Chris Schuld"
-                }
-            ],
-            "description": "Detecting the user's browser, operating system and language.",
-            "keywords": [
-                "browser",
-                "detection",
-                "language",
-                "operating system",
-                "os"
-            ],
-            "support": {
-                "issues": "https://github.com/sinergi/php-browser-detector/issues",
-                "source": "https://github.com/sinergi/php-browser-detector/tree/6.1.4"
-            },
-            "abandoned": true,
-            "time": "2021-09-23T13:51:44+00:00"
         },
         {
             "name": "symfony/cache",
