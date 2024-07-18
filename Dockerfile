@@ -3,7 +3,7 @@ FROM silintl/php8:8.1
 LABEL maintainer="gtis_itse@groups.sil.org"
 
 RUN apt-get update -y \
-    && apt-get install -y php-gmp \
+    && apt-get --no-install-recommends install -y php-gmp \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
