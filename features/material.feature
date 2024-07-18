@@ -10,15 +10,6 @@ Feature: Material theme
     Then I should see an "Error" page
     And I should see our material theme
 
-    # TODO: if this is really used, fix it. If not, delete the test, the template, and the translation file.
-    #   (The reason this fails is because there is no "Logout" button on the new admin interface)
-#  Scenario: Logout page
-#    When I go to the Hub's home page
-#    And I log in as a hub administrator
-#    And I click on "Logout"
-#    Then I should see a "Logged out" page
-#    And I should see our material theme
-
   Scenario: Login page
     When I go to the SP1 login page
     And I click on the "IDP 2" tile
