@@ -32,7 +32,6 @@ class ExpiryDate extends ProcessingFilter
     private string|null $accountNameAttr = null;
     private string $employeeIdAttr = 'employeeNumber';
     private string|null $expiryDateAttr = null;
-    private string $dateFormat = 'Y-m-d';
 
     protected LoggerInterface $logger;
 
@@ -67,10 +66,6 @@ class ExpiryDate extends ProcessingFilter
                 Validator::NOT_EMPTY,
             ],
             'expiryDateAttr' => [
-                Validator::STRING,
-                Validator::NOT_EMPTY,
-            ],
-            'dateFormat' => [
                 Validator::STRING,
                 Validator::NOT_EMPTY,
             ],
