@@ -22,7 +22,6 @@
     "silinternational/psr3-adapters": "v4.0.0",
     "silinternational/yii2-json-log-targets": "^2.0",
     "silinternational/idp-id-broker-php-client": "^4.3",
-    "sinergi/browser-detector": "^6.1",
     "yiisoft/yii2": "~2.0.12",
     "yiisoft/yii2-gii": "^2.0",
     "google/recaptcha": "^1.1",

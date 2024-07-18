@@ -13,7 +13,6 @@ use SimpleSAML\Configuration;
 use SimpleSAML\Error\BadRequest;
 use SimpleSAML\Module\mfa\Auth\Process\Mfa;
 use SimpleSAML\Module\mfa\LoggerFactory;
-use SimpleSAML\Module\mfa\LoginBrowser;
 use SimpleSAML\Utils\HTTP;
 use SimpleSAML\XHTML\Template;
 
@@ -46,7 +45,6 @@ if (Mfa::isRememberMeCookieValid(base64_decode($cookieHash), $expireDate, $mfaOp
 }
 
 $mfaId = filter_input(INPUT_GET, 'mfaId');
-$userAgent = LoginBrowser::getUserAgent();
 
 if (empty($mfaId)) {
     $logger->critical(json_encode([
@@ -55,7 +53,7 @@ if (empty($mfaId)) {
     ]));
 
     // Pick an MFA ID and do a redirect to put that into the URL.
-    $mfaOption = Mfa::getMfaOptionToUse($mfaOptions, $userAgent);
+    $mfaOption = Mfa::getMfaOptionToUse($mfaOptions);
     $moduleUrl = SimpleSAML\Module::getModuleURL('mfa/prompt-for-mfa.php', [
         'mfaId' => $mfaOption['id'],
         'StateId' => $stateId,
@@ -123,7 +121,6 @@ $t = new Template($globalConfig, $mfaTemplateToUse);
 $t->data['error_message'] = $errorMessage ?? null;
 $t->data['mfa_option_data'] = json_encode($mfaOption['data']);
 $t->data['mfa_options'] = $mfaOptions;
-$t->data['supports_web_authn'] = LoginBrowser::supportsWebAuthn($userAgent);
 $browserJsHash = md5_file(__DIR__ . '/simplewebauthn/browser.js');
 $t->data['browser_js_path'] = '/module.php/mfa/simplewebauthn/browser.js?v=' . $browserJsHash;
 $t->data['manager_email'] = $state['managerEmail'];

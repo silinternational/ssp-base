@@ -35,7 +35,6 @@ Feature: Prompt for MFA credentials
 
   Scenario: Needs MFA, has WebAuthn option available
     Given I provide credentials that need MFA and have WebAuthn available
-    And the user's browser supports WebAuthn
     When I log in
     Then I should see a prompt for a WebAuthn security key
 
@@ -126,64 +125,23 @@ Feature: Prompt for MFA credentials
     When I click the remind-me-later button
     Then I should end up at my intended destination
 
-  Scenario Outline: Defaulting to another option when WebAuthn is not supported
-    Given I provide credentials that have <WebAuthn?><TOTP?><backup codes?>
-    And the user's browser <supports WebAuthn or not>
-    When I log in
-    Then I should see a prompt for a <default MFA type>
-
-    Examples:
-      | WebAuthn? | TOTP?  | backup codes?  | supports WebAuthn or not | default MFA type |
-      | WebAuthn  |        |                | supports WebAuthn        | WebAuthn         |
-      | WebAuthn  | , TOTP |                | supports WebAuthn        | WebAuthn         |
-      | WebAuthn  |        | , backup codes | supports WebAuthn        | WebAuthn         |
-      | WebAuthn  | , TOTP | , backup codes | supports WebAuthn        | WebAuthn         |
-      |           | TOTP   |                | supports WebAuthn        | TOTP             |
-      |           | TOTP   | , backup codes | supports WebAuthn        | TOTP             |
-      |           |        | backup codes   | supports WebAuthn        | backup code      |
-# The following cases are disabled due to lack of test support for changing web client user agent
-#      | WebAuthn  |          |                | does not support WebAuthn | WebAuthn         |
-#      | WebAuthn  | , TOTP   |                | does not support WebAuthn |   TOTP           |
-#      | WebAuthn  |          | , backup codes | does not support WebAuthn |      backup code |
-#      | WebAuthn  | , TOTP   | , backup codes | does not support WebAuthn |   TOTP           |
-#      |           |   TOTP   |                | does not support WebAuthn |   TOTP           |
-#      |           |   TOTP   | , backup codes | does not support WebAuthn |   TOTP           |
-#      |           |          |   backup codes | does not support WebAuthn |      backup code |
-
-
   Scenario Outline: Defaulting to the most recently used mfa option
     Given I provide credentials that have a used <MFA type>
     And and I have a more recently used <recent MFA type>
-    And the user's browser <supports WebAuthn or not>
     When I log in
     Then I should see a prompt for a <default MFA type>
 
     Examples:
-      | MFA type    | recent MFA type | supports WebAuthn or not | default MFA type |
-      | WebAuthn    | TOTP            | supports WebAuthn        | TOTP             |
-      | TOTP        | WebAuthn        | supports WebAuthn        | WebAuthn         |
-      | TOTP        | backup code     | supports WebAuthn        | backup code      |
-      | backup code | TOTP            | supports WebAuthn        | TOTP             |
-# The following case is disabled due to lack of test support for changing web client user agent
-#      | TOTP        |  WebAuthn         |  does not support WebAuthn  |  TOTP             |
+      | MFA type    | recent MFA type | default MFA type |
+      | WebAuthn    | TOTP            | TOTP             |
+      | TOTP        | WebAuthn        | WebAuthn         |
+      | TOTP        | backup code     | backup code      |
+      | backup code | TOTP            | TOTP             |
 
   Scenario: Defaulting to the manager code despite having a used mfa
     Given I provide credentials that have a manager code, a WebAuthn and a more recently used TOTP
-    And the user's browser supports WebAuthn
     When I log in
     Then I should see a prompt for a manager rescue code
-
-  Scenario Outline: When to show the WebAuthn-not-supported error message
-    Given I provide credentials that have WebAuthn
-    And the user's browser <supports WebAuthn or not>
-    When I log in
-    Then I <should or not> see an error message about WebAuthn being unsupported
-
-    Examples:
-      | supports WebAuthn or not | should or not |
-      | supports WebAuthn        | should not    |
-# The following case is disabled due to lack of test support for changing web client user agent
-#      | does not support WebAuthn | should        |
 
   Scenario Outline: When to show the link to send a manager rescue code
     Given I provide credentials that have <WebAuthn?><TOTP?><backup codes?>
