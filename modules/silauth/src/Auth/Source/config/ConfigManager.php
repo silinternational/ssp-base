@@ -3,7 +3,8 @@
 namespace SimpleSAML\Module\silauth\Auth\Source\config;
 
 use SimpleSAML\Module\silauth\Auth\Source\text\Text;
-use yii\console\Application;
+use yii\console\Application as ConsoleApplication;
+use yii\web\Application as WebApplication;
 
 class ConfigManager
 {
@@ -78,11 +79,11 @@ class ConfigManager
         }
     }
 
-    public static function getYii2ConsoleApp(array $customConfig): Application
+    public static function getYii2ConsoleApp(array $customConfig): ConsoleApplication
     {
         self::initializeYiiClass();
         $mergedYii2Config = self::getMergedYii2Config($customConfig);
-        return new Application($mergedYii2Config);
+        return new ConsoleApplication($mergedYii2Config);
     }
 
     public static function initializeYii2WebApp(array $customConfig = []): void
@@ -93,7 +94,7 @@ class ConfigManager
          * here, since we don't want Yii to handle the HTTP request. We just
          * want the Yii classes available for use (including database
          * models).  */
-        $app = new \yii\web\Application(self::getMergedYii2Config($customConfig));
+        $app = new WebApplication(self::getMergedYii2Config($customConfig));
 
         /*
          * Initialize the Yii logger. It doesn't want to initialize itself for some reason.

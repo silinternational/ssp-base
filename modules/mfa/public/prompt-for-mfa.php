@@ -42,7 +42,7 @@ if (Mfa::isRememberMeCookieValid(base64_decode($cookieHash), $expireDate, $mfaOp
 
     // This condition should never return
     ProcessingChain::resumeProcessing($state);
-    throw new \Exception('Failed to resume processing auth proc chain.');
+    throw new Exception('Failed to resume processing auth proc chain.');
 }
 
 $mfaId = filter_input(INPUT_GET, 'mfaId');
@@ -120,8 +120,6 @@ foreach ($otherOptions as &$option) {
 $mfaTemplateToUse = Mfa::getTemplateFor($mfaOption['type']);
 
 $t = new Template($globalConfig, $mfaTemplateToUse);
-$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', null);
-$t->data['analytics_tracking_id'] = $globalConfig->getOptionalString('analytics.trackingId', '');
 $t->data['error_message'] = $errorMessage ?? null;
 $t->data['mfa_option_data'] = json_encode($mfaOption['data']);
 $t->data['mfa_options'] = $mfaOptions;

@@ -2,18 +2,20 @@
 
 namespace SimpleSAML\Module\silauth\Auth\Source\models;
 
+use Exception;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use SimpleSAML\Module\silauth\Auth\Source\auth\Authenticator;
 use SimpleSAML\Module\silauth\Auth\Source\behaviors\CreatedAtUtcBehavior;
 use SimpleSAML\Module\silauth\Auth\Source\time\UtcTime;
+use SimpleSAML\Module\silauth\Auth\Source\traits\LoggerAwareTrait;
+use Yii;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
-use Yii;
 
 class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAwareInterface
 {
-    use \SimpleSAML\Module\silauth\Auth\Source\traits\LoggerAwareTrait;
+    use LoggerAwareTrait;
 
     /**
      * @inheritdoc
@@ -45,7 +47,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
             '>=', 'occurred_at_utc', UtcTime::format('-60 minutes')
         ])->count();
         if (!is_numeric($count)) {
-            throw new \Exception('expected a numeric value for recent failed logins by username, got ' . $count);
+            throw new Exception('expected a numeric value for recent failed logins by username, got ' . $count);
         }
         return (int)$count;
     }

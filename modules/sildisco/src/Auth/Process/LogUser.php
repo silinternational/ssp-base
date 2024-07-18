@@ -4,6 +4,9 @@ namespace SimpleSAML\Module\sildisco\Auth\Process;
 
 use Aws\DynamoDb\Marshaler;
 use Aws\Sdk;
+use Sil\SspUtils\Metadata;
+use SimpleSAML\Auth\ProcessingFilter;
+use SimpleSAML\Logger;
 
 /**
  * This Auth Proc logs information about each successful login to an AWS Dynamodb table.
@@ -16,7 +19,7 @@ use Aws\Sdk;
  *   'DynamoEndpoint' ex. http://dynamo:8000
  *
  */
-class LogUser extends \SimpleSAML\Auth\ProcessingFilter
+class LogUser extends ProcessingFilter
 {
 
     const AWS_ACCESS_KEY_ID_ENV = "DYNAMO_ACCESS_KEY_ID";
@@ -75,12 +78,12 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
 
         $awsKey = getenv(self::AWS_ACCESS_KEY_ID_ENV);
         if (!$awsKey) {
-            \SimpleSAML\Logger::error(self::AWS_ACCESS_KEY_ID_ENV . " environment variable is required for LogUser.");
+            Logger::error(self::AWS_ACCESS_KEY_ID_ENV . " environment variable is required for LogUser.");
             return;
         }
         $awsSecret = getenv(self::AWS_SECRET_ACCESS_KEY_ENV);
         if (!$awsSecret) {
-            \SimpleSAML\Logger::error(self::AWS_SECRET_ACCESS_KEY_ENV . " environment variable is required for LogUser.");
+            Logger::error(self::AWS_SECRET_ACCESS_KEY_ENV . " environment variable is required for LogUser.");
             return;
         }
 
@@ -135,7 +138,7 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
         try {
             $result = $dynamodb->putItem($params);
         } catch (\Exception $e) {
-            \SimpleSAML\Logger::error("Unable to add item: " . $e->getMessage());
+            Logger::error("Unable to add item: " . $e->getMessage());
         }
     }
 
@@ -144,12 +147,12 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
         $msg = ' config value not provided to LogUser.';
 
         if (empty($this->dynamoRegion)) {
-            \SimpleSAML\Logger::error(self::DYNAMO_REGION_KEY . $msg);
+            Logger::error(self::DYNAMO_REGION_KEY . $msg);
             return false;
         }
 
         if (empty($this->dynamoLogTable)) {
-            \SimpleSAML\Logger::error(self::DYNAMO_LOG_TABLE_KEY . $msg);
+            Logger::error(self::DYNAMO_LOG_TABLE_KEY . $msg);
             return false;
         }
 
@@ -171,7 +174,7 @@ class LogUser extends \SimpleSAML\Auth\ProcessingFilter
         if (isset($state['metadataPath'])) {
             $metadataPath = $state['metadataPath'];
         }
-        $idpEntries = \Sil\SspUtils\Metadata::getIdpMetadataEntries($metadataPath);
+        $idpEntries = Metadata::getIdpMetadataEntries($metadataPath);
 
         // Get the IDPNamespace or else just use the IDP's entity ID
         $idpEntry = $idpEntries[$samlIDP];

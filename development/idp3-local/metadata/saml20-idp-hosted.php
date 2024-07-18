@@ -6,6 +6,8 @@
  */
 
 $metadata['http://ssp-idp3.local:8087'] = [
+    'entityid' => 'http://ssp-idp3.local:8087',
+
     /*
      * The hostname of the server (VHOST) that will use this SAML entity.
      *

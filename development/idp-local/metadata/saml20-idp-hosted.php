@@ -2,6 +2,8 @@
 
 use Sil\PhpEnv\Env;
 use Sil\Psr3Adapters\Psr3SamlLogger;
+use Sil\Psr3Adapters\Psr3StdOutLogger;
+use Sil\SspBase\Features\fakes\FakeIdBrokerClient;
 
 /**
  * SAML 2.0 IdP configuration for SimpleSAMLphp.
@@ -9,10 +11,9 @@ use Sil\Psr3Adapters\Psr3SamlLogger;
  * See: https://simplesamlphp.org/docs/stable/simplesamlphp-reference-idp-hosted
  */
 
-use Sil\Psr3Adapters\Psr3StdOutLogger;
-use Sil\SspBase\Features\fakes\FakeIdBrokerClient;
-
 $metadata['http://ssp-idp1.local:8085'] = [
+    'entityid' => 'http://ssp-idp1.local:8085',
+
     /*
      * The hostname of the server (VHOST) that will use this SAML entity.
      *
@@ -64,8 +65,9 @@ $metadata['http://ssp-idp1.local:8085'] = [
     ],
 ];
 
-// Copy configuration for port 80 and modify host and profileUrl.
+// Copy configuration for port 80 and modify
 $metadata['http://ssp-idp1.local'] = $metadata['http://ssp-idp1.local:8085'];
+$metadata['http://ssp-idp1.local']['entityid'] = 'http://ssp-idp1.local';
 $metadata['http://ssp-idp1.local']['host'] = 'ssp-idp1.local';
 $metadata['http://ssp-idp1.local']['authproc'][10]['mfaSetupUrl'] = Env::get('PROFILE_URL_FOR_TESTS');
 $metadata['http://ssp-idp1.local']['authproc'][30]['profileUrl'] = Env::get('PROFILE_URL_FOR_TESTS');

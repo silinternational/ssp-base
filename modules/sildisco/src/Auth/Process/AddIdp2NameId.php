@@ -4,6 +4,9 @@ namespace SimpleSAML\Module\sildisco\Auth\Process;
 
 use SAML2\XML\saml\NameID;
 use Sil\SspUtils\Metadata;
+use SimpleSAML\Auth\ProcessingFilter;
+use SimpleSAML\Error;
+use SimpleSAML\Logger;
 
 /**
  * Attribute filter for appending IDPNamespace to the NameID.
@@ -17,7 +20,7 @@ use Sil\SspUtils\Metadata;
  *   ],
  *
  */
-class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter
+class AddIdp2NameId extends ProcessingFilter
 {
 
     const IDP_KEY = "saml:sp:IdP"; // the key that points to the entity id in the state
@@ -56,7 +59,7 @@ class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter
      *
      * @var string|bool
      */
-    private sring|bool $spNameQualifier;
+    private string|bool $spNameQualifier;
 
 
     /**
@@ -124,7 +127,7 @@ class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter
         $samlIDP = $state[self::IDP_KEY];
 
         if (empty($state[self::SP_NAMEID_ATTR])) {
-            \SimpleSAML\Logger::warning(
+            Logger::warning(
                 self::SP_NAMEID_ATTR . ' attribute not available from ' .
                 $samlIDP . '.'
             );
@@ -138,25 +141,25 @@ class AddIdp2NameId extends \SimpleSAML\Auth\ProcessingFilter
         if (isset($state['metadataPath'])) {
             $metadataPath = $state['metadataPath'];
         }
-        $idpEntries = \Sil\SspUtils\Metadata::getIdpMetadataEntries($metadataPath);
+        $idpEntries = Metadata::getIdpMetadataEntries($metadataPath);
 
         $idpEntry = $idpEntries[$samlIDP];
 
         // The IDP metadata must have an IDPNamespace entry
         if (!isset($idpEntry[self::IDP_CODE_KEY])) {
-            throw new \SimpleSAML\Error\Exception(self::ERROR_PREFIX . "Missing required metadata entry: " .
+            throw new Error\Exception(self::ERROR_PREFIX . "Missing required metadata entry: " .
                 self::IDP_CODE_KEY . ".");
         }
 
         // IDPNamespace must be a non-empty string
         if (!is_string($idpEntry[self::IDP_CODE_KEY])) {
-            throw new \SimpleSAML\Error\Exception(self::ERROR_PREFIX . "Required metadata " .
+            throw new Error\Exception(self::ERROR_PREFIX . "Required metadata " .
                 "entry, " . self::IDP_CODE_KEY . ", must be a non-empty string.");
         }
 
         // IDPNamespace must not have special characters in it
         if (!preg_match("/^[A-Za-z0-9_-]+$/", $idpEntry[self::IDP_CODE_KEY])) {
-            throw new \SimpleSAML\Error\Exception(self::ERROR_PREFIX . "Required metadata " .
+            throw new Error\Exception(self::ERROR_PREFIX . "Required metadata " .
                 "entry, " . self::IDP_CODE_KEY . ", must not be empty or contain anything except " .
                 "letters, numbers, hyphens and underscores.");
         }

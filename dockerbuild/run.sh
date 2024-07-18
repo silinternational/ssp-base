@@ -6,9 +6,6 @@ set -x
 # exit if any command fails
 set -e
 
-# This is a temporary fix (bug workaround) until ssp 2.0 is in use
-sed -i 's_\(\\SimpleSAML\\Error\\Assertion::installHandler()\)_// \1 _' /data/vendor/simplesamlphp/simplesamlphp/public/_include.php
-
 # establish a signal handler to catch the SIGTERM from a 'docker stop'
 # reference: https://medium.com/@gchudnov/trapping-signals-in-docker-containers-7a57fdda7d86
 term_handler() {

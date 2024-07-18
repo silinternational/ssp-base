@@ -6,14 +6,19 @@
 require_once('../public/_include.php');
 
 use SAML2\Constants;
+use SimpleSAML\Configuration;
+use SimpleSAML\Error;
+use SimpleSAML\Metadata\MetaDataStorageHandler;
+use SimpleSAML\Metadata\SAMLBuilder;
+use SimpleSAML\Metadata\Signer;
 use SimpleSAML\Utils;
 
 // load SimpleSAMLphp, configuration and metadata
-$config = \SimpleSAML\Configuration::getInstance();
-$metadata = \SimpleSAML\Metadata\MetaDataStorageHandler::getMetadataHandler();
+$config = Configuration::getInstance();
+$metadata = MetaDataStorageHandler::getMetadataHandler();
 
 if (!$config->getOptionalBoolean('enable.saml20-idp', false)) {
-    throw new \SimpleSAML\Error\Error('NOACCESS');
+    throw new Error\Error('NOACCESS');
 }
 
 // check if valid local session exists
@@ -145,7 +150,7 @@ try {
         );
 
         if (!$idpmeta->hasValue('OrganizationURL')) {
-            throw new \SimpleSAML\Error\Exception('If OrganizationName is set, OrganizationURL must also be set.');
+            throw new Error\Exception('If OrganizationName is set, OrganizationURL must also be set.');
         }
         $metaArray['OrganizationURL'] = $idpmeta->getLocalizedString('OrganizationURL');
     }
@@ -200,7 +205,7 @@ try {
         $metaArray['contacts'][] = $metadataUtils->getContact($techcontact);
     }
 
-    $metaBuilder = new \SimpleSAML\Metadata\SAMLBuilder($idpentityid);
+    $metaBuilder = new SAMLBuilder($idpentityid);
     $metaBuilder->addMetadataIdP20($metaArray);
     $metaBuilder->addOrganizationInfo($metaArray);
 
@@ -209,7 +214,7 @@ try {
     $metaflat = '$metadata[' . var_export($idpentityid, true) . '] = ' . var_export($metaArray, true) . ';';
 
     // sign the metadata if enabled
-    $metaxml = \SimpleSAML\Metadata\Signer::sign($metaxml, $idpmeta->toArray(), 'SAML 2 IdP');
+    $metaxml = Signer::sign($metaxml, $idpmeta->toArray(), 'SAML 2 IdP');
 
     if (array_key_exists('format', $_GET) && $_GET['format'] == 'xml') {
         header('Content-Type: application/xml');
@@ -224,5 +229,5 @@ try {
         exit(0);
     }
 } catch (Exception $exception) {
-    throw new \SimpleSAML\Error\Error('METADATA', $exception);
+    throw new Error\Error('METADATA', $exception);
 }

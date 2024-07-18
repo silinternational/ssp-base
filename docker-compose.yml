@@ -91,7 +91,10 @@ services:
       - ./development/announcement.php:/data/vendor/simplesamlphp/simplesamlphp/announcement/announcement.php
 
       # Utilize custom metadata
-      - ./development/hub/metadata/:/data/vendor/simplesamlphp/simplesamlphp/metadata/
+      - ./development/hub/metadata/idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/idp-remote.php
+      - ./development/hub/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
+      - ./development/hub/metadata/saml20-sp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-hosted.php
+      - ./development/hub/metadata/sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/sp-remote.php
 
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh

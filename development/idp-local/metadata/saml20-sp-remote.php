@@ -9,6 +9,7 @@
  * Example SimpleSAMLphp SAML 2.0 SP
  */
 $metadata['ssp-hub.local'] = [
+    'entityid' => 'ssp-hub.local',
     'NameIDFormat' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:persistent',
     'AssertionConsumerService' => 'http://ssp-hub.local/module.php/saml/sp/saml2-acs.php/hub-discovery',
     'SingleLogoutService' => 'http://ssp-hub.local/module.php/saml/sp/saml2-logout.php/hub-discovery',

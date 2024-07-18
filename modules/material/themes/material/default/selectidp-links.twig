@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ currentLanguage }}">
 <head>
   <title>{{ '{selectidp-links:title}'|trans }}</title>
 
@@ -10,7 +10,7 @@
       const idpInput = document.createElement('input');
 
       idpInput.type = 'hidden';
-      idpInput.name = '{{ returnIDParam|e('js')|raw }}';
+      idpInput.name = '{{ return_id_param|e('js')|raw }}';
       idpInput.value = id;
 
       document.querySelector('form').appendChild(idpInput);
@@ -28,10 +28,10 @@
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <span class="mdl-layout-title scale-to-parent">
-        {% if spName ?? '' is empty %}
+        {% if sp|entityDisplayName is empty %}
           {{ '{selectidp-links:header}'|trans }}
         {% else %}
-          {{ '{selectidp-links:header-for-sp}'|trans({'%spName%': spName})|e }}
+          {{ '{selectidp-links:header-for-sp}'|trans({'%spName%': sp|entityDisplayName})|e }}
         {% endif %}
       </span>
 
@@ -39,7 +39,7 @@
 
       {% if help_center_url is defined and help_center_url is not empty %}
         <nav class="mdl-navigation">
-          <a href="{{ help_center_url|e(html_attr) }}" target="_blank" rel="noopener" class="mdl-navigation__link">
+          <a href="{{ help_center_url|e('html_attr') }}" target="_blank" rel="noopener" class="mdl-navigation__link">
             {{ '{selectidp-links:help}'|trans }}
           </a>
         </nav>
@@ -51,34 +51,62 @@
     {{ include('announcement.twig') }}
 
     <form layout-children="row" child-spacing="space-around">
-      <input type="hidden" name="entityID" value="{{ entityID|e('html_attr') }}"/>
+      <input type="hidden" name="entityID" value="{{ entity_id|e('html_attr') }}"/>
       <input type="hidden" name="return" value="{{ return|e('html_attr') }}"/>
-      <input type="hidden" name="returnIDParam" value="{{ returnIDParam|e('html_attr') }}"/>
+      <input type="hidden" name="returnIDParam" value="{{ return_id_param|e('html_attr') }}"/>
 
-      {% for idp in idplist %}
+      {% for idp in enabled_idps %}
         <div
           class="mdl-card mdl-shadow--8dp row-aware"
-          title="{{ '{selectidp-links:enabled}'|trans({'%idpName%': idp.name|e}) }}"
+          title="{{ '{selectidp-links:enabled}'|trans({'%idpName%': idp|entityDisplayName}) }}"
         >
           <div class="mdl-card__media white-bg fixed-height">
-            <button
-              class="mdl-button logo-container fill-parent"
-              onclick="setSelectedIdp('{{ idp.entityid|e('js')|raw }}')"
-              name="idp_{{ idp.entityid|e('html_attr') }}"
-            >
+            <button class="mdl-button logo-container fill-parent" onclick="setSelectedIdp('{{ idp.entityid|e }}')">
               <div class="image-wrapper">
                 <img
                   class="logo"
-                  id="{{ idp.entityid|e('html_attr') }}"
-                  src="{{ idp.iconurl is defined ? idp.iconurl|e('html_attr') : 'default-logo.png' }}"
+                  id="{{ idp.entityid|e }}"
+                  src="{{ idp.logoURL|default('default-logo.png') }}"
                 >
               </div>
+
+              <span class="mdl-color-text--grey-600 logo-caption clickable-caption">
+                {{ idp.logoCaption|e|default('<br>') }}
+              </span>
             </button>
+          </div>
+        </div>
+      {% endfor %}
+
+      {% for idp in disabled_idps %}
+        <div
+          class="mdl-card mdl-shadow--2dp disabled row-aware"
+          title="{{ '{selectidp-links:disabled}'|trans({'%idpName%': idp|entityDisplayName}) }}"
+          onclick="clickedAnyway('{{ idp|entityDisplayName }}')"
+        >
+          <div class="mdl-card__media white-bg fixed-height" layout-children="row" child-spacing="center">
+            <div class="logo-container fill-parent">
+              <div class="image-wrapper">
+                <img
+                  class="logo"
+                  id="{{ idp.entityid|e }}"
+                  src="{{ idp.logoURL|default('default-logo.png') }}"
+                >
+              </div>
+              <span class="mdl-color-text--grey-600 logo-caption">
+                {{ idp.logoCaption|e|default('<br>') }}
+              </span>
+            </div>
           </div>
         </div>
       {% endfor %}
     </form>
   </main>
+
+  <script>
+    ga('send', 'event', 'hub', 'choices', 'enabled', {{ enabled_idps|length }});
+    ga('send', 'event', 'hub', 'choices', 'disabled', {{ disabled_idps|length }});
+  </script>
 
   {{ include('footer.twig') }}
 </div>

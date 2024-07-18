@@ -24,8 +24,6 @@ if (filter_has_var(INPUT_POST, 'setUpMfa')) {
 $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'mfa:must-set-up-mfa');
-$t->data['theme_color_scheme'] = $globalConfig->getOptionalString('theme.color-scheme', null);
-$t->data['analytics_tracking_id'] = $globalConfig->getOptionalString('analytics.trackingId', '');
 $t->send();
 
 $logger->info(sprintf(

@@ -8,8 +8,10 @@
 
 use Sil\PhpEnv\Env;
 use Sil\PhpEnv\EnvVarNotFoundException;
+use SimpleSAML\Module\material\MaterialController;
+use SimpleSAML\Utils;
 
-$httpUtils = new \SimpleSAML\Utils\HTTP();
+$httpUtils = new Utils\HTTP();
 
 /*
  * Get config settings from ENV vars or set defaults
@@ -69,6 +71,7 @@ $ANALYTICS_ID = Env::get('ANALYTICS_ID', null);
 $PASSWORD_CHANGE_URL = Env::get('PASSWORD_CHANGE_URL');
 $PASSWORD_FORGOT_URL = Env::get('PASSWORD_FORGOT_URL');
 $HELP_CENTER_URL = Env::get('HELP_CENTER_URL');
+$TRUSTED_URL_DOMAINS = Env::getArray('TRUSTED_URL_DOMAINS', []);
 
 $config = [
 
@@ -321,7 +324,7 @@ $config = [
      * Example:
      *   'trusted.url.domains' => ['sp.example.com', 'app.example.com'],
      */
-    'trusted.url.domains' => null,
+    'trusted.url.domains' => $TRUSTED_URL_DOMAINS,
 
     /*
      * Enable regular expression matching of trusted.url.domains.
@@ -372,6 +375,7 @@ $config = [
         'Referrer-Policy' => 'origin-when-cross-origin',
     ],
      */
+    'headers.security' => [],
 
 
     /************************
@@ -975,7 +979,7 @@ $config = [
      * the 'theme.controller' configuration option to a class that implements the
      * \SimpleSAML\XHTML\TemplateControllerInterface interface to use it.
      */
-    //'theme.controller' => '',
+    'theme.controller' => MaterialController::class,
 
     /*
      * Templating options
@@ -1454,5 +1458,5 @@ $config = [
 if ($HUB_MODE) {
     // prefix the 'member' (urn:oid:2.5.4.31) attribute elements with idp.idp_name.
     $config['authproc.idp'][48] = 'sildisco:TagGroup';
-//    $config['authproc.idp'][49] = 'sildisco:AddIdp2NameId';
+    $config['authproc.idp'][49] = 'sildisco:AddIdp2NameId';
 }

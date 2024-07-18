@@ -2,11 +2,14 @@
 
 namespace SimpleSAML\Module\sildisco\Auth\Process;
 
+use SimpleSAML\Auth\ProcessingFilter;
+use SimpleSAML\Session;
+
 /**
  * Attribute filter for adding Idps to the session
  *
  */
-class TrackIdps extends \SimpleSAML\Auth\ProcessingFilter
+class TrackIdps extends ProcessingFilter
 {
 
     /**
@@ -17,7 +20,7 @@ class TrackIdps extends \SimpleSAML\Auth\ProcessingFilter
     public function process(array &$state): void
     {
         // get the authenticating Idp and add it to the list of previous ones
-        $session = \SimpleSAML\Session::getSessionFromRequest();
+        $session = Session::getSessionFromRequest();
         $sessionDataType = "sildisco:authentication";
         $sessionKey = "authenticated_idps";
 

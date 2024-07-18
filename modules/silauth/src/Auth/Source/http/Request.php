@@ -2,6 +2,7 @@
 
 namespace SimpleSAML\Module\silauth\Auth\Source\http;
 
+use InvalidArgumentException;
 use IP;
 use IPBlock;
 use SimpleSAML\Module\silauth\Auth\Source\text\Text;
@@ -197,7 +198,7 @@ class Request
     public function trustIpAddress(string $ipAddress): void
     {
         if (!self::isValidIpAddress($ipAddress)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '%s is not a valid IP address.',
                 var_export($ipAddress, true)
             ));
