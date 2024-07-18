@@ -6,8 +6,8 @@ include __DIR__ . '/../vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
 use Sil\PhpEnv\Env;
-use Sil\SspUtils\Metadata;
 use Sil\SspUtils\DiscoUtils;
+use Sil\SspUtils\Metadata;
 use Sil\SspUtils\Utils;
 
 class MetadataTest extends TestCase
@@ -338,25 +338,6 @@ class MetadataTest extends TestCase
             'At least one SP has an empty "' . self::SPNameKey . '" entry (required) ... ' .
             var_export($badSps, True));
     }
-
-    public function testMetadataWithBadEnabled()
-    {
-        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
-        $enabledKey = 'enabled';
-        $badEnabled = [];
-
-        foreach ($idpEntries as $idpEntityId => $idpEntry) {
-            if (!isset($idpEntry[$enabledKey]) ||
-                !is_bool($idpEntry[$enabledKey])) {
-                $badEnabled[] = $idpEntityId;
-            }
-        }
-
-        $this->assertTrue(empty($badEnabled),
-            "The following Idp's do not have a boolean '" . $enabledKey . "' entry ... " .
-            var_export($badEnabled, True));
-    }
-
 
     public function testMetadataCerts()
     {

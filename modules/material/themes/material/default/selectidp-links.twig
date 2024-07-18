@@ -55,7 +55,7 @@
       <input type="hidden" name="return" value="{{ return|e('html_attr') }}"/>
       <input type="hidden" name="returnIDParam" value="{{ return_id_param|e('html_attr') }}"/>
 
-      {% for idp in enabled_idps %}
+      {% for idp in idp_list %}
         <div
           class="mdl-card mdl-shadow--8dp row-aware"
           title="{{ '{selectidp-links:enabled}'|trans({'%idpName%': idp|entityDisplayName}) }}"
@@ -78,35 +78,8 @@
         </div>
       {% endfor %}
 
-      {% for idp in disabled_idps %}
-        <div
-          class="mdl-card mdl-shadow--2dp disabled row-aware"
-          title="{{ '{selectidp-links:disabled}'|trans({'%idpName%': idp|entityDisplayName}) }}"
-          onclick="clickedAnyway('{{ idp|entityDisplayName }}')"
-        >
-          <div class="mdl-card__media white-bg fixed-height" layout-children="row" child-spacing="center">
-            <div class="logo-container fill-parent">
-              <div class="image-wrapper">
-                <img
-                  class="logo"
-                  id="{{ idp.entityid|e }}"
-                  src="{{ idp.logoURL|default('default-logo.png') }}"
-                >
-              </div>
-              <span class="mdl-color-text--grey-600 logo-caption">
-                {{ idp.logoCaption|e|default('<br>') }}
-              </span>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
     </form>
   </main>
-
-  <script>
-    ga('send', 'event', 'hub', 'choices', 'enabled', {{ enabled_idps|length }});
-    ga('send', 'event', 'hub', 'choices', 'disabled', {{ disabled_idps|length }});
-  </script>
 
   {{ include('footer.twig') }}
 </div>
