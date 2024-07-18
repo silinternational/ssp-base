@@ -53,10 +53,8 @@ class IdPDisco extends SSPIdPDisco
         // Before the SimpleSAMLphp 2 upgrade, we added it to the state ourselves by overriding the SAML2.php file
         parse_str(parse_url($_GET['return'], PHP_URL_QUERY), $returnState);
         $state = Auth\State::loadState($returnState['AuthID'], 'saml:sp:sso');
-        if ($state && array_key_exists('SPMetadata', $state)) {
-            $spmd = $state['SPMetadata'];
-            $this->log('Updated SP metadata from ' . $this->spEntityId . ' to ' . $spmd['entityid']);
-        }
+        assert($state && array_key_exists('SPMetadata', $state));
+        $spmd = $state['SPMetadata'];
         $spEntityId = $spmd['entityid'];
 
         if (!empty($spEntityId)) {

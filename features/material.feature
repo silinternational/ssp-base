@@ -1,8 +1,7 @@
 Feature: Material theme
 
   Scenario: Hub (disco) page
-    When I go to the Hub's discovery page
-    And I log in as a hub administrator
+    When I go to the SP1 login page
     Then I should see our material theme
 
   Scenario: Error page
