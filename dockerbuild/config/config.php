@@ -982,6 +982,11 @@ $config = [
     'theme.controller' => MaterialController::class,
 
     /*
+     * color scheme to use for the material theme
+     */
+    'theme.color-scheme' => $THEME_COLOR_SCHEME,
+
+    /*
      * Templating options
      *
      * By default, twig templates are not cached. To turn on template caching:
@@ -1042,12 +1047,6 @@ $config = [
      * is shown.
      */
     //'frontpage.redirect' => 'https://example.com/',
-
-    /*
-     * color scheme to use for the material theme
-     * Options: https://github.com/silinternational/simplesamlphp-module-material/blob/develop/README.md#branding
-     */
-    'theme.color-scheme' => $THEME_COLOR_SCHEME,
 
     /*********************
      | DISCOVERY SERVICE |
