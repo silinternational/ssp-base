@@ -164,7 +164,6 @@ Example (in `metadata/saml20-idp-hosted.php`):
 
             // Optional:
             'warnDaysBefore' => 14,
-            'originalUrlParam' => 'originalurl',
             'loggerClass' => '\\Sil\\Psr3Adapters\\Psr3SamlLogger',
         ],
         
