@@ -29,7 +29,6 @@ try {
     // Required to be defined in environment variables
     $ADMIN_PASS = Env::requireEnv('ADMIN_PASS');
     $SECRET_SALT = Env::requireEnv('SECRET_SALT');
-    $IDP_NAME = Env::requireEnv('IDP_NAME');
 } catch (EnvVarNotFoundException $e) {
 
     // Return error response code/message to HTTP request.
@@ -45,7 +44,6 @@ try {
 }
 
 // Defaults provided if not defined in environment
-$IDP_DISPLAY_NAME = Env::get('IDP_DISPLAY_NAME', $IDP_NAME);
 $BASE_URL_PATH = Env::get('BASE_URL_PATH', '/');
 $ADMIN_EMAIL = Env::get('ADMIN_EMAIL', 'na@example.org');
 $ADMIN_NAME = Env::get('ADMIN_NAME', 'SAML Admin');
@@ -78,22 +76,12 @@ $config = [
     /*
      * Whether this instance should act as a hub/proxy/bridge using sildisco
      */
-     'hubmode' => $HUB_MODE,
+    'hubmode' => $HUB_MODE,
 
-     /*
-      * Name of this IdP
-      */
-     'idp_name' => $IDP_NAME,
-
-     /*
-      * Name of this IdP to display to the user
-      */
-     'idp_display_name' => $IDP_DISPLAY_NAME,
-
-     /*
-      * The tracking Id for Google Analytics or some other similar service
-      */
-     'analytics.trackingId' => $ANALYTICS_ID,
+    /*
+     * The tracking Id for Google Analytics or some other similar service
+     */
+    'analytics.trackingId' => $ANALYTICS_ID,
 
     'passwordChangeUrl' => $PASSWORD_CHANGE_URL,
     'passwordForgotUrl' => $PASSWORD_FORGOT_URL,

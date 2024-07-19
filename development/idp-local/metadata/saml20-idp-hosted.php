@@ -13,6 +13,7 @@ use Sil\SspBase\Features\fakes\FakeIdBrokerClient;
 
 $metadata['http://ssp-idp1.local:8085'] = [
     'entityid' => 'http://ssp-idp1.local:8085',
+    'name' => ['en' => 'IDP 1'],
 
     /*
      * The hostname of the server (VHOST) that will use this SAML entity.

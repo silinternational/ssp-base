@@ -88,7 +88,7 @@ $t->data['csrf_token'] = $csrfProtector->getMasterToken();
 $t->data['profile_url'] = $state['templateData']['profileUrl'] ?? '';
 $t->data['help_center_url'] = $state['templateData']['helpCenterUrl'] ?? '';
 $t->data['announcement'] = AnnouncementUtils::getAnnouncement();
-$t->data['idp_name'] = $globalConfig->getString('idp_display_name');
+$t->data['idp_name'] = $t->getEntityDisplayName($state['IdPMetadata']);
 $t->data['password_forgot_url'] = $globalConfig->getOptionalString('passwordForgotUrl', '');
 
 /* For simplicity's sake, don't bother telling this Request to trust any IP
