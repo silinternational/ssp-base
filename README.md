@@ -249,7 +249,7 @@ If provided, an alert will be shown to the user filled with the content of that 
 
 #### i18n support
 
-Translations are categorized by page in definition files located in the `modules/material/locales` directory.
+Translations are in files located in the `modules/material/locales` directory.
 
 Localization is affected by the configuration setting `language.available`. Only language codes found in this property
 will be utilized. For example, if a translation is provided in Afrikaans for this module, the configuration must be
