@@ -56,7 +56,6 @@ $LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'stderr');
 $THEME_COLOR_SCHEME = Env::get('THEME_COLOR_SCHEME', null);
 
 $SECURE_COOKIE = Env::get('SECURE_COOKIE', true);
-$SESSION_DURATION = (int)(Env::get('SESSION_DURATION', (60 * 60 * 10))); // 10 hours.
 $SESSION_STORE_TYPE = Env::get('SESSION_STORE_TYPE', 'phpsession');
 $MYSQL_HOST = Env::get('MYSQL_HOST', '');
 $MYSQL_DATABASE = Env::get('MYSQL_DATABASE', '');
@@ -658,19 +657,19 @@ $config = [
      * This value is the duration of the session in seconds. Make sure that the time duration of
      * cookies both at the SP and the IdP exceeds this duration.
      */
-    'session.duration' => $SESSION_DURATION,
+    'session.duration' => (60 * 60 * 10), // 10 hours
 
     /*
      * Sets the duration, in seconds, data should be stored in the datastore. As the data store is used for
      * login and logout requests, this option will control the maximum time these operations can take.
      * The default is 4 hours (4*60*60) seconds, which should be more than enough for these operations.
      */
-    'session.datastore.timeout' => $SESSION_DURATION,
+    'session.datastore.timeout' => (60 * 60 * 10), // 10 hours
 
     /*
      * Sets the duration, in seconds, auth state should be stored.
      */
-    'session.state.timeout' => $SESSION_DURATION,
+    'session.state.timeout' => (60 * 60 * 10), // 10 hours
 
     /*
      * Option to override the default settings for the session cookie name
@@ -896,8 +895,7 @@ $config = [
      * Note: The oldest data will always be deleted if the memcache server
      * runs out of storage space.
      */
-    'memcache_store.expires' => $SESSION_DURATION + 3600, // Session duration plus an hour for clock skew
-
+    'memcache_store.expires' => (60 * 60 * 10) + 3600, // Session duration (10 hours) plus an hour for clock skew
 
 
     /*************************************
