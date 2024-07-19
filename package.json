@@ -1,5 +1,5 @@
 {
-  "name": "simplesamlphp-module-material",
+  "name": "ssp-base",
   "dependencies": {
     "@simplewebauthn/browser": "^4.1.0"
   }
