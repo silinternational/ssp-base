@@ -63,7 +63,6 @@ $MYSQL_DATABASE = Env::get('MYSQL_DATABASE', '');
 $MYSQL_USER = Env::get('MYSQL_USER', '');
 $MYSQL_PASSWORD = Env::get('MYSQL_PASSWORD', '');
 
-$SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
 $HUB_MODE = Env::get('HUB_MODE', false);
 $ANALYTICS_ID = Env::get('ANALYTICS_ID', null);
 $PASSWORD_CHANGE_URL = Env::get('PASSWORD_CHANGE_URL');
@@ -616,7 +615,7 @@ $config = [
      * one of the functionalities below, but in some cases you could run multiple functionalities.
      * In example when you are setting up a federation bridge.
      */
-    'enable.saml20-idp' => $SAML20_IDP_ENABLE,
+    'enable.saml20-idp' => true,
     'enable.adfs-idp' => false,
 
 
