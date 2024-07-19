@@ -1,9 +1,5 @@
 The sildisco module includes a few Auth Procs that can be called from the `config.php` file or **SP or IdP metadata**.
 
-### AttributeMap.php
-
-Copies (rather than replaces) attributes according to an attribute map.
-
 ### TagGroup.php
 
 Grabs the values of the `urn:oid:2.5.4.31` (member of) attribute and prepends them with `idp|<the_idp's_name>|`.
