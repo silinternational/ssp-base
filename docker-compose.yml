@@ -278,6 +278,7 @@ services:
     environment:
       ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: "sp1"
+      IDP_NAME: "NA"
       SECRET_SALT: "not-secret-h57fjemb&dn^nsJFGNjweJz1"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
@@ -300,6 +301,7 @@ services:
     environment:
       ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: "sp2"
+      IDP_NAME: "NA"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJz2"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
@@ -324,6 +326,7 @@ services:
     environment:
       ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: sp3
+      IDP_NAME: "NA"
       SECRET_SALT: h57fjemb&dn^nsJFGNjweJz3
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
@@ -344,6 +347,7 @@ services:
     environment:
       ADMIN_EMAIL: "john_doe@there.com"
       ADMIN_PASS: sp1
+      IDP_NAME: THIS VARIABLE IS REQUIRED BUT PROBABLY NOT USED
       SECRET_SALT: NOT-a-secret-k49fjfkw73hjf9t87wjiw
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
@@ -360,6 +364,7 @@ services:
     env_file:
       - ./local.broker.env
     environment:
+      IDP_NAME: "idp"
       MYSQL_HOST: "brokerDb"
       MYSQL_DATABASE: "broker"
       MYSQL_USER: "user"
