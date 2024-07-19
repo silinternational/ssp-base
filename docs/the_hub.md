@@ -24,9 +24,6 @@ It is also used by the `TagGroup.php` Auth Proc to convert group names into the 
 ##### SPList
 In order to limit access to an IdP to only certain SP's, add an `'SPList'` array entry to the metadata for the IdP.  The values of this array should match the `entity_id` values from the `sp-remote.php` metadata.
 
-##### excludeByDefault
-If you want to require SP's to list a certain IdP in their IDPList entry in order to be able to access it, add `excludeByDefault => true` to that IdP's metadata.
-
 ### Forced IdP discovery
 The `.../src/IdP/SAML2.php` file ensures that if an SP is allowed to access more than one IdP, then the user will be forced back to the IdP discovery page, even if they are already authenticated through one of those IdP's.
 
