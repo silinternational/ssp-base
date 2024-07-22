@@ -6,10 +6,12 @@ use Sil\SspUtils\AnnouncementUtils;
 use Sil\SspUtils\DiscoUtils;
 use Sil\SspUtils\Metadata;
 use SimpleSAML\Auth;
+use SimpleSAML\Error\NoState;
 use SimpleSAML\Logger;
 use SimpleSAML\Utils\HTTP;
 use SimpleSAML\XHTML\IdPDisco as SSPIdPDisco;
 use SimpleSAML\XHTML\Template;
+use yii\db\Exception;
 
 /**
  * This class implements a custom IdP discovery service, for use with a ssp hub (proxy)
@@ -39,6 +41,10 @@ class IdPDisco extends SSPIdPDisco
         return __DIR__ . '/../../../metadata/';
     }
 
+    /**
+     * @throws NoState
+     * @throws Exception
+     */
     private function getSPEntityIDAndReducedIdpList(): array
     {
 
@@ -50,17 +56,22 @@ class IdPDisco extends SSPIdPDisco
         // Before the SimpleSAMLphp 2 upgrade, we added it to the state ourselves by overriding the SAML2.php file
         parse_str(parse_url($_GET['return'], PHP_URL_QUERY), $returnState);
         $state = Auth\State::loadState($returnState['AuthID'], 'saml:sp:sso');
-        assert($state && array_key_exists('SPMetadata', $state));
+        if (!array_key_exists('SPMetadata', $state)) {
+            throw new Exception('SPMetadata not found in state');
+        }
+
         $spmd = $state['SPMetadata'];
         $spEntityId = $spmd['entityid'];
-
-        if (!empty($spEntityId)) {
-            $idpList = DiscoUtils::getReducedIdpList(
-                $idpList,
-                $this->getMetadataPath(),
-                $spEntityId
-            );
+        if (empty($spEntityId)) {
+            throw new Exception('empty SP entityID');
         }
+
+        $idpList = DiscoUtils::getReducedIdpList(
+            $idpList,
+            $this->getMetadataPath(),
+            $spEntityId
+        );
+
 
         return array($spEntityId, $idpList);
     }
