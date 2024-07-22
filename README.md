@@ -164,7 +164,6 @@ Example (in `metadata/saml20-idp-hosted.php`):
             // Optional:
             'warnDaysBefore' => 14,
             'originalUrlParam' => 'originalurl',
-            'dateFormat' => 'm.d.Y', // Use PHP's date syntax.
             'loggerClass' => '\\Sil\\Psr3Adapters\\Psr3SamlLogger',
         ],
 
@@ -186,11 +185,6 @@ their password.
 
 The `warnDaysBefore` parameter should be an integer representing how many days
 before the expiry date the "about to expire" warning will be shown to the user.
-
-The `dateFormat` parameter specifies how you want the date to be formatted,
-using PHP `date()` syntax. See <http://php.net/manual/en/function.date.php>.
-
-The `originalUrlParam` parameter is not used.
 
 The `loggerClass` parameter specifies the name of a PSR-3 compatible class that
 can be autoloaded, to use as the logger within ExpiryDate.
