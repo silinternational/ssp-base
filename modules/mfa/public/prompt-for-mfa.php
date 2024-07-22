@@ -125,7 +125,7 @@ $browserJsHash = md5_file(__DIR__ . '/simplewebauthn/browser.js');
 $t->data['browser_js_path'] = '/module.php/mfa/simplewebauthn/browser.js?v=' . $browserJsHash;
 $t->data['manager_email'] = $state['managerEmail'];
 $t->data['other_options'] = $otherOptions;
-$t->data['idp_name'] = $globalConfig->getString('idp_display_name');
+$t->data['idp_name'] = $t->getEntityDisplayName($state['IdPMetadata']);
 $t->send();
 
 $logger->info(json_encode([

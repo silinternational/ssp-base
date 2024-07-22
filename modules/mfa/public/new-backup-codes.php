@@ -36,7 +36,7 @@ $globalConfig = Configuration::getInstance();
 $t = new Template($globalConfig, 'mfa:new-backup-codes');
 $t->data['mfa_setup_url'] = $state['mfaSetupUrl'];
 $t->data['new_backup_codes'] = $state['newBackupCodes'] ?? [];
-$t->data['idp_name'] = $globalConfig->getString('idp_display_name');
+$t->data['idp_name'] = $t->getEntityDisplayName($state['IdPMetadata']);
 $t->data['codes_for_download'] = urlencode(
     $t->data['idp_name'] . "\r\n" . join("\r\n", $t->data['new_backup_codes'])
 );
