@@ -19,14 +19,10 @@ default:
       paths:    [ '%paths.base%//features//profilereview.feature' ]
       contexts: [ 'ProfileReviewContext' ]
     sildisco_features:
-      contexts: ['SilDiscoContext']
+      contexts: [ 'SilDiscoContext' ]
       paths:
-        - '%paths.base%//features//Sp1Idp1Sp2Idp2Sp3.feature'
-        - '%paths.base%//features//Sp1Idp2Sp2Sp3Idp1.feature'
-        - '%paths.base%//features//Sp2Idp2Sp1Idp1Sp3.feature'
-        - '%paths.base%//features//Sp2Idp2Sp1Idp2Sp3.feature'
-        - '%paths.base%//features//Sp3Idp1Sp1Idp1Sp2Idp2.feature'
-#        - '%paths.base%//features//WwwMetadataCept.feature'
+        - '%paths.base%//features//sildisco.feature'
+        - '%paths.base%//features//WwwMetadataCept.feature'
     status_features:
       paths:    [ '%paths.base%//features//status.feature' ]
       contexts: [ 'StatusContext' ]
