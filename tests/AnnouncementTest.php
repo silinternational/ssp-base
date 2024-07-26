@@ -15,8 +15,8 @@ class AnnouncementTest extends TestCase
     {
         $announcementPathFile = '/data/ssp-announcement.php';
         if (file_exists($announcementPathFile)) {
-            $announcement = include $announcementPathFile;
-            $this->assertIsString($announcement);
+            $results = AnnouncementUtils::getSimpleAnnouncement();
+            $this->assertNotNull($results);
         }
     }
 
