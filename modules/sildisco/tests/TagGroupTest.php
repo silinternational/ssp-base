@@ -1,10 +1,16 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use SimpleSAML\Configuration;
 use SimpleSAML\Module\sildisco\Auth\Process\TagGroup;
 
 class TagGroupTest extends TestCase
 {
+    public static function setUpBeforeClass(): void
+    {
+        Configuration::setConfigDir(__DIR__ . '/fixtures/config/');
+    }
+
     /**
      * Helper function to run the filter with a given configuration.
      *
@@ -32,7 +38,6 @@ class TagGroupTest extends TestCase
                 'urn:oid:2.5.4.31' => ['ADMINS'],
                 'member' => ['ADMINS'],
             ],
-            'metadataPath' => __DIR__ . '/fixtures/metadata/',
         ];
 
         $expected = $request;
@@ -55,7 +60,6 @@ class TagGroupTest extends TestCase
             "Attributes" => [
                 'member' => ['ADMINS'],
             ],
-            'metadataPath' => __DIR__ . '/fixtures/metadata/',
         ];
 
         $expected = $request;
@@ -76,7 +80,6 @@ class TagGroupTest extends TestCase
             "Attributes" => [
                 'urn:oid:2.5.4.31' => ['ADMINS'],
             ],
-            'metadataPath' => __DIR__ . '/fixtures/metadata/',
         ];
 
         $expected = $request;
@@ -97,7 +100,6 @@ class TagGroupTest extends TestCase
             "Attributes" => [
                 'urn:oid:2.5.4.31' => ['ADMINS'],
             ],
-            'metadataPath' => __DIR__ . '/fixtures/metadata/',
         ];
 
         $expected = $request;

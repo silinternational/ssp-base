@@ -2,8 +2,8 @@
 
 namespace SimpleSAML\Module\sildisco\Auth\Process;
 
-use Sil\SspUtils\Metadata;
 use SimpleSAML\Auth\ProcessingFilter;
+use SimpleSAML\Metadata\MetaDataStorageHandler;
 
 /**
  * Attribute filter for prefixing group names
@@ -50,19 +50,11 @@ class TagGroup extends ProcessingFilter
             return;
         }
 
-        // Get the potential IDPs from idp remote metadata
-        $metadataPath = __DIR__ . '/../../../../../metadata';
-
-        // If a unit test sends a different metadataPath, use it
-        if (isset($state['metadataPath'])) {
-            $metadataPath = $state['metadataPath'];
-        }
-
-        $idpEntries = Metadata::getIdpMetadataEntries($metadataPath);
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
 
         $samlIDP = $state["saml:sp:IdP"];
 
-        $idpEntry = $idpEntries[$samlIDP];
+        $idpEntry = $metadata->getMetaData($samlIDP, 'saml20-idp-remote');
 
         /*
          *  If the IDP metadata has an IDPNamespace entry, use that value.  Otherwise,

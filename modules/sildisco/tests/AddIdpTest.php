@@ -3,10 +3,15 @@
 
 use PHPUnit\Framework\TestCase;
 use SAML2\XML\saml\NameID;
+use SimpleSAML\Configuration;
 use SimpleSAML\Module\sildisco\Auth\Process\AddIdp2NameId;
 
 class AddIdpTest extends TestCase
 {
+    public static function setUpBeforeClass(): void
+    {
+        Configuration::setConfigDir(__DIR__ . '/fixtures/config/');
+    }
 
     private static function getNameID($idp)
     {
@@ -20,7 +25,6 @@ class AddIdpTest extends TestCase
                 ],
             ],
             'Attributes' => [],
-            'metadataPath' => __DIR__ . '/fixtures/metadata/',
         ];
     }
 
@@ -91,7 +95,6 @@ class AddIdpTest extends TestCase
             'saml:sp:IdP' => 'idp-good',
             'saml:sp:NameID' => $nameID,
             'Attributes' => [],
-            'metadataPath' => __DIR__ . '/fixtures/metadata/',
         ];
 
         $newNameID = new NameID();
@@ -119,7 +122,6 @@ class AddIdpTest extends TestCase
             'saml:sp:IdP' => 'idp-good',
             'saml:sp:NameID' => $nameID,
             'Attributes' => [],
-            'metadataPath' => __DIR__ . '/fixtures/metadata/',
         ];
 
         $newNameID = $state['saml:sp:NameID'];
