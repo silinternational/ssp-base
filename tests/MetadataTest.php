@@ -7,8 +7,8 @@ include __DIR__ . '/../vendor/autoload.php';
 use PHPUnit\Framework\TestCase;
 use Sil\PhpEnv\Env;
 use Sil\SspUtils\DiscoUtils;
-use Sil\SspUtils\Metadata;
 use Sil\SspUtils\Utils;
+use SimpleSAML\Metadata\MetaDataStorageHandler;
 
 class MetadataTest extends TestCase
 {
@@ -25,49 +25,10 @@ class MetadataTest extends TestCase
 
     public $metadataPath = __DIR__ . '/../vendor/simplesamlphp/simplesamlphp/metadata';
 
-    public function testLintTestMetadataFiles()
-    {
-        $spFiles = $this->getSpMetadataFiles();
-        foreach ($spFiles as $file) {
-            $output = $returnVal = null;
-            exec('php -l ' . $file, $output, $returnVal);
-            $this->assertEquals(
-                0,
-                $returnVal,
-                'Lint test failed for file: ' . $file . '. Error: ' . print_r($output, true)
-            );
-        }
-
-        $idpFiles = $this->getIdPMetadataFiles();
-        foreach ($idpFiles as $file) {
-            $output = $returnVal = null;
-            exec('php -l ' . $file, $output, $returnVal);
-            $this->assertEquals(
-                0,
-                $returnVal,
-                'Lint test failed for file: ' . $file . '. Error: ' . print_r($output, true)
-            );
-        }
-    }
-
-    public function testMetadataFilesReturnArrays()
-    {
-        $spFiles = $this->getSpMetadataFiles();
-        foreach ($spFiles as $file) {
-            $returnVal = include $file;
-            $this->assertTrue(is_array($returnVal), 'Metadata file does not return array as expected. File: ' . $file);
-        }
-
-        $idpFiles = $this->getIdPMetadataFiles();
-        foreach ($idpFiles as $file) {
-            $returnVal = include $file;
-            $this->assertTrue(is_array($returnVal), 'Metadata file does not return array as expected. File: ' . $file);
-        }
-    }
-
     public function testIDPRemoteMetadataIDPCode()
     {
-        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $idpEntries = $metadata->getList();
 
         foreach ($idpEntries as $entityId => $entry) {
             $this->assertTrue(isset($entry[self::IdpCode]), 'Metadata entry does not ' .
@@ -92,7 +53,8 @@ class MetadataTest extends TestCase
 
         $badIdps = [];
 
-        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $idpEntries = $metadata->getList();
         $spListKey = Utils::SP_LIST_KEY;
 
         foreach ($idpEntries as $entityId => $entry) {
@@ -117,7 +79,8 @@ class MetadataTest extends TestCase
 
         $badIdps = [];
 
-        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $idpEntries = $metadata->getList();
 
         foreach ($idpEntries as $entityId => $entry) {
             if (!isset($entry[self::LogoCaptionKey])) {
@@ -140,11 +103,12 @@ class MetadataTest extends TestCase
             return;
         }
 
-        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $spEntries = $metadata->getList('saml20-sp-remote');
 
         $badSps = [];
 
-        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+        $idpEntries = $metadata->getList();
         $spListKey = Utils::SP_LIST_KEY;
 
         foreach ($idpEntries as $entityId => $entry) {
@@ -166,7 +130,8 @@ class MetadataTest extends TestCase
 
     public function testIDPRemoteMetadataNoDuplicateIDPCode()
     {
-        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $idpEntries = $metadata->getList();
         $codes = [];
 
         foreach ($idpEntries as $entityId => $entry) {
@@ -179,29 +144,24 @@ class MetadataTest extends TestCase
 
     public function testMetadataNoDuplicateEntities()
     {
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $spEntries = $metadata->getList('saml20-sp-remote');
         $entities = [];
-        $spFiles = $this->getSpMetadataFiles();
-        foreach ($spFiles as $file) {
-            $returnVal = include $file;
-            foreach ($returnVal as $entityId => $entity) {
-                $this->assertFalse(
-                    in_array($entityId, $entities),
-                    'Duplicate entity id found in metadata file: ' . $file . '. Entity ID: ' . $entityId
-                );
-                $entities[] = $entityId;
-            }
+        foreach ($spEntries as $entityId => $entity) {
+            $this->assertFalse(
+                in_array($entityId, $entities),
+                'Duplicate SP entityId found: ' . $entityId
+            );
+            $entities[] = $entityId;
         }
 
-        $idpFiles = $this->getIdPMetadataFiles();
-        foreach ($idpFiles as $file) {
-            $returnVal = include $file;
-            foreach ($returnVal as $entityId => $entity) {
-                $this->assertFalse(
-                    in_array($entityId, $entities),
-                    'Duplicate entity id found in metadata file: ' . $file . '. Entity ID: ' . $entityId
-                );
-                $entities[] = $entityId;
-            }
+        $idpEntries = $metadata->getList();
+        foreach ($idpEntries as $entityId => $entity) {
+            $this->assertFalse(
+                in_array($entityId, $entities),
+                'Duplicate IdP entityId found: ' . $entityId
+            );
+            $entities[] = $entityId;
         }
     }
 
@@ -213,7 +173,8 @@ class MetadataTest extends TestCase
             return;
         }
 
-        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $spEntries = $metadata->getList('saml20-sp-remote');
 
         $badSps = [];
         foreach ($spEntries as $spEntityId => $spEntry) {
@@ -234,7 +195,8 @@ class MetadataTest extends TestCase
 
     public function testMetadataBadIdpName()
     {
-        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $idpEntries = $metadata->getList();
 
         $badNames = [];
 
@@ -251,7 +213,8 @@ class MetadataTest extends TestCase
 
     public function testMetadataMissingLogoURL()
     {
-        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $idpEntries = $metadata->getList();
 
         $badLogos = [];
 
@@ -269,8 +232,9 @@ class MetadataTest extends TestCase
     public function testMetadataSPWithBadIDPList()
     {
         $idpListKey = Utils::IDP_LIST_KEY;
-        $idpEntries = Metadata::getIdpMetadataEntries($this->metadataPath);
-        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $idpEntries = $metadata->getList();
+        $spEntries = $metadata->getList('saml20-sp-remote');
 
         $badSps = [];
 
@@ -301,7 +265,8 @@ class MetadataTest extends TestCase
             return;
         }
         $idpListKey = Utils::IDP_LIST_KEY;
-        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $spEntries = $metadata->getList('saml20-sp-remote');
 
         $badSps = [];
 
@@ -324,7 +289,8 @@ class MetadataTest extends TestCase
             return;
         }
 
-        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $spEntries = $metadata->getList('saml20-sp-remote');
 
         $badSps = [];
 
@@ -341,7 +307,8 @@ class MetadataTest extends TestCase
 
     public function testMetadataCerts()
     {
-        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $spEntries = $metadata->getList('saml20-sp-remote');
 
         $badSps = [];
 
@@ -365,7 +332,8 @@ class MetadataTest extends TestCase
     public function testMetadataSignResponse()
     {
         // $this->markTestSkipped('Disabled for testing/verification');
-        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $spEntries = $metadata->getList('saml20-sp-remote');
 
         $badSps = [];
         $skippedSps = [];
@@ -395,7 +363,8 @@ class MetadataTest extends TestCase
     public function testMetadataSignAssertion()
     {
         // $this->markTestSkipped('Disabled for testing/verification');
-        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $spEntries = $metadata->getList('saml20-sp-remote');
 
         $badSps = [];
         $skippedSps = [];
@@ -425,7 +394,8 @@ class MetadataTest extends TestCase
     public function testMetadataEncryption()
     {
         // $this->markTestSkipped('Wait until we require encryption.');
-        $spEntries = Metadata::getSpMetadataEntries($this->metadataPath);
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $spEntries = $metadata->getList('saml20-sp-remote');
 
         $badSps = [];
         $skippedSps = [];
@@ -449,20 +419,5 @@ class MetadataTest extends TestCase
             $this->markTestSkipped('At least one SP had the ' . self::SkipTestsKey .
                 ' metadata entry set ... ' . var_export($skippedSps, True));
         }
-    }
-
-    public function getSpMetadataFiles()
-    {
-        return $this->getFileList('sp');
-    }
-
-    public function getIdPMetadataFiles()
-    {
-        return $this->getFileList('idp');
-    }
-
-    public function getFileList($prefix)
-    {
-        return Metadata::getMetadataFiles($this->metadataPath, $prefix);
     }
 }
