@@ -2,10 +2,8 @@
 
 use Sil\SspUtils\Metadata;
 
-$mdPath = __DIR__;
+$files = Metadata::getMetadataFiles(__DIR__, 'idp');
 
-$startMetadata = Metadata::getIdpMetadataEntries($mdPath);
-
-foreach ($startMetadata as $key => $value) {
-    $metadata[$key] = $value;
+foreach ($files as $file) {
+    include $file;
 }
