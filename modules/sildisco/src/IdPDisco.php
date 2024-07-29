@@ -191,4 +191,19 @@ class IdPDisco extends SSPIdPDisco
         }
         return $reducedIdpList;
     }
+
+    /**
+     * Takes the original idp entries and reduces them down to the ones the current SP is meant to see.
+     *
+     * @param string $spEntityId
+     * @return array
+     * @throws MetadataNotFound
+     */
+    public static function getIdpsForSp(string $spEntityId): array
+    {
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $idpEntries = $metadata->getList();
+
+        return self::getReducedIdpList($idpEntries, $spEntityId);
+    }
 }

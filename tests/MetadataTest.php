@@ -6,9 +6,9 @@ include __DIR__ . '/../vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
 use Sil\PhpEnv\Env;
-use Sil\SspUtils\DiscoUtils;
 use Sil\SspUtils\Utils;
 use SimpleSAML\Metadata\MetaDataStorageHandler;
+use SimpleSAML\Module\sildisco\IdPDisco;
 
 class MetadataTest extends TestCase
 {
@@ -178,10 +178,7 @@ class MetadataTest extends TestCase
 
         $badSps = [];
         foreach ($spEntries as $spEntityId => $spEntry) {
-            $results = DiscoUtils::getIdpsForSp(
-                $spEntityId,
-                $this->metadataPath
-            );
+            $results = IdPDisco::getIdpsForSp($spEntityId);
 
             if (empty($results)) {
                 $badSps[] = $spEntityId;
