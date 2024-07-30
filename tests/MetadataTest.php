@@ -7,6 +7,7 @@ include __DIR__ . '/../vendor/autoload.php';
 use PHPUnit\Framework\TestCase;
 use Sil\PhpEnv\Env;
 use Sil\SspUtils\Utils;
+use SimpleSAML\Configuration;
 use SimpleSAML\Metadata\MetaDataStorageHandler;
 use SimpleSAML\Module\sildisco\IdPDisco;
 
@@ -24,6 +25,12 @@ class MetadataTest extends TestCase
     const SPNameKey = 'name';
 
     public $metadataPath = __DIR__ . '/../vendor/simplesamlphp/simplesamlphp/metadata';
+
+    public static function setUpBeforeClass(): void
+    {
+        // use default configuration to bypass the ssp-base config file that has required environment variables
+        Configuration::setPreLoadedConfig(Configuration::loadFromArray([]));
+    }
 
     public function testIDPRemoteMetadataIDPCode()
     {
