@@ -30,6 +30,90 @@ The content of the configuration profile takes the form of a typical .env file, 
 `#` for comments and `=` for variable assignment. Any variables read from AppConfig
 will overwrite variables set in the execution environment.
 
+### SimpleSAMLphp Metadata
+
+No metadata files are included by default. All metadata configuration must be provided
+by using ssp-base as a base image and adding files to the
+`/data/vendor/simplesamlphp/simplesamlphp/metadata` directory. `SSP_BASE` is defined by
+ssp-base as shorthand for `/data/vendor/simplesamlphp/simplesamlphp`.
+
+```Dockerfile
+COPY metadata/* $SSP_PATH/metadata/
+```
+
+#### Legacy Metadata Format
+
+Prior to version 10 of ssp-base, the saml20-idp-remote and saml20-sp-remote files contained
+PHP code to search the metadata directory for files beginning with `sp` or `idp` to assemble
+the metadata. The format of these files differed from the standard SimpleSAMLphp metadata
+files.
+
+Example:
+```php
+return [
+    'https://example.com' => [
+        'name' => ['en' => 'Example'],
+        // ...
+    ],
+]
+```
+
+To use this old, non-standard file structure and format, add these two files to
+your new image:
+
+saml20-idp-remote.php
+```php
+<?php
+
+use Sil\SspUtils\Metadata;
+
+$startMetadata = Metadata::getIdpMetadataEntries(__DIR__);
+foreach ($startMetadata as $key => $value) {
+    $metadata[$key] = $value;
+}
+```
+
+saml20-sp-remote.php
+```php
+<?php
+
+use Sil\SspUtils\Metadata;
+
+$startMetadata = Metadata::getSpMetadataEntries(__DIR__);
+foreach ($startMetadata as $key => $value) {
+    $metadata[$key] = $value;
+}
+```
+
+#### Standard Metadata Format
+
+Moving forward, to utilize a multi-file approach while using the standard SimpleSAMLphp
+metadata format, add these two files to your image:
+
+saml20-idp-remote.php
+```php
+<?php
+
+use Sil\SspUtils\Metadata;
+
+$files = Metadata::getMetadataFiles(__DIR__, 'idp');
+foreach ($files as $file) {
+    include $file;
+}
+```
+
+saml20-sp-remote.php
+```php
+<?php
+
+use Sil\SspUtils\Metadata;
+
+$files = Metadata::getMetadataFiles(__DIR__, 'sp');
+foreach ($files as $file) {
+    include $file;
+}
+```
+
 ## Local testing
 
 1. `cp local.env.dist local.env` within project root and make adjustments as needed.
