@@ -87,6 +87,14 @@ foreach ($startMetadata as $key => $value) {
 
 #### Standard Metadata Format
 
+Example:
+```php
+$metadata['https://example.com'] = [
+    'name' => ['en' => 'Example'],
+    // ...
+]
+```
+
 Moving forward, to utilize a multi-file approach while using the standard SimpleSAMLphp
 metadata format, add these two files to your image:
 
