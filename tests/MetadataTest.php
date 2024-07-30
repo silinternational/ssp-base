@@ -28,8 +28,10 @@ class MetadataTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        // use default configuration to bypass the ssp-base config file that has required environment variables
-        Configuration::setPreLoadedConfig(Configuration::loadFromArray([]));
+        // override configuration to bypass the ssp-base config file that has required environment variables
+        Configuration::setPreLoadedConfig(Configuration::loadFromArray([
+            'module.enable' => ['sildisco' => true], // for IdPDisco::getIdpsForSp utility function
+        ]));
     }
 
     public function testIDPRemoteMetadataIDPCode()
