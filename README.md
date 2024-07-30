@@ -34,7 +34,7 @@ will overwrite variables set in the execution environment.
 
 No metadata files are included by default. All metadata configuration must be provided
 by using ssp-base as a base image and adding files to the
-`/data/vendor/simplesamlphp/simplesamlphp/metadata` directory. `SSP_BASE` is defined by
+`/data/vendor/simplesamlphp/simplesamlphp/metadata` directory. `SSP_PATH` is defined by
 ssp-base as shorthand for `/data/vendor/simplesamlphp/simplesamlphp`.
 
 ```Dockerfile
