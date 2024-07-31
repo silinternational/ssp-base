@@ -44,7 +44,7 @@ class MetadataTest extends TestCase
                 'include an ' . self::IdpCode . ' element as expected. IDP: ' . $entityId);
 
             $nextCode = $entry[self::IdpCode];
-            $this->assertTrue(is_string($nextCode), 'Metadata entry has an ' .
+            $this->assertIsString($nextCode, 'Metadata entry has an ' .
                 self::IdpCode . 'element that is not a string. IDP: ' . $entityId);
             $this->assertRegExp("/^[A-Za-z0-9_-]+$/", $nextCode, 'Metadata entry has an ' .
                 self::IdpCode . ' element that has something other than letters, ' .
@@ -72,7 +72,7 @@ class MetadataTest extends TestCase
             }
         }
 
-        $this->assertTrue(empty($badIdps),
+        $this->assertEmpty($badIdps,
             "At least one IdP has an " .
             $spListKey . " entry that is not an array ... " . PHP_EOL .
             var_export($badIdps, True));
@@ -97,7 +97,7 @@ class MetadataTest extends TestCase
             }
         }
 
-        $this->assertTrue(empty($badIdps),
+        $this->assertEmpty($badIdps,
             "At least one IdP is missing a " .
             self::LogoCaptionKey . " entry ... " . PHP_EOL .
             var_export($badIdps, True));
@@ -130,7 +130,7 @@ class MetadataTest extends TestCase
             }
         }
 
-        $this->assertTrue(empty($badSps),
+        $this->assertEmpty($badSps,
             "At least one non-existent SP is listed in an IdP's " .
             $spListKey . " entry ... " . PHP_EOL .
             var_export($badSps, True));
@@ -145,7 +145,7 @@ class MetadataTest extends TestCase
 
         foreach ($idpEntries as $entityId => $entry) {
             $nextCode = $entry[self::IdpCode];
-            $this->assertFalse(in_array($nextCode, $codes),
+            $this->assertNotContains($nextCode, $codes,
                 "Metadata has a duplicate " . self::IdpCode . " entry: " . $nextCode);
             $codes[] = $nextCode;
         }
@@ -157,19 +157,13 @@ class MetadataTest extends TestCase
         $spEntries = $metadata->getList('saml20-sp-remote');
         $entities = [];
         foreach ($spEntries as $entityId => $entity) {
-            $this->assertFalse(
-                in_array($entityId, $entities),
-                'Duplicate SP entityId found: ' . $entityId
-            );
+            $this->assertNotContains($entityId, $entities, 'Duplicate SP entityId found: ' . $entityId);
             $entities[] = $entityId;
         }
 
         $idpEntries = $metadata->getList();
         foreach ($idpEntries as $entityId => $entity) {
-            $this->assertFalse(
-                in_array($entityId, $entities),
-                'Duplicate IdP entityId found: ' . $entityId
-            );
+            $this->assertNotContains($entityId, $entities, 'Duplicate IdP entityId found: ' . $entityId);
             $entities[] = $entityId;
         }
     }
@@ -194,7 +188,7 @@ class MetadataTest extends TestCase
             }
         }
 
-        $this->assertTrue(empty($badSps),
+        $this->assertEmpty($badSps,
             "At least one SP does not have an IdP it is allowed to use ... " .
             var_export($badSps, True));
     }
@@ -212,7 +206,7 @@ class MetadataTest extends TestCase
             }
         }
 
-        $this->assertTrue(empty($badNames),
+        $this->assertEmpty($badNames,
             "The following Idp's do not have a 'name' entry as an array with an 'en' entry ... " .
             var_export($badNames, True));
     }
@@ -230,7 +224,7 @@ class MetadataTest extends TestCase
             }
         }
 
-        $this->assertTrue(empty($badLogos),
+        $this->assertEmpty($badLogos,
             "The following Idp's do not have a 'logoURL' entry ... " .
             var_export($badLogos, True));
     }
@@ -258,7 +252,7 @@ class MetadataTest extends TestCase
             }
         }
 
-        $this->assertTrue(empty($badSps),
+        $this->assertEmpty($badSps,
             'At least one SP has an IDPList with a bad IDP entity id ... ' . var_export($badSps, True));
 
     }
@@ -282,7 +276,7 @@ class MetadataTest extends TestCase
             }
         }
 
-        $this->assertTrue(empty($badSps),
+        $this->assertEmpty($badSps,
             'At least one SP has an empty IDPList entry (required) ... ' .
             var_export($badSps, True));
     }
@@ -306,7 +300,7 @@ class MetadataTest extends TestCase
             }
         }
 
-        $this->assertTrue(empty($badSps),
+        $this->assertEmpty($badSps,
             'At least one SP has an empty "' . self::SPNameKey . '" entry (required) ... ' .
             var_export($badSps, True));
     }
@@ -329,7 +323,7 @@ class MetadataTest extends TestCase
             }
         }
 
-        $this->assertTrue(empty($badSps),
+        $this->assertEmpty($badSps,
             'At least one SP has no certData entry ... ' .
             var_export($badSps, True));
 
@@ -356,7 +350,7 @@ class MetadataTest extends TestCase
             }
         }
 
-        $this->assertTrue(empty($badSps),
+        $this->assertEmpty($badSps,
             'At least one SP has saml20.sign.response set to false ... ' .
             var_export($badSps, True));
 
@@ -387,7 +381,7 @@ class MetadataTest extends TestCase
             }
         }
 
-        $this->assertTrue(empty($badSps),
+        $this->assertEmpty($badSps,
             'At least one SP has saml20.sign.assertion set to false ... ' .
             var_export($badSps, True));
 
@@ -417,7 +411,7 @@ class MetadataTest extends TestCase
             }
         }
 
-        $this->assertTrue(empty($badSps),
+        $this->assertEmpty($badSps,
             'At least one SP does not have assertion.encryption set to True ... ' .
             var_export($badSps, True));
 
