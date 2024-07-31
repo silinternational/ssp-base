@@ -3,10 +3,10 @@
 namespace SimpleSAML\Module\sildisco\Auth\Process;
 
 use SAML2\XML\saml\NameID;
-use Sil\SspUtils\Metadata;
 use SimpleSAML\Auth\ProcessingFilter;
 use SimpleSAML\Error;
 use SimpleSAML\Logger;
+use SimpleSAML\Metadata\MetaDataStorageHandler;
 
 /**
  * Attribute filter for appending IDPNamespace to the NameID.
@@ -134,16 +134,8 @@ class AddIdp2NameId extends ProcessingFilter
             return;
         }
 
-        // Get the potential IDPs from idp remote metadata
-        $metadataPath = __DIR__ . '/../../../../../metadata';
-
-        // If a unit test sends a different metadataPath, use it
-        if (isset($state['metadataPath'])) {
-            $metadataPath = $state['metadataPath'];
-        }
-        $idpEntries = Metadata::getIdpMetadataEntries($metadataPath);
-
-        $idpEntry = $idpEntries[$samlIDP];
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $idpEntry = $metadata->getMetaData($samlIDP, 'saml20-idp-remote');
 
         // The IDP metadata must have an IDPNamespace entry
         if (!isset($idpEntry[self::IDP_CODE_KEY])) {

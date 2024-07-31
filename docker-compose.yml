@@ -179,6 +179,7 @@ services:
       BASE_URL_PATH: "http://ssp-idp1.local/" # change this to "http://ssp-idp1.local:8085" for manual browser testing
       HELP_CENTER_URL: "https://example.org/help"
       THEME_COLOR_SCHEME: "blue_grey-teal"
+      HUB_MODE: "false"
 
   ssp-idp2.local:
     build: .
@@ -226,6 +227,7 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_COLOR_SCHEME: "red-teal"
+      HUB_MODE: "false"
 
   ssp-idp3.local:
     build: .
@@ -258,6 +260,7 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_COLOR_SCHEME: "orange-light_blue"
+      HUB_MODE: "false"
 
   ssp-sp1.local:
     image: silintl/ssp-base:9.3.0

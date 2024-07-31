@@ -4,9 +4,9 @@ namespace SimpleSAML\Module\sildisco\Auth\Process;
 
 use Aws\DynamoDb\Marshaler;
 use Aws\Sdk;
-use Sil\SspUtils\Metadata;
 use SimpleSAML\Auth\ProcessingFilter;
 use SimpleSAML\Logger;
+use SimpleSAML\Metadata\MetaDataStorageHandler;
 
 /**
  * This Auth Proc logs information about each successful login to an AWS Dynamodb table.
@@ -165,19 +165,11 @@ class LogUser extends ProcessingFilter
             return 'No IDP available';
         }
 
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+
         $samlIDP = $state[self::IDP_KEY];
 
-        // Get the potential IDPs from idp remote metadata
-        $metadataPath = __DIR__ . '/../../../../../metadata';
-
-        // If a unit test sends a different metadataPath, use it
-        if (isset($state['metadataPath'])) {
-            $metadataPath = $state['metadataPath'];
-        }
-        $idpEntries = Metadata::getIdpMetadataEntries($metadataPath);
-
-        // Get the IDPNamespace or else just use the IDP's entity ID
-        $idpEntry = $idpEntries[$samlIDP];
+        $idpEntry = $metadata->getMetaData($samlIDP, 'saml20-idp-remote');
 
         // If the IDPNamespace entry is a string, use it
         if (isset($idpEntry[self::IDP_CODE_KEY]) && is_string($idpEntry[self::IDP_CODE_KEY])) {
