@@ -188,6 +188,30 @@ docker composer up -d ssp-hub.local
 13. Hit `Apply` and `OK`
 14. Click on `Run` and then `Debug 'Debug on Docker'`
 
+### Metadata Tests Check:
+- Metadata files can be linted via php (`php -l file`)
+- Metadata files return arrays
+- IdP Metadata files have an IdP namespace that exists, is a string, and only contains letters, numbers, hyphens, and underscores
+- IdP Metadata files don't have duplicate IdP codes
+- SP Metadata files don't have duplicate entity ids
+- IdP Metadatas contains `name` entry with an `en` entry
+- IdP Metadatas contains `logoURL` entry
+- if SP Metadata contains `IDPList`, check that it is allowed for that IdP as well
+
+#### Hub mode tests [SKIPPED if HUB_MODE = false]
+- IdP Metadata files SP List is an array
+- IdP Metadata files LogoCaption isset
+- IdP Metadata files SP List has existing SPs
+- All SPs have an IdP it can use
+- All SPs have a non-empty IDPList entry
+- All SPs have a non-empty name entry
+
+#### SP tests [SKIPPED if `'SkipTests' => true,`]
+- Contains a `CertData` entry
+- Contains a `saml20.sign.response` entry AND it is set to true
+- Contains a `saml20.sign.assertion` entry AND it is set to true
+- Contains a `assertion.encryption` entry AND it is set to true
+
 ## Overriding translations / dictionaries
 
 If you use this Docker image but want to change some of the translations, you
