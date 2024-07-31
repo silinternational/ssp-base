@@ -1,5 +1,6 @@
-# ssp-base 
-Base image for simpleSAMLphp
+# ssp-base
+
+Base image for SimpleSAMLphp IdP and Hub with custom modules
 
 Docker image: [silintl/ssp-base](https://hub.docker.com/r/silintl/ssp-base/)
 
@@ -8,8 +9,6 @@ Docker image: [silintl/ssp-base](https://hub.docker.com/r/silintl/ssp-base/)
 must be installed.
 
 [Make](https://www.gnu.org/software/make) is optional but simplifies the build process.
-
-[PHP](https://www.php.net) and [Composer](https://getcomposer.org) are optional, but at a minimum you need COMPOSER_CACHE_DIR set to a local directory for storing the PHP dependency cache. This must be exported in your local development environment, not in the Docker container environment. For example, in your `~/.bashrc`, include `export COMPOSER_CACHE_DIR="$HOME/.composer"` and create an empty directory at `~/.composer`.
 
 ## Configuration
 By default, configuration is read from environment variables. These are documented
@@ -31,14 +30,106 @@ The content of the configuration profile takes the form of a typical .env file, 
 `#` for comments and `=` for variable assignment. Any variables read from AppConfig
 will overwrite variables set in the execution environment.
 
+### SimpleSAMLphp Metadata
+
+No metadata files are included by default. All metadata configuration must be provided
+by using ssp-base as a base image and adding files to the
+`/data/vendor/simplesamlphp/simplesamlphp/metadata` directory. `SSP_PATH` is defined by
+ssp-base as shorthand for `/data/vendor/simplesamlphp/simplesamlphp`.
+
+```Dockerfile
+COPY metadata/* $SSP_PATH/metadata/
+```
+
+#### Legacy Metadata Format
+
+Prior to version 10 of ssp-base, the saml20-idp-remote and saml20-sp-remote files contained
+PHP code to search the metadata directory for files beginning with `sp` or `idp` to assemble
+the metadata. The format of these files differed from the standard SimpleSAMLphp metadata
+files.
+
+Example:
+```php
+return [
+    'https://example.com' => [
+        'name' => ['en' => 'Example'],
+        // ...
+    ],
+]
+```
+
+To use this old, non-standard file structure and format, add these two files to
+your new image:
+
+saml20-idp-remote.php
+```php
+<?php
+
+use Sil\SspUtils\Metadata;
+
+$startMetadata = Metadata::getIdpMetadataEntries(__DIR__);
+foreach ($startMetadata as $key => $value) {
+    $metadata[$key] = $value;
+}
+```
+
+saml20-sp-remote.php
+```php
+<?php
+
+use Sil\SspUtils\Metadata;
+
+$startMetadata = Metadata::getSpMetadataEntries(__DIR__);
+foreach ($startMetadata as $key => $value) {
+    $metadata[$key] = $value;
+}
+```
+
+#### Standard Metadata Format
+
+Example:
+```php
+$metadata['https://example.com'] = [
+    'name' => ['en' => 'Example'],
+    // ...
+]
+```
+
+Moving forward, to utilize a multi-file approach while using the standard SimpleSAMLphp
+metadata format, add these two files to your image:
+
+saml20-idp-remote.php
+```php
+<?php
+
+use Sil\SspUtils\Metadata;
+
+$files = Metadata::getMetadataFiles(__DIR__, 'idp');
+foreach ($files as $file) {
+    include $file;
+}
+```
+
+saml20-sp-remote.php
+```php
+<?php
+
+use Sil\SspUtils\Metadata;
+
+$files = Metadata::getMetadataFiles(__DIR__, 'sp');
+foreach ($files as $file) {
+    include $file;
+}
+```
+
 ## Local testing
 
 1. `cp local.env.dist local.env` within project root and make adjustments as needed.
 2. `cp local.broker.env.dist local.broker.env` within project root and make adjustments as needed.
-3. Add your github token to the `COMPOSER_AUTH` variable in the `local.env` file.
+3. Add your GitHub [personal access token](https://github.com/settings/tokens?type=beta) to the `COMPOSER_AUTH` variable in the `local.env` file.
 4. Create `localhost` aliases for `ssp-hub.local`, `ssp-idp1.local`, `ssp-idp2.local`, `ssp-idp3.local`, `ssp-sp1.local`, `ssp-sp2.local`, and `ssp-sp3.local`. This is typically done in `/etc/hosts`.  _Example line:  `127.0.0.1  ssp-hub.local ssp-idp1.local ssp-idp2.local ssp-idp3.local ssp-sp1.local ssp-sp2.local ssp-sp3.local`_
-4. `make` or `docker compose up -d` within the project root.
-5. Visit http://ssp-hub.local to see SimpleSAMLphp 
+5. Run `make test` within the project root.
+6. Visit http://ssp-hub.local to see SimpleSAMLphp
 
 _Note:_ there is an unresolved problem that requires a change to BASE_URL_PATH for ssp-idp1.local in docker-compose.yml due to a requirement in silauth that it be a full URL. For automated testing, it must not have a port number, but for manual testing it needs the port number.
 
@@ -93,9 +184,33 @@ docker composer up -d ssp-hub.local
  - Port: 80
  - Debugger: Xdebug
  - Check use path mappings and add map from project root to `/data`
- 
+
 13. Hit `Apply` and `OK`
 14. Click on `Run` and then `Debug 'Debug on Docker'`
+
+### Metadata Tests Check:
+- Metadata files can be linted via php (`php -l file`)
+- Metadata files return arrays
+- IdP Metadata files have an IdP namespace that exists, is a string, and only contains letters, numbers, hyphens, and underscores
+- IdP Metadata files don't have duplicate IdP codes
+- SP Metadata files don't have duplicate entity ids
+- IdP Metadatas contains `name` entry with an `en` entry
+- IdP Metadatas contains `logoURL` entry
+- if SP Metadata contains `IDPList`, check that it is allowed for that IdP as well
+
+#### Hub mode tests [SKIPPED if HUB_MODE = false]
+- IdP Metadata files SP List is an array
+- IdP Metadata files LogoCaption isset
+- IdP Metadata files SP List has existing SPs
+- All SPs have an IdP it can use
+- All SPs have a non-empty IDPList entry
+- All SPs have a non-empty name entry
+
+#### SP tests [SKIPPED if `'SkipTests' => true,`]
+- Contains a `CertData` entry
+- Contains a `saml20.sign.response` entry AND it is set to true
+- Contains a `saml20.sign.assertion` entry AND it is set to true
+- Contains a `assertion.encryption` entry AND it is set to true
 
 ## Overriding translations / dictionaries
 
@@ -164,11 +279,9 @@ Example (in `metadata/saml20-idp-hosted.php`):
 
             // Optional:
             'warnDaysBefore' => 14,
-            'originalUrlParam' => 'originalurl',
-            'dateFormat' => 'm.d.Y', // Use PHP's date syntax.
             'loggerClass' => '\\Sil\\Psr3Adapters\\Psr3SamlLogger',
         ],
-        
+
         // ...
     ],
 
@@ -181,11 +294,12 @@ the user's expiry date, which must be formated as YYYYMMDDHHMMSSZ (e.g.
 `20111011235959Z`). Those two attributes need to be part of the attribute set
 returned when the user successfully authenticates.
 
+The `passwordChangeUrl` parameter contains the URL of the password manager. A
+link to that URL may be presented to the user as a convenience for updating
+their password.
+
 The `warnDaysBefore` parameter should be an integer representing how many days
 before the expiry date the "about to expire" warning will be shown to the user.
-
-The `dateFormat` parameter specifies how you want the date to be formatted,
-using PHP `date()` syntax. See <http://php.net/manual/en/function.date.php>.
 
 The `loggerClass` parameter specifies the name of a PSR-3 compatible class that
 can be autoloaded, to use as the logger within ExpiryDate.
@@ -200,46 +314,31 @@ they did on those two modules.
 
 Material Design theme for use with SimpleSAMLphp
 
-#### Installation
-
-```
-composer.phar require silinternational/simplesamlphp-module-material:dev-master
-```
-
 #### Configuration
 
-Update `/simplesamlphp/config/config.php`:
-
-```
-'theme.use' => 'material:material'
-```
-
-This project sets this as the default value in the provided config file.
+No configuration is necessary. The `theme.use` config option is pre-configured to `material:material`.
+Optional configuration is described below.
 
 ##### Google reCAPTCHA
 
-If a site key has been provided in `$this->data['recaptcha.siteKey']`, the
+If a site key has been provided in the `RECAPTCHA_SITE_KEY` environment variable, the
 username/password page may require the user prove his/her humanity.
 
 ##### Branding
 
-Update `/simplesamlphp/config/config.php`:
+Set the `THEME_COLOR_SCHEME` environment variable using one of the following values:
 
 ```
-'theme.color-scheme' => ['indigo-purple'|'blue_grey-teal'|'red-teal'|'orange-light_blue'|'brown-orange'|'teal-blue']
+'indigo-purple', 'blue_grey-teal', 'red-teal', 'orange-light_blue', 'brown-orange', 'teal-blue'
 ```
+
+The default is `indigo-purple`.
 
 The login page looks for `/simplesamlphp/public/logo.png` which is **NOT** provided by default.
 
 ##### Analytics
 
-Update `/simplesamlphp/config/config.php`:
-
-```
-'analytics.trackingId' => 'UA-some-unique-id-for-your-site'
-```
-
-This project provides a convenience by loading this config with whatever is in the environment variable `ANALYTICS_ID`._
+Set the `ANALYTICS_ID` environment variable to contain your Google Analytics 4 tag ID.
 
 ##### Announcements
 
@@ -259,11 +358,12 @@ If provided, an alert will be shown to the user filled with the content of that 
 
 #### i18n support
 
-Translations are categorized by page in definition files located in the `dictionaries` directory.
+Translations are in files located in the `modules/material/locales` directory.
 
-Localization is affected by the configuration setting `language.available`. Only language codes found in this property will be utilized.  
-For example, if a translation is provided in Afrikaans for this module, the configuration must be adjusted to make 'af' an available
-language. If that's not done, the translation function will not utilize the translations even if provided.
+Localization is affected by the configuration setting `language.available`. Only language codes found in this property
+will be utilized. For example, if a translation is provided in Afrikaans for this module, the configuration must be
+adjusted to make 'af' an available language. If that's not done, the translation function will not utilize the
+translations even if provided.
 
 ### Multi-Factor Authentication (MFA) simpleSAMLphp Module
 A simpleSAMLphp module for prompting the user for MFA credentials (such as a
@@ -285,9 +385,9 @@ Example (for `metadata/saml20-idp-hosted.php`):
 
     use Sil\PhpEnv\Env;
     use Sil\Psr3Adapters\Psr3SamlLogger;
-    
+
     // ...
-    
+
     'authproc' => [
         10 => [
             // Required:
@@ -303,7 +403,7 @@ Example (for `metadata/saml20-idp-hosted.php`):
             // Optional:
             'loggerClass' => Psr3SamlLogger::class,
         ],
-        
+
         // ...
     ],
 
@@ -312,7 +412,7 @@ the user's Employee ID stored in it. In certain situations, this may be
 displayed to the user, as well as being used in log messages.
 
 The `loggerClass` parameter specifies the name of a PSR-3 compatible class that
-can be autoloaded, to use as the logger within ExpiryDate.
+can be autoloaded, to use as the logger within the module.
 
 The `mfaSetupUrl` parameter is for the URL of where to send the user if they
 want/need to set up MFA.
@@ -327,12 +427,12 @@ Based on...
   implemented as AuthProcs,
 - implementing my solution as an AuthProc and having a number of tests that all
   confirm that it is working as desired, and
-- a discussion in the SimpleSAMLphp mailing list about this:  
+- a discussion in the SimpleSAMLphp mailing list about this:
   https://groups.google.com/d/msg/simplesamlphp/ocQols0NCZ8/RL_WAcryBwAJ
 
 ... it seems sufficiently safe to implement MFA using a simpleSAMLphp AuthProc.
 
-For more of the details, please see this Stack Overflow Q&A:  
+For more of the details, please see this Stack Overflow Q&A:
 https://stackoverflow.com/q/46566014/3813891
 
 #### Acknowledgements
@@ -361,9 +461,9 @@ Example (for `metadata/saml20-idp-hosted.php`):
 
     use Sil\PhpEnv\Env;
     use Sil\Psr3Adapters\Psr3SamlLogger;
-    
+
     // ...
-    
+
     'authproc' => [
         10 => [
             // Required:
@@ -375,7 +475,7 @@ Example (for `metadata/saml20-idp-hosted.php`):
             // Optional:
             'loggerClass' => Psr3SamlLogger::class,
         ],
-        
+
         // ...
     ],
 
@@ -396,8 +496,6 @@ SimpleSAMLphp auth module implementing custom business logic:
 - authentication
 - rate limiting
 - status endpoint
-
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/silinternational/simplesamlphp-module-silauth/develop/LICENSE)
 
 #### Database Migrations
 To create another database migration file, run the following (replacing
@@ -466,7 +564,7 @@ load balancer) in the TRUSTED_IP_ADDRESSES environment variable (see
 `local.env.dist`).
 
 #### Status Check
-To check the status of the website, you can access this URL:  
+To check the status of the website, you can access this URL:
 `https://(your domain name)/module.php/silauth/status.php`
 
 ### SilDisco module for SAML Discovery

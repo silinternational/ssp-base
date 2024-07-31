@@ -13,7 +13,6 @@ class Utilities
      */
     public static function getUrlDomain(string $in_url, string $start_marker = '//', string $end_marker = '/'): string
     {
-
         $sm_len = strlen($start_marker);
         $em_len = strlen($end_marker);
         $start_pos = strpos($in_url, $start_marker);
@@ -45,43 +44,6 @@ class Utilities
             return 1;
         }
         return 0;
-    }
-
-    /**
-     * Expects four strings for ...
-     *  - the url for changing the user's password,
-     *  - the parameter label for the original url the user was headed to
-     *  - the original url the user was headed to
-     *  - the StateId parameter to add to the end of the new version of the url
-     * Returns a string with special symbols urlencoded and then also encoded
-     *  for apex to use. If the domains of the change password url and the
-     *  original url are different, it appends the StateId to the output.
-     */
-    public static function convertOriginalUrl(
-        string $passwordChangeUrl,
-        string $originalUrlParam,
-        string $originalUrl,
-        string $stateId
-    ): string {
-        $sameDomain = self::haveSameDomain($passwordChangeUrl,
-            '//', '/', $originalUrl, '//', '/');
-        $original = $originalUrlParam . ":" . urlencode($originalUrl);
-        // make changes that insite/apex needs in url
-        $original = str_replace('%3A', '*COLON*', $original);
-        $original = str_replace('%2C', '*COMMA*', $original);
-        $original = str_replace('%26', '*AMPER*', $original);
-
-        // if it already has a ?, then give it a &
-        // otherwise give it a ? ...
-        //  and then the StateId param
-        if (!$sameDomain) {
-            if (strpos($original, '%3F') !== false) {
-                $original = $original . "*AMPER*" . $stateId;
-            } else {
-                $original = $original . '%3F' . $stateId;
-            }
-        }
-        return $original;
     }
 
     /**

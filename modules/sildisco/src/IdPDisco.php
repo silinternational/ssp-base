@@ -3,13 +3,16 @@
 namespace SimpleSAML\Module\sildisco;
 
 use Sil\SspUtils\AnnouncementUtils;
-use Sil\SspUtils\DiscoUtils;
-use Sil\SspUtils\Metadata;
+use Sil\SspUtils\Utils;
 use SimpleSAML\Auth;
+use SimpleSAML\Error\MetadataNotFound;
+use SimpleSAML\Error\NoState;
 use SimpleSAML\Logger;
+use SimpleSAML\Metadata\MetaDataStorageHandler;
 use SimpleSAML\Utils\HTTP;
 use SimpleSAML\XHTML\IdPDisco as SSPIdPDisco;
 use SimpleSAML\XHTML\Template;
+use yii\db\Exception;
 
 /**
  * This class implements a custom IdP discovery service, for use with a ssp hub (proxy)
@@ -33,12 +36,10 @@ class IdPDisco extends SSPIdPDisco
         Logger::info('SildiscoIdPDisco.' . $this->instance . ': ' . $message);
     }
 
-    /* Path to the folder with the SP and IdP metadata */
-    private function getMetadataPath()
-    {
-        return __DIR__ . '/../../../metadata/';
-    }
-
+    /**
+     * @throws NoState
+     * @throws Exception
+     */
     private function getSPEntityIDAndReducedIdpList(): array
     {
 
@@ -50,17 +51,17 @@ class IdPDisco extends SSPIdPDisco
         // Before the SimpleSAMLphp 2 upgrade, we added it to the state ourselves by overriding the SAML2.php file
         parse_str(parse_url($_GET['return'], PHP_URL_QUERY), $returnState);
         $state = Auth\State::loadState($returnState['AuthID'], 'saml:sp:sso');
-        assert($state && array_key_exists('SPMetadata', $state));
+        if (!array_key_exists('SPMetadata', $state)) {
+            throw new Exception('SPMetadata not found in state');
+        }
+
         $spmd = $state['SPMetadata'];
         $spEntityId = $spmd['entityid'];
-
-        if (!empty($spEntityId)) {
-            $idpList = DiscoUtils::getReducedIdpList(
-                $idpList,
-                $this->getMetadataPath(),
-                $spEntityId
-            );
+        if (empty($spEntityId)) {
+            throw new Exception('empty SP entityID');
         }
+
+        $idpList = self::getReducedIdpList($idpList, $spEntityId);
 
         return array($spEntityId, $idpList);
     }
@@ -92,9 +93,8 @@ class IdPDisco extends SSPIdPDisco
             }
         }
 
-        // Get the SP metadata entry
-        $spEntries = Metadata::getSpMetadataEntries($this->getMetadataPath());
-        $sp = $spEntries[$spEntityId];
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $sp = $metadata->getMetaData($spEntityId, 'saml20-sp-remote');
 
         $t = new Template($this->config, 'selectidp-links', 'disco');
 
@@ -153,5 +153,57 @@ class IdPDisco extends SSPIdPDisco
         $this->log('Invalid IdP entity id [' . $idp . '] received from discovery page.');
         // the entity id wasn't valid
         return null;
+    }
+
+    /**
+     * Takes the original IDP List and reduces it down to the ones the current SP is meant to see.
+     *    The relevant entries in saml20-idp-remote.php would be ...
+     *      - 'excludeByDefault' (boolean), which when set to True would keep this idp from being
+     *        shown to SP's that don't explicitly include it in the 'IDPList' entry of their metadata.
+     *      - 'SPList' (array), which when set would only allow this idp to be shown
+     *        to SPs whose entity_id is included in this array.
+     *
+     * @param array $idpList
+     * @param string $spEntityId - the current SP's entity id
+     * @return array of a subset of the original $startSources.
+     * @throws MetadataNotFound
+     */
+    public static function getReducedIdpList(array $idpList, string $spEntityId): array
+    {
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $spMetadata = $metadata->getMetaData($spEntityId, 'saml20-sp-remote');
+
+        $reducedIdpList = [];
+
+        $idpListForSp = [];  // The list of IDP's this SP wants to know about
+        if (array_key_exists(Utils::IDP_LIST_KEY, $spMetadata)) {
+            $idpListForSp = $spMetadata[Utils::IDP_LIST_KEY];
+        }
+
+        foreach ($idpList as $idpEntityId => $idpMdEntry) {
+            if (Utils::isIdpValidForSp($idpEntityId,
+                $idpMdEntry,
+                $spEntityId,
+                $idpListForSp)
+            ) {
+                $reducedIdpList[$idpEntityId] = $idpMdEntry;
+            }
+        }
+        return $reducedIdpList;
+    }
+
+    /**
+     * Takes the original idp entries and reduces them down to the ones the current SP is meant to see.
+     *
+     * @param string $spEntityId
+     * @return array
+     * @throws MetadataNotFound
+     */
+    public static function getIdpsForSp(string $spEntityId): array
+    {
+        $metadata = MetaDataStorageHandler::getMetadataHandler();
+        $idpEntries = $metadata->getList();
+
+        return self::getReducedIdpList($idpEntries, $spEntityId);
     }
 }

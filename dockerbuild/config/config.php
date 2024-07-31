@@ -29,7 +29,6 @@ try {
     // Required to be defined in environment variables
     $ADMIN_PASS = Env::requireEnv('ADMIN_PASS');
     $SECRET_SALT = Env::requireEnv('SECRET_SALT');
-    $IDP_NAME = Env::requireEnv('IDP_NAME');
 } catch (EnvVarNotFoundException $e) {
 
     // Return error response code/message to HTTP request.
@@ -45,7 +44,6 @@ try {
 }
 
 // Defaults provided if not defined in environment
-$IDP_DISPLAY_NAME = Env::get('IDP_DISPLAY_NAME', $IDP_NAME);
 $BASE_URL_PATH = Env::get('BASE_URL_PATH', '/');
 $ADMIN_EMAIL = Env::get('ADMIN_EMAIL', 'na@example.org');
 $ADMIN_NAME = Env::get('ADMIN_NAME', 'SAML Admin');
@@ -54,18 +52,16 @@ $ENABLE_DEBUG = Env::get('ENABLE_DEBUG', false);
 $LOGGING_LEVEL = Env::get('LOGGING_LEVEL', 'NOTICE');
 $LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'stderr');
 
-// Options: https://github.com/silinternational/simplesamlphp-module-material/blob/develop/README.md#branding
+// Options: https://github.com/silinternational/ssp-base/blob/main/README.md#branding
 $THEME_COLOR_SCHEME = Env::get('THEME_COLOR_SCHEME', null);
 
 $SECURE_COOKIE = Env::get('SECURE_COOKIE', true);
-$SESSION_DURATION = (int)(Env::get('SESSION_DURATION', (60 * 60 * 10))); // 10 hours.
 $SESSION_STORE_TYPE = Env::get('SESSION_STORE_TYPE', 'phpsession');
 $MYSQL_HOST = Env::get('MYSQL_HOST', '');
 $MYSQL_DATABASE = Env::get('MYSQL_DATABASE', '');
 $MYSQL_USER = Env::get('MYSQL_USER', '');
 $MYSQL_PASSWORD = Env::get('MYSQL_PASSWORD', '');
 
-$SAML20_IDP_ENABLE = Env::get('SAML20_IDP_ENABLE', true);
 $HUB_MODE = Env::get('HUB_MODE', false);
 $ANALYTICS_ID = Env::get('ANALYTICS_ID', null);
 $PASSWORD_CHANGE_URL = Env::get('PASSWORD_CHANGE_URL');
@@ -78,22 +74,12 @@ $config = [
     /*
      * Whether this instance should act as a hub/proxy/bridge using sildisco
      */
-     'hubmode' => $HUB_MODE,
+    'hubmode' => $HUB_MODE,
 
-     /*
-      * Name of this IdP
-      */
-     'idp_name' => $IDP_NAME,
-
-     /*
-      * Name of this IdP to display to the user
-      */
-     'idp_display_name' => $IDP_DISPLAY_NAME,
-
-     /*
-      * The tracking Id for Google Analytics or some other similar service
-      */
-     'analytics.trackingId' => $ANALYTICS_ID,
+    /*
+     * The tracking Id for Google Analytics or some other similar service
+     */
+    'analytics.trackingId' => $ANALYTICS_ID,
 
     'passwordChangeUrl' => $PASSWORD_CHANGE_URL,
     'passwordForgotUrl' => $PASSWORD_FORGOT_URL,
@@ -628,7 +614,7 @@ $config = [
      * one of the functionalities below, but in some cases you could run multiple functionalities.
      * In example when you are setting up a federation bridge.
      */
-    'enable.saml20-idp' => $SAML20_IDP_ENABLE,
+    'enable.saml20-idp' => true,
     'enable.adfs-idp' => false,
 
 
@@ -671,19 +657,19 @@ $config = [
      * This value is the duration of the session in seconds. Make sure that the time duration of
      * cookies both at the SP and the IdP exceeds this duration.
      */
-    'session.duration' => $SESSION_DURATION,
+    'session.duration' => (60 * 60 * 10), // 10 hours
 
     /*
      * Sets the duration, in seconds, data should be stored in the datastore. As the data store is used for
      * login and logout requests, this option will control the maximum time these operations can take.
      * The default is 4 hours (4*60*60) seconds, which should be more than enough for these operations.
      */
-    'session.datastore.timeout' => $SESSION_DURATION,
+    'session.datastore.timeout' => (60 * 60 * 10), // 10 hours
 
     /*
      * Sets the duration, in seconds, auth state should be stored.
      */
-    'session.state.timeout' => $SESSION_DURATION,
+    'session.state.timeout' => (60 * 60 * 10), // 10 hours
 
     /*
      * Option to override the default settings for the session cookie name
@@ -909,8 +895,7 @@ $config = [
      * Note: The oldest data will always be deleted if the memcache server
      * runs out of storage space.
      */
-    'memcache_store.expires' => $SESSION_DURATION + 3600, // Session duration plus an hour for clock skew
-
+    'memcache_store.expires' => (60 * 60 * 10) + 3600, // Session duration (10 hours) plus an hour for clock skew
 
 
     /*************************************
@@ -982,6 +967,11 @@ $config = [
     'theme.controller' => MaterialController::class,
 
     /*
+     * color scheme to use for the material theme
+     */
+    'theme.color-scheme' => $THEME_COLOR_SCHEME,
+
+    /*
      * Templating options
      *
      * By default, twig templates are not cached. To turn on template caching:
@@ -1042,12 +1032,6 @@ $config = [
      * is shown.
      */
     //'frontpage.redirect' => 'https://example.com/',
-
-    /*
-     * color scheme to use for the material theme
-     * Options: https://github.com/silinternational/simplesamlphp-module-material/blob/develop/README.md#branding
-     */
-    'theme.color-scheme' => $THEME_COLOR_SCHEME,
 
     /*********************
      | DISCOVERY SERVICE |

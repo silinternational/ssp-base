@@ -41,7 +41,6 @@ services:
       PROFILE_URL_FOR_TESTS: http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
       ADMIN_PASS: b
       SECRET_SALT: abc123
-      IDP_NAME: x
     volumes:
       - ./dockerbuild/run-integration-tests.sh:/data/run-integration-tests.sh
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
@@ -91,10 +90,7 @@ services:
       - ./development/announcement.php:/data/vendor/simplesamlphp/simplesamlphp/announcement/announcement.php
 
       # Utilize custom metadata
-      - ./development/hub/metadata/idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/idp-remote.php
-      - ./development/hub/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
-      - ./development/hub/metadata/saml20-sp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-hosted.php
-      - ./development/hub/metadata/sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/sp-remote.php
+      - ./development/hub/metadata:/data/vendor/simplesamlphp/simplesamlphp/metadata
 
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
@@ -111,7 +107,6 @@ services:
     environment:
       ADMIN_PASS: "abc123"
       SECRET_SALT: "not-secret-h57fjemb&dn^nsJFGNjweJ"
-      IDP_NAME: "Hub"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_COLOR_SCHEME: "orange-light_blue"
@@ -134,8 +129,7 @@ services:
       - ./development/logo_idp1.png:/data/vendor/simplesamlphp/simplesamlphp/public/logo.png
 
       # Utilize custom metadata
-      - ./development/idp-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
-      - ./development/idp-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
+      - ./development/idp-local/metadata:/data/vendor/simplesamlphp/simplesamlphp/metadata
 
       # Customized SSP code -- TODO: make a better solution that doesn't require hacking SSP code
       - ./development/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/src/Auth/Source/UserPass.php
@@ -162,7 +156,6 @@ services:
     environment:
       ADMIN_PASS: "a"
       SECRET_SALT: "not-secret-h57fjemb&dn^nsJFGNjweJ"
-      IDP_NAME: "IDP 1"
       IDP_DOMAIN_NAME: "mfaidp"
       ID_BROKER_ACCESS_TOKEN: "dummy"
       ID_BROKER_ASSERT_VALID_IP: "false"
@@ -182,6 +175,7 @@ services:
       BASE_URL_PATH: "http://ssp-idp1.local/" # change this to "http://ssp-idp1.local:8085" for manual browser testing
       HELP_CENTER_URL: "https://example.org/help"
       THEME_COLOR_SCHEME: "blue_grey-teal"
+      HUB_MODE: "false"
 
   ssp-idp2.local:
     build: .
@@ -198,8 +192,7 @@ services:
       - ./development/logo_idp2.png:/data/vendor/simplesamlphp/simplesamlphp/public/logo.png
 
       # Utilize custom metadata
-      - ./development/idp2-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
-      - ./development/idp2-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
+      - ./development/idp2-local/metadata:/data/vendor/simplesamlphp/simplesamlphp/metadata
 
       # Customized SSP code -- TODO: make a better solution that doesn't require hacking SSP code
       - ./development/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/src/Auth/Source/UserPass.php
@@ -217,7 +210,6 @@ services:
     environment:
       ADMIN_PASS: "b"
       SECRET_SALT: "h57fjemb&dn^nsJFGNjweJ"
-      IDP_NAME: "IDP 2"
       IDP_DOMAIN_NAME: "ssp-idp2.local"
       ID_BROKER_ACCESS_TOKEN: "test-cli-abc123"
       ID_BROKER_ASSERT_VALID_IP: "true"
@@ -230,6 +222,7 @@ services:
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_COLOR_SCHEME: "red-teal"
+      HUB_MODE: "false"
 
   ssp-idp3.local:
     build: .
@@ -242,8 +235,7 @@ services:
       - ./development/logo_idp3.png:/data/vendor/simplesamlphp/simplesamlphp/public/logo.png
 
       # Utilize custom metadata
-      - ./development/idp3-local/metadata/saml20-idp-hosted.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-hosted.php
-      - ./development/idp3-local/metadata/saml20-sp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-sp-remote.php
+      - ./development/idp3-local/metadata:/data/vendor/simplesamlphp/simplesamlphp/metadata
 
       # Local modules
       - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
@@ -261,8 +253,8 @@ services:
       SECRET_SALT: "h57fjem34fh*nsJFGNjweJ"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
-      IDP_NAME: "IdP3"
       THEME_COLOR_SCHEME: "orange-light_blue"
+      HUB_MODE: "false"
 
   ssp-sp1.local:
     image: silintl/ssp-base:9.3.0

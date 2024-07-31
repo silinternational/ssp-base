@@ -27,12 +27,10 @@ class ExpiryDate extends ProcessingFilter
     const SESSION_TYPE = 'expirychecker';
 
     private int $warnDaysBefore = 14;
-    private string $originalUrlParam = 'originalurl';
     private string|null $passwordChangeUrl = null;
     private string|null $accountNameAttr = null;
     private string $employeeIdAttr = 'employeeNumber';
     private string|null $expiryDateAttr = null;
-    private string $dateFormat = 'Y-m-d';
 
     protected LoggerInterface $logger;
 
@@ -54,10 +52,6 @@ class ExpiryDate extends ProcessingFilter
             'warnDaysBefore' => [
                 Validator::INT,
             ],
-            'originalUrlParam' => [
-                Validator::STRING,
-                Validator::NOT_EMPTY,
-            ],
             'passwordChangeUrl' => [
                 Validator::STRING,
                 Validator::NOT_EMPTY,
@@ -67,10 +61,6 @@ class ExpiryDate extends ProcessingFilter
                 Validator::NOT_EMPTY,
             ],
             'expiryDateAttr' => [
-                Validator::STRING,
-                Validator::NOT_EMPTY,
-            ],
-            'dateFormat' => [
                 Validator::STRING,
                 Validator::NOT_EMPTY,
             ],
@@ -359,7 +349,6 @@ class ExpiryDate extends ProcessingFilter
 
         /* Save state and redirect. */
         $state['passwordChangeUrl'] = $this->passwordChangeUrl;
-        $state['originalUrlParam'] = $this->originalUrlParam;
 
         $id = State::saveState($state, 'expirychecker:expired');
         $url = Module::getModuleURL('expirychecker/expired.php');
@@ -394,7 +383,6 @@ class ExpiryDate extends ProcessingFilter
 
         /* Save state and redirect. */
         $state['passwordChangeUrl'] = $this->passwordChangeUrl;
-        $state['originalUrlParam'] = $this->originalUrlParam;
 
         $id = State::saveState($state, 'expirychecker:about2expire');
         $url = Module::getModuleURL('expirychecker/about2expire.php');

@@ -13,7 +13,11 @@ class AnnouncementTest extends TestCase
      */
     public function testGetSimpleAnnouncement()
     {
-        $results = AnnouncementUtils::getSimpleAnnouncement();
+        $announcementPathFile = '/data/ssp-announcement.php';
+        if (file_exists($announcementPathFile)) {
+            $results = AnnouncementUtils::getSimpleAnnouncement();
+            $this->assertNotNull($results);
+        }
     }
 
 }

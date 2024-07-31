@@ -43,8 +43,6 @@ COPY modules/material/themes/material/profilereview/* $SSP_PATH/modules/profiler
 COPY modules/material/themes/material/silauth/* $SSP_PATH/modules/silauth/templates/
 
 # Copy in SSP override files
-COPY dockerbuild/ssp-overrides/saml20-idp-remote.php $SSP_PATH/metadata/saml20-idp-remote.php
-COPY dockerbuild/ssp-overrides/saml20-sp-remote.php $SSP_PATH/metadata/saml20-sp-remote.php
 COPY dockerbuild/config/* $SSP_PATH/config/
 COPY dockerbuild/ssp-overrides/sp-php.patch sp-php.patch
 RUN patch /data/vendor/simplesamlphp/simplesamlphp/modules/saml/src/Auth/Source/SP.php sp-php.patch
