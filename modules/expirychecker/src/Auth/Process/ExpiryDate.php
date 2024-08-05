@@ -5,11 +5,9 @@ namespace SimpleSAML\Module\expirychecker\Auth\Process;
 use Exception;
 use Psr\Log\LoggerInterface;
 use Sil\Psr3Adapters\Psr3SamlLogger;
-use SimpleSAML\Auth\ProcessingChain;
 use SimpleSAML\Auth\ProcessingFilter;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Module;
-use SimpleSAML\Module\expirychecker\Utilities;
 use SimpleSAML\Module\expirychecker\Validator;
 use SimpleSAML\Session;
 use SimpleSAML\Utils\HTTP;
@@ -213,77 +211,6 @@ class ExpiryDate extends ProcessingFilter
     {
         $daysLeft = $this->getDaysLeftBeforeExpiry($expiryTimestamp);
         return ($daysLeft <= $warnDaysBefore);
-    }
-
-    /**
-     * Redirect the user to the change password url if they haven't gone
-     *   there in the last 10 minutes
-     * @param array $state
-     * @param string $accountName
-     * @param string $passwordChangeUrl
-     * @param string $change_pwd_session
-     * @param int $expiryTimestamp The timestamp when the password will expire.
-     */
-    public function redirect2PasswordChange(
-        array  &$state,
-        string $accountName,
-        string $passwordChangeUrl,
-        string $change_pwd_session,
-        int    $expiryTimestamp
-    ): void {
-        $sessionType = 'expirychecker';
-        /* Save state and redirect. */
-        $id = State::saveState(
-            $state,
-            'expirychecker:redirected_to_password_change_url'
-        );
-        $ignoreMinutes = 60;
-
-        $session = Session::getSessionFromRequest();
-        $idpExpirySession = $session->getData($sessionType, $change_pwd_session);
-
-        // If the session shows that the User already passed this way,
-        //  don't redirect to change password page
-        if ($idpExpirySession !== null) {
-            ProcessingChain::resumeProcessing($state);
-        } else {
-            // Otherwise, set a value to tell us they've probably changed
-            // their password, in order to allow password to get propagated
-            $session->setData(
-                $sessionType,
-                $change_pwd_session,
-                1,
-                (60 * $ignoreMinutes)
-            );
-            $session->save();
-        }
-
-
-        /* If state already has the change password url, go straight there to
-         * avoid eternal loop between that and the idp. Otherwise add the
-         * original destination url as a parameter.  */
-        if (array_key_exists('saml:RelayState', $state)) {
-            $relayState = $state['saml:RelayState'];
-            if (strpos($relayState, $passwordChangeUrl) !== false) {
-                ProcessingChain::resumeProcessing($state);
-            } else {
-                $returnTo = Utilities::getUrlFromRelayState(
-                    $relayState
-                );
-                if (!empty($returnTo)) {
-                    $passwordChangeUrl .= '?returnTo=' . $returnTo;
-                }
-            }
-        }
-
-        $this->logger->warning(json_encode([
-            'event' => 'expirychecker: redirecting to change password',
-            'accountName' => $accountName,
-            'passwordChangeUrl' => $passwordChangeUrl,
-        ]));
-
-        $httpUtils = new HTTP();
-        $httpUtils->redirectTrustedURL($passwordChangeUrl, array());
     }
 
     /**
