@@ -95,16 +95,4 @@ class IdBroker
             $userInfo['member'] ?? []
         );
     }
-
-    /**
-     * Ping the /site/status URL. If the ID Broker's status is fine, the
-     * response string is returned. If not, an exception is thrown.
-     *
-     * @return string "OK"
-     * @throws Exception
-     */
-    public function getSiteStatus(): string
-    {
-        return $this->client->getSiteStatus();
-    }
 }

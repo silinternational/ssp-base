@@ -4,14 +4,12 @@ namespace SimpleSAML\Module\silauth\Auth\Source\auth;
 
 use Exception;
 use Psr\Log\LoggerInterface;
-use SimpleSAML\Module\silauth\Auth\Source\auth\AuthError;
-use SimpleSAML\Module\silauth\Auth\Source\auth\IdBroker;
 use SimpleSAML\Module\silauth\Auth\Source\captcha\Captcha;
-use SimpleSAML\Module\silauth\Auth\Source\time\UtcTime;
-use SimpleSAML\Module\silauth\Auth\Source\time\WaitTime;
+use SimpleSAML\Module\silauth\Auth\Source\http\Request;
 use SimpleSAML\Module\silauth\Auth\Source\models\FailedLoginIpAddress;
 use SimpleSAML\Module\silauth\Auth\Source\models\FailedLoginUsername;
-use SimpleSAML\Module\silauth\Auth\Source\http\Request;
+use SimpleSAML\Module\silauth\Auth\Source\time\UtcTime;
+use SimpleSAML\Module\silauth\Auth\Source\time\WaitTime;
 
 /**
  * An immutable class for making a single attempt to authenticate using a given
@@ -337,11 +335,6 @@ class Authenticator
     protected function setErrorInvalidLogin(): void
     {
         $this->setError(AuthError::CODE_INVALID_LOGIN);
-    }
-
-    protected function setErrorNeedToSetAcctPassword(): void
-    {
-        $this->setError(AuthError::CODE_NEED_TO_SET_ACCT_PASSWORD);
     }
 
     protected function setErrorPasswordRequired(): void

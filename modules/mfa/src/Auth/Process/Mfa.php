@@ -861,24 +861,6 @@ class Mfa extends ProcessingFilter
     }
 
     /**
-     * Get the manager MFA, if it exists. Otherwise, return null.
-     *
-     * @param array[] $mfaOptions The available MFA options.
-     * @return array The manager MFA.
-     * @throws InvalidArgumentException
-     */
-    public static function getManagerMfa(array $mfaOptions): ?array
-    {
-        foreach ($mfaOptions as $mfaOption) {
-            if ($mfaOption['type'] === 'manager') {
-                return $mfaOption;
-            }
-        }
-
-        return null;
-    }
-
-    /**
      * @param string $email an email address
      * @return string with most letters changed to asterisks
      */
