@@ -12,7 +12,6 @@ class AuthError
     const CODE_USERNAME_REQUIRED = 'username_required';
     const CODE_PASSWORD_REQUIRED = 'password_required';
     const CODE_INVALID_LOGIN = 'invalid_login';
-    const CODE_NEED_TO_SET_ACCT_PASSWORD = 'need_to_set_acct_password';
     const CODE_RATE_LIMIT_SECONDS = 'rate_limit_seconds';
     const CODE_RATE_LIMIT_1_MINUTE = 'rate_limit_1_minute';
     const CODE_RATE_LIMIT_MINUTES = 'rate_limit_minutes';
