@@ -50,7 +50,6 @@ $ADMIN_NAME = Env::get('ADMIN_NAME', 'SAML Admin');
 $SHOW_SAML_ERRORS = Env::get('SHOW_SAML_ERRORS', false);
 $ENABLE_DEBUG = Env::get('ENABLE_DEBUG', false);
 $LOGGING_LEVEL = Env::get('LOGGING_LEVEL', 'NOTICE');
-$LOGGING_HANDLER = Env::get('LOGGING_HANDLER', 'stderr');
 
 // Options: https://github.com/silinternational/ssp-base/blob/main/README.md#branding
 $THEME_COLOR_SCHEME = Env::get('THEME_COLOR_SCHEME', null);
@@ -445,7 +444,7 @@ $config = [
      * loggingdir above to 'null'.
      */
     'logging.level' => $logLevels[$LOGGING_LEVEL],
-    'logging.handler' => $LOGGING_HANDLER,
+    'logging.handler' => 'stderr',
 
     /*
      * Specify the format of the logs. Its use varies depending on the log handler used (for instance, you cannot

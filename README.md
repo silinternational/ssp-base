@@ -233,14 +233,14 @@ RUN cd /data/vendor/simplesamlphp/simplesamlphp/modules/material/dictionaries/ov
  && php /data/apply-dictionaries-overrides.php
 ```
 
-## Misc. Notes
+## Custom Modules
 
-* Use of sildisco's LogUser module is optional and triggered via an authproc.
+Several modules are included and active by default. The Authentication Process (AuthProc)
+filters in these modules require metadata configuration as described here.
 
-## Included Modules
+### ExpiryChecker SimpleSAMLphp Module
 
-### ExpiryChecker simpleSAMLphp Module
-A simpleSAMLphp module for warning users that their password will expire soon
+A SimpleSAMLphp module for warning users that their password will expire soon
 or that it has already expired.
 
 **NOTE:** This module does *not* prevent the user from logging in. It merely
@@ -250,7 +250,7 @@ already expired, with the only option being to go change their password now.
 Both of these pages will be bypassed (for varying lengths of time) if the user
 has recently seen one of those two pages, in order to allow the user to get to
 the change-password website (assuming it is also behind this IdP). If the user
-should not be allowed to log in at all, the simpleSAMLphp Auth. Source should
+should not be allowed to log in at all, the SimpleSAMLphp Auth Source should
 consider the credentials provided by the user to be invalid.
 
 The expirychecker module is implemented as an Authentication Processing Filter,
@@ -269,29 +269,38 @@ but you are also able to put them in the `'authproc.idp'` array in your
 
 Example (in `metadata/saml20-idp-hosted.php`):
 
+```php
+use Sil\PhpEnv\Env;
+use Sil\Psr3Adapters\Psr3SamlLogger;
+
+$metadata['idp.example.com'] = [
+    // ...
     'authproc' => [
-        10 => [
+        15 => [
             // Required:
             'class' => 'expirychecker:ExpiryDate',
             'accountNameAttr' => 'cn',
             'expiryDateAttr' => 'schacExpiryDate',
-            'passwordChangeUrl' => 'https://idm.example.com/pwdmgr/',
+            'passwordChangeUrl' => Env::requireEnv('PASSWORD_CHANGE_URL'),
 
             // Optional:
             'warnDaysBefore' => 14,
-            'loggerClass' => '\\Sil\\Psr3Adapters\\Psr3SamlLogger',
+            'loggerClass' => Psr3SamlLogger::class,
         ],
 
         // ...
     ],
+];
+```
 
 The `accountNameAttr` parameter represents the SAML attribute name which has
 the user's account name stored in it. In certain situations, this will be
-displayed to the user, as well as being used in log messages.
+displayed to the user, as well as being used in log messages. This attribute must
+be in the attribute set returned when the user successfully authenticates.
 
 The `expiryDateAttr` parameter represents the SAML attribute name which has
 the user's expiry date, which must be formated as YYYYMMDDHHMMSSZ (e.g.
-`20111011235959Z`). Those two attributes need to be part of the attribute set
+`20111011235959Z`). This attribute must be in the attribute set
 returned when the user successfully authenticates.
 
 The `passwordChangeUrl` parameter contains the URL of the password manager. A
@@ -302,11 +311,11 @@ The `warnDaysBefore` parameter should be an integer representing how many days
 before the expiry date the "about to expire" warning will be shown to the user.
 
 The `loggerClass` parameter specifies the name of a PSR-3 compatible class that
-can be autoloaded, to use as the logger within ExpiryDate.
+can be autoloaded, to use as the logger within the ExpiryDate class.
 
 #### Acknowledgements
 
-This is adapted from the `ssp-iidp-expirycheck` and `expirycheck` modules.
+This module is adapted from the `ssp-iidp-expirycheck` and `expirycheck` modules.
 Thanks to Alex Mihičinac, Steve Moitozo, and Steve Bagwell for the initial work
 they did on those two modules.
 
@@ -321,8 +330,8 @@ Optional configuration is described below.
 
 ##### Google reCAPTCHA
 
-If a site key has been provided in the `RECAPTCHA_SITE_KEY` environment variable, the
-username/password page may require the user prove his/her humanity.
+If a site key and secret have been provided in the `RECAPTCHA_SITE_KEY` and `RECAPTCHA_SECRET`
+environment variables, the username/password page may require the user prove his/her humanity.
 
 ##### Branding
 
@@ -348,13 +357,13 @@ Update `/simplesamlphp/announcement/announcement.php`:
  return 'Some <strong>important</strong> announcement';
 ```
 
-By default, the announcement is whatever is returned by `/simplesamlphp/announcement/announcement.php`._
-
-If provided, an alert will be shown to the user filled with the content of that announcement. HTML is supported.
+By default, the announcement is whatever is returned by `/simplesamlphp/announcement/announcement.php`.
+To add an announcement, copy a custom `announcement.php` to that path. If provided, an alert will be
+shown to the user filled with the content of that announcement. HTML is supported.
 
 #### Testing the Material theme
 
-[Manual tests](./docs/material_tests.md)
+See a full listing of [Manual tests](./docs/material_tests.md) in the `docs` directory in this repo.
 
 #### i18n support
 
@@ -365,11 +374,12 @@ will be utilized. For example, if a translation is provided in Afrikaans for thi
 adjusted to make 'af' an available language. If that's not done, the translation function will not utilize the
 translations even if provided.
 
-### Multi-Factor Authentication (MFA) simpleSAMLphp Module
-A simpleSAMLphp module for prompting the user for MFA credentials (such as a
+### Multi-Factor Authentication (MFA) SimpleSAMLphp Module
+
+A SimpleSAMLphp module for prompting the user for MFA credentials (such as a
 TOTP code, etc.).
 
-This mfa module is implemented as an Authentication Processing Filter,
+This mfa module contains an Authentication Processing Filter,
 or AuthProc. That means it can be configured in the global config.php file or
 the SP remote or IdP hosted metadata.
 
@@ -383,54 +393,67 @@ them to the `'authproc'` array in your `metadata/saml20-idp-hosted.php` file.
 
 Example (for `metadata/saml20-idp-hosted.php`):
 
-    use Sil\PhpEnv\Env;
-    use Sil\Psr3Adapters\Psr3SamlLogger;
+```php
+use Sil\PhpEnv\Env;
+use Sil\Psr3Adapters\Psr3SamlLogger;
 
+$metadata['idp.example.com'] = [
     // ...
-
     'authproc' => [
         10 => [
             // Required:
             'class' => 'mfa:Mfa',
             'employeeIdAttr' => 'employeeNumber',
             'idBrokerAccessToken' => Env::get('ID_BROKER_ACCESS_TOKEN'),
-            'idBrokerAssertValidIp' => Env::get('ID_BROKER_ASSERT_VALID_IP'),
             'idBrokerBaseUri' => Env::get('ID_BROKER_BASE_URI'),
             'idBrokerTrustedIpRanges' => Env::get('ID_BROKER_TRUSTED_IP_RANGES'),
             'idpDomainName' => Env::get('IDP_DOMAIN_NAME'),
             'mfaSetupUrl' => Env::get('MFA_SETUP_URL'),
 
             // Optional:
+            'idBrokerAssertValidIp' => Env::get('ID_BROKER_ASSERT_VALID_IP'),
             'loggerClass' => Psr3SamlLogger::class,
         ],
-
-        // ...
+        // ... more AuthProc filters ...
     ],
+];
+```
 
 The `employeeIdAttr` parameter represents the SAML attribute name which has
 the user's Employee ID stored in it. In certain situations, this may be
-displayed to the user, as well as being used in log messages.
+displayed to the user, as well as being used in log messages. This attribute must
+be in the attribute set returned when the user successfully authenticates.
 
-The `loggerClass` parameter specifies the name of a PSR-3 compatible class that
-can be autoloaded, to use as the logger within the module.
+`idBrokerAccessToken` is an authentication token for access to the id-broker API
 
-The `mfaSetupUrl` parameter is for the URL of where to send the user if they
-want/need to set up MFA.
+`idBrokerBaseUri` is the base URL for the id-broker API. It must be a full http URL.
+
+`idBrokerTrustedIpRanges` is a comma-separated list of CIDR-formatted IPv4 or IPv6 networks. The PHP
+client for the id-broker API performs a DNS check against this list. If the resulting IP address is
+not in any of the trusted ranges, it will not proceed with connection to the API.
 
 The `idpDomainName` parameter is used to assemble the Relying Party Origin
 (RP Origin) for WebAuthn MFA options.
 
+The `mfaSetupUrl` parameter is for the URL of where to send the user if they
+want/need to set up MFA.
+
+`idBrokerAssertValidIp` can be set to 'false' to bypass IP checks. The default is 'true'.
+
+The `loggerClass` parameter specifies the name of a PSR-3 compatible class that
+can be autoloaded, to use as the logger within the module.
+
 #### Why use an AuthProc for MFA?
 Based on...
 
-- the existence of multiple other simpleSAMLphp modules used for MFA and
+- the existence of multiple other SimpleSAMLphp modules used for MFA and
   implemented as AuthProcs,
 - implementing my solution as an AuthProc and having a number of tests that all
   confirm that it is working as desired, and
 - a discussion in the SimpleSAMLphp mailing list about this:
   https://groups.google.com/d/msg/simplesamlphp/ocQols0NCZ8/RL_WAcryBwAJ
 
-... it seems sufficiently safe to implement MFA using a simpleSAMLphp AuthProc.
+... it seems sufficiently safe to implement MFA using a SimpleSAMLphp AuthProc.
 
 For more of the details, please see this Stack Overflow Q&A:
 https://stackoverflow.com/q/46566014/3813891
@@ -442,10 +465,10 @@ contributed to that work.
 
 ### Profile Review SimpleSAMLphp Module
 
-A simpleSAMLphp module for prompting the user review their profile (such as
+A SimpleSAMLphp module for prompting the user review their profile (such as
 2-step verification, email, etc.).
 
-This module is implemented as an Authentication Processing Filter,
+This module contains an Authentication Processing Filter,
 or AuthProc. That means it can be configured in the global config.php file or
 the SP remote or IdP hosted metadata.
 
@@ -459,43 +482,82 @@ them to the `'authproc'` array in your `metadata/saml20-idp-hosted.php` file.
 
 Example (for `metadata/saml20-idp-hosted.php`):
 
-    use Sil\PhpEnv\Env;
-    use Sil\Psr3Adapters\Psr3SamlLogger;
+```php
+use Sil\PhpEnv\Env;
+use Sil\Psr3Adapters\Psr3SamlLogger;
 
+$metadata['idp.example.com'] = [
     // ...
-
     'authproc' => [
-        10 => [
+        30 => [
             // Required:
             'class' => 'profilereview:ProfileReview',
             'employeeIdAttr' => 'employeeNumber',
             'profileUrl' => Env::get('PROFILE_URL'),
-            'mfaLearnMoreUrl' => Env::get('MFA_LEARN_MORE_URL'),
 
             // Optional:
+            'mfaLearnMoreUrl' => Env::get('MFA_LEARN_MORE_URL'),
             'loggerClass' => Psr3SamlLogger::class,
         ],
-
-        // ...
+        // ... other AuthProc filters ...
     ],
+```
 
 The `employeeIdAttr` parameter represents the SAML attribute name which has
 the user's Employee ID stored in it. In certain situations, this may be
 displayed to the user, as well as being used in log messages.
 
-The `loggerClass` parameter specifies the name of a PSR-3 compatible class that
-can be autoloaded, to use as the logger within ExpiryDate.
-
 The `profileUrl` parameter is for the URL of where to send the user if they
 want/need to update their profile.
 
+`mfaLearnMoreUrl` can be set to a URL the user can visit to learn more about MFA. It is
+used in a link on the profilereview 'nag-for-mfa' page.
+
+The `loggerClass` parameter specifies the name of a PSR-3 compatible class that
+can be autoloaded, to use as the logger within ExpiryDate.
+
 ### SilAuth SimpleSAMLphp module
 
-SimpleSAMLphp auth module implementing custom business logic:
+SimpleSAMLphp module containing an Auth Source implementing custom business logic:
 
 - authentication
 - rate limiting
 - status endpoint
+
+#### Configuration
+
+The following configuration is included in the ssp-base Docker image:
+
+authsources.php:
+```php
+use SimpleSAML\Module\silauth\Auth\Source\config\ConfigManager;
+
+$config = [
+    // ...
+    'silauth' => ConfigManager::getSspConfig(),
+];
+```
+
+The `ConfigManager::getSspConfig` helper expects the following environment variables to be defined:
+
+```
+TRUSTED_IP_ADDRESSES=
+ID_BROKER_ACCESS_TOKEN=
+ID_BROKER_ASSERT_VALID_IP=
+ID_BROKER_BASE_URI=
+ID_BROKER_TRUSTED_IP_RANGES=
+IDP_DOMAIN_NAME=
+MYSQL_HOST=
+MYSQL_DATABASE=
+MYSQL_USER=
+MYSQL_PASSWORD=
+RECAPTCHA_SITE_KEY=
+RECAPTCHA_SECRET=
+PROFILE_URL=
+HELP_CENTER_URL=
+```
+
+Reference `local.env.dist` for details on each of these variables.
 
 #### Database Migrations
 To create another database migration file, run the following (replacing
@@ -569,26 +631,64 @@ To check the status of the website, you can access this URL:
 
 ### SilDisco module for SAML Discovery
 
+A SimpleSAMLphp module containing a custom IdP Discovery class and four Authentication Processing
+filters. It is meant to be used as a SAML Hub, also known as a SAML Proxy. For more information, see
+the [Module Overview](./docs/overview.md) in the docs/ folder.
+
 #### Configuration
 
-Ensure the DYNAMO_* environment variables are set as shown in the local.env.dist file.
+##### Authentication Process filters
 
-#### Overview
+Detailed documentation is in [Editing Authprocs](./docs/editing_authprocs.md) in the docs/ folder of this repo. Following is a
+brief summary:
 
-[Module Overview](./docs/overview.md)
+Two of the AuthProc filters are configured in the SimpleSAMLphp config.php file when the
+`HUB_MODE` variable is set to `true`:
+
+```php
+if ($HUB_MODE) {
+    // prefix the 'member' (urn:oid:2.5.4.31) attribute elements with idp.idp_name.
+    $config['authproc.idp'][48] = 'sildisco:TagGroup';
+    $config['authproc.idp'][49] = 'sildisco:AddIdp2NameId';
+}
+```
+
+The `LogUser` AuthProc can be configured in saml20-idp-remote.php:
+
+```php
+$metadata['idp.example.com'] = [
+    // ...
+    'authproc' => [
+        97 => [
+            'class' =>'sildisco:LogUser',
+            'DynamoRegion' => 'us-east-1',
+            'DynamoLogTable' => 'idp-hub-prod-user-log',
+        ],
+    ],
+];
+```
+
+The `TrackIdps` AuthProc can be configured in saml20-idp-hosted.php:
+
+```php
+$metadata['idp.example.com'] = [
+    // ...
+    'authproc' => [
+        95 => [
+            'class' => 'sildisco:TrackIdps',
+        ]
+    ],
+];
+```
 
 #### The Hub
 
-[The Hub](./docs/the_hub.md)
-
-#### Authprocs
-
-[Editing Authprocs](./docs/editing_authprocs.md)
+For a full description of [The Hub](./docs/the_hub.md), see the docs/ folder.
 
 #### Development
 
-[Development](./docs/development.md)
+Details for [Development](./docs/development.md) in the docs/ folder.
 
 #### Functional Testing
 
-[Functional Testing](./docs/functional_testing.md)
+Information about [Functional Testing](./docs/functional_testing.md) in the docs/ folder.
