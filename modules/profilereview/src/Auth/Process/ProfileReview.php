@@ -222,7 +222,7 @@ class ProfileReview extends ProcessingFilter
         $isHeadedToProfileUrl = self::isHeadedToProfileUrl($state, $this->profileUrl);
 
         $mfa = $this->getAttributeAllValues('mfa', $state);
-        $method = $this->getAttributeAllValues('method', $state);
+        $method = $this->getAllMethods($state);
         $profileReview = $this->getAttribute('profile_review', $state);
 
         if (!$isHeadedToProfileUrl) {
@@ -240,7 +240,7 @@ class ProfileReview extends ProcessingFilter
             }
 
             if (self::needToShow($profileReview, self::REVIEW_PAGE)) {
-                $this->redirectToProfileReview($state, $employeeId, $mfa['options'], $method['options']);
+                $this->redirectToProfileReview($state, $employeeId);
             }
         }
 
@@ -264,29 +264,38 @@ class ProfileReview extends ProcessingFilter
      *
      * @param array $state The state data.
      * @param string $employeeId The Employee ID of the user account.
-     * @param array $mfaOptions A list of the mfa options.
-     * @param array $methodOptions A list of the method options.
      */
-    protected function redirectToProfileReview(&$state, $employeeId, $mfaOptions, $methodOptions)
+    protected function redirectToProfileReview(array &$state, string $employeeId): void
     {
-        assert('is_array($state)');
-
-        foreach ($mfaOptions as $key => $mfaOption) {
-            if ($mfaOption['type'] === 'manager') {
-                unset ($mfaOptions[$key]);
-            }
-        }
+        $mfaOptions = $this->getAllMfasExceptManager($state);
+        $methodOptions = $this->getAllMethods($state)['options'];
 
         if (count($mfaOptions) == 0 && count($methodOptions) == 0) {
             return;
         }
 
+        $this->redirectToNag($state, $employeeId, 'review');
+    }
+
+    /**
+     * Redirect user to a template
+     *
+     * @param array $state
+     * @param string $employeeId
+     * @param string $template
+     */
+    protected function redirectToNag(array &$state, string $employeeId, string $template): void
+    {
+        $mfaOptions = $this->getAllMfasExceptManager($state);
+        $methodOptions = $this->getAllMethods($state)['options'];
+
         /* Save state and redirect. */
         $state['employeeId'] = $employeeId;
+        $state['mfaLearnMoreUrl'] = $this->mfaLearnMoreUrl;
         $state['profileUrl'] = $this->profileUrl;
         $state['mfaOptions'] = $mfaOptions;
         $state['methodOptions'] = $methodOptions;
-        $state['template'] = 'review';
+        $state['template'] = $template;
 
         $stateId = State::saveState($state, self::STAGE_SENT_TO_NAG);
         $url = Module::getModuleURL('profilereview/nag.php');
@@ -295,24 +304,20 @@ class ProfileReview extends ProcessingFilter
         $httpUtils->redirectTrustedURL($url, array('StateId' => $stateId));
     }
 
-    /**
-     * @param array $state
-     * @param string $employeeId
-     * @param string $template
-     */
-    protected function redirectToNag(&$state, $employeeId, $template)
+    public function getAllMethods(array $state): ?array
     {
-        /* Save state and redirect. */
-        $state['employeeId'] = $employeeId;
-        $state['mfaLearnMoreUrl'] = $this->mfaLearnMoreUrl;
-        $state['profileUrl'] = $this->profileUrl;
-        $state['template'] = $template;
+        return $this->getAttributeAllValues('method', $state);
+    }
 
-        $stateId = State::saveState($state, self::STAGE_SENT_TO_NAG);
-        $url = Module::getModuleURL('profilereview/nag.php');
-
-        $httpUtils = new HTTP();
-        $httpUtils->redirectTrustedURL($url, array('StateId' => $stateId));
+    protected function getAllMfasExceptManager(array $state): array
+    {
+        $mfaOptions = $this->getAttributeAllValues('mfa', $state)['options'];
+        foreach ($mfaOptions as $key => $mfaOption) {
+            if ($mfaOption['type'] === 'manager') {
+                unset ($mfaOptions[$key]);
+            }
+        }
+        return $mfaOptions;
     }
 
     public static function hasSeenSplashPageRecently(string $page)
