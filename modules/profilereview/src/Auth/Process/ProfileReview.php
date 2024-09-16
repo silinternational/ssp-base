@@ -222,7 +222,7 @@ class ProfileReview extends ProcessingFilter
         $isHeadedToProfileUrl = self::isHeadedToProfileUrl($state, $this->profileUrl);
 
         $mfa = $this->getAttributeAllValues('mfa', $state);
-        $method = $this->getAllMethods($state);
+        $method = $this->getMethod($state);
         $profileReview = $this->getAttribute('profile_review', $state);
 
         if (!$isHeadedToProfileUrl) {
@@ -267,8 +267,8 @@ class ProfileReview extends ProcessingFilter
      */
     protected function redirectToProfileReview(array &$state, string $employeeId): void
     {
-        $mfaOptions = $this->getAllMfasExceptManager($state);
-        $methodOptions = $this->getAllMethods($state)['options'];
+        $mfaOptions = $this->getAllMfaOptionsExceptManager($state);
+        $methodOptions = $this->getMethod($state)['options'];
 
         if (count($mfaOptions) == 0 && count($methodOptions) == 0) {
             return;
@@ -286,8 +286,8 @@ class ProfileReview extends ProcessingFilter
      */
     protected function redirectToNag(array &$state, string $employeeId, string $template): void
     {
-        $mfaOptions = $this->getAllMfasExceptManager($state);
-        $methodOptions = $this->getAllMethods($state)['options'];
+        $mfaOptions = $this->getAllMfaOptionsExceptManager($state);
+        $methodOptions = $this->getMethod($state)['options'];
 
         /* Save state and redirect. */
         $state['employeeId'] = $employeeId;
@@ -304,12 +304,12 @@ class ProfileReview extends ProcessingFilter
         $httpUtils->redirectTrustedURL($url, array('StateId' => $stateId));
     }
 
-    public function getAllMethods(array $state): ?array
+    public function getMethod(array $state): ?array
     {
         return $this->getAttributeAllValues('method', $state);
     }
 
-    protected function getAllMfasExceptManager(array $state): array
+    protected function getAllMfaOptionsExceptManager(array $state): array
     {
         $mfaOptions = $this->getAttributeAllValues('mfa', $state)['options'];
         foreach ($mfaOptions as $key => $mfaOption) {
