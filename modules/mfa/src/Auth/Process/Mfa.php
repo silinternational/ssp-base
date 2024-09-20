@@ -454,6 +454,11 @@ class Mfa extends ProcessingFilter
                 $mfaSubmission,
                 $rpOrigin
             );
+
+            if ($mfaDataFromBroker === true || count($mfaDataFromBroker) > 0) {
+                $user = $idBrokerClient->updateUserLastLogin($employeeId);
+                print("User: $user->employee_id last login updated to: $user->last_login_utc");
+            }
         } catch (\Throwable $t) {
             $message = 'Something went wrong while we were trying to do the '
                 . '2-step verification.';
@@ -697,6 +702,8 @@ class Mfa extends ProcessingFilter
                 $expectedString = self::generateRememberMeCookieString($rememberSecret, $state['employeeId'], $expireDate, $mfaOptions);
                 return password_verify($expectedString, $cookieHash);
             }
+        $idBrokerClient = self::getIdBrokerClient($state['idBrokerConfig']);
+        $idBrokerClient->updateUserLastLogin($state['employeeId']);
         }
 
         return false;
