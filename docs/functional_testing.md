@@ -24,7 +24,7 @@ See [Local Testing](../README.md#local-testing) for instructions to set up your 
 ### Ensure main SP goes to discovery page and can login through the main IdP
 * Kill all your cookies for ssp\*
 * Browse to http://ssp-sp1.local:8081/module.php/core/authenticate.php
-* Click on ssp-hub
+* Click on ssp-hub-custom-port
 * This should redirect to http://ssp-hub.local/module.php/sildisco/disco.php?entityID=ssp-hub.local&...
 * Select IdP 1
 * This should redirect to http://ssp-idp1.local:8085/module.php/core/loginuserpass.php?AuthState=...
@@ -49,14 +49,14 @@ See [Local Testing](../README.md#local-testing) for instructions to set up your 
 ### Ensure second SP can login through the second IdP
 * Kill all your cookies for ssp\*
 * Browse to http://ssp-sp2.local:8082/module.php/core/authenticate.php
-* Click on ssp-hub
+* Click on ssp-hub-custom-port
 * This should redirect to http://ssp-idp2.local:8086/module.php/core/loginuserpass.php?AuthState=...
 * Login as admin using "b" as the password.
 * This should get you to http://ssp-sp2.local:8082/module.php/core/authenticate.php?as=ssp-hub and show your saml attributes (but there are none).
 
 ### Ensure main SP goes to discovery page but is authenticated
 * Browse to http://ssp-sp1.local:8081/module.php/core/authenticate.php
-* Click on ssp-hub
+* Click on ssp-hub-custom-port
 * This should redirect to http://ssp-hub.local/module.php/sildisco/disco.php?entityID=ssp-hub.local&...
 * Select IdP 2
 * This should return you to the main SP at http://ssp-sp1.local:8081/module.php/core/authenticate.php?as=ssp-hub and show your saml attributes (but there are none).
@@ -71,7 +71,7 @@ See [Local Testing](../README.md#local-testing) for instructions to set up your 
 ### Ensure third SP can login through the main IdP
 * Kill all your cookies for ssp\*
 * Browse to http://ssp-sp3.local:8083/module.php/core/authenticate.php
-* Click on ssp-hub
+* Click on ssp-hub-custom-port
 * This should redirect to http://ssp-idp1.local:8085/module.php/core/loginuserpass.php?AuthState=...
 * Login as admin using "a" as the password.
 * This should get you to http://ssp-sp3.local:8083/module.php/core/authenticate.php?as=ssp-hub and show your saml attributes.
@@ -92,7 +92,7 @@ See [Local Testing](../README.md#local-testing) for instructions to set up your 
 ### Ensure main SP goes to discovery page and can login through the second IdP
 * Kill all your cookies for ssp\*
 * Browse to http://ssp-sp1.local:8081/module.php/core/authenticate.php
-* Click on ssp-hub
+* Click on ssp-hub-custom-port
 * This should redirect to http://ssp-hub.local/module.php/sildisco/disco.php?entityID=ssp-hub.local&...
 * Select IdP 2
 * This should redirect to http://ssp-idp2.local:8086/module.php/core/loginuserpass.php?AuthState=...
@@ -117,14 +117,14 @@ See [Local Testing](../README.md#local-testing) for instructions to set up your 
 ### Ensure second SP can login through the second IdP
 * Kill all your cookies for ssp\*
 * Browse to http://ssp-sp2.local:8082/module.php/core/authenticate.php
-* Click on ssp-hub
+* Click on ssp-hub-custom-port
 * This should redirect to http://ssp-idp2.local:8086/module.php/core/loginuserpass.php?AuthState=...
 * Login as admin using "b" as the password.
 * This should get you to http://ssp-sp2.local:8082/module.php/core/authenticate.php?as=ssp-hub and show your saml attributes (but there are none).
 
 ### Ensure main SP goes to discovery page and must authenticate when choosing the main Idp
 * Browse to http://ssp-sp1.local:8081/module.php/core/authenticate.php
-* Click on ssp-hub
+* Click on ssp-hub-custom-port
 * This should redirect to http://ssp-hub.local/module.php/sildisco/disco.php?entityID=ssp-hub.local&...
 * Select IdP 1
 * This should redirect to http://ssp-idp1.local:8085/module.php/core/loginuserpass.php?AuthState=...
