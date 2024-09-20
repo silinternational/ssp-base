@@ -456,8 +456,7 @@ class Mfa extends ProcessingFilter
             );
 
             if ($mfaDataFromBroker === true || count($mfaDataFromBroker) > 0) {
-                $user = $idBrokerClient->updateUserLastLogin($employeeId);
-                print("User: $user->employee_id last login updated to: $user->last_login_utc");
+                $idBrokerClient->updateUserLastLogin($employeeId);
             }
         } catch (\Throwable $t) {
             $message = 'Something went wrong while we were trying to do the '
