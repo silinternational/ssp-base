@@ -161,7 +161,7 @@ class Mfa extends ProcessingFilter
      * @param array $idBrokerConfig
      * @return IdBrokerClient
      */
-    protected static function getIdBrokerClient(array $idBrokerConfig): IdBrokerClient|FakeIdBrokerClient
+    static function getIdBrokerClient(array $idBrokerConfig): IdBrokerClient|FakeIdBrokerClient
     {
         $clientClass = $idBrokerConfig['clientClass'];
         $baseUri = $idBrokerConfig['baseUri'];
@@ -701,8 +701,6 @@ class Mfa extends ProcessingFilter
                 $expectedString = self::generateRememberMeCookieString($rememberSecret, $state['employeeId'], $expireDate, $mfaOptions);
                 return password_verify($expectedString, $cookieHash);
             }
-        $idBrokerClient = self::getIdBrokerClient($state['idBrokerConfig']);
-        $idBrokerClient->updateUserLastLogin($state['employeeId']);
         }
 
         return false;
