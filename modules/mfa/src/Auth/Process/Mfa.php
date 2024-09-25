@@ -161,7 +161,7 @@ class Mfa extends ProcessingFilter
      * @param array $idBrokerConfig
      * @return IdBrokerClient
      */
-    static function getIdBrokerClient(array $idBrokerConfig): IdBrokerClient|FakeIdBrokerClient
+    private static function getIdBrokerClient(array $idBrokerConfig): IdBrokerClient|FakeIdBrokerClient
     {
         $clientClass = $idBrokerConfig['clientClass'];
         $baseUri = $idBrokerConfig['baseUri'];
@@ -699,7 +699,12 @@ class Mfa extends ProcessingFilter
             // Check if value of expireDate is in future
             if ((int)$expireDate > time()) {
                 $expectedString = self::generateRememberMeCookieString($rememberSecret, $state['employeeId'], $expireDate, $mfaOptions);
-                return password_verify($expectedString, $cookieHash);
+                $isValid = password_verify($expectedString, $cookieHash);
+
+                $idBrokerClient = self::getIdBrokerClient($state['idBrokerConfig']);
+                $idBrokerClient->updateUserLastLogin($state['employeeId']);
+
+                return $isValid;
             }
         }
 
