@@ -57,6 +57,26 @@ class FakeIdBrokerClient
     }
 
     /**
+     * Update the User last_login_utc by calling the internal method
+     * @param string $employeeId
+     * @return array An array of information about the updated user only including last_login_utc and employee_id
+     * @throws Exception
+     */
+    public function updateUserLastLogin(string $employeeId): array
+    {
+        if (empty($employeeId)) {
+            throw new InvalidArgumentException('employeeId is required');
+        }
+
+        $nowUtc = gmdate('Y-m-d H:i:s');
+
+        return [
+            'employee_id' => $employeeId,
+            'last_login_utc' => $nowUtc,
+        ];
+    }
+
+    /**
      * Create a new MFA configuration
      * @param string $employee_id
      * @param string $type
