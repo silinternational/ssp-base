@@ -5,7 +5,7 @@
   },
   {
     "name": "aws/aws-sdk-php",
-    "version": "3.322.2"
+    "version": "3.323.1"
   },
   {
     "name": "cebe/markdown",
@@ -125,7 +125,7 @@
   },
   {
     "name": "roave/security-advisories",
-    "version": "dev-master 4b6b927"
+    "version": "dev-master c90faeb"
   },
   {
     "name": "robrichards/xmlseclibs",
@@ -160,28 +160,16 @@
     "version": "v1.3.4"
   },
   {
-    "name": "simplesamlphp/composer-xmlprovider-installer",
-    "version": "v1.0.1"
-  },
-  {
     "name": "simplesamlphp/saml2",
     "version": "v4.6.12"
   },
   {
     "name": "simplesamlphp/simplesamlphp",
-    "version": "v2.3.2"
+    "version": "v2.2.3"
   },
   {
     "name": "simplesamlphp/simplesamlphp-assets-base",
     "version": "v2.3.0"
-  },
-  {
-    "name": "simplesamlphp/xml-common",
-    "version": "v1.18.4"
-  },
-  {
-    "name": "simplesamlphp/xml-security",
-    "version": "v1.9.5"
   },
   {
     "name": "symfony/cache",
@@ -242,10 +230,6 @@
   {
     "name": "symfony/intl",
     "version": "v6.4.12"
-  },
-  {
-    "name": "symfony/password-hasher",
-    "version": "v6.4.8"
   },
   {
     "name": "symfony/polyfill-ctype",
