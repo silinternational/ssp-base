@@ -64,8 +64,8 @@ class FakeIdBrokerClient
      */
     public function updateUserLastLogin(string $employeeId): array
     {
-        if (empty($employee_id)) {
-            throw new InvalidArgumentException('employee_id is required');
+        if (empty($employeeId)) {
+            throw new InvalidArgumentException('employeeId is required');
         }
 
         $nowUtc = gmdate('Y-m-d H:i:s');
