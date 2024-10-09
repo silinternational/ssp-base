@@ -5,6 +5,7 @@ namespace SimpleSAML\Module\sildisco\Auth\Process;
 use SAML2\XML\saml\NameID;
 use SimpleSAML\Auth\ProcessingFilter;
 use SimpleSAML\Error;
+use SimpleSAML\Error\Exception;
 use SimpleSAML\Logger;
 use SimpleSAML\Metadata\MetaDataStorageHandler;
 
@@ -31,8 +32,6 @@ class AddIdp2NameId extends ProcessingFilter
     const DELIMITER = '@'; // The symbol between the NameID proper and the Idp code.
 
     const SP_NAMEID_ATTR = 'saml:sp:NameID'; // The key for the NameID
-
-    const VALUE_KEY = 'Value';  // The value key for the NamedID entry
 
     const ERROR_PREFIX = "AddIdp2NameId: "; // Text to go at the beginning of error messages
 
@@ -66,8 +65,6 @@ class AddIdp2NameId extends ProcessingFilter
      * The format of this NameID.
      *
      * This property must be initialized the subclass.
-     *
-     * @var string
      */
     protected ?string $format;
 
@@ -113,12 +110,12 @@ class AddIdp2NameId extends ProcessingFilter
         $suffix = self::DELIMITER . $IDPNamespace;
         $value = $nameId->getValue();
         $nameId->setValue($value . $suffix);
-        return;
     }
 
 
     /**
      * @inheritDoc
+     * @throws Exception
      */
     public function process(array &$state): void
     {

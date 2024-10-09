@@ -3,6 +3,7 @@
 namespace SimpleSAML\Module\silauth\Auth\Source\config;
 
 use SimpleSAML\Module\silauth\Auth\Source\text\Text;
+use yii\base\InvalidConfigException;
 use yii\console\Application as ConsoleApplication;
 use yii\web\Application as WebApplication;
 
@@ -79,6 +80,9 @@ class ConfigManager
         }
     }
 
+    /**
+     * @throws InvalidConfigException
+     */
     public static function getYii2ConsoleApp(array $customConfig): ConsoleApplication
     {
         self::initializeYiiClass();
@@ -86,6 +90,9 @@ class ConfigManager
         return new ConsoleApplication($mergedYii2Config);
     }
 
+    /**
+     * @throws InvalidConfigException
+     */
     public static function initializeYii2WebApp(array $customConfig = []): void
     {
         self::initializeYiiClass();

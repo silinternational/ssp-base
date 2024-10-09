@@ -24,7 +24,11 @@ $state = State::loadState($stateId, Mfa::STAGE_SENT_TO_MFA_PROMPT);
 $logger = LoggerFactory::getAccordingToState($state);
 
 if (filter_has_var(INPUT_POST, 'send')) {
-    $errorMessage = Mfa::sendManagerCode($state, $logger);
+    try {
+        Mfa::sendManagerCode($state, $logger);
+    } catch (Exception $e) {
+        $errorMessage = $e->getMessage();
+    }
 } elseif (filter_has_var(INPUT_POST, 'cancel')) {
     $moduleUrl = SimpleSAML\Module::getModuleURL('mfa/prompt-for-mfa.php', [
         'StateId' => $stateId,

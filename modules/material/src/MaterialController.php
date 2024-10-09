@@ -2,6 +2,7 @@
 
 namespace SimpleSAML\Module\material;
 
+use Exception;
 use SimpleSAML\Configuration;
 use SimpleSAML\XHTML\TemplateControllerInterface;
 use Twig\Environment;
@@ -11,7 +12,7 @@ class MaterialController implements TemplateControllerInterface
     /**
      * Modify the twig environment after its initialization (e.g. add filters or extensions).
      *
-     * @param \Twig\Environment $twig The current twig environment.
+     * @param Environment $twig The current twig environment.
      * @return void
      */
     public function setUpTwig(Environment &$twig): void
@@ -24,6 +25,7 @@ class MaterialController implements TemplateControllerInterface
      *
      * @param array $data The current data used by the template.
      * @return void
+     * @throws Exception
      */
     public function display(array &$data): void
     {

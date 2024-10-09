@@ -37,6 +37,7 @@ class ExpiryDate extends ProcessingFilter
      *
      * @param array $config Configuration information about this filter.
      * @param mixed $reserved For future use.
+     * @throws Exception
      */
     public function __construct(array $config, mixed $reserved)
     {
@@ -65,6 +66,9 @@ class ExpiryDate extends ProcessingFilter
         ]);
     }
 
+    /**
+     * @throws Exception
+     */
     protected function loadValuesFromConfig(array $config, array $attributeRules): void
     {
         foreach ($attributeRules as $attribute => $rules) {
@@ -141,6 +145,9 @@ class ExpiryDate extends ProcessingFilter
         return $expiryTimestamp;
     }
 
+    /**
+     * @throws Exception
+     */
     public static function hasSeenSplashPageRecently(): bool
     {
         $session = Session::getSessionFromRequest();
@@ -150,6 +157,9 @@ class ExpiryDate extends ProcessingFilter
         );
     }
 
+    /**
+     * @throws Exception
+     */
     public static function skipSplashPagesFor(int $seconds): void
     {
         $session = Session::getSessionFromRequest();
@@ -162,6 +172,9 @@ class ExpiryDate extends ProcessingFilter
         $session->save();
     }
 
+    /**
+     * @throws Exception
+     */
     protected function initLogger(array $config): void
     {
         $loggerClass = $config['loggerClass'] ?? Psr3SamlLogger::class;
@@ -215,6 +228,7 @@ class ExpiryDate extends ProcessingFilter
 
     /**
      * @inheritDoc
+     * @throws Exception
      */
     public function process(array &$state): void
     {
@@ -244,7 +258,7 @@ class ExpiryDate extends ProcessingFilter
         ]));
 
         if ($this->isExpired($expiryTimestamp)) {
-            $this->redirectToExpiredPage($state, $accountName, $expiryTimestamp);
+            $this->redirectToExpiredPage($state, $accountName);
         }
 
         // Display a password expiration warning page if it's time to do so.
@@ -263,9 +277,8 @@ class ExpiryDate extends ProcessingFilter
      *
      * @param array $state The state data.
      * @param string $accountName The name of the user account.
-     * @param int $expiryTimestamp When the password expired.
      */
-    public function redirectToExpiredPage(array &$state, string $accountName, int $expiryTimestamp): void
+    public function redirectToExpiredPage(array &$state, string $accountName): void
     {
         assert('is_array($state)');
 

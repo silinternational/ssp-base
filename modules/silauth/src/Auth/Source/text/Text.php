@@ -14,7 +14,8 @@ class Text
     public static function sanitizeString(mixed $input): string
     {
         $inputAsString = is_string($input) ? $input : '';
-        $output = filter_var($inputAsString, FILTER_SANITIZE_STRING, [
+        $tagsStripped = strip_tags($inputAsString);
+        $output = filter_var($tagsStripped, FILTER_DEFAULT, [
             'flags' => FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_BACKTICK,
         ]);
         return trim($output);

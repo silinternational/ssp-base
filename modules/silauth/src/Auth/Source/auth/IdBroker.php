@@ -2,6 +2,7 @@
 
 namespace SimpleSAML\Module\silauth\Auth\Source\auth;
 
+use Exception;
 use Psr\Log\LoggerInterface;
 use Sil\Idp\IdBroker\Client\IdBrokerClient;
 use Sil\SspBase\Features\fakes\FakeIdBrokerClient;
@@ -30,6 +31,7 @@ class IdBroker
      *     the ID Broker API.
      * @param bool $assertValidIp (Optional:) Whether or not to assert that the
      *     IP address for the ID Broker API is trusted.
+     * @throws Exception
      */
     public function __construct(
         string          $baseUri,
@@ -63,7 +65,7 @@ class IdBroker
      * @param string $username The username.
      * @param string $password The password.
      * @return array|null The user's attributes (if successful), otherwise null.
-     * @throws \Exception
+     * @throws Exception
      */
     public function getAuthenticatedUser(string $username, string $password): ?array
     {
