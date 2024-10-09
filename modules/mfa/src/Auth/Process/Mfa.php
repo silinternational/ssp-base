@@ -700,9 +700,11 @@ class Mfa extends ProcessingFilter
             if ((int)$expireDate > time()) {
                 $expectedString = self::generateRememberMeCookieString($rememberSecret, $state['employeeId'], $expireDate, $mfaOptions);
                 $isValid = password_verify($expectedString, $cookieHash);
-
-                $idBrokerClient = self::getIdBrokerClient($state['idBrokerConfig']);
-                $idBrokerClient->updateUserLastLogin($state['employeeId']);
+                
+                if ($isValid) {
+                    $idBrokerClient = self::getIdBrokerClient($state['idBrokerConfig']);
+                    $idBrokerClient->updateUserLastLogin($state['employeeId']);
+                }
 
                 return $isValid;
             }
