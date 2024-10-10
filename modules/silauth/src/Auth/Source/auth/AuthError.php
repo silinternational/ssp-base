@@ -17,7 +17,7 @@ class AuthError
     const CODE_RATE_LIMIT_MINUTES = 'rate_limit_minutes';
 
     private string $code;
-    private array $messageParams;
+    private array $messageParams = [];
 
     /**
      * Constructor.
