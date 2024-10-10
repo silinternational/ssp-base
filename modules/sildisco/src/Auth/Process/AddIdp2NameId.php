@@ -33,6 +33,8 @@ class AddIdp2NameId extends ProcessingFilter
 
     const SP_NAMEID_ATTR = 'saml:sp:NameID'; // The key for the NameID
 
+    const VALUE_KEY = 'Value';  // The value key for the NamedID entry
+
     const ERROR_PREFIX = "AddIdp2NameId: "; // Text to go at the beginning of error messages
 
     const FORMAT_KEY = 'Format';
