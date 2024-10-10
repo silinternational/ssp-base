@@ -23,6 +23,7 @@ $state = State::loadState($stateId, Mfa::STAGE_SENT_TO_MFA_PROMPT);
 
 $logger = LoggerFactory::getAccordingToState($state);
 
+$errorMessage = null;
 if (filter_has_var(INPUT_POST, 'send')) {
     try {
         Mfa::sendManagerCode($state, $logger);
@@ -41,7 +42,7 @@ $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'mfa:send-manager-mfa');
 $t->data['manager_email'] = $state['managerEmail'];
-$t->data['error_message'] = $errorMessage ?? null;
+$t->data['error_message'] = $errorMessage;
 $t->send();
 
 $logger->info(json_encode([
