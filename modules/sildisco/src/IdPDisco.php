@@ -5,6 +5,7 @@ namespace SimpleSAML\Module\sildisco;
 use Sil\SspUtils\AnnouncementUtils;
 use Sil\SspUtils\Utils;
 use SimpleSAML\Auth;
+use SimpleSAML\Error\ConfigurationError;
 use SimpleSAML\Error\MetadataNotFound;
 use SimpleSAML\Error\NoState;
 use SimpleSAML\Logger;
@@ -38,7 +39,7 @@ class IdPDisco extends SSPIdPDisco
 
     /**
      * @throws NoState
-     * @throws Exception
+     * @throws Exception|MetadataNotFound
      */
     private function getSPEntityIDAndReducedIdpList(): array
     {
@@ -68,6 +69,8 @@ class IdPDisco extends SSPIdPDisco
 
     /**
      * @inheritDoc
+     * @throws MetadataNotFound|ConfigurationError
+     * @throws \Exception
      */
     public function handleRequest(): void
     {
@@ -96,7 +99,7 @@ class IdPDisco extends SSPIdPDisco
         $metadata = MetaDataStorageHandler::getMetadataHandler();
         $sp = $metadata->getMetaData($spEntityId, 'saml20-sp-remote');
 
-        $t = new Template($this->config, 'selectidp-links', 'disco');
+        $t = new Template($this->config, 'selectidp-links');
 
         $t->data['idp_list'] = $idpList;
         $t->data['return'] = $this->returnURL;
@@ -140,7 +143,7 @@ class IdPDisco extends SSPIdPDisco
 
         $spEntityIdParam = 'spentityid=' . $spEntityId;
 
-        if (strpos($requestReturn, $spEntityIdParam) === false) {
+        if (!str_contains($requestReturn, $spEntityIdParam)) {
             $message = 'Invalid SP entity id [' . $spEntityId . ']. ' .
                 'Could not find in return value. ' . PHP_EOL . $requestReturn;
             $this->log($message);

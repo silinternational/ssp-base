@@ -34,7 +34,7 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
     {
         return [
             [
-                'class' => CreatedAtUtcBehavior::className(),
+                'class' => CreatedAtUtcBehavior::class,
                 'attributes' => [
                     Model::EVENT_BEFORE_VALIDATE => 'occurred_at_utc',
                 ],
@@ -42,6 +42,9 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
         ];
     }
 
+    /**
+     * @throws Exception
+     */
     public static function countRecentFailedLoginsFor(string $ipAddress): int
     {
         $count = self::find()->where([
@@ -90,6 +93,7 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
      *
      * @param string $ipAddress The IP address in question
      * @return int The number of seconds
+     * @throws Exception
      */
     public static function getSecondsUntilUnblocked(string $ipAddress): int
     {
@@ -107,6 +111,9 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
         parent::init();
     }
 
+    /**
+     * @throws Exception
+     */
     public static function isCaptchaRequiredFor(string $ipAddress): bool
     {
         return Authenticator::isEnoughFailedLoginsToRequireCaptcha(
@@ -114,6 +121,9 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
         );
     }
 
+    /**
+     * @throws Exception
+     */
     public static function isCaptchaRequiredForAnyOfThese(array $ipAddresses): bool
     {
         foreach ($ipAddresses as $ipAddress) {
@@ -124,12 +134,18 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
         return false;
     }
 
+    /**
+     * @throws Exception
+     */
     public static function isRateLimitBlocking(string $ipAddress): bool
     {
         $secondsUntilUnblocked = self::getSecondsUntilUnblocked($ipAddress);
         return ($secondsUntilUnblocked > 0);
     }
 
+    /**
+     * @throws Exception
+     */
     public static function isRateLimitBlockingAnyOfThese(array $ipAddresses): bool
     {
         foreach ($ipAddresses as $ipAddress) {
@@ -140,6 +156,9 @@ class FailedLoginIpAddress extends FailedLoginIpAddressBase implements LoggerAwa
         return false;
     }
 
+    /**
+     * @throws \yii\db\Exception
+     */
     public static function recordFailedLoginBy(
         array           $ipAddresses,
         LoggerInterface $logger

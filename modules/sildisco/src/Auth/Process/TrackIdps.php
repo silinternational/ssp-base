@@ -2,6 +2,7 @@
 
 namespace SimpleSAML\Module\sildisco\Auth\Process;
 
+use Exception;
 use SimpleSAML\Auth\ProcessingFilter;
 use SimpleSAML\Session;
 
@@ -16,6 +17,7 @@ class TrackIdps extends ProcessingFilter
      * Apply filter to save IDPs to session.
      *
      * @inheritDoc
+     * @throws Exception
      */
     public function process(array &$state): void
     {

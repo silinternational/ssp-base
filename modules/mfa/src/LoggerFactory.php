@@ -4,8 +4,7 @@ namespace SimpleSAML\Module\mfa;
 
 use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
-use Psr\Log\Psr3SamlLogger;
-use SimpleSAML\Module\mfa\Assert;
+use Sil\Psr3Adapters\Psr3SamlLogger;
 
 class LoggerFactory
 {

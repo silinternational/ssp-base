@@ -2,6 +2,8 @@
 
 namespace SimpleSAML\Module\profilereview;
 
+use InvalidArgumentException;
+
 /**
  * Simple assertion class intended for use in production code, not merely tests.
  * Inspired in part by PHPUnit's assertions and Webmozart\Assert.

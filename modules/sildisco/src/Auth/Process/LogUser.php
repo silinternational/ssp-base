@@ -4,7 +4,9 @@ namespace SimpleSAML\Module\sildisco\Auth\Process;
 
 use Aws\DynamoDb\Marshaler;
 use Aws\Sdk;
+use Exception;
 use SimpleSAML\Auth\ProcessingFilter;
+use SimpleSAML\Error\MetadataNotFound;
 use SimpleSAML\Logger;
 use SimpleSAML\Metadata\MetaDataStorageHandler;
 
@@ -136,8 +138,8 @@ class LogUser extends ProcessingFilter
         ];
 
         try {
-            $result = $dynamodb->putItem($params);
-        } catch (\Exception $e) {
+            $dynamodb->putItem($params);
+        } catch (Exception $e) {
             Logger::error("Unable to add item: " . $e->getMessage());
         }
     }
@@ -159,7 +161,10 @@ class LogUser extends ProcessingFilter
         return true;
     }
 
-    private function getIdp(array &$state)
+    /**
+     * @throws MetadataNotFound
+     */
+    private function getIdp(array $state)
     {
         if (empty($state[self::IDP_KEY])) {
             return 'No IDP available';
@@ -203,9 +208,7 @@ class LogUser extends ProcessingFilter
 
         $userAttrs = $this->addUserAttribute($userAttrs, "CN", $cn);
         $userAttrs = $this->addUserAttribute($userAttrs, "EduPersonPrincipalName", $eduPersonPrincipalName);
-        $userAttrs = $this->addUserAttribute($userAttrs, "EmployeeNumber", $employeeNumber);
-
-        return $userAttrs;
+        return $this->addUserAttribute($userAttrs, "EmployeeNumber", $employeeNumber);
     }
 
     private function getAttributeFrom(array $attributes, string $oidKey, string $friendlyKey): string

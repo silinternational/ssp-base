@@ -2,6 +2,7 @@
 
 namespace SimpleSAML\Module\profilereview;
 
+use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use Sil\Psr3Adapters\Psr3SamlLogger;
 

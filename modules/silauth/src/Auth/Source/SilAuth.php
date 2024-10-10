@@ -2,17 +2,19 @@
 
 namespace SimpleSAML\Module\silauth\Auth\Source;
 
+use Exception;
 use Sil\Psr3Adapters\Psr3StdOutLogger;
+use SimpleSAML\Auth\State;
+use SimpleSAML\Error\Error;
+use SimpleSAML\Module;
+use SimpleSAML\Module\core\Auth\UserPassBase;
 use SimpleSAML\Module\silauth\Auth\Source\auth\Authenticator;
 use SimpleSAML\Module\silauth\Auth\Source\auth\IdBroker;
 use SimpleSAML\Module\silauth\Auth\Source\captcha\Captcha;
 use SimpleSAML\Module\silauth\Auth\Source\config\ConfigManager;
 use SimpleSAML\Module\silauth\Auth\Source\http\Request;
-use SimpleSAML\Auth\State;
-use SimpleSAML\Error\Error;
-use SimpleSAML\Module;
-use SimpleSAML\Module\core\Auth\UserPassBase;
 use SimpleSAML\Utils\HTTP;
+use yii\base\InvalidConfigException;
 
 /**
  * Class SimpleSAML\Module\silauth\Auth\Source\SilAuth.
@@ -37,6 +39,7 @@ class SilAuth extends UserPassBase
      *
      * @param array $info Information about this authentication source.
      * @param array $config Configuration for this authentication source.
+     * @throws InvalidConfigException
      */
     public function __construct(array $info, array $config)
     {
@@ -101,6 +104,10 @@ class SilAuth extends UserPassBase
         return $trustedIpAddresses;
     }
 
+    /**
+     * @throws Error
+     * @throws Exception
+     */
     protected function login(string $username, string $password): array
     {
         $logger = new Psr3StdOutLogger();

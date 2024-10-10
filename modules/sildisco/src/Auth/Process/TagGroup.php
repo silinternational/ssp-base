@@ -3,6 +3,7 @@
 namespace SimpleSAML\Module\sildisco\Auth\Process;
 
 use SimpleSAML\Auth\ProcessingFilter;
+use SimpleSAML\Error\MetadataNotFound;
 use SimpleSAML\Metadata\MetaDataStorageHandler;
 
 /**
@@ -34,6 +35,7 @@ class TagGroup extends ProcessingFilter
      * Apply filter to copy attributes.
      *
      * @inheritDoc
+     * @throws MetadataNotFound
      */
     public function process(array &$state): void
     {
