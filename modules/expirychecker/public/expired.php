@@ -34,7 +34,7 @@ if (array_key_exists('changepwd', $_REQUEST)) {
         );
 
         $returnTo = Utilities::getUrlFromRelayState(
-            $state['saml:RelayState']
+            $state['saml:RelayState'] ?? ''
         );
         if (!empty($returnTo)) {
             $passwordChangeUrl .= '?returnTo=' . $returnTo;
