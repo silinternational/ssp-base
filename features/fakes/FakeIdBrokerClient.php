@@ -81,11 +81,11 @@ class FakeIdBrokerClient
      * Create a new MFA configuration
      * @param string $employee_id
      * @param string $type
-     * @param string $label
+     * @param string|null $label
      * @return array|null
      * @throws Exception
      */
-    public function mfaCreate($employee_id, $type, $label = null): ?array
+    public function mfaCreate(string $employee_id, string $type, string $label = null): ?array
     {
         if (empty($employee_id)) {
             throw new InvalidArgumentException('employee_id is required');
@@ -127,7 +127,7 @@ class FakeIdBrokerClient
      * @param string $employee_id
      * @return array
      */
-    public function mfaList(string $employee_id)
+    public function mfaList(string $employee_id): array
     {
         return [
             [
