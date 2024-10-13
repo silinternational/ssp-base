@@ -60,8 +60,8 @@ class ProfileReview extends ProcessingFilter
     }
 
     /**
-     * @param $config
-     * @param $attributes
+     * @param array $config
+     * @param array $attributes
      * @throws Exception
      */
     protected function loadValuesFromConfig(array $config, array $attributes): void
@@ -85,7 +85,7 @@ class ProfileReview extends ProcessingFilter
      * @param LoggerInterface $logger The logger.
      * @throws Exception
      */
-    public static function validateConfigValue($attribute, $value, $logger)
+    public static function validateConfigValue(string $attribute, mixed $value, LoggerInterface $logger): void
     {
         if (empty($value) || !is_string($value)) {
             $exception = new Exception(sprintf(
@@ -110,7 +110,7 @@ class ProfileReview extends ProcessingFilter
      * @param array $state The state data.
      * @return mixed The attribute value, or null if not found.
      */
-    protected function getAttribute($attributeName, $state)
+    protected function getAttribute(string $attributeName, array $state): mixed
     {
         $attributeData = $state['Attributes'][$attributeName] ?? null;
 
@@ -133,7 +133,7 @@ class ProfileReview extends ProcessingFilter
      * @return array|null The attribute's value(s), or null if the attribute was
      *     not found.
      */
-    protected function getAttributeAllValues($attributeName, $state)
+    protected function getAttributeAllValues(string $attributeName, array $state): ?array
     {
         $attributeData = $state['Attributes'][$attributeName] ?? null;
 
@@ -148,23 +148,23 @@ class ProfileReview extends ProcessingFilter
      * @returns string
      * @return mixed|string
      */
-    protected static function getRelayStateUrl($state)
+    protected static function getRelayStateUrl(array $state): mixed
     {
         if (array_key_exists('saml:RelayState', $state)) {
             $samlRelayState = $state['saml:RelayState'];
 
-            if (strpos($samlRelayState, "http://") === 0) {
+            if (str_starts_with($samlRelayState, "http://")) {
                 return $samlRelayState;
             }
 
-            if (strpos($samlRelayState, "https://") === 0) {
+            if (str_starts_with($samlRelayState, "https://")) {
                 return $samlRelayState;
             }
         }
         return '';
     }
 
-    protected function initComposerAutoloader()
+    protected function initComposerAutoloader(): void
     {
         $path = __DIR__ . '/../../../vendor/autoload.php';
         if (file_exists($path)) {
@@ -172,12 +172,12 @@ class ProfileReview extends ProcessingFilter
         }
     }
 
-    protected static function isHeadedToProfileUrl($state, $ProfileUrl)
+    protected static function isHeadedToProfileUrl($state, $ProfileUrl): bool
     {
         if (array_key_exists('saml:RelayState', $state)) {
             $currentDestination = self::getRelayStateUrl($state);
             if (!empty($currentDestination)) {
-                return (strpos($currentDestination, $ProfileUrl) === 0);
+                return (str_starts_with($currentDestination, $ProfileUrl));
             }
         }
         return false;
@@ -188,7 +188,7 @@ class ProfileReview extends ProcessingFilter
      *
      * @param array $state
      */
-    public static function redirectToProfile(&$state)
+    public static function redirectToProfile(array $state): void
     {
         $profileUrl = $state['ProfileUrl'];
         // Tell the profile-setup URL where the user is ultimately trying to go (if known).
@@ -214,6 +214,7 @@ class ProfileReview extends ProcessingFilter
 
     /**
      * @inheritDoc
+     * @throws Exception
      */
     public function process(array &$state): void
     {
@@ -256,7 +257,6 @@ class ProfileReview extends ProcessingFilter
 
         unset($state['Attributes']['method']);
         unset($state['Attributes']['mfa']);
-        return;
     }
 
     /**
@@ -320,7 +320,10 @@ class ProfileReview extends ProcessingFilter
         return $mfaOptions;
     }
 
-    public static function hasSeenSplashPageRecently(string $page)
+    /**
+     * @throws Exception
+     */
+    public static function hasSeenSplashPageRecently(string $page): bool
     {
         $session = Session::getSessionFromRequest();
         return (bool)$session->getData(
@@ -329,7 +332,10 @@ class ProfileReview extends ProcessingFilter
         );
     }
 
-    public static function skipSplashPagesFor($seconds, string $page)
+    /**
+     * @throws Exception
+     */
+    public static function skipSplashPagesFor(int $seconds, string $page): void
     {
         $session = Session::getSessionFromRequest();
         $session->setData(
@@ -341,7 +347,10 @@ class ProfileReview extends ProcessingFilter
         $session->save();
     }
 
-    public static function needToShow($flag, $page)
+    /**
+     * @throws Exception
+     */
+    public static function needToShow(?string $flag, string $page): bool
     {
         $oneDay = 24 * 60 * 60;
         if ($flag === 'yes' && !self::hasSeenSplashPageRecently($page)) {

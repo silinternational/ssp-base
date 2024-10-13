@@ -28,8 +28,7 @@ if (!$config->getOptionalBoolean('enable.saml20-idp', false)) {
 //}
 
 try {
-    $idpentityid = isset($_GET['idpentityid']) ?
-        $_GET['idpentityid'] :
+    $idpentityid = $_GET['idpentityid'] ??
         $metadata->getMetaDataCurrentEntityID('saml20-idp-hosted');
     $idpmeta = $metadata->getMetaDataConfig($idpentityid, 'saml20-idp-hosted');
 
@@ -57,7 +56,7 @@ try {
     $keys[] = array(
         'type' => 'X509Certificate',
         'signing' => true,
-        'encryption' => ($hasNewCert ? false : true),
+        'encryption' => !$hasNewCert,
         'X509Certificate' => $certInfo['certData'],
     );
 
@@ -144,7 +143,7 @@ try {
 
     if ($idpmeta->hasValue('OrganizationName')) {
         $metaArray['OrganizationName'] = $idpmeta->getLocalizedString('OrganizationName');
-        $metaArray['OrganizationDisplayName'] = $idpmeta->getLocalizedString(
+        $metaArray['OrganizationDisplayName'] = $idpmeta->getOptionalLocalizedString(
             'OrganizationDisplayName',
             $metaArray['OrganizationName']
         );
@@ -220,14 +219,12 @@ try {
         header('Content-Type: application/xml');
 
         echo $metaxml;
-        exit(0);
     } else {
-
         header('Content-Type: text/html; charset=utf-8');
 
         echo '<pre>' . print_r($metaflat, true) . '</pre>';
-        exit(0);
     }
+    exit(0);
 } catch (Exception $exception) {
     throw new Error\Error('METADATA', $exception);
 }

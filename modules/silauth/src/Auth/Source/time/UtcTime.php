@@ -4,14 +4,15 @@ namespace SimpleSAML\Module\silauth\Auth\Source\time;
 
 use DateTime;
 use DateTimeZone;
+use Exception;
 use InvalidArgumentException;
 
 class UtcTime
 {
     const DATE_TIME_FORMAT = 'Y-m-d H:i:s';
 
-    private $utc;
-    private $dateTime;
+    private DateTimeZone $utc;
+    private DateTime $dateTime;
 
     /**
      * Create an object representing a date/time in Coordinated Universal Time
@@ -72,7 +73,7 @@ class UtcTime
      * time occurred before this UTC time. If they are the same, zero will be
      * returned. Otherwise, a negative number will be returned.
      *
-     * @param \SimpleSAML\Module\silauth\Auth\Source\time\UtcTime $otherUtcTime The other UTC time
+     * @param UtcTime $otherUtcTime The other UTC time
      *     (presumably in the past, though not necessarily).
      * @return int The number of seconds
      */
@@ -117,9 +118,10 @@ class UtcTime
      * Get the current date/time (UTC) as a formatted string
      *
      * @return string
+     * @throws Exception
      */
     public static function now(): string
     {
-        return self::format('now');
+        return self::format();
     }
 }

@@ -34,6 +34,9 @@ class System
         }
     }
 
+    /**
+     * @throws Exception
+     */
     protected function isRequiredConfigPresent(): bool
     {
         $globalConfig = Configuration::getInstance();

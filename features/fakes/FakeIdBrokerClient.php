@@ -2,6 +2,7 @@
 
 namespace Sil\SspBase\Features\fakes;
 
+use Exception;
 use InvalidArgumentException;
 use Sil\Idp\IdBroker\Client\ServiceException;
 
@@ -80,11 +81,11 @@ class FakeIdBrokerClient
      * Create a new MFA configuration
      * @param string $employee_id
      * @param string $type
-     * @param string $label
+     * @param string|null $label
      * @return array|null
      * @throws Exception
      */
-    public function mfaCreate($employee_id, $type, $label = null)
+    public function mfaCreate(string $employee_id, string $type, string $label = null): ?array
     {
         if (empty($employee_id)) {
             throw new InvalidArgumentException('employee_id is required');
@@ -125,9 +126,8 @@ class FakeIdBrokerClient
      * Get a list of MFA configurations for given user
      * @param string $employee_id
      * @return array
-     * @throws ServiceException
      */
-    public function mfaList($employee_id)
+    public function mfaList(string $employee_id): array
     {
         return [
             [

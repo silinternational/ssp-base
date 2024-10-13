@@ -13,8 +13,9 @@ use Symfony\Component\HttpFoundation\Request;
 class SilDisco
 {
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request The current request.
-     * @return \SimpleSAML\HTTP\RunnableResponse
+     * @param Request $request The current request.
+     * @return RunnableResponse
+     * @throws Error\Error
      */
     public function main(Request $request): RunnableResponse
     {

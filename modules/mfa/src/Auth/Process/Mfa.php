@@ -17,6 +17,7 @@ use SimpleSAML\Auth\State;
 use SimpleSAML\Module;
 use SimpleSAML\Module\mfa\LoggerFactory;
 use SimpleSAML\Utils\HTTP;
+use Throwable;
 
 /**
  * Filter which prompts the user for MFA credentials.
@@ -25,9 +26,7 @@ use SimpleSAML\Utils\HTTP;
  */
 class Mfa extends ProcessingFilter
 {
-    const SESSION_TYPE = 'mfa';
     const STAGE_SENT_TO_LOW_ON_BACKUP_CODES_NAG = 'mfa:sent_to_low_on_backup_codes_nag';
-    const STAGE_SENT_TO_MFA_CHANGE_URL = 'mfa:sent_to_mfa_change_url';
     const STAGE_SENT_TO_MFA_NEEDED_MESSAGE = 'mfa:sent_to_mfa_needed_message';
     const STAGE_SENT_TO_MFA_PROMPT = 'mfa:sent_to_mfa_prompt';
     const STAGE_SENT_TO_NEW_BACKUP_CODES_PAGE = 'mfa:sent_to_new_backup_codes_page';
@@ -79,6 +78,9 @@ class Mfa extends ProcessingFilter
         $this->idBrokerClientClass = $config['idBrokerClientClass'] ?? IdBrokerClient::class;
     }
 
+    /**
+     * @throws Exception
+     */
     protected function loadValuesFromConfig(array $config, array $attributes): void
     {
         foreach ($attributes as $attribute) {
@@ -159,7 +161,7 @@ class Mfa extends ProcessingFilter
      * Get an ID Broker client.
      *
      * @param array $idBrokerConfig
-     * @return IdBrokerClient
+     * @return IdBrokerClient|FakeIdBrokerClient
      */
     private static function getIdBrokerClient(array $idBrokerConfig): IdBrokerClient|FakeIdBrokerClient
     {
@@ -194,7 +196,7 @@ class Mfa extends ProcessingFilter
         }
 
         foreach ($mfaOptions as $mfaOption) {
-            if ((int)$mfaOption['id'] === (int)$mfaId) {
+            if ((int)$mfaOption['id'] === $mfaId) {
                 return $mfaOption;
             }
         }
@@ -310,16 +312,16 @@ class Mfa extends ProcessingFilter
      * @param array $state
      * @return string
      */
-    protected static function getRelayStateUrl($state)
+    protected static function getRelayStateUrl(array $state): string
     {
         if (array_key_exists('saml:RelayState', $state)) {
             $samlRelayState = $state['saml:RelayState'];
 
-            if (strpos($samlRelayState, "http://") === 0) {
+            if (str_starts_with($samlRelayState, "http://")) {
                 return $samlRelayState;
             }
 
-            if (strpos($samlRelayState, "https://") === 0) {
+            if (str_starts_with($samlRelayState, "https://")) {
                 return $samlRelayState;
             }
         }
@@ -349,7 +351,7 @@ class Mfa extends ProcessingFilter
                 'event' => 'New backup codes result: succeeded',
                 'employeeId' => $state['employeeId'],
             ]));
-        } catch (\Throwable $t) {
+        } catch (Throwable $t) {
             $logger->error(json_encode([
                 'event' => 'New backup codes result: failed',
                 'employeeId' => $state['employeeId'],
@@ -383,7 +385,7 @@ class Mfa extends ProcessingFilter
     {
         $mfaOptions = $state['mfaOptions'] ?? [];
         foreach ($mfaOptions as $mfaOption) {
-            if (strval($mfaOption['type']) !== strval($excludedMfaType)) {
+            if (strval($mfaOption['type']) !== $excludedMfaType) {
                 return true;
             }
         }
@@ -398,12 +400,12 @@ class Mfa extends ProcessingFilter
         }
     }
 
-    protected static function isHeadedToMfaSetupUrl($state, $mfaSetupUrl)
+    protected static function isHeadedToMfaSetupUrl($state, $mfaSetupUrl): bool
     {
         if (array_key_exists('saml:RelayState', $state)) {
             $currentDestination = self::getRelayStateUrl($state);
             if (!empty($currentDestination)) {
-                return (strpos($currentDestination, $mfaSetupUrl) === 0);
+                return (str_starts_with($currentDestination, $mfaSetupUrl));
             }
         }
         return false;
@@ -416,7 +418,7 @@ class Mfa extends ProcessingFilter
      *
      * @param int $mfaId The ID of the MFA option used.
      * @param string $employeeId The Employee ID that this MFA option belongs to.
-     * @param string $mfaSubmission The value of the MFA submission.
+     * @param string|array $mfaSubmission The value of the MFA submission.
      * @param array $state The array of state information.
      * @param bool $rememberMe Whether or not to set remember me cookies
      * @param LoggerInterface $logger A PSR-3 compatible logger.
@@ -424,7 +426,8 @@ class Mfa extends ProcessingFilter
      * @param string $rpOrigin The Relying Party Origin (for WebAuthn)
      * @return string If validation fails, an error message to show to the
      *     end user will be returned.
-     * @throws \Sil\PhpEnv\EnvVarNotFoundException
+     * @throws EnvVarNotFoundException
+     * @throws Exception
      */
     public static function validateMfaSubmission(
         int             $mfaId,
@@ -458,7 +461,7 @@ class Mfa extends ProcessingFilter
             if ($mfaDataFromBroker === true || count($mfaDataFromBroker) > 0) {
                 $idBrokerClient->updateUserLastLogin($employeeId);
             }
-        } catch (\Throwable $t) {
+        } catch (Throwable $t) {
             $message = 'Something went wrong while we were trying to do the '
                 . '2-step verification.';
             if ($t instanceof ServiceException) {
@@ -539,7 +542,7 @@ class Mfa extends ProcessingFilter
      *
      * @param array $state
      */
-    public static function redirectToMfaSetup(array &$state): void
+    public static function redirectToMfaSetup(array $state): void
     {
         $mfaSetupUrl = $state['mfaSetupUrl'];
 
@@ -566,6 +569,7 @@ class Mfa extends ProcessingFilter
 
     /**
      * @inheritDoc
+     * @throws Exception
      */
     public function process(array &$state): void
     {
@@ -686,7 +690,7 @@ class Mfa extends ProcessingFilter
      * @param array $mfaOptions
      * @param array $state
      * @return bool
-     * @throws EnvVarNotFoundException
+     * @throws EnvVarNotFoundException|ServiceException
      */
     public static function isRememberMeCookieValid(
         string $cookieHash,
@@ -700,7 +704,7 @@ class Mfa extends ProcessingFilter
             if ((int)$expireDate > time()) {
                 $expectedString = self::generateRememberMeCookieString($rememberSecret, $state['employeeId'], $expireDate, $mfaOptions);
                 $isValid = password_verify($expectedString, $cookieHash);
-                
+
                 if ($isValid) {
                     $idBrokerClient = self::getIdBrokerClient($state['idBrokerConfig']);
                     $idBrokerClient->updateUserLastLogin($state['employeeId']);
@@ -734,8 +738,7 @@ class Mfa extends ProcessingFilter
             }
         }
 
-        $string = $rememberSecret . $employeeId . $expireDate . $allMfaIds;
-        return $string;
+        return $rememberSecret . $employeeId . $expireDate . $allMfaIds;
     }
 
     /**
@@ -789,7 +792,7 @@ class Mfa extends ProcessingFilter
      * @param string $employeeId
      * @param array $mfaOptions
      * @param string $rememberDuration
-     * @throws \Sil\PhpEnv\EnvVarNotFoundException
+     * @throws EnvVarNotFoundException
      */
     public static function setRememberMeCookies(
         string $employeeId,
@@ -818,8 +821,9 @@ class Mfa extends ProcessingFilter
      *
      * @param array $state The state data.
      * @param LoggerInterface $logger A PSR-3 compatible logger.
+     * @throws Exception
      */
-    public static function sendManagerCode(array &$state, LoggerInterface $logger): string
+    public static function sendManagerCode(array &$state, LoggerInterface $logger): void
     {
         try {
             $idBrokerClient = self::getIdBrokerClient($state['idBrokerConfig']);
@@ -830,13 +834,14 @@ class Mfa extends ProcessingFilter
                 'event' => 'Manager rescue code sent',
                 'employeeId' => $state['employeeId'],
             ]));
-        } catch (\Throwable $t) {
+        } catch (Throwable $t) {
             $logger->error(json_encode([
                 'event' => 'Manager rescue code: failed',
                 'employeeId' => $state['employeeId'],
                 'error' => $t->getCode() . ': ' . $t->getMessage(),
             ]));
-            return 'There was an unexpected error. Please try again or contact tech support for assistance';
+            throw new Exception('There was an unexpected error. Please try again ' .
+                'or contact tech support for assistance');
         }
 
         $mfaOptions = $state['mfaOptions'];
@@ -932,7 +937,7 @@ class Mfa extends ProcessingFilter
 
         try {
             $newMfaOptions = $idBrokerClient->mfaList($state['employeeId']);
-        } catch (Exception $e) {
+        } catch (Exception) {
             $log['status'] = 'failed: id-broker exception';
             $logger->error(json_encode($log));
             return;

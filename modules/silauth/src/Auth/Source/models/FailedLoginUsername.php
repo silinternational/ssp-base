@@ -31,7 +31,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
     {
         return [
             [
-                'class' => CreatedAtUtcBehavior::className(),
+                'class' => CreatedAtUtcBehavior::class,
                 'attributes' => [
                     Model::EVENT_BEFORE_VALIDATE => 'occurred_at_utc',
                 ],
@@ -39,6 +39,9 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
         ];
     }
 
+    /**
+     * @throws Exception
+     */
     public static function countRecentFailedLoginsFor(string $username): int
     {
         $count = self::find()->where([
@@ -86,6 +89,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
      *
      * @param string $username The username in question
      * @return int The number of seconds
+     * @throws Exception
      */
     public static function getSecondsUntilUnblocked(string $username): int
     {
@@ -108,6 +112,7 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
      *
      * @param string $username The username
      * @return bool
+     * @throws Exception
      */
     public static function isRateLimitBlocking(string $username): bool
     {
@@ -115,6 +120,9 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
         return ($secondsUntilUnblocked > 0);
     }
 
+    /**
+     * @throws Exception
+     */
     public static function isCaptchaRequiredFor(?string $username): bool
     {
         if (empty($username)) {
@@ -125,6 +133,9 @@ class FailedLoginUsername extends FailedLoginUsernameBase implements LoggerAware
         );
     }
 
+    /**
+     * @throws \yii\db\Exception
+     */
     public static function recordFailedLoginBy(
         string          $username,
         LoggerInterface $logger

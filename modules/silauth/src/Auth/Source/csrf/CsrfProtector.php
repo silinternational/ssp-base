@@ -2,6 +2,7 @@
 
 namespace SimpleSAML\Module\silauth\Auth\Source\csrf;
 
+use Exception;
 use SimpleSAML\Session;
 
 /**
@@ -24,6 +25,9 @@ class CsrfProtector
         $this->session = $session;
     }
 
+    /**
+     * @throws Exception
+     */
     public function changeMasterToken(): void
     {
         $newMasterToken = $this->generateToken();
@@ -40,6 +44,7 @@ class CsrfProtector
      * will be generated and stored in the session.
      *
      * @return string The master (aka. authoritative) CSRF token.
+     * @throws Exception
      */
     public function getMasterToken(): string
     {
@@ -65,12 +70,16 @@ class CsrfProtector
      * @param string $submittedToken The CSRF protection token provided by the
      *     HTTP request.
      * @return bool
+     * @throws Exception
      */
     public function isTokenCorrect(string $submittedToken): bool
     {
         return hash_equals($this->getMasterToken(), $submittedToken);
     }
 
+    /**
+     * @throws Exception
+     */
     protected function setTokenInSession(string $masterToken): void
     {
         $this->session->setData(
