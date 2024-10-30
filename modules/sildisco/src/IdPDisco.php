@@ -20,7 +20,7 @@ use yii\db\Exception;
  *
  * This module extends the basic IdP disco handler.
  *
- * @author Steve Bagwell SIL GTIS
+ * @author SIL GTIS
  * @package SimpleSAMLphp
  */
 class IdPDisco extends SSPIdPDisco
