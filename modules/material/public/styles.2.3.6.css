@@ -1,3 +1,7 @@
+body {
+  display: grid;
+}
+
 p {
   max-width: 60ch;
 }
@@ -5,11 +9,6 @@ p {
 pre {
   white-space: pre-line;
   max-width: 100%;
-}
-
-.fill-viewport {
-  width: 100vw;
-  height: 100vh;
 }
 
 [layout-children=row] {
