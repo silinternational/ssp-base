@@ -136,9 +136,11 @@
           </div>
         </div>
 
-        <script>
-          ga('send', 'event', 'error', 'backupcode', 'generation-failed');
-        </script>
+        {% if analytics_tracking_id is not empty %}
+          <script>
+            ga('send', 'event', 'error', 'backupcode', 'generation-failed');
+          </script>
+        {% endif %}
       {% endif %}
 
       <div layout-children="row" class="fill-parent">

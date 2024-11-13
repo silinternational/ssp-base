@@ -53,9 +53,11 @@
             </p>
           </div>
 
-          <script>
-            ga('send', 'event', 'error', 'backupcode', '{{ error_message|e('js')|raw }}');
-          </script>
+          {% if analytics_tracking_id is not empty %}
+            <script>
+              ga('send', 'event', 'error', 'backupcode', '{{ error_message|e('js')|raw }}');
+            </script>
+          {% endif %}
         {% endif %}
 
         <div class="mdl-card__actions" layout-children="row">

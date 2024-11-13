@@ -15,11 +15,15 @@
 
       document.querySelector('form').appendChild(idpInput);
 
-      ga('send', 'event', 'hub', 'choice', 'IdP', id);
+      {% if analytics_tracking_id is not empty %}
+        ga('send', 'event', 'hub', 'choice', 'IdP', id);
+      {% endif %}
     }
 
     function clickedAnyway(idpName) {
-      ga('send', 'event', 'hub', 'choice-disabled', 'IdP', idpName);
+      {% if analytics_tracking_id is not empty %}
+        ga('send', 'event', 'hub', 'choice-disabled', 'IdP', idpName);
+      {% endif %}
     }
   </script>
 </head>
