@@ -7,29 +7,63 @@
 
   <script src="bowser.1.9.4.min.js"></script>
   <script>
-    function disableUnsupportedFeatures() {
-      if (bowser.msie) {
-        disablePrint();
-        disableDownload();
-      } else if (bowser.msedge) {
-        disableDownload();
+    document.addEventListener('DOMContentLoaded', function() {
+      function disableUnsupportedFeatures() {
+        if (bowser.msie) {
+          disablePrint();
+          disableDownload();
+        } else if (bowser.msedge) {
+          disableDownload();
+        }
       }
-    }
 
-    function disablePrint() {
-      document.querySelector('button#print').disabled = true;
-      document.querySelector('button#print').classList.add('not-allowed');
-      document.querySelector('button#print').title = '{{ '{mfa:unsupported}'|trans|e('js')|raw }}';
-    }
+      function disablePrint() {
+        document.querySelector('button#print').disabled = true;
+        document.querySelector('button#print').classList.add('not-allowed');
+        document.querySelector('button#print').title = '{{ '{mfa:unsupported}'|trans|e('js')|raw }}';
+      }
 
-    function disableDownload() {
-      document.querySelector('a[download]').href = '';
-      document.querySelector('a[download]').classList.add('mdl-button--disabled', 'not-allowed');
-      document.querySelector('a[download]').title = '{{ '{mfa:unsupported}'|trans|e('js')|raw }}';
-    }
+      function disableDownload() {
+        document.querySelector('a[download]').href = '';
+        document.querySelector('a[download]').classList.add('mdl-button--disabled', 'not-allowed');
+        document.querySelector('a[download]').title = '{{ '{mfa:unsupported}'|trans|e('js')|raw }}';
+      }
+
+      function copyCodesToClipboard(button) {
+        document.querySelector('textarea').select();
+
+        // FIXME: replace deprecated document.execCommand
+        document.execCommand('copy');
+
+        button.innerHTML = button.innerHTML.replace(
+          '{{ '{mfa:button_copy}'|trans }}',
+          '{{ '{mfa:button_copied}'|trans }}'
+        );
+      }
+
+      function printElement(selector) {
+        let elementToPrint = document.querySelector(selector);
+
+        elementToPrint.classList.add('printable-codes');
+
+        window.print();
+      }
+
+      document.querySelector('body').addEventListener('load', disableUnsupportedFeatures);
+      document.getElementById('print').addEventListener('click', function() {
+        printElement('#code-card');
+      });
+      document.getElementById('copyBtn').addEventListener('click', function() {
+        copyCodesToClipboard(this);
+      });
+      document.querySelector('input[type="checkbox"]').addEventListener('change', function(e) {
+        contBtn = document.querySelector('button[name="continue"]');
+        contBtn.disabled = !e.checked;
+      });
+    });
   </script>
 </head>
-<body class="gradient-bg" onload="disableUnsupportedFeatures()">
+<body class="gradient-bg">
 <div class="mdl-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
@@ -71,19 +105,9 @@
           </div>
 
           <div class="mdl-card__actions" layout-children="row" child-spacing="space-around">
-            <script>
-              function printElement(selector) {
-                var elementToPrint = document.querySelector(selector);
-
-                elementToPrint.classList.add('printable-codes');
-
-                window.print();
-              }
-            </script>
             <button
               class="mdl-button mdl-button--primary"
               type="button"
-              onclick="printElement('#code-card')"
               id="print"
             >
               {{ '{mfa:button_print}'|trans }}
@@ -97,20 +121,7 @@
               {{ '{mfa:button_download}'|trans }}
             </a>
 
-            <script>
-              function copyCodesToClipboard(button) {
-                document.querySelector('textarea').select();
-
-                {# FIXME: replace deprecated document.execCommand #}
-                document.execCommand('copy');
-
-                button.innerHTML = button.innerHTML.replace(
-                  '{{ '{mfa:button_copy}'|trans }}',
-                  '{{ '{mfa:button_copied}'|trans }}'
-                );
-              }
-            </script>
-            <button class="mdl-button mdl-button--primary" type="button" onclick="copyCodesToClipboard(this)">
+            <button id="copyBtn" class="mdl-button mdl-button--primary" type="button">
               {{ '{mfa:button_copy}'|trans }}
               <textarea class="out-of-sight">{{ codes_for_clipboard }}</textarea>
             </button>
@@ -148,7 +159,7 @@
 
       <div layout-children="row" class="fill-parent">
         <label class="mdl-checkbox mdl-js-checkbox" flex>
-          <input type="checkbox" onclick="toggleContinue(this)" class="mdl-checkbox__input">
+          <input type="checkbox" class="mdl-checkbox__input">
           <span class="mdl-checkbox__label">{{ '{mfa:new_codes_saved}'|trans }}</span>
         </label>
 
@@ -156,14 +167,6 @@
           {{ '{mfa:button_continue}'|trans }}
         </button>
       </div>
-
-      <script>
-        function toggleContinue(event) {
-          contBtn = document.querySelector('button[name="continue"]');
-
-          contBtn.disabled = !event.checked;
-        }
-      </script>
     </form>
   </main>
 </div>
