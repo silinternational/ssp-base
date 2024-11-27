@@ -94,7 +94,7 @@
           </p>
         </div>
 
-        {% if error_message is not empty %}
+        {% if error_message is not empty and analytics_tracking_id is not empty %}
           <script>
             ga('send', 'event', 'error', 'webauthn', '{{ error_message|e('js')|raw }}');
           </script>

@@ -14,6 +14,7 @@
       idpInput.value = id;
 
       document.querySelector('form').appendChild(idpInput);
+      
       {% if analytics_tracking_id is not empty %}
         gtag('event', 'IdP', {
           'event_category': 'hub',
@@ -21,6 +22,7 @@
           'value': id
         });
       {% endif %}
+      
       document.querySelector('form').submit();
     }
     
@@ -33,7 +35,9 @@
     });
 
     function clickedAnyway(idpName) {
-      ga('send', 'event', 'hub', 'choice-disabled', 'IdP', idpName);
+      {% if analytics_tracking_id is not empty %}
+        ga('send', 'event', 'hub', 'choice-disabled', 'IdP', idpName);
+      {% endif %}
     }
   </script>
 </head>
