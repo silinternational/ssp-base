@@ -138,7 +138,10 @@
 
         {% if analytics_tracking_id is not empty %}
           <script>
-            ga('send', 'event', 'error', 'backupcode', 'generation-failed');
+            gtag('event', 'generation-failed', {
+              'event_category': 'error',
+              'event_label': 'backupcode'
+            });
           </script>
         {% endif %}
       {% endif %}

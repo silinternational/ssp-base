@@ -96,7 +96,10 @@
 
         {% if error_message is not empty and analytics_tracking_id is not empty %}
           <script>
-            ga('send', 'event', 'error', 'webauthn', '{{ error_message|e('js')|raw }}');
+           gtag('event', '{{ error_message|e('js')|raw }}', {
+            'event_category': 'error',
+            'event_label': 'webauthn'
+          });
           </script>
         {% endif %}
         <div class="mdl-card__supporting-text" layout-children="column">

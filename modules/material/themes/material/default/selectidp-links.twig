@@ -36,7 +36,11 @@
 
     function clickedAnyway(idpName) {
       {% if analytics_tracking_id is not empty %}
-        ga('send', 'event', 'hub', 'choice-disabled', 'IdP', idpName);
+        gtag('event', 'IdP', {
+          'event_category': 'hub',
+          'event_label': 'choice',
+          'value': id
+        });
       {% endif %}
     }
   </script>

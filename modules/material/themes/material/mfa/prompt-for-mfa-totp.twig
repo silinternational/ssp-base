@@ -53,7 +53,10 @@
 
           {% if analytics_tracking_id is not empty %}
             <script>
-              ga('send', 'event', 'error', 'totp', '{{ error_message|e('js')|raw }}');
+              gtag('event', '{{ error_message|e('js')|raw }}', {
+                'event_category': 'error',
+                'event_label': 'totp'
+              });
             </script>
           {% endif %}
         {% endif %}

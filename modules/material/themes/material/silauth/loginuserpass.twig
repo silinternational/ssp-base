@@ -29,7 +29,9 @@
       }
 
       {% if analytics_tracking_id is not empty %}
-        ga('send', 'event', 'reCAPTCHA', 'required');
+        gtag('event', 'required', {
+          'event_category': 'reCAPTCHA'
+        });
       {% endif %}
     </script>
   {% endif %}
@@ -104,7 +106,11 @@
 
           {% if analytics_tracking_id is not empty %}
             <script>
-              ga('send', 'event', 'error', '{{ errorcode|e('js') }}', 'message', '{{ message|e('js') }}');
+              gtag('event', '{{ errorcode|e('js') }}', {
+                'event_category': 'error',
+                'event_label': 'message',
+                'value': '{{ message|e('js') }}'
+              });
             </script>
           {% endif %}
         {% endif %}
