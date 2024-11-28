@@ -28,7 +28,11 @@
         });
       }
 
-      ga('send', 'event', 'reCAPTCHA', 'required');
+      {% if analytics_tracking_id is not empty %}
+        gtag('event', 'required', {
+          'event_category': 'reCAPTCHA'
+        });
+      {% endif %}
     </script>
   {% endif %}
 </head>
@@ -100,9 +104,15 @@
             </span>
           </p>
 
-          <script>
-            ga('send', 'event', 'error', '{{ errorcode|e('js') }}', 'message', '{{ message|e('js') }}');
-          </script>
+          {% if analytics_tracking_id is not empty %}
+            <script>
+              gtag('event', '{{ errorcode|e('js') }}', {
+                'event_category': 'error',
+                'event_label': 'message',
+                'value': '{{ message|e('js') }}'
+              });
+            </script>
+          {% endif %}
         {% endif %}
 
         <div class="mdl-card__actions" layout-children="row">

@@ -1,3 +1,13 @@
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll(".mdl-menu__item").forEach(function(li) {
+      li.addEventListener('click', function(e) {
+        location.href = li.dataset.callback;
+      });
+    });
+  });
+</script>
+
 {% if other_options|length > 0 %}
   <div layout-children="column" child-spacing="center">
     {# used type=button to avoid form submission on click since this is just used to display the ul #}
@@ -9,7 +19,7 @@
     <ul class="mdl-menu mdl-js-menu mdl-menu--top-left" data-mdl-for="others">
       {% for option in other_options %}
         {# TODO: Non-interactive elements should not be assigned mouse or keyboard event listeners. #}
-        <li class="mdl-menu__item" onclick="location.href = '{{ option.callback|raw }}'">
+        <li class="mdl-menu__item" data-callback="{{ option.callback|raw }}">
           <span class="mdl-list__item-primary-content">
             <img
               class="mdl-list__item-icon"

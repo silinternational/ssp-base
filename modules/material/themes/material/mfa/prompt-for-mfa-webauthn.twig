@@ -8,64 +8,69 @@
   <script src="{{ browser_js_path }}"></script>
 
   <script>
-    function verifyWebAuthn() {
-      const loginChallenge = {{ mfa_option_data|raw }};
-      SimpleWebAuthnBrowser.startAuthentication(loginChallenge.publicKey).then(submitForm).catch(handleError);
-    }
-
-    function handleError(error) {
-      console.error(error)
-      const errorMessage = createMessage(error)
-
-      const errorNode = document.querySelector('p.error');
-      errorNode.classList.remove('hide');
-      errorNode.querySelector('span').textContent = errorMessage;
-
-      offerRetry();
-    }
-
-    function createMessage(error) {
-      switch (error.name) {
-        case 'AbortError':
-          return '{{ '{mfa:webauthn_error_abort}'|trans|e('js')|raw }}';
-        case 'NotAllowedError':
-          return '{{ '{mfa:webauthn_error_not_allowed}'|trans|e('js')|raw }}';
-        default:
-          return '{{ '{mfa:webauthn_error_unknown}'|trans|e('js')|raw }}';
+    document.addEventListener('DOMContentLoaded', function() {
+      function verifyWebAuthn() {
+        const loginChallenge = {{ mfa_option_data|raw }};
+        SimpleWebAuthnBrowser.startAuthentication(loginChallenge.publicKey).then(submitForm).catch(handleError);
       }
-    }
 
-    function offerRetry() {
-      const retryButton = document.querySelector('.mdl-button.mdl-color-text--red');
+      function handleError(error) {
+        console.error(error)
+        const errorMessage = createMessage(error)
 
-      retryButton.classList.remove('hide');
-    }
+        const errorNode = document.querySelector('p.error');
+        errorNode.classList.remove('hide');
+        errorNode.querySelector('span').textContent = errorMessage;
 
-    function submitForm(webAuthnResponse) {
-      const form = document.querySelector('form');
-      const submissionInput = createHiddenInput('submitMfa');
-      const webAuthnResponseInput = createHiddenInput('mfaSubmission');
+        offerRetry();
+      }
 
-      webAuthnResponseInput.value = JSON.stringify(webAuthnResponse);
+      function createMessage(error) {
+        switch (error.name) {
+          case 'AbortError':
+            return '{{ '{mfa:webauthn_error_abort}'|trans|e('js')|raw }}';
+          case 'NotAllowedError':
+            return '{{ '{mfa:webauthn_error_not_allowed}'|trans|e('js')|raw }}';
+          default:
+            return '{{ '{mfa:webauthn_error_unknown}'|trans|e('js')|raw }}';
+        }
+      }
 
-      form.appendChild(submissionInput);
-      form.appendChild(webAuthnResponseInput);
+      function offerRetry() {
+        const retryButton = document.querySelector('.mdl-button.mdl-color-text--red');
 
-      form.submit();
-    }
+        retryButton.classList.remove('hide');
+      }
 
-    function createHiddenInput(name) {
-      const input = document.createElement('input');
+      function submitForm(webAuthnResponse) {
+        const form = document.querySelector('form');
+        const submissionInput = createHiddenInput('submitMfa');
+        const webAuthnResponseInput = createHiddenInput('mfaSubmission');
 
-      input.type = 'hidden';
-      input.name = name;
+        webAuthnResponseInput.value = JSON.stringify(webAuthnResponse);
 
-      return input;
-    }
+        form.appendChild(submissionInput);
+        form.appendChild(webAuthnResponseInput);
+
+        form.submit();
+      }
+
+      function createHiddenInput(name) {
+        const input = document.createElement('input');
+
+        input.type = 'hidden';
+        input.name = name;
+
+        return input;
+      }
+      
+      document.getElementById('showBtn').addEventListener('click', verifyWebAuthn);
+      document.querySelector('body').addEventListener{'load', verifyWebAuthn};
+    });
   </script>
 </head>
 
-<body class="gradient-bg" onload="verifyWebAuthn()">
+<body class="gradient-bg">
 <div class="mdl-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
@@ -94,9 +99,12 @@
           </p>
         </div>
 
-        {% if error_message is not empty %}
+        {% if error_message is not empty and analytics_tracking_id is not empty %}
           <script>
-            ga('send', 'event', 'error', 'webauthn', '{{ error_message|e('js')|raw }}');
+           gtag('event', '{{ error_message|e('js')|raw }}', {
+            'event_category': 'error',
+            'event_label': 'webauthn'
+          });
           </script>
         {% endif %}
         <div class="mdl-card__supporting-text" layout-children="column">
@@ -113,8 +121,8 @@
           <span flex></span>
           <!-- used type=button to avoid form submission on click -->
           <button
+            id="showBtn"
             type="button"
-            onclick="verifyWebAuthn()"
             class="mdl-button mdl-color-text--red {{ error_message is empty ? 'hide' : 'show' }}"
           >
             {{ '{mfa:button_try_again}'|trans }}

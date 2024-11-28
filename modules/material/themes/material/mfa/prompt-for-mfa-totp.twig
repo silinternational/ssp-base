@@ -51,9 +51,14 @@
             </p>
           </div>
 
-          <script>
-            ga('send', 'event', 'error', 'totp', '{{ error_message|e('js')|raw }}');
-          </script>
+          {% if analytics_tracking_id is not empty %}
+            <script>
+              gtag('event', '{{ error_message|e('js')|raw }}', {
+                'event_category': 'error',
+                'event_label': 'totp'
+              });
+            </script>
+          {% endif %}
         {% endif %}
 
         <div class="mdl-card__actions" layout-children="row">

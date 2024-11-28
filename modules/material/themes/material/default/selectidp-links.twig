@@ -14,12 +14,34 @@
       idpInput.value = id;
 
       document.querySelector('form').appendChild(idpInput);
-
-      ga('send', 'event', 'hub', 'choice', 'IdP', id);
+      
+      {% if analytics_tracking_id is not empty %}
+        gtag('event', 'IdP', {
+          'event_category': 'hub',
+          'event_label': 'choice',
+          'value': id
+        });
+      {% endif %}
+      
+      document.querySelector('form').submit();
     }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('button[data-entityid]').forEach((idp) => {
+        idp.addEventListener('click', () => {
+          setSelectedIdp(idp.dataset.entityid);
+        });
+      });
+    });
 
     function clickedAnyway(idpName) {
-      ga('send', 'event', 'hub', 'choice-disabled', 'IdP', idpName);
+      {% if analytics_tracking_id is not empty %}
+        gtag('event', 'IdP', {
+          'event_category': 'hub',
+          'event_label': 'choice-disabled',
+          'value': id
+        });
+      {% endif %}
     }
   </script>
 </head>
@@ -61,7 +83,7 @@
           title="{{ '{selectidp-links:enabled}'|trans({'%idpName%': idp|entityDisplayName}) }}"
         >
           <div class="mdl-card__media white-bg fixed-height">
-            <button class="mdl-button logo-container fill-parent" onclick="setSelectedIdp('{{ idp.entityid|e }}')">
+            <button data-entityid="{{idp.entityid|e}}" type="button" class="mdl-button logo-container fill-parent">
               <div class="image-wrapper">
                 <img
                   class="logo"
