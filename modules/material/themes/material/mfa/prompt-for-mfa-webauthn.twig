@@ -64,7 +64,7 @@
         return input;
       }
       
-      document.querySelector('.mdl-button.mdl-color-text--red').addEventListener('click', verifyWebAuthn);
+      document.getElementById('showBtn').addEventListener('click', verifyWebAuthn);
       document.querySelector('body').addEventListener{'load', verifyWebAuthn};
     });
   </script>
@@ -121,6 +121,7 @@
           <span flex></span>
           <!-- used type=button to avoid form submission on click -->
           <button
+            id="showBtn"
             type="button"
             class="mdl-button mdl-color-text--red {{ error_message is empty ? 'hide' : 'show' }}"
           >

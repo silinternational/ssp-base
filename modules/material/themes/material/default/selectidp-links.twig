@@ -38,7 +38,7 @@
       {% if analytics_tracking_id is not empty %}
         gtag('event', 'IdP', {
           'event_category': 'hub',
-          'event_label': 'choice',
+          'event_label': 'choice-disabled',
           'value': id
         });
       {% endif %}

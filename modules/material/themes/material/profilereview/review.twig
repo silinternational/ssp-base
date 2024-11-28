@@ -25,9 +25,8 @@
       }
 
       document.querySelector('body').addEventListener('load', prettifyDates)
-      document.querySelectorA("mdl-button mdl-button--colored").addEventListener('click', function(e) {
-        e.preventDefault()
-        document.querySelector('button').click()
+      document.getElementById('launch').addEventListener('click', function(e) {
+        document.getElementsByName('continue').click()
       });
     });
   </script>
@@ -124,7 +123,7 @@
       </section>
 
       <section layout-children="row" child-spacing="end" class="fill-parent margin">
-        <a href="{{ profile_url }}" target="_blank" rel="noopener"
+        <a id="launch" href="{{ profile_url }}" target="_blank" rel="noopener"
            class="mdl-button mdl-button--colored" layout-children="row">
           {{ '{review:button_update}'|trans }} <i class="material-icons">launch</i>
         </a>

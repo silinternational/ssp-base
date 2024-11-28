@@ -56,7 +56,7 @@
       document.getElementById('copyBtn').addEventListener('click', function() {
         copyCodesToClipboard(this);
       });
-      document.querySelector('input[type="checkbox"]').addEventListener('change', function(e) {
+      document.getElementById('checkbox').addEventListener('change', function(e) {
         contBtn = document.querySelector('button[name="continue"]');
         contBtn.disabled = !e.checked;
       });
@@ -159,7 +159,7 @@
 
       <div layout-children="row" class="fill-parent">
         <label class="mdl-checkbox mdl-js-checkbox" flex>
-          <input type="checkbox" class="mdl-checkbox__input">
+          <input id="checkbox" type="checkbox" class="mdl-checkbox__input">
           <span class="mdl-checkbox__label">{{ '{mfa:new_codes_saved}'|trans }}</span>
         </label>
 
