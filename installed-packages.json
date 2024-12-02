@@ -1,11 +1,11 @@
 [
   {
     "name": "aws/aws-crt-php",
-    "version": "v1.2.6"
+    "version": "v1.2.7"
   },
   {
     "name": "aws/aws-sdk-php",
-    "version": "3.323.1"
+    "version": "3.331.0"
   },
   {
     "name": "cebe/markdown",
@@ -17,11 +17,11 @@
   },
   {
     "name": "ezyang/htmlpurifier",
-    "version": "v4.17.0"
+    "version": "v4.18.0"
   },
   {
     "name": "gettext/gettext",
-    "version": "v5.7.1"
+    "version": "v5.7.3"
   },
   {
     "name": "gettext/languages",
@@ -49,7 +49,7 @@
   },
   {
     "name": "guzzlehttp/promises",
-    "version": "2.0.3"
+    "version": "2.0.4"
   },
   {
     "name": "guzzlehttp/psr7",
@@ -65,11 +65,11 @@
   },
   {
     "name": "mlocati/ip-lib",
-    "version": "1.18.0"
+    "version": "1.18.1"
   },
   {
     "name": "monolog/monolog",
-    "version": "3.7.0"
+    "version": "3.8.0"
   },
   {
     "name": "mtdowling/jmespath.php",
@@ -81,7 +81,7 @@
   },
   {
     "name": "phpmailer/phpmailer",
-    "version": "v6.9.1"
+    "version": "v6.9.3"
   },
   {
     "name": "phpspec/php-diff",
@@ -125,15 +125,15 @@
   },
   {
     "name": "roave/security-advisories",
-    "version": "dev-master c90faeb"
+    "version": "dev-master fff26f7"
   },
   {
     "name": "robrichards/xmlseclibs",
-    "version": "3.1.1"
+    "version": "3.1.3"
   },
   {
     "name": "silinternational/idp-id-broker-php-client",
-    "version": "4.4.0"
+    "version": "4.4.1"
   },
   {
     "name": "silinternational/php-env",
@@ -153,83 +153,83 @@
   },
   {
     "name": "simplesamlphp/assert",
-    "version": "v1.3.1"
+    "version": "v1.5.0"
   },
   {
     "name": "simplesamlphp/composer-module-installer",
-    "version": "v1.3.4"
+    "version": "v1.3.5"
   },
   {
     "name": "simplesamlphp/saml2",
-    "version": "v4.6.12"
+    "version": "v4.16.14"
   },
   {
     "name": "simplesamlphp/simplesamlphp",
-    "version": "v2.2.3"
+    "version": "v2.2.4"
   },
   {
     "name": "simplesamlphp/simplesamlphp-assets-base",
-    "version": "v2.3.0"
+    "version": "v2.3.2"
   },
   {
     "name": "symfony/cache",
-    "version": "v6.4.12"
+    "version": "v6.4.16"
   },
   {
     "name": "symfony/cache-contracts",
-    "version": "v3.5.0"
+    "version": "v3.5.1"
   },
   {
     "name": "symfony/config",
-    "version": "v6.4.8"
+    "version": "v6.4.14"
   },
   {
     "name": "symfony/console",
-    "version": "v6.4.12"
+    "version": "v6.4.15"
   },
   {
     "name": "symfony/dependency-injection",
-    "version": "v6.4.12"
+    "version": "v6.4.16"
   },
   {
     "name": "symfony/deprecation-contracts",
-    "version": "v3.5.0"
+    "version": "v3.5.1"
   },
   {
     "name": "symfony/error-handler",
-    "version": "v6.4.10"
+    "version": "v6.4.14"
   },
   {
     "name": "symfony/event-dispatcher",
-    "version": "v6.4.8"
+    "version": "v6.4.13"
   },
   {
     "name": "symfony/event-dispatcher-contracts",
-    "version": "v3.5.0"
+    "version": "v3.5.1"
   },
   {
     "name": "symfony/filesystem",
-    "version": "v6.4.12"
+    "version": "v6.4.13"
   },
   {
     "name": "symfony/finder",
-    "version": "v6.4.11"
+    "version": "v6.4.13"
   },
   {
     "name": "symfony/framework-bundle",
-    "version": "v6.4.12"
+    "version": "v6.4.13"
   },
   {
     "name": "symfony/http-foundation",
-    "version": "v6.4.12"
+    "version": "v6.4.16"
   },
   {
     "name": "symfony/http-kernel",
-    "version": "v6.4.12"
+    "version": "v6.4.16"
   },
   {
     "name": "symfony/intl",
-    "version": "v6.4.12"
+    "version": "v6.4.15"
   },
   {
     "name": "symfony/polyfill-ctype",
@@ -265,43 +265,43 @@
   },
   {
     "name": "symfony/routing",
-    "version": "v6.4.12"
+    "version": "v6.4.16"
   },
   {
     "name": "symfony/service-contracts",
-    "version": "v3.5.0"
+    "version": "v3.5.1"
   },
   {
     "name": "symfony/string",
-    "version": "v6.4.12"
+    "version": "v6.4.15"
   },
   {
     "name": "symfony/translation-contracts",
-    "version": "v3.5.0"
+    "version": "v3.5.1"
   },
   {
     "name": "symfony/twig-bridge",
-    "version": "v6.4.12"
+    "version": "v6.4.16"
   },
   {
     "name": "symfony/var-dumper",
-    "version": "v6.4.11"
+    "version": "v6.4.15"
   },
   {
     "name": "symfony/var-exporter",
-    "version": "v6.4.9"
+    "version": "v6.4.13"
   },
   {
     "name": "symfony/yaml",
-    "version": "v6.4.12"
+    "version": "v6.4.13"
   },
   {
     "name": "twig/intl-extra",
-    "version": "v3.13.0"
+    "version": "v3.16.0"
   },
   {
     "name": "twig/twig",
-    "version": "v3.14.0"
+    "version": "v3.16.0"
   },
   {
     "name": "webmozart/assert",
