@@ -1,11 +1,14 @@
-hub: clean
+hub: clean deps jsdeps
 	docker compose up -d ssp-hub.local
 
 clean:
 	docker compose kill
 	docker compose rm -f
 
-composer:
+deps:
+	docker compose run --rm composer bash -c "composer install --no-scripts --no-progress"
+
+depsupdate:
 	docker compose run --rm composer bash -c "./update-composer-deps.sh"
 
 test:
@@ -21,10 +24,10 @@ copyJsLib:
 	cp ./node_modules/@simplewebauthn/browser/dist/bundle/index.umd.min.js ./modules/mfa/public/simplewebauthn/browser.js
 	cp ./node_modules/@simplewebauthn/browser/LICENSE.md ./modules/mfa/public/simplewebauthn/LICENSE.md
 
-deps:
+jsdeps:
 	docker compose run --rm node npm install --ignore-scripts
 	make copyJsLib
 
-depsupdate:
+jsdepsupdate:
 	docker compose run --rm node npm update --ignore-scripts
 	make copyJsLib
