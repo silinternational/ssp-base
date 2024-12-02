@@ -63,8 +63,8 @@
 
         return input;
       }
-      
-      document.getElementById('showBtn').addEventListener('click', verifyWebAuthn);
+
+      document.getElementById('retryButton').addEventListener('click', verifyWebAuthn);
 
       verifyWebAuthn();
     });
@@ -122,7 +122,7 @@
           <span flex></span>
           <!-- used type=button to avoid form submission on click -->
           <button
-            id="showBtn"
+            id="retryButton"
             type="button"
             class="mdl-button mdl-color-text--red {{ error_message is empty ? 'hide' : 'show' }}"
           >
