@@ -59,6 +59,7 @@ services:
 
   test-browser:
     image: justinribeiro/chrome-headless:stable
+    platform: linux/amd64
     ports:
       - "9222:9222"
     cap_add:
@@ -258,6 +259,7 @@ services:
 
   ssp-sp1.local:
     image: silintl/ssp-base:9.3.0
+    platform: linux/amd64
     volumes:
       # Utilize custom certs
       - ./development/sp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
@@ -284,6 +286,7 @@ services:
 
   ssp-sp2.local:
     image: silintl/ssp-base:9.3.0
+    platform: linux/amd64
     volumes:
       # Utilize custom certs
       - ./development/sp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
@@ -307,6 +310,7 @@ services:
 
   ssp-sp3.local:
     image: silintl/ssp-base:9.3.0
+    platform: linux/amd64
     volumes:
       # Utilize custom certs
       - ./development/sp3-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
@@ -332,6 +336,7 @@ services:
 
   pwmanager.local:
     image: silintl/ssp-base:9.3.0
+    platform: linux/amd64
     volumes:
       # Utilize custom certs
       - ./development/sp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
@@ -354,6 +359,7 @@ services:
   # the broker and brokerDb containers are used by the silauth module
   broker:
     image: silintl/idp-id-broker:latest
+    platform: linux/amd64
     ports:
       - "80"
     depends_on:
@@ -413,6 +419,7 @@ services:
 
   dynamo:
     image: cnadiminti/dynamodb-local
+    platform: linux/amd64
     command: "-sharedDb -inMemory"
     hostname: dynamo
     ports:
@@ -422,6 +429,7 @@ services:
 
   init-dynamo:
     image: garland/aws-cli-docker
+    platform: linux/amd64
     command: "/init-dynamodb.sh"
     volumes:
       - ./development/init-dynamodb.sh:/init-dynamodb.sh
