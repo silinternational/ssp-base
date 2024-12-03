@@ -24,7 +24,8 @@
         node.innerText = `${label} ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`
       }
 
-      document.querySelector('body').addEventListener('load', prettifyDates)
+      prettifyDates();
+
       document.getElementById('launch').addEventListener('click', function(e) {
         document.getElementsByName('continue').click()
       });
