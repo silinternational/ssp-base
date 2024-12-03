@@ -12,8 +12,6 @@
         if (bowser.msie) {
           disablePrint();
           disableDownload();
-        } else if (bowser.msedge) {
-          disableDownload();
         }
       }
 
@@ -49,7 +47,8 @@
         window.print();
       }
 
-      document.querySelector('body').addEventListener('load', disableUnsupportedFeatures);
+      disableUnsupportedFeatures();
+
       document.getElementById('print').addEventListener('click', function() {
         printElement('#code-card');
       });
