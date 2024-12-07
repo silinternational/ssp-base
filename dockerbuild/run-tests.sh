@@ -10,5 +10,6 @@ set -e
 
 ./vendor/bin/phpunit -v tests/AnnouncementTest.php
 ./vendor/bin/phpunit -v vendor/simplesamlphp/simplesamlphp/modules/sildisco/tests/
+./vendor/bin/phpunit -v vendor/simplesamlphp/simplesamlphp/modules/mfa/tests/
 
 /data/run-integration-tests.sh

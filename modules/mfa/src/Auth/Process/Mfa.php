@@ -912,14 +912,9 @@ class Mfa extends ProcessingFilter
          * Add an '*' for each of the characters of the domain, except
          * for the first character of each part and the .
          */
-        list($domainA, $domainB) = explode('.', $domain);
-
-        $newEmail .= substr($domainA, 0, 1);
-        $newEmail .= str_repeat('*', strlen($domainA) - 1);
-        $newEmail .= '.';
-
-        $newEmail .= substr($domainB, 0, 1);
-        $newEmail .= str_repeat('*', strlen($domainB) - 1);
+        $newEmail .= implode('.', array_map(function ($part) {
+            return substr($part, 0, 1) . str_repeat('*', max(strlen($part) - 1, 0));
+        }, explode('.', $domain)));
         return $newEmail;
     }
 
