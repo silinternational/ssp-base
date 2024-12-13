@@ -74,6 +74,8 @@ if (filter_has_var(INPUT_POST, 'submitMfa')) {
 
     $rememberMe = filter_input(INPUT_POST, 'rememberMe') ?? false;
 
+    Mfa::setRememberMePreferenceCookie($rememberMe);
+
     // NOTE: This will only return if validation fails.
     $errorMessage = Mfa::validateMfaSubmission(
         $mfaId,
@@ -126,6 +128,7 @@ $t->data['browser_js_path'] = '/module.php/mfa/simplewebauthn/browser.js?v=' . $
 $t->data['manager_email'] = $state['managerEmail'];
 $t->data['other_options'] = $otherOptions;
 $t->data['idp_name'] = $t->getEntityDisplayName($state['IdPMetadata']);
+$t->data['rememberMePreference'] = filter_input(INPUT_COOKIE, 'remember_me_preference') ?? '';
 $t->send();
 
 $logger->info(json_encode([

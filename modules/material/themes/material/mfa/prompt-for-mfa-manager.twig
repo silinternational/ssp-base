@@ -78,7 +78,7 @@
           <span class="mdl-checkbox__label">
             {{ '{mfa:remember_this}'|trans }}
           </span>
-          <input type="checkbox" name="rememberMe" checked class="mdl-checkbox__input">
+          <input type="checkbox" name="rememberMe" {% if rememberMePreference == 'checked' %}checked{% endif %} class="mdl-checkbox__input">
         </label>
       </div>
     </form>
