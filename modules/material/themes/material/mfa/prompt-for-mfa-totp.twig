@@ -4,6 +4,23 @@
   <title>{{ '{mfa:title}'|trans }}</title>
 
   {{ include('header.twig') }}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const rememberMeCheckbox = document.getElementById('rememberMe');
+      
+      if (rememberMeCheckbox) {
+        const desiredRememberMeState = localStorage.getItem('desiredRememberMeState');
+        if (desiredRememberMeState === 'true') {
+          rememberMeCheckbox.checked = true;
+        }
+
+        rememberMeCheckbox.addEventListener('change', function() {
+          localStorage.setItem('desiredRememberMeState', rememberMeCheckbox.checked);
+        });
+      }
+    });
+  </script>
 </head>
 <body class="gradient-bg">
 <div class="mdl-layout mdl-layout--fixed-header">
@@ -72,11 +89,11 @@
       </div>
 
       <div>
-        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <label for="rememberMe" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
           <span class="mdl-checkbox__label">
               {{ '{mfa:remember_this}'|trans }}
           </span>
-          <input type="checkbox" name="rememberMe" {% if rememberMePreference == 'checked' %}checked{% endif %} class="mdl-checkbox__input">
+          <input type="checkbox" id="rememberMe" name="rememberMe" {% if rememberMePreference == 'checked' %}checked{% endif %} class="mdl-checkbox__input">
         </label>
       </div>
     </form>
