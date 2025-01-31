@@ -5,22 +5,7 @@
 
   {{ include('header.twig') }}
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const rememberMeCheckbox = document.getElementById('rememberMe');
-      
-      if (rememberMeCheckbox) {
-        const desiredRememberMeState = localStorage.getItem('desiredRememberMeState');
-        if (desiredRememberMeState === 'true') {
-          rememberMeCheckbox.checked = true;
-        }
-
-        rememberMeCheckbox.addEventListener('change', function() {
-          localStorage.setItem('desiredRememberMeState', rememberMeCheckbox.checked);
-        });
-      }
-    });
-  </script>
+  <script src="{{ remember_me_js_path }}"></script>
 </head>
 <body class="gradient-bg">
 <div class="mdl-layout mdl-layout--fixed-header">
