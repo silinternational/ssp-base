@@ -125,7 +125,7 @@ $t->data['mfa_option_data'] = json_encode($mfaOption['data']);
 $t->data['mfa_options'] = $mfaOptions;
 $browserJsHash = md5_file(__DIR__ . '/simplewebauthn/browser.js');
 $t->data['browser_js_path'] = '/module.php/mfa/simplewebauthn/browser.js?v=' . $browserJsHash;
-$t->data['remember_me_js_path'] = '/module.php/mfa/public/remember-me.js';
+$t->data['remember_me_js_path'] = '/module.php/mfa/remember-me.js';
 $t->data['manager_email'] = $state['managerEmail'];
 $t->data['other_options'] = $otherOptions;
 $t->data['idp_name'] = $t->getEntityDisplayName($state['IdPMetadata']);
