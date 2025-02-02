@@ -11,4 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
       localStorage.setItem('desiredRememberMeState', rememberMeCheckbox.checked);
     });
   }
+
+  const form = document.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', function() {
+      localStorage.removeItem('desiredRememberMeState');
+    });
+  }
 });
