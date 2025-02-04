@@ -10,7 +10,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       function verifyWebAuthn() {
-        document.getElementById('instructions').textContent = '{{ '{mfa:webauthn_instructions}'|trans }}';
+        document.getElementById('instructions').textContent = '{{ '{mfa:webauthn_instructions}'|trans|e('js') }}';
         const loginChallenge = {{ mfa_option_data|raw }};
         SimpleWebAuthnBrowser.startAuthentication(loginChallenge.publicKey).then(submitForm).catch(handleError);
       }
@@ -42,7 +42,7 @@
 
         verifyBtn.classList.add('mdl-color-text--red');
         verifyBtn.classList.remove('mdl-color-text--primary');
-        verifyBtn.textContent = '{{ '{mfa:button_try_again}'|trans|escape('js') }}';
+        verifyBtn.textContent = '{{ '{mfa:button_try_again}'|trans|e('js') }}';
 
       }
 

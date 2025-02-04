@@ -135,7 +135,7 @@ msgid "{mfa:webauthn_icon}"
 msgstr "USB 키 아이콘"
 
 msgid "{mfa:webauthn_instructions}"
-msgstr "이제 보안 키를 삽입하고 단추를 누를 수 있습니다."
+msgstr "메시지에 따라 키를 사용하세요."
 
 msgid "{mfa:webauthn_start}"
 msgstr "시작할 준비가 되면 확인을 클릭하세요."
