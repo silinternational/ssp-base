@@ -135,7 +135,10 @@ msgid "{mfa:webauthn_icon}"
 msgstr "USB key icon"
 
 msgid "{mfa:webauthn_instructions}"
-msgstr "You may now insert your security key and press its button."
+msgstr "Follow the prompts to use your key."
+
+msgid "{mfa:webauthn_start}"
+msgstr "Click OK when you're ready to start."
 
 msgid "{mfa:webauthn_error_unknown}"
 msgstr "Something went wrong with that request, unable to verify at this time."

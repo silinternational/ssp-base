@@ -135,7 +135,10 @@ msgid "{mfa:webauthn_icon}"
 msgstr "Icono de la llave USB"
 
 msgid "{mfa:webauthn_instructions}"
-msgstr "Ahora puede insertar su clave de seguridad y presionar su botón."
+msgstr "Siga las instrucciones para usar su clave."
+
+msgid "{mfa:webauthn_start}"
+msgstr "Haga clic en OK cuando esté listo para comenzar."
 
 msgid "{mfa:webauthn_error_unknown}"
 msgstr "Algo salió mal con esa solicitud, no se pudo verificar en este momento."

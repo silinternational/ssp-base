@@ -10,6 +10,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       function verifyWebAuthn() {
+        document.getElementById('instructions').textContent = '{{ '{mfa:webauthn_instructions}'|trans|e('js') }}';
         const loginChallenge = {{ mfa_option_data|raw }};
         SimpleWebAuthnBrowser.startAuthentication(loginChallenge.publicKey).then(submitForm).catch(handleError);
       }
@@ -37,9 +38,12 @@
       }
 
       function offerRetry() {
-        const retryButton = document.getElementById('retryButton');
+        const verifyBtn = document.getElementById('verifyBtn');
 
-        retryButton.classList.remove('hide');
+        verifyBtn.classList.add('mdl-color-text--red');
+        verifyBtn.classList.remove('mdl-color-text--primary');
+        verifyBtn.textContent = '{{ '{mfa:button_try_again}'|trans|e('js') }}';
+
       }
 
       function submitForm(webAuthnResponse) {
@@ -64,9 +68,7 @@
         return input;
       }
 
-      document.getElementById('retryButton').addEventListener('click', verifyWebAuthn);
-
-      verifyWebAuthn();
+      document.getElementById('verifyBtn').addEventListener('click', verifyWebAuthn);
     });
   </script>
 
@@ -97,8 +99,8 @@
         </div>
 
         <div class="mdl-card__title">
-          <p class="mdl-card__subtitle-text">
-            {{ '{mfa:webauthn_instructions}'|trans }}
+          <p id="instructions" class="mdl-card__subtitle-text m-auto">
+            {{ '{mfa:webauthn_start}'|trans }}
           </p>
         </div>
 
@@ -124,11 +126,11 @@
           <span flex></span>
           <!-- used type=button to avoid form submission on click -->
           <button
-            id="retryButton"
+            id="verifyBtn"
             type="button"
-            class="mdl-button mdl-color-text--red {{ error_message is empty ? 'hide' : 'show' }}"
+            class="mdl-button {{ error_message is empty ? 'mdl-color-text--primary' : 'mdl-color-text--red' }}"
           >
-            {{ '{mfa:button_try_again}'|trans }}
+            {{ error_message is empty ? 'ok' : '{mfa:button_try_again}'|trans }}
           </button>
 
         </div>
@@ -149,3 +151,10 @@
 </div>
 </body>
 </html>
+
+<style>
+  #instructions {
+    min-width: 350px;
+    text-align: center;
+  }
+</style>
