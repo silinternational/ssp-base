@@ -143,7 +143,7 @@ class FakeIdBrokerClient
             [
                 'id' => 2,
                 'type' => 'totp',
-                'label' => 'Smartphone App',
+                'label' => 'Authenticator App',
                 'created_utc' => '2019-04-02T16:02:14Z',
                 'last_used_utc' => '2019-04-01T00:00:00Z',
                 'data' => [
