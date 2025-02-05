@@ -66,13 +66,14 @@
         {% endif %}
 
         <div class="mdl-card__actions" layout-children="row">
+          {{ include('other_mfas.twig') }}
+
           <span flex></span>
+          
           <button name="submitMfa" class="mdl-button mdl-button--raised mdl-button--primary">
             {{ '{mfa:button_verify}'|trans }}
           </button>
         </div>
-
-        {{ include('other_mfas.twig') }}
       </div>
 
       <div>

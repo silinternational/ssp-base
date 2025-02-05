@@ -123,19 +123,20 @@
         </div>
 
         <div class="mdl-card__actions" layout-children="row">
+          {{ include('other_mfas.twig') }}
+
           <span flex></span>
+          
           <!-- used type=button to avoid form submission on click -->
           <button
             id="verifyBtn"
             type="button"
-            class="mdl-button {{ error_message is empty ? 'mdl-color-text--primary' : 'mdl-color-text--red' }}"
+            class="mdl-button mdl-button--raised {{ error_message is empty ? 'mdl-color-text--primary' : 'mdl-color-text--red' }}"
           >
             {{ error_message is empty ? 'ok' : '{mfa:button_try_again}'|trans }}
           </button>
-
         </div>
 
-        {{ include('other_mfas.twig') }}
       </div>
 
       <div>

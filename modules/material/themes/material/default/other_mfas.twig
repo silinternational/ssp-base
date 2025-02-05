@@ -11,7 +11,7 @@
 {% if other_options|length > 0 %}
   <div layout-children="column" child-spacing="center">
     {# used type=button to avoid form submission on click since this is just used to display the ul #}
-    <button id="others" type="button" class="mdl-button mdl-js-button">
+    <button id="others" type="button" class="mdl-button mdl-js-button mdl-button--raised">
       <span class="mdl-typography--caption">
         {{ '{mfa:use_others}'|trans }}
       </span>
