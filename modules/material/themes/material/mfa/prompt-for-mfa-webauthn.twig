@@ -22,8 +22,6 @@
         const errorNode = document.querySelector('p.error');
         errorNode.classList.remove('hide');
         errorNode.querySelector('span').textContent = errorMessage;
-
-        offerRetry();
       }
 
       function createMessage(error) {
@@ -35,15 +33,6 @@
           default:
             return '{{ '{mfa:webauthn_error_unknown}'|trans|e('js')|raw }}';
         }
-      }
-
-      function offerRetry() {
-        const verifyBtn = document.getElementById('verifyBtn');
-
-        verifyBtn.classList.add('mdl-color-text--red');
-        verifyBtn.classList.remove('mdl-color-text--primary');
-        verifyBtn.textContent = '{{ '{mfa:button_try_again}'|trans|e('js') }}';
-
       }
 
       function submitForm(webAuthnResponse) {
@@ -126,14 +115,10 @@
           {{ include('other_mfas.twig') }}
 
           <span flex></span>
-          
+
           <!-- used type=button to avoid form submission on click -->
-          <button
-            id="verifyBtn"
-            type="button"
-            class="mdl-button mdl-button--raised {{ error_message is empty ? 'mdl-color-text--primary' : 'mdl-color-text--red' }}"
-          >
-            {{ error_message is empty ? 'ok' : '{mfa:button_try_again}'|trans }}
+          <button id="verifyBtn" type="button" class="mdl-button mdl-button--raised mdl-button--primary">
+            {{ '{mfa:button_verify}'|trans }}
           </button>
         </div>
 
