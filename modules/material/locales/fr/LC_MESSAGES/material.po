@@ -120,7 +120,7 @@ msgid "{mfa:totp_header}"
 msgstr "Obtenez un code depuis votre application d'authentification"
 
 msgid "{mfa:totp_icon}"
-msgstr "Icône de l'application Smartphone"
+msgstr "Icône de l'application d'authentification"
 
 msgid "{mfa:totp_input}"
 msgstr "Entrer le code à 6 chiffres"
