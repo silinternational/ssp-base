@@ -138,7 +138,7 @@ msgid "{mfa:webauthn_instructions}"
 msgstr "Follow the prompts to use your key."
 
 msgid "{mfa:webauthn_start}"
-msgstr "Click OK when you're ready to start."
+msgstr "Click Verify when you're ready to start."
 
 msgid "{mfa:webauthn_error_unknown}"
 msgstr "Something went wrong with that request, unable to verify at this time."
