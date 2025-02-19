@@ -11,24 +11,30 @@ must be installed.
 [Make](https://www.gnu.org/software/make) is optional but simplifies the build process.
 
 ## Configuration
+
 By default, configuration is read from environment variables. These are documented
-in the `local.env.dist` file. Optionally, you can define configuration in AWS AppConfig.
+in the `local.env.dist` file. Optionally, you can define configuration in AWS Systems Manager.
 To do this, set the following environment variables to point to the configuration in
 AWS:
 
 * `AWS_REGION` - the AWS region in use
-* `APP_ID` - the application ID or name
-* `CONFIG_ID` - the configuration profile ID or name
-* `ENV_ID` - the environment ID or name
+* `APP_ID` - AppConfig application ID or name
+* `CONFIG_ID` - AppConfig configuration profile ID or name
+* `ENV_ID` - AppConfig environment ID or name
+* `PARAMETER_STORE_PATH` - Parameter Store base path for this app, e.g. "/idp-pw-api/idp-name/prod"
 
 In addition, the AWS API requires authentication. It is best to use an access role
 such as an [ECS Task Role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html).
 If that is not an option, you can specify an access token using the `AWS_ACCESS_KEY_ID` and
 `AWS_SECRET_ACCESS_KEY` variables.
 
-The content of the configuration profile takes the form of a typical .env file, using
-`#` for comments and `=` for variable assignment. Any variables read from AppConfig
-will overwrite variables set in the execution environment.
+If `PARAMETER_STORE_PATH` is given, AWS Parameter Store will be used. Each parameter in AWS Parameter
+Store is set as an environment variable in the execution environment.
+
+If `PARAMETER_STORE_PATH` is not given but the AppConfig variables are, AWS AppConfig will be used.
+The content of the AppConfig configuration profile takes the form of a typical .env file, using `#`
+for comments and `=` for variable assignment. Any variables read from AppConfig will overwrite variables
+set in the execution environment.
 
 ### SimpleSAMLphp Metadata
 
