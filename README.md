@@ -21,7 +21,7 @@ AWS:
 * `APP_ID` - AppConfig application ID or name
 * `CONFIG_ID` - AppConfig configuration profile ID or name
 * `ENV_ID` - AppConfig environment ID or name
-* `PARAMETER_STORE_PATH` - Parameter Store base path for this app, e.g. "/idp-pw-api/idp-name/prod"
+* `PARAMETER_STORE_PATH` - Parameter Store base path for this app, e.g. "/idp-name/"
 
 In addition, the AWS API requires authentication. It is best to use an access role
 such as an [ECS Task Role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html).
