@@ -47,9 +47,6 @@ COPY dockerbuild/config/* $SSP_PATH/config/
 COPY dockerbuild/ssp-overrides/sp-php.patch sp-php.patch
 RUN patch /data/vendor/simplesamlphp/simplesamlphp/modules/saml/src/Auth/Source/SP.php sp-php.patch
 
-ADD https://github.com/silinternational/config-shim/releases/download/v1.2.0/config-shim.gz config-shim.gz
-RUN gzip -d config-shim.gz && chmod 755 config-shim && mv config-shim /usr/local/bin
-
 # Set permissions for cache directory. Corresponds to the `cachedir` setting in config.php.
 RUN mkdir /data/cache
 RUN chown -R www-data:www-data /data/cache
