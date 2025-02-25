@@ -133,11 +133,25 @@ foreach ($files as $file) {
 1. `cp local.env.dist local.env` within project root and make adjustments as needed.
 2. `cp local.broker.env.dist local.broker.env` within project root and make adjustments as needed.
 3. Add your GitHub [personal access token](https://github.com/settings/tokens?type=beta) to the `COMPOSER_AUTH` variable in the `local.env` file.
-4. Create `localhost` aliases for `ssp-hub.local`, `ssp-idp1.local`, `ssp-idp2.local`, `ssp-idp3.local`, `ssp-sp1.local`, `ssp-sp2.local`, and `ssp-sp3.local`. This is typically done in `/etc/hosts`.  _Example line:  `127.0.0.1  ssp-hub.local ssp-idp1.local ssp-idp2.local ssp-idp3.local ssp-sp1.local ssp-sp2.local ssp-sp3.local`_
-5. Run `make test` within the project root.
-6. Visit http://ssp-hub.local to see SimpleSAMLphp
+4. Create `localhost` aliases for `ssp-hub.local`, `ssp-idp1.local`, `ssp-idp2.local`,
+   `ssp-idp3.local`, `ssp-sp1.local`, `ssp-sp2.local`, and `ssp-sp3.local`. This is typically done
+   in `/etc/hosts`.
+   * Example line:
+     `127.0.0.1  ssp-hub.local ssp-idp1.local ssp-idp2.local ssp-idp3.local ssp-sp1.local ssp-sp2.local ssp-sp3.local`
+5. Change the BASE_URL_PATH for ssp-idp1.local in docker-compose.yml to have the port number, as
+   specific in the comment on that line in the file.
+6. Bring up the various containers that you will want to interact with. Example:
+   `docker compose up -d ssp-hub.local ssp-idp1.local ssp-idp2.local ssp-idp3.local ssp-sp1.local ssp-sp2.local ssp-sp3.local`
+7. Go to <http://ssp-sp1.local:8081> in a browser on your computer.
+8. Click "Test configured authentication sources"
+9. Click "ssp-hub-custom-port"
+10. Enter the username and password for the desired user. The list of valid options, and the details
+    about each of those users, is defined in the `authsources.php` file for the relevant IDP (e.g.
+    `development/idp-local/config/authsources.php`).
 
-_Note:_ there is an unresolved problem that requires a change to BASE_URL_PATH for ssp-idp1.local in docker-compose.yml due to a requirement in silauth that it be a full URL. For automated testing, it must not have a port number, but for manual testing it needs the port number.
+_Note:_ there is an unresolved problem that requires a change to BASE_URL_PATH for ssp-idp1.local in
+docker-compose.yml due to a requirement in silauth that it be a full URL. For automated testing, it
+must not have a port number, but for manual testing it needs the port number.
 
 ### Configure a container for debugging with Xdebug
 
