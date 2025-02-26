@@ -221,22 +221,21 @@ docker composer up -d ssp-hub.local
 ## Overriding translations / dictionaries
 
 If you use this Docker image but want to change some of the translations, you
-can do so by providing identically-named dictionary files into an "overrides"
-subfolder with just the desired changes, then running the
-"apply-dictionaries-overrides.php" script.
+can do so by appending the translations on the end of the base image's files.
+Use the modules/material/locales/en/LC_MESSAGES/material.po file for reference.
+Reference the [GNU gettext PO Files](https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files)
+documentation for more information about the file format.
 
-Example Dockerfile (overriding text in the MFA module's material theme):
+Example Dockerfile excerpt (overriding text in the MFA module's material theme):
 ```dockerfile
-FROM silintl/ssp-base:7.1.0
+# Copy your translation changes into the working folder:
+COPY locales/* /data
 
-# ... do your other custom Docker stuff...
-
-# Copy your translation changes into an "overrides" subfolder:
-COPY ./dictionaries/* /data/vendor/simplesamlphp/simplesamlphp/modules/material/dictionaries/overrides/
-
-# Merge those changes into the existing translation files:
-RUN cd /data/vendor/simplesamlphp/simplesamlphp/modules/material/dictionaries/overrides/ \
- && php /data/apply-dictionaries-overrides.php
+# Append those changes onto the existing translation files:
+RUN cat /data/en.material.po >> $SSP_PATH/modules/material/locales/en/LC_MESSAGES/material.po
+RUN cat /data/es.material.po >> $SSP_PATH/modules/material/locales/es/LC_MESSAGES/material.po
+RUN cat /data/fr.material.po >> $SSP_PATH/modules/material/locales/fr/LC_MESSAGES/material.po
+RUN cat /data/ko.material.po >> $SSP_PATH/modules/material/locales/ko/LC_MESSAGES/material.po
 ```
 
 ## Custom Modules
