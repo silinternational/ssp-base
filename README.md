@@ -336,8 +336,10 @@ Optional configuration is described below.
 
 ##### Google reCAPTCHA
 
-If a site key and secret have been provided in the `RECAPTCHA_SITE_KEY` and `RECAPTCHA_SECRET`
+If a site key and secret have been provided in the `RECAPTCHA_SITE_KEY` and `RECAPTCHA_SECRET_KEY`
 environment variables, the username/password page may require the user prove his/her humanity.
+
+Deprecated: `RECAPTCHA_SECRET` is deprecated and will be removed in the next major version.
 
 ##### Branding
 
@@ -558,7 +560,7 @@ MYSQL_DATABASE=
 MYSQL_USER=
 MYSQL_PASSWORD=
 RECAPTCHA_SITE_KEY=
-RECAPTCHA_SECRET=
+RECAPTCHA_SECRET_KEY=
 PROFILE_URL=
 HELP_CENTER_URL=
 ```
