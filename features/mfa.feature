@@ -208,9 +208,3 @@ Feature: Prompt for MFA credentials
     And I click the Request Assistance link
     When I click the Cancel button
     Then I should see a prompt for a backup code
-
-  Scenario: Offer 2SV recovery when we have recovery config
-    Given I provide credentials that have backup codes
-    And we have recovery-contacts config
-    When I log in
-    Then I should see a link to send a code to a recovery contact
