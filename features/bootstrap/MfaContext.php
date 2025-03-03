@@ -1,5 +1,8 @@
 <?php
 
+use Behat\Step\Given;
+use Behat\Step\Then;
+use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Mink\Element\DocumentElement;
 use Behat\Mink\Element\NodeElement;
 use PHPUnit\Framework\Assert;
@@ -662,5 +665,17 @@ class MfaContext extends FeatureContext
     public function iClickTheCancelButton()
     {
         $this->submitFormByClickingButtonNamed('cancel');
+    }
+
+    #[Given('we have recovery-contacts config')]
+    public function weHaveRecoveryContactsConfig(): void
+    {
+        throw new PendingException();
+    }
+
+    #[Then('I should see a link to send a code to a recovery contact')]
+    public function iShouldSeeALinkToSendACodeToARecoveryContact(): void
+    {
+        throw new PendingException();
     }
 }
