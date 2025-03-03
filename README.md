@@ -434,6 +434,10 @@ $metadata['idp.example.com'] = [
             // Optional:
             'idBrokerAssertValidIp' => Env::get('ID_BROKER_ASSERT_VALID_IP'),
             'loggerClass' => Psr3SamlLogger::class,
+            'recoveryContactsApi' => Env::get('MFA_RECOVERY_CONTACTS_API'),
+            'recoveryContactsApiKey' => Env::get('MFA_RECOVERY_CONTACTS_API_KEY'),
+            'recoveryContactsFallbackName' => Env::get('MFA_RECOVERY_CONTACTS_FALLBACK_NAME'),
+            'recoveryContactsFallbackEmail' => Env::get('MFA_RECOVERY_CONTACTS_FALLBACK_EMAIL'),
         ],
         // ... more AuthProc filters ...
     ],
@@ -463,6 +467,18 @@ want/need to set up MFA.
 
 The `loggerClass` parameter specifies the name of a PSR-3 compatible class that
 can be autoloaded, to use as the logger within the module.
+
+The `recoveryContacts*` parameters allow you to call an API to retrieve a list
+of recovery contacts who should be offered when the user requests help with
+their MFA. If all of these parameters are provided, the "More options" > "I need
+help" option will result in a call to that API, with the API key included as a
+Bearer token in an Authentication header, with the email address of the current
+user in an `email` query string parameter. The response must be a JSON array of
+zero or more objects, each with a `name` and `email` field. Example: `[{"name":
+"John Smith","email":"john_smith@example.com"}]`. If the array is empty, the
+provided fallback parameters will be used. Names will be partially abbreviated
+to avoid giving out too much information in case a user's password is
+compromised.
 
 #### Why use an AuthProc for MFA?
 Based on...
