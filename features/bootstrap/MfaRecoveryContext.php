@@ -1,7 +1,5 @@
 <?php
 
-namespace Sil\SspBase\Features\bootstrap;
-
 use Behat\Step\Given;
 use Behat\Step\Then;
 use Behat\Behat\Tester\Exception\PendingException;
