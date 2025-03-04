@@ -133,11 +133,25 @@ foreach ($files as $file) {
 1. `cp local.env.dist local.env` within project root and make adjustments as needed.
 2. `cp local.broker.env.dist local.broker.env` within project root and make adjustments as needed.
 3. Add your GitHub [personal access token](https://github.com/settings/tokens?type=beta) to the `COMPOSER_AUTH` variable in the `local.env` file.
-4. Create `localhost` aliases for `ssp-hub.local`, `ssp-idp1.local`, `ssp-idp2.local`, `ssp-idp3.local`, `ssp-sp1.local`, `ssp-sp2.local`, and `ssp-sp3.local`. This is typically done in `/etc/hosts`.  _Example line:  `127.0.0.1  ssp-hub.local ssp-idp1.local ssp-idp2.local ssp-idp3.local ssp-sp1.local ssp-sp2.local ssp-sp3.local`_
-5. Run `make test` within the project root.
-6. Visit http://ssp-hub.local to see SimpleSAMLphp
+4. Create `localhost` aliases for `ssp-hub.local`, `ssp-idp1.local`, `ssp-idp2.local`,
+   `ssp-idp3.local`, `ssp-sp1.local`, `ssp-sp2.local`, and `ssp-sp3.local`. This is typically done
+   in `/etc/hosts`.
+   * Example line:
+     `127.0.0.1  ssp-hub.local ssp-idp1.local ssp-idp2.local ssp-idp3.local ssp-sp1.local ssp-sp2.local ssp-sp3.local`
+5. Change the BASE_URL_PATH for ssp-idp1.local in docker-compose.yml to have the port number, as
+   specific in the comment on that line in the file.
+6. Bring up the various containers that you will want to interact with. Example:
+   `docker compose up -d ssp-hub.local ssp-idp1.local ssp-idp2.local ssp-idp3.local ssp-sp1.local ssp-sp2.local ssp-sp3.local`
+7. Go to <http://ssp-sp1.local:8081> in a browser on your computer.
+8. Click "Test configured authentication sources"
+9. Click "ssp-hub-custom-port"
+10. Enter the username and password for the desired user. The list of valid options, and the details
+    about each of those users, is defined in the `authsources.php` file for the relevant IDP (e.g.
+    `development/idp-local/config/authsources.php`).
 
-_Note:_ there is an unresolved problem that requires a change to BASE_URL_PATH for ssp-idp1.local in docker-compose.yml due to a requirement in silauth that it be a full URL. For automated testing, it must not have a port number, but for manual testing it needs the port number.
+_Note:_ there is an unresolved problem that requires a change to BASE_URL_PATH for ssp-idp1.local in
+docker-compose.yml due to a requirement in silauth that it be a full URL. For automated testing, it
+must not have a port number, but for manual testing it needs the port number.
 
 ### Configure a container for debugging with Xdebug
 
@@ -420,6 +434,12 @@ $metadata['idp.example.com'] = [
             // Optional:
             'idBrokerAssertValidIp' => Env::get('ID_BROKER_ASSERT_VALID_IP'),
             'loggerClass' => Psr3SamlLogger::class,
+
+            // Coming soon:
+            'recoveryContactsApi' => Env::get('MFA_RECOVERY_CONTACTS_API'),
+            'recoveryContactsApiKey' => Env::get('MFA_RECOVERY_CONTACTS_API_KEY'),
+            'recoveryContactsFallbackName' => Env::get('MFA_RECOVERY_CONTACTS_FALLBACK_NAME'),
+            'recoveryContactsFallbackEmail' => Env::get('MFA_RECOVERY_CONTACTS_FALLBACK_EMAIL'),
         ],
         // ... more AuthProc filters ...
     ],
@@ -449,6 +469,20 @@ want/need to set up MFA.
 
 The `loggerClass` parameter specifies the name of a PSR-3 compatible class that
 can be autoloaded, to use as the logger within the module.
+
+##### New "Recovery Contacts" Feature (COMING SOON)
+
+The `recoveryContacts*` parameters allow you to call an API to retrieve a list
+of recovery contact addresses which should be offered when the user requests help with
+their MFA. If all of these parameters are provided, the "More options" > "I need
+help" option will result in a call to that API, with the API key included as a
+Bearer token in an Authentication header, with the email address of the current
+user in an `email` query string parameter. The response must be a JSON array of
+zero or more objects, each with a `name` and `email` field. Example: `[{"name":
+"John Smith","email":"john_smith@example.com"}]`. If the array is empty, the
+provided fallback parameters will be used. Names will be partially abbreviated
+to avoid giving out too much information in case a user's password is
+compromised.
 
 #### Why use an AuthProc for MFA?
 Based on...
