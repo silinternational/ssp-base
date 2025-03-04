@@ -28,6 +28,7 @@ services:
       - ssp-idp1.local
       - ssp-idp2.local
       - ssp-idp3.local
+      - ssp-idp4.local
       - ssp-sp1.local
       - ssp-sp2.local
       - ssp-sp3.local
@@ -257,6 +258,35 @@ services:
       THEME_COLOR_SCHEME: "orange-light_blue"
       HUB_MODE: "false"
 
+  ssp-idp4.local:
+    build: .
+    volumes:
+      # Utilize custom certs
+      - ./development/idp4-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
+
+      # Utilize custom configs
+      - ./development/idp4-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+
+      # Utilize custom metadata
+      - ./development/idp4-local/metadata:/data/vendor/simplesamlphp/simplesamlphp/metadata
+
+      # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
+    ports:
+      - "8089:80"
+    environment:
+      ADMIN_PASS: "d"
+      SECRET_SALT: "not-really-secret-UyxPqwWQZZmJq3Ve"
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
+      THEME_COLOR_SCHEME: "orange-light_blue"
+      HUB_MODE: "false"
+
   ssp-sp1.local:
     image: silintl/ssp-base:9.3.0
     platform: linux/amd64
@@ -383,7 +413,7 @@ services:
       EMAIL_SIGNATURE: "one red pill, please"
       API_ACCESS_KEYS: "test-cli-abc123"
       APP_ENV: "prod"
-      RP_ORIGINS: "https://ssp-idp1.local,https://ssp-idp2.local,https://ssp-idp3.local"
+      RP_ORIGINS: "https://ssp-idp1.local,https://ssp-idp2.local,https://ssp-idp3.local,https://ssp-idp4.local"
       HIBP_CHECK_ON_LOGIN: "false"
       MFA_TOTP_apiBaseUrl: dummy
       MFA_TOTP_apiKey: 10345678-1234-1234-1234-123456789012

@@ -134,14 +134,14 @@ foreach ($files as $file) {
 2. `cp local.broker.env.dist local.broker.env` within project root and make adjustments as needed.
 3. Add your GitHub [personal access token](https://github.com/settings/tokens?type=beta) to the `COMPOSER_AUTH` variable in the `local.env` file.
 4. Create `localhost` aliases for `ssp-hub.local`, `ssp-idp1.local`, `ssp-idp2.local`,
-   `ssp-idp3.local`, `ssp-sp1.local`, `ssp-sp2.local`, and `ssp-sp3.local`. This is typically done
-   in `/etc/hosts`.
+   `ssp-idp3.local`, `ssp-idp4.local`, `ssp-sp1.local`, `ssp-sp2.local`, and `ssp-sp3.local`.
+   This is typically done in `/etc/hosts`.
    * Example line:
-     `127.0.0.1  ssp-hub.local ssp-idp1.local ssp-idp2.local ssp-idp3.local ssp-sp1.local ssp-sp2.local ssp-sp3.local`
+     `127.0.0.1  ssp-hub.local ssp-idp1.local ssp-idp2.local ssp-idp3.local ssp-idp4.local ssp-sp1.local ssp-sp2.local ssp-sp3.local`
 5. Change the BASE_URL_PATH for ssp-idp1.local in docker-compose.yml to have the port number, as
    specific in the comment on that line in the file.
 6. Bring up the various containers that you will want to interact with. Example:
-   `docker compose up -d ssp-hub.local ssp-idp1.local ssp-idp2.local ssp-idp3.local ssp-sp1.local ssp-sp2.local ssp-sp3.local`
+   `docker compose up -d ssp-hub.local ssp-idp1.local ssp-idp2.local ssp-idp3.local ssp-idp4.local ssp-sp1.local ssp-sp2.local ssp-sp3.local`
 7. Go to <http://ssp-sp1.local:8081> in a browser on your computer.
 8. Click "Test configured authentication sources"
 9. Click "ssp-hub-custom-port"
