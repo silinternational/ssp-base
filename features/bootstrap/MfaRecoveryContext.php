@@ -10,9 +10,11 @@ use MfaContext;
  */
 class MfaRecoveryContext extends MfaContext
 {
-    #[Given('we have recovery-contacts config')]
-    public function weHaveRecoveryContactsConfig(): void
+    #[Given('I use an IDP that is configured to offer MFA recovery-contacts')]
+    public function iUseAnIdpThatIsConfiguredToOfferMfaRecoveryContacts(): void
     {
+        $this->iClickOnTheTile('IDP 4');
+
         throw new PendingException();
     }
 
