@@ -2,6 +2,9 @@ FROM silintl/php8:8.1
 
 LABEL maintainer="gtis_itse@groups.sil.org"
 
+ARG GITHUB_REF_NAME
+ENV GITHUB_REF_NAME=$GITHUB_REF_NAME
+
 RUN apt-get update -y \
     && apt-get --no-install-recommends install -y php-gmp \
     && apt-get clean \
