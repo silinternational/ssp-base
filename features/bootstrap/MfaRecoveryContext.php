@@ -13,8 +13,6 @@ class MfaRecoveryContext extends MfaContext
     public function iUseAnIdpThatIsConfiguredToOfferMfaRecoveryContacts(): void
     {
         $this->iClickOnTheTile('IDP 4');
-
-        throw new PendingException();
     }
 
     #[Then('I should see a link to send a code to a recovery contact')]
