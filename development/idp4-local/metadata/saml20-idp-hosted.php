@@ -46,8 +46,10 @@ $metadata['http://ssp-idp4.local:8089'] = [
             'idpDomainName' => Env::get('IDP_DOMAIN_NAME'),
             'mfaSetupUrl' => Env::get('MFA_SETUP_URL'),
             'loggerClass' => Psr3SamlLogger::class,
-            
-            // TODO: Add recovery-contacts config here.
+            'recoveryContactsApi' => Env::get('MFA_RECOVERY_CONTACTS_API'),
+            'recoveryContactsApiKey' => Env::get('MFA_RECOVERY_CONTACTS_API_KEY'),
+            'recoveryContactsFallbackName' => Env::get('MFA_RECOVERY_CONTACTS_FALLBACK_NAME'),
+            'recoveryContactsFallbackEmail' => Env::get('MFA_RECOVERY_CONTACTS_FALLBACK_EMAIL'),
         ],
         15 => [
             'class' => 'expirychecker:ExpiryDate',

@@ -286,6 +286,10 @@ services:
       SHOW_SAML_ERRORS: "true"
       THEME_COLOR_SCHEME: "orange-light_blue"
       HUB_MODE: "false"
+      MFA_RECOVERY_CONTACTS_API: ""
+      MFA_RECOVERY_CONTACTS_API_KEY: ""
+      MFA_RECOVERY_CONTACTS_FALLBACK_NAME: ""
+      MFA_RECOVERY_CONTACTS_FALLBACK_EMAIL: ""
 
   ssp-sp1.local:
     image: silintl/ssp-base:9.3.0
