@@ -2,7 +2,7 @@
 
 use Behat\Step\Given;
 use Behat\Step\Then;
-use Behat\Behat\Tester\Exception\PendingException;
+use PHPUnit\Framework\Assert;
 
 /**
  * Defines application features from the specific context.
@@ -18,6 +18,10 @@ class MfaRecoveryContext extends MfaContext
     #[Then('I should see a link to send a code to a recovery contact')]
     public function iShouldSeeALinkToSendACodeToARecoveryContact(): void
     {
-        throw new PendingException();
+        $page = $this->session->getPage();
+        Assert::assertContains(
+            '/module.php/mfa/send-recovery-mfa.php',
+            $page->getContent()
+        );
     }
 }
