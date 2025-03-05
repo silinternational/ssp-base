@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "starting ssp-base version $GITHUB_REF_NAME"
+
 # echo script commands to stdout
 set -x
 
