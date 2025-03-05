@@ -3,7 +3,6 @@
 use Behat\Step\Given;
 use Behat\Step\Then;
 use Behat\Behat\Tester\Exception\PendingException;
-use MfaContext;
 
 /**
  * Defines application features from the specific context.
