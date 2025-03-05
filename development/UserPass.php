@@ -74,7 +74,7 @@ class UserPass extends UserPassBase // GTIS
             $username = $userpass[0];
             $password = $userpass[1];
 
-            // GTIS begin
+            // GTIS begin (commented out code to allow array values for SAML attributes)
 //            $attrUtils = new Utils\Attributes();
 //
 //            try {
