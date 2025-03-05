@@ -562,7 +562,10 @@ class MfaContext extends FeatureContext
     public function iShouldSeeALinkToSendACodeToTheUsersManager()
     {
         $page = $this->session->getPage();
-        Assert::assertContains('I need help', $page->getContent());
+        Assert::assertContains(
+            '/module.php/mfa/send-manager-mfa.php',
+            $page->getContent()
+        );
     }
 
     /**
@@ -581,7 +584,10 @@ class MfaContext extends FeatureContext
     public function iShouldNotSeeALinkToSendACodeToTheUsersManager()
     {
         $page = $this->session->getPage();
-        Assert::assertNotContains('Send a code</a> to your manager', $page->getContent());
+        Assert::assertNotContains(
+            '/module.php/mfa/send-manager-mfa.php',
+            $page->getContent()
+        );
     }
 
     /**
@@ -646,6 +652,7 @@ class MfaContext extends FeatureContext
     public function thereShouldBeAWayToRequestAManagerCode()
     {
         $page = $this->session->getPage();
+        Assert::assertContains('mfa-manager.svg', $page->getHtml());
         $this->assertFormContains('name="send"', $page);
     }
 
