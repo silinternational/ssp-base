@@ -302,10 +302,10 @@ services:
       HUB_MODE: "false"
       BASE_URL_PATH: "http://ssp-idp4.local/" # for automated tests
       #BASE_URL_PATH: "http://ssp-idp4.local:8089" # for manual browser testing
-      MFA_RECOVERY_CONTACTS_API: ""
-      MFA_RECOVERY_CONTACTS_API_KEY: ""
-      MFA_RECOVERY_CONTACTS_FALLBACK_NAME: ""
-      MFA_RECOVERY_CONTACTS_FALLBACK_EMAIL: ""
+      MFA_RECOVERY_CONTACTS_API: "http://api-mock.local/recovery-contacts"
+      MFA_RECOVERY_CONTACTS_API_KEY: "dummy-key"
+      MFA_RECOVERY_CONTACTS_FALLBACK_NAME: "Dummy Name"
+      MFA_RECOVERY_CONTACTS_FALLBACK_EMAIL: "dummy@example.com"
 
   ssp-sp1.local:
     image: silintl/ssp-base:9.3.0
