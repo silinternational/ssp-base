@@ -283,6 +283,8 @@ services:
       - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
       - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     command: bash -c "/data/enable-exampleauth.sh && /data/run.sh"
+    depends_on:
+      - api-mock.local
     ports:
       - "8088:80"
     environment:
@@ -490,6 +492,12 @@ services:
       AWS_SECRET_ACCESS_KEY: 0
       AWS_DEFAULT_REGION: us-east-1
       AWS_DYNAMODB_ENDPOINT: http://dynamo:8000
+
+  api-mock.local:
+    image: mockoon/cli:9
+    command: ["--data", "data", "--port", "80"]
+    volumes:
+      - ./development/api-mock/mfa-recovery-contacts.json:/data:readonly
 
   node:
     image: node:lts-alpine
