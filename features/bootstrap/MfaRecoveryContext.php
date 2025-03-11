@@ -24,4 +24,18 @@ class MfaRecoveryContext extends MfaContext
             $page->getContent()
         );
     }
+
+    #[Then('I should see a way to send an MFA recovery code to my manager')]
+    public function iShouldSeeAWayToSendAnMfaRecoveryCodeToMyManager(): void
+    {
+        $page = $this->session->getPage();
+        Assert::assertNotNull(
+            $page->findById('option-manager'),
+            'Did not find a way to select my manager'
+        );
+        Assert::assertTrue(
+            $page->hasButton('[name=send]'),
+            'Did not find a "send" button'
+        );
+    }
 }
