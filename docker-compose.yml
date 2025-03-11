@@ -284,7 +284,7 @@ services:
       - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     command: bash -c "/data/enable-exampleauth.sh && /data/run.sh"
     ports:
-      - "8089:80"
+      - "8088:80"
     environment:
       ADMIN_PASS: "d"
       ID_BROKER_ACCESS_TOKEN: "dummy"
@@ -301,7 +301,7 @@ services:
       THEME_COLOR_SCHEME: "orange-light_blue"
       HUB_MODE: "false"
       BASE_URL_PATH: "http://ssp-idp4.local/" # for automated tests
-      #BASE_URL_PATH: "http://ssp-idp4.local:8089" # for manual browser testing
+      #BASE_URL_PATH: "http://ssp-idp4.local:8088" # for manual browser testing
       MFA_RECOVERY_CONTACTS_API: "http://api-mock.local/recovery-contacts"
       MFA_RECOVERY_CONTACTS_API_KEY: "dummy-key"
       MFA_RECOVERY_CONTACTS_FALLBACK_NAME: "Dummy Name"

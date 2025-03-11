@@ -11,8 +11,8 @@ use Sil\SspBase\Features\fakes\FakeIdBrokerClient;
  * See: https://simplesamlphp.org/docs/stable/simplesamlphp-reference-idp-hosted
  */
 
-$metadata['http://ssp-idp4.local:8089'] = [
-    'entityid' => 'http://ssp-idp4.local:8089',
+$metadata['http://ssp-idp4.local:8088'] = [
+    'entityid' => 'http://ssp-idp4.local:8088',
     'name' => ['en' => 'IDP 4'],
 
     /*
@@ -26,7 +26,7 @@ $metadata['http://ssp-idp4.local:8089'] = [
     'privatekey' => 'ssp-hub-idp4.pem',
     'certificate' => 'ssp-hub-idp4.crt',
 
-    'logoURL' => 'https://dummyimage.com/125x125/0f4fbd/ffffff.png&text=IDP+4+8089',
+    'logoURL' => 'https://dummyimage.com/125x125/0f4fbd/ffffff.png&text=IDP+4+8088',
 
     /*
      * Authentication source to use. Must be one that is configured in
@@ -71,6 +71,6 @@ $metadata['http://ssp-idp4.local:8089'] = [
 ];
 
 // Copy configuration for port 80 and modify
-$metadata['http://ssp-idp4.local'] = $metadata['http://ssp-idp4.local:8089'];
+$metadata['http://ssp-idp4.local'] = $metadata['http://ssp-idp4.local:8088'];
 $metadata['http://ssp-idp4.local']['entityid'] = 'http://ssp-idp4.local';
 $metadata['http://ssp-idp4.local']['host'] = 'ssp-idp4.local';

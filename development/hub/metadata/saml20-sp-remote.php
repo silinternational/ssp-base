@@ -18,7 +18,7 @@ $metadata['http://ssp-sp1.local:8081'] = [
         'http://ssp-idp1.local:8085',
         'http://ssp-idp2.local:8086',
         'http://ssp-idp3.local:8087',
-        'http://ssp-idp4.local:8089',
+        'http://ssp-idp4.local:8088',
     ],
     'assertion.encryption' => true,
 ];

@@ -124,20 +124,20 @@ $metadata['http://ssp-idp3.local'] = [
 /*
  * IdP 4
  */
-$metadata['http://ssp-idp4.local:8089'] = [
+$metadata['http://ssp-idp4.local:8088'] = [
     'metadata-set' => 'saml20-idp-remote',
-    'entityid' => 'http://ssp-idp4.local:8089',
+    'entityid' => 'http://ssp-idp4.local:8088',
     'name' => [
-        'en' => 'IDP 4:8089',
+        'en' => 'IDP 4:8088',
     ],
     'IDPNamespace' => 'IDP-4-custom-port',
-    'logoCaption' => 'IDP-4:8089 staff',
-    'logoURL' => 'https://dummyimage.com/125x125/0f4fbd/ffffff.png&text=IDP+4+8089',
+    'logoCaption' => 'IDP-4:8088 staff',
+    'logoURL' => 'https://dummyimage.com/125x125/0f4fbd/ffffff.png&text=IDP+4+8088',
 
     'description' => 'Local IDP4 for testing SSP Hub (custom port)',
 
-    'SingleSignOnService' => 'http://ssp-idp4.local:8089/saml2/idp/SSOService.php',
-    'SingleLogoutService' => 'http://ssp-idp4.local:8089/saml2/idp/SingleLogoutService.php',
+    'SingleSignOnService' => 'http://ssp-idp4.local:8088/saml2/idp/SSOService.php',
+    'SingleLogoutService' => 'http://ssp-idp4.local:8088/saml2/idp/SingleLogoutService.php',
     'certData' => 'MIIEsTCCAxmgAwIBAgIUNoOjrtDw3E5xDwt0R28YzAXXY0AwDQYJKoZIhvcNAQELBQAwaDELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAlRYMQ8wDQYDVQQHDAZEYWxsYXMxEzARBgNVBAoMClNJTCBHbG9iYWwxDTALBgNVBAsMBEdUSVMxFzAVBgNVBAMMDnNzcC1pZHA0LmxvY2FsMB4XDTI1MDMwNDE1MjgyOFoXDTM1MDMwNDE1MjgyOFowaDELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAlRYMQ8wDQYDVQQHDAZEYWxsYXMxEzARBgNVBAoMClNJTCBHbG9iYWwxDTALBgNVBAsMBEdUSVMxFzAVBgNVBAMMDnNzcC1pZHA0LmxvY2FsMIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEA5lHSWUoWj4XDM+hhduOm7Z4Ud5uIlFEqhvRmGj6+06g8kfoIjk6vxPvv7SphHY8gOjK3+FgGjqnrMyLQcc1533bpCFCstr3ERW1GB/1i2X47H6X8bM0kP7+MurSdPuetPjVvHVCKmiRk9Uj6ILgIWGFfn2jqtqBAGKzvGdBwgTQyMM45+1IQwc+vF99T8ywt/RbKrXePgEFPYW1qPwE6fVIbsOZPZdnm3hwXfXVVwXM8R4jtUGpFjjV2nRkszPWfDZb0njOK0cJLjj/zAN/535zrbteYNXivyFgoFGKox7i5DkupeGPW/aGN6D+zr2coXRGv3qNWT4IEnL2N3YXiEsz/NkOfkoK/kF8awHMfisizNLzGm80LZV+CwuSjjbsoFWUYomTNq0WSIYTZCJJmmqBxb3Gqjisrux9p18zgG9CYoDhaNzvTjV+ttqecnRHkt73tAWw6nNOk0JCOvRbrSehYVF0RzkolLcbYWJqcGd1EwCfgCjHjgKC8oUQUpDK3AgMBAAGjUzBRMB0GA1UdDgQWBBS1RQrkWblnpdxVGPIZoVb6TIulFzAfBgNVHSMEGDAWgBS1RQrkWblnpdxVGPIZoVb6TIulFzAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBgQAmiGB34lM2KLpju8Gzce9eNDCUZHEufOfwYNicOELoJG5ElVMQMX3dqZe9VhIlgNen0Dn6YybnOy3Pi3ywaSXsOe7n3OTASvLLpwHxxIyKWrwOPER2zgbqlRitWX11ZumqxRXobo1rzVylS+8viRT1dwY6gB0lqk+oHTqk6GLnnG7hhRXTOjuQ6/dgGvJMjFIEbvywWogvWAC/u3bnIZ+bGFACD+A9hxZE/CCroLJxlbKEOj+/aiJqSn/kbhkmhyAd5uY/eVRyLe4eYeeVy2sEqE7bOjw8ptbqsULZZTk5M9nn8XBhTNLAOx6lre21zFFbfrWZm7hZHWOVac5PoqFRbDVzgzNNlC9Zh3HE63J2YfJMAgjGaeee/BtU0J5oW341oX9w9r+UQNXaKN1DxNIu31dVS6edA4xu3cNVg+gbfvGsf65Z6391rsTmQYpg3CloNuHrq3ytMq4xYKMVjm8AP0Iy6Ef+XdQgEhgaIg8psAnQp6j3Nww6j+9UCkyJHLM=',
 ];
 $metadata['http://ssp-idp4.local'] = [
