@@ -15,6 +15,9 @@ default:
     mfa_features:
       paths:    [ '%paths.base%//features//mfa.feature' ]
       contexts: [ 'MfaContext' ]
+    mfa_recovery_features:
+      paths:    [ '%paths.base%//features//mfa-recovery.feature' ]
+      contexts: [ 'MfaRecoveryContext' ]
     profilereview_features:
       paths:    [ '%paths.base%//features//profilereview.feature' ]
       contexts: [ 'ProfileReviewContext' ]

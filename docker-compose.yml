@@ -28,6 +28,7 @@ services:
       - ssp-idp1.local
       - ssp-idp2.local
       - ssp-idp3.local
+      - ssp-idp4.local
       - ssp-sp1.local
       - ssp-sp2.local
       - ssp-sp3.local
@@ -173,7 +174,8 @@ services:
       MYSQL_DATABASE: "silauth"
       MYSQL_USER: "silauth"
       MYSQL_PASSWORD: "silauth"
-      BASE_URL_PATH: "http://ssp-idp1.local/" # change this to "http://ssp-idp1.local:8085" for manual browser testing
+      BASE_URL_PATH: "http://ssp-idp1.local/" # for automated tests
+      #BASE_URL_PATH: "http://ssp-idp1.local:8085" # for manual browser testing
       HELP_CENTER_URL: "https://example.org/help"
       THEME_COLOR_SCHEME: "blue_grey-teal"
       HUB_MODE: "false"
@@ -256,6 +258,54 @@ services:
       SHOW_SAML_ERRORS: "true"
       THEME_COLOR_SCHEME: "orange-light_blue"
       HUB_MODE: "false"
+
+  ssp-idp4.local:
+    build: .
+    volumes:
+      # Utilize custom certs
+      - ./development/idp4-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
+
+      # Utilize custom configs
+      - ./development/idp4-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+      - ./development/enable-exampleauth.sh:/data/enable-exampleauth.sh
+
+      # Utilize custom metadata
+      - ./development/idp4-local/metadata:/data/vendor/simplesamlphp/simplesamlphp/metadata
+
+      # Customized SSP code -- TODO: make a better solution that doesn't require hacking SSP code
+      - ./development/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/src/Auth/Source/UserPass.php
+
+      # Local modules
+      - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
+      - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
+      - ./modules/profilereview:/data/vendor/simplesamlphp/simplesamlphp/modules/profilereview
+      - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
+      - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
+      - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
+    command: bash -c "/data/enable-exampleauth.sh && /data/run.sh"
+    ports:
+      - "8089:80"
+    environment:
+      ADMIN_PASS: "d"
+      ID_BROKER_ACCESS_TOKEN: "dummy"
+      ID_BROKER_ASSERT_VALID_IP: "false"
+      ID_BROKER_BASE_URI: "dummy"
+      ID_BROKER_TRUSTED_IP_RANGES: "192.168.0.1/8"
+      IDP_DOMAIN_NAME: "idp4"
+      MFA_SETUP_URL: "http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub-custom-port"
+      PROFILE_URL: "http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub-custom-port"
+      REMEMBER_ME_SECRET: "not-realy-secret-67890"
+      SECRET_SALT: "not-really-secret-UyxPqwWQZZmJq3Ve"
+      SECURE_COOKIE: "false"
+      SHOW_SAML_ERRORS: "true"
+      THEME_COLOR_SCHEME: "orange-light_blue"
+      HUB_MODE: "false"
+      BASE_URL_PATH: "http://ssp-idp4.local/" # for automated tests
+      #BASE_URL_PATH: "http://ssp-idp4.local:8089" # for manual browser testing
+      MFA_RECOVERY_CONTACTS_API: "http://api-mock.local/recovery-contacts"
+      MFA_RECOVERY_CONTACTS_API_KEY: "dummy-key"
+      MFA_RECOVERY_CONTACTS_FALLBACK_NAME: "Dummy Name"
+      MFA_RECOVERY_CONTACTS_FALLBACK_EMAIL: "dummy@example.com"
 
   ssp-sp1.local:
     image: silintl/ssp-base:9.3.0
@@ -383,7 +433,7 @@ services:
       EMAIL_SIGNATURE: "one red pill, please"
       API_ACCESS_KEYS: "test-cli-abc123"
       APP_ENV: "prod"
-      RP_ORIGINS: "https://ssp-idp1.local,https://ssp-idp2.local,https://ssp-idp3.local"
+      RP_ORIGINS: "https://ssp-idp1.local,https://ssp-idp2.local,https://ssp-idp3.local,https://ssp-idp4.local"
       HIBP_CHECK_ON_LOGIN: "false"
       MFA_TOTP_apiBaseUrl: dummy
       MFA_TOTP_apiKey: 10345678-1234-1234-1234-123456789012

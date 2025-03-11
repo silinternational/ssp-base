@@ -46,6 +46,11 @@ class Mfa extends ProcessingFilter
 
     protected string $loggerClass;
 
+    private string $recoveryContactsApi;
+    private string $recoveryContactsApiKey;
+    private string $recoveryContactsFallbackName;
+    private string $recoveryContactsFallbackEmail;
+
     /**
      * Initialize this filter.
      *
@@ -76,6 +81,11 @@ class Mfa extends ProcessingFilter
         }
         $this->idBrokerAssertValidIp = (bool)($config['idBrokerAssertValidIp'] ?? true);
         $this->idBrokerClientClass = $config['idBrokerClientClass'] ?? IdBrokerClient::class;
+
+        $this->recoveryContactsApi = $config['recoveryContactsApi'] ?? '';
+        $this->recoveryContactsApiKey = $config['recoveryContactsApiKey'] ?? '';
+        $this->recoveryContactsFallbackName = $config['recoveryContactsFallbackName'] ?? '';
+        $this->recoveryContactsFallbackEmail = $config['recoveryContactsFallbackEmail'] ?? '';
     }
 
     /**
@@ -663,6 +673,12 @@ class Mfa extends ProcessingFilter
             'baseUri' => $this->idBrokerBaseUri,
             'clientClass' => $this->idBrokerClientClass,
             'trustedIpRanges' => $this->idBrokerTrustedIpRanges,
+        ];
+        $state['recoveryConfig'] = [
+            'api' => $this->recoveryContactsApi,
+            'apiKey' => $this->recoveryContactsApiKey,
+            'fallbackEmail' => $this->recoveryContactsFallbackEmail,
+            'fallbackName' => $this->recoveryContactsFallbackName,
         ];
 
         $this->logger->info(sprintf(

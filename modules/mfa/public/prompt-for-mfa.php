@@ -23,6 +23,12 @@ if (empty($stateId)) {
 
 $state = State::loadState($stateId, Mfa::STAGE_SENT_TO_MFA_PROMPT);
 $mfaOptions = $state['mfaOptions'] ?? [];
+$recoveryConfig = $state['recoveryConfig'] ?? [];
+
+$recoveryContactsApi = $recoveryConfig['api'];
+$recoveryContactsApiKey = $recoveryConfig['apiKey'];
+$recoveryContactsFallbackEmail = $recoveryConfig['fallbackEmail'];
+$recoveryContactsFallbackName = $recoveryConfig['fallbackName'];
 
 $logger = LoggerFactory::getAccordingToState($state);
 
@@ -101,12 +107,19 @@ $globalConfig = Configuration::getInstance();
 $otherOptions = array_filter($mfaOptions, function ($option) use ($mfaId) {
     return $option['id'] != $mfaId;
 });
-if (!empty($state['managerEmail'])) {
+
+if (!empty($recoveryContactsApi)) {
+    $otherOptions[] = [
+        'type' => 'manager',
+        'callback' => '/module.php/mfa/send-recovery-mfa.php?StateId=' . htmlentities($stateId)
+    ];
+} elseif (!empty($state['managerEmail'])) {
     $otherOptions[] = [
         'type' => 'manager',
         'callback' => '/module.php/mfa/send-manager-mfa.php?StateId=' . htmlentities($stateId)
     ];
 }
+
 foreach ($otherOptions as &$option) {
     $option['callback'] = $option['callback'] ?? sprintf(
         '/module.php/mfa/prompt-for-mfa.php?StateId=%s&mfaId=%s',
