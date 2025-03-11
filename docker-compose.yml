@@ -461,7 +461,7 @@ services:
   brokerpma:
     image: phpmyadmin
     ports:
-      - "8088:80"
+      - "8090:80"
     environment:
       PMA_HOST: brokerDb
       PMA_USER: user
