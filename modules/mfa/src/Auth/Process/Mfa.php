@@ -314,6 +314,8 @@ class Mfa extends ProcessingFilter
                 'name' => $fallbackName,
             ];
         }
+
+        return $recoveryContacts;
     }
 
     /**
