@@ -18,18 +18,18 @@
     <form layout-children="column" method="post" autocomplete="off">
       <div class="mdl-card mdl-shadow--8dp">
         <div class="mdl-card__media white-bg margin" layout-children="column">
-          <img src="mfa-manager.svg" class="icon" alt="{{ '{mfa:manager_icon}'|trans }}">
+          <img src="mfa-recovery.svg" class="icon" alt="{{ '{mfa:recovery_icon}'|trans }}">
         </div>
 
         <div class="mdl-card__title center">
           <h1 class="mdl-card__title-text">
-            {{ '{mfa:manager_header}'|trans }}
+            {{ '{mfa:recovery_header}'|trans }}
           </h1>
         </div>
 
         <div class="mdl-card__title center">
           <p class="mdl-card__subtitle-text">
-            {{ '{mfa:manager_info}'|trans({'%managerEmail%': manager_email})|raw }}
+            {{ '{mfa:recovery_info}'|trans|raw }}
           </p>
         </div>
 

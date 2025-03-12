@@ -23,10 +23,12 @@ $state = State::loadState($stateId, Mfa::STAGE_SENT_TO_MFA_PROMPT);
 
 $logger = LoggerFactory::getAccordingToState($state);
 
+$recoveryContacts = Mfa::getRecoveryContacts($state);
+
 $errorMessage = null;
 if (filter_has_var(INPUT_POST, 'send')) {
     try {
-        Mfa::sendManagerCode($state, $logger);
+        Mfa::sendRecoveryCode($state, $logger);
     } catch (Exception $e) {
         $errorMessage = $e->getMessage();
     }
@@ -40,12 +42,12 @@ if (filter_has_var(INPUT_POST, 'send')) {
 
 $globalConfig = Configuration::getInstance();
 
-$t = new Template($globalConfig, 'mfa:send-manager-mfa');
-$t->data['manager_email'] = $state['managerEmail'];
+$t = new Template($globalConfig, 'mfa:send-recovery-mfa');
+$t->data['recovery_contacts'] = $recoveryContacts;
 $t->data['error_message'] = $errorMessage;
 $t->send();
 
 $logger->info(json_encode([
-    'event' => 'offer to send manager code',
+    'event' => 'offer to send recovery code',
     'employeeId' => $state['employeeId'],
 ]));
