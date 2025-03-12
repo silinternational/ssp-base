@@ -3,6 +3,7 @@
 namespace SimpleSAML\Module\mfa\Auth\Process;
 
 use Exception;
+use GuzzleHttp\Exception\GuzzleException;
 use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use Sil\Idp\IdBroker\Client\IdBrokerClient;
@@ -15,6 +16,7 @@ use SimpleSAML\Auth\ProcessingChain;
 use SimpleSAML\Auth\ProcessingFilter;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Module;
+use SimpleSAML\Module\mfa\ApiClient;
 use SimpleSAML\Module\mfa\LoggerFactory;
 use SimpleSAML\Utils\HTTP;
 use Throwable;
@@ -287,6 +289,31 @@ class Mfa extends ProcessingFilter
         }
 
         return $numBackupCodes;
+    }
+
+    /**
+     * @throws GuzzleException
+     */
+    public static function getRecoveryContacts(?array $state): array
+    {
+        $recoveryConfig = $state['recoveryConfig'] ?? [];
+        $emailAddressValues = $state['Attributes']['mail'] ?? [''];
+        $emailAddress = $emailAddressValues[0] ?? '';
+
+        $apiUrl = $recoveryConfig['api'] ?? '';
+        $apiKey = $recoveryConfig['apiKey'] ?? '';
+        $fallbackEmail = $recoveryConfig['fallbackEmail'] ?? '';
+        $fallbackName = $recoveryConfig['fallbackName'] ?? '';
+
+        $apiClient = new ApiClient($apiKey);
+        $recoveryContacts = $apiClient->call($apiUrl, ['email' => $emailAddress]);
+
+        if (empty($recoveryContacts)) {
+            $recoveryContacts[] = [
+                'email' => $fallbackEmail,
+                'name' => $fallbackName,
+            ];
+        }
     }
 
     /**
