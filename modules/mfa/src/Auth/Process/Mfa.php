@@ -693,7 +693,7 @@ class Mfa extends ProcessingFilter
         /** @todo Check for valid remember-me cookies here rather doing a redirect first. */
 
         $state['mfaOptions'] = $mfaOptions;
-        $state['managerEmail'] = self::getManagerEmail($state);
+        $state['managerEmail'] = self::getMaskedManagerEmail($state);
         $state['idBrokerConfig'] = [
             'accessToken' => $this->idBrokerAccessToken,
             'assertValidIp' => $this->idBrokerAssertValidIp,
@@ -924,7 +924,7 @@ class Mfa extends ProcessingFilter
          */
         $mfaOptions['manager'] = $mfaOption;
         $state['mfaOptions'] = $mfaOptions;
-        $state['managerEmail'] = self::getManagerEmail($state);
+        $state['managerEmail'] = self::getMaskedManagerEmail($state);
         $stateId = State::saveState($state, self::STAGE_SENT_TO_MFA_PROMPT);
 
         $url = Module::getModuleURL('mfa/prompt-for-mfa.php');
@@ -939,13 +939,28 @@ class Mfa extends ProcessingFilter
      * @param array $state
      * @return string|null
      */
+    public static function getMaskedManagerEmail(array $state): ?string
+    {
+        $managerEmail = self::getManagerEmail($state);
+        if (empty($managerEmail)) {
+            return null;
+        }
+        return self::maskEmail($managerEmail);
+    }
+
+    /**
+     * Get masked copy of manager_email, or null if it isn't available.
+     *
+     * @param array $state
+     * @return string|null
+     */
     public static function getManagerEmail(array $state): ?string
     {
         $managerEmail = $state['Attributes']['manager_email'] ?? [''];
         if (empty($managerEmail[0])) {
             return null;
         }
-        return self::maskEmail($managerEmail[0]);
+        return $managerEmail[0];
     }
 
     /**
