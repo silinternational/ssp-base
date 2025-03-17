@@ -164,6 +164,27 @@ msgstr "%managerEmail% (으)로 복구 담당자에게 임시 코드를 보냈�
 msgid "{mfa:manager_input}"
 msgstr "코드 입력"
 
+msgid "{mfa:recovery_icon}"
+msgstr "복구 연락처 아이콘"
+
+msgid "{mfa:recovery_header}"
+msgstr "복구 연락처에 도움 요청"
+
+msgid "{mfa:recovery_info_introduction}"
+msgstr "복구 연락처(일반적으로 상사나 기타 책임 있는 IT 담당자)에게 2단계 인증 코드를 보낼 수 있습니다."
+
+msgid "{mfa:recovery_info_selection}"
+msgstr "다음 중 하나를 선택하세요."
+
+msgid "{mfa:recovery_your_manager}"
+msgstr "너의 매니저"
+
+msgid "{mfa:recovery_sent}"
+msgstr "복구 연락처로 임시 코드가 전송되었습니다."
+
+msgid "{mfa:recovery_input}"
+msgstr "코드 입력"
+
 msgid "{mfa:shield_icon}"
 msgstr "방패 아이콘"
 
