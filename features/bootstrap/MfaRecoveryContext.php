@@ -38,4 +38,27 @@ class MfaRecoveryContext extends MfaContext
             'Did not find a "send" button'
         );
     }
+
+    #[Then('I should see a way to send an MFA recovery code to another recovery contact')]
+    public function iShouldSeeAWayToSendAnMfaRecoveryCodeToAnotherRecoveryContact(): void
+    {
+        $page = $this->session->getPage();
+        $foundNonManagerOption = false;
+        $contactOptionElements = $page->findAll('css', 'input[name=mfaRecoveryContactID]');
+        foreach ($contactOptionElements as $element) {
+            $elementID = $element->getAttribute('id');
+            if ($elementID !== 'option-manager') {
+                $foundNonManagerOption = true;
+                break;
+            }
+        }
+        Assert::assertTrue(
+            $foundNonManagerOption,
+            'Did not find a way to select another recovery contact'
+        );
+        Assert::assertTrue(
+            $page->hasButton('send'),
+            'Did not find a "send" button'
+        );
+    }
 }
