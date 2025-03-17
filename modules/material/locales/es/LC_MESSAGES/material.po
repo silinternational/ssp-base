@@ -176,8 +176,8 @@ msgstr "Puede enviar un código de verificación de dos pasos a un contacto de r
 msgid "{mfa:recovery_info_selection}"
 msgstr "Por favor seleccione una de las siguientes opciones:"
 
-msgid "{mfa:recovery_your_manager}"
-msgstr "tu gerente"
+msgid "{mfa:recovery_your_supervisor}"
+msgstr "su supervisor"
 
 msgid "{mfa:recovery_sent}"
 msgstr "Se envió un código temporal a su contacto de recuperación."

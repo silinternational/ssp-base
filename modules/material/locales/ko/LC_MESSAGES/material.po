@@ -176,8 +176,8 @@ msgstr "복구 연락처(일반적으로 상사나 기타 책임 있는 IT 담�
 msgid "{mfa:recovery_info_selection}"
 msgstr "다음 중 하나를 선택하세요."
 
-msgid "{mfa:recovery_your_manager}"
-msgstr "너의 매니저"
+msgid "{mfa:recovery_your_supervisor}"
+msgstr "당신의 상사"
 
 msgid "{mfa:recovery_sent}"
 msgstr "복구 연락처로 임시 코드가 전송되었습니다."

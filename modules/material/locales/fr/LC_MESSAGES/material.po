@@ -176,7 +176,7 @@ msgstr "Vous pouvez envoyer un code de vérification en deux étapes à un conta
 msgid "{mfa:recovery_info_selection}"
 msgstr "Veuillez sélectionner l'une des options suivantes :"
 
-msgid "{mfa:recovery_your_manager}"
+msgid "{mfa:recovery_your_supervisor}"
 msgstr "votre superviseur"
 
 msgid "{mfa:recovery_sent}"
