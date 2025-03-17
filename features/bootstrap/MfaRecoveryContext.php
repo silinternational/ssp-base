@@ -34,7 +34,7 @@ class MfaRecoveryContext extends MfaContext
             'Did not find a way to select my manager'
         );
         Assert::assertTrue(
-            $page->hasButton('[name=send]'),
+            $page->hasButton('send'),
             'Did not find a "send" button'
         );
     }
