@@ -29,7 +29,25 @@
 
         <div class="mdl-card__title center">
           <p class="mdl-card__subtitle-text">
-            {{ '{mfa:recovery_info}'|trans|raw }}
+            {{ '{mfa:recovery_info_introduction}'|trans }}
+          </p>
+        </div>
+
+        <div class="mdl-card__title center">
+          <p class="mdl-card__subtitle-text">
+            {{ '{mfa:recovery_info_selection}'|trans }}<br />
+
+            {% for recoveryContact in recovery_contacts %}
+              <input type="radio" name="mfaRecoveryContactID" value="{{ recoveryContact.name }}">
+              {{ recoveryContact.name }}
+              <br />
+            {% endfor %}
+
+            {% if manager_email is not empty %}
+              <input type="radio" name="mfaRecoveryContactID" id="option-manager" value="recovery-contact-id-manager">
+              {{ '{mfa:recovery_contact_your_manager}'|trans }}
+              <br />
+            {% endif %}
           </p>
         </div>
 
