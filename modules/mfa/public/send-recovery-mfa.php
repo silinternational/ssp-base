@@ -28,7 +28,8 @@ $recoveryContacts = Mfa::getRecoveryContacts($state);
 $errorMessage = null;
 if (filter_has_var(INPUT_POST, 'send')) {
     try {
-        Mfa::sendRecoveryCode($state, $logger);
+        $mfaRecoveryContactID = filter_input(INPUT_POST, 'mfaRecoveryContactID');
+        Mfa::sendRecoveryCode($state, $mfaRecoveryContactID, $logger);
     } catch (Exception $e) {
         $errorMessage = $e->getMessage();
     }
