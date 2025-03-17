@@ -1,5 +1,6 @@
 <?php
 
+use Behat\Mink\Element\DocumentElement;
 use Behat\Step\Given;
 use Behat\Step\Then;
 use PHPUnit\Framework\Assert;
@@ -33,6 +34,12 @@ class MfaRecoveryContext extends MfaContext
             $page->findById('option-manager'),
             'Did not find a way to select my manager'
         );
+
+        $this->assertHasSendButton($page);
+    }
+
+    protected function assertHasSendButton(DocumentElement $page): void
+    {
         Assert::assertTrue(
             $page->hasButton('send'),
             'Did not find a "send" button'
@@ -56,9 +63,7 @@ class MfaRecoveryContext extends MfaContext
             $foundNonManagerOption,
             'Did not find a way to select another recovery contact'
         );
-        Assert::assertTrue(
-            $page->hasButton('send'),
-            'Did not find a "send" button'
-        );
+
+        $this->assertHasSendButton($page);
     }
 }
