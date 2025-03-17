@@ -176,7 +176,7 @@ msgstr "You can send a 2-step verification code to a recovery contact (usually y
 msgid "{mfa:recovery_info_selection}"
 msgstr "Please select one of the following:"
 
-msgid "{mfa:recovery_contact_your_manager}"
+msgid "{mfa:recovery_your_manager}"
 msgstr "your manager"
 
 msgid "{mfa:recovery_sent}"
