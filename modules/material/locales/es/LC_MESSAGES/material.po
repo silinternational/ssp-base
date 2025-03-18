@@ -182,9 +182,6 @@ msgstr "su supervisor"
 msgid "{mfa:recovery_sent}"
 msgstr "Se envió un código temporal a su contacto de recuperación."
 
-msgid "{mfa:recovery_input}"
-msgstr "Introduce el código"
-
 msgid "{mfa:shield_icon}"
 msgstr "Icono de escudo"
 

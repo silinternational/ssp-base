@@ -182,9 +182,6 @@ msgstr "당신의 상사"
 msgid "{mfa:recovery_sent}"
 msgstr "복구 연락처로 임시 코드가 전송되었습니다."
 
-msgid "{mfa:recovery_input}"
-msgstr "코드 입력"
-
 msgid "{mfa:shield_icon}"
 msgstr "방패 아이콘"
 
