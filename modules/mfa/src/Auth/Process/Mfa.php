@@ -939,17 +939,22 @@ class Mfa extends ProcessingFilter
     }
 
     /**
-     * Send a rescue code to the manager, then redirect the user to a page where they
-     * can enter the code.
+     * Send a rescue code to the specified recovery contact, then redirect the
+     * user to a page where they can enter the code.
      *
      * If successful, this function triggers a redirect and does not return
      *
      * @param array $state The state data.
+     * @param string $mfaRecoveryContactID The identifier for the selected MFA
+     *     recovery contact.
      * @param LoggerInterface $logger A PSR-3 compatible logger.
      * @throws Exception
      */
-    public static function sendRecoveryCode(array &$state, LoggerInterface $logger): void
-    {
+    public static function sendRecoveryCode(
+        array &$state,
+        string $mfaRecoveryContactID,
+        LoggerInterface $logger
+    ): void {
         try {
             $idBrokerClient = self::getIdBrokerClient($state['idBrokerConfig']);
             $mfaOption = $idBrokerClient->mfaCreate($state['employeeId'], 'manager');
