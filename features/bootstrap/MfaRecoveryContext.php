@@ -1,5 +1,6 @@
 <?php
 
+use Behat\Step\When;
 use Behat\Mink\Element\DocumentElement;
 use Behat\Step\Given;
 use Behat\Step\Then;
@@ -65,5 +66,36 @@ class MfaRecoveryContext extends MfaContext
         );
 
         $this->assertHasSendButton($page);
+    }
+
+    #[When('I send the code to the recovery contact')]
+    public function iSendTheCodeToTheRecoveryContact(): void
+    {
+        $this->selectARecoveryContactOption();
+        $this->submitFormByClickingButtonNamed('send');
+    }
+
+    protected function selectARecoveryContactOption(): void
+    {
+        $page = $this->session->getPage();
+        $contactOptionElements = $page->findAll('css', 'input[name=mfaRecoveryContactID]');
+        foreach ($contactOptionElements as $element) {
+            $elementID = $element->getAttribute('id');
+            if ($elementID !== 'option-manager') {
+                $element->click();
+                return;
+            }
+        }
+        Assert::fail('Failed to find a way to select a (non-manager) recovery contact');
+    }
+
+    #[Then('I should see confirmation that the code was sent')]
+    public function iShouldSeeConfirmationThatTheCodeWasSent(): void
+    {
+        $page = $this->session->getPage();
+        Assert::assertContains(
+            'A temporary code was sent to your recovery contact.',
+            $page->getContent()
+        );
     }
 }
