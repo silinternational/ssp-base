@@ -164,6 +164,24 @@ msgstr "Se envió un código temporal a su contacto de recuperación en %manager
 msgid "{mfa:manager_input}"
 msgstr "Introduzca el código"
 
+msgid "{mfa:recovery_icon}"
+msgstr "Icono de contacto de recuperación"
+
+msgid "{mfa:recovery_header}"
+msgstr "Pida ayuda a un contacto de recuperación"
+
+msgid "{mfa:recovery_info_introduction}"
+msgstr "Puede enviar un código de verificación de dos pasos a un contacto de recuperación (generalmente su supervisor u otro contacto de TI responsable)."
+
+msgid "{mfa:recovery_info_selection}"
+msgstr "Por favor seleccione una de las siguientes opciones:"
+
+msgid "{mfa:recovery_your_supervisor}"
+msgstr "su supervisor"
+
+msgid "{mfa:recovery_sent}"
+msgstr "Se envió un código temporal a su contacto de recuperación."
+
 msgid "{mfa:shield_icon}"
 msgstr "Icono de escudo"
 

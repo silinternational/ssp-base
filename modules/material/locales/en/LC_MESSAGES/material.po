@@ -164,6 +164,24 @@ msgstr "A temporary code was sent your recovery contact at %managerEmail%."
 msgid "{mfa:manager_input}"
 msgstr "Enter code"
 
+msgid "{mfa:recovery_icon}"
+msgstr "Recovery contact icon"
+
+msgid "{mfa:recovery_header}"
+msgstr "Ask a Recovery Contact for Help"
+
+msgid "{mfa:recovery_info_introduction}"
+msgstr "You can send a 2-step verification code to a recovery contact (usually your supervisor or other responsible IT contact)."
+
+msgid "{mfa:recovery_info_selection}"
+msgstr "Please select one of the following:"
+
+msgid "{mfa:recovery_your_supervisor}"
+msgstr "your supervisor"
+
+msgid "{mfa:recovery_sent}"
+msgstr "A temporary code was sent to your recovery contact."
+
 msgid "{mfa:shield_icon}"
 msgstr "Shield icon"
 

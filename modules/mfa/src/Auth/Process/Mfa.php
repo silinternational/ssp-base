@@ -3,6 +3,7 @@
 namespace SimpleSAML\Module\mfa\Auth\Process;
 
 use Exception;
+use GuzzleHttp\Exception\GuzzleException;
 use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use Sil\Idp\IdBroker\Client\IdBrokerClient;
@@ -15,6 +16,7 @@ use SimpleSAML\Auth\ProcessingChain;
 use SimpleSAML\Auth\ProcessingFilter;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Module;
+use SimpleSAML\Module\mfa\ApiClient;
 use SimpleSAML\Module\mfa\LoggerFactory;
 use SimpleSAML\Utils\HTTP;
 use Throwable;
@@ -287,6 +289,36 @@ class Mfa extends ProcessingFilter
         }
 
         return $numBackupCodes;
+    }
+
+    /**
+     * @throws GuzzleException
+     */
+    public static function getRecoveryContacts(?array $state): array
+    {
+        $recoveryConfig = $state['recoveryConfig'] ?? [];
+        $emailAddressValues = $state['Attributes']['mail'] ?? [''];
+        $emailAddress = $emailAddressValues[0] ?? '';
+
+        $recoveryContactsApiUrl = $recoveryConfig['api'] ?? '';
+        $recoveryContactsApiKey = $recoveryConfig['apiKey'] ?? '';
+        $fallbackEmail = $recoveryConfig['fallbackEmail'] ?? '';
+        $fallbackName = $recoveryConfig['fallbackName'] ?? '';
+
+        $recoveryContactsApiClient = new ApiClient($recoveryContactsApiKey);
+        $recoveryContacts = $recoveryContactsApiClient->call(
+            $recoveryContactsApiUrl,
+            ['email' => $emailAddress]
+        );
+
+        if (empty($recoveryContacts)) {
+            $recoveryContacts[] = [
+                'email' => $fallbackEmail,
+                'name' => $fallbackName,
+            ];
+        }
+
+        return $recoveryContacts;
     }
 
     /**
@@ -666,7 +698,7 @@ class Mfa extends ProcessingFilter
         /** @todo Check for valid remember-me cookies here rather doing a redirect first. */
 
         $state['mfaOptions'] = $mfaOptions;
-        $state['managerEmail'] = self::getManagerEmail($state);
+        $state['managerEmail'] = self::getMaskedManagerEmail($state);
         $state['idBrokerConfig'] = [
             'accessToken' => $this->idBrokerAccessToken,
             'assertValidIp' => $this->idBrokerAssertValidIp,
@@ -897,7 +929,7 @@ class Mfa extends ProcessingFilter
          */
         $mfaOptions['manager'] = $mfaOption;
         $state['mfaOptions'] = $mfaOptions;
-        $state['managerEmail'] = self::getManagerEmail($state);
+        $state['managerEmail'] = self::getMaskedManagerEmail($state);
         $stateId = State::saveState($state, self::STAGE_SENT_TO_MFA_PROMPT);
 
         $url = Module::getModuleURL('mfa/prompt-for-mfa.php');
@@ -912,13 +944,28 @@ class Mfa extends ProcessingFilter
      * @param array $state
      * @return string|null
      */
+    public static function getMaskedManagerEmail(array $state): ?string
+    {
+        $managerEmail = self::getManagerEmail($state);
+        if (empty($managerEmail)) {
+            return null;
+        }
+        return self::maskEmail($managerEmail);
+    }
+
+    /**
+     * Get masked copy of manager_email, or null if it isn't available.
+     *
+     * @param array $state
+     * @return string|null
+     */
     public static function getManagerEmail(array $state): ?string
     {
         $managerEmail = $state['Attributes']['manager_email'] ?? [''];
         if (empty($managerEmail[0])) {
             return null;
         }
-        return self::maskEmail($managerEmail[0]);
+        return $managerEmail[0];
     }
 
     /**

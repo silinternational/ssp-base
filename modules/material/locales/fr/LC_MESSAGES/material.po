@@ -164,6 +164,24 @@ msgstr "Un code temporaire a été envoyé à votre contact de récupération à
 msgid "{mfa:manager_input}"
 msgstr "Entrer le code"
 
+msgid "{mfa:recovery_icon}"
+msgstr "Icône du contact de récupération"
+
+msgid "{mfa:recovery_header}"
+msgstr "Demandez de l'aide à un contact de récupération"
+
+msgid "{mfa:recovery_info_introduction}"
+msgstr "Vous pouvez envoyer un code de vérification en deux étapes à un contact de récupération (généralement votre superviseur ou un autre contact informatique responsable)."
+
+msgid "{mfa:recovery_info_selection}"
+msgstr "Veuillez sélectionner l'une des options suivantes :"
+
+msgid "{mfa:recovery_your_supervisor}"
+msgstr "votre superviseur"
+
+msgid "{mfa:recovery_sent}"
+msgstr "Un code temporaire a été envoyé à votre contact de récupération."
+
 msgid "{mfa:shield_icon}"
 msgstr "Icône de bouclier"
 

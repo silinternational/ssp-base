@@ -1,5 +1,6 @@
 <?php
 
+use Behat\Mink\Element\DocumentElement;
 use Behat\Step\Given;
 use Behat\Step\Then;
 use PHPUnit\Framework\Assert;
@@ -23,5 +24,46 @@ class MfaRecoveryContext extends MfaContext
             '/module.php/mfa/send-recovery-mfa.php',
             $page->getContent()
         );
+    }
+
+    #[Then('I should see a way to send an MFA recovery code to my manager')]
+    public function iShouldSeeAWayToSendAnMfaRecoveryCodeToMyManager(): void
+    {
+        $page = $this->session->getPage();
+        Assert::assertNotNull(
+            $page->findById('option-manager'),
+            'Did not find a way to select my manager'
+        );
+
+        $this->assertHasSendButton($page);
+    }
+
+    protected function assertHasSendButton(DocumentElement $page): void
+    {
+        Assert::assertTrue(
+            $page->hasButton('send'),
+            'Did not find a "send" button'
+        );
+    }
+
+    #[Then('I should see a way to send an MFA recovery code to another recovery contact')]
+    public function iShouldSeeAWayToSendAnMfaRecoveryCodeToAnotherRecoveryContact(): void
+    {
+        $page = $this->session->getPage();
+        $foundNonManagerOption = false;
+        $contactOptionElements = $page->findAll('css', 'input[name=mfaRecoveryContactID]');
+        foreach ($contactOptionElements as $element) {
+            $elementID = $element->getAttribute('id');
+            if ($elementID !== 'option-manager') {
+                $foundNonManagerOption = true;
+                break;
+            }
+        }
+        Assert::assertTrue(
+            $foundNonManagerOption,
+            'Did not find a way to select another recovery contact'
+        );
+
+        $this->assertHasSendButton($page);
     }
 }
