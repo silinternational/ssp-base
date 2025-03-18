@@ -300,13 +300,16 @@ class Mfa extends ProcessingFilter
         $emailAddressValues = $state['Attributes']['mail'] ?? [''];
         $emailAddress = $emailAddressValues[0] ?? '';
 
-        $apiUrl = $recoveryConfig['api'] ?? '';
-        $apiKey = $recoveryConfig['apiKey'] ?? '';
+        $recoveryContactsApiUrl = $recoveryConfig['api'] ?? '';
+        $recoveryContactsApiKey = $recoveryConfig['apiKey'] ?? '';
         $fallbackEmail = $recoveryConfig['fallbackEmail'] ?? '';
         $fallbackName = $recoveryConfig['fallbackName'] ?? '';
 
-        $apiClient = new ApiClient($apiKey);
-        $recoveryContacts = $apiClient->call($apiUrl, ['email' => $emailAddress]);
+        $recoveryContactsApiClient = new ApiClient($recoveryContactsApiKey);
+        $recoveryContacts = $recoveryContactsApiClient->call(
+            $recoveryContactsApiUrl,
+            ['email' => $emailAddress]
+        );
 
         if (empty($recoveryContacts)) {
             $recoveryContacts[] = [
