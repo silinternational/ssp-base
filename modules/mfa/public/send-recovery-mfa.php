@@ -23,13 +23,19 @@ $state = State::loadState($stateId, Mfa::STAGE_SENT_TO_MFA_PROMPT);
 
 $logger = LoggerFactory::getAccordingToState($state);
 
-$recoveryContactsByName = Mfa::getRecoveryContactsByName($state);
+$recoveryContactsFromApi = Mfa::getRecoveryContactsByName($state);
+
+$recoveryContactsForView = [];
+foreach ($recoveryContactsFromApi as $recoveryContactName => $recoveryContactEmail) {
+    $abbreviatedName = Mfa::abbreviateName($recoveryContactName);
+    $recoveryContactsForView[$abbreviatedName] = $recoveryContactEmail;
+}
 
 $errorMessage = null;
 if (filter_has_var(INPUT_POST, 'send')) {
     try {
         $mfaRecoveryContactID = filter_input(INPUT_POST, 'mfaRecoveryContactID');
-        $recoveryContactEmail = $recoveryContactsByName[$mfaRecoveryContactID];
+        $recoveryContactEmail = $recoveryContactsForView[$mfaRecoveryContactID];
         Mfa::sendRecoveryCode($state, $recoveryContactEmail, $logger);
     } catch (Exception $e) {
         $errorMessage = $e->getMessage();
@@ -45,7 +51,7 @@ if (filter_has_var(INPUT_POST, 'send')) {
 $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'mfa:send-recovery-mfa');
-$t->data['recovery_contacts_by_name'] = $recoveryContactsByName;
+$t->data['recovery_contacts_by_name'] = $recoveryContactsForView;
 $t->data['manager_email'] = $state['managerEmail'];
 $t->data['error_message'] = $errorMessage;
 $t->send();

@@ -36,5 +36,4 @@ Feature: Send a code to an MFA recovery contact
     And I log in
     When I click the Request Assistance link
     Then I should see "your manager" as one of the recovery contact options
-    And I should see the abbreviated name of my recovery contact as an option
-    But I should see not see the full name of my recovery contact
+    And I should see the abbreviated, not full, name of my recovery contact as an option
