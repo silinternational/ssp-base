@@ -958,21 +958,23 @@ class Mfa extends ProcessingFilter
     ): void {
         try {
             $idBrokerClient = self::getIdBrokerClient($state['idBrokerConfig']);
-            $mfaOption = $idBrokerClient->mfaCreate($state['employeeId'], 'manager');
-            $mfaOption['type'] = 'manager';
+            $mfaOption = $idBrokerClient->mfaCreate($state['employeeId'], 'recovery');
+            $mfaOption['type'] = 'recovery';
 
             $logger->warning(json_encode([
-                'event' => 'Manager rescue code sent',
+                'event' => 'Recovery code sent',
                 'employeeId' => $state['employeeId'],
             ]));
         } catch (Throwable $t) {
             $logger->error(json_encode([
-                'event' => 'Manager rescue code: failed',
+                'event' => 'Recovery code: failed',
                 'employeeId' => $state['employeeId'],
                 'error' => $t->getCode() . ': ' . $t->getMessage(),
             ]));
-            throw new Exception('There was an unexpected error. Please try again ' .
-                'or contact tech support for assistance');
+            throw new Exception(
+                'There was an unexpected error. Please try again or contact ' .
+                'tech support for assistance'
+            );
         }
 
         $mfaOptions = $state['mfaOptions'];
@@ -981,9 +983,8 @@ class Mfa extends ProcessingFilter
          * Add this option into the list, giving it a key so `mfaOptions` doesn't get multiple entries
          * if the user tries multiple times.
          */
-        $mfaOptions['manager'] = $mfaOption;
+        $mfaOptions['recovery'] = $mfaOption;
         $state['mfaOptions'] = $mfaOptions;
-        $state['managerEmail'] = self::getMaskedManagerEmail($state);
         $stateId = State::saveState($state, self::STAGE_SENT_TO_MFA_PROMPT);
 
         $url = Module::getModuleURL('mfa/prompt-for-mfa.php');
