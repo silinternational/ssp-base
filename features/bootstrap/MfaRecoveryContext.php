@@ -5,6 +5,8 @@ use Behat\Mink\Element\DocumentElement;
 use Behat\Step\Given;
 use Behat\Step\Then;
 use PHPUnit\Framework\Assert;
+use Sil\PhpEnv\Env;
+use SimpleSAML\Module\mfa\Auth\Process\Mfa;
 
 /**
  * Defines application features from the specific context.
@@ -107,5 +109,73 @@ class MfaRecoveryContext extends MfaContext
             'A temporary code was sent to your recovery contact.',
             $page->getContent()
         );
+    }
+
+    #[Given('the recovery-contacts API has at least one contact for that account')]
+    public function theRecoveryContactsApiHasAtLeastOneContactForThatAccount(): void
+    {
+        /* This test email address should match the email address in
+         * authsources.php for the user this test scenario logged in as. */
+        $emailAddress = 'has_backupcode@example.com';
+
+        $recoveryContacts = $this->getRecoveryContactsFromMockApiFor($emailAddress);
+
+        Assert::assertNotEmpty($recoveryContacts, sprintf(
+            'No recovery contacts returned by %s for %s',
+            Env::requireEnv('MFA_RECOVERY_CONTACTS_API'),
+            $emailAddress
+        ));
+    }
+
+    protected function getRecoveryContactsFromMockApiFor(string $emailAddress): array
+    {
+        $fakeState = [
+            'recoveryConfig' => [
+                'api' => Env::requireEnv('MFA_RECOVERY_CONTACTS_API'),
+                'apiKey' => Env::requireEnv('MFA_RECOVERY_CONTACTS_API_KEY'),
+                'fallbackEmail' => Env::requireEnv('MFA_RECOVERY_CONTACTS_FALLBACK_NAME'),
+                'fallbackName' => Env::requireEnv('MFA_RECOVERY_CONTACTS_FALLBACK_EMAIL'),
+            ],
+            'Attributes' => [
+                'mail' => $emailAddress,
+            ],
+        ];
+
+        return Mfa::getRecoveryContactsByName($fakeState);
+    }
+
+    #[Then('I should see :optionText as one of the recovery contact options')]
+    public function iShouldSeeAsOneOfTheRecoveryContactOptions($optionText): void
+    {
+        $page = $this->session->getPage();
+        Assert::assertContains(
+            'your supervisor',
+            $page->getContent()
+        );
+    }
+
+    #[Then('I should see the abbreviated, not full, name of my recovery contact as an option')]
+    public function iShouldSeeTheAbbreviatedNotFullNameOfMyRecoveryContactAsAnOption(): void
+    {
+        /* This test email address should match the email address in
+         * authsources.php for the user this test scenario logged in as. */
+        $emailAddress = 'has_backupcode@example.com';
+
+        $recoveryContacts = $this->getRecoveryContactsFromMockApiFor($emailAddress);
+        Assert::assertNotEmpty($recoveryContacts, 'API returned no recovery contacts');
+
+        $page = $this->session->getPage();
+        foreach (array_keys($recoveryContacts) as $recoveryContactName) {
+            Assert::assertNotContains(
+                $recoveryContactName,
+                $page->getContent()
+            );
+
+            $abbreviatedName = Mfa::abbreviateName($recoveryContactName);
+            Assert::assertContains(
+                $abbreviatedName,
+                $page->getContent()
+            );
+        }
     }
 }
