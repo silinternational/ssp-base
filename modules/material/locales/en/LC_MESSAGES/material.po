@@ -182,6 +182,9 @@ msgstr "your supervisor"
 msgid "{mfa:recovery_sent}"
 msgstr "A temporary code was sent to your recovery contact."
 
+msgid "{mfa:recovery_input}"
+msgstr "Enter code"
+
 msgid "{mfa:shield_icon}"
 msgstr "Shield icon"
 
