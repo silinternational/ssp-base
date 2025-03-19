@@ -20,25 +20,25 @@
     <form layout-children="column" method="post" autocomplete="off">
       <div class="mdl-card mdl-shadow--8dp">
         <div class="mdl-card__media white-bg margin" layout-children="column">
-          <img src="mfa-manager.svg" class="icon" alt="{{ '{mfa:manager_icon}'|trans }}">
+          <img src="mfa-recovery.svg" class="icon" alt="{{ '{mfa:recovery_icon}'|trans }}">
         </div>
 
         <div class="mdl-card__title center">
           <h1 class="mdl-card__title-text">
-            {{ '{mfa:manager_header}'|trans }}
+            {{ '{mfa:recovery_header}'|trans }}
           </h1>
         </div>
 
         <div class="mdl-card__title center">
           <p class="mdl-card__subtitle-text">
-            {{ '{mfa:manager_sent}'|trans({'%managerEmail%': manager_email}) }}
+            {{ '{mfa:recovery_sent}' }}
           </p>
         </div>
 
         <div class="mdl-card__supporting-text" layout-children="column">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <label for="mfaSubmission" class="mdl-textfield__label">
-              {{ '{mfa:manager_input}'|trans }}
+              {{ '{mfa:recovery_input}'|trans }}
             </label>
             <input name="mfaSubmission" class="mdl-textfield__input mdl-color-text--black" autofocus id="mfaSubmission">
           </div>
@@ -59,7 +59,7 @@
             <script>
               gtag('event', '{{ error_message|e('js')|raw }}', {
                 'event_category': 'error',
-                'event_label': 'managercode'
+                'event_label': 'recoverycode'
               });
             </script>
           {% endif %}
