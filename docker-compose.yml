@@ -42,6 +42,10 @@ services:
       PROFILE_URL_FOR_TESTS: http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
       ADMIN_PASS: b
       SECRET_SALT: abc123
+      MFA_RECOVERY_CONTACTS_API: "http://api-mock.local/recovery-contacts"
+      MFA_RECOVERY_CONTACTS_API_KEY: "dummy-key"
+      MFA_RECOVERY_CONTACTS_FALLBACK_NAME: "Dummy Name"
+      MFA_RECOVERY_CONTACTS_FALLBACK_EMAIL: "dummy@example.com"
     volumes:
       - ./dockerbuild/run-integration-tests.sh:/data/run-integration-tests.sh
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh

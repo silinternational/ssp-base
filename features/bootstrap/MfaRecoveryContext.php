@@ -5,6 +5,8 @@ use Behat\Mink\Element\DocumentElement;
 use Behat\Step\Given;
 use Behat\Step\Then;
 use PHPUnit\Framework\Assert;
+use Sil\PhpEnv\Env;
+use SimpleSAML\Module\mfa\Auth\Process\Mfa;
 
 /**
  * Defines application features from the specific context.
@@ -107,5 +109,31 @@ class MfaRecoveryContext extends MfaContext
             'A temporary code was sent to your recovery contact.',
             $page->getContent()
         );
+    }
+
+    #[Given('the recovery-contacts API has at least one contact for that account')]
+    public function theRecoveryContactsApiHasAtLeastOneContactForThatAccount(): void
+    {
+        $fakeState = [
+            'recoveryConfig' => [
+                'api' => Env::requireEnv('MFA_RECOVERY_CONTACTS_API'),
+                'apiKey' => Env::requireEnv('MFA_RECOVERY_CONTACTS_API_KEY'),
+                'fallbackEmail' => Env::requireEnv('MFA_RECOVERY_CONTACTS_FALLBACK_NAME'),
+                'fallbackName' => Env::requireEnv('MFA_RECOVERY_CONTACTS_FALLBACK_EMAIL'),
+            ],
+            'Attributes' => [
+                /* This test email address should match the email address in
+                 * authsources.php for the user this test scenario logged in as. */
+                'mail' => 'has_backupcode@example.com',
+            ],
+        ];
+
+        $recoveryContacts = Mfa::getRecoveryContactsByName($fakeState);
+
+        Assert::assertNotEmpty($recoveryContacts, sprintf(
+            'No recovery contacts returned by %s for %s',
+            $fakeState['recoveryConfig']['api'],
+            $fakeState['Attributes']['mail']
+        ));
     }
 }

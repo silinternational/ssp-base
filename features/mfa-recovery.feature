@@ -27,3 +27,14 @@ Feature: Send a code to an MFA recovery contact
     When I send the code to the recovery contact
     Then I should not see an error message
     And I should see confirmation that the code was sent
+
+  Scenario: Abbreviate recovery contact names
+    Given I use an IDP that is configured to offer MFA recovery-contacts
+    And I provide credentials that have backup codes
+    And the user has a manager email
+    And the recovery-contacts API has at least one contact for that account
+    And I log in
+    When I click the Request Assistance link
+    Then I should see "your manager" as one of the recovery contact options
+    And I should see the abbreviated name of my recovery contact as an option
+    But I should see not see the full name of my recovery contact
