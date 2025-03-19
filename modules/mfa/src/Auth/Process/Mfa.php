@@ -233,7 +233,7 @@ class Mfa extends ProcessingFilter
         }
 
         $recentMfa = self::getMostRecentUsedMfaOption($mfaOptions);
-        $mfaTypePriority = ['manager'];
+        $mfaTypePriority = ['recovery', 'manager'];
 
         if (isset($recentMfa['type'])) {
             $mfaTypePriority[] = $recentMfa['type'];
