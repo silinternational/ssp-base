@@ -335,6 +335,7 @@ class Mfa extends ProcessingFilter
             'totp' => 'mfa:prompt-for-mfa-totp',
             'webauthn' => 'mfa:prompt-for-mfa-webauthn',
             'manager' => 'mfa:prompt-for-mfa-manager',
+            'recovery' => 'mfa:prompt-for-mfa-recovery',
         ];
         $template = $mfaOptionTemplates[$mfaType] ?? null;
 
