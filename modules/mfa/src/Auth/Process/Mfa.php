@@ -128,6 +128,12 @@ class Mfa extends ProcessingFilter
         }
     }
 
+    private static function abbreviateName(string $name): string
+    {
+        // TEMP - to fix later
+        return $name;
+    }
+
     /**
      * Get the specified attribute from the given state data.
      *
@@ -292,9 +298,12 @@ class Mfa extends ProcessingFilter
     }
 
     /**
+     * Get the list of recovery contacts for the current user, keyed on their
+     * name, with their email as the value.
+     *
      * @throws GuzzleException
      */
-    public static function getRecoveryContacts(?array $state): array
+    public static function getRecoveryContactsByName(?array $state): array
     {
         $recoveryConfig = $state['recoveryConfig'] ?? [];
         $emailAddressValues = $state['Attributes']['mail'] ?? [''];
@@ -306,19 +315,23 @@ class Mfa extends ProcessingFilter
         $fallbackName = $recoveryConfig['fallbackName'] ?? '';
 
         $recoveryContactsApiClient = new ApiClient($recoveryContactsApiKey);
-        $recoveryContacts = $recoveryContactsApiClient->call(
+        $recoveryContactsFromApi = $recoveryContactsApiClient->call(
             $recoveryContactsApiUrl,
             ['email' => $emailAddress]
         );
 
-        if (empty($recoveryContacts)) {
-            $recoveryContacts[] = [
-                'email' => $fallbackEmail,
-                'name' => $fallbackName,
-            ];
+        $recoveryContactsByName = [];
+        foreach ($recoveryContactsFromApi as $recoveryContact) {
+            $abbreviatedName = static::abbreviateName($recoveryContact['name']);
+            $emailAddress = $recoveryContact['email'];
+            $recoveryContactsByName[$abbreviatedName] = $emailAddress;
         }
 
-        return $recoveryContacts;
+        if (empty($recoveryContactsByName)) {
+            $recoveryContactsByName[$fallbackName] = $fallbackEmail;
+        }
+
+        return $recoveryContactsByName;
     }
 
     /**
