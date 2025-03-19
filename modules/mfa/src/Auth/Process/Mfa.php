@@ -233,7 +233,7 @@ class Mfa extends ProcessingFilter
         }
 
         $recentMfa = self::getMostRecentUsedMfaOption($mfaOptions);
-        $mfaTypePriority = ['manager'];
+        $mfaTypePriority = ['recovery', 'manager'];
 
         if (isset($recentMfa['type'])) {
             $mfaTypePriority[] = $recentMfa['type'];
@@ -335,6 +335,7 @@ class Mfa extends ProcessingFilter
             'totp' => 'mfa:prompt-for-mfa-totp',
             'webauthn' => 'mfa:prompt-for-mfa-webauthn',
             'manager' => 'mfa:prompt-for-mfa-manager',
+            'recovery' => 'mfa:prompt-for-mfa-recovery',
         ];
         $template = $mfaOptionTemplates[$mfaType] ?? null;
 
@@ -930,6 +931,60 @@ class Mfa extends ProcessingFilter
         $mfaOptions['manager'] = $mfaOption;
         $state['mfaOptions'] = $mfaOptions;
         $state['managerEmail'] = self::getMaskedManagerEmail($state);
+        $stateId = State::saveState($state, self::STAGE_SENT_TO_MFA_PROMPT);
+
+        $url = Module::getModuleURL('mfa/prompt-for-mfa.php');
+
+        $httpUtils = new HTTP();
+        $httpUtils->redirectTrustedURL($url, ['mfaId' => $mfaOption['id'], 'StateId' => $stateId]);
+    }
+
+    /**
+     * Send a rescue code to the specified recovery contact, then redirect the
+     * user to a page where they can enter the code.
+     *
+     * If successful, this function triggers a redirect and does not return
+     *
+     * @param array $state The state data.
+     * @param string $mfaRecoveryContactID The identifier for the selected MFA
+     *     recovery contact.
+     * @param LoggerInterface $logger A PSR-3 compatible logger.
+     * @throws Exception
+     */
+    public static function sendRecoveryCode(
+        array &$state,
+        string $mfaRecoveryContactID,
+        LoggerInterface $logger
+    ): void {
+        try {
+            $idBrokerClient = self::getIdBrokerClient($state['idBrokerConfig']);
+            $mfaOption = $idBrokerClient->mfaCreate($state['employeeId'], 'recovery');
+            $mfaOption['type'] = 'recovery';
+
+            $logger->warning(json_encode([
+                'event' => 'Recovery code sent',
+                'employeeId' => $state['employeeId'],
+            ]));
+        } catch (Throwable $t) {
+            $logger->error(json_encode([
+                'event' => 'Recovery code: failed',
+                'employeeId' => $state['employeeId'],
+                'error' => $t->getCode() . ': ' . $t->getMessage(),
+            ]));
+            throw new Exception(
+                'There was an unexpected error. Please try again or contact ' .
+                'tech support for assistance'
+            );
+        }
+
+        $mfaOptions = $state['mfaOptions'];
+
+        /*
+         * Add this option into the list, giving it a key so `mfaOptions` doesn't get multiple entries
+         * if the user tries multiple times.
+         */
+        $mfaOptions['recovery'] = $mfaOption;
+        $state['mfaOptions'] = $mfaOptions;
         $stateId = State::saveState($state, self::STAGE_SENT_TO_MFA_PROMPT);
 
         $url = Module::getModuleURL('mfa/prompt-for-mfa.php');
