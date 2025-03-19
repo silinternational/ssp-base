@@ -37,9 +37,9 @@
           <p class="mdl-card__subtitle-text">
             {{ '{mfa:recovery_info_selection}'|trans }}<br />
 
-            {% for recoveryContact in recovery_contacts %}
-              <input type="radio" name="mfaRecoveryContactID" value="{{ recoveryContact.name }}">
-              {{ recoveryContact.name }}
+            {% for name in recovery_contacts_by_name|keys %}
+              <input type="radio" name="mfaRecoveryContactID" value="{{ name }}">
+              {{ name }}
               <br />
             {% endfor %}
 

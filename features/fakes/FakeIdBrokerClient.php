@@ -82,11 +82,16 @@ class FakeIdBrokerClient
      * @param string $employee_id
      * @param string $type
      * @param string|null $label
+     * @param string $recoveryEmail
      * @return array|null
      * @throws Exception
      */
-    public function mfaCreate(string $employee_id, string $type, string $label = null): ?array
-    {
+    public function mfaCreate(
+        string $employee_id,
+        string $type,
+        string $label = null,
+        string $recoveryEmail = ''
+    ): ?array {
         if (empty($employee_id)) {
             throw new InvalidArgumentException('employee_id is required');
         }
@@ -117,6 +122,11 @@ class FakeIdBrokerClient
         }
 
         if ($type === 'recovery') {
+            if (empty($recoveryEmail)) {
+                throw new InvalidArgumentException(
+                    'A recoveryEmail is required for MFA recovery codes'
+                );
+            }
             return [
                 "id" => 7890,
                 "data" => [],
