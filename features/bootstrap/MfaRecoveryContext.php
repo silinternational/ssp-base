@@ -89,6 +89,16 @@ class MfaRecoveryContext extends MfaContext
         Assert::fail('Failed to find a way to select a (non-manager) recovery contact');
     }
 
+    #[Then('I should not see an error message')]
+    public function iShouldNotSeeAnErrorMessage(): void
+    {
+        $page = $this->session->getPage();
+        Assert::assertNotContains(
+            'error',
+            $page->getContent()
+        );
+    }
+
     #[Then('I should see confirmation that the code was sent')]
     public function iShouldSeeConfirmationThatTheCodeWasSent(): void
     {

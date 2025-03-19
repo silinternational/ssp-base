@@ -25,4 +25,5 @@ Feature: Send a code to an MFA recovery contact
     And I log in
     And I click the Request Assistance link
     When I send the code to the recovery contact
-    Then I should see confirmation that the code was sent
+    Then I should not see an error message
+    And I should see confirmation that the code was sent
