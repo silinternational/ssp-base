@@ -474,15 +474,20 @@ can be autoloaded, to use as the logger within the module.
 
 The `recoveryContacts*` parameters allow you to call an API to retrieve a list
 of recovery contact addresses which should be offered when the user requests help with
-their MFA. If all of these parameters are provided, the "More options" > "I need
-help" option will result in a call to that API, with the API key included as a
-Bearer token in an Authentication header, with the email address of the current
-user in an `email` query string parameter. The response must be a JSON array of
-zero or more objects, each with a `name` and `email` field. Example: `[{"name":
-"John Smith","email":"john_smith@example.com"}]`. If the array is empty, the
-provided fallback parameters will be used. Names will be partially abbreviated
-to avoid giving out too much information in case a user's password is
-compromised.
+their MFA.
+
+If the `recoveryContactsApi` is provided, the "More options" > "I need help"
+option will result in a call to that API, with the API key included as a Bearer
+token in an Authentication header, with the email address of the current user in
+an `email` query string parameter.
+
+The response must be a JSON array of zero or more objects, each with a `name`
+and `email` field. Example:
+`[{"name": "John Smith","email":"john_smith@example.com"}]`
+
+Names returned by the API will be partially abbreviated to avoid giving out too
+much information in case a user's password is compromised. If the returned array
+is empty, the provided fallback parameters will be used.
 
 #### Why use an AuthProc for MFA?
 Based on...
