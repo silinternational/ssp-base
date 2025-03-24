@@ -28,6 +28,16 @@ Feature: Send a code to an MFA recovery contact
     Then I should not see an error message
     And I should see confirmation that the code was sent
 
+  Scenario: User with manager and recovery contact, send code to manager
+    Given I use an IDP that is configured to offer MFA recovery-contacts
+    And I provide credentials that have backup codes
+    And the user has a manager email
+    And I log in
+    And I click the Request Assistance link
+    When I send the code to the manager
+    Then I should not see an error message
+    And I should see confirmation that the code was sent
+
   Scenario: Abbreviate recovery contact names
     Given I use an IDP that is configured to offer MFA recovery-contacts
     And I provide credentials that have backup codes

@@ -35,8 +35,12 @@ $errorMessage = null;
 if (filter_has_var(INPUT_POST, 'send')) {
     try {
         $mfaRecoveryContactID = filter_input(INPUT_POST, 'mfaRecoveryContactID');
-        $recoveryContactEmail = $recoveryContactsForView[$mfaRecoveryContactID];
-        Mfa::sendRecoveryCode($state, $recoveryContactEmail, $logger);
+        if ($mfaRecoveryContactID === 'recovery-contact-id-manager') {
+            Mfa::sendManagerCode($state, $logger);
+        } else {
+            $recoveryContactEmail = $recoveryContactsForView[$mfaRecoveryContactID];
+            Mfa::sendRecoveryCode($state, $recoveryContactEmail, $logger);
+        }
     } catch (Exception $e) {
         $errorMessage = $e->getMessage();
     }

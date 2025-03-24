@@ -106,7 +106,7 @@ class MfaRecoveryContext extends MfaContext
     {
         $page = $this->session->getPage();
         Assert::assertContains(
-            'A temporary code was sent to your recovery contact.',
+            'A temporary code was sent to your recovery contact',
             $page->getContent()
         );
     }
@@ -177,5 +177,14 @@ class MfaRecoveryContext extends MfaContext
                 $page->getContent()
             );
         }
+    }
+
+    #[When('I send the code to the manager')]
+    public function iSendTheCodeToTheManager(): void
+    {
+        $page = $this->session->getPage();
+        $managerOption = $page->findById('option-manager');
+        $managerOption->click();
+        $page->pressButton('send');
     }
 }
