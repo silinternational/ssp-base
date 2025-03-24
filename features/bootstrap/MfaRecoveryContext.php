@@ -187,4 +187,11 @@ class MfaRecoveryContext extends MfaContext
         $managerOption->click();
         $page->pressButton('send');
     }
+
+    #[Given('I provide credentials that have backup codes and a manager')]
+    public function iProvideCredentialsThatHaveBackupCodesAndAManager(): void
+    {
+        $this->iProvideCredentialsThatHaveBackupCodes();
+        $this->theUserHasAManagerEmail();
+    }
 }
