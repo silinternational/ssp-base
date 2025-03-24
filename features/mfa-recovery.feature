@@ -17,23 +17,19 @@ Feature: Send a code to an MFA recovery contact
     Then I should see a way to send an MFA recovery code to my manager
     And I should see a way to send an MFA recovery code to another recovery contact
 
-  Scenario: User with manager and recovery contact, send code to recovery contact
+  Scenario Outline: User with manager and recovery contact, send code to each
     Given I use an IDP that is configured to offer MFA recovery-contacts
     And I provide credentials that have backup codes and a manager
     And I log in
     And I click the Request Assistance link
-    When I send the code to the recovery contact
+    When I send the code to the <recipient>
     Then I should not see an error message
     And I should see confirmation that the code was sent
 
-  Scenario: User with manager and recovery contact, send code to manager
-    Given I use an IDP that is configured to offer MFA recovery-contacts
-    And I provide credentials that have backup codes and a manager
-    And I log in
-    And I click the Request Assistance link
-    When I send the code to the manager
-    Then I should not see an error message
-    And I should see confirmation that the code was sent
+    Examples:
+      | recipient        |
+      | recovery contact |
+      | manager          |
 
   Scenario: Abbreviate recovery contact names
     Given I use an IDP that is configured to offer MFA recovery-contacts
