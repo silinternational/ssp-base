@@ -116,6 +116,13 @@ class FakeIdBrokerClient
             ];
         }
 
+        if ($type === 'recovery') {
+            return [
+                "id" => 7890,
+                "data" => [],
+            ];
+        }
+
         throw new InvalidArgumentException(sprintf(
             'This Fake ID Broker class does not support creating %s MFA records.',
             $type

@@ -182,6 +182,9 @@ msgstr "votre superviseur"
 msgid "{mfa:recovery_sent}"
 msgstr "Un code temporaire a été envoyé à votre contact de récupération."
 
+msgid "{mfa:recovery_input}"
+msgstr "Entrer le code"
+
 msgid "{mfa:shield_icon}"
 msgstr "Icône de bouclier"
 

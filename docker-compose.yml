@@ -275,6 +275,9 @@ services:
       # Customized SSP code -- TODO: make a better solution that doesn't require hacking SSP code
       - ./development/UserPass.php:/data/vendor/simplesamlphp/simplesamlphp/modules/exampleauth/src/Auth/Source/UserPass.php
 
+      # Include the features folder (for the FakeIdBrokerClient class)
+      - ./features:/data/features
+
       # Local modules
       - ./modules/mfa:/data/vendor/simplesamlphp/simplesamlphp/modules/mfa
       - ./modules/expirychecker:/data/vendor/simplesamlphp/simplesamlphp/modules/expirychecker
