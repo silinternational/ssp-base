@@ -106,7 +106,7 @@ class MfaRecoveryContext extends MfaContext
     {
         $page = $this->session->getPage();
         Assert::assertContains(
-            'A temporary code was sent to your recovery contact.',
+            'A temporary code was sent to your recovery contact',
             $page->getContent()
         );
     }
