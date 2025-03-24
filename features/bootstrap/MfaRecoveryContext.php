@@ -178,4 +178,13 @@ class MfaRecoveryContext extends MfaContext
             );
         }
     }
+
+    #[When('I send the code to the manager')]
+    public function iSendTheCodeToTheManager(): void
+    {
+        $page = $this->session->getPage();
+        $managerOption = $page->findById('option-manager');
+        $managerOption->click();
+        $page->pressButton('send');
+    }
 }
