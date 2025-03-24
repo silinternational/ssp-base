@@ -128,10 +128,22 @@ class Mfa extends ProcessingFilter
         }
     }
 
-    private static function abbreviateName(string $name): string
+    /**
+     * Abbreviate the provided name so that someone who knows them would still
+     * recognize it, but someone who does not know them will hopefully not have
+     * enough information to figure out exactly who it is.
+     *
+     * @param string $name Example: 'John Smith'
+     * @return string Example: 'J. Smith' (though how it is abbreviated may
+     *     change in the future)
+     */
+    public static function abbreviateName(string $name): string
     {
-        // TEMP - to fix later
-        return $name;
+        return preg_replace(
+            '/^(\w)(\w*) (\w+)/',
+            '$1. $3',
+            $name
+        );
     }
 
     /**
@@ -322,9 +334,9 @@ class Mfa extends ProcessingFilter
 
         $recoveryContactsByName = [];
         foreach ($recoveryContactsFromApi as $recoveryContact) {
-            $abbreviatedName = static::abbreviateName($recoveryContact['name']);
+            $name = $recoveryContact['name'];
             $emailAddress = $recoveryContact['email'];
-            $recoveryContactsByName[$abbreviatedName] = $emailAddress;
+            $recoveryContactsByName[$name] = $emailAddress;
         }
 
         if (empty($recoveryContactsByName)) {
