@@ -211,7 +211,7 @@ class MfaRecoveryContext extends MfaContext
 
         $contactOptionElements = $page->findAll('css', 'input[name=mfaRecoveryContactID]');
         foreach ($contactOptionElements as $element) {
-            $elementValue = $element->getValue();
+            $elementValue = $element->getAttribute('value');
             if ($elementValue === $fallbackName) {
                 $foundFallbackOption = true;
                 break;
