@@ -206,8 +206,9 @@ class MfaRecoveryContext extends MfaContext
     public function iShouldSeeAWayToSendAnMfaRecoveryCodeToTheFallbackRecoveryContact(): void
     {
         $page = $this->session->getPage();
-        $fallbackName = Env::requireEnv('MFA_RECOVERY_CONTACTS_FALLBACK_EMAIL');
+        $fallbackName = Env::requireEnv('MFA_RECOVERY_CONTACTS_FALLBACK_NAME');
         $foundFallbackOption = false;
+
         $contactOptionElements = $page->findAll('css', 'input[name=mfaRecoveryContactID]');
         foreach ($contactOptionElements as $element) {
             $elementValue = $element->getValue();
