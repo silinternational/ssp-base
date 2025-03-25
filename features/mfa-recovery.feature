@@ -39,3 +39,11 @@ Feature: Send a code to an MFA recovery contact
     When I click the Request Assistance link
     Then I should see "your manager" as one of the recovery contact options
     And I should see the abbreviated, not full, name of my recovery contact as an option
+
+  Scenario: Recovery contacts API provides no contacts
+    Given I use an IDP that is configured to offer MFA recovery-contacts
+    And I provide credentials for a user with a manager but no recovery contacts
+    And I log in
+    When I click the Request Assistance link
+    Then I should see a way to send an MFA recovery code to my manager
+    And I should see a way to send an MFA recovery code to the fallback recovery contact

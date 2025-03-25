@@ -20,7 +20,7 @@
           "body": "[\n  {\n    \"name\": \"Anne Admin\",\n    \"email\": \"anne_admin@example.com\"\n  }\n]",
           "latency": 0,
           "statusCode": 200,
-          "label": "",
+          "label": "Email address with a recovery contact",
           "headers": [],
           "bodyType": "INLINE",
           "filePath": "",
@@ -31,6 +31,33 @@
           "disableTemplating": false,
           "fallbackTo404": false,
           "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "22a3ced0-843e-406f-89cf-68d1198bb67b",
+          "body": "[]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Email address with no recovery contacts",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "email",
+              "value": "has_backupcode_mgr_no_recovery_contacts@example.com",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
           "crudKey": "id",
           "callbacks": []
         }

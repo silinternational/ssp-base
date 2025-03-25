@@ -194,4 +194,34 @@ class MfaRecoveryContext extends MfaContext
         $this->iProvideCredentialsThatHaveBackupCodes();
         $this->theUserHasAManagerEmail();
     }
+
+    #[Given('I provide credentials for a user with a manager but no recovery contacts')]
+    public function iProvideCredentialsForAUserWithAManagerButNoRecoveryContacts(): void
+    {
+        $this->username = 'has_backupcode_mgr_no_recovery_contacts';
+        $this->password = 'a';
+    }
+
+    #[Then('I should see a way to send an MFA recovery code to the fallback recovery contact')]
+    public function iShouldSeeAWayToSendAnMfaRecoveryCodeToTheFallbackRecoveryContact(): void
+    {
+        $page = $this->session->getPage();
+        $fallbackName = Env::requireEnv('MFA_RECOVERY_CONTACTS_FALLBACK_NAME');
+        $foundFallbackOption = false;
+
+        $contactOptionElements = $page->findAll('css', 'input[name=mfaRecoveryContactID]');
+        foreach ($contactOptionElements as $element) {
+            $elementValue = $element->getAttribute('value');
+            if ($elementValue === $fallbackName) {
+                $foundFallbackOption = true;
+                break;
+            }
+        }
+        Assert::assertTrue(
+            $foundFallbackOption,
+            'Did not find a way to select the fallback recovery contact'
+        );
+
+        $this->assertHasSendButton($page);
+    }
 }

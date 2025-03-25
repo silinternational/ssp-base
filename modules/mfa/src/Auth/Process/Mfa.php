@@ -323,8 +323,6 @@ class Mfa extends ProcessingFilter
 
         $recoveryContactsApiUrl = $recoveryConfig['api'] ?? '';
         $recoveryContactsApiKey = $recoveryConfig['apiKey'] ?? '';
-        $fallbackEmail = $recoveryConfig['fallbackEmail'] ?? '';
-        $fallbackName = $recoveryConfig['fallbackName'] ?? '';
 
         $recoveryContactsApiClient = new ApiClient($recoveryContactsApiKey);
         $recoveryContactsFromApi = $recoveryContactsApiClient->call(
@@ -337,10 +335,6 @@ class Mfa extends ProcessingFilter
             $name = $recoveryContact['name'];
             $emailAddress = $recoveryContact['email'];
             $recoveryContactsByName[$name] = $emailAddress;
-        }
-
-        if (empty($recoveryContactsByName)) {
-            $recoveryContactsByName[$fallbackName] = $fallbackEmail;
         }
 
         return $recoveryContactsByName;
