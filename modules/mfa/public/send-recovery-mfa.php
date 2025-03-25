@@ -31,6 +31,13 @@ foreach ($recoveryContactsFromApi as $recoveryContactName => $recoveryContactEma
     $recoveryContactsForView[$abbreviatedName] = $recoveryContactEmail;
 }
 
+if (empty($recoveryContactsForView)) {
+    $recoveryConfig = $state['recoveryConfig'] ?? [];
+    $fallbackEmail = $recoveryConfig['fallbackEmail'] ?? '';
+    $fallbackName = $recoveryConfig['fallbackName'] ?? '';
+    $recoveryContactsForView[$fallbackName] = $fallbackEmail;
+}
+
 $errorMessage = null;
 if (filter_has_var(INPUT_POST, 'send')) {
     try {

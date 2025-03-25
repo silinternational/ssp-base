@@ -487,7 +487,8 @@ and `email` field. Example:
 
 Names returned by the API will be partially abbreviated to avoid giving out too
 much information in case a user's password is compromised. If the returned array
-is empty, the provided fallback parameters will be used.
+is empty, the provided fallback parameters will be used. Note: The fallback name
+will not be abbreviated.
 
 #### Why use an AuthProc for MFA?
 Based on...
