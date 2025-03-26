@@ -47,3 +47,11 @@ Feature: Send a code to an MFA recovery contact
     When I click the Request Assistance link
     Then I should see a way to send an MFA recovery code to my manager
     And I should see a way to send an MFA recovery code to the fallback recovery contact
+
+  Scenario: Recovery contacts API provides a contact
+    Given I use an IDP that is configured to offer MFA recovery-contacts
+    And I provide credentials for a user with a manager and a recovery contact
+    And I log in
+    When I click the Request Assistance link
+    Then I should see a way to send an MFA recovery code to my manager
+    And I should see a way to send an MFA recovery code to this account's recovery contact
