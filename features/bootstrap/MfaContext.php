@@ -595,9 +595,13 @@ class MfaContext extends FeatureContext
      */
     public function iClickTheRequestAssistanceLink()
     {
-        // find image of the recovery contact option presented in prompt_for_mfa_manager.php
-        $printableCodeOption = $this->session->getPage()->find('css', 'img[src=mfa-manager\002Esvg]');
-        $printableCodeOption->click();
+        $page = $this->session->getPage();
+        $helpOption = $page->findById('more-options-manager');
+        Assert::assertNotNull(
+            $helpOption,
+            'Could not find the "I need help" option'
+        );
+        $helpOption->click();
     }
 
     /**
