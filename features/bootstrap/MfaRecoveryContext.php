@@ -224,4 +224,35 @@ class MfaRecoveryContext extends MfaContext
 
         $this->assertHasSendButton($page);
     }
+
+    #[Given('I provide credentials for a user with a manager and a recovery contact')]
+    public function iProvideCredentialsForAUserWithAManagerAndARecoveryContact(): void
+    {
+        $this->username = 'has_backupcode_mgr_recovery_contact';
+        $this->password = 'a';
+    }
+
+    #[Then('I should see a way to send an MFA recovery code to this account\'s recovery contact')]
+    public function iShouldSeeAWayToSendAnMfaRecoveryCodeToThisAccountsRecoveryContact(): void
+    {
+        $page = $this->session->getPage();
+        $recoveryContactFullName = 'Anne Admin'; // Must match value in `api-mock/mfa-recovery-contacts.json`
+        $recoveryContactAbbreviatedName = Mfa::abbreviateName($recoveryContactFullName);
+        $foundThatRecoveryContact = false;
+
+        $contactOptionElements = $page->findAll('css', 'input[name=mfaRecoveryContactID]');
+        foreach ($contactOptionElements as $element) {
+            $elementValue = $element->getAttribute('value');
+            if ($elementValue === $recoveryContactAbbreviatedName) {
+                $foundThatRecoveryContact = true;
+                break;
+            }
+        }
+        Assert::assertTrue(
+            $foundThatRecoveryContact,
+            "Did not find a way to select this account's recovery contact"
+        );
+
+        $this->assertHasSendButton($page);
+    }
 }

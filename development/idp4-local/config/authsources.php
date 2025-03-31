@@ -120,6 +120,43 @@ $config = [
                 ],
                 'manager_email' => ['manager@example.com'],
             ],
+
+            /**
+             * A user with MFA configured (in this case, backup codes) a
+             * manager, and a recovery contact (in the recovery-contacts mock
+             * API).
+             */
+            'has_backupcode_mgr_recovery_contact:a' => [
+                'eduPersonPrincipalName' => ['has_backupcode_mgr_recovery_contact@mfaidp'],
+                'eduPersonTargetID' => ['4927f678-6d1c-423f-a094-46c6b56f7bc5'], // Make it unique
+                'sn' => ['Recovery Contact'],
+                'givenName' => ['Has Backupcode Mgr'],
+                'mail' => ['has_backupcode_mgr_recovery_contact@example.com'],
+                'employeeNumber' => ['49276'], // Make it unique
+                'cn' => ['has_backupcode_mgr_recovery_contact'],
+                'schacExpiryDate' => [
+                    gmdate('YmdHis\Z', strtotime('+6 months')),
+                ],
+                'profile_review' => 'no',
+                'mfa' => [
+                    'prompt' => 'yes',
+                    'add' => 'no',
+                    'options' => [
+                        [
+                            'id' => '7',
+                            'type' => 'backupcode',
+                            'data' => [
+                                'count' => 10,
+                            ],
+                        ],
+                    ],
+                ],
+                'method' => [
+                    'add' => 'no',
+                    'options' => [],
+                ],
+                'manager_email' => ['manager@example.com'],
+            ],
         ],
     ]
 ];
