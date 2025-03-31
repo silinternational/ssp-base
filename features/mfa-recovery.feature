@@ -11,7 +11,7 @@ Feature: Send a code to an MFA recovery contact
 
   Scenario: User with manager, show manager and recovery contact as options
     Given I use an IDP that is configured to offer MFA recovery-contacts
-    And I provide credentials that have backup codes and a manager
+    And I provide credentials for a user with a manager and a recovery contact
     And I log in
     When I click the Request Assistance link
     Then I should see a way to send an MFA recovery code to my manager
@@ -19,7 +19,7 @@ Feature: Send a code to an MFA recovery contact
 
   Scenario Outline: User with manager and recovery contact, send code to each
     Given I use an IDP that is configured to offer MFA recovery-contacts
-    And I provide credentials that have backup codes and a manager
+    And I provide credentials for a user with a manager and a recovery contact
     And I log in
     And I click the Request Assistance link
     When I send the code to the <recipient>
