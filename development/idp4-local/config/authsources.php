@@ -11,9 +11,8 @@ $config = [
     ],
 
     /**
-     * Example users for testing. Users here MUST also be in IDP 1's list,
-     * because we test logging into each with the same credentials in order to
-     * test the MFA recovery contacts.
+     * Example users for testing. Users who are here AND in another
+     * authsources.php file (e.g. IDP 1's) should have matching attributes.
      */
     'example-userpass' => [
         'exampleauth:UserPass',
@@ -61,6 +60,43 @@ $config = [
                 'mail' => ['has_backupcode@example.com'],
                 'employeeNumber' => ['33333'],
                 'cn' => ['HAS_BACKUPCODE'],
+                'schacExpiryDate' => [
+                    gmdate('YmdHis\Z', strtotime('+6 months')),
+                ],
+                'profile_review' => 'no',
+                'mfa' => [
+                    'prompt' => 'yes',
+                    'add' => 'no',
+                    'options' => [
+                        [
+                            'id' => '7',
+                            'type' => 'backupcode',
+                            'data' => [
+                                'count' => 10,
+                            ],
+                        ],
+                    ],
+                ],
+                'method' => [
+                    'add' => 'no',
+                    'options' => [],
+                ],
+                'manager_email' => ['manager@example.com'],
+            ],
+
+            /**
+             * A user with MFA configured (in this case, backup codes) and a
+             * manager, but no recovery contacts (in the recovery-contacts mock
+             * API).
+             */
+            'has_backupcode_mgr_no_recovery_contacts:a' => [
+                'eduPersonPrincipalName' => ['has_backupcode_mgr_no_recovery_contacts@mfaidp'],
+                'eduPersonTargetID' => ['2bf8e2c9-d62c-4afa-842e-350c86d5bded'],
+                'sn' => ['No Recovery Contacts'],
+                'givenName' => ['Has Backupcode Mgr'],
+                'mail' => ['has_backupcode_mgr_no_recovery_contacts@example.com'],
+                'employeeNumber' => ['33333'],
+                'cn' => ['has_backupcode_mgr_no_recovery_contacts'],
                 'schacExpiryDate' => [
                     gmdate('YmdHis\Z', strtotime('+6 months')),
                 ],
