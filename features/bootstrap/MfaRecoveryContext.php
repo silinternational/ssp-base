@@ -255,4 +255,10 @@ class MfaRecoveryContext extends MfaContext
 
         $this->assertHasSendButton($page);
     }
+
+    #[Given('the recovery-contacts API will return an error for that user')]
+    public function theRecoveryContactsApiWillReturnAnErrorForThatUser(): void
+    {
+        $this->username .= '_error';
+    }
 }
