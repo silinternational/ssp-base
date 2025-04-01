@@ -19,7 +19,8 @@
     <ul class="mdl-menu mdl-js-menu mdl-menu--top-left" data-mdl-for="others">
       {% for option in other_options %}
         {# TODO: Non-interactive elements should not be assigned mouse or keyboard event listeners. #}
-        <li class="mdl-menu__item" data-callback="{{ option.callback|raw }}">
+        <li class="mdl-menu__item" data-callback="{{ option.callback|raw }}"
+            id="more-options-{{ option.type }}">
           <span class="mdl-list__item-primary-content">
             <img
               class="mdl-list__item-icon"
