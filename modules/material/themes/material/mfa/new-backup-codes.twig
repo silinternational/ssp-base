@@ -56,8 +56,8 @@
         copyCodesToClipboard(this);
       });
       document.getElementById('checkbox').addEventListener('change', function(e) {
-        contBtn = document.querySelector('button[name="continue"]');
-        contBtn.disabled = !e.checked;
+        const contBtn = document.getElementById('continue');
+        contBtn.disabled = !e.target.checked;
       });
     });
   </script>
@@ -162,7 +162,7 @@
           <span class="mdl-checkbox__label">{{ '{mfa:new_codes_saved}'|trans }}</span>
         </label>
 
-        <button name="continue" class="mdl-button mdl-button--raised mdl-button--primary" disabled>
+        <button name="continue" id="continue" class="mdl-button mdl-button--raised mdl-button--primary" disabled>
           {{ '{mfa:button_continue}'|trans }}
         </button>
       </div>
