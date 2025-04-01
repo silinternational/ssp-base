@@ -157,6 +157,43 @@ $config = [
                 ],
                 'manager_email' => ['manager@example.com'],
             ],
+
+            /**
+             * A user with MFA configured (in this case, backup codes) and a
+             * manager, but for whom the recovery-contacts API will return an
+             * error.
+             */
+            'has_backupcode_mgr_recovery_contact_error:a' => [
+                'eduPersonPrincipalName' => ['has_backupcode_mgr_recovery_contact_error@mfaidp'],
+                'eduPersonTargetID' => ['b04a4461-0560-46c5-a6de-058f7f3a1b13'], // Make it unique
+                'sn' => ['Recovery Contact Error'],
+                'givenName' => ['Has Backupcode Mgr'],
+                'mail' => ['has_backupcode_mgr_recovery_contact_error@example.com'],
+                'employeeNumber' => ['44461'], // Make it unique
+                'cn' => ['has_backupcode_mgr_recovery_contact_error'],
+                'schacExpiryDate' => [
+                    gmdate('YmdHis\Z', strtotime('+6 months')),
+                ],
+                'profile_review' => 'no',
+                'mfa' => [
+                    'prompt' => 'yes',
+                    'add' => 'no',
+                    'options' => [
+                        [
+                            'id' => '7',
+                            'type' => 'backupcode',
+                            'data' => [
+                                'count' => 10,
+                            ],
+                        ],
+                    ],
+                ],
+                'method' => [
+                    'add' => 'no',
+                    'options' => [],
+                ],
+                'manager_email' => ['manager@example.com'],
+            ],
         ],
     ]
 ];
