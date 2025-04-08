@@ -82,7 +82,8 @@ class FakeIdBrokerClient
      * @param string $employee_id
      * @param string $type
      * @param string|null $label
-     * @param string $recoveryEmail
+     * @param string $rpOrigin
+     * @param string $recovery_email
      * @return array|null
      * @throws Exception
      */
@@ -90,7 +91,8 @@ class FakeIdBrokerClient
         string $employee_id,
         string $type,
         string $label = null,
-        string $recoveryEmail = ''
+        string $rpOrigin = '',
+        string $recovery_email = ''
     ): ?array {
         if (empty($employee_id)) {
             throw new InvalidArgumentException('employee_id is required');
@@ -122,9 +124,9 @@ class FakeIdBrokerClient
         }
 
         if ($type === 'recovery') {
-            if (empty($recoveryEmail)) {
+            if (empty($recovery_email)) {
                 throw new InvalidArgumentException(
-                    'A recoveryEmail is required for MFA recovery codes'
+                    'A recovery_email is required for MFA recovery codes'
                 );
             }
             return [
