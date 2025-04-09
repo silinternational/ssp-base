@@ -5,7 +5,10 @@ use Behat\Mink\Element\DocumentElement;
 use Behat\Step\Given;
 use Behat\Step\Then;
 use PHPUnit\Framework\Assert;
+use Sil\Idp\IdBroker\Client\IdBrokerClient;
+use Sil\Idp\IdBroker\Client\ServiceException;
 use Sil\PhpEnv\Env;
+use Sil\PhpEnv\EnvVarNotFoundException;
 use SimpleSAML\Module\mfa\Auth\Process\Mfa;
 
 /**
@@ -13,6 +16,8 @@ use SimpleSAML\Module\mfa\Auth\Process\Mfa;
  */
 class MfaRecoveryContext extends MfaContext
 {
+    protected IdBrokerClient $idBrokerClient;
+
     #[Given('I use an IDP that is configured to offer MFA recovery-contacts')]
     public function iUseAnIdpThatIsConfiguredToOfferMfaRecoveryContacts(): void
     {
@@ -230,6 +235,45 @@ class MfaRecoveryContext extends MfaContext
     {
         $this->username = 'has_backupcode_mgr_recovery_contact';
         $this->password = 'a';
+        $this->ensureTestUserIsInBroker($this->username);
+    }
+
+    /**
+     * Ensure the specified user exists in ID Broker.
+     *
+     * @param string $staffId
+     * @return void
+     * @throws ServiceException
+     */
+    protected function ensureTestUserIsInBroker(string $staffId): void
+    {
+        $idBrokerClient = $this->getIdBrokerClient();
+        $user = $idBrokerClient->getUser($staffId);
+        Assert::assertNotNull(
+            $user,
+            sprintf(
+                'No %s test user found. Please add it to %s.',
+                $staffId,
+                'development/m991231_235959_insert_test_users.php'
+            )
+        );
+    }
+
+    /**
+     * @throws EnvVarNotFoundException
+     */
+    protected function getIdBrokerClient(): IdBrokerClient
+    {
+        if (! isset($this->idBrokerClient)) {
+            $this->idBrokerClient = new IdBrokerClient(
+                Env::requireEnv('ID_BROKER_BASE_URI'),
+                Env::requireEnv('ID_BROKER_ACCESS_TOKEN'),
+                [
+                    IdBrokerClient::ASSERT_VALID_BROKER_IP_CONFIG => false,
+                ]
+            );
+        }
+        return $this->idBrokerClient;
     }
 
     #[Then('I should see a way to send an MFA recovery code to this account\'s recovery contact')]

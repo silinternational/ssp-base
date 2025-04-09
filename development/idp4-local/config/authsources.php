@@ -125,6 +125,9 @@ $config = [
              * A user with MFA configured (in this case, backup codes) a
              * manager, and a recovery contact (in the recovery-contacts mock
              * API).
+             *
+             * SHOULD match corresponding entry in
+             * `development/m991231_235959_insert_test_users.php`
              */
             'has_backupcode_mgr_recovery_contact:a' => [
                 'eduPersonPrincipalName' => ['has_backupcode_mgr_recovery_contact@mfaidp'],

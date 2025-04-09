@@ -35,6 +35,8 @@ services:
       - pwmanager.local
       - test-browser
     environment:
+      ID_BROKER_ACCESS_TOKEN: "test-cli-abc123"
+      ID_BROKER_BASE_URI: "http://broker"
       MYSQL_HOST: db
       MYSQL_DATABASE: silauth
       MYSQL_USER: silauth
