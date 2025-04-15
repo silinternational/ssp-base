@@ -981,6 +981,7 @@ class Mfa extends ProcessingFilter
                 $state['employeeId'],
                 'recovery',
                 'Recovery contact',
+                '',
                 $recoveryContactEmail
             );
             $mfaOption['type'] = 'recovery';
