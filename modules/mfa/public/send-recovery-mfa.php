@@ -72,5 +72,5 @@ $logger->info(json_encode([
     'employeeId' => $state['employeeId'],
     'contactsFromApi' => $recoveryContactsFromApi,
     'contactsOffered' => $recoveryContactsForView,
-    'managerEmail' => $state['managerEmail'],
+    'managerEmail' => $state['unmaskedManagerEmail'],
 ]));
