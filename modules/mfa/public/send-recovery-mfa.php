@@ -70,4 +70,7 @@ $t->send();
 $logger->info(json_encode([
     'event' => 'offer to send recovery code',
     'employeeId' => $state['employeeId'],
+    'contactsFromApi' => $recoveryContactsFromApi,
+    'contactsOffered' => $recoveryContactsForView,
+    'managerEmail' => $state['managerEmail'],
 ]));
