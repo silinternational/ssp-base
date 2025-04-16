@@ -434,8 +434,6 @@ $metadata['idp.example.com'] = [
             // Optional:
             'idBrokerAssertValidIp' => Env::get('ID_BROKER_ASSERT_VALID_IP'),
             'loggerClass' => Psr3SamlLogger::class,
-
-            // Coming soon:
             'recoveryContactsApi' => Env::get('MFA_RECOVERY_CONTACTS_API'),
             'recoveryContactsApiKey' => Env::get('MFA_RECOVERY_CONTACTS_API_KEY'),
             'recoveryContactsFallbackName' => Env::get('MFA_RECOVERY_CONTACTS_FALLBACK_NAME'),
@@ -470,7 +468,7 @@ want/need to set up MFA.
 The `loggerClass` parameter specifies the name of a PSR-3 compatible class that
 can be autoloaded, to use as the logger within the module.
 
-##### New "Recovery Contacts" Feature (COMING SOON)
+##### "Recovery Contacts" Feature
 
 The `recoveryContacts*` parameters allow you to call an API to retrieve a list
 of recovery contact addresses which should be offered when the user requests help with
