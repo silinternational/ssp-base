@@ -249,7 +249,7 @@ msgid "{mfa:use_help}"
 msgstr "j'ai besoin d'aide"
 
 msgid "{mfa:use_manager}"
-msgstr "Utiliser le code de mon contact de récupération"
+msgstr "Utiliser le code de mon superviseur"
 
 msgid "{mfa:use_recovery}"
 msgstr "Utiliser le code de mon contact de récupération"
