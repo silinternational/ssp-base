@@ -990,11 +990,13 @@ class Mfa extends ProcessingFilter
             $logger->warning(json_encode([
                 'event' => 'Recovery code sent',
                 'employeeId' => $state['employeeId'],
+                'recipient' => $recoveryContactEmail,
             ]));
         } catch (Throwable $t) {
             $logger->error(json_encode([
                 'event' => 'Recovery code: failed',
                 'employeeId' => $state['employeeId'],
+                'recipient' => $recoveryContactEmail,
                 'error' => $t->getCode() . ': ' . $t->getMessage(),
             ]));
             throw new Exception(
