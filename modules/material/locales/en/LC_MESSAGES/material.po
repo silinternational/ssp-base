@@ -251,6 +251,9 @@ msgstr "I need help"
 msgid "{mfa:use_manager}"
 msgstr "Use code from my recovery contact"
 
+msgid "{mfa:use_recovery}"
+msgstr "Use code from my recovery contact"
+
 msgid "{mfa:button_verify}"
 msgstr "Verify"
 

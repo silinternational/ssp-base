@@ -251,6 +251,9 @@ msgstr "necesito ayuda"
 msgid "{mfa:use_manager}"
 msgstr "Usar código de mi contacto de recuperación"
 
+msgid "{mfa:use_recovery}"
+msgstr "Usar código de mi contacto de recuperación"
+
 msgid "{mfa:button_verify}"
 msgstr "Verificar"
 
