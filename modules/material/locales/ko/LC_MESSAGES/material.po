@@ -249,6 +249,9 @@ msgid "{mfa:use_help}"
 msgstr "도움이 필요해."
 
 msgid "{mfa:use_manager}"
+msgstr "내 상사의 코드를 사용하세요"
+
+msgid "{mfa:use_recovery}"
 msgstr "복구 담당자의 코드 사용"
 
 msgid "{mfa:button_verify}"
