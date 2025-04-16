@@ -719,6 +719,7 @@ class Mfa extends ProcessingFilter
 
         $state['mfaOptions'] = $mfaOptions;
         $state['managerEmail'] = self::getMaskedManagerEmail($state);
+        $state['unmaskedManagerEmail'] = self::getManagerEmail($state);
         $state['idBrokerConfig'] = [
             'accessToken' => $this->idBrokerAccessToken,
             'assertValidIp' => $this->idBrokerAssertValidIp,
