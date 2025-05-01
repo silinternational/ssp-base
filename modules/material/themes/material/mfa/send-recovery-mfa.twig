@@ -43,9 +43,9 @@
               <br />
             {% endfor %}
 
-            {% if manager_email is not empty %}
+            {% if masked_manager_email is not empty %}
               <input type="radio" name="mfaRecoveryContactID" id="option-manager" value="recovery-contact-id-manager">
-              {{ '{mfa:recovery_your_supervisor}'|trans }} ({{ manager_email }})
+              {{ '{mfa:recovery_your_supervisor}'|trans }} ({{ masked_manager_email }})
               <br />
             {% endif %}
           </p>
