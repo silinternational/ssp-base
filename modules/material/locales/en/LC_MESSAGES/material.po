@@ -159,7 +159,7 @@ msgid "{mfa:manager_info}"
 msgstr "You can send a 2-step verification code to your recovery contact (usually your supervisor). The email we have for your recovery contact is:<br><br><code>%managerEmail%</code><br><br>We've hidden most of the letters for your contact's protection."
 
 msgid "{mfa:manager_sent}"
-msgstr "A temporary code was sent to your recovery contact at %managerEmail%."
+msgstr "A temporary code was sent to your recovery contact at %maskedManagerEmail%."
 
 msgid "{mfa:manager_input}"
 msgstr "Enter code"
