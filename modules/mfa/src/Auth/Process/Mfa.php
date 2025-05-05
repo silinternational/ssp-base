@@ -1037,7 +1037,7 @@ class Mfa extends ProcessingFilter
     }
 
     /**
-     * Get masked copy of manager_email, or null if it isn't available.
+     * Get manager_email, or null if it isn't available.
      *
      * @param array $state
      * @return string|null
