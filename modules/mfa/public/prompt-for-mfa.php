@@ -113,7 +113,7 @@ if (!empty($recoveryContactsApi)) {
         'type' => 'manager',
         'callback' => '/module.php/mfa/send-recovery-mfa.php?StateId=' . htmlentities($stateId)
     ];
-} elseif (!empty($state['managerEmail'])) {
+} elseif (!empty($state['maskedManagerEmail'])) {
     $otherOptions[] = [
         'type' => 'manager',
         'callback' => '/module.php/mfa/send-manager-mfa.php?StateId=' . htmlentities($stateId)
@@ -139,7 +139,7 @@ $t->data['mfa_options'] = $mfaOptions;
 $browserJsHash = md5_file(__DIR__ . '/simplewebauthn/browser.js');
 $t->data['browser_js_path'] = '/module.php/mfa/simplewebauthn/browser.js?v=' . $browserJsHash;
 $t->data['remember_me_js_path'] = '/module.php/mfa/remember-me.js';
-$t->data['manager_email'] = $state['managerEmail'];
+$t->data['manager_email'] = $state['maskedManagerEmail'];
 $t->data['other_options'] = $otherOptions;
 $t->data['idp_name'] = $t->getEntityDisplayName($state['IdPMetadata']);
 $t->data['rememberMePreference'] = filter_input(INPUT_COOKIE, 'remember_me_preference') ?? '';
