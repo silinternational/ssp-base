@@ -156,10 +156,10 @@ msgid "{mfa:manager_header}"
 msgstr "Pida ayuda de contacto de recuperación"
 
 msgid "{mfa:manager_info}"
-msgstr "Puede enviar un código de verificación de dos pasos a su contacto de recuperación (normalmente su supervisor). La dirección de correo electrónico que tenemos para su contacto de recuperación es:<br><br><code>%managerEmail%</code><br><br>Ocultamos la mayoría de las letras para proteger a su contacto."
+msgstr "Puede enviar un código de verificación de dos pasos a su contacto de recuperación (normalmente su supervisor). La dirección de correo electrónico que tenemos para su contacto de recuperación es:<br><br><code>%maskedManagerEmail%</code><br><br>Ocultamos la mayoría de las letras para proteger a su contacto."
 
 msgid "{mfa:manager_sent}"
-msgstr "Se envió un código temporal a su contacto de recuperación en %managerEmail%."
+msgstr "Se envió un código temporal a su contacto de recuperación en %maskedManagerEmail%."
 
 msgid "{mfa:manager_input}"
 msgstr "Introduzca el código"

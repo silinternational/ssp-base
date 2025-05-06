@@ -156,10 +156,10 @@ msgid "{mfa:manager_header}"
 msgstr "복구 담당자에게 도움을 요청하십시오"
 
 msgid "{mfa:manager_info}"
-msgstr "2단계 인증 코드를 복구 연락처(보통 상사)에게 보낼 수 있습니다. 복구 연락처에 대한 이메일은 다음과 같습니다. <br><br><code>%managerEmail%</code><br><br> 연락처 보호를 위해 대부분의 편지를 숨겼습니다."
+msgstr "2단계 인증 코드를 복구 연락처(보통 상사)에게 보낼 수 있습니다. 복구 연락처에 대한 이메일은 다음과 같습니다. <br><br><code>%maskedManagerEmail%</code><br><br> 연락처 보호를 위해 대부분의 편지를 숨겼습니다."
 
 msgid "{mfa:manager_sent}"
-msgstr "%managerEmail% (으)로 복구 담당자에게 임시 코드를 보냈습니다."
+msgstr "%maskedManagerEmail% (으)로 복구 담당자에게 임시 코드를 보냈습니다."
 
 msgid "{mfa:manager_input}"
 msgstr "코드 입력"

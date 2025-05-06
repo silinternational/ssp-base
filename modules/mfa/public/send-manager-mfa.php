@@ -41,7 +41,7 @@ if (filter_has_var(INPUT_POST, 'send')) {
 $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'mfa:send-manager-mfa');
-$t->data['manager_email'] = $state['managerEmail'];
+$t->data['masked_manager_email'] = $state['maskedManagerEmail'];
 $t->data['error_message'] = $errorMessage;
 $t->send();
 

@@ -718,7 +718,7 @@ class Mfa extends ProcessingFilter
         /** @todo Check for valid remember-me cookies here rather doing a redirect first. */
 
         $state['mfaOptions'] = $mfaOptions;
-        $state['managerEmail'] = self::getMaskedManagerEmail($state);
+        $state['maskedManagerEmail'] = self::getMaskedManagerEmail($state);
         $state['unmaskedManagerEmail'] = self::getManagerEmail($state);
         $state['idBrokerConfig'] = [
             'accessToken' => $this->idBrokerAccessToken,
@@ -950,7 +950,7 @@ class Mfa extends ProcessingFilter
          */
         $mfaOptions['manager'] = $mfaOption;
         $state['mfaOptions'] = $mfaOptions;
-        $state['managerEmail'] = self::getMaskedManagerEmail($state);
+        $state['maskedManagerEmail'] = self::getMaskedManagerEmail($state);
         $stateId = State::saveState($state, self::STAGE_SENT_TO_MFA_PROMPT);
 
         $url = Module::getModuleURL('mfa/prompt-for-mfa.php');
@@ -1037,7 +1037,7 @@ class Mfa extends ProcessingFilter
     }
 
     /**
-     * Get masked copy of manager_email, or null if it isn't available.
+     * Get manager_email, or null if it isn't available.
      *
      * @param array $state
      * @return string|null
