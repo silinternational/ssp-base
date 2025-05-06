@@ -63,7 +63,7 @@ $globalConfig = Configuration::getInstance();
 
 $t = new Template($globalConfig, 'mfa:send-recovery-mfa');
 $t->data['recovery_contacts_by_name'] = $recoveryContactsForView;
-$t->data['manager_email'] = $state['managerEmail'];
+$t->data['masked_manager_email'] = $state['managerEmail'];
 $t->data['error_message'] = $errorMessage;
 $t->send();
 
