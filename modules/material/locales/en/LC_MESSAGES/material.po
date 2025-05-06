@@ -180,7 +180,7 @@ msgid "{mfa:recovery_your_supervisor}"
 msgstr "your supervisor"
 
 msgid "{mfa:recovery_sent}"
-msgstr "A temporary code was sent to your recovery contact."
+msgstr "A temporary code was sent to your recovery contact. Please call them or meet with them to ask for that recovery code."
 
 msgid "{mfa:recovery_input}"
 msgstr "Enter code"
