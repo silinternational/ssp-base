@@ -4,6 +4,12 @@
   <title>{{ '{mfa:title}'|trans }}</title>
 
   {{ include('header.twig') }}
+  <style>
+    .recovery-option {
+      cursor: pointer;
+      display: block;
+    }
+  </style>
 </head>
 <body class="gradient-bg">
 <div class="mdl-layout mdl-layout--fixed-header">
@@ -38,15 +44,17 @@
             {{ '{mfa:recovery_info_selection}'|trans }}<br />
 
             {% for name in recovery_contacts_by_name|keys %}
-              <input type="radio" name="mfaRecoveryContactID" value="{{ name }}">
-              {{ name }}
-              <br />
+              <label class="recovery-option">
+                <input type="radio" name="mfaRecoveryContactID" value="{{ name }}">
+                {{ name }}
+              </label>
             {% endfor %}
 
             {% if masked_manager_email is not empty %}
-              <input type="radio" name="mfaRecoveryContactID" id="option-manager" value="recovery-contact-id-manager">
-              {{ '{mfa:recovery_your_supervisor}'|trans }} ({{ masked_manager_email }})
-              <br />
+              <label class="recovery-option">
+                <input type="radio" name="mfaRecoveryContactID" id="option-manager" value="recovery-contact-id-manager">
+                {{ '{mfa:recovery_your_supervisor}'|trans }} ({{ masked_manager_email }})
+              </label>
             {% endif %}
           </p>
         </div>
