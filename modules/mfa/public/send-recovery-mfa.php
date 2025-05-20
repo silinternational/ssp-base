@@ -67,7 +67,7 @@ $t->data['masked_manager_email'] = $state['maskedManagerEmail'];
 $t->data['error_message'] = $errorMessage;
 $t->send();
 
-$logger->info(json_encode([
+$logger->notice(json_encode([
     'event' => 'offer to send recovery code',
     'employeeId' => $state['employeeId'],
     'contactsFromApi' => $recoveryContactsFromApi,
