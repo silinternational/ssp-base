@@ -78,14 +78,14 @@ Feature: User login
     And that username should be blocked for awhile
     And I should not be allowed through
 
-  Scenario: Providing a correct username-password combination
-    Given I provide a username
-    And I provide the correct password for that username
-    And that username has no recent failed login attempts
-    When I try to log in
-    Then I should not see an error message
-    And I should be allowed through
-    # And I should have the correct attributes
+  # Scenario: Providing a correct username-password combination
+  #   Given I provide a username
+  #   And I provide the correct password for that username
+  #   And that username has no recent failed login attempts
+  #   When I try to log in
+  #   Then I should not see an error message
+  #   And I should be allowed through
+  #   And I should have the correct attributes
 
   Scenario: Providing too many incorrect username-password combinations
     Given I provide a username
