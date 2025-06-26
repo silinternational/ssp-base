@@ -85,6 +85,7 @@ Feature: User login
     When I try to log in
     Then I should not see an error message
     And I should be allowed through
+    And I should have the correct attributes
 
   Scenario: Providing too many incorrect username-password combinations
     Given I provide a username

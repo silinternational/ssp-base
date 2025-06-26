@@ -277,6 +277,33 @@ class LoginContext extends FeatureContext
     }
 
     /**
+     * @Then I should have the correct attributes
+     */
+    public function iShouldHaveTheCorrectAttributes()
+    {
+        Assert::true(
+            $this->authenticator->isAuthenticated()
+        );
+        $userInfo = $this->authenticator->getUserAttributes();
+        Assert::keyExists($userInfo, "eduPersonPrincipalName");
+        Assert::keyExists($userInfo, "eduPersonUniqueId");
+        Assert::keyExists($userInfo, "sn");
+        Assert::keyExists($userInfo, "givenName");
+        Assert::keyExists($userInfo, "displayName");
+        Assert::Equals($userInfo["displayName"][0], trim($userInfo["sn"][0] + " " + $userInfo["givenName"][0]));
+        Assert::keyExists($userInfo, "mail");
+        Assert::keyExists($userInfo, "employeeNumber");
+        Assert::keyExists($userInfo, "cn");
+        Assert::keyExists($userInfo, "schacExpiryDate");
+        Assert::keyExists($userInfo, "mfa");
+        Assert::keyExists($userInfo, "method");
+        Assert::keyExists($userInfo, "uuid");
+        Assert::keyExists($userInfo, "manager_email");
+        Assert::keyExists($userInfo, "profile_review");
+        Assert::keyExists($userInfo, "member");
+    }
+
+    /**
      * @When I try to log in enough times to trigger the rate limit
      */
     public function iTryToLogInEnoughTimesToTriggerTheRateLimit()
