@@ -74,6 +74,7 @@ class LoginContext extends FeatureContext
         $this->request = new Request();
 
         $this->resetDatabase();
+        parent::__construct();
     }
 
     protected function addXFailedLoginUsernames(int $number, $username)
