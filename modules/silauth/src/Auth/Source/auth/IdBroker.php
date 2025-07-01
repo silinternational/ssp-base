@@ -94,7 +94,8 @@ class IdBroker
             $userInfo['method'],
             $userInfo['manager_email'] ?? null,
             $userInfo['profile_review'] ?? 'no',
-            $userInfo['member'] ?? []
+            $userInfo['member'] ?? [],
+            $userInfo['display_name'],
         );
     }
 }

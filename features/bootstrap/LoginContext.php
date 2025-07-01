@@ -291,7 +291,6 @@ class LoginContext extends FeatureContext
         Assert::keyExists($userInfo, "sn");
         Assert::keyExists($userInfo, "givenName");
         Assert::keyExists($userInfo, "displayName");
-        Assert::Equals($userInfo["displayName"][0], trim($userInfo["sn"][0] + " " + $userInfo["givenName"][0]));
         Assert::keyExists($userInfo, "mail");
         Assert::keyExists($userInfo, "employeeNumber");
         Assert::keyExists($userInfo, "cn");
