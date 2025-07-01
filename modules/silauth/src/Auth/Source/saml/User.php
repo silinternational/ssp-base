@@ -17,7 +17,8 @@ class User
         array   $method,
         ?string $managerEmail,
         string  $profileReview,
-        array   $member
+        array   $member,
+        string  $displayName
     ): array {
 
         // eduPersonUniqueId (only alphanumeric allowed)
@@ -47,6 +48,7 @@ class User
 
             'sn' => (array)$lastName,
             'givenName' => (array)$firstName,
+            'displayName' => (array)$displayName,
             'mail' => (array)$email,
             'employeeNumber' => (array)$employeeId,
             'cn' => (array)$username,
