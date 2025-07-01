@@ -47,7 +47,7 @@ class User
 
             'sn' => (array)$lastName,
             'givenName' => (array)$firstName,
-            'displayName' => (array)trim($firstName + " " + $lastName),
+            'displayName' => (array)trim($firstName . " " . $lastName),
             'mail' => (array)$email,
             'employeeNumber' => (array)$employeeId,
             'cn' => (array)$username,
