@@ -19,6 +19,9 @@ return [
             'dsn' => null,
             'username' => null,
             'password' => null,
+            'attributes' => [
+                PDO::MYSQL_ATTR_SSL_CA => "/data/vendor/simplesamlphp/simplesamlphp/cert/rds_ca.pem",
+            ],
         ],
         'log' => [
             'targets' => [
