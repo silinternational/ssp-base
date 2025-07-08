@@ -8,7 +8,8 @@ $dbAttributes = [];
 $caFile = "/data/vendor/simplesamlphp/simplesamlphp/cert/rds_ca.pem";
 if (file_exists($caFile)) {
     $dbAttributes = [
-        \PDO::MYSQL_ATTR_SSL_CA => $caFile,
+        PDO::MYSQL_ATTR_SSL_CA => $caFile,
+        PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => 1,
     ];
 }
 

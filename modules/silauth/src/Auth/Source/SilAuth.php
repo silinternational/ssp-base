@@ -3,6 +3,7 @@
 namespace SimpleSAML\Module\silauth\Auth\Source;
 
 use Exception;
+use PDO;
 use Sil\Psr3Adapters\Psr3StdOutLogger;
 use SimpleSAML\Auth\State;
 use SimpleSAML\Error\Error;
@@ -55,7 +56,8 @@ class SilAuth extends UserPassBase
         $caFile = "/data/vendor/simplesamlphp/simplesamlphp/cert/rds_ca.pem";
         if (file_exists($caFile)) {
             $dbAttributes = [
-                \PDO::MYSQL_ATTR_SSL_CA => $caFile,
+                PDO::MYSQL_ATTR_SSL_CA => $caFile,
+                PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => 1,
             ];
         }
 

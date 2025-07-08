@@ -64,7 +64,8 @@ $MYSQL_PASSWORD = Env::get('MYSQL_PASSWORD', '');
 $pdoOptions = [];
 if (file_exists("/data/vendor/simplesamlphp/simplesamlphp/cert/rds_ca.pem")) {
     $pdoOptions = [
-        \PDO::MYSQL_ATTR_SSL_CA => "/data/vendor/simplesamlphp/simplesamlphp/cert/rds_ca.pem",
+        PDO::MYSQL_ATTR_SSL_CA => "/data/vendor/simplesamlphp/simplesamlphp/cert/rds_ca.pem",
+        PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => 1,
     ];
 } else {
     die("cert file not found");
