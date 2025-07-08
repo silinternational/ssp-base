@@ -66,6 +66,8 @@ if (file_exists("/data/vendor/simplesamlphp/simplesamlphp/cert/rds_ca.pem")) {
     $pdoOptions = [
         PDO::MYSQL_ATTR_SSL_CA => "/data/vendor/simplesamlphp/simplesamlphp/cert/rds_ca.pem",
     ];
+} else {
+    die("cert file not found");
 }
 
 $HUB_MODE = Env::get('HUB_MODE', false);
