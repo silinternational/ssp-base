@@ -61,11 +61,10 @@ $MYSQL_DATABASE = Env::get('MYSQL_DATABASE', '');
 $MYSQL_USER = Env::get('MYSQL_USER', '');
 $MYSQL_PASSWORD = Env::get('MYSQL_PASSWORD', '');
 
-$MYSQL_ATTR_SSL_CA = Env::get('MYSQL_ATTR_SSL_CA', '');
 $pdoOptions = [];
-if ($MYSQL_ATTR_SSL_CA) {
+if (file_exists("/data/vendor/simplesamlphp/simplesamlphp/cert/rds_ca.pem")) {
     $pdoOptions = [
-        PDO::MYSQL_ATTR_SSL_CA => $MYSQL_ATTR_SSL_CA,
+        PDO::MYSQL_ATTR_SSL_CA => "/data/vendor/simplesamlphp/simplesamlphp/cert/rds_ca.pem",
     ];
 }
 
