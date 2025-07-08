@@ -51,6 +51,14 @@ class SilAuth extends UserPassBase
         $this->recaptchaConfig = ConfigManager::getConfigFor('recaptcha', $config);
         $this->templateData = ConfigManager::getConfigFor('templateData', $config);
 
+        $dbAttributes = [];
+        $caFile = "/data/vendor/simplesamlphp/simplesamlphp/cert/rds_ca.pem";
+        if (file_exists($caFile)) {
+            $dbAttributes = [
+                \PDO::MYSQL_ATTR_SSL_CA => $caFile,
+            ];
+        }
+
         ConfigManager::initializeYii2WebApp(['components' => ['db' => [
             'dsn' => sprintf(
                 'mysql:host=%s;dbname=%s',
@@ -59,6 +67,7 @@ class SilAuth extends UserPassBase
             ),
             'username' => $this->mysqlConfig['user'],
             'password' => $this->mysqlConfig['password'],
+            'options' => $dbAttributes,
         ]]]);
     }
 

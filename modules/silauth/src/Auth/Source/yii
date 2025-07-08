@@ -30,6 +30,14 @@ foreach ($autoloadLocations as $location) {
 use Sil\PhpEnv\Env;
 use SimpleSAML\Module\silauth\Auth\Source\config\ConfigManager;
 
+$dbAttributes = [];
+$caFile = "/data/vendor/simplesamlphp/simplesamlphp/cert/rds_ca.pem";
+if (file_exists($caFile)) {
+  $dbAttributes = [
+    \PDO::MYSQL_ATTR_SSL_CA => $caFile,
+  ];
+}
+
 $application = ConfigManager::getYii2ConsoleApp(['components' => ['db' => [
   'dsn' => sprintf(
     'mysql:host=%s;dbname=%s',
@@ -38,6 +46,7 @@ $application = ConfigManager::getYii2ConsoleApp(['components' => ['db' => [
   ),
   'username' => Env::get('MYSQL_USER'),
   'password' => Env::get('MYSQL_PASSWORD'),
+  'options' => $dbAttributes,
 ]]]);
 $exitCode = $application->run();
 exit($exitCode);
