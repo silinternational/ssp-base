@@ -53,7 +53,7 @@ class SilAuth extends UserPassBase
         $this->templateData = ConfigManager::getConfigFor('templateData', $config);
 
         $dbAttributes = [];
-        $caFile = "/data/vendor/simplesamlphp/simplesamlphp/cert/rds_ca.pem";
+        $caFile = getenv('DB_CA_FILE_PATH');
         if (file_exists($caFile)) {
             $dbAttributes = [
                 PDO::MYSQL_ATTR_SSL_CA => $caFile,

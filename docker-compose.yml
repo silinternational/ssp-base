@@ -1,6 +1,9 @@
 services:
   db:
     image: mariadb:10
+    volumes:
+      - ./db/certs:/certs:ro
+      - ./db/db.cnf:/etc/mysql/conf.d/my.cnf:ro
     ports:
       - "3306"
     environment:
@@ -39,6 +42,7 @@ services:
       MYSQL_DATABASE: silauth
       MYSQL_USER: silauth
       MYSQL_PASSWORD: silauth
+      DB_CA_FILE_PATH: "/data/vendor/simplesamlphp/simplesamlphp/cert/db_ca.pem"
       PROFILE_URL_FOR_TESTS: http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
       ADMIN_PASS: b
       SECRET_SALT: abc123
@@ -47,6 +51,7 @@ services:
       MFA_RECOVERY_CONTACTS_FALLBACK_NAME: "Dummy Name"
       MFA_RECOVERY_CONTACTS_FALLBACK_EMAIL: "dummy@example.com"
     volumes:
+      - ./db/certs/ca.pem:/data/vendor/simplesamlphp/simplesamlphp/cert/db_ca.pem
       - ./dockerbuild/run-integration-tests.sh:/data/run-integration-tests.sh
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
       - ./dockerbuild/run-tests.sh:/data/run-tests.sh
@@ -60,7 +65,7 @@ services:
       - ./modules/silauth:/data/vendor/simplesamlphp/simplesamlphp/modules/silauth
       - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
       - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
-    command: [ "/data/run-tests.sh" ]
+    command: ["/data/run-tests.sh"]
 
   test-browser:
     image: justinribeiro/chrome-headless:stable
@@ -127,6 +132,7 @@ services:
     volumes:
       # Utilize custom certs
       - ./development/idp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
+      - ./db/certs/ca.pem:/data/vendor/simplesamlphp/simplesamlphp/db_ca.pem
 
       # Utilize custom configs
       - ./development/idp-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
@@ -178,6 +184,7 @@ services:
       MYSQL_DATABASE: "silauth"
       MYSQL_USER: "silauth"
       MYSQL_PASSWORD: "silauth"
+      DB_CA_FILE_PATH: "/data/vendor/simplesamlphp/simplesamlphp/db_ca.pem"
       BASE_URL_PATH: "http://ssp-idp1.local/" # for automated tests
       #BASE_URL_PATH: "http://ssp-idp1.local:8085" # for manual browser testing
       HELP_CENTER_URL: "https://example.org/help"
@@ -192,6 +199,7 @@ services:
     volumes:
       # Utilize custom certs
       - ./development/idp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
+      - ./db/certs/ca.pem:/data/vendor/simplesamlphp/simplesamlphp/db_ca.pem
 
       # Utilize custom configs
       - ./development/idp2-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
@@ -226,6 +234,7 @@ services:
       MYSQL_DATABASE: "silauth"
       MYSQL_USER: "silauth"
       MYSQL_PASSWORD: "silauth"
+      DB_CA_FILE_PATH: "/data/vendor/simplesamlphp/simplesamlphp/db_ca.pem"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_COLOR_SCHEME: "red-teal"
@@ -455,7 +464,7 @@ services:
       MFA_WEBAUTHN_rpId: http://app99
     volumes:
       - ./development/m991231_235959_insert_test_users.php:/data/console/migrations/m991231_235959_insert_test_users.php
-    command: [ "bash", "-c", "whenavail brokerDb 3306 60 ./yii migrate --interactive=0 && ./run.sh" ]
+    command: ["bash", "-c", "whenavail brokerDb 3306 60 ./yii migrate --interactive=0 && ./run.sh"]
 
   brokerDb:
     image: mariadb:10
@@ -524,4 +533,4 @@ networks:
           gateway: 10.20.38.1
 
 volumes:
-  composer-cache: { }
+  composer-cache: {}

@@ -9,7 +9,7 @@ try {
     header('Content-Type: text/plain');
 
     $dbAttributes = [];
-    $caFile = "/data/vendor/simplesamlphp/simplesamlphp/cert/rds_ca.pem";
+    $caFile = Env::get('DB_CA_FILE_PATH');
     if (file_exists($caFile)) {
         $dbAttributes = [
             PDO::MYSQL_ATTR_SSL_CA => $caFile,
@@ -25,7 +25,7 @@ try {
         ),
         'username' => Env::get('MYSQL_USER'),
         'password' => Env::get('MYSQL_PASSWORD'),
-        'options' => $dbAttributes,
+        'attributes' => $dbAttributes,
     ]]]);
     $logger = new Psr3StdOutLogger();
     $system = new System($logger);

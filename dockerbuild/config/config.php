@@ -62,13 +62,12 @@ $MYSQL_USER = Env::get('MYSQL_USER', '');
 $MYSQL_PASSWORD = Env::get('MYSQL_PASSWORD', '');
 
 $pdoOptions = [];
-if (file_exists("/data/vendor/simplesamlphp/simplesamlphp/cert/rds_ca.pem")) {
+$caFile = Env::get('DB_CA_FILE_PATH');
+if (file_exists($caFile)) {
     $pdoOptions = [
-        PDO::MYSQL_ATTR_SSL_CA => "/data/vendor/simplesamlphp/simplesamlphp/cert/rds_ca.pem",
+        PDO::MYSQL_ATTR_SSL_CA => $caFile,
         PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => 1,
     ];
-} else {
-    die("cert file not found");
 }
 
 $HUB_MODE = Env::get('HUB_MODE', false);
