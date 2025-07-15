@@ -69,7 +69,7 @@ class SilAuth extends UserPassBase
             ),
             'username' => $this->mysqlConfig['user'],
             'password' => $this->mysqlConfig['password'],
-            'options' => $dbAttributes,
+            'attributes' => $dbAttributes,
         ]]]);
     }
 

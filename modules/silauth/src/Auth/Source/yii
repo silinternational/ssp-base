@@ -47,7 +47,7 @@ $application = ConfigManager::getYii2ConsoleApp(['components' => ['db' => [
   ),
   'username' => Env::get('MYSQL_USER'),
   'password' => Env::get('MYSQL_PASSWORD'),
-  'options' => $dbAttributes,
+  'attributes' => $dbAttributes,
 ]]]);
 $exitCode = $application->run();
 exit($exitCode);
