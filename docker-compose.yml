@@ -20,6 +20,7 @@ services:
       PMA_HOST: db
       PMA_USER: silauth
       PMA_PASSWORD: silauth
+      PMA_SSL: 1
 
   test:
     build:
