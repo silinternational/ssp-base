@@ -7,8 +7,7 @@ set -x
 set -e
 
 # Try to run database migrations
-cd /data/vendor/simplesamlphp/simplesamlphp
-chmod a+x ./modules/silauth/src/Auth/Source/yii
+chmod a+x /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/src/Auth/Source/yii
 
 if [[ -n "$SSL_CA_BASE64" ]]; then
     # Decode the base64 and write to the file
@@ -21,7 +20,6 @@ if [[ -n "$SSL_CA_BASE64" ]]; then
     echo "Wrote cert to $DB_CA_FILE_PATH"
 fi
 
-./modules/silauth/src/Auth/Source/yii migrate --interactive=0
+whenavail db 3306 60 /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/src/Auth/Source/yii migrate --interactive=0
 
-cd /data
 ./run.sh
