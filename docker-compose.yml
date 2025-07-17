@@ -1,3 +1,11 @@
+x-db_healthcheck: &db_healthcheck
+  healthcheck:
+    test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+    start_period: 10s
+    interval: 10s
+    timeout: 5s
+    retries: 3
+
 services:
   db:
     image: mariadb:10
@@ -11,6 +19,7 @@ services:
       MYSQL_DATABASE: silauth
       MYSQL_USER: silauth
       MYSQL_PASSWORD: silauth
+    <<: *db_healthcheck
 
   dbadmin:
     image: phpmyadmin
@@ -130,7 +139,8 @@ services:
   ssp-idp1.local: # using a database session store type ("sql")
     build: .
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     volumes:
       # Utilize custom certs
       - ./development/idp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
@@ -195,8 +205,10 @@ services:
   ssp-idp2.local:
     build: .
     depends_on:
-      - db
-      - broker
+      db:
+        condition: service_healthy
+      broker:
+        condition: service_started
     volumes:
       # Utilize custom certs
       - ./development/idp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
@@ -433,7 +445,8 @@ services:
     ports:
       - "80"
     depends_on:
-      - brokerDb
+      brokerDb:
+        condition: service_healthy
     env_file:
       - ./local.broker.env
     environment:
@@ -466,7 +479,7 @@ services:
       MFA_WEBAUTHN_rpId: http://app99
     volumes:
       - ./development/m991231_235959_insert_test_users.php:/data/console/migrations/m991231_235959_insert_test_users.php
-    command: ["bash", "-c", "whenavail brokerDb 3306 60 ./yii migrate --interactive=0 && ./run.sh"]
+    command: ["bash", "-c", "./yii migrate --interactive=0 && ./run.sh"]
 
   brokerDb:
     image: mariadb:10
@@ -477,6 +490,7 @@ services:
       MYSQL_DATABASE: "broker"
       MYSQL_USER: "user"
       MYSQL_PASSWORD: "pass"
+    <<: *db_healthcheck
 
   brokerpma:
     image: phpmyadmin

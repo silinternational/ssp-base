@@ -20,6 +20,6 @@ if [[ -n "$SSL_CA_BASE64" ]]; then
     echo "Wrote cert to $DB_CA_FILE_PATH"
 fi
 
-whenavail db 3306 60 /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/src/Auth/Source/yii migrate --interactive=0
+/data/vendor/simplesamlphp/simplesamlphp/modules/silauth/src/Auth/Source/yii migrate --interactive=0
 
 ./run.sh
