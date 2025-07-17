@@ -62,7 +62,6 @@ services:
     env_file:
       - ./db/certs/test.env
     volumes:
-      - ./db/certs/ca.pem:/data/vendor/simplesamlphp/simplesamlphp/cert/db_ca.pem
       - ./dockerbuild/run-integration-tests.sh:/data/run-integration-tests.sh
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
       - ./dockerbuild/run-tests.sh:/data/run-tests.sh
@@ -144,7 +143,6 @@ services:
     volumes:
       # Utilize custom certs
       - ./development/idp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
-      - ./db/certs/ca.pem:/data/vendor/simplesamlphp/simplesamlphp/db_ca.pem
 
       # Utilize custom configs
       - ./development/idp-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
@@ -212,7 +210,6 @@ services:
     volumes:
       # Utilize custom certs
       - ./development/idp2-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
-      - ./db/certs/ca.pem:/data/vendor/simplesamlphp/simplesamlphp/db_ca.pem
 
       # Utilize custom configs
       - ./development/idp2-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
