@@ -43,7 +43,6 @@ services:
       MYSQL_DATABASE: silauth
       MYSQL_USER: silauth
       MYSQL_PASSWORD: silauth
-      DB_CA_FILE_PATH: "/data/vendor/simplesamlphp/simplesamlphp/cert/db_ca.pem"
       PROFILE_URL_FOR_TESTS: http://pwmanager.local/module.php/core/authenticate.php?as=ssp-hub
       ADMIN_PASS: b
       SECRET_SALT: abc123
@@ -51,6 +50,8 @@ services:
       MFA_RECOVERY_CONTACTS_API_KEY: "dummy-key"
       MFA_RECOVERY_CONTACTS_FALLBACK_NAME: "Dummy Name"
       MFA_RECOVERY_CONTACTS_FALLBACK_EMAIL: "dummy@example.com"
+    env_file:
+      - ./db/certs/test.env
     volumes:
       - ./db/certs/ca.pem:/data/vendor/simplesamlphp/simplesamlphp/cert/db_ca.pem
       - ./dockerbuild/run-integration-tests.sh:/data/run-integration-tests.sh
@@ -161,9 +162,7 @@ services:
       - ./modules/sildisco:/data/vendor/simplesamlphp/simplesamlphp/modules/sildisco
       - ./modules/material:/data/vendor/simplesamlphp/simplesamlphp/modules/material
     command: >
-      bash -c "whenavail db 3306 60 /data/vendor/simplesamlphp/simplesamlphp/modules/silauth/src/Auth/Source/yii migrate --interactive=0 &&
-      /data/enable-exampleauth.sh &&
-      /data/run.sh"
+      bash -c "/data/enable-exampleauth.sh && /data/run-idp.sh"
     ports:
       - "8085:80"
     environment:
@@ -185,12 +184,13 @@ services:
       MYSQL_DATABASE: "silauth"
       MYSQL_USER: "silauth"
       MYSQL_PASSWORD: "silauth"
-      DB_CA_FILE_PATH: "/data/vendor/simplesamlphp/simplesamlphp/db_ca.pem"
       BASE_URL_PATH: "http://ssp-idp1.local/" # for automated tests
       #BASE_URL_PATH: "http://ssp-idp1.local:8085" # for manual browser testing
       HELP_CENTER_URL: "https://example.org/help"
       THEME_COLOR_SCHEME: "blue_grey-teal"
       HUB_MODE: "false"
+    env_file:
+      - ./db/certs/test.env
 
   ssp-idp2.local:
     build: .
@@ -235,11 +235,12 @@ services:
       MYSQL_DATABASE: "silauth"
       MYSQL_USER: "silauth"
       MYSQL_PASSWORD: "silauth"
-      DB_CA_FILE_PATH: "/data/vendor/simplesamlphp/simplesamlphp/db_ca.pem"
       SECURE_COOKIE: "false"
       SHOW_SAML_ERRORS: "true"
       THEME_COLOR_SCHEME: "red-teal"
       HUB_MODE: "false"
+    env_file:
+      - ./db/certs/test.env
 
   ssp-idp3.local:
     build: .
