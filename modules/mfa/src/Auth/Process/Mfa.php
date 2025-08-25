@@ -557,6 +557,8 @@ class Mfa extends ProcessingFilter
         // Set remember me cookies if requested
         if ($rememberMe) {
             self::setRememberMeCookies($state['employeeId'], $state['mfaOptions']);
+        } else {
+            self::clearRememberMeCookies();
         }
 
         $logger->warning(json_encode([
@@ -875,6 +877,16 @@ class Mfa extends ProcessingFilter
         $cookieHash = password_hash($cookieString, PASSWORD_DEFAULT);
         setcookie('c1', base64_encode($cookieHash), $expireDate, '/', null, $secureCookie, true);
         setcookie('c2', $expireDate, $expireDate, '/', null, $secureCookie, true);
+    }
+
+    /**
+     * Clear remember_me cookies (c1 and c2)
+     */
+    public static function clearRememberMeCookies(): void
+    {
+        $secureCookie = Env::get('SECURE_COOKIE', true);
+        setcookie('c1', '', time() - 3600, '/', null, $secureCookie, true);
+        setcookie('c2', '', time() - 3600, '/', null, $secureCookie, true);
     }
 
     protected static function shouldPromptForMfa(array $mfa): bool
