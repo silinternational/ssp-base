@@ -411,13 +411,13 @@ services:
           - pwmanager.local
     volumes:
       # Utilize custom certs
-      - ./development/sp-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
+      - ./development/sp-group-local/cert:/data/vendor/simplesamlphp/simplesamlphp/cert
 
       # Utilize custom configs
-      - ./development/sp-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
+      - ./development/sp-group-local/config/authsources.php:/data/vendor/simplesamlphp/simplesamlphp/config/authsources.php
 
       # Utilize custom metadata
-      - ./development/sp-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
+      - ./development/sp-group-local/metadata/saml20-idp-remote.php:/data/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php
 
       # Enable checking our test metadata
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
