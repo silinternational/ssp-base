@@ -4,7 +4,7 @@ use PHPUnit\Framework\Assert;
 
 class SilDiscoContext extends FeatureContext
 {
-    protected const SP1_LOGOUT_PAGE = 'https://ssp-sp1.local/module.php/core/logout/ssp-hub';
+    protected const SP1_LOGOUT_PAGE = 'https://ssp-sp1.local/module.php/core/logout/sp1';
 
     /**
      * @When I log in using my :idp credentials

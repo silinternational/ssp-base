@@ -17,11 +17,11 @@ class FeatureContext extends MinkContext
     private const HUB_BAD_AUTH_SOURCE_URL = 'https://ssp-hub.local/module.php/admin/test/wrong';
     private const HUB_DISCO_URL = 'https://ssp-hub.local/module.php/admin/test/hub-discovery';
     private const HUB_ADMIN_URL = 'https://ssp-hub.local/admin';
-    protected const SP1_LOGIN_PAGE = 'https://ssp-sp1.local/module.php/saml/sp/login/ssp-hub?ReturnTo=/';
-    protected const SP2_LOGIN_PAGE = 'https://ssp-sp2.local/module.php/saml/sp/login/ssp-hub?ReturnTo=/';
-    protected const SP3_LOGIN_PAGE = 'https://ssp-sp3.local/module.php/saml/sp/login/ssp-hub?ReturnTo=/';
-    protected const SP4_LOGIN_PAGE = 'https://ssp-sp4.local/module.php/saml/sp/login/ssp-hub?ReturnTo=/';
-    protected const SP5_LOGIN_PAGE = 'https://ssp-sp5.local/module.php/saml/sp/login/ssp-hub?ReturnTo=/';
+    protected const SP1_LOGIN_PAGE = 'https://ssp-sp1.local/module.php/saml/sp/login/sp1?ReturnTo=/';
+    protected const SP2_LOGIN_PAGE = 'https://ssp-sp2.local/module.php/saml/sp/login/sp2?ReturnTo=/';
+    protected const SP3_LOGIN_PAGE = 'https://ssp-sp3.local/module.php/saml/sp/login/sp3?ReturnTo=/';
+    protected const SP4_LOGIN_PAGE = 'https://ssp-sp4.local/module.php/saml/sp/login/sp4?ReturnTo=/';
+    protected const SP5_LOGIN_PAGE = 'https://ssp-sp5.local/module.php/saml/sp/login/sp5?ReturnTo=/';
 
     const SCREENSHOTS_PATH = '/data/features/screenshots/';
 
