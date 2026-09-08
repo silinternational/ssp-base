@@ -123,3 +123,28 @@ See [Local Testing](../README.md#local-testing) for instructions to set up your 
 * This should redirect to https://ssp-idp1.local/module.php/core/loginuserpass.php?AuthState=...
 * Login as sildisco_idp1 using "sildisco_password" as the password (without the quotation marks).
 * This should get you to https://ssp-sp3.local/module.php/saml/sp/login/ssp-hub?ReturnTo=/ and show your saml attributes.
+
+## ForceAuthn via Hub SP configuration is honored for SP4 & SP5
+### Expect repeated login prompt when accessing a Hub SP with ForceAuthn enabled and only one approved IDP
+* Browse to https://ssp-sp4.local/module.php/saml/sp/login/ssp-hub?ReturnTo=/
+* This should redirect to https://ssp-idp2.local/module.php/core/loginuserpass.php?AuthState=... 
+* Login as sildisco_idp2 using "sildisco_password" as the password (without the quotation marks)
+* This should get you to a page on https://ssp-sp4.local/
+* Manually remove the browser cookies only for https://ssp-sp4.local
+* Again, browse to https://ssp-sp4.local/module.php/saml/sp/login/ssp-hub?ReturnTo=/
+* This should redirect to https://ssp-idp2.local/module.php/core/loginuserpass.php?AuthState=... 
+* You should successfully be prompted to login again
+
+### Expect discovery page and repeated login prompt for a Hub SP with ForceAuthn enabled and multiple approved IdPs
+* Browse to https://ssp-sp5.local/module.php/saml/sp/login/ssp-hub?ReturnTo=/
+* This should redirect to https://ssp-hub.local/module.php/sildisco/disco.php?entityID=ssp-hub.local&...
+* Select "IDP 2"
+* This should redirect to https://ssp-idp2.local/module.php/core/loginuserpass.php?AuthState=... 
+* Login as sildisco_idp2 using "sildisco_password" as the password (without the quotation marks)
+* This should get you to a page on https://ssp-sp5.local/
+* Manually remove the browser cookies only for https://ssp-sp5.local
+* Again, browse to https://ssp-sp5.local/module.php/saml/sp/login/ssp-hub?ReturnTo=/
+* This should redirect to https://ssp-hub.local/module.php/sildisco/disco.php?entityID=ssp-hub.local&...
+* Select "IDP 2"
+* This should redirect to https://ssp-idp2.local/module.php/core/loginuserpass.php?AuthState=... 
+* You should successfully be prompted to login again
