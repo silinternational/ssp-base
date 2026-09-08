@@ -97,7 +97,6 @@ class SilDiscoContext extends FeatureContext
      */
     public function iAmVisiting($sp) {
         $this->waitForPage('module.php/core/welcome');
-
         $this->assertIAmOn($sp);
     }
 
@@ -167,7 +166,7 @@ class SilDiscoContext extends FeatureContext
     private function assertIAmOn($sp) {
         $currentUrl = $this->getSession()->getCurrentUrl();
         Assert::assertStringStartsWith(
-            'https://ssp-' . strtolower($sp),
+            'https://ssp-' . strtolower($sp) . '.local',
             $currentUrl,
             'Did NOT end up at ' . $sp
         );

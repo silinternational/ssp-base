@@ -17,11 +17,7 @@ class FeatureContext extends MinkContext
     private const HUB_BAD_AUTH_SOURCE_URL = 'https://ssp-hub.local/module.php/admin/test/wrong';
     private const HUB_DISCO_URL = 'https://ssp-hub.local/module.php/admin/test/hub-discovery';
     private const HUB_ADMIN_URL = 'https://ssp-hub.local/admin';
-    protected const SP1_LOGIN_PAGE = 'https://ssp-sp1.local/module.php/saml/sp/login/ssp-hub?ReturnTo=/';
-    protected const SP2_LOGIN_PAGE = 'https://ssp-sp2.local/module.php/saml/sp/login/ssp-hub?ReturnTo=/';
-    protected const SP3_LOGIN_PAGE = 'https://ssp-sp3.local/module.php/saml/sp/login/ssp-hub?ReturnTo=/';
-    protected const SP4_LOGIN_PAGE = 'https://ssp-sp4.local/module.php/saml/sp/login/ssp-hub?ReturnTo=/';
-    protected const SP5_LOGIN_PAGE = 'https://ssp-sp5.local/module.php/saml/sp/login/ssp-hub?ReturnTo=/';
+    protected const SP_LOGIN_PAGE = '/module.php/saml/sp/login/ssp-hub?ReturnTo=/';
 
     const SCREENSHOTS_PATH = '/data/features/screenshots/';
 
@@ -183,23 +179,9 @@ class FeatureContext extends MinkContext
      */
     public function iGoToTheSpLoginPage($sp)
     {
-        switch ($sp) {
-            case 'SP1':
-                $this->visit(self::SP1_LOGIN_PAGE);
-                break;
-            case 'SP2':
-                $this->visit(self::SP2_LOGIN_PAGE);
-                break;
-            case 'SP3':
-                $this->visit(self::SP3_LOGIN_PAGE);
-                break;
-            case 'SP4':
-                $this->visit(self::SP4_LOGIN_PAGE);
-                break;
-            case 'SP5':
-                $this->visit(self::SP5_LOGIN_PAGE);
-                break;
-        }
+        $spLoginPage = 'https://ssp-' . strtolower($sp) . '.local' . self::SP_LOGIN_PAGE;
+
+        $this->visit($spLoginPage);
     }
 
     protected function assertPageBodyContainsText(string $expectedText)
