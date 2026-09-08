@@ -102,12 +102,11 @@ class SilDiscoContext extends FeatureContext
     }
 
     /**
-     * @Given I remove session cookies for the current SP
+     * @Given I remove session cookies for that site
      * 
-     * Prerequisite: we have performed a visit to the current SP
      * This removes the two SSP cookies for the site we are currently sitting on
      */
-    public function iHaveLoggedOutOfTheCurrentSP()
+    public function iRemoveSessionCookiesForThatSite()
     {
         $session = $this->getSession();
         $session->setCookie('SSPAUTHTOKEN', null);
