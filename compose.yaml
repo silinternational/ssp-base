@@ -423,7 +423,7 @@ services:
       - ./dockerbuild/run-metadata-tests.sh:/data/run-metadata-tests.sh
     environment:
       ADMIN_EMAIL: "john_doe@there.com"
-      ADMIN_PASS: "sp1"
+      ADMIN_PASS: "spgroup"
       IDP_NAME: "NA"
       SECRET_SALT: "not-secret-h57fjemb&dn^nsJFGNjweJz1"
       SECURE_COOKIE: "true"
