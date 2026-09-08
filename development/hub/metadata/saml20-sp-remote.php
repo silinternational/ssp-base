@@ -109,7 +109,7 @@ $metadata['https://ssp-sp4.local'] = [
     'ForceAuthn' => true,
 ];
 
-// Used for Hub ForceAuthn tests w/ 2+ IDPList
+// Used for Hub ForceAuthn tests w/ 2+ IdPs in IDPList
 $metadata['https://ssp-sp5.local'] = [
     'entityid' => 'https://ssp-sp5.local',
     'name' => ['en' => 'SP5'],
