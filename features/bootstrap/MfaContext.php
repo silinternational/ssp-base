@@ -322,9 +322,10 @@ JS);
      */
     public function iShouldNotBeAbleToGetToMyIntendedDestination()
     {
-        $this->getSession()->visit(self::SP1_LOGIN_PAGE);
+        $sp = "SP1";
+        self::iGoToTheSpLoginPage($sp);
         Assert::assertStringStartsNotWith(
-            self::SP1_LOGIN_PAGE,
+            'https://ssp-' . strtolower($sp) . ".local",
             $this->getSession()->getCurrentUrl(),
             'Failed to prevent me from getting to SPs other than the MFA setup URL'
         );

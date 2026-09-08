@@ -74,7 +74,7 @@ class SilDiscoContext extends FeatureContext
     public function iHaveAuthenticatedWithIdp2($sp)
     {
         $this->iGoToTheSpLoginPage($sp);
-        if (!in_array($sp, ["SP2", "SP4"])) { // SP2 & SP4 only has IDP2 in its IDPList
+        if (!in_array($sp, ["SP2", "SP4"])) { // SP2 & SP4 only have one IdP in their IDPList
             $this->iClickOnTheTile('IDP 2');
         }
         $this->username = 'sildisco_idp2';
@@ -97,17 +97,15 @@ class SilDiscoContext extends FeatureContext
      */
     public function iAmVisiting($sp) {
         $this->waitForPage('module.php/core/welcome');
-
         $this->assertIAmOn($sp);
     }
 
     /**
-     * @Given I remove session cookies for the current SP
+     * @Given I remove session cookies for that site
      * 
-     * Prerequisite: we have performed a visit to the current SP
      * This removes the two SSP cookies for the site we are currently sitting on
      */
-    public function iHaveLoggedOutOfTheCurrentSP()
+    public function iRemoveSessionCookiesForThatSite()
     {
         $session = $this->getSession();
         $session->setCookie('SSPAUTHTOKEN', null);
@@ -168,7 +166,7 @@ class SilDiscoContext extends FeatureContext
     private function assertIAmOn($sp) {
         $currentUrl = $this->getSession()->getCurrentUrl();
         Assert::assertStringStartsWith(
-            'https://ssp-' . strtolower($sp),
+            'https://ssp-' . strtolower($sp) . '.local',
             $currentUrl,
             'Did NOT end up at ' . $sp
         );
