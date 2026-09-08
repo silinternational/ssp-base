@@ -95,7 +95,8 @@ class SilDiscoContext extends FeatureContext
     /**
      * @Given I am visiting :sp
      */
-    public function iAmVisiting($sp) {
+    public function iAmVisiting($sp)
+    {
         $this->waitForPage('module.php/core/welcome');
         $this->assertIAmOn($sp);
     }
@@ -163,7 +164,8 @@ class SilDiscoContext extends FeatureContext
     /**
      * Asserts if we are on a particular SP's domain
      */
-    private function assertIAmOn($sp) {
+    private function assertIAmOn($sp)
+    {
         $currentUrl = $this->getSession()->getCurrentUrl();
         Assert::assertStringStartsWith(
             'https://ssp-' . strtolower($sp) . '.local',
