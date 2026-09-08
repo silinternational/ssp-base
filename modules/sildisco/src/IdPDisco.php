@@ -136,7 +136,7 @@ class IdPDisco extends SSPIdPDisco
             return $idp;
         }
 
-        list($spEntityId, $idpList, $forceAuthn) = $this->getSPEntityIDAndReducedIdpListAndForceAuthn();
+        list($spEntityId, $idpList, ) = $this->getSPEntityIDAndReducedIdpListAndForceAuthn();
 
         /*
          * All this complication is for security.
