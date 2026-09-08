@@ -74,7 +74,7 @@ class SilDiscoContext extends FeatureContext
     public function iHaveAuthenticatedWithIdp2($sp)
     {
         $this->iGoToTheSpLoginPage($sp);
-        if (!in_array($sp, ["SP2", "SP4"])) { // SP2 & SP4 only has IDP2 in its IDPList
+        if (!in_array($sp, ["SP2", "SP4"])) { // SP2 & SP4 only have one IdP in their IDPList
             $this->iClickOnTheTile('IDP 2');
         }
         $this->username = 'sildisco_idp2';
