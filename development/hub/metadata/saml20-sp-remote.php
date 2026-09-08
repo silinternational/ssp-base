@@ -84,7 +84,7 @@ $metadata['https://ssp-sp3.local'] = [
     'assertion.encryption' => true,
 ];
 
-// Used for Hub ForceAuthn test w/ exactly one IDPList
+// Used for Hub ForceAuthn test w/ exactly one IdP in IDPList
 $metadata['https://ssp-sp4.local'] = [
     'entityid' => 'https://ssp-sp4.local',
     'name' => ['en' => 'SP4'],
