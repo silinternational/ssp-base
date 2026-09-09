@@ -10,7 +10,7 @@ The `development/` directory spins up a full local topology via Docker Compose: 
 
 ## Commands
 
-All commands run through Docker Compose; there is no bare-metal PHP workflow. Local dev requires `/etc/hosts` entries (see README.md "Local testing") for `ssp-hub.local`, `ssp-idp1.local`..`ssp-idp4.local`, `ssp-sp1.local`..`ssp-sp3.local`, and `pwmanager.local`, plus `local.env` / `local.broker.env` copied from their `.dist` templates (with a GitHub personal access token in `COMPOSER_AUTH`).
+All commands run through Docker Compose; there is no bare-metal PHP workflow. Local dev requires `/etc/hosts` entries (see README.md "Local testing") for `ssp-hub.local`, `ssp-idp1.local`..`ssp-idp4.local`, `ssp-sp1.local`..`ssp-sp5.local`, and `pwmanager.local`, plus `local.env` / `local.broker.env` copied from their `.dist` templates (with a GitHub personal access token in `COMPOSER_AUTH`).
 
 ```bash
 make deps            # composer install (via the `composer` compose service)
@@ -65,7 +65,7 @@ Downstream images built FROM ssp-base add files to `$SSP_PATH/metadata/` (`SSP_P
 
 ### Local dev topology (`development/`)
 
-Each of `hub`, `idp-local`, `idp2-local`..`idp4-local`, `sp-local`, `sp2-local`, `sp3-local` has its own `cert/`, `config/`, `metadata/` mounted into the corresponding `compose.yaml` service (`ssp-hub.local`, `ssp-idp1.local`..`ssp-idp4.local`, `ssp-sp1.local`..`ssp-sp3.local`). `docs/the_hub.md` explains the routing intent: `sp1` can reach `idp1`+`idp2`, `sp2` only `idp2`, `sp3` only `idp1`; sessions authenticated through a disallowed IdP for a given SP force re-authentication. `dockerbuild/ssp-overrides/sp-php.patch` is what forces re-discovery when an SP is permitted multiple IdPs.
+Each of `hub`, `idp-local`, `idp2-local`..`idp4-local`, `sp-local`, `sp2-local`, `sp3-local`, `sp4-local`, `sp5-local` has its own `cert/`, `config/`, `metadata/` mounted into the corresponding `compose.yaml` service (`ssp-hub.local`, `ssp-idp1.local`..`ssp-idp4.local`, `ssp-sp1.local`..`ssp-sp5.local`). `docs/the_hub.md` explains the routing intent: `sp1` can reach `idp1`+`idp2`, `sp2` only `idp2`, `sp3` only `idp1`, `sp4` only `idp2`, `sp5` can reach `idp1`+`idp2`+`idp3`; sessions authenticated through a disallowed IdP for a given SP force re-authentication. `dockerbuild/ssp-overrides/sp-php.patch` is what forces re-discovery when an SP is permitted multiple IdPs.
 
 ### Configuration
 
