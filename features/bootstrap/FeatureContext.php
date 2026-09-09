@@ -17,7 +17,8 @@ class FeatureContext extends MinkContext
     private const HUB_BAD_AUTH_SOURCE_URL = 'https://ssp-hub.local/module.php/admin/test/wrong';
     private const HUB_DISCO_URL = 'https://ssp-hub.local/module.php/admin/test/hub-discovery';
     private const HUB_ADMIN_URL = 'https://ssp-hub.local/admin';
-    protected const SP_LOGIN_PAGE = '/module.php/saml/sp/login/ssp-hub?ReturnTo=/';
+    private const SP_LOGIN_PAGE = '/module.php/saml/sp/login/';
+    private const SP_LOGIN_PAGE_PARAMS = '?ReturnTo=/';
 
     const SCREENSHOTS_PATH = '/data/features/screenshots/';
 
@@ -179,9 +180,10 @@ class FeatureContext extends MinkContext
      */
     public function iGoToTheSpLoginPage($sp)
     {
-        $spLoginPage = 'https://ssp-' . strtolower($sp) . '.local' . self::SP_LOGIN_PAGE;
+        $spLoginDomain = 'https://ssp-' . strtolower($sp) . '.local';
+        $spLoginUrl = $spLoginDomain . self::SP_LOGIN_PAGE . strtolower($sp) . self::SP_LOGIN_PAGE_PARAMS;
 
-        $this->visit($spLoginPage);
+        $this->visit($spLoginUrl);
     }
 
     protected function assertPageBodyContainsText(string $expectedText)

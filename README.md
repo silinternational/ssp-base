@@ -140,7 +140,7 @@ foreach ($files as $file) {
      `127.0.0.1  ssp-hub.local ssp-idp1.local ssp-idp2.local ssp-idp3.local ssp-idp4.local ssp-sp1.local ssp-sp2.local ssp-sp3.local`
 5. Bring up the various containers that you will want to interact with. Example:
    `docker compose up -d ssp-hub.local ssp-idp1.local ssp-idp2.local ssp-idp3.local ssp-idp4.local ssp-sp1.local ssp-sp2.local ssp-sp3.local`. You can use `make dev` as a shortcut for this command.
-6. Go to <https://ssp-sp1.local/module.php/saml/sp/login/ssp-hub?ReturnTo=/> in a browser on your computer.
+6. Go to <https://ssp-sp1.local/module.php/saml/sp/login/sp1?ReturnTo=/> in a browser on your computer.
 7. Enter the username and password for the desired user. The list of valid options, and the details
    about each of those users, is defined in the `authsources.php` file for the relevant IDP (e.g.
    `development/idp-local/config/authsources.php`).
