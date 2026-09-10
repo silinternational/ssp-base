@@ -47,7 +47,7 @@
 </head>
 <body class="d-flex flex-column">
 <div class="bootstrap-layout container-fluid p-0 d-flex flex-column flex-grow-1">
-  <header class="navbar navbar-expand-lg bg-primary navbar-dark px-3 py-2 shadow-sm">
+  <header class="navbar navbar-expand-lg bg-primary navbar-dark p-3 shadow-sm mb-3">
     <div class="container-fluid">
       <span class="navbar-brand mb-0 h1 text-wrap me-auto">
         {% if sp|entityDisplayName is empty %}
@@ -70,7 +70,7 @@
   <main class="container d-flex flex-column align-items-center flex-grow-1 my-auto">
     {{ include('announcement.twig') }}
 
-    <form class="row justify-content-center g-4 w-100">
+    <form class="row justify-content-around g-4 w-100">
       <input type="hidden" name="entityID" value="{{ entity_id|e('html_attr') }}"/>
       <input type="hidden" name="return" value="{{ return|e('html_attr') }}"/>
       <input type="hidden" name="returnIDParam" value="{{ return_id_param|e('html_attr') }}"/>
@@ -81,7 +81,7 @@
             class="card idp-select-card shadow-lg border-0 rounded-3 w-100 text-center"
             title="{{ '{selectidp-links:enabled}'|trans({'%idpName%': idp|entityDisplayName}) }}"
           >
-            <div class="card-body p-3 d-flex flex-column align-items-center justify-content-between h-100">
+            <div class="card-body p-2 d-flex flex-column align-items-center justify-content-between h-100">
               <button data-entityid="{{idp.entityid|e}}" type="button" class="btn btn-link text-decoration-none w-100 h-100 d-flex flex-column align-items-center justify-content-between p-0">
                 <div class="image-wrapper d-flex align-items-center justify-content-center" style="height: 130px; width: 100%;">
                   <img

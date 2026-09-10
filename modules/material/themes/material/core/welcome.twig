@@ -10,21 +10,21 @@
   <main class="w-100 d-flex flex-column justify-content-center align-items-center flex-grow-1 my-auto">
     {{ include('announcement.twig') }}
 
-    <div class="card shadow-lg border-0 rounded-3">
+    <div class="card idp-card shadow-lg border-0 rounded-3">
       <div class="card-header bg-white text-center border-0 pt-4 pb-4">
         <img src="/logo.png" alt="{{ '{welcome:title}'|trans }}" class="img-fluid" style="max-width:150px;">
       </div>
 
-      <div class="card-body text-center px-4 py-2">
-        <h1 class="h3 card-title text-body mb-4">
+      <div class="card-body px-4 py-2">
+        <h1 class="h3 card-title text-center text-body mb-4">
           {{ '{welcome:header}'|trans }}
         </h1>
 
-        <p class="card-text text-secondary mb-3 lh-lg">
+        <p class="card-text text-secondary mb-3">
           {{ '{welcome:info_p1}'|trans }}
         </p>
 
-        <p class="card-text text-secondary mb-3 lh-lg">
+        <p class="card-text text-secondary mb-3">
           {{ '{welcome:info_p2}'|trans }}
         </p>
       </div>
@@ -54,4 +54,3 @@
 </div>
 </body>
 </html>
-
